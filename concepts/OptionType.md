@@ -17,6 +17,10 @@ A value that is either absent or a present payload, using a tag to distinguish a
 ## Backlinks
 
 - [Finite ordered binary tree with node labels](BinaryTree.md) — `requiresConcept`
+- [Nonempty bounded closed interval](ClosedInterval.md) — `requiresConcept`
+- [Finite fused sequence iterator](FiniteIterator.md) — `requiresConcept`
+- [Finite allocated heap store](HeapStore.md) — `requiresConcept`
+- [Finite RDF 1.1 dataset](RDFDataset.md) — `requiresConcept`
 
 ## Interface and scope
 

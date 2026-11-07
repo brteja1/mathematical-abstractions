@@ -17,6 +17,8 @@ First-order formulas over a signature, interpreted in a nonempty domain with var
 - [Functional dependency on a relational schema](FunctionalDependency.md) — `requiresConcept`
 - [Hoare Triple](HoareTriple.md) — `requiresConcept`
 - [Classical propositional modal logic K](ModalLogic.md) — `relatedConcept`
+- [Predicate-restricted subtype](Subtype.md) — `requiresConcept`
+- [Free ranked term algebra with variables](TermAlgebra.md) — `relatedConcept`
 
 ## Interface and scope
 

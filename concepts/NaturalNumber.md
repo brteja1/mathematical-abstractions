@@ -15,7 +15,11 @@ The nonnegative integers with zero and successor, supporting exact finite counti
 ## Backlinks
 
 - [Finite ordered binary tree with node labels](BinaryTree.md) — `requiresConcept`
+- [Finite fused sequence iterator](FiniteIterator.md) — `requiresConcept`
+- [Finite carrier with exhaustive enumeration](FiniteType.md) — `requiresConcept`
+- [Finite allocated heap store](HeapStore.md) — `requiresConcept`
 - [Multiset](Multiset.md) — `requiresConcept`
+- [Infinite discrete stream](Stream.md) — `requiresConcept`
 - [Structural Induction](StructuralInduction.md) — `requiresConcept`
 
 ## Interface and scope

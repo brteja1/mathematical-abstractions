@@ -2,6 +2,8 @@
 
 This is a compact topic index. Authoritative concept records live in [`concepts/`](concepts/); [`catalog.jsonld`](catalog.jsonld) is their generated export. See [`CONCEPTS.md`](CONCEPTS.md) for all current pages, [`README.md`](README.md) for maintenance, and [`docs/IMPORTED_SCHEMA.md`](docs/IMPORTED_SCHEMA.md) for the inherited schema and SPARQL examples. For a task, query the graph by `shortForm` and retrieve only the requested definition, operations, axioms, laws, theorems, or sources. Avoid loading this index as a substitute for a targeted graph query.
 
+The [foundational data-model guide](docs/FOUNDATIONAL_DATA_MODELS.md) defines the broad-core baseline, including explicit instantiations and selected semantic profiles.
+
 ## Topic map
 
 ### Foundations
@@ -42,11 +44,11 @@ Types; functions; state-transition systems; semantics; abstract data types; arra
 
 ### Relational data modelling
 
-Recorded: named relational schemas with attribute domains; finite database relations with set semantics and projection; functional dependencies with separate instance satisfaction and schema implication; candidate keys relative to declared dependencies. Empty relations, zero-attribute tuples, and empty keys have explicit conventions. Selected results include typed tuple-update laws, selection composition, projection over union, FD lossless decomposition, semantic attribute closure, key antichains, and injective key projection. SQL bags, NULL, inclusion dependencies, normal forms, and entity-relationship diagrams need further interfaces.
+Recorded: named relational schemas with attribute domains; finite database relations with set semantics and projection; functional dependencies with separate instance satisfaction and schema implication; candidate keys relative to declared dependencies. Empty relations, zero-attribute tuples, and empty keys have explicit conventions. Selected results include typed tuple-update laws, selection composition, projection over union, FD lossless decomposition, semantic attribute closure, key antichains, and injective key projection. Also recorded: bag relations, typed entity-relationship instances, a finite JSON value profile, labelled property graphs, RDF graphs and RDF datasets. SQL NULL/three-valued logic, inclusion dependencies, normal forms, weak entities and diagram layout need further interfaces.
 
 ### Object collections
 
-Recorded: finite sets; duplicate-free ordered collections with partial fresh append; existing sequences, multisets (bags), finite maps, arrays, stacks, queues, deques, and priority queues. Specify element equality separately from object identity in any application. Ordered collections use position rather than a sorting order; their full concatenation is not closed under uniqueness. Finite-insertion and fresh-append induction principles, commuting insertions, append injectivity, and order-sensitive equality are recorded. Object lifetimes, aliasing, association multiplicities, lazy/infinite streams, and collection subtyping need further interfaces.
+Recorded: finite sets; duplicate-free ordered collections with partial fresh append; existing sequences, multisets (bags), finite maps, arrays, stacks, queues, deques, and priority queues. Specify element equality separately from object identity in any application. Ordered collections use position rather than a sorting order; their full concatenation is not closed under uniqueness. Finite-insertion and fresh-append induction principles, commuting insertions, append injectivity, and order-sensitive equality are recorded. Also recorded: set-valued multimaps, finite fused iterators, infinite total streams, prefix dictionaries, allocated heap stores and disjoint-set representatives. Object lifetimes, ownership/alias permissions, effectful iteration and collection subtyping need further interfaces.
 
 ### Languages and computation
 

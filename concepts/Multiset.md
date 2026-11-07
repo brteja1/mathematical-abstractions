@@ -16,6 +16,8 @@ A finite collection represented by nonnegative multiplicities, with only finitel
 
 ## Backlinks
 
+- [Finite database relation under bag semantics](BagRelation.md) — `requiresConcept`
+- [Finite database relation under bag semantics](BagRelation.md) — `specializationOf`
 - [Finite database relation under set semantics](DatabaseRelation.md) — `relatedConcept`
 - [Finite set collection](FiniteSet.md) — `relatedConcept`
 - [Ordered collection without duplicates](OrderedSet.md) — `relatedConcept`
@@ -295,57 +297,6 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "signature": "remove : Bag(A)×A→Bag(A)",
     "description": "Subtracts one occurrence if present, leaving absent counts at zero.",
     "concept": "urn:csabs:concept/Multiset"
-  },
-  {
-    "id": "urn:csabs:axiom/Multiset-finite-support",
-    "type": "Axiom",
-    "name": "finite-support",
-    "statement": "A bag is a natural multiplicity function with finite support.",
-    "formalStatement": "Bag(A)={m:A→ℕ:support(m)={x:m(x)>0} is finite}",
-    "appliesTo": [
-      "urn:csabs:concept/Multiset"
-    ],
-    "assumptions": [
-      "All variables range over the carriers and semantic conventions specified in this concept."
-    ],
-    "ruleRole": "defining-rule",
-    "reviewStatus": "editorial-summary; not machine-proved",
-    "notationLanguage": "informal mathematical Unicode",
-    "provenanceStatus": "legacy-source-missing"
-  },
-  {
-    "id": "urn:csabs:axiom/Multiset-count-extensionality",
-    "type": "Axiom",
-    "name": "count-extensionality",
-    "statement": "Bags are equal exactly when multiplicities agree.",
-    "formalStatement": "m=n iff ∀x:count(m,x)=count(n,x)",
-    "appliesTo": [
-      "urn:csabs:concept/Multiset"
-    ],
-    "assumptions": [
-      "All variables range over the carriers and semantic conventions specified in this concept."
-    ],
-    "ruleRole": "defining-rule",
-    "reviewStatus": "editorial-summary; not machine-proved",
-    "notationLanguage": "informal mathematical Unicode",
-    "provenanceStatus": "legacy-source-missing"
-  },
-  {
-    "id": "urn:csabs:axiom/Multiset-operations",
-    "type": "Axiom",
-    "name": "operations",
-    "statement": "Insertion, removal, and union are defined pointwise.",
-    "formalStatement": "count(empty,x)=0; count(insert(m,a),x)=count(m,x)+[x=a]; count(remove(m,a),x)=max(0,count(m,x)−[x=a]); count(m⊎n,x)=count(m,x)+count(n,x)",
-    "appliesTo": [
-      "urn:csabs:concept/Multiset"
-    ],
-    "assumptions": [
-      "All variables range over the carriers and semantic conventions specified in this concept."
-    ],
-    "ruleRole": "defining-rule",
-    "reviewStatus": "editorial-summary; not machine-proved",
-    "notationLanguage": "informal mathematical Unicode",
-    "provenanceStatus": "legacy-source-missing"
   },
   {
     "id": "urn:csabs:law/Multiset-core",

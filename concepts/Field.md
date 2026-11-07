@@ -16,8 +16,14 @@ A commutative unital ring with distinct zero and one in which each nonzero eleme
 
 ## Backlinks
 
+- [Exact complex number](ComplexNumber.md) — `requiresConcept`
+- [Exact complex number](ComplexNumber.md) — `specializationOf`
 - [Finite rectangular matrix over a field](Matrix.md) — `requiresConcept`
 - [Modular Integer](ModularInteger.md) — `requiresConcept`
+- [Exact rational number](RationalNumber.md) — `requiresConcept`
+- [Exact rational number](RationalNumber.md) — `specializationOf`
+- [Exact real number](RealNumber.md) — `requiresConcept`
+- [Exact real number](RealNumber.md) — `specializationOf`
 - [Vector space over a field](VectorSpace.md) — `requiresConcept`
 
 ## Interface and scope

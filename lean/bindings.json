@@ -290,7 +290,7 @@
       "scope": "model",
       "mapping": "Total typed A -> B; function equality is Lean equality, with funext when needed.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "47ce15a56dcf3b8dff1ea16004236ddc74be196270cebc17e636287a7e35e289"
+      "catalogHash": "c01445130603bb06b78f934caaeb8b1dbc45cf3a4b486b41481626897fea7ad5"
     },
     "urn:csabs:concept/FunctionType": {
       "kind": "model",
@@ -299,7 +299,7 @@
       "scope": "model",
       "mapping": "Total pure A -> B; no bottom, effects or divergence; extensional comparison uses funext.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "ae82a75cce3eb66e8b6432f52a98d218b7e94d49e0ac08e972bcedf6ec70904e"
+      "catalogHash": "61a9047b8c6b3078a4c8b165f8d504e8f4cfb718f609c21ecefeb0414524fd0e"
     },
     "urn:csabs:concept/FunctionalDependency": {
       "kind": "model",
@@ -326,7 +326,7 @@
       "scope": "model",
       "mapping": "Mathlib SimpleGraph V with explicit Fintype V; symmetric irreflexive adjacency.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "4734111109ed2a15bea7fa167b9a54e2c94642f92a60f55335fa5c3400bbc66e"
+      "catalogHash": "a2d58b7310e6e103464fc4940cc70d6e9be7ba7e90098eabd10da840e89561c7"
     },
     "urn:csabs:concept/Group": {
       "kind": "model",
@@ -389,7 +389,7 @@
       "scope": "model",
       "mapping": "Mathlib Lattice, meet/join given by their ordered universal properties.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "5c09f67676d38cc3c3479a5f87632ae6f16e44b203c67544a240c42ed38f8600"
+      "catalogHash": "a4a0530aa47fa77a8aecae513f7b040cfdc099d47ef4e42aca9eb215f4ee4be0"
     },
     "urn:csabs:concept/LinearMap": {
       "kind": "model",
@@ -452,7 +452,7 @@
       "scope": "model",
       "mapping": "Lookup K -> Option V plus proof that the defined-key set is finite; record proof fields are propositionally irrelevant.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "54b423da7fd6770e96f0d00d74a612383cb7edb2949e81bf7e7e16605420baec"
+      "catalogHash": "55ce9b29e2b52474b657cb22aaec85e2ffbe13d5326c8119215d3b76edd6a776"
     },
     "urn:csabs:concept/MarkovChain": {
       "kind": "model",
@@ -542,7 +542,7 @@
       "scope": "model",
       "mapping": "Mathlib Multiset A, quotient of lists by permutation, equivalent finite multiplicity representation.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "2ad8734b69d9c373c8892efc864349f9195cb67ddd090dadac0005cf780d4102"
+      "catalogHash": "50b20a900344f6f9614f5b06698e3ae5e4c1a433f9c7303a05f917b1b5b2990b"
     },
     "urn:csabs:concept/NFA": {
       "kind": "model",
@@ -596,7 +596,7 @@
       "scope": "model",
       "mapping": "Mathlib PartialOrder; antisymmetry uses Lean equality.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "2b250422c34a21aacf41926cb22d2b6cd5e8fd0ce0ad6e18b5af91911b401da2"
+      "catalogHash": "dd0071b12467d693a340c937c5aee263b3cc34b2b0b791d94eef6870680f2eab"
     },
     "urn:csabs:concept/Partition": {
       "kind": "model",
@@ -668,7 +668,7 @@
       "scope": "model",
       "mapping": "Lean Prod A B with constructor, projections, beta and eta.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "e3632167668e14e48b20b94b7f2dbedc0916a6b3407201b43c46c1ceeed1d9fd"
+      "catalogHash": "e5ff105995bc4de90a1f791f74dbfc560a330e1f65be2a68854244dd28c61992"
     },
     "urn:csabs:concept/PropositionalLogic": {
       "kind": "model",
@@ -1155,7 +1155,7 @@
       },
       "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
       "allowedAxioms": [],
-      "catalogHash": "875236e3d7070851e73438b847edd24e0a240b245b9535062e2dccdfb7986930"
+      "catalogHash": "4b7417d0b50ae82ed9c3c03490d8021d2175ee0f925502e1dedde1d174adba0c"
     },
     "urn:csabs:theorem/Function-composition-injective": {
       "kind": "witness",
@@ -1172,7 +1172,7 @@
       },
       "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
       "allowedAxioms": [],
-      "catalogHash": "9c784472e02cb59ffe1a17754c369611a13cdacfb9a3beb3e99876d2cd238a2b"
+      "catalogHash": "1a090196f9880dba1d84b73cec65f52426eaab045588b1b4ded6cfc025e8e483"
     },
     "urn:csabs:law/HoareTriple-core": {
       "kind": "witness",
@@ -1230,7 +1230,7 @@
       },
       "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
       "allowedAxioms": [],
-      "catalogHash": "83d939acb39c74fa5ff10216978f9800ccaae94203411e21b0da3fad2a9cc8f8"
+      "catalogHash": "13dd94e52d3d799b84eb7b0d04433e925f0162c2eb1a0db83de13307c35824db"
     },
     "urn:csabs:concept/BinaryTree": {
       "kind": "model",
@@ -1268,7 +1268,7 @@
       },
       "limitations": "Proof of the explicitly translated proposition for finite pure values. Graph-source correspondence and representation refinement remain reviewed metadata; no implementation or Isabelle verification is implied.",
       "allowedAxioms": [],
-      "catalogHash": "2fe9634fdd0dc36dad198022a45b6b3ebd1bcdce88f3edff51f4492d9394e18e"
+      "catalogHash": "37eb12401ac0af6cf4fe88d6196d206841d75ba93fbc60ff35ebc3e44692e5e7"
     },
     "urn:csabs:law/BinaryTree-mirror-involution": {
       "kind": "witness",
@@ -1319,7 +1319,7 @@
       "allowedAxioms": [
         "Quot.sound"
       ],
-      "catalogHash": "236d77900ee3b1ccb65ed0054f78ff471bcdfadf677a79bc4e29efdf4adae97f"
+      "catalogHash": "40444939467a1d69db3661bc5b07aa08113ecd3a87e0389b96c33a4a6910f7d1"
     },
     "urn:csabs:theorem/BinaryTree-inorder-length": {
       "kind": "witness",
@@ -1434,6 +1434,749 @@
         "propext"
       ],
       "catalogHash": "29da33228c271b4dc250cd0644a47a3323c432e953e6ca3612cbc05e5cde6ca6"
+    },
+    "urn:csabs:concept/BooleanType": {
+      "kind": "model",
+      "symbol": "Catalog.BooleanType",
+      "module": "Catalog.CoreData",
+      "scope": "model",
+      "mapping": "Bool = {false,true}. Value equality is tagged equality. These are Boolean values, not arbitrary propositions, three-valued SQL logic or bit vectors.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "f4a1aaecf44958acc97d2ac231cdbdf3b62d001133f32a8b5e4a22e63d452224"
+    },
+    "urn:csabs:concept/FiniteType": {
+      "kind": "model",
+      "symbol": "Catalog.FiniteType",
+      "module": "Catalog.CoreData",
+      "scope": "model",
+      "mapping": "Catalog.FiniteType A is Fintype A evidence, bundling a Finset enumeration and completeness proof; A remains the actual value carrier. Finite(A) ⇔ ∃U∈FinSet(A), ∀a:A, a∈U. The empty carrier is permitted. Enumeration has no observable order; finiteness is evidence about A, not a finite collection drawn from a possibly infinite carrier. Equality of evidence is proof irrelevant in the Lean model.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "9a0e150d51fd665d11d2135d732d0b2171c0c4dab07a31f250c605587e29dacb"
+    },
+    "urn:csabs:concept/DependentPair": {
+      "kind": "model",
+      "symbol": "Catalog.DependentPair",
+      "module": "Catalog.CoreData",
+      "scope": "model",
+      "mapping": "Sigma B, with dependent second projection and equality transport. Σa:A. B(a). B:A→Type is a family of set-like carriers. Equality of second components across equal indices uses transport. A and fibers may be empty; no decidable equality assumed.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "7afb6cced88319bf75483eb3b5c0b26e07728a986b8ee9ef4298f16b155aeb1b"
+    },
+    "urn:csabs:concept/DependentFunction": {
+      "kind": "model",
+      "symbol": "Catalog.DependentFunction",
+      "module": "Catalog.CoreData",
+      "scope": "model",
+      "mapping": "The actual Pi carrier (a:A)→B a, with total application. Πa:A. B(a). Extensional equality: f=g iff all typed applications agree. No effects, divergence or partiality. Empty A gives one function; some empty fibers may prevent inhabitants.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "65867b1aacce8b9b0a2984aaf1ca33c52db0827f55c613d7040f3639f821ab9c"
+    },
+    "urn:csabs:concept/Subtype": {
+      "kind": "model",
+      "symbol": "Catalog.Subtype",
+      "module": "Catalog.CoreData",
+      "scope": "model",
+      "mapping": "Lean Subtype P, with proof-irrelevant P: A→Prop. {a:A | P(a)}. P:A→Prop is a mathematical predicate; construction requires evidence of P, not a promise of a runtime decision procedure. The carrier may be empty.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "ded3f26628f4d7d776196a287d065bb919f9fffa4861ef02c9e29a3a69336b95"
+    },
+    "urn:csabs:concept/QuotientType": {
+      "kind": "model",
+      "symbol": "Catalog.QuotientType",
+      "module": "Catalog.CoreData",
+      "scope": "model",
+      "mapping": "Quotient r for a Setoid r on A; Quotient.mk/lift require invariant maps. A/≈; [a]∈A/≈. ≈ must be reflexive, symmetric and transitive. No canonical representative or computable equality is promised. Equality is class equality, not equality of representatives.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "647d89089fb9078f1044d1cdfc1a5cd3c45a0a426db3fb7a3c11887008a3789d"
+    },
+    "urn:csabs:concept/RationalNumber": {
+      "kind": "model",
+      "symbol": "Catalog.RationalNumber",
+      "module": "Catalog.CoreData",
+      "scope": "model",
+      "mapping": "Rat field instance; graph division corresponds to Lean / only under nonzero-divisor preconditions. ℚ={m/n | m∈ℤ, n∈ℕ, n>0}. Exact unbounded arithmetic. Canonical fractions have positive coprime denominator. Division is exposed only for nonzero divisor; Lean has a total inverse at zero, used only under this precondition. No rounding or finite resource bounds.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "26869146c802a2e9a5960d951a9471e0a85a74cef0e7a83743647c2971a42e6b"
+    },
+    "urn:csabs:concept/RealNumber": {
+      "kind": "model",
+      "symbol": "Catalog.RealNumber",
+      "module": "Catalog.CoreData",
+      "scope": "model",
+      "mapping": "Real and its conditionally complete linear ordered field; the graph sup operation corresponds to sSup only under nonempty/bounded hypotheses. ℝ. Classical exact real equality/order, generally noncomputable; no claim of a finite representation or decision algorithm. Supremum requires nonempty bounded-above set. Division requires nonzero divisor.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "6f296868470bd53fe9a9aabadd2e8a160013bb89dbf4f8ce0de0604858696a8a"
+    },
+    "urn:csabs:concept/ComplexNumber": {
+      "kind": "model",
+      "symbol": "Catalog.ComplexNumber",
+      "module": "Catalog.CoreData",
+      "scope": "model",
+      "mapping": "Complex with Real re/im, coordinate equality and the complex field instance. ℂ=ℝ×ℝ; (a,b)=a+bi. Equality is coordinate equality. No compatible linear ordered-field structure, floating-point rounding or branch convention for complex transcendental functions is assumed. Division requires nonzero pair.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "0da54c0b44b6599f6e18cd229f06fdfeb19c12dbefb68133448f738ce1d4beca"
+    },
+    "urn:csabs:concept/Stream": {
+      "kind": "model",
+      "symbol": "Catalog.Stream",
+      "module": "Catalog.CoreData",
+      "scope": "model",
+      "mapping": "Stream(A)=ℕ→A. Infinite streams only; there is no end marker. Equality is pointwise at all natural indices. No effects, time-of-arrival, fairness or termination of arbitrary filters is assumed. Stream(∅) is empty.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "c01445130603bb06b78f934caaeb8b1dbc45cf3a4b486b41481626897fea7ad5"
+    },
+    "urn:csabs:concept/SparseVector": {
+      "kind": "model",
+      "symbol": "Catalog.SparseVector",
+      "module": "Catalog.CoreData",
+      "scope": "model",
+      "mapping": "I→₀F with [Field F], using Mathlib finitely supported pointwise module operations. F^{(I)}={v:I→F | supp(v) finite}. I may be infinite, F is a field. Zero is implicit outside support; stored explicit zeros have no distinct mathematical identity. Exact scalar operations; no numerical pruning tolerance.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "1008021acd0e5c030810dc4c725b8f3e0a5cd16d507883ecf75650975cda8e61"
+    },
+    "urn:csabs:concept/JoinSemilattice": {
+      "kind": "model",
+      "symbol": "Catalog.JoinSemilattice",
+      "module": "Catalog.CoreData",
+      "scope": "model",
+      "mapping": "(S,≤,⊔). Binary joins only. A bottom element, meets, completeness or distributivity is additional structure. Equality is the carrier equality used by antisymmetry; empty carrier allowed.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "dd0071b12467d693a340c937c5aee263b3cc34b2b0b791d94eef6870680f2eab"
+    },
+    "urn:csabs:concept/FiniteIterator": {
+      "kind": "model",
+      "symbol": "Catalog.FiniteIterator",
+      "module": "Catalog.CoreData",
+      "scope": "model",
+      "mapping": "Iter(A)={(s,p) | s∈Seq(A), 0≤p≤|s|}. State equality retains original s and p, even when remaining suffixes agree. Finite pure fused profile; generic effectful or resumable iterators require another model. None is exhaustion, not a payload.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "c65c3541bcff87799b9487683029f5f47fe7234557d916c2df1ec6b7b6c1490f"
+    },
+    "urn:csabs:concept/ClosedInterval": {
+      "kind": "model",
+      "symbol": "Catalog.ClosedInterval",
+      "module": "Catalog.CoreData",
+      "scope": "model",
+      "mapping": "[l,u], l≤u. A has a linear order. Singleton intervals allowed. No empty, open, unbounded or NaN endpoints in the carrier. Intersection returns Option to represent disjointness. Equality is endpoint equality.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "5b5ee63cc77b409e7634f22dcd918f07b4ac8663aec88a206d510cb3b6caa89f"
+    },
+    "urn:csabs:concept/FiniteDistribution": {
+      "kind": "model",
+      "symbol": "Catalog.FiniteDistribution",
+      "module": "Catalog.CoreData",
+      "scope": "model",
+      "mapping": "A→₀NNReal plus an exact normalization proof. NNReal is the nonnegative real carrier, not the field parameter of SparseVector. Dist_fin(A)={p:A→ℝ≥0 | supp(p) finite, Σa p(a)=1}. Ambient A may be infinite. No distribution exists on empty A. Exact real probabilities; no random generator, floating-point error or independent sampling assumption. Equality is pointwise mass equality.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "91f25477479548cf94a74180e6733d636fdcf0e532866d5eaf5bb3e370c89517"
+    },
+    "urn:csabs:concept/StateBasedCRDT": {
+      "kind": "model",
+      "symbol": "Catalog.StateBasedCRDT",
+      "module": "Catalog.CoreData",
+      "scope": "model",
+      "mapping": "(S,≤,⊔,⊥,update). Pure state-based algebra only. Updates need not commute or be order preserving beyond inflation. Eventual convergence requires delivery assumptions outside this record; no loss-free transport, liveness or Byzantine tolerance is asserted.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "7e43c449b7efb7f26601a5d49f7c89112acab59d2610789e2fc220ab93a7809e"
+    },
+    "urn:csabs:concept/Multimap": {
+      "kind": "model",
+      "symbol": "Catalog.Multimap",
+      "module": "Catalog.StructuredData",
+      "scope": "model",
+      "mapping": "M⊆fin K×V; values_M(k)={v | (k,v)∈M}. No duplicate pair or ordering. Missing key yields empty set, not None; there are no explicit stored empty buckets. List-valued or bag-valued multimaps are different variants. Equality is pair-set equality.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "3135a75fc26db8eba726dca63680fa3b347ab420fef7166b6e5fe4c17a4dd78e"
+    },
+    "urn:csabs:concept/HeapStore": {
+      "kind": "model",
+      "symbol": "Catalog.HeapStore",
+      "module": "Catalog.StructuredData",
+      "scope": "model",
+      "mapping": "Catalog.Map PNat V; write/free wrap absent cases in None, allocates is a relational fresh-address specification. Heap(V)=Addr⇀fin V; Addr=ℕ_{>0}. Pure mathematical snapshots. Unallocated read/write/free is undefined (None); stored values may themselves encode options. Allocation nondeterministically chooses any fresh positive address; address reuse after free allowed. No pointer arithmetic, GC, permissions, typing or concurrency assumed.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "a1ac13c4ffe616e62eb92eccf45e513262ca6d2df72b645a7c4ccd3613ff34da"
+    },
+    "urn:csabs:concept/DisjointSet": {
+      "kind": "model",
+      "symbol": "Catalog.DisjointSet",
+      "module": "Catalog.StructuredData",
+      "scope": "model",
+      "mapping": "D_n={r:Fin(n)→Fin(n) | r(r(x))=r(x)}. Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "4a79f2810866788aa2e4f4088030fb06a26c31a95783b8c2a1510314bb288c63"
+    },
+    "urn:csabs:concept/RoseTree": {
+      "kind": "model",
+      "symbol": "Catalog.RoseTree",
+      "module": "Catalog.StructuredData",
+      "scope": "model",
+      "mapping": "Rose(A)=μX.(A×Seq(X)); node(a,children). No empty tree constructor; a leaf is node(a,[]). Child order, shape and repeated label occurrences are observable; no pointer sharing/cycles/infinite branches. If A is empty there are no values.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "7a52be6a4fd51bf57c9335fa6a6318d06187ddb24baf01c064d6ddd68b8d8ad1"
+    },
+    "urn:csabs:concept/TermAlgebra": {
+      "kind": "model",
+      "symbol": "Catalog.TermAlgebra",
+      "module": "Catalog.StructuredData",
+      "scope": "model",
+      "mapping": "T_Σ(X)=μT.(X+Σo:Σ. T^{Fin(arity(o))}). Ranked signature arity:Σ→ℕ; nullary symbols allowed. No binders, variable capture, sharing, cyclic terms or equations identifying distinct syntax trees. This is a free syntactic algebra, not evaluation modulo algebraic laws.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "91c83b8ccc7cb28c44d7e6f671bef514fd02e9c8591119a9575b9703f1dbfb16"
+    },
+    "urn:csabs:concept/BinarySearchTree": {
+      "kind": "model",
+      "symbol": "Catalog.BinarySearchTree",
+      "module": "Catalog.StructuredData",
+      "scope": "model",
+      "mapping": "BST(A)={t∈BT(A) | inorder(t) strictly increasing}. Set-valued key profile: duplicates excluded, empty tree allowed. Equality retains tree shape; different trees with identical keys can differ. No balancing or logarithmic bound. Insert/delete are invariant-preserving specifications and may admit several shapes.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "279d2e3be9a4bbe271ac1e4b8b244deecf42c50d386198d00f237d5ec9fcb014"
+    },
+    "urn:csabs:concept/BinaryHeap": {
+      "kind": "model",
+      "symbol": "Catalog.BinaryHeap",
+      "module": "Catalog.StructuredData",
+      "scope": "model",
+      "mapping": "H_p(A)={xs∈Seq(A) | ∀0<i<|xs|, p(xs[⌊(i-1)/2⌋])≤p(xs[i])}. Fixed p:A→K into a linear order. Empty allowed, duplicate values/priorities allowed, ties unspecified. Equality retains level-order sequence. No capacity/overflow bound, stable tie order, or algorithm complexity promised.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "7b96e7934c8ef200768b8527f7e1ad89900286a557585f66597f9d1b118d93f4"
+    },
+    "urn:csabs:concept/Trie": {
+      "kind": "model",
+      "symbol": "Catalog.Trie",
+      "module": "Catalog.StructuredData",
+      "scope": "model",
+      "mapping": "Trie(A,V)=Map(Seq(A),V). Observable finite-map/prefix interface. Empty word can be a key, and a word can be both stored and a prefix of another. Equality compares key lookups, not radix-node shape or compression; prefix selection retains full keys.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "55ce9b29e2b52474b657cb22aaec85e2ffbe13d5326c8119215d3b76edd6a776"
+    },
+    "urn:csabs:concept/RootedTree": {
+      "kind": "model",
+      "symbol": "Catalog.RootedTree",
+      "module": "Catalog.GraphData",
+      "scope": "model",
+      "mapping": "(V,E,r), r∈V; (V,E) a Tree. Vertex identities retained; child order and labels not built in. Single-vertex tree valid. Parent of root undefined. No empty rooted tree, binary branching constraint or pointer representation.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "cfcc6c5c783c93aa18c3f30c1746c68ec70a28697c1f7024f23b38326082509f"
+    },
+    "urn:csabs:concept/DirectedMultigraph": {
+      "kind": "model",
+      "symbol": "Catalog.DirectedMultigraph",
+      "module": "Catalog.GraphData",
+      "scope": "model",
+      "mapping": "(V,E,s:E→V,t:E→V). Empty carriers permitted when endpoint functions exist: V empty forces E empty. Loops and parallel edges allowed. Equality retains carriers, edge identities and endpoints; not equality up to graph isomorphism.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "43dba14129d93d32408c244c542521b8dbfa5830e78a6d6740732481a13612b0"
+    },
+    "urn:csabs:concept/WeightedDirectedGraph": {
+      "kind": "model",
+      "symbol": "Catalog.WeightedDirectedGraph",
+      "module": "Catalog.GraphData",
+      "scope": "model",
+      "mapping": "(V,E,s,t,w:E→ℝ). Negative, zero and positive weights allowed; parallel edges may have different weights. Weight of any finite edge list is defined even if not a walk. No shortest-path existence, nonnegative-weight or Dijkstra assumption.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "bb51748bf6bd668c73074bade228d98c240a77bb75c47341f4de4eb19cfb99f0"
+    },
+    "urn:csabs:concept/Hypergraph": {
+      "kind": "model",
+      "symbol": "Catalog.Hypergraph",
+      "module": "Catalog.GraphData",
+      "scope": "model",
+      "mapping": "(V,H), H⊆𝒫(V), ∀e∈H, |e|≥2. Selected NIST convention excludes empty and singleton edges. V and H may be empty. No parallel hyperedges, orientation, repeated incidence or edge identities beyond vertex subsets. Equality is literal finite-set equality.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "1d00f0f805457d6ea8bfc28128ef90b2d20ba4870814f05e2a2f3975c08c6841"
+    },
+    "urn:csabs:concept/BipartiteGraph": {
+      "kind": "model",
+      "symbol": "Catalog.BipartiteGraph",
+      "module": "Catalog.GraphData",
+      "scope": "model",
+      "mapping": "(G,c:V→Bool), Adj(u,v)⇒c(u)≠c(v). The chosen coloring is observable: swapping colors gives a possibly different value. Empty graph and empty color classes allowed. This is a bundled bipartition, not only the existential property of admitting one.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "a2d58b7310e6e103464fc4940cc70d6e9be7ba7e90098eabd10da840e89561c7"
+    },
+    "urn:csabs:concept/BagRelation": {
+      "kind": "model",
+      "symbol": "Catalog.BagRelation",
+      "module": "Catalog.InformationData",
+      "scope": "model",
+      "mapping": "BagRel(S)=Multiset(Tuple(S)). No tuple ordering; equal rows retain natural-number multiplicity. No SQL NULL, three-valued predicates, ordering or aggregation overflow. Schema fixed; projection adds multiplicities when distinct rows collapse.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "50b20a900344f6f9614f5b06698e3ae5e4c1a433f9c7303a05f917b1b5b2990b"
+    },
+    "urn:csabs:concept/DocumentValue": {
+      "kind": "model",
+      "symbol": "Catalog.DocumentValue",
+      "module": "Catalog.InformationData",
+      "scope": "model",
+      "mapping": "Finite inductive value tree; DecimalRational={q:Rat | ∃m e:Int,q=m*10^e}; String uses Lean Unicode scalars. Objects use finite key sets and dependent child functions, extensionally equivalent to finite String-key maps. D=μX.(1+Bool+Dec+String+Seq(X)+Map(String,X)); Dec={m·10^e | m,e∈ℤ}. Chosen semantic profile, stricter than accepting every RFC syntax: object keys unique; strings scalar Unicode sequences; numbers exact finite decimal rationals, numeric spellings and negative zero identified by value. Objects unordered, arrays ordered. No duplicate-key policy, unpaired surrogates, reference cycles, NaN, infinity or parser/serializer claim.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "93cb509272f366820dc734b137700aa96b58188fad7a1ea53179e9c690805461"
+    },
+    "urn:csabs:concept/EntityRelationshipModel": {
+      "kind": "model",
+      "symbol": "Catalog.EntityRelationshipModel",
+      "module": "Catalog.InformationData",
+      "scope": "model",
+      "mapping": "Finite kind/attribute families, positive relationship arities, entity Finsets over a global ID carrier, role-indexed tuples, integrity proof and typed total entity/relationship attribute functions. E_k⊆fin ID; R_r⊆fin Πi:Fin(arity(r)). E_role(r,i). Fixed finite schema of entity/relationship kinds and attribute names. Entity sets may overlap in global ID. Relations are sets of role tuples, so no duplicate relationship occurrence identity. Attributes total with declared domains; optionality must use an Option domain. No weak entities, inheritance or extra participation/cardinality constraints assumed.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "7b4855aa5f296254d20230ee4f8e9d1fdf0b79041b2aa332c57427905d8e5168"
+    },
+    "urn:csabs:concept/PropertyGraph": {
+      "kind": "model",
+      "symbol": "Catalog.PropertyGraph",
+      "module": "Catalog.InformationData",
+      "scope": "model",
+      "mapping": "(V,E,s,t,label_V,label_E,prop_V,prop_E). Separate vertex/edge identities; loops and parallel edges allowed. Fixed property-value carrier Value; absence differs from a stored null-like Value. Selected single-label, single-valued property profile; TinkerPop multi/meta-properties require an extension. No automatic relationship-to-RDF encoding or schema constraint.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "43dba14129d93d32408c244c542521b8dbfa5830e78a6d6740732481a13612b0"
+    },
+    "urn:csabs:concept/RDFGraph": {
+      "kind": "model",
+      "symbol": "Catalog.RDFGraph",
+      "module": "Catalog.InformationData",
+      "scope": "model",
+      "mapping": "Finite typed triples over caller-supplied IRI/blank/literal carriers; no parser validates I or L. G⊆fin (I⊎B)×I×(I⊎B⊎L). IRIs are validated absolute IRIs compared by exact string; blank identities have explicit scope. Literals retain lexical form, datatype IRI and language tag where required by RDF 1.1. Term equality, not datatype-value equality. Literal subjects and blank predicates excluded. Graph equality is literal triple-set equality; isomorphism under blank-node renaming is a separate relation. No entailment or IRI normalization. Finite submodel of the standard.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "963d5b19551bd553ff4a1826786270b73929e8a2e9b587bfe9a4587590b90059"
+    },
+    "urn:csabs:concept/RDFDataset": {
+      "kind": "model",
+      "symbol": "Catalog.RDFDataset",
+      "module": "Catalog.InformationData",
+      "scope": "model",
+      "mapping": "Default Finset triple graph plus Catalog.Map (I⊕B) RDFGraph; blank scopes and validated term carriers are caller obligations. Dataset=(G_default, N:(I⊎B)⇀fin RDFGraph). Graph names unique; no literal names. Blank identities share an explicit dataset scope and may occur in multiple graphs. Default graph is not assumed to be the union of named graphs. Absent graph differs from present empty graph. Dataset equality retains names and blank identities; no entailment or dataset-canonicalization claim.",
+      "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+      "catalogHash": "35a2e6ef858185c57eed05e2867eded9c536e605171ec76330682d48dd71a032"
+    },
+    "urn:csabs:law/BooleanType-double-negation": {
+      "kind": "witness",
+      "symbol": "Catalog.CoreDataProofs.bool_not_not",
+      "module": "Catalog.CoreData",
+      "expectedType": "∀ (b : Catalog.BooleanType), !(!b) = b",
+      "mapping": "Bool has the two disjoint constructors false/true; not is Lean Bool.not; equality is Boolean value equality. Case elimination supplies enumeration and not-equations.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/BooleanType-enumeration": "Interpreted premise: false≠true ∧ ∀b:Bool, b=false ∨ b=true. Bool has the two disjoint constructors false/true; not is Lean Bool.not; equality is Boolean value equality. Case elimination supplies enumeration and not-equations.",
+        "urn:csabs:axiom/BooleanType-not-equations": "Interpreted premise: not(false)=true ∧ not(true)=false. Bool has the two disjoint constructors false/true; not is Lean Bool.not; equality is Boolean value equality. Case elimination supplies enumeration and not-equations."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "e5cc55e24885b30a7f878fb24e3cba1c86a168a6833334ddbc9eb835dbc88877"
+    },
+    "urn:csabs:law/DependentPair-eta": {
+      "kind": "witness",
+      "symbol": "Catalog.CoreDataProofs.sigma_eta",
+      "module": "Catalog.CoreData",
+      "expectedType": "∀ {A : Type} {B : A → Type} (p : Catalog.DependentPair A B), Sigma.mk p.1 p.2 = p",
+      "mapping": "Sigma is the dependent-pair carrier, Sigma.mk the constructor and projections .1/.2. Dependent equality uses Lean transport; constructor elimination proves eta.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/DependentPair-projections": "Interpreted premise: fst(pair(a,b))=a ∧ snd(pair(a,b))=b. Sigma is the dependent-pair carrier, Sigma.mk the constructor and projections .1/.2. Dependent equality uses Lean transport; constructor elimination proves eta.",
+        "urn:csabs:axiom/DependentPair-extensionality": "Interpreted premise: p=q ⇔ ∃h:fst(p)=fst(q), transport_B(h,snd(p))=snd(q). Sigma is the dependent-pair carrier, Sigma.mk the constructor and projections .1/.2. Dependent equality uses Lean transport; constructor elimination proves eta."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "c97008ac82ac8d75eb9f6763e59f9ed7354d269c53a76ebcc2dc4be76b6fc360"
+    },
+    "urn:csabs:law/DependentFunction-eta": {
+      "kind": "witness",
+      "symbol": "Catalog.CoreDataProofs.dependent_function_eta",
+      "module": "Catalog.CoreData",
+      "expectedType": "∀ {A : Type} {B : A → Type} (f : Catalog.DependentFunction A B), (fun a => f a) = f",
+      "mapping": "Pi types, lambda and application interpret the dependent function interface. Eta here is definitional; function extensionality is available where needed.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/DependentFunction-beta": "Interpreted premise: (λa.t(a))(x)=t(x). Pi types, lambda and application interpret the dependent function interface. Eta here is definitional; function extensionality is available where needed.",
+        "urn:csabs:axiom/DependentFunction-extensionality": "Interpreted premise: f=g ⇔ ∀a:A, f(a)=g(a). Pi types, lambda and application interpret the dependent function interface. Eta here is definitional; function extensionality is available where needed."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "fe75be93ca967c7f31f916bd942429b94698c907f8df8a10ef7d26bc236428ac"
+    },
+    "urn:csabs:law/Subtype-value-injective": {
+      "kind": "witness",
+      "symbol": "Catalog.CoreDataProofs.subtype_value_injective",
+      "module": "Catalog.CoreData",
+      "expectedType": "∀ {A : Type} {P : A → Prop} (x y : Catalog.Subtype A P), x.val = y.val → x = y",
+      "mapping": "Subtype P uses proof-irrelevant predicate evidence; value is .val. Subtype.ext identifies values with equal underlying carriers, independently of proof witnesses.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/Subtype-value-equality": "Interpreted premise: x=y ⇔ value(x)=value(y). Subtype P uses proof-irrelevant predicate evidence; value is .val. Subtype.ext identifies values with equal underlying carriers, independently of proof witnesses."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "00b94b8202cc0aac9624e0c8a9f4ca70dbf4b2d3e91ce56505743d93283cbb8a"
+    },
+    "urn:csabs:law/RationalNumber-add-zero": {
+      "kind": "witness",
+      "symbol": "Catalog.CoreDataProofs.rational_add_zero",
+      "module": "Catalog.CoreData",
+      "expectedType": "∀ (q : Catalog.RationalNumber), q + 0 = q",
+      "mapping": "Rat is exact normalized integer fractions, with its existing field instance and canonical num/den. The proof uses the field additive identity; this realizes the catalog fraction derivation in the concrete library field.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/RationalNumber-fraction-equality": "Interpreted premise: m/n=p/q ⇔ m·q=p·n, for n,q>0. Rat is exact normalized integer fractions, with its existing field instance and canonical num/den. The proof uses the field additive identity; this realizes the catalog fraction derivation in the concrete library field.",
+        "urn:csabs:axiom/RationalNumber-arithmetic": "Interpreted premise: m/n+p/q=(mq+pn)/(nq) ∧ (m/n)(p/q)=mp/(nq). Rat is exact normalized integer fractions, with its existing field instance and canonical num/den. The proof uses the field additive identity; this realizes the catalog fraction derivation in the concrete library field.",
+        "urn:csabs:axiom/RationalNumber-fraction-universal": "Interpreted premise: Every rational has a unique coprime presentation m/n with n>0; fraction(0,1)=0. Rat is exact normalized integer fractions, with its existing field instance and canonical num/den. The proof uses the field additive identity; this realizes the catalog fraction derivation in the concrete library field."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "5e4244b4c16c509f4fbcb68129864443a6903a434bfe963abfbc0a7dadcec870"
+    },
+    "urn:csabs:law/RealNumber-square-nonnegative": {
+      "kind": "witness",
+      "symbol": "Catalog.CoreDataProofs.real_square_nonnegative",
+      "module": "Catalog.CoreData",
+      "expectedType": "∀ (x : Catalog.RealNumber), 0 ≤ x * x",
+      "mapping": "Lean Real with its ordered-field operations and exact ≤; no floating-point instance. mul_self_nonneg derives the result from ordered-ring laws; completeness is not needed.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/RealNumber-ordered-field": "Interpreted premise: ℝ is a field with linear order ≤; a≤b ⇒ a+c≤b+c; 0≤a ∧ 0≤b ⇒ 0≤a·b; 0<1. Lean Real with its ordered-field operations and exact ≤; no floating-point instance. mul_self_nonneg derives the result from ordered-ring laws; completeness is not needed."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "0db96d9dc6272b48dcdc150e22ebfa60381925d0309f819b207aff17dad7dae0"
+    },
+    "urn:csabs:law/ComplexNumber-eta": {
+      "kind": "witness",
+      "symbol": "Catalog.CoreDataProofs.complex_eta",
+      "module": "Catalog.CoreData",
+      "expectedType": "∀ (z : Catalog.ComplexNumber), Complex.mk z.re z.im = z",
+      "mapping": "Complex is the structure with Real re/im fields. mk and projections are the catalog constructor and coordinates; coordinate equality is Lean structure equality.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/ComplexNumber-coordinates": "Interpreted premise: re(mk(a,b))=a ∧ im(mk(a,b))=b; z=w ⇔ re(z)=re(w) ∧ im(z)=im(w). Complex is the structure with Real re/im fields. mk and projections are the catalog constructor and coordinates; coordinate equality is Lean structure equality."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "bb202166eefb9128fd8757869a3c577d48fccf6d20f59993fd5e76f013e48df8"
+    },
+    "urn:csabs:law/Stream-map-identity": {
+      "kind": "witness",
+      "symbol": "Catalog.CoreDataProofs.stream_map_identity",
+      "module": "Catalog.CoreData",
+      "expectedType": "∀ {A : Type} (s : Catalog.Stream A), Stream'.map id s = s",
+      "mapping": "Stream' A is Nat→A, map is pointwise function composition and equality is function equality. The identity map reduces definitionally; extensional equality uses the explicitly shared Function rule at Nat→A.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/Function-extensionality": "Interpreted premise: f,g:A→B; f=g iff ∀a∈A: f(a)=g(a). Stream' A is Nat→A, map is pointwise function composition and equality is function equality. The identity map reduces definitionally; extensional equality uses the explicitly shared Function rule at Nat→A.",
+        "urn:csabs:axiom/Stream-map-equation": "Interpreted premise: map(f,s)(n)=f(s(n)). Stream' A is Nat→A, map is pointwise function composition and equality is function equality. The identity map reduces definitionally; extensional equality uses the explicitly shared Function rule at Nat→A."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "b6a05639c11084f2094817e4e9a69bbdc563d13edfcc076e1a308a078ff1d025"
+    },
+    "urn:csabs:law/ClosedInterval-endpoints-contained": {
+      "kind": "witness",
+      "symbol": "Catalog.CoreDataProofs.interval_endpoints",
+      "module": "Catalog.CoreData",
+      "expectedType": "∀ {A : Type} [LinearOrder A] (i : Catalog.ClosedInterval A), i.contains i.lower ∧ i.contains i.upper",
+      "mapping": "ClosedInterval stores ordered endpoints; contains is lower≤x∧x≤upper. LinearOrder supplies reflexivity and the stored ordered proof supplies lower≤upper; no empty interval is an inhabitant.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/ClosedInterval-ordered-endpoints": "Interpreted premise: l≤u. ClosedInterval stores ordered endpoints; contains is lower≤x∧x≤upper. LinearOrder supplies reflexivity and the stored ordered proof supplies lower≤upper; no empty interval is an inhabitant.",
+        "urn:csabs:axiom/ClosedInterval-membership": "Interpreted premise: x∈[l,u] ⇔ l≤x ∧ x≤u. ClosedInterval stores ordered endpoints; contains is lower≤x∧x≤upper. LinearOrder supplies reflexivity and the stored ordered proof supplies lower≤upper; no empty interval is an inhabitant."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "258930da7df89a34e96ba1fe832b1efa4c56ff3df92c8853175cb80a919a5339"
+    },
+    "urn:csabs:law/JoinSemilattice-commutativity": {
+      "kind": "witness",
+      "symbol": "Catalog.CoreDataProofs.join_commutative",
+      "module": "Catalog.CoreData",
+      "expectedType": "∀ {A : Type} [Catalog.JoinSemilattice A] (x y : A), x ⊔ y = y ⊔ x",
+      "mapping": "SemilatticeSup extends PartialOrder with binary sup and le_sup_left/le_sup_right/sup_le. Sup is catalog join, ≤ and equality retain their carrier meanings. sup_comm uses those order/leastness fields.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/PartialOrder-reflexive": "Interpreted premise: ∀x∈A:x≤x. SemilatticeSup extends PartialOrder with binary sup and le_sup_left/le_sup_right/sup_le. Sup is catalog join, ≤ and equality retain their carrier meanings. sup_comm uses those order/leastness fields.",
+        "urn:csabs:axiom/PartialOrder-transitive": "Interpreted premise: x≤y ∧ y≤z ⇒ x≤z. SemilatticeSup extends PartialOrder with binary sup and le_sup_left/le_sup_right/sup_le. Sup is catalog join, ≤ and equality retain their carrier meanings. sup_comm uses those order/leastness fields.",
+        "urn:csabs:axiom/PartialOrder-antisymmetric": "Interpreted premise: x≤y ∧ y≤x ⇒ x=y. SemilatticeSup extends PartialOrder with binary sup and le_sup_left/le_sup_right/sup_le. Sup is catalog join, ≤ and equality retain their carrier meanings. sup_comm uses those order/leastness fields.",
+        "urn:csabs:axiom/JoinSemilattice-upper-bounds": "Interpreted premise: x≤x⊔y ∧ y≤x⊔y. SemilatticeSup extends PartialOrder with binary sup and le_sup_left/le_sup_right/sup_le. Sup is catalog join, ≤ and equality retain their carrier meanings. sup_comm uses those order/leastness fields.",
+        "urn:csabs:axiom/JoinSemilattice-leastness": "Interpreted premise: x≤z ∧ y≤z ⇒ x⊔y≤z. SemilatticeSup extends PartialOrder with binary sup and le_sup_left/le_sup_right/sup_le. Sup is catalog join, ≤ and equality retain their carrier meanings. sup_comm uses those order/leastness fields."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "8681dcf3f4996dfdacb349619687bcce276c3f411b200973f84a6ca50f46cb78"
+    },
+    "urn:csabs:theorem/JoinSemilattice-idempotence": {
+      "kind": "witness",
+      "symbol": "Catalog.CoreDataProofs.join_idempotent",
+      "module": "Catalog.CoreData",
+      "expectedType": "∀ {A : Type} [Catalog.JoinSemilattice A] (x : A), x ⊔ x = x",
+      "mapping": "SemilatticeSup supplies the explicitly reused partial-order rules and upper-bound/leastness fields; sup_idem derives idempotence. Join is ⊔.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/PartialOrder-reflexive": "Interpreted premise: ∀x∈A:x≤x. SemilatticeSup supplies the explicitly reused partial-order rules and upper-bound/leastness fields; sup_idem derives idempotence. Join is ⊔.",
+        "urn:csabs:axiom/PartialOrder-transitive": "Interpreted premise: x≤y ∧ y≤z ⇒ x≤z. SemilatticeSup supplies the explicitly reused partial-order rules and upper-bound/leastness fields; sup_idem derives idempotence. Join is ⊔.",
+        "urn:csabs:axiom/PartialOrder-antisymmetric": "Interpreted premise: x≤y ∧ y≤x ⇒ x=y. SemilatticeSup supplies the explicitly reused partial-order rules and upper-bound/leastness fields; sup_idem derives idempotence. Join is ⊔.",
+        "urn:csabs:axiom/JoinSemilattice-upper-bounds": "Interpreted premise: x≤x⊔y ∧ y≤x⊔y. SemilatticeSup supplies the explicitly reused partial-order rules and upper-bound/leastness fields; sup_idem derives idempotence. Join is ⊔.",
+        "urn:csabs:axiom/JoinSemilattice-leastness": "Interpreted premise: x≤z ∧ y≤z ⇒ x⊔y≤z. SemilatticeSup supplies the explicitly reused partial-order rules and upper-bound/leastness fields; sup_idem derives idempotence. Join is ⊔."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "3b3824e67c9363c3b1b76e612de56ceae7a72d9c71b7b9b2b89c94f895298caf"
+    },
+    "urn:csabs:law/StateBasedCRDT-merge-idempotent": {
+      "kind": "witness",
+      "symbol": "Catalog.CoreDataProofs.crdt_merge_idempotent",
+      "module": "Catalog.CoreData",
+      "expectedType": "∀ {S : Type} [SemilatticeSup S] (x : S), Catalog.StateBasedCRDT.merge x x = x",
+      "mapping": "merge is defined as ⊔. This proof uses only the join-semilattice part of the CRDT assumptions; bottom and inflationary updates are unnecessary for this state equality, and no network convergence is asserted.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/StateBasedCRDT-state-order": "Interpreted premise: (S,≤,⊔) is a join semilattice and ∀s,⊥≤s. merge is defined as ⊔. This proof uses only the join-semilattice part of the CRDT assumptions; bottom and inflationary updates are unnecessary for this state equality, and no network convergence is asserted.",
+        "urn:csabs:axiom/StateBasedCRDT-merge-definition": "Interpreted premise: merge(s,t)=s⊔t. merge is defined as ⊔. This proof uses only the join-semilattice part of the CRDT assumptions; bottom and inflationary updates are unnecessary for this state equality, and no network convergence is asserted."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "d57f942bdc9f3496598ea16c5a345a5045523b1d755e49c9fb0183c13abf7ae3"
+    },
+    "urn:csabs:law/FiniteIterator-fused-exhaustion": {
+      "kind": "witness",
+      "symbol": "Catalog.CoreDataProofs.iterator_fused",
+      "module": "Catalog.CoreData",
+      "expectedType": "∀ {A : Type} (it j : Catalog.FiniteIterator A), it.next = (none, j) → j.next = (none, j)",
+      "mapping": "FiniteIterator is List A plus a Fin(length+1) cursor; next returns an Option payload and new immutable cursor. None occurs only at exhaustion and preserves the cursor; list and position equality match the graph profile.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/FiniteIterator-cursor-range": "Interpreted premise: 0≤p≤|s| for every (s,p)∈Iter(A). FiniteIterator is List A plus a Fin(length+1) cursor; next returns an Option payload and new immutable cursor. None occurs only at exhaustion and preserves the cursor; list and position equality match the graph profile.",
+        "urn:csabs:axiom/FiniteIterator-next-equations": "Interpreted premise: p<|s| ⇒ next(s,p)=(Some(s[p]),(s,p+1)); p=|s| ⇒ next(s,p)=(None,(s,p)). FiniteIterator is List A plus a Fin(length+1) cursor; next returns an Option payload and new immutable cursor. None occurs only at exhaustion and preserves the cursor; list and position equality match the graph profile."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "890c06442f580ea4f825ab93d40ff6ddf7a9425cd87c2147b94c08b6f0937b11"
+    },
+    "urn:csabs:law/DisjointSet-find-idempotent": {
+      "kind": "witness",
+      "symbol": "Catalog.StructuredDataProofs.disjoint_set_find_idempotent",
+      "module": "Catalog.StructuredData",
+      "expectedType": "∀ {n : Nat} (d : Catalog.DisjointSet n) (x : Fin n), d.representative (d.representative x) = d.representative x",
+      "mapping": "Finite universe is Fin n; find is the representative function. Its idempotence is the structure invariant, with no assumed parent-pointer implementation.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/DisjointSet-representative": "Interpreted premise: ∀x, r(r(x))=r(x). Finite universe is Fin n; find is the representative function. Its idempotence is the structure invariant, with no assumed parent-pointer implementation."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "f2666f99b0c1d9cb8515b45c809ae05cd4b08d508f6db4e3bc2b29a9cd43c9e9"
+    },
+    "urn:csabs:theorem/DisjointSet-connected-symmetric": {
+      "kind": "witness",
+      "symbol": "Catalog.StructuredDataProofs.disjoint_set_connected_symmetric",
+      "module": "Catalog.StructuredData",
+      "expectedType": "∀ {n : Nat} (d : Catalog.DisjointSet n) (x y : Fin n), d.connected x y → d.connected y x",
+      "mapping": "connected means equality of representative outputs in Fin n. Symmetry follows from equality symmetry; no representative selection policy is needed.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/DisjointSet-connectivity": "Interpreted premise: connected(r,x,y) ⇔ r(x)=r(y). connected means equality of representative outputs in Fin n. Symmetry follows from equality symmetry; no representative selection policy is needed."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "1d65f054df3f81690ab37fba01da53936eb95bfa2c2fcf8fa638d9dbb29c4018"
+    },
+    "urn:csabs:law/RoseTree-eta": {
+      "kind": "witness",
+      "symbol": "Catalog.StructuredDataProofs.rose_eta",
+      "module": "Catalog.StructuredData",
+      "expectedType": "∀ {A : Type} (t : Catalog.RoseTree A), Catalog.RoseTree.node t.root t.children = t",
+      "mapping": "RoseTree.node stores a label and ordered List of finite child trees. root and children are constructor projections; cases proves reconstruction, including leaf nodes with empty child lists.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/RoseTree-projections": "Interpreted premise: root(node(a,cs))=a ∧ children(node(a,cs))=cs. RoseTree.node stores a label and ordered List of finite child trees. root and children are constructor projections; cases proves reconstruction, including leaf nodes with empty child lists.",
+        "urn:csabs:axiom/RoseTree-free-constructor": "Interpreted premise: node(a,cs)=node(b,ds) ⇔ a=b ∧ cs=ds; every tree has this form. RoseTree.node stores a label and ordered List of finite child trees. root and children are constructor projections; cases proves reconstruction, including leaf nodes with empty child lists."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "d807af540d8d76c58a2925024017d658fff9408cc64361dd07d11d42cc1b44bc"
+    },
+    "urn:csabs:law/TermAlgebra-eval-variable": {
+      "kind": "witness",
+      "symbol": "Catalog.StructuredDataProofs.term_eval_variable",
+      "module": "Catalog.StructuredData",
+      "expectedType": "∀ {Op : Type} {arity : Op → Nat} {Var B : Type} (valuation : Var → B) (operators : ∀ o, (Fin (arity o) → B) → B) (x : Var), Catalog.TermAlgebra.eval valuation operators (Catalog.TermAlgebra.variable x : Catalog.TermAlgebra Op arity Var) = valuation x",
+      "mapping": "Var and ranked Op/arity instantiate X and Σ. eval is the recursive algebra interpretation, valuation is ρ, operators is F; the variable equation is definitional computation.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/TermAlgebra-evaluation": "Interpreted premise: eval(ρ,F,var(x))=ρ(x); eval(ρ,F,app(o,ts))=F(o)(λi.eval(ρ,F,ts(i))). Var and ranked Op/arity instantiate X and Σ. eval is the recursive algebra interpretation, valuation is ρ, operators is F; the variable equation is definitional computation."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "26cb45ef24d9629f8aa4f2d3f1f288e8d9d1d19bab0c37848781e066bd4c0667"
+    },
+    "urn:csabs:law/DirectedMultigraph-single-edge-walk": {
+      "kind": "witness",
+      "symbol": "Catalog.GraphDataProofs.single_edge_path",
+      "module": "Catalog.GraphData",
+      "expectedType": "∀ {V E : Type} [Fintype V] [Fintype E] (g : Catalog.DirectedMultigraph V E) (e : E), g.path (g.source e) [e] (g.target e)",
+      "mapping": "Catalog path is the graph walk predicate (not a simple path); finite List E retains edge identity and repeated traversals. The singleton follows the cons and empty walk equations.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/DirectedMultigraph-walk-equations": "Interpreted premise: walk(a,[],b)⇔a=b; walk(a,e::p,b)⇔s(e)=a ∧ walk(t(e),p,b). Catalog path is the graph walk predicate (not a simple path); finite List E retains edge identity and repeated traversals. The singleton follows the cons and empty walk equations."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "b5320b464990b51276deec2799c5ed50e82099ab6d7b78f63b3d6b4094e6dd9c"
+    },
+    "urn:csabs:law/WeightedDirectedGraph-weight-concatenation": {
+      "kind": "witness",
+      "symbol": "Catalog.GraphDataProofs.path_weight_append",
+      "module": "Catalog.GraphData",
+      "expectedType": "∀ {V E : Type} [Fintype V] [Fintype E] (g : Catalog.WeightedDirectedGraph V E) (p q : List E), g.pathWeight (p ++ q) = g.pathWeight p + g.pathWeight q",
+      "mapping": "Real weights are exact; pathWeight is the List sum after mapping weight. List append is sequence concatenation. The identity holds for all edge lists, without requiring walk validity or nonnegative weights.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/WeightedDirectedGraph-sum-equations": "Interpreted premise: pathWeight([])=0; pathWeight(e::p)=w(e)+pathWeight(p). Real weights are exact; pathWeight is the List sum after mapping weight. List append is sequence concatenation. The identity holds for all edge lists, without requiring walk validity or nonnegative weights."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "2d84955b08cb2ca9eb167bc844792b75fff470cb5603ee70392602ea2ad566de"
+    },
+    "urn:csabs:law/Hypergraph-edge-nonempty": {
+      "kind": "witness",
+      "symbol": "Catalog.GraphDataProofs.hyperedge_nonempty",
+      "module": "Catalog.GraphData",
+      "expectedType": "∀ {V : Type} [Fintype V] (g : Catalog.Hypergraph V) (e : Finset V), e ∈ g.edges → e.Nonempty",
+      "mapping": "Each hyperedge is a Finset V with cardinality≥2. Finset.Nonempty is equivalent to e≠∅ in the catalog; the proof derives positive cardinality from the arity invariant.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/Hypergraph-hyperedges": "Interpreted premise: V,H finite; every e∈H is a subset of V with |e|≥2. Each hyperedge is a Finset V with cardinality≥2. Finset.Nonempty is equivalent to e≠∅ in the catalog; the proof derives positive cardinality from the arity invariant."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "9f49f9b828766467e1cc3d4023ccfe9a5ad7d4fe051e346d413b96ee53a1ae5c"
+    },
+    "urn:csabs:law/BipartiteGraph-adjacent-colors": {
+      "kind": "witness",
+      "symbol": "Catalog.GraphDataProofs.bipartite_adjacent_colors",
+      "module": "Catalog.GraphData",
+      "expectedType": "∀ {V : Type} [Fintype V] (g : Catalog.BipartiteGraph V) (x y : V), g.graph.Adj x y → g.color x ≠ g.color y",
+      "mapping": "Finite SimpleGraph adjacency is the catalog simple undirected graph; the chosen color is V→Bool. proper stores the exact additional coloring invariant.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/BipartiteGraph-proper-coloring": "Interpreted premise: ∀u,v, Adj(u,v)⇒c(u)≠c(v). Finite SimpleGraph adjacency is the catalog simple undirected graph; the chosen color is V→Bool. proper stores the exact additional coloring invariant."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "a37e3ac50a699d5106bf110500ce7c22d50a23aac3b5128165c7d5c4cc00786c"
+    },
+    "urn:csabs:law/BagRelation-union-commutative": {
+      "kind": "witness",
+      "symbol": "Catalog.InformationDataProofs.bag_union_commutes",
+      "module": "Catalog.InformationData",
+      "expectedType": "∀ {s : Catalog.RelationalSchema} (r t : Catalog.BagRelation s), r + t = t + r",
+      "mapping": "NamedTuple s is the dependent tuple carrier; BagRelation is Multiset of tuples, modulo row permutation. + means occurrence-additive unionAll, not max union; add_comm is the multiset additive law.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/Multiset-finite-support": "Interpreted premise: Bag(A)={m:A→ℕ:support(m)={x:m(x)>0} is finite}. NamedTuple s is the dependent tuple carrier; BagRelation is Multiset of tuples, modulo row permutation. + means occurrence-additive unionAll, not max union; add_comm is the multiset additive law.",
+        "urn:csabs:axiom/Multiset-count-extensionality": "Interpreted premise: m=n iff ∀x:count(m,x)=count(n,x). NamedTuple s is the dependent tuple carrier; BagRelation is Multiset of tuples, modulo row permutation. + means occurrence-additive unionAll, not max union; add_comm is the multiset additive law.",
+        "urn:csabs:axiom/Multiset-operations": "Interpreted premise: count(empty,x)=0; count(insert(m,a),x)=count(m,x)+[x=a]; count(remove(m,a),x)=max(0,count(m,x)−[x=a]); count(m⊎n,x)=count(m,x)+count(n,x). NamedTuple s is the dependent tuple carrier; BagRelation is Multiset of tuples, modulo row permutation. + means occurrence-additive unionAll, not max union; add_comm is the multiset additive law."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "d8a33f48d360bd00f7354d6b42d07d81d9c7b40398481dcc629c8931fbbb86c4"
+    },
+    "urn:csabs:law/DocumentValue-boolean-injective": {
+      "kind": "witness",
+      "symbol": "Catalog.InformationDataProofs.document_boolean_injective",
+      "module": "Catalog.InformationData",
+      "expectedType": "∀ (a b : Bool), Catalog.DocumentValue.boolean a = Catalog.DocumentValue.boolean b ↔ a = b",
+      "mapping": "The compiled inductive DocumentValue has six disjoint constructors. boolean carries Bool, so constructor equality is exactly payload equality. No parser equivalence or duplicate-key behavior is proved.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/DocumentValue-tagged-constructors": "Interpreted premise: Distinct constructor tags are unequal; each constructor is injective in its semantic payload; every D has exactly one outer tag. The compiled inductive DocumentValue has six disjoint constructors. boolean carries Bool, so constructor equality is exactly payload equality. No parser equivalence or duplicate-key behavior is proved."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "c362818a2642b5f32d4f3f12ae5b4bbaefa1b8b61974d7f83f40cacd1aa9bea9"
+    },
+    "urn:csabs:theorem/RDFGraph-iri-not-blank": {
+      "kind": "witness",
+      "symbol": "Catalog.InformationDataProofs.rdf_iri_not_blank",
+      "module": "Catalog.InformationData",
+      "expectedType": "∀ {I B L : Type} (i : I) (b : B), (Catalog.RDFTerm.iri i : Catalog.RDFTerm I B L) ≠ Catalog.RDFTerm.blank b",
+      "mapping": "RDFTerm is a tagged sum with separate iri/blank/literal constructors. I and L must be instantiated by validated IRI/literal carriers and B by scoped blank identities. Disjointness is independent of parsing and entailment.",
+      "limitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+      "premiseMapping": {
+        "urn:csabs:axiom/RDFGraph-term-sorts": "Interpreted premise: I,B,L are pairwise disjoint tagged sorts; subject∈I⊎B, predicate∈I, object∈I⊎B⊎L. RDFTerm is a tagged sum with separate iri/blank/literal constructors. I and L must be instantiated by validated IRI/literal carriers and B by scoped blank identities. Disjointness is independent of parsing and entailment."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "993b4dee917523b7a594728ee238ad8633d30bb46374c05add71f6f5018af137"
     }
   }
 }

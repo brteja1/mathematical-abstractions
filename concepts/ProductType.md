@@ -12,8 +12,13 @@ A type whose values contain one value from each component type.
 
 **Prerequisites:** [Cartesian product](CartesianProduct.md), [Function type](FunctionType.md)
 
+**Specializes:** [Dependent pair (Sigma type)](DependentPair.md)
+
 ## Backlinks
 
+- [Exact complex number](ComplexNumber.md) — `requiresConcept`
+- [Dependent pair (Sigma type)](DependentPair.md) — `requiresConcept`
+- [Finite RDF 1.1 graph](RDFGraph.md) — `requiresConcept`
 - [Named relational schema with attribute domains](RelationalSchema.md) — `relatedConcept`
 
 ## Interface and scope
@@ -23,6 +28,8 @@ A type whose values contain one value from each component type.
 **basisKind:** extensional-type-theory
 
 **basisScope:** Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.
+
+**specializationNote:**  Use the constant family B(a)=B. Pair/fst/snd become the ordinary product constructor/projections; transported equality becomes component equality. No automatic inheritance of claims.
 
 **verificationObligation:** Instantiate type parameters and operation domains.; Function equality here is extensional; translating to intensional type theory may require function extensionality.; Account separately for nontermination, exceptions, mutation, or untagged representation in concrete software.; Use the stated carriers, equality, domain restrictions and semantic conventions; alternative conventions require an explicit variant.
 
@@ -292,7 +299,11 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "basisKind": "extensional-type-theory"
+    "basisKind": "extensional-type-theory",
+    "specializationOf": [
+      "urn:csabs:concept/DependentPair"
+    ],
+    "specializationNote": " Use the constant family B(a)=B. Pair/fst/snd become the ordinary product constructor/projections; transported equality becomes component equality. No automatic inheritance of claims."
   },
   {
     "id": "urn:csabs:operation/ProductType-first",

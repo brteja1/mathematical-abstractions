@@ -16,6 +16,7 @@ A bounded distributive complemented lattice, equivalently an algebra satisfying 
 
 ## Backlinks
 
+- [Two-valued Boolean type](BooleanType.md) — `specializationOf`
 - [Propositional Logic](PropositionalLogic.md) — `requiresConcept`
 
 ## Interface and scope

@@ -19,9 +19,12 @@ A reflexive, antisymmetric, transitive relation.
 - [Closure Operator](ClosureOperator.md) — `requiresConcept`
 - [Galois Connection](GaloisConnection.md) — `requiresConcept`
 - [Happens Before](HappensBefore.md) — `requiresConcept`
+- [Join semilattice](JoinSemilattice.md) — `requiresConcept`
+- [Join semilattice](JoinSemilattice.md) — `specializationOf`
 - [Lattice](Lattice.md) — `requiresConcept`
 - [Lattice](Lattice.md) — `specializationOf`
 - [Monotone Function](MonotoneFunction.md) — `requiresConcept`
+- [State-based CRDT replication algebra](StateBasedCRDT.md) — `requiresConcept`
 - [Total Order](TotalOrder.md) — `requiresConcept`
 - [Total Order](TotalOrder.md) — `specializationOf`
 
@@ -224,57 +227,6 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "signature": "le : A×A→Prop",
     "description": "Returns the proposition that the first element precedes the second.",
     "concept": "urn:csabs:concept/PartialOrder"
-  },
-  {
-    "id": "urn:csabs:axiom/PartialOrder-reflexive",
-    "type": "Axiom",
-    "name": "reflexive",
-    "statement": "The order is reflexive.",
-    "formalStatement": "∀x∈A:x≤x",
-    "appliesTo": [
-      "urn:csabs:concept/PartialOrder"
-    ],
-    "assumptions": [
-      "All variables range over the carriers and semantic conventions specified in this concept."
-    ],
-    "ruleRole": "defining-rule",
-    "reviewStatus": "editorial-summary; not machine-proved",
-    "notationLanguage": "informal mathematical Unicode",
-    "provenanceStatus": "legacy-source-missing"
-  },
-  {
-    "id": "urn:csabs:axiom/PartialOrder-transitive",
-    "type": "Axiom",
-    "name": "transitive",
-    "statement": "The order is transitive.",
-    "formalStatement": "x≤y ∧ y≤z ⇒ x≤z",
-    "appliesTo": [
-      "urn:csabs:concept/PartialOrder"
-    ],
-    "assumptions": [
-      "All variables range over the carriers and semantic conventions specified in this concept."
-    ],
-    "ruleRole": "defining-rule",
-    "reviewStatus": "editorial-summary; not machine-proved",
-    "notationLanguage": "informal mathematical Unicode",
-    "provenanceStatus": "legacy-source-missing"
-  },
-  {
-    "id": "urn:csabs:axiom/PartialOrder-antisymmetric",
-    "type": "Axiom",
-    "name": "antisymmetric",
-    "statement": "Mutual ordering implies equality.",
-    "formalStatement": "x≤y ∧ y≤x ⇒ x=y",
-    "appliesTo": [
-      "urn:csabs:concept/PartialOrder"
-    ],
-    "assumptions": [
-      "All variables range over the carriers and semantic conventions specified in this concept."
-    ],
-    "ruleRole": "defining-rule",
-    "reviewStatus": "editorial-summary; not machine-proved",
-    "notationLanguage": "informal mathematical Unicode",
-    "provenanceStatus": "legacy-source-missing"
   },
   {
     "id": "urn:csabs:law/PartialOrder-core",

@@ -12,7 +12,7 @@ A partially ordered set where every pair has a greatest lower bound and a least 
 
 **Prerequisites:** [Partial Order](PartialOrder.md)
 
-**Specializes:** [Partial Order](PartialOrder.md)
+**Specializes:** [Partial Order](PartialOrder.md), [Join semilattice](JoinSemilattice.md)
 
 ## Backlinks
 
@@ -28,7 +28,7 @@ A partially ordered set where every pair has a greatest lower bound and a least 
 
 **basisScope:** Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.
 
-**specializationNote:** Retain the underlying carrier and order; meet and join are the specified binary greatest lower and least upper bounds.
+**specializationNote:** Retain the underlying carrier and order; meet and join are the specified binary greatest lower and least upper bounds. Retain the same carrier, partial order and binary join, forgetting meet; lattice least-upper-bound requirements supply the join interface. No automatic inheritance of claims.
 
 **verificationObligation:** Instantiate carrier, equality, and stated semantic conventions before using this entry.; Use the stated carriers, equality, domain restrictions and semantic conventions; alternative conventions require an explicit variant.
 
@@ -219,9 +219,10 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
     "provenanceStatus": "legacy-source-missing",
     "specializationOf": [
-      "urn:csabs:concept/PartialOrder"
+      "urn:csabs:concept/PartialOrder",
+      "urn:csabs:concept/JoinSemilattice"
     ],
-    "specializationNote": "Retain the underlying carrier and order; meet and join are the specified binary greatest lower and least upper bounds."
+    "specializationNote": "Retain the underlying carrier and order; meet and join are the specified binary greatest lower and least upper bounds. Retain the same carrier, partial order and binary join, forgetting meet; lattice least-upper-bound requirements supply the join interface. No automatic inheritance of claims."
   },
   {
     "id": "urn:csabs:operation/Lattice-meet",

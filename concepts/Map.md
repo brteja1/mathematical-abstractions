@@ -19,8 +19,15 @@ A finite partial function associating each present key with exactly one value; a
 ## Backlinks
 
 - [Candidate key relative to functional dependencies](CandidateKey.md) — `relatedConcept`
+- [Finite JSON document value (interoperable profile)](DocumentValue.md) — `requiresConcept`
+- [Finite allocated heap store](HeapStore.md) — `requiresConcept`
+- [Finite set-valued multimap](Multimap.md) — `requiresConcept`
 - [Ordered collection without duplicates](OrderedSet.md) — `relatedConcept`
+- [Finite labelled property graph (single-valued profile)](PropertyGraph.md) — `requiresConcept`
+- [Finite RDF 1.1 dataset](RDFDataset.md) — `requiresConcept`
 - [Named relational schema with attribute domains](RelationalSchema.md) — `relatedConcept`
+- [Finite prefix dictionary](Trie.md) — `requiresConcept`
+- [Finite prefix dictionary](Trie.md) — `specializationOf`
 
 ## Interface and scope
 
@@ -102,7 +109,13 @@ A finite partial function associating each present key with exactly one value; a
 
 **notationLanguage:** informal mathematical Unicode
 
-**provenanceStatus:** legacy-source-missing
+**source:** [Software Foundations, Separation Logic Foundations: Heap Predicates](https://softwarefoundations.cis.upenn.edu/slf-current/Hprop.html); accessedOn: 2026-11-07; sourceRole: consulted-definition-and-interface-reference; [Java SE 21 Map API: mappings, put and equality](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Map.html); accessedOn: 2026-11-07; sourceRole: consulted-interface-reference
+
+**sourceLocator:** SLF Hprop, Description of Memory States; Java Map interface, get/containsKey, put and equals contracts
+
+**sourceNote:** Finite partial-map value semantics adapted from SLF; overwrite and mapping equality corroborated by Map API. Absence uses Option rather than Java null; no Java mutation, exceptions, ordering or key-object behavior is imported.
+
+**provenanceKind:** adapted
 
 <a id="node-urn-csabs-axiom-Map-empty-lookup"></a>
 
@@ -142,7 +155,13 @@ A finite partial function associating each present key with exactly one value; a
 
 **notationLanguage:** informal mathematical Unicode
 
-**provenanceStatus:** legacy-source-missing
+**source:** [Software Foundations, Separation Logic Foundations: Heap Predicates](https://softwarefoundations.cis.upenn.edu/slf-current/Hprop.html); accessedOn: 2026-11-07; sourceRole: consulted-definition-and-interface-reference; [Java SE 21 Map API: mappings, put and equality](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Map.html); accessedOn: 2026-11-07; sourceRole: consulted-interface-reference
+
+**sourceLocator:** SLF Hprop, Description of Memory States; Java Map interface, get/containsKey, put and equals contracts
+
+**sourceNote:** Finite partial-map value semantics adapted from SLF; overwrite and mapping equality corroborated by Map API. Absence uses Option rather than Java null; no Java mutation, exceptions, ordering or key-object behavior is imported.
+
+**provenanceKind:** adapted
 
 <a id="node-urn-csabs-axiom-Map-delete-lookup"></a>
 
@@ -182,7 +201,13 @@ A finite partial function associating each present key with exactly one value; a
 
 **notationLanguage:** informal mathematical Unicode
 
-**provenanceStatus:** legacy-source-missing
+**source:** [Software Foundations, Separation Logic Foundations: Heap Predicates](https://softwarefoundations.cis.upenn.edu/slf-current/Hprop.html); accessedOn: 2026-11-07; sourceRole: consulted-definition-and-interface-reference; [Java SE 21 Map API: mappings, put and equality](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Map.html); accessedOn: 2026-11-07; sourceRole: consulted-interface-reference
+
+**sourceLocator:** SLF Hprop, Description of Memory States; Java Map interface, get/containsKey, put and equals contracts
+
+**sourceNote:** Finite partial-map value semantics adapted from SLF; overwrite and mapping equality corroborated by Map API. Absence uses Option rather than Java null; no Java mutation, exceptions, ordering or key-object behavior is imported.
+
+**provenanceKind:** adapted
 
 ## Laws
 
@@ -350,7 +375,8 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "statement": "A finite map is a partial function with a finite defined domain.",
     "formalStatement": "m:K⇀V; dom(m) finite; lookup(m,k)=Some(m(k)) if k∈dom(m), otherwise None",
     "appliesTo": [
-      "urn:csabs:concept/Map"
+      "urn:csabs:concept/Map",
+      "urn:csabs:concept/Trie"
     ],
     "assumptions": [
       "All variables range over the carriers and semantic conventions specified in this concept."
@@ -358,7 +384,13 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "ruleRole": "defining-rule",
     "reviewStatus": "editorial-summary; not machine-proved",
     "notationLanguage": "informal mathematical Unicode",
-    "provenanceStatus": "legacy-source-missing"
+    "source": [
+      "urn:csabs:source/slf-heap-core",
+      "urn:csabs:source/java-map-core"
+    ],
+    "sourceLocator": "SLF Hprop, Description of Memory States; Java Map interface, get/containsKey, put and equals contracts",
+    "sourceNote": "Finite partial-map value semantics adapted from SLF; overwrite and mapping equality corroborated by Map API. Absence uses Option rather than Java null; no Java mutation, exceptions, ordering or key-object behavior is imported.",
+    "provenanceKind": "adapted"
   },
   {
     "id": "urn:csabs:axiom/Map-empty-lookup",
@@ -384,7 +416,8 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "statement": "Updating a key overwrites it and leaves other bindings unchanged.",
     "formalStatement": "lookup(set(m,k,v),j)=if j=k then Some(v) else lookup(m,j)",
     "appliesTo": [
-      "urn:csabs:concept/Map"
+      "urn:csabs:concept/Map",
+      "urn:csabs:concept/Trie"
     ],
     "assumptions": [
       "All variables range over the carriers and semantic conventions specified in this concept."
@@ -392,7 +425,13 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "ruleRole": "defining-rule",
     "reviewStatus": "editorial-summary; not machine-proved",
     "notationLanguage": "informal mathematical Unicode",
-    "provenanceStatus": "legacy-source-missing"
+    "source": [
+      "urn:csabs:source/slf-heap-core",
+      "urn:csabs:source/java-map-core"
+    ],
+    "sourceLocator": "SLF Hprop, Description of Memory States; Java Map interface, get/containsKey, put and equals contracts",
+    "sourceNote": "Finite partial-map value semantics adapted from SLF; overwrite and mapping equality corroborated by Map API. Absence uses Option rather than Java null; no Java mutation, exceptions, ordering or key-object behavior is imported.",
+    "provenanceKind": "adapted"
   },
   {
     "id": "urn:csabs:axiom/Map-delete-lookup",
@@ -418,7 +457,8 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "statement": "Maps are equal if all lookups agree.",
     "formalStatement": "m=n iff ∀k:lookup(m,k)=lookup(n,k)",
     "appliesTo": [
-      "urn:csabs:concept/Map"
+      "urn:csabs:concept/Map",
+      "urn:csabs:concept/Trie"
     ],
     "assumptions": [
       "All variables range over the carriers and semantic conventions specified in this concept."
@@ -426,7 +466,13 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "ruleRole": "defining-rule",
     "reviewStatus": "editorial-summary; not machine-proved",
     "notationLanguage": "informal mathematical Unicode",
-    "provenanceStatus": "legacy-source-missing"
+    "source": [
+      "urn:csabs:source/slf-heap-core",
+      "urn:csabs:source/java-map-core"
+    ],
+    "sourceLocator": "SLF Hprop, Description of Memory States; Java Map interface, get/containsKey, put and equals contracts",
+    "sourceNote": "Finite partial-map value semantics adapted from SLF; overwrite and mapping equality corroborated by Map API. Absence uses Option rather than Java null; no Java mutation, exceptions, ordering or key-object behavior is imported.",
+    "provenanceKind": "adapted"
   },
   {
     "id": "urn:csabs:law/Map-core",

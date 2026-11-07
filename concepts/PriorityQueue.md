@@ -12,6 +12,10 @@ A finite bag of items with ordered priorities, returning an item of minimal prio
 
 **Prerequisites:** [Multiset](Multiset.md), [Total Order](TotalOrder.md)
 
+## Backlinks
+
+- [Finite complete binary min-heap](BinaryHeap.md) — `requiresConcept`
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A finite bag of items with ordered priorities, returning an item of minimal priority; tie choice is unspecified. Governing rules: Queue state is a finite bag of items with a total order on their keys. Insertion adds exactly one occurrence. Extraction is a relation if ties are unspecified, defined on all nonempty bags.

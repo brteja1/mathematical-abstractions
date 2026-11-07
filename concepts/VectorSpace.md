@@ -18,6 +18,8 @@ An additive abelian group V equipped with scalar multiplication by a specified f
 
 - [Linear map](LinearMap.md) — `requiresConcept`
 - [Finite rectangular matrix over a field](Matrix.md) — `requiresConcept`
+- [Finitely supported vector](SparseVector.md) — `requiresConcept`
+- [Finitely supported vector](SparseVector.md) — `specializationOf`
 - [Tensor of specified valence on a finite-dimensional vector space](Tensor.md) — `requiresConcept`
 - [Tensor of specified valence on a finite-dimensional vector space](Tensor.md) — `specializationOf`
 - [Tensor product of vector spaces](TensorProduct.md) — `requiresConcept`

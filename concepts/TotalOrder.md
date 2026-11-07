@@ -16,7 +16,11 @@ A partial order in which every two elements are comparable.
 
 ## Backlinks
 
+- [Finite complete binary min-heap](BinaryHeap.md) — `requiresConcept`
+- [Strict binary search tree](BinarySearchTree.md) — `requiresConcept`
+- [Nonempty bounded closed interval](ClosedInterval.md) — `requiresConcept`
 - [Priority Queue](PriorityQueue.md) — `requiresConcept`
+- [Exact real number](RealNumber.md) — `requiresConcept`
 
 ## Interface and scope
 

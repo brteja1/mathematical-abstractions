@@ -26,6 +26,7 @@ A collection of distinct elements, characterized by which elements belong to it.
 - [Power set](PowerSet.md) — `relatedConcept`
 - [Binary relation](Relation.md) — `relatedConcept`
 - [Named relational schema with attribute domains](RelationalSchema.md) — `requiresConcept`
+- [Predicate-restricted subtype](Subtype.md) — `requiresConcept`
 - [Sum Type](SumType.md) — `requiresConcept`
 - [Topological space (topology on a carrier)](TopologicalSpace.md) — `requiresConcept`
 

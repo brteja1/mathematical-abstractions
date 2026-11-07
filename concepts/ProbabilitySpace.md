@@ -18,6 +18,7 @@ A measure space whose entire sample space has measure one; measurable subsets ar
 
 - [Bayesian network (finite discrete variables)](BayesianNetwork.md) — `requiresConcept`
 - [Conditional probability given a positive-probability event](ConditionalProbability.md) — `requiresConcept`
+- [Finitely supported probability distribution](FiniteDistribution.md) — `requiresConcept`
 - [Markov chain (finite-state, discrete-time, time-homogeneous)](MarkovChain.md) — `requiresConcept`
 - [Random variable (measurable random element)](RandomVariable.md) — `requiresConcept`
 

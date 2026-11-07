@@ -18,6 +18,7 @@ A mapping assigning each element of a domain exactly one element of a codomain.
 
 - [Finite ordered binary tree with node labels](BinaryTree.md) — `requiresConcept`
 - [Deterministic finite automaton with total transition](DFA.md) — `requiresConcept`
+- [Finite directed multigraph with edge identities](DirectedMultigraph.md) — `requiresConcept`
 - [Empty type](EmptyType.md) — `requiresConcept`
 - [Fixed Point](FixedPoint.md) — `requiresConcept`
 - [Function type](FunctionType.md) — `requiresConcept`
@@ -33,6 +34,7 @@ A mapping assigning each element of a domain exactly one element of a codomain.
 - [Partial function](PartialFunction.md) — `requiresConcept`
 - [Pigeonhole Principle](PigeonholePrinciple.md) — `requiresConcept`
 - [Named relational schema with attribute domains](RelationalSchema.md) — `requiresConcept`
+- [Infinite discrete stream](Stream.md) — `requiresConcept`
 - [Unit type](UnitType.md) — `requiresConcept`
 
 ## Interface and scope
@@ -399,7 +401,8 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "statement": "Typed functions are equal if they agree on every input.",
     "formalStatement": "f,g:A→B; f=g iff ∀a∈A: f(a)=g(a)",
     "appliesTo": [
-      "urn:csabs:concept/Function"
+      "urn:csabs:concept/Function",
+      "urn:csabs:concept/Stream"
     ],
     "assumptions": [
       "All variables range over the carriers and semantic conventions specified in this concept."

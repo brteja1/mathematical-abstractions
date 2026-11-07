@@ -1,0 +1,511 @@
+# Disjoint-set union with representatives
+
+A finite universe partition represented by an idempotent choice of representative for each element.
+
+**Notation:** D_n={r:Fin(n)→Fin(n) | r(r(x))=r(x)}
+
+**Stable ID:** `urn:csabs:concept/DisjointSet`
+
+**Categories:** Data structures
+
+**Kind:** Abstract data type
+
+**Prerequisites:** [Partition of a set](Partition.md), [Equivalence relation](EquivalenceRelation.md), [Finite carrier with exhaustive enumeration](FiniteType.md)
+
+## Interface and scope
+
+**axiomBasis:** ∀x, r(r(x))=r(x); connected(r,x,y) ⇔ r(x)=r(y); r′∈union(r,a,b) ⇔ ∃c∈{r(a),r(b)}, ∀x, r′(x)=if r(x)∈{r(a),r(b)} then c else r(x)
+
+**basisKind:** extensional-structural-definition
+
+**basisScope:** Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.
+
+**verificationObligation:** Map carrier, equality, operation definedness and stated profile to the target API or proof context.; Prerequisites and hierarchy links do not transfer axioms; retrieve explicit premises.; Model coverage does not establish every recorded claim or an implementation refinement.
+
+**reviewStatus:** Editorial source/interface review with a Lean carrier binding; individual witnesses recorded separately.
+
+**coverageStatus:** basis-reviewed
+
+## Operations
+
+<a id="node-urn-csabs-operation-DisjointSet-initial"></a>
+
+### initial
+
+`urn:csabs:operation/DisjointSet-initial`
+
+**signature:** initial_n : D_n
+
+**description:** initial_n(x)=x.
+
+**precondition:** Inputs have the stated types and satisfy the restrictions in the signature and basisScope. Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.
+
+**totality:** Partial on the explicitly restricted cases; otherwise total mathematical operation. Set-valued outcomes specify allowed nondeterminism, not a chosen algorithm.
+
+**postcondition:** initial_n(x)=x.
+
+**source:** [Sedgewick and Wayne: algs4 UF API](https://javadoc.io/static/edu.princeton.cs/algs4/1.0.4/edu/princeton/cs/algs4/UF.html); accessedOn: 2026-11-07; sourceRole: consulted-definition-and-interface-reference
+
+**sourceLocator:** Class contract: sites, components, representative, find, union and connected
+
+**sourceNote:** Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-DisjointSet-find"></a>
+
+### find
+
+`urn:csabs:operation/DisjointSet-find`
+
+**signature:** find : D_n×Fin(n)→Fin(n)
+
+**description:** find(r,x)=r(x).
+
+**precondition:** Inputs have the stated types and satisfy the restrictions in the signature and basisScope. Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.
+
+**totality:** Partial on the explicitly restricted cases; otherwise total mathematical operation. Set-valued outcomes specify allowed nondeterminism, not a chosen algorithm.
+
+**postcondition:** find(r,x)=r(x).
+
+**source:** [Sedgewick and Wayne: algs4 UF API](https://javadoc.io/static/edu.princeton.cs/algs4/1.0.4/edu/princeton/cs/algs4/UF.html); accessedOn: 2026-11-07; sourceRole: consulted-definition-and-interface-reference
+
+**sourceLocator:** Class contract: sites, components, representative, find, union and connected
+
+**sourceNote:** Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-DisjointSet-connected"></a>
+
+### connected
+
+`urn:csabs:operation/DisjointSet-connected`
+
+**signature:** connected : D_n×Fin(n)²→Prop
+
+**description:** connected(r,x,y) iff r(x)=r(y).
+
+**precondition:** Inputs have the stated types and satisfy the restrictions in the signature and basisScope. Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.
+
+**totality:** Partial on the explicitly restricted cases; otherwise total mathematical operation. Set-valued outcomes specify allowed nondeterminism, not a chosen algorithm.
+
+**postcondition:** connected(r,x,y) iff r(x)=r(y).
+
+**source:** [Sedgewick and Wayne: algs4 UF API](https://javadoc.io/static/edu.princeton.cs/algs4/1.0.4/edu/princeton/cs/algs4/UF.html); accessedOn: 2026-11-07; sourceRole: consulted-definition-and-interface-reference
+
+**sourceLocator:** Class contract: sites, components, representative, find, union and connected
+
+**sourceNote:** Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-DisjointSet-union"></a>
+
+### union
+
+`urn:csabs:operation/DisjointSet-union`
+
+**signature:** union : D_n×Fin(n)²→𝒫(D_n)
+
+**description:** Choose c∈{r(a),r(b)}; r′(x)=c when r(x)∈{r(a),r(b)}, else r(x).
+
+**precondition:** Inputs have the stated types and satisfy the restrictions in the signature and basisScope. Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.
+
+**totality:** Partial on the explicitly restricted cases; otherwise total mathematical operation. Set-valued outcomes specify allowed nondeterminism, not a chosen algorithm.
+
+**postcondition:** Choose c∈{r(a),r(b)}; r′(x)=c when r(x)∈{r(a),r(b)}, else r(x).
+
+**source:** [Sedgewick and Wayne: algs4 UF API](https://javadoc.io/static/edu.princeton.cs/algs4/1.0.4/edu/princeton/cs/algs4/UF.html); accessedOn: 2026-11-07; sourceRole: consulted-definition-and-interface-reference
+
+**sourceLocator:** Class contract: sites, components, representative, find, union and connected
+
+**sourceNote:** Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.
+
+**provenanceKind:** adapted
+
+## Axioms and defining rules
+
+<a id="node-urn-csabs-axiom-DisjointSet-representative"></a>
+
+### representative
+
+`urn:csabs:axiom/DisjointSet-representative`
+
+**statement:** Defining requirement: ∀x, r(r(x))=r(x)
+
+**formalStatement:** ∀x, r(r(x))=r(x)
+
+**assumptions:** Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.; All variables range over the typed carriers in the notation and signatures.
+
+**ruleRole:** defining-rule
+
+**reviewStatus:** Editorial source/interface review; Lean model and individual proof evidence are separate.
+
+**source:** [Sedgewick and Wayne: algs4 UF API](https://javadoc.io/static/edu.princeton.cs/algs4/1.0.4/edu/princeton/cs/algs4/UF.html); accessedOn: 2026-11-07; sourceRole: consulted-definition-and-interface-reference
+
+**sourceLocator:** Class contract: sites, components, representative, find, union and connected
+
+**sourceNote:** Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-axiom-DisjointSet-connectivity"></a>
+
+### connectivity
+
+`urn:csabs:axiom/DisjointSet-connectivity`
+
+**statement:** Defining requirement: connected(r,x,y) ⇔ r(x)=r(y)
+
+**formalStatement:** connected(r,x,y) ⇔ r(x)=r(y)
+
+**assumptions:** Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.; All variables range over the typed carriers in the notation and signatures.
+
+**ruleRole:** defining-rule
+
+**reviewStatus:** Editorial source/interface review; Lean model and individual proof evidence are separate.
+
+**source:** [Sedgewick and Wayne: algs4 UF API](https://javadoc.io/static/edu.princeton.cs/algs4/1.0.4/edu/princeton/cs/algs4/UF.html); accessedOn: 2026-11-07; sourceRole: consulted-definition-and-interface-reference
+
+**sourceLocator:** Class contract: sites, components, representative, find, union and connected
+
+**sourceNote:** Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-axiom-DisjointSet-union-definition"></a>
+
+### union-definition
+
+`urn:csabs:axiom/DisjointSet-union-definition`
+
+**statement:** Defining requirement: r′∈union(r,a,b) ⇔ ∃c∈{r(a),r(b)}, ∀x, r′(x)=if r(x)∈{r(a),r(b)} then c else r(x)
+
+**formalStatement:** r′∈union(r,a,b) ⇔ ∃c∈{r(a),r(b)}, ∀x, r′(x)=if r(x)∈{r(a),r(b)} then c else r(x)
+
+**assumptions:** Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.; All variables range over the typed carriers in the notation and signatures.
+
+**ruleRole:** defining-rule
+
+**reviewStatus:** Editorial source/interface review; Lean model and individual proof evidence are separate.
+
+**source:** [Sedgewick and Wayne: algs4 UF API](https://javadoc.io/static/edu.princeton.cs/algs4/1.0.4/edu/princeton/cs/algs4/UF.html); accessedOn: 2026-11-07; sourceRole: consulted-definition-and-interface-reference
+
+**sourceLocator:** Class contract: sites, components, representative, find, union and connected
+
+**sourceNote:** Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.
+
+**provenanceKind:** adapted
+
+## Laws
+
+<a id="node-urn-csabs-law-DisjointSet-find-idempotent"></a>
+
+### find-idempotent
+
+`urn:csabs:law/DisjointSet-find-idempotent`
+
+**statement:** find(r,find(r,x))=find(r,x)
+
+**formalStatement:** find(r,find(r,x))=find(r,x)
+
+**assumptions:** Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.; Typed mathematical equality and the stated defining requirements.
+
+**dependsOn:** [representative](DisjointSet.md#node-urn-csabs-axiom-DisjointSet-representative)
+
+**proofSketch:** Expand find; this is the representative invariant.
+
+**reviewStatus:** Editorial derivation; a compiled Lean witness is asserted only by a fresh individual binding verification report.
+
+**source:** [Sedgewick and Wayne: algs4 UF API](https://javadoc.io/static/edu.princeton.cs/algs4/1.0.4/edu/princeton/cs/algs4/UF.html); accessedOn: 2026-11-07; sourceRole: consulted-definition-and-interface-reference
+
+**sourceLocator:** Class contract: sites, components, representative, find, union and connected
+
+**sourceNote:** Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.
+
+**provenanceKind:** derived
+
+## Theorems
+
+<a id="node-urn-csabs-theorem-DisjointSet-connected-symmetric"></a>
+
+### connected-symmetric
+
+`urn:csabs:theorem/DisjointSet-connected-symmetric`
+
+**statement:** connected(r,x,y) ⇒ connected(r,y,x)
+
+**formalStatement:** connected(r,x,y) ⇒ connected(r,y,x)
+
+**assumptions:** Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.; Typed mathematical equality and the stated defining requirements.
+
+**dependsOn:** [connectivity](DisjointSet.md#node-urn-csabs-axiom-DisjointSet-connectivity)
+
+**proofSketch:** Expand connectivity and apply symmetry of equality.
+
+**reviewStatus:** Editorial derivation; a compiled Lean witness is asserted only by a fresh individual binding verification report.
+
+**source:** [Sedgewick and Wayne: algs4 UF API](https://javadoc.io/static/edu.princeton.cs/algs4/1.0.4/edu/princeton/cs/algs4/UF.html); accessedOn: 2026-11-07; sourceRole: consulted-definition-and-interface-reference
+
+**sourceLocator:** Class contract: sites, components, representative, find, union and connected
+
+**sourceNote:** Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.
+
+**provenanceKind:** derived
+
+## Concept provenance
+
+- [Sedgewick and Wayne: algs4 UF API](https://javadoc.io/static/edu.princeton.cs/algs4/1.0.4/edu/princeton/cs/algs4/UF.html); accessedOn: 2026-11-07; sourceRole: consulted-definition-and-interface-reference
+
+**sourceLocator:** Class contract: sites, components, representative, find, union and connected
+
+**sourceNote:** Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.
+
+**provenanceKind:** adapted
+
+## Structured record
+
+Edit this JSON block to change graph facts, then run `make build`. The prose and links above are generated from it.
+
+<!-- graph-record:start -->
+```json
+[
+  {
+    "id": "urn:csabs:concept/DisjointSet",
+    "type": "Concept",
+    "shortForm": "DisjointSet",
+    "fullName": "Disjoint-set union with representatives",
+    "category": [
+      "urn:csabs:category/data-structures"
+    ],
+    "kind": "urn:csabs:kind/abstract-data-type",
+    "definition": "A finite universe partition represented by an idempotent choice of representative for each element.",
+    "notation": "D_n={r:Fin(n)→Fin(n) | r(r(x))=r(x)}",
+    "requiresConcept": [
+      "urn:csabs:concept/Partition",
+      "urn:csabs:concept/EquivalenceRelation",
+      "urn:csabs:concept/FiniteType"
+    ],
+    "relatedConcept": [],
+    "hasOperation": [
+      "urn:csabs:operation/DisjointSet-initial",
+      "urn:csabs:operation/DisjointSet-find",
+      "urn:csabs:operation/DisjointSet-connected",
+      "urn:csabs:operation/DisjointSet-union"
+    ],
+    "hasAxiom": [
+      "urn:csabs:axiom/DisjointSet-representative",
+      "urn:csabs:axiom/DisjointSet-connectivity",
+      "urn:csabs:axiom/DisjointSet-union-definition"
+    ],
+    "hasLaw": [
+      "urn:csabs:law/DisjointSet-find-idempotent"
+    ],
+    "hasTheorem": [
+      "urn:csabs:theorem/DisjointSet-connected-symmetric"
+    ],
+    "axiomBasis": "∀x, r(r(x))=r(x); connected(r,x,y) ⇔ r(x)=r(y); r′∈union(r,a,b) ⇔ ∃c∈{r(a),r(b)}, ∀x, r′(x)=if r(x)∈{r(a),r(b)} then c else r(x)",
+    "basisKind": "extensional-structural-definition",
+    "basisScope": "Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.",
+    "coverageStatus": "basis-reviewed",
+    "verificationObligation": [
+      "Map carrier, equality, operation definedness and stated profile to the target API or proof context.",
+      "Prerequisites and hierarchy links do not transfer axioms; retrieve explicit premises.",
+      "Model coverage does not establish every recorded claim or an implementation refinement."
+    ],
+    "reviewStatus": "Editorial source/interface review with a Lean carrier binding; individual witnesses recorded separately.",
+    "source": [
+      "urn:csabs:source/algs4-uf-core"
+    ],
+    "sourceLocator": "Class contract: sites, components, representative, find, union and connected",
+    "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/DisjointSet-initial",
+    "type": "Operation",
+    "name": "initial",
+    "signature": "initial_n : D_n",
+    "description": "initial_n(x)=x.",
+    "concept": "urn:csabs:concept/DisjointSet",
+    "precondition": "Inputs have the stated types and satisfy the restrictions in the signature and basisScope. Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.",
+    "totality": "Partial on the explicitly restricted cases; otherwise total mathematical operation. Set-valued outcomes specify allowed nondeterminism, not a chosen algorithm.",
+    "postcondition": "initial_n(x)=x.",
+    "source": [
+      "urn:csabs:source/algs4-uf-core"
+    ],
+    "sourceLocator": "Class contract: sites, components, representative, find, union and connected",
+    "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/DisjointSet-find",
+    "type": "Operation",
+    "name": "find",
+    "signature": "find : D_n×Fin(n)→Fin(n)",
+    "description": "find(r,x)=r(x).",
+    "concept": "urn:csabs:concept/DisjointSet",
+    "precondition": "Inputs have the stated types and satisfy the restrictions in the signature and basisScope. Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.",
+    "totality": "Partial on the explicitly restricted cases; otherwise total mathematical operation. Set-valued outcomes specify allowed nondeterminism, not a chosen algorithm.",
+    "postcondition": "find(r,x)=r(x).",
+    "source": [
+      "urn:csabs:source/algs4-uf-core"
+    ],
+    "sourceLocator": "Class contract: sites, components, representative, find, union and connected",
+    "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/DisjointSet-connected",
+    "type": "Operation",
+    "name": "connected",
+    "signature": "connected : D_n×Fin(n)²→Prop",
+    "description": "connected(r,x,y) iff r(x)=r(y).",
+    "concept": "urn:csabs:concept/DisjointSet",
+    "precondition": "Inputs have the stated types and satisfy the restrictions in the signature and basisScope. Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.",
+    "totality": "Partial on the explicitly restricted cases; otherwise total mathematical operation. Set-valued outcomes specify allowed nondeterminism, not a chosen algorithm.",
+    "postcondition": "connected(r,x,y) iff r(x)=r(y).",
+    "source": [
+      "urn:csabs:source/algs4-uf-core"
+    ],
+    "sourceLocator": "Class contract: sites, components, representative, find, union and connected",
+    "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/DisjointSet-union",
+    "type": "Operation",
+    "name": "union",
+    "signature": "union : D_n×Fin(n)²→𝒫(D_n)",
+    "description": "Choose c∈{r(a),r(b)}; r′(x)=c when r(x)∈{r(a),r(b)}, else r(x).",
+    "concept": "urn:csabs:concept/DisjointSet",
+    "precondition": "Inputs have the stated types and satisfy the restrictions in the signature and basisScope. Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.",
+    "totality": "Partial on the explicitly restricted cases; otherwise total mathematical operation. Set-valued outcomes specify allowed nondeterminism, not a chosen algorithm.",
+    "postcondition": "Choose c∈{r(a),r(b)}; r′(x)=c when r(x)∈{r(a),r(b)}, else r(x).",
+    "source": [
+      "urn:csabs:source/algs4-uf-core"
+    ],
+    "sourceLocator": "Class contract: sites, components, representative, find, union and connected",
+    "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:axiom/DisjointSet-representative",
+    "type": "Axiom",
+    "name": "representative",
+    "statement": "Defining requirement: ∀x, r(r(x))=r(x)",
+    "formalStatement": "∀x, r(r(x))=r(x)",
+    "assumptions": [
+      "Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.",
+      "All variables range over the typed carriers in the notation and signatures."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/DisjointSet"
+    ],
+    "ruleRole": "defining-rule",
+    "reviewStatus": "Editorial source/interface review; Lean model and individual proof evidence are separate.",
+    "source": [
+      "urn:csabs:source/algs4-uf-core"
+    ],
+    "sourceLocator": "Class contract: sites, components, representative, find, union and connected",
+    "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:axiom/DisjointSet-connectivity",
+    "type": "Axiom",
+    "name": "connectivity",
+    "statement": "Defining requirement: connected(r,x,y) ⇔ r(x)=r(y)",
+    "formalStatement": "connected(r,x,y) ⇔ r(x)=r(y)",
+    "assumptions": [
+      "Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.",
+      "All variables range over the typed carriers in the notation and signatures."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/DisjointSet"
+    ],
+    "ruleRole": "defining-rule",
+    "reviewStatus": "Editorial source/interface review; Lean model and individual proof evidence are separate.",
+    "source": [
+      "urn:csabs:source/algs4-uf-core"
+    ],
+    "sourceLocator": "Class contract: sites, components, representative, find, union and connected",
+    "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:axiom/DisjointSet-union-definition",
+    "type": "Axiom",
+    "name": "union-definition",
+    "statement": "Defining requirement: r′∈union(r,a,b) ⇔ ∃c∈{r(a),r(b)}, ∀x, r′(x)=if r(x)∈{r(a),r(b)} then c else r(x)",
+    "formalStatement": "r′∈union(r,a,b) ⇔ ∃c∈{r(a),r(b)}, ∀x, r′(x)=if r(x)∈{r(a),r(b)} then c else r(x)",
+    "assumptions": [
+      "Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.",
+      "All variables range over the typed carriers in the notation and signatures."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/DisjointSet"
+    ],
+    "ruleRole": "defining-rule",
+    "reviewStatus": "Editorial source/interface review; Lean model and individual proof evidence are separate.",
+    "source": [
+      "urn:csabs:source/algs4-uf-core"
+    ],
+    "sourceLocator": "Class contract: sites, components, representative, find, union and connected",
+    "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:law/DisjointSet-find-idempotent",
+    "type": "Law",
+    "name": "find-idempotent",
+    "statement": "find(r,find(r,x))=find(r,x)",
+    "formalStatement": "find(r,find(r,x))=find(r,x)",
+    "assumptions": [
+      "Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.",
+      "Typed mathematical equality and the stated defining requirements."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/DisjointSet"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/DisjointSet-representative"
+    ],
+    "proofSketch": "Expand find; this is the representative invariant.",
+    "reviewStatus": "Editorial derivation; a compiled Lean witness is asserted only by a fresh individual binding verification report.",
+    "source": [
+      "urn:csabs:source/algs4-uf-core"
+    ],
+    "sourceLocator": "Class contract: sites, components, representative, find, union and connected",
+    "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
+    "provenanceKind": "derived"
+  },
+  {
+    "id": "urn:csabs:theorem/DisjointSet-connected-symmetric",
+    "type": "Theorem",
+    "name": "connected-symmetric",
+    "statement": "connected(r,x,y) ⇒ connected(r,y,x)",
+    "formalStatement": "connected(r,x,y) ⇒ connected(r,y,x)",
+    "assumptions": [
+      "Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.",
+      "Typed mathematical equality and the stated defining requirements."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/DisjointSet"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/DisjointSet-connectivity"
+    ],
+    "proofSketch": "Expand connectivity and apply symmetry of equality.",
+    "reviewStatus": "Editorial derivation; a compiled Lean witness is asserted only by a fresh individual binding verification report.",
+    "source": [
+      "urn:csabs:source/algs4-uf-core"
+    ],
+    "sourceLocator": "Class contract: sites, components, representative, find, union and connected",
+    "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
+    "provenanceKind": "derived"
+  }
+]
+```
+<!-- graph-record:end -->

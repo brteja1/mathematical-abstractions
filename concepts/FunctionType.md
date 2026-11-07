@@ -12,8 +12,11 @@ The type of total functions from A to B, with application and abstraction and ex
 
 **Prerequisites:** [Total function](Function.md)
 
+**Specializes:** [Dependent function (Pi type)](DependentFunction.md)
+
 ## Backlinks
 
+- [Dependent function (Pi type)](DependentFunction.md) — `requiresConcept`
 - [Product Type](ProductType.md) — `requiresConcept`
 - [Sum Type](SumType.md) — `requiresConcept`
 
@@ -24,6 +27,8 @@ The type of total functions from A to B, with application and abstraction and ex
 **basisKind:** extensional-type-theory
 
 **basisScope:** Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.
+
+**specializationNote:**  Use the constant family B(a)=B. Abstraction and application are the same total operations, with extensional equality. No automatic inheritance of claims.
 
 **verificationObligation:** Instantiate type parameters and operation domains.; Function equality here is extensional; translating to intensional type theory may require function extensionality.; Account separately for nontermination, exceptions, mutation, or untagged representation in concrete software.; Use the stated carriers, equality, domain restrictions and semantic conventions; alternative conventions require an explicit variant.
 
@@ -204,7 +209,11 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "basisKind": "extensional-type-theory"
+    "basisKind": "extensional-type-theory",
+    "specializationOf": [
+      "urn:csabs:concept/DependentFunction"
+    ],
+    "specializationNote": " Use the constant family B(a)=B. Abstraction and application are the same total operations, with extensional equality. No automatic inheritance of claims."
   },
   {
     "id": "urn:csabs:operation/function-abstraction",

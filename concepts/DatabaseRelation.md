@@ -18,6 +18,7 @@ A finite set of admissible named tuples over one schema; row order and duplicate
 
 ## Backlinks
 
+- [Finite database relation under bag semantics](BagRelation.md) — `requiresConcept`
 - [Functional dependency on a relational schema](FunctionalDependency.md) — `requiresConcept`
 
 ## Interface and scope

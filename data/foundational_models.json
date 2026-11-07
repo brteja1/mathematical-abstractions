@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "scope": "Broad computer-science core: selected value/type, collection, tree/graph, stream, numeric, state and database models; not an exhaustive taxonomy of computer science.",
+  "addedConcepts": [
+    "BooleanType",
+    "FiniteType",
+    "DependentPair",
+    "DependentFunction",
+    "Subtype",
+    "QuotientType",
+    "RationalNumber",
+    "RealNumber",
+    "ComplexNumber",
+    "Stream",
+    "SparseVector",
+    "JoinSemilattice",
+    "FiniteIterator",
+    "ClosedInterval",
+    "FiniteDistribution",
+    "StateBasedCRDT",
+    "Multimap",
+    "HeapStore",
+    "DisjointSet",
+    "RoseTree",
+    "TermAlgebra",
+    "BinarySearchTree",
+    "BinaryHeap",
+    "Trie",
+    "RootedTree",
+    "DirectedMultigraph",
+    "WeightedDirectedGraph",
+    "Hypergraph",
+    "BipartiteGraph",
+    "BagRelation",
+    "DocumentValue",
+    "EntityRelationshipModel",
+    "PropertyGraph",
+    "RDFGraph",
+    "RDFDataset"
+  ],
+  "families": [
+    {
+      "name": "types-and-values",
+      "concepts": [
+        "EmptyType",
+        "UnitType",
+        "BooleanType",
+        "FiniteType",
+        "ProductType",
+        "SumType",
+        "OptionType",
+        "FunctionType",
+        "DependentPair",
+        "DependentFunction",
+        "Subtype",
+        "QuotientType"
+      ]
+    },
+    {
+      "name": "numeric-and-indexed-data",
+      "concepts": [
+        "NaturalNumber",
+        "Integer",
+        "ArbitraryPrecisionInteger",
+        "RationalNumber",
+        "RealNumber",
+        "ComplexNumber",
+        "FixedWidthUnsignedInteger",
+        "FixedWidthSignedInteger",
+        "BitVector",
+        "ModularInteger",
+        "CheckedInteger",
+        "SaturatingInteger",
+        "FloatingPointType",
+        "Binary16",
+        "Binary32",
+        "Binary64",
+        "Binary128",
+        "Array",
+        "Matrix",
+        "VectorSpace",
+        "SparseVector",
+        "ClosedInterval",
+        "Tensor"
+      ]
+    },
+    {
+      "name": "collections-and-access",
+      "concepts": [
+        "Sequence",
+        "FiniteSet",
+        "Multiset",
+        "Map",
+        "Multimap",
+        "OrderedSet",
+        "Stack",
+        "Queue",
+        "Deque",
+        "PriorityQueue",
+        "FiniteIterator",
+        "Stream"
+      ]
+    },
+    {
+      "name": "trees-dictionaries-syntax",
+      "concepts": [
+        "Tree",
+        "RootedTree",
+        "BinaryTree",
+        "RoseTree",
+        "TermAlgebra",
+        "BinarySearchTree",
+        "BinaryHeap",
+        "Trie",
+        "DisjointSet"
+      ]
+    },
+    {
+      "name": "graphs",
+      "concepts": [
+        "Graph",
+        "DirectedGraph",
+        "DAG",
+        "DirectedMultigraph",
+        "WeightedDirectedGraph",
+        "Hypergraph",
+        "BipartiteGraph"
+      ]
+    },
+    {
+      "name": "state-probability-replication",
+      "concepts": [
+        "HeapStore",
+        "FiniteDistribution",
+        "JoinSemilattice",
+        "StateBasedCRDT",
+        "TransitionSystem",
+        "LabelledTransitionSystem",
+        "ProbabilitySpace"
+      ]
+    },
+    {
+      "name": "databases-interchange",
+      "concepts": [
+        "RelationalSchema",
+        "DatabaseRelation",
+        "BagRelation",
+        "FunctionalDependency",
+        "CandidateKey",
+        "EntityRelationshipModel",
+        "DocumentValue",
+        "PropertyGraph",
+        "RDFGraph",
+        "RDFDataset"
+      ]
+    }
+  ],
+  "instantiations": [
+    {
+      "name": "String or finite word",
+      "concepts": [
+        "Sequence"
+      ],
+      "parameters": "Element carrier is an explicitly chosen alphabet; encoding and normalization are separate."
+    },
+    {
+      "name": "Byte or octet",
+      "concepts": [
+        "FixedWidthUnsignedInteger"
+      ],
+      "parameters": "Width 8; choose arithmetic overflow behavior."
+    },
+    {
+      "name": "Result or either",
+      "concepts": [
+        "SumType"
+      ],
+      "parameters": "Success and error carriers with distinct constructor tags."
+    },
+    {
+      "name": "Record or named tuple",
+      "concepts": [
+        "RelationalSchema"
+      ],
+      "parameters": "Tuple carrier with finite named typed fields."
+    },
+    {
+      "name": "Fixed-length vector",
+      "concepts": [
+        "Array"
+      ],
+      "parameters": "A and fixed natural length n; vector-space semantics requires additional scalar structure."
+    },
+    {
+      "name": "Sparse matrix",
+      "concepts": [
+        "SparseVector"
+      ],
+      "parameters": "Index carrier I\u00d7J and field F; specify compatible dimensions and multiplication separately."
+    },
+    {
+      "name": "Forest",
+      "concepts": [
+        "Sequence",
+        "RoseTree"
+      ],
+      "parameters": "Ordered finite sequence of nonempty rose trees; empty forest permitted."
+    },
+    {
+      "name": "Key/value store snapshot",
+      "concepts": [
+        "Map"
+      ],
+      "parameters": "Finite key/value bindings; persistence and transactional behavior are additional."
+    },
+    {
+      "name": "Hierarchical data",
+      "concepts": [
+        "RoseTree",
+        "DocumentValue"
+      ],
+      "parameters": "Choose ordered node labels or the explicit JSON profile."
+    },
+    {
+      "name": "Network database view",
+      "concepts": [
+        "EntityRelationshipModel"
+      ],
+      "parameters": "Binary typed roles; historical navigational access paths require further refinement."
+    }
+  ]
+}

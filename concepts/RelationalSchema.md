@@ -16,8 +16,10 @@ A relation name, a finite set of attribute names, and a domain for each attribut
 
 ## Backlinks
 
+- [Finite database relation under bag semantics](BagRelation.md) — `requiresConcept`
 - [Candidate key relative to functional dependencies](CandidateKey.md) — `relatedConcept`
 - [Finite database relation under set semantics](DatabaseRelation.md) — `requiresConcept`
+- [Finite typed entity-relationship instance](EntityRelationshipModel.md) — `requiresConcept`
 - [Map](Map.md) — `relatedConcept`
 
 ## Interface and scope

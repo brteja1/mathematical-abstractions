@@ -17,6 +17,9 @@ A proof principle for inductively generated finite values: prove the property fo
 ## Backlinks
 
 - [Finite ordered binary tree with node labels](BinaryTree.md) — `relatedConcept`
+- [Finite JSON document value (interoperable profile)](DocumentValue.md) — `requiresConcept`
+- [Finite ordered rose tree](RoseTree.md) — `requiresConcept`
+- [Free ranked term algebra with variables](TermAlgebra.md) — `requiresConcept`
 
 ## Interface and scope
 

@@ -16,6 +16,10 @@ A finite rooted binary tree whose actual nodes carry labels in A and have ordere
 
 ## Backlinks
 
+- [Finite complete binary min-heap](BinaryHeap.md) — `relatedConcept`
+- [Strict binary search tree](BinarySearchTree.md) — `requiresConcept`
+- [Strict binary search tree](BinarySearchTree.md) — `specializationOf`
+- [Finite ordered rose tree](RoseTree.md) — `relatedConcept`
 - [Structural Induction](StructuralInduction.md) — `relatedConcept`
 - [Tree](Tree.md) — `relatedConcept`
 

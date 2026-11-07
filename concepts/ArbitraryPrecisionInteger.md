@@ -12,6 +12,10 @@ An integer value with no fixed mathematical width; implementations may exhaust r
 
 **Prerequisites:** [Mathematical integers](Integer.md)
 
+## Backlinks
+
+- [Exact rational number](RationalNumber.md) — `requiresConcept`
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: An integer value with no fixed mathematical width; implementations may exhaust resources even though the value semantics is unbounded. Governing rules: The abstract value carrier is unbounded integers, independently of resource limits.

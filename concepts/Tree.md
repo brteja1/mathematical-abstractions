@@ -19,6 +19,8 @@ A nonempty finite connected acyclic simple undirected graph.
 ## Backlinks
 
 - [Finite ordered binary tree with node labels](BinaryTree.md) — `relatedConcept`
+- [Finite rooted undirected tree](RootedTree.md) — `requiresConcept`
+- [Finite rooted undirected tree](RootedTree.md) — `specializationOf`
 
 ## Interface and scope
 

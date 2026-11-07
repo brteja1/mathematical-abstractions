@@ -16,6 +16,7 @@ A graph whose edges are ordered vertex pairs; loops are allowed unless excluded 
 
 - [Directed acyclic graph](DAG.md) — `requiresConcept`
 - [Directed acyclic graph](DAG.md) — `specializationOf`
+- [Finite directed multigraph with edge identities](DirectedMultigraph.md) — `relatedConcept`
 - [Markov chain (finite-state, discrete-time, time-homogeneous)](MarkovChain.md) — `relatedConcept`
 
 ## Interface and scope

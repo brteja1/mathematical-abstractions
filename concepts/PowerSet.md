@@ -14,6 +14,7 @@ The set containing exactly all subsets of a given set.
 
 ## Backlinks
 
+- [Finite simple undirected hypergraph](Hypergraph.md) — `requiresConcept`
 - [Measurable space (sigma-algebra on a carrier)](MeasurableSpace.md) — `requiresConcept`
 - [Nondeterministic finite automaton without epsilon moves](NFA.md) — `requiresConcept`
 - [Set](Set.md) — `relatedConcept`

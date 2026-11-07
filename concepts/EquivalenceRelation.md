@@ -16,6 +16,8 @@ A homogeneous relation that is reflexive, symmetric, and transitive.
 
 ## Backlinks
 
+- [Disjoint-set union with representatives](DisjointSet.md) — `requiresConcept`
+- [Quotient by an equivalence relation](QuotientType.md) — `requiresConcept`
 - [Binary relation](Relation.md) — `relatedConcept`
 - [Strong finite partial-trace equivalence](TraceEquivalence.md) — `requiresConcept`
 - [Strong finite partial-trace equivalence](TraceEquivalence.md) — `specializationOf`

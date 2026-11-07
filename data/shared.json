@@ -569,6 +569,278 @@
       "accessedOn": "2026-11-07",
       "sourceRole": "formal-library-definitions-and-selected-theorems",
       "provenanceNote": "Consulted the displayed theory: datatype tree, size1, height_tree, inorder, mirror and the individually cited counting/traversal/mirroring lemmas. Constructor argument order and operation names are adapted; no Isabelle compilation is claimed here."
+    },
+    {
+      "id": "urn:csabs:source/algs4-uf-core",
+      "type": "Source",
+      "label": "Sedgewick and Wayne: algs4 UF API",
+      "url": "https://javadoc.io/static/edu.princeton.cs/algs4/1.0.4/edu/princeton/cs/algs4/UF.html",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/chen-er-core",
+      "type": "Source",
+      "label": "Peter Pin-Shan Chen: The Entity-Relationship Model—Toward a Unified View of Data",
+      "url": "https://weichselbraun.net/dbs/pdf/literature/chen.pdf",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/crdt-state-core",
+      "type": "Source",
+      "label": "Preguiça, Baquero and Shapiro: Conflict-free Replicated Data Types (2018)",
+      "url": "https://arxiv.org/pdf/1805.06358",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/guava-set-multimap-core",
+      "type": "Source",
+      "label": "Guava 19.0: SetMultimap",
+      "url": "https://guava.dev/releases/19.0/api/docs/com/google/common/collect/SetMultimap.html",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/json-values-core",
+      "type": "Source",
+      "label": "RFC 8259: The JavaScript Object Notation Data Interchange Format",
+      "url": "https://www.rfc-editor.org/rfc/rfc8259",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/lean4-dependent-types",
+      "type": "Source",
+      "label": "Theorem Proving in Lean 4: Dependent Type Theory",
+      "url": "https://lean-lang.org/theorem_proving_in_lean4/Dependent-Type-Theory/",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/lean4-quotients",
+      "type": "Source",
+      "label": "Theorem Proving in Lean 4: Axioms and Computation",
+      "url": "https://lean-lang.org/theorem_proving_in_lean4/Axioms-and-Computation/",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-bag-core",
+      "type": "Source",
+      "label": "Mathlib pinned definitions: Data/Multiset/Defs.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Data/Multiset/Defs.lean",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-bipartite-core",
+      "type": "Source",
+      "label": "Mathlib pinned definitions: Combinatorics/SimpleGraph/Bipartite.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Combinatorics/SimpleGraph/Bipartite.lean",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-complex-core",
+      "type": "Source",
+      "label": "Mathlib pinned definitions: Basic/Complex/Basic.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Basic/Complex/Basic.lean",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-finite-core",
+      "type": "Source",
+      "label": "Mathlib pinned definitions: Data/Fintype/Defs.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Data/Fintype/Defs.lean",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-finsupp-core",
+      "type": "Source",
+      "label": "Mathlib pinned definitions: Data/Finsupp/Defs.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Data/Finsupp/Defs.lean",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-interval-core",
+      "type": "Source",
+      "label": "Mathlib pinned definitions: Order/Interval/Set/Defs.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Order/Interval/Set/Defs.lean",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-join-core",
+      "type": "Source",
+      "label": "Mathlib pinned definitions: Order/Defs/Lattice.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Order/Defs/Lattice.lean",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-pmf-core",
+      "type": "Source",
+      "label": "Mathlib pinned definitions: Probability/ProbabilityMassFunction/Basic.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Probability/ProbabilityMassFunction/Basic.lean",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-quiver-core",
+      "type": "Source",
+      "label": "Mathlib pinned definitions: Combinatorics/Quiver/Basic.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Combinatorics/Quiver/Basic.lean",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-rational-core",
+      "type": "Source",
+      "label": "Mathlib pinned definitions: Algebra/Field/Rat.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Algebra/Field/Rat.lean",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-rational-defs-core",
+      "type": "Source",
+      "label": "Mathlib pinned definitions: Data/Rat/Defs.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Data/Rat/Defs.lean",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-real-core",
+      "type": "Source",
+      "label": "Mathlib pinned definitions: Algebra/Order/Archimedean/Real/Basic.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Algebra/Order/Archimedean/Real/Basic.lean",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-sigma-core",
+      "type": "Source",
+      "label": "Mathlib pinned definitions: Data/Sigma/Basic.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Data/Sigma/Basic.lean",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-sparse-module-core",
+      "type": "Source",
+      "label": "Mathlib pinned definitions: LinearAlgebra/Finsupp/Defs.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/LinearAlgebra/Finsupp/Defs.lean",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-stream-core",
+      "type": "Source",
+      "label": "Mathlib pinned definitions: Data/Stream/Defs.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Data/Stream/Defs.lean",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-subtype-core",
+      "type": "Source",
+      "label": "Mathlib pinned definitions: Data/Subtype.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Data/Subtype.lean",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/nist-hypergraph-core",
+      "type": "Source",
+      "label": "Paul E. Black: NIST Dictionary of Algorithms and Data Structures, hypergraph",
+      "url": "https://xlinux.nist.gov/dads/HTML/hypergraph.html",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/nist-trie-core",
+      "type": "Source",
+      "label": "Paul E. Black: NIST Dictionary of Algorithms and Data Structures, trie",
+      "url": "https://xlinux.nist.gov/dads/HTML/trie.html",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/ods-bst-core",
+      "type": "Source",
+      "label": "Pat Morin: Open Data Structures, BinarySearchTree",
+      "url": "https://opendatastructures.org/ods-python/6_2_BinarySearchTree_Unbala.html",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/ods-graphs-core",
+      "type": "Source",
+      "label": "Pat Morin: Open Data Structures, Graphs",
+      "url": "https://opendatastructures.org/ods-python/12_Graphs.html",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/ods-heap-core",
+      "type": "Source",
+      "label": "Pat Morin: Open Data Structures, BinaryHeap",
+      "url": "https://opendatastructures.org/ods-python/10_1_BinaryHeap_Implicit_Bi.html",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/ods-trees-core",
+      "type": "Source",
+      "label": "Pat Morin: Open Data Structures, Binary Trees",
+      "url": "https://opendatastructures.org/ods-python/6_Binary_Trees.html",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/rust-fused-core",
+      "type": "Source",
+      "label": "Rust standard library: FusedIterator",
+      "url": "https://doc.rust-lang.org/std/iter/trait.FusedIterator.html",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/slf-heap-core",
+      "type": "Source",
+      "label": "Software Foundations, Separation Logic Foundations: Heap Predicates",
+      "url": "https://softwarefoundations.cis.upenn.edu/slf-current/Hprop.html",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/tinkerpop-lpg-core",
+      "type": "Source",
+      "label": "Apache TinkerPop reference: graph structure",
+      "url": "https://tinkerpop.apache.org/docs/current/reference/#graph-structure",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/w3c-rdf11-core",
+      "type": "Source",
+      "label": "W3C RDF 1.1 Concepts and Abstract Syntax",
+      "url": "https://www.w3.org/TR/rdf11-concepts/",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-definition-and-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/java-map-core",
+      "type": "Source",
+      "label": "Java SE 21 Map API: mappings, put and equality",
+      "url": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Map.html",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "consulted-interface-reference"
     }
   ]
 }

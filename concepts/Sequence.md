@@ -15,12 +15,20 @@ An ordered finite collection in which repeated values are allowed.
 ## Backlinks
 
 - [Fixed-length array](Array.md) — `relatedConcept`
+- [Finite complete binary min-heap](BinaryHeap.md) — `requiresConcept`
 - [Finite ordered binary tree with node labels](BinaryTree.md) — `requiresConcept`
 - [Deque](Deque.md) — `requiresConcept`
+- [Finite directed multigraph with edge identities](DirectedMultigraph.md) — `requiresConcept`
+- [Finite JSON document value (interoperable profile)](DocumentValue.md) — `requiresConcept`
+- [Finite fused sequence iterator](FiniteIterator.md) — `requiresConcept`
 - [Finite set collection](FiniteSet.md) — `relatedConcept`
 - [Formal language of finite words](FormalLanguage.md) — `requiresConcept`
 - [Action-labelled transition system with initial states](LabelledTransitionSystem.md) — `requiresConcept`
 - [Ordered collection without duplicates](OrderedSet.md) — `requiresConcept`
+- [Finite labelled property graph (single-valued profile)](PropertyGraph.md) — `requiresConcept`
+- [Finite ordered rose tree](RoseTree.md) — `requiresConcept`
+- [Infinite discrete stream](Stream.md) — `requiresConcept`
+- [Finite prefix dictionary](Trie.md) — `requiresConcept`
 
 ## Interface and scope
 

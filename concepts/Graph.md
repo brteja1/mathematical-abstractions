@@ -12,8 +12,12 @@ A finite simple undirected graph consists of vertices and unordered pairs of dis
 
 **Prerequisites:** [Set](Set.md)
 
+**Specializes:** [Finite simple undirected hypergraph](Hypergraph.md)
+
 ## Backlinks
 
+- [Finite simple graph with chosen bipartition](BipartiteGraph.md) — `requiresConcept`
+- [Finite simple graph with chosen bipartition](BipartiteGraph.md) — `specializationOf`
 - [Tree](Tree.md) — `requiresConcept`
 - [Tree](Tree.md) — `specializationOf`
 
@@ -24,6 +28,8 @@ A finite simple undirected graph consists of vertices and unordered pairs of dis
 **basisKind:** defined-structure
 
 **basisScope:** Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.
+
+**specializationNote:**  Represent each undirected simple edge {u,v}, u≠v, by its two-element vertex subset. The 2-uniform hypergraph retains exactly the finite simple graph; adjacency corresponds to membership of {u,v} in H. No automatic inheritance of claims.
 
 **verificationObligation:** Instantiate carrier, equality, and stated semantic conventions before using this entry.; Use the stated carriers, equality, domain restrictions and semantic conventions; alternative conventions require an explicit variant.
 
@@ -180,7 +186,11 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "specializationOf": [
+      "urn:csabs:concept/Hypergraph"
+    ],
+    "specializationNote": " Represent each undirected simple edge {u,v}, u≠v, by its two-element vertex subset. The 2-uniform hypergraph retains exactly the finite simple graph; adjacency corresponds to membership of {u,v} in H. No automatic inheritance of claims."
   },
   {
     "id": "urn:csabs:operation/Graph-neighbors",
@@ -189,40 +199,6 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "signature": "N : V→𝒫(V)",
     "description": "Returns vertices sharing an edge with the input vertex.",
     "concept": "urn:csabs:concept/Graph"
-  },
-  {
-    "id": "urn:csabs:axiom/Graph-simple-finite",
-    "type": "Axiom",
-    "name": "simple-finite",
-    "statement": "A graph has a finite vertex set and edges are unordered two-element subsets.",
-    "formalStatement": "V finite; E⊆{e⊆V:card(e)=2}",
-    "appliesTo": [
-      "urn:csabs:concept/Graph"
-    ],
-    "assumptions": [
-      "All variables range over the carriers and semantic conventions specified in this concept."
-    ],
-    "ruleRole": "defining-rule",
-    "reviewStatus": "editorial-summary; not machine-proved",
-    "notationLanguage": "informal mathematical Unicode",
-    "provenanceStatus": "legacy-source-missing"
-  },
-  {
-    "id": "urn:csabs:axiom/Graph-adjacency",
-    "type": "Axiom",
-    "name": "adjacency",
-    "statement": "Adjacency means sharing an edge; it is symmetric and irreflexive in this variant.",
-    "formalStatement": "adj(u,v) iff {u,v}∈E; N(u)={v∈V:adj(u,v)}",
-    "appliesTo": [
-      "urn:csabs:concept/Graph"
-    ],
-    "assumptions": [
-      "All variables range over the carriers and semantic conventions specified in this concept."
-    ],
-    "ruleRole": "defining-rule",
-    "reviewStatus": "editorial-summary; not machine-proved",
-    "notationLanguage": "informal mathematical Unicode",
-    "provenanceStatus": "legacy-source-missing"
   },
   {
     "id": "urn:csabs:law/Graph-core",
