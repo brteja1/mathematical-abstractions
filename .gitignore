@@ -1,6 +1,7 @@
 __pycache__/
 *.py[cod]
 .venv/
+_site/
 .ontfs.ttl
 .ontfs.shapes.ttl
 .ontfs.generated.json

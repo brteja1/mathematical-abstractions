@@ -6,6 +6,12 @@ Start with the [concept index](CONCEPTS.md), open the [interactive radial atlas]
 
 The imported graph covers 19 categories, including algebra, logic, order, probability, topology, geometry, linear algebra, computation, databases, software semantics, and concurrency. This is a starting collection, not exhaustive coverage of mathematics or every discipline.
 
+## Browse online
+
+The interactive atlas is published at **https://brteja1.github.io/mathematical-abstractions/** using GitHub Pages. Concept links in the hosted viewer open the corresponding Markdown records on GitHub; local copies retain relative links for offline use.
+
+In the repository's **Settings → Pages → Build and deployment**, select **GitHub Actions** as the source. The [Pages workflow](.github/workflows/pages.yml) rebuilds and validates the catalog, then deploys the standalone viewer on every push to `main`. It can also be started manually from **Actions → Deploy visualization to GitHub Pages → Run workflow**. Deployment progress and the published URL appear in the workflow run. Only the viewer is included in the Pages artifact; the optional ONTFS backend is not needed for hosting.
+
 ## Storage and fields
 
 | Location | Role |
@@ -74,4 +80,4 @@ make PYTHON=.venv/bin/python ontology test-ontology
 .venv/bin/python scripts/ontology.py query ontology/prerequisites.rq
 ```
 
-The parent Git repository is initialized and ONTFS is cloned and registered at the locked commit. `.gitmodules` and the submodule gitlink are staged; no initial commit has been created. Run `make deps-ontology` to install the ontology backend into the project virtual environment.
+ONTFS is registered as a submodule at the locked commit. After cloning this repository, run `make submodules`, then `make deps-ontology` to install the ontology backend into the project virtual environment.
