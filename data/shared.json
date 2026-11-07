@@ -1,0 +1,546 @@
+{
+  "@context": {
+    "@vocab": "https://w3id.org/cs-abstractions/v1#",
+    "rdfs": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#",
+      "@prefix": true
+    },
+    "label": "rdfs:label",
+    "id": "@id",
+    "type": "@type",
+    "category": {
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "kind": {
+      "@type": "@id"
+    },
+    "specializationOf": {
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "relatedConcept": {
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "hasOperation": {
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "hasAxiom": {
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "hasLaw": {
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "hasTheorem": {
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "appliesTo": {
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "assumptions": {
+      "@container": "@set"
+    },
+    "source": {
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "externalId": {
+      "@container": "@set"
+    },
+    "concept": {
+      "@type": "@id"
+    },
+    "requiresConcept": {
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "dependsOn": {
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "verificationObligation": {
+      "@container": "@set"
+    }
+  },
+  "@graph": [
+    {
+      "id": "https://w3id.org/cs-abstractions/v1#Concept",
+      "type": "rdfs:Class",
+      "label": "Concept"
+    },
+    {
+      "id": "https://w3id.org/cs-abstractions/v1#Operation",
+      "type": "rdfs:Class",
+      "label": "Operation"
+    },
+    {
+      "id": "https://w3id.org/cs-abstractions/v1#Axiom",
+      "type": "rdfs:Class",
+      "label": "Axiom"
+    },
+    {
+      "id": "https://w3id.org/cs-abstractions/v1#Law",
+      "type": "rdfs:Class",
+      "label": "Law"
+    },
+    {
+      "id": "https://w3id.org/cs-abstractions/v1#Theorem",
+      "type": "rdfs:Class",
+      "label": "Theorem"
+    },
+    {
+      "id": "https://w3id.org/cs-abstractions/v1#Category",
+      "type": "rdfs:Class",
+      "label": "Category"
+    },
+    {
+      "id": "https://w3id.org/cs-abstractions/v1#ConceptKind",
+      "type": "rdfs:Class",
+      "label": "Concept kind"
+    },
+    {
+      "id": "https://w3id.org/cs-abstractions/v1#Source",
+      "type": "rdfs:Class",
+      "label": "Source"
+    },
+    {
+      "id": "urn:csabs:category/foundations",
+      "type": "Category",
+      "label": "Set theory and foundations"
+    },
+    {
+      "id": "urn:csabs:category/logic",
+      "type": "Category",
+      "label": "Logic and proof"
+    },
+    {
+      "id": "urn:csabs:category/algebra",
+      "type": "Category",
+      "label": "Algebra"
+    },
+    {
+      "id": "urn:csabs:category/data-structures",
+      "type": "Category",
+      "label": "Data structures"
+    },
+    {
+      "id": "urn:csabs:category/numeric-computation",
+      "type": "Category",
+      "label": "Numeric computation"
+    },
+    {
+      "id": "urn:csabs:category/programming-semantics",
+      "type": "Category",
+      "label": "Programming-language semantics"
+    },
+    {
+      "id": "urn:csabs:kind/mathematical-structure",
+      "type": "ConceptKind",
+      "label": "Mathematical structure"
+    },
+    {
+      "id": "urn:csabs:kind/relation",
+      "type": "ConceptKind",
+      "label": "Relation"
+    },
+    {
+      "id": "urn:csabs:kind/function",
+      "type": "ConceptKind",
+      "label": "Function"
+    },
+    {
+      "id": "urn:csabs:kind/construction",
+      "type": "ConceptKind",
+      "label": "Mathematical construction"
+    },
+    {
+      "id": "urn:csabs:kind/data-type",
+      "type": "ConceptKind",
+      "label": "Numeric data type"
+    },
+    {
+      "id": "urn:csabs:kind/abstract-data-type",
+      "type": "ConceptKind",
+      "label": "Abstract data type"
+    },
+    {
+      "id": "urn:csabs:source/wikipedia-math-structure",
+      "type": "Source",
+      "label": "Mathematical structure (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Mathematical_structure",
+      "sourceRole": "discovery"
+    },
+    {
+      "id": "urn:csabs:source/wikipedia-data-structures",
+      "type": "Source",
+      "label": "List of data structures (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/List_of_data_structures",
+      "sourceRole": "discovery"
+    },
+    {
+      "id": "urn:csabs:source/ieee754",
+      "type": "Source",
+      "label": "IEEE 754-2019",
+      "url": "https://standards.ieee.org/ieee/754/6210/",
+      "sourceRole": "normative-standard"
+    },
+    {
+      "id": "urn:csabs:category/order",
+      "type": "Category",
+      "label": "Order and fixed points"
+    },
+    {
+      "id": "urn:csabs:category/graphs",
+      "type": "Category",
+      "label": "Graph theory"
+    },
+    {
+      "id": "urn:csabs:category/concurrency",
+      "type": "Category",
+      "label": "Concurrency and distributed systems"
+    },
+    {
+      "id": "urn:csabs:category/types",
+      "type": "Category",
+      "label": "Types and semantics"
+    },
+    {
+      "id": "urn:csabs:category/combinatorics",
+      "type": "Category",
+      "label": "Counting and induction"
+    },
+    {
+      "id": "urn:csabs:kind/principle",
+      "type": "ConceptKind",
+      "label": "principle"
+    },
+    {
+      "id": "urn:csabs:kind/semantic-model",
+      "type": "ConceptKind",
+      "label": "semantic-model"
+    },
+    {
+      "id": "urn:csabs:source/lamport1978",
+      "type": "Source",
+      "label": "Lamport: Time, Clocks, and the Ordering of Events in a Distributed System (1978)",
+      "url": "https://lamport.azurewebsites.net/pubs/time-clocks.pdf",
+      "sourceRole": "primary-paper"
+    },
+    {
+      "id": "urn:csabs:source/lean-sum",
+      "type": "Source",
+      "label": "Lean reference: sum types",
+      "url": "https://lean-lang.org/doc/reference/latest/Basic-Types/Sum-Types/",
+      "sourceRole": "reference",
+      "provenanceNote": "Supports the mathematical presentation; local claim names and notation are editorial, not verbatim library declarations."
+    },
+    {
+      "id": "urn:csabs:source/lean-empty",
+      "type": "Source",
+      "label": "Lean reference: empty type",
+      "url": "https://lean-lang.org/doc/reference/latest/Basic-Types/The-Empty-Type/",
+      "sourceRole": "reference",
+      "provenanceNote": "Supports the mathematical presentation; local claim names and notation are editorial, not verbatim library declarations."
+    },
+    {
+      "id": "urn:csabs:source/awodey-types",
+      "type": "Source",
+      "label": "Steve Awodey: Notes on Type Theory",
+      "url": "https://awodey.github.io/typetheory/notes/typetheory.pdf",
+      "sourceRole": "reference",
+      "provenanceNote": "Supports the mathematical presentation; local claim names and notation are editorial, not verbatim library declarations."
+    },
+    {
+      "id": "urn:csabs:source/mathlib-order",
+      "type": "Source",
+      "label": "Mathlib partial-order definitions",
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Order/Defs/PartialOrder.html",
+      "sourceRole": "reference-for-selected-basis",
+      "provenanceNote": "Consulted for the selected presentation; local equations and proof sketches are editorial and are not extracted formal proofs."
+    },
+    {
+      "id": "urn:csabs:source/mathlib-group",
+      "type": "Source",
+      "label": "Mathlib group definitions",
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Group/Defs.html",
+      "sourceRole": "reference-for-selected-basis",
+      "provenanceNote": "Consulted for the selected presentation; local equations and proof sketches are editorial and are not extracted formal proofs."
+    },
+    {
+      "id": "urn:csabs:source/sf-hoare",
+      "type": "Source",
+      "label": "Software Foundations: Hoare Logic",
+      "url": "https://softwarefoundations.cis.upenn.edu/plf-current/Hoare.html",
+      "sourceRole": "reference-for-selected-basis",
+      "provenanceNote": "Consulted for the selected presentation; local equations and proof sketches are editorial and are not extracted formal proofs."
+    },
+    {
+      "id": "urn:csabs:source/lean-nat",
+      "type": "Source",
+      "label": "Lean reference: natural numbers",
+      "url": "https://lean-lang.org/doc/reference/latest/Basic-Types/Natural-Numbers/",
+      "sourceRole": "reference-for-selected-basis",
+      "provenanceNote": "Consulted for the selected presentation; local equations and proof sketches are editorial and are not extracted formal proofs."
+    },
+    {
+      "id": "urn:csabs:source/herlihy-wing",
+      "type": "Source",
+      "label": "Herlihy and Wing: Linearizability (1990)",
+      "url": "https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf",
+      "sourceRole": "reference-for-selected-basis",
+      "provenanceNote": "Consulted for the selected presentation; local equations and proof sketches are editorial and are not extracted formal proofs."
+    },
+    {
+      "id": "urn:csabs:source/axler-mira",
+      "type": "Source",
+      "label": "Sheldon Axler, Measure, Integration & Real Analysis (2020; consulted revision dated 12 June 2026)",
+      "url": "https://measure.axler.net/MIRA.pdf",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary mathematical reference",
+      "license": "CC BY-NC 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-probability-measure",
+      "type": "Source",
+      "label": "Mathlib: probability measures",
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/Measure/Typeclasses/Probability.html",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary mathematical reference"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-measurable-functions",
+      "type": "Source",
+      "label": "Mathlib: measurable spaces and measurable functions",
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/MeasurableSpace/Defs.html",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary mathematical reference"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-measure-map",
+      "type": "Source",
+      "label": "Mathlib: pushforward of a measure",
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/Measure/Map.html",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary mathematical reference"
+    },
+    {
+      "id": "urn:csabs:source/cs228-probability-review",
+      "type": "Source",
+      "label": "Stanford CS228 notes: Probability Review",
+      "url": "https://ermongroup.github.io/cs228-notes/preliminaries/probabilityreview/",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary mathematical reference"
+    },
+    {
+      "id": "urn:csabs:source/cs228-bayesian-networks",
+      "type": "Source",
+      "label": "Stanford CS228 notes: Bayesian networks",
+      "url": "https://ermongroup.github.io/cs228-notes/representation/directed/",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary mathematical reference"
+    },
+    {
+      "id": "urn:csabs:source/cambridge-markov-chains",
+      "type": "Source",
+      "label": "Cambridge Markov Chains course notes, hosted by Richard Weber",
+      "url": "https://www.dpmms.cam.ac.uk/~rrw1/markov/M.pdf",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary mathematical reference",
+      "citation": "Markov Chains, Cambridge course notes; opening credits acknowledge material prepared by course lecturers, especially James Norris."
+    },
+    {
+      "id": "urn:csabs:source/mathlib-topology-defs",
+      "type": "Source",
+      "label": "Mathlib: Basic definitions about topological spaces",
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Topology/Defs/Basic.html",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary mathematical reference"
+    },
+    {
+      "id": "urn:csabs:source/lee-smooth-manifolds-ch1",
+      "type": "Source",
+      "label": "John M. Lee, Introduction to Smooth Manifolds, second edition, Chapter 1 (author-hosted sample)",
+      "url": "https://sites.math.washington.edu/~lee/Books/ISM/c01.pdf",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary mathematical reference",
+      "citation": "John M. Lee, Introduction to Smooth Manifolds, 2nd ed., Springer, 2013, Chapter 1, pp. 1–31. DOI: 10.1007/978-1-4419-9982-5_1."
+    },
+    {
+      "id": "urn:csabs:source/axler-ladr4",
+      "type": "Source",
+      "label": "Sheldon Axler, Linear Algebra Done Right, fourth edition (consulted revision dated 30 October 2026)",
+      "url": "https://linear.axler.net/LADR4e.pdf",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary mathematical reference",
+      "license": "CC BY-NC 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-module-defs",
+      "type": "Source",
+      "label": "Mathlib: semimodule and module axioms",
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Module/Defs.html",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary mathematical reference"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-tensor-universal",
+      "type": "Source",
+      "label": "Mathlib: tensor product universal property",
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/LinearAlgebra/TensorProduct/Basic.html",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary mathematical reference"
+    },
+    {
+      "id": "urn:csabs:category/measure-theory",
+      "type": "Category",
+      "label": "Measure theory"
+    },
+    {
+      "id": "urn:csabs:category/probability",
+      "type": "Category",
+      "label": "Probability and stochastic models"
+    },
+    {
+      "id": "urn:csabs:category/topology",
+      "type": "Category",
+      "label": "Topology"
+    },
+    {
+      "id": "urn:csabs:category/geometry",
+      "type": "Category",
+      "label": "Geometry and manifolds"
+    },
+    {
+      "id": "urn:csabs:category/linear-algebra",
+      "type": "Category",
+      "label": "Linear and multilinear algebra"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-matrix-defs",
+      "type": "Source",
+      "label": "Mathlib: matrices, extensional equality and transpose",
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/LinearAlgebra/Matrix/Defs.html",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary mathematical definition reference"
+    },
+    {
+      "id": "urn:csabs:source/ahv-database-model",
+      "type": "Source",
+      "label": "Abiteboul, Hull and Vianu: Foundations of Databases (1995), author-hosted book",
+      "url": "https://webdam.di.ens.fr/Alice/pdfs/all.pdf",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary reference for selected mathematical interfaces"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-finset-defs",
+      "type": "Source",
+      "label": "Mathlib: finite sets, membership and extensionality",
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Data/Finset/Defs.html",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary reference for selected mathematical interfaces"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-finset-insert",
+      "type": "Source",
+      "label": "Mathlib: finite-set insertion",
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Data/Finset/Insert.html",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary reference for selected mathematical interfaces"
+    },
+    {
+      "id": "urn:csabs:source/omg-ocl24-collections",
+      "type": "Source",
+      "label": "OMG Object Constraint Language 2.4: collection types",
+      "url": "https://www.omg.org/spec/OCL/2.4/PDF",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary reference for selected mathematical interfaces"
+    },
+    {
+      "id": "urn:csabs:source/sipser-automata",
+      "type": "Source",
+      "label": "Michael Sipser: MIT 18.404J (Fall 2020), Lecture 1",
+      "url": "https://ocw.mit.edu/courses/18-404j-theory-of-computation-fall-2020/b4d9bf1573dccea21bee82cfba4224d4_MIT18_404f20_lec1.pdf",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary reference for selected mathematical interfaces"
+    },
+    {
+      "id": "urn:csabs:source/sipser-nondeterminism",
+      "type": "Source",
+      "label": "Michael Sipser: MIT 18.404J (Fall 2020), Lecture 2",
+      "url": "https://ocw.mit.edu/courses/18-404j-theory-of-computation-fall-2020/d741901d23b4522588e267177c77d10d_MIT18_404f20_lec2.pdf",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary reference for selected mathematical interfaces"
+    },
+    {
+      "id": "urn:csabs:source/sipser-cfg",
+      "type": "Source",
+      "label": "Michael Sipser: MIT 18.404J (Fall 2020), Lecture 4",
+      "url": "https://ocw.mit.edu/courses/18-404j-theory-of-computation-fall-2020/a22fce6f6824c53dbb79a0da786966a6_MIT18_404f20_lec4.pdf",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary reference for selected mathematical interfaces"
+    },
+    {
+      "id": "urn:csabs:source/sipser-turing-machines",
+      "type": "Source",
+      "label": "Michael Sipser: MIT 18.404J (Fall 2020), Lecture 5",
+      "url": "https://ocw.mit.edu/courses/18-404j-theory-of-computation-fall-2020/18c8cd00b14d48dc5865f3bdc41abd76_MIT18_404f20_lec5.pdf",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary reference for selected mathematical interfaces"
+    },
+    {
+      "id": "urn:csabs:source/vanglabbeek-mcs",
+      "type": "Source",
+      "label": "Rob van Glabbeek: Modelling Concurrent Systems (2024), course notes",
+      "url": "https://homepages.inf.ed.ac.uk/rvangla/MCS/notes.html",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary reference for selected mathematical interfaces"
+    },
+    {
+      "id": "urn:csabs:source/platzer-modal-modelchecking",
+      "type": "Source",
+      "label": "Andre Platzer: CMU 15-816 (2010), Lecture 18, Model Checking",
+      "url": "https://www.cs.cmu.edu/~fp/courses/15816-s10/lectures/18-modck.pdf",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary reference for selected mathematical interfaces"
+    },
+    {
+      "id": "urn:csabs:source/martins-ltl",
+      "type": "Source",
+      "label": "Ruben Martins: CMU 15-414 (2024), Lecture 21, Linear Temporal Logic",
+      "url": "https://www.cs.cmu.edu/~15414/s24/lectures/21-ltl.pdf",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary reference for selected mathematical interfaces"
+    },
+    {
+      "id": "urn:csabs:source/clarke-state-explosion",
+      "type": "Source",
+      "label": "E. M. Clarke et al.: Model Checking and the State Explosion Problem",
+      "url": "https://www.cs.cmu.edu/~emc/papers/Conference%20Papers/Model%20Checking%20and%20the%20State%20Explosion%20Problem.pdf",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "primary reference for selected mathematical interfaces"
+    },
+    {
+      "id": "urn:csabs:category/data-modelling",
+      "type": "Category",
+      "label": "Relational data modelling"
+    },
+    {
+      "id": "urn:csabs:category/languages-computation",
+      "type": "Category",
+      "label": "Languages and computation"
+    },
+    {
+      "id": "urn:csabs:category/behavior",
+      "type": "Category",
+      "label": "Behavior and transition systems"
+    }
+  ]
+}

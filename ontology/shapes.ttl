@@ -1,0 +1,44 @@
+@prefix ca: <https://w3id.org/cs-abstractions/v1#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ca:ConceptShape a sh:NodeShape ; sh:targetClass ca:Concept ;
+ sh:nodeKind sh:IRI ;
+ sh:property [ sh:path ca:shortForm ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+ sh:property [ sh:path ca:fullName ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+ sh:property [ sh:path ca:definition ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+ sh:property [ sh:path ca:notation ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+ sh:property [ sh:path ca:axiomBasis ; sh:minCount 1 ] ;
+ sh:property [ sh:path ca:basisKind ; sh:minCount 1 ] ;
+ sh:property [ sh:path ca:basisScope ; sh:minCount 1 ] ;
+ sh:property [ sh:path ca:category ; sh:minCount 1 ; sh:class ca:Category ] ;
+ sh:property [ sh:path ca:kind ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ca:ConceptKind ] ;
+ sh:property [ sh:path ca:hasOperation ; sh:class ca:Operation ] ;
+ sh:property [ sh:path ca:hasAxiom ; sh:minCount 1 ; sh:class ca:Axiom ] ;
+ sh:property [ sh:path ca:hasLaw ; sh:class ca:Law ] ;
+ sh:property [ sh:path ca:hasTheorem ; sh:class ca:Theorem ] ;
+ sh:property [ sh:path ca:requiresConcept ; sh:class ca:Concept ] ;
+ sh:property [ sh:path ca:specializationOf ; sh:class ca:Concept ] ;
+ sh:property [ sh:path ca:relatedConcept ; sh:class ca:Concept ] .
+
+ca:ClaimShape a sh:NodeShape ;
+ sh:targetClass ca:Axiom, ca:Law, ca:Theorem ;
+ sh:property [ sh:path ca:statement ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+ sh:property [ sh:path ca:formalStatement ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+ sh:property [ sh:path ca:assumptions ; sh:minCount 1 ] ;
+ sh:property [ sh:path ca:reviewStatus ; sh:minCount 1 ] ;
+ sh:property [ sh:path ca:appliesTo ; sh:minCount 1 ; sh:class ca:Concept ] ;
+ sh:property [ sh:path ca:dependsOn ; sh:or ( [ sh:class ca:Operation ] [ sh:class ca:Axiom ] [ sh:class ca:Law ] [ sh:class ca:Theorem ] ) ] .
+
+ca:OperationShape a sh:NodeShape ; sh:targetClass ca:Operation ;
+ sh:property [ sh:path ca:name ; sh:minCount 1 ] ;
+ sh:property [ sh:path ca:signature ; sh:minCount 1 ] ;
+ sh:property [ sh:path ca:description ; sh:minCount 1 ] ;
+ sh:property [ sh:path ca:concept ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ca:Concept ] .
+
+# Historical exceptions are checked against provenance_legacy.json by Python.
+# This shape checks reference types without granting an exemption to new nodes.
+ca:SourceReferenceShape a sh:NodeShape ; sh:targetSubjectsOf ca:source ;
+ sh:property [ sh:path ca:source ; sh:class ca:Source ] .
+ca:SourceShape a sh:NodeShape ; sh:targetClass ca:Source ;
+ sh:property [ sh:path <http://www.w3.org/2000/01/rdf-schema#label> ; sh:minCount 1 ] .

@@ -1,0 +1,61 @@
+@prefix ca: <https://w3id.org/cs-abstractions/v1#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<urn:mathematical-abstractions:ontology> a owl:Ontology ;
+  rdfs:label "Mathematical abstractions catalog ontology" ;
+  rdfs:comment "Catalog record semantics for ONTFS. Describes mathematical claims; does not assert their truth or transfer axioms along concept links." .
+
+ca:Concept a owl:Class ; rdfs:label "Mathematical concept" .
+ca:Operation a owl:Class ; rdfs:label "Abstract operation" .
+ca:Claim a owl:Class ; rdfs:label "Mathematical claim record" .
+ca:Axiom a owl:Class ; rdfs:subClassOf ca:Claim .
+ca:Law a owl:Class ; rdfs:subClassOf ca:Claim .
+ca:Theorem a owl:Class ; rdfs:subClassOf ca:Claim .
+ca:Category a owl:Class .
+ca:ConceptKind a owl:Class .
+ca:Source a owl:Class .
+ca:Document a owl:Class .
+
+ca:category a owl:ObjectProperty ; rdfs:domain ca:Concept ; rdfs:range ca:Category .
+ca:kind a owl:ObjectProperty ; rdfs:domain ca:Concept ; rdfs:range ca:ConceptKind .
+ca:hasOperation a owl:ObjectProperty ; rdfs:domain ca:Concept ; rdfs:range ca:Operation .
+ca:hasAxiom a owl:ObjectProperty ; rdfs:domain ca:Concept ; rdfs:range ca:Axiom .
+ca:hasLaw a owl:ObjectProperty ; rdfs:domain ca:Concept ; rdfs:range ca:Law .
+ca:hasTheorem a owl:ObjectProperty ; rdfs:domain ca:Concept ; rdfs:range ca:Theorem .
+ca:concept a owl:ObjectProperty ; rdfs:domain ca:Operation ; rdfs:range ca:Concept .
+ca:appliesTo a owl:ObjectProperty ; rdfs:domain ca:Claim ; rdfs:range ca:Concept .
+ca:requiresConcept a owl:ObjectProperty ; rdfs:domain ca:Concept ; rdfs:range ca:Concept ;
+  rdfs:comment "Explicit retrieval prerequisite. No axiom inheritance or automatic transitive assertion." .
+ca:specializationOf a owl:ObjectProperty ; rdfs:domain ca:Concept ; rdfs:range ca:Concept ;
+  rdfs:comment "Explicit direct interface specialization with an instantiation note; not rdfs:subClassOf between catalog individuals." .
+ca:relatedConcept a owl:ObjectProperty ; rdfs:domain ca:Concept ; rdfs:range ca:Concept ;
+  rdfs:comment "Recorded directional association; no inferred symmetry." .
+ca:dependsOn a owl:ObjectProperty ;
+  rdfs:domain [ a owl:Class ; owl:unionOf ( ca:Claim ca:Operation ) ] ;
+  rdfs:range [ a owl:Class ; owl:unionOf ( ca:Claim ca:Operation ) ] .
+ca:source a owl:ObjectProperty ; rdfs:range ca:Source .
+ca:document a owl:ObjectProperty ; rdfs:domain ca:Concept ; rdfs:range ca:Document .
+
+ca:shortForm a owl:DatatypeProperty ; rdfs:range xsd:string .
+ca:fullName a owl:DatatypeProperty ; rdfs:range xsd:string .
+ca:definition a owl:DatatypeProperty ; rdfs:range xsd:string .
+ca:notation a owl:DatatypeProperty ; rdfs:range xsd:string .
+ca:statement a owl:DatatypeProperty ; rdfs:range xsd:string .
+ca:formalStatement a owl:DatatypeProperty ; rdfs:range xsd:string ;
+  rdfs:comment "Informal mathematical notation, not executable proof-assistant syntax." .
+ca:assumptions a owl:DatatypeProperty ; rdfs:range xsd:string .
+ca:proofSketch a owl:DatatypeProperty ; rdfs:range xsd:string .
+ca:axiomBasis a owl:DatatypeProperty .
+ca:basisKind a owl:DatatypeProperty .
+ca:basisScope a owl:DatatypeProperty .
+ca:reviewStatus a owl:DatatypeProperty .
+ca:coverageStatus a owl:DatatypeProperty .
+ca:ruleRole a owl:DatatypeProperty .
+ca:sourceLocator a owl:DatatypeProperty .
+ca:sourceNote a owl:DatatypeProperty .
+ca:provenanceKind a owl:DatatypeProperty .
+ca:provenanceStatus a owl:DatatypeProperty .
+ca:accessedOn a owl:DatatypeProperty ; rdfs:comment "Imported plain ISO date string; not a fresh source consultation." .

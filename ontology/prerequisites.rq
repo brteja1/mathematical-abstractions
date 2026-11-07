@@ -1,0 +1,6 @@
+PREFIX ca: <https://w3id.org/cs-abstractions/v1#>
+SELECT DISTINCT ?concept ?prerequisite ?name WHERE {
+  ?concept ca:shortForm "Group" ; ca:requiresConcept+ ?prerequisite .
+  ?prerequisite ca:fullName ?name .
+}
+ORDER BY ?name

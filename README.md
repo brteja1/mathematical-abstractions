@@ -1,0 +1,77 @@
+# Mathematical Abstractions
+
+A local, linked Markdown knowledge graph for mathematical modeling across disciplines, proof planning, and software test design. It imports **all 106 concepts and 998 nodes** from `/linuxdev/ai_research/cs_data_abstractions`, preserving every graph field, stable ID, source record, and historical provenance gap.
+
+Start with the [concept index](CONCEPTS.md), open the [interactive radial atlas](visualization/index.html) in a browser, or query individual records with Python. The viewer works offline and includes the reference project's category arcs, progressive specialization hierarchy, search, typed relationship filters, details, keyboard selection, pan and zoom. Each concept's details link to its Markdown page.
+
+The imported graph covers 19 categories, including algebra, logic, order, probability, topology, geometry, linear algebra, computation, databases, software semantics, and concurrency. This is a starting collection, not exhaustive coverage of mathematics or every discipline.
+
+## Storage and fields
+
+| Location | Role |
+| --- | --- |
+| [`concepts/`](concepts/) | One editable Markdown file per concept, with typed links, backlinks, readable operations/claims, and an authoritative marked JSON record block. |
+| [`data/shared.json`](data/shared.json) | Authoritative JSON-LD context, categories, concept kinds, vocabulary and shared sources. |
+| [`catalog.jsonld`](catalog.jsonld) | Generated interoperable JSON-LD export for RDF/SPARQL tools. |
+| [`CONCEPTS.md`](CONCEPTS.md) | Generated complete concept index. |
+| [`COVERAGE.md`](COVERAGE.md) | Generated counts and basis coverage, not a completeness certificate. |
+| [`visualization/template.html`](visualization/template.html) | Editable viewer template; `index.html` is generated. |
+| [`provenance_legacy.json`](provenance_legacy.json) | Imported historical citation baseline. New entries cannot use its exemptions. |
+| [`data/import_manifest.json`](data/import_manifest.json) | Original per-node hashes, context and baseline for import audit. |
+
+Concepts retain `shortForm`, `fullName`, `category`, `kind`, `definition`, `notation`, `axiomBasis`, `basisKind`, `basisScope`, and all optional fields from the original. Operations retain signatures, ownership, preconditions, outcomes and definedness. Axioms, laws and theorems remain individually identified, with assumptions, applicability, provenance and derivation dependencies. Prerequisites, specializations and related concepts remain distinct typed edges.
+
+See [the inherited schema and SPARQL examples](docs/IMPORTED_SCHEMA.md) for the complete reference documentation. That document is an imported historical description: its JSON-LD-authority instructions are superseded by this repository's Markdown workflow. The [imported roadmap](CATALOG.md) provides additional mathematical context; the generated index is the current page inventory. Original URNs and vocabulary namespace are preserved for compatibility.
+
+## Query from AI agents
+
+Python 3 and the standard library are sufficient; no service, credentials, embedding model or network is needed.
+
+```sh
+python3 scripts/catalog.py list --search group
+python3 scripts/catalog.py list --category probability
+python3 scripts/catalog.py get Group --sections operations axioms laws theorems sources
+python3 scripts/agent_query.py neighbors Group --incoming --depth 1 --limit 40
+python3 scripts/agent_query.py dossier Group --purpose proof --limit 80
+python3 scripts/agent_query.py dossier Stack --purpose tests --limit 80
+python3 scripts/agent_query.py node urn:csabs:concept/Group
+```
+
+Commands emit JSON. Retrieval reads current Markdown records directly. `get` expands only requested sections; `node` fetches any stable concept/claim/operation/source ID. `neighbors` supports chosen edge types and incoming edges. A `dossier` traverses interfaces, prerequisites, sources and derivation premises within an explicit node limit, reports truncation, and includes task instructions. Retrieve omitted premises before relying on a truncated result.
+
+The graph can help an agent select definitions, assemble proof obligations, find premises, and derive test properties. Its Unicode statements and sketches are **not executable Lean/Coq theories**. No proof-assistant bridge, general proof generator, or automatic arbitrary-code test generator is claimed. [Agent workflows](docs/AGENT_WORKFLOWS.md) explain how to connect the retrieved specifications to those tools and other uses.
+
+## Maintain and extend
+
+1. Search names, synonyms, notation and meaning before adding a concept or claim. Reuse existing records when appropriate; keep distinct semantic variants explicit.
+2. Edit the marked JSON array at the bottom of the relevant concept page. Keep the Concept and its operation/claim records together; shared claims have exactly one stored record and may be referenced from multiple concepts. Do not duplicate their IDs. To add a page, use the same block markers and filename equal to `shortForm`.
+3. Add new sources and vocabulary to `data/shared.json` as needed. Every new Concept/Axiom/Law/Theorem requires direct consulted sources, `sourceLocator`, `sourceNote` and `provenanceKind`. Derived claims need `dependsOn`. Record actual source consultation dates. Importing metadata is not fresh source verification.
+4. Record carriers, equality, empty cases, totality, overflow, rounding, nondeterminism and concurrency assumptions as relevant. Explain specialization mappings; never infer automatic axiom inheritance.
+5. Run the build and checks:
+
+```sh
+make build
+make test
+make test-rdf  # optional: requires rdflib
+python3 scripts/audit_import.py
+```
+
+`make build` validates authoritative records, regenerates readable page bodies and backlinks, exports JSON-LD, and rebuilds coverage and the offline viewer. Changes to generated prose alone are overwritten; `make test` rejects stale Markdown projections/exports and viewer data. Claims shared by pages are stored once in the first linked page by shortForm sort order after building. Find the marked record by stable ID to edit it.
+
+The checks preserve and extend the imported safeguards: unique IDs and short forms; typed, resolved links; operation ownership and claim applicability; required bases, assumptions and formal statements; acyclic derivation and specialization edges; mandatory new-entry provenance; and a non-expanding historical citation baseline. Tests also check local page links, anchors, bounded retrieval, generated data synchronization, and presence of imported IDs. `audit_import.py` reports original, changed, missing and added nodes, so deliberate later edits remain visible.
+
+Validation checks structure and citation metadata. It does not establish mathematical truth, source entailment, formal consistency, or proof completeness. Historical source gaps remain disclosed. Use [AGENTS.md](AGENTS.md) as the entry instructions for future agents.
+
+## ONTFS ontology backend
+
+The ontology is modeled in [`ontology/model.ttl`](ontology/model.ttl), with [`SHACL shapes`](ontology/shapes.ttl), an ONTFS exporter and bounded context/SPARQL access. ONTFS is configured as the submodule dependency `deps/ONTFS`, pinned to `05f166cd3ba37f13984b2746ddbbe56de24d8113` in [`dependencies.lock.json`](dependencies.lock.json). See [setup status and ontology workflow](docs/ONTOLOGY.md).
+
+```sh
+make submodules
+make deps-ontology
+make PYTHON=.venv/bin/python ontology test-ontology
+.venv/bin/python scripts/ontology.py context urn:csabs:concept/Group --limit 30
+.venv/bin/python scripts/ontology.py query ontology/prerequisites.rq
+```
+
+The parent Git repository is initialized and ONTFS is cloned and registered at the locked commit. `.gitmodules` and the submodule gitlink are staged; no initial commit has been created. Run `make deps-ontology` to install the ontology backend into the project virtual environment.

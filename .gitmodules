@@ -1,0 +1,3 @@
+[submodule "ONTFS"]
+	path = deps/ONTFS
+	url = https://github.com/brteja1/ONTFS.git

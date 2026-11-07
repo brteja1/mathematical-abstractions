@@ -1,0 +1,9 @@
+{
+  "ONTFS": {
+    "url": "https://github.com/brteja1/ONTFS.git",
+    "path": "deps/ONTFS",
+    "commit": "05f166cd3ba37f13984b2746ddbbe56de24d8113",
+    "verifiedOn": "2026-11-07",
+    "selection": "Remote default-branch HEAD resolved through GitHub API at integration time"
+  }
+}
