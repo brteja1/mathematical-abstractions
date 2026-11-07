@@ -26,7 +26,7 @@ Before translating into an assistant, write an explicit mapping:
 
 Pin the assistant version and library revision in the formalization project. Run Lean or Coq on the resulting file and retain compiler output. State any extra assumptions such as classical logic, choice or function extensionality; the extensional set-like catalog convention does not automatically justify these inside an intensional type theory. Do not use an unproved placeholder as evidence of completion.
 
-Store future assistant bindings in a separate integration manifest keyed by stable concept/claim IDs, with assistant version, library revision, fully qualified symbol, local file, assumption mapping and verification command. Add it to the JSON-LD context only through a reviewed schema change. Do not replace informal mathematics with tool-specific syntax for every consumer.
+The implemented Lean project is [`lean/`](../lean/README.md). Its separate `lean/bindings.json` manifest is keyed by stable concept/claim IDs and records pinned versions, declarations/modules, carrier/operation/assumption and premise mappings, expected types, scope, limitations and catalog fingerprints. Use `python3 scripts/lean.py get ID` to retrieve a binding, `make check-lean` for metadata checks, and `make test-lean` for actual compilation, axiom auditing and negative compiler tests. Only fresh `lean/verification.json` evidence supports a verified witness; a model or registered binding alone does not. Hash mismatches require review before updating fingerprints. The 13 partial models have explicit remaining obligations. Add bindings to the JSON-LD context only through a reviewed schema change; keep informal mathematics usable independently of Lean.
 
 ## Software test design
 

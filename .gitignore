@@ -2,6 +2,8 @@ __pycache__/
 *.py[cod]
 .venv/
 _site/
+lean/.lake/
+lean/verification.json
 .ontfs.ttl
 .ontfs.shapes.ttl
 .ontfs.generated.json

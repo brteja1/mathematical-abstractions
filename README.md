@@ -68,6 +68,10 @@ The checks preserve and extend the imported safeguards: unique IDs and short for
 
 Validation checks structure and citation metadata. It does not establish mathematical truth, source entailment, formal consistency, or proof completeness. Historical source gaps remain disclosed. Use [AGENTS.md](AGENTS.md) as the entry instructions for future agents.
 
+## Lean formalization
+
+The [`lean/`](lean/README.md) Lake project provides models or explicitly partial interfaces for all 106 catalog concepts, with pinned Lean/Mathlib versions and 17 compiled law/theorem witnesses. A separate [`bindings.json`](lean/bindings.json) links stable catalog IDs to declarations, expected types, premise mappings and limitations. `make test-lean` compiles and audits witnesses, rejects admitted or fabricated proofs, and records fresh compiler evidence. Model coverage does not mean every catalog claim has been proved. See the [formalization guide](lean/README.md) for setup, coverage and adding a new theorem.
+
 ## ONTFS ontology backend
 
 The ontology is modeled in [`ontology/model.ttl`](ontology/model.ttl), with [`SHACL shapes`](ontology/shapes.ttl), an ONTFS exporter and bounded context/SPARQL access. ONTFS is configured as the submodule dependency `deps/ONTFS`, pinned to `05f166cd3ba37f13984b2746ddbbe56de24d8113` in [`dependencies.lock.json`](dependencies.lock.json). See [setup status and ontology workflow](docs/ONTOLOGY.md).

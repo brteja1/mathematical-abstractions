@@ -1,0 +1,1236 @@
+{
+  "schemaVersion": 1,
+  "toolchain": "leanprover/lean4:v4.35.0",
+  "mathlibRevision": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "interpretation": "Model bindings and proposed theorem witnesses are separate. Only a fresh verification.json records successful compilation and axiom audits; metadata alone is not a verified proof.",
+  "bindings": {
+    "urn:csabs:concept/ArbitraryPrecisionInteger": {
+      "kind": "model",
+      "symbol": "Catalog.ArbitraryPrecisionInteger",
+      "module": "Catalog.Numeric",
+      "scope": "model",
+      "mapping": "Lean Int for exact unbounded values; runtime resource failures are outside this value model.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "6428f484ac5f7daaa60bcccc29de39c536aa2b2061912903f1d603e2615228c5"
+    },
+    "urn:csabs:concept/Array": {
+      "kind": "model",
+      "symbol": "Catalog.Array",
+      "module": "Catalog.DataStructures",
+      "scope": "model",
+      "mapping": "Fin n -> A; fixed-length total lookup and Function.update store; n = 0 permitted.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "d6dad76dca6e4303551cc54d28423d763600fc6f0bbcf05b35c88fcab77e9c87"
+    },
+    "urn:csabs:concept/BayesianNetwork": {
+      "kind": "model",
+      "symbol": "Catalog.BayesianNetwork",
+      "module": "Catalog.Probability",
+      "scope": "model",
+      "mapping": "Finite DAG and nonempty finite variable carriers with normalized PMF conditional tables; joint defined by finite factorization.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "b16ede8a862aba0f598903a0f707e7ae79ca3296216882516bb98c1a0516279f"
+    },
+    "urn:csabs:concept/Binary128": {
+      "kind": "model",
+      "symbol": "Catalog.Binary128",
+      "module": "Catalog.Numeric",
+      "scope": "partial",
+      "mapping": "FloatingPointType instance: 128 bits, radix 2, precision 113, exponents [-16382,16383], gradual underflow enabled.",
+      "limitations": "No correctly-rounded arithmetic or exception/NaN payload specification has been proved; run and round are unconstrained client parameters. Not a complete IEEE model.",
+      "catalogHash": "861d3787a10ab2bfee54d3d5684254a9aa12af7798e6a5351d892b7d0f43fca9"
+    },
+    "urn:csabs:concept/Binary16": {
+      "kind": "model",
+      "symbol": "Catalog.Binary16",
+      "module": "Catalog.Numeric",
+      "scope": "partial",
+      "mapping": "FloatingPointType instance: 16 bits, radix 2, precision 11, exponents [-14,15], gradual underflow enabled.",
+      "limitations": "No correctly-rounded arithmetic or exception/NaN payload specification has been proved; run and round are unconstrained client parameters. Not a complete IEEE model.",
+      "catalogHash": "397d7a58b3a60addfb75ca6877d92cc72bc0add883a49696ff719fd41403b0e1"
+    },
+    "urn:csabs:concept/Binary32": {
+      "kind": "model",
+      "symbol": "Catalog.Binary32",
+      "module": "Catalog.Numeric",
+      "scope": "partial",
+      "mapping": "FloatingPointType instance: 32 bits, radix 2, precision 24, exponents [-126,127], gradual underflow enabled.",
+      "limitations": "No correctly-rounded arithmetic or exception/NaN payload specification has been proved; run and round are unconstrained client parameters. Not a complete IEEE model.",
+      "catalogHash": "8c8dfd7fa13f32673ca958f707b405a8f29f868ac440cd2ea47668f9617daf31"
+    },
+    "urn:csabs:concept/Binary64": {
+      "kind": "model",
+      "symbol": "Catalog.Binary64",
+      "module": "Catalog.Numeric",
+      "scope": "partial",
+      "mapping": "FloatingPointType instance: 64 bits, radix 2, precision 53, exponents [-1022,1023], gradual underflow enabled.",
+      "limitations": "No correctly-rounded arithmetic or exception/NaN payload specification has been proved; run and round are unconstrained client parameters. Not a complete IEEE model.",
+      "catalogHash": "03ac14535440d9ac243f25dda31fd91f32ce86092f25ec928dbd58544facec0a"
+    },
+    "urn:csabs:concept/Bisimulation": {
+      "kind": "model",
+      "symbol": "Catalog.Bisimulation",
+      "module": "Catalog.Graphs",
+      "scope": "model",
+      "mapping": "Strong forward and reverse simulations; use labelled observations if observation preservation is needed.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "7e21d06a02abe7e0e55cd8277a826ec0b02b6d48fbc91d4b93a3caf4129abaae"
+    },
+    "urn:csabs:concept/BitVector": {
+      "kind": "model",
+      "symbol": "Catalog.BitVector",
+      "module": "Catalog.Numeric",
+      "scope": "model",
+      "mapping": "Lean BitVec width; exactly width bits; zero width allowed.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "2dd569e7b66ca3620bcfc3494c3c79d2a2fb13faec1aa47b749eb178e7d9ca2d"
+    },
+    "urn:csabs:concept/BooleanAlgebra": {
+      "kind": "model",
+      "symbol": "Catalog.BooleanAlgebra",
+      "module": "Catalog.Order",
+      "scope": "model",
+      "mapping": "Mathlib BooleanAlgebra; trivial carrier permitted.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "b6dfec6ce41faed5f6c4bf4f5d8fbbf530eb6bc3477a6ffc0d79900ee850cb0c"
+    },
+    "urn:csabs:concept/CandidateKey": {
+      "kind": "model",
+      "symbol": "Catalog.CandidateKey",
+      "module": "Catalog.Database",
+      "scope": "model",
+      "mapping": "Minimal superkey relative to explicit FD theory, with semantic implication over all finite instances.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "3fba523efaad88d1db50bd91388f144b6b44df6e78ff1c6cb7bd7a2626157d3b"
+    },
+    "urn:csabs:concept/CartesianProduct": {
+      "kind": "model",
+      "symbol": "Catalog.CartesianProduct",
+      "module": "Catalog.Foundations",
+      "scope": "model",
+      "mapping": "A × B with pair equality and projections; factors may be empty.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "dd60b2dd00fd9f3678aff249e8d8ea480e10b2bb1beb1f276e942adce241405a"
+    },
+    "urn:csabs:concept/CheckedInteger": {
+      "kind": "model",
+      "symbol": "Catalog.CheckedInteger",
+      "module": "Catalog.Numeric",
+      "scope": "model",
+      "mapping": "Nonempty bounded Int interval subtype; checkRange and checkedAdd report none exactly when out of range.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "c5e32f88d670b4485107c5b5c00dc3d467d66db4b9b3048464c0c43ef92c6dc1"
+    },
+    "urn:csabs:concept/ClosureOperator": {
+      "kind": "model",
+      "symbol": "Catalog.ClosureOperator",
+      "module": "Catalog.Order",
+      "scope": "model",
+      "mapping": "Mathlib ClosureOperator on an explicitly supplied PartialOrder.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "74c0cbdf027c77b783ae893feccf37dd847a91b5e47ba9220e1cfb6f1f92ea33"
+    },
+    "urn:csabs:concept/CompleteLattice": {
+      "kind": "model",
+      "symbol": "Catalog.CompleteLattice",
+      "module": "Catalog.Order",
+      "scope": "model",
+      "mapping": "Mathlib CompleteLattice, including sup/inf of the empty subset.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "bd9b6b512ac6d493f426754787d9e5574dad4b38aea5444838ea06c94472e278"
+    },
+    "urn:csabs:concept/ConditionalProbability": {
+      "kind": "model",
+      "symbol": "Catalog.ConditionalProbability",
+      "module": "Catalog.Probability",
+      "scope": "model",
+      "mapping": "Real ratio of measurable intersection/event probabilities with explicit positive-denominator precondition.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "d7c18632b4725b5db164e475b07ef07e1ac9d40bce9494e985ef2e2acbb7423e"
+    },
+    "urn:csabs:concept/ContextFreeGrammar": {
+      "kind": "model",
+      "symbol": "Catalog.ContextFreeGrammar",
+      "module": "Catalog.Languages",
+      "scope": "model",
+      "mapping": "Mathlib ContextFreeGrammar with finite terminals and finite nonterminals; finite rewrite-rule set.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "c9a3683ce282be4b9758cb6a3916555e041012cce0092812fa4b4a2c95a93829"
+    },
+    "urn:csabs:concept/DAG": {
+      "kind": "model",
+      "symbol": "Catalog.DAG",
+      "module": "Catalog.Graphs",
+      "scope": "model",
+      "mapping": "Directed edge relation plus absence of positive TransGen cycles.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "e8d26e89d50c818b99b65f32962afa6f2f30ccc1a57468c348fccaca435ee78f"
+    },
+    "urn:csabs:concept/DFA": {
+      "kind": "model",
+      "symbol": "Catalog.DFA",
+      "module": "Catalog.Languages",
+      "scope": "model",
+      "mapping": "Mathlib DFA with explicit finite alphabet/state types and total transition function.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "0bf1b8957979e3b24acd38e98e26f8486a484f5b1967c2c41f72657228e81d5e"
+    },
+    "urn:csabs:concept/DatabaseRelation": {
+      "kind": "model",
+      "symbol": "Catalog.DatabaseRelation",
+      "module": "Catalog.Database",
+      "scope": "model",
+      "mapping": "Finset of dependent named tuples, set semantics and extensional equality; projection/join algorithms remain to be exposed.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "7be557b3c93ed556e5fbfaaf05a958f3bd72cc638d164520cd735cae3a45d131"
+    },
+    "urn:csabs:concept/Deque": {
+      "kind": "model",
+      "symbol": "Catalog.Deque",
+      "module": "Catalog.DataStructures",
+      "scope": "model",
+      "mapping": "List A with front/back insertion and Option endpoint removal.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "57417d1c32c8857c94df60f5e46def6fdc0109e58e80430cd05095fb38bc17ae"
+    },
+    "urn:csabs:concept/DirectedGraph": {
+      "kind": "model",
+      "symbol": "Catalog.DirectedGraph",
+      "module": "Catalog.Graphs",
+      "scope": "model",
+      "mapping": "V -> V -> Prop, allowing loops; no finiteness or determinism inferred.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "79f8e68a6474181f4bb361ab58ac3b2352bb81ae9baf4bd397bafc954b707ca3"
+    },
+    "urn:csabs:concept/EmptyType": {
+      "kind": "model",
+      "symbol": "Catalog.EmptyType",
+      "module": "Catalog.Foundations",
+      "scope": "model",
+      "mapping": "Lean Empty and its eliminator; no inhabitants.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "66a8d2a6503aa4551dcb06cd32d163e6976db3a057eb828e769da75943f4c4c9"
+    },
+    "urn:csabs:concept/EquivalenceRelation": {
+      "kind": "model",
+      "symbol": "Catalog.EquivalenceRelation",
+      "module": "Catalog.Foundations",
+      "scope": "model",
+      "mapping": "Setoid A: typed relation with reflexivity, symmetry and transitivity.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "06663f6a317b3b405df3b2bb005fa75dd105cb3a770d80b4e300e4d5fe6202c7"
+    },
+    "urn:csabs:concept/Field": {
+      "kind": "model",
+      "symbol": "Catalog.Field",
+      "module": "Catalog.Algebra",
+      "scope": "model",
+      "mapping": "Mathlib Field, commutative and nontrivial; inverse is totalized at zero, but division results require nonzero side conditions.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "0820fdfa7c9e77c350f71f8df9e55576ec4a9f39addd8ce6df5bbd43f1133b32"
+    },
+    "urn:csabs:concept/FiniteSet": {
+      "kind": "model",
+      "symbol": "Catalog.FiniteSet",
+      "module": "Catalog.DataStructures",
+      "scope": "model",
+      "mapping": "Finset A, quotient-based finite sets with extensional equality.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "4148bcf61aeae00357491156d5c88b7b43af568aff281eee1d177fb3b5fd8ba6"
+    },
+    "urn:csabs:concept/FixedPoint": {
+      "kind": "model",
+      "symbol": "Catalog.FixedPoint",
+      "module": "Catalog.Order",
+      "scope": "model",
+      "mapping": "Predicate f x = x for a total self-map; no existence claim.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "9b443662fa6610da07d9832b5cf26ca48517673e3c3ed70ddfa75e153692c1b0"
+    },
+    "urn:csabs:concept/FixedWidthSignedInteger": {
+      "kind": "model",
+      "symbol": "Catalog.FixedWidthSignedInteger",
+      "module": "Catalog.Numeric",
+      "scope": "model",
+      "mapping": "Positive-width twos-complement Int range; signedAdd and truncating signedDiv return Option, excluding zero divisor and overflow.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "1772c8ebe6e13be9673ff14ad42a9fedab0abf52e3be6acaee018bb6629c460b"
+    },
+    "urn:csabs:concept/FixedWidthUnsignedInteger": {
+      "kind": "model",
+      "symbol": "Catalog.FixedWidthUnsignedInteger",
+      "module": "Catalog.Numeric",
+      "scope": "model",
+      "mapping": "Lean BitVec width with explicit positive-width proof; modulo 2^width arithmetic and unsigned natural quotient/remainder. Zero-divisor behavior of totalized library operations is outside catalog definedness.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "cd1bc7f82ced4d93746619ab405433fe51b489f6be1656a11ad49c2e70157c09"
+    },
+    "urn:csabs:concept/FloatingPointType": {
+      "kind": "model",
+      "symbol": "Catalog.FloatingPointType",
+      "module": "Catalog.Numeric",
+      "scope": "partial",
+      "mapping": "Explicit format, representable finite values, signed zero, infinities, NaNs, rounding modes and result/flag execution interface.",
+      "limitations": "No correctly-rounded arithmetic or exception/NaN payload specification has been proved; run and round are unconstrained client parameters. Not a complete IEEE model.",
+      "catalogHash": "521f667af23ac6293996d59168138a9785fc693f0a13745b55e49cf95b491598"
+    },
+    "urn:csabs:concept/FormalLanguage": {
+      "kind": "model",
+      "symbol": "Catalog.FormalLanguage",
+      "module": "Catalog.Languages",
+      "scope": "model",
+      "mapping": "Mathlib Language A = Set (List A), finite words including empty word.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "553baf26b263ee3b1cfefda96a776492aa968fab2f91ed21b29cd927ef8ff97c"
+    },
+    "urn:csabs:concept/Function": {
+      "kind": "model",
+      "symbol": "Catalog.Function",
+      "module": "Catalog.Foundations",
+      "scope": "model",
+      "mapping": "Total typed A -> B; function equality is Lean equality, with funext when needed.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "47ce15a56dcf3b8dff1ea16004236ddc74be196270cebc17e636287a7e35e289"
+    },
+    "urn:csabs:concept/FunctionType": {
+      "kind": "model",
+      "symbol": "Catalog.FunctionType",
+      "module": "Catalog.Foundations",
+      "scope": "model",
+      "mapping": "Total pure A -> B; no bottom, effects or divergence; extensional comparison uses funext.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "ae82a75cce3eb66e8b6432f52a98d218b7e94d49e0ac08e972bcedf6ec70904e"
+    },
+    "urn:csabs:concept/FunctionalDependency": {
+      "kind": "model",
+      "symbol": "Catalog.FunctionalDependency",
+      "module": "Catalog.Database",
+      "scope": "model",
+      "mapping": "Agreement on determinant implies agreement on dependent attributes; implication quantifies all finite relation instances.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "af11cf7ae250523bc7d962e8fd228238ef0d71141bceb68a4e7960149bb1addf"
+    },
+    "urn:csabs:concept/GaloisConnection": {
+      "kind": "model",
+      "symbol": "Catalog.GaloisConnection",
+      "module": "Catalog.Order",
+      "scope": "model",
+      "mapping": "Adjunction equivalence l a <= b iff a <= r b on explicit partial orders.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "60385e16bf33fe05937f6a688de36fc58944506b7f95fe2feb40f693c87d4458"
+    },
+    "urn:csabs:concept/Graph": {
+      "kind": "model",
+      "symbol": "Catalog.Graph",
+      "module": "Catalog.Graphs",
+      "scope": "model",
+      "mapping": "Mathlib SimpleGraph V with explicit Fintype V; symmetric irreflexive adjacency.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "4734111109ed2a15bea7fa167b9a54e2c94642f92a60f55335fa5c3400bbc66e"
+    },
+    "urn:csabs:concept/Group": {
+      "kind": "model",
+      "symbol": "Catalog.Group",
+      "module": "Catalog.Algebra",
+      "scope": "model",
+      "mapping": "Mathlib Group; chosen inverse, associativity and two-sided unit/inverse equations. Nonempty follows from one.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "468d4981889d0878ab187a8ef42adb040a7079ac081880ca3a096f6ccb470a3d"
+    },
+    "urn:csabs:concept/HappensBefore": {
+      "kind": "model",
+      "symbol": "Catalog.HappensBefore",
+      "module": "Catalog.Semantics",
+      "scope": "model",
+      "mapping": "Positive transitive closure of process/send-receive edges, with explicit no-causal-cycle condition.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "c710c4b6140033e3928eabd41ac9324c4bffe3439703a997afb07a509e758065"
+    },
+    "urn:csabs:concept/HoareTriple": {
+      "kind": "model",
+      "symbol": "Catalog.HoareTriple",
+      "module": "Catalog.Semantics",
+      "scope": "model",
+      "mapping": "Partial correctness over every normally terminating relational outcome; no termination assumption.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "6506bdaafb02afae4dd911c7285e675507befd03db9e6e65e5f6b2731895daa8"
+    },
+    "urn:csabs:concept/MathematicalInteger": {
+      "kind": "model",
+      "symbol": "Catalog.Integer",
+      "module": "Catalog.Numeric",
+      "scope": "model",
+      "mapping": "Lean Int, exact unbounded mathematical value semantics; no resource-exhaustion claims.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "9155c7db5acc2f18b38bbcd635054f1db011aea025cab6e6426a9cd720011951"
+    },
+    "urn:csabs:concept/KripkeStructure": {
+      "kind": "model",
+      "symbol": "Catalog.KripkeStructure",
+      "module": "Catalog.Graphs",
+      "scope": "model",
+      "mapping": "Finite state type, initial set, serial transition relation and propositional labels.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "85881bbfc0dc7cdcf5221cd74d7e7bf3fd2b700dcb23ce3a665b8ba61ff213ec"
+    },
+    "urn:csabs:concept/LabelledTransitionSystem": {
+      "kind": "model",
+      "symbol": "Catalog.LabelledTransitionSystem",
+      "module": "Catalog.Graphs",
+      "scope": "model",
+      "mapping": "Initial states and S -> Act -> S -> Prop; finite paths include empty path.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "9c989458e805caf506880f8fc6408d4b66ebfb8fb162cd341430270fc25f5882"
+    },
+    "urn:csabs:concept/Lattice": {
+      "kind": "model",
+      "symbol": "Catalog.Lattice",
+      "module": "Catalog.Order",
+      "scope": "model",
+      "mapping": "Mathlib Lattice, meet/join given by their ordered universal properties.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "5c09f67676d38cc3c3479a5f87632ae6f16e44b203c67544a240c42ed38f8600"
+    },
+    "urn:csabs:concept/LinearMap": {
+      "kind": "model",
+      "symbol": "Catalog.LinearMap",
+      "module": "Catalog.Algebra",
+      "scope": "model",
+      "mapping": "Mathlib V ->ₗ[F] W over the same explicit field and module structures.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "1a0e2f48b6313cf92bb69dd5bf32f7b4b39f537a8101d97c1273bb00abdb8be5"
+    },
+    "urn:csabs:concept/LinearTemporalLogic": {
+      "kind": "model",
+      "symbol": "Catalog.LinearTemporalLogic",
+      "module": "Catalog.Logic",
+      "scope": "model",
+      "mapping": "Infinite discrete trace semantics; next advances once and strong until has a finite future witness.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "b61d2bb2a2ee52a3a2c1163faf7a440a57c06b6ecc29b2ab61dc6d642e2e8785"
+    },
+    "urn:csabs:concept/Linearizability": {
+      "kind": "model",
+      "symbol": "Catalog.Linearizability",
+      "module": "Catalog.Semantics",
+      "scope": "partial",
+      "mapping": "Permissible completion admitting a legal sequential witness preserving process and real-time order.",
+      "limitations": "Well-formed histories, matching, projections and permissible completions are abstract client predicates; event-level consistency conditions remain to be instantiated.",
+      "catalogHash": "0bf7c00e930b91e33e232dfad26700e6efe658d9e0b9790403eaf8f9ec66c6c4"
+    },
+    "urn:csabs:concept/LivenessProperty": {
+      "kind": "model",
+      "symbol": "Catalog.LivenessProperty",
+      "module": "Catalog.Semantics",
+      "scope": "model",
+      "mapping": "Each finite List prefix admits a satisfying infinite trace; empty-alphabet cases stay explicit in types.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "92ed050cf2b186259df0ec534c44bdd3f011426c69d1c0290c2aae04c829260c"
+    },
+    "urn:csabs:concept/LoopInvariant": {
+      "kind": "model",
+      "symbol": "Catalog.LoopInvariant",
+      "module": "Catalog.Semantics",
+      "scope": "model",
+      "mapping": "Initial implication and preservation by every enabled normally terminating body execution.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "42e72b4f57c7e2600dd6772ab808c1382123bc0a8515b7a28eecfbe9d9f016d6"
+    },
+    "urn:csabs:concept/Manifold": {
+      "kind": "model",
+      "symbol": "Catalog.Manifold",
+      "module": "Catalog.Topology",
+      "scope": "model",
+      "mapping": "Boundaryless Euclidean ChartedSpace with Hausdorff and second-countable hypotheses explicit, fixed natural dimension.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "782adfa7056dcb97054f2b1c37e0a00e6066cfcbc92bb4001eab81ec619929ec"
+    },
+    "urn:csabs:concept/Map": {
+      "kind": "model",
+      "symbol": "Catalog.Map",
+      "module": "Catalog.DataStructures",
+      "scope": "model",
+      "mapping": "Lookup K -> Option V plus proof that the defined-key set is finite; record proof fields are propositionally irrelevant.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "54b423da7fd6770e96f0d00d74a612383cb7edb2949e81bf7e7e16605420baec"
+    },
+    "urn:csabs:concept/MarkovChain": {
+      "kind": "model",
+      "symbol": "Catalog.MarkovChain",
+      "module": "Catalog.Probability",
+      "scope": "partial",
+      "mapping": "Finite nonempty state PMF initial law and homogeneous stochastic PMF kernel; finite path probabilities defined by products.",
+      "limitations": "Infinite sample process, conditional Markov property and its equivalence to this finite path construction are not formalized.",
+      "catalogHash": "a2ce7d91b3692d05940387ce56323c0acddbb9275a8b9edd2c2169bc54cce3b5"
+    },
+    "urn:csabs:concept/Matrix": {
+      "kind": "model",
+      "symbol": "Catalog.Matrix",
+      "module": "Catalog.Algebra",
+      "scope": "model",
+      "mapping": "Mathlib Matrix (Fin m) (Fin n) F over a field; zero dimensions permitted; extensional entry equality.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "640de890971f538603e3be2522ef25f591c8828d422e9964e334cd250d257376"
+    },
+    "urn:csabs:concept/MeasurableFunction": {
+      "kind": "model",
+      "symbol": "Catalog.MeasurableFunction",
+      "module": "Catalog.Probability",
+      "scope": "model",
+      "mapping": "Total function subtype satisfying Mathlib Measurable on specified source/target sigma-algebras.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "fd9bb33f9c98175c3317446320553529a8c6e0767338826cb3de2447a8f274b4"
+    },
+    "urn:csabs:concept/MeasurableSpace": {
+      "kind": "model",
+      "symbol": "Catalog.MeasurableSpace",
+      "module": "Catalog.Probability",
+      "scope": "model",
+      "mapping": "Mathlib sigma-algebra on explicit carrier; empty/complement/countable-union closure.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "48d662b72444f80c7bcbfb645b983c7745efd3cf1c18dd08c0bb014566f699ac"
+    },
+    "urn:csabs:concept/MeasureSpace": {
+      "kind": "model",
+      "symbol": "Catalog.MeasureSpace",
+      "module": "Catalog.Probability",
+      "scope": "model",
+      "mapping": "Mathlib MeasureSpace bundles sigma-algebra and nonnegative extended-real countably additive measure.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "7f178bb0221afcdc2974b8a7df81d3a750f1e11dde4a691ce524e7d7b8903c05"
+    },
+    "urn:csabs:concept/ModalLogic": {
+      "kind": "model",
+      "symbol": "Catalog.ModalLogic",
+      "module": "Catalog.Logic",
+      "scope": "model",
+      "mapping": "Modal K formulas evaluated on arbitrary accessibility relations; box quantifies all successors, including vacuous dead ends.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "948dbefdc86661b150e6f4d368448aa7d8e1c4f71c3a42d3bd25d69308e0e562"
+    },
+    "urn:csabs:concept/ModularInteger": {
+      "kind": "model",
+      "symbol": "Catalog.ModularInteger",
+      "module": "Catalog.Numeric",
+      "scope": "model",
+      "mapping": "Mathlib ZMod modulus with explicit proof modulus >= 2.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "8957aba82719cef41c4369e893170e8b4bc4426307ed03b3aae4364798d99931"
+    },
+    "urn:csabs:concept/Monoid": {
+      "kind": "model",
+      "symbol": "Catalog.Monoid",
+      "module": "Catalog.Algebra",
+      "scope": "model",
+      "mapping": "Mathlib Monoid; one gives nonemptiness, mul_assoc and both identity equations.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "235e0a0b9450bd451c4278a88d43004d76ca2d520c68c88055f1a5cdc93820a2"
+    },
+    "urn:csabs:concept/MonotoneFunction": {
+      "kind": "model",
+      "symbol": "Catalog.MonotoneFunction",
+      "module": "Catalog.Order",
+      "scope": "model",
+      "mapping": "Mathlib OrderHom A B, packaging a total map and monotonicity.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "c0ace18478e26c8bb8fea451dc2ec11caab8d41739bab2806e39d4d1c6b51376"
+    },
+    "urn:csabs:concept/Multiset": {
+      "kind": "model",
+      "symbol": "Catalog.Multiset",
+      "module": "Catalog.DataStructures",
+      "scope": "model",
+      "mapping": "Mathlib Multiset A, quotient of lists by permutation, equivalent finite multiplicity representation.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "2ad8734b69d9c373c8892efc864349f9195cb67ddd090dadac0005cf780d4102"
+    },
+    "urn:csabs:concept/NFA": {
+      "kind": "model",
+      "symbol": "Catalog.NFA",
+      "module": "Catalog.Languages",
+      "scope": "model",
+      "mapping": "Mathlib NFA restricted to a singleton start set; finite alphabet and states, no epsilon transitions.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "bfcc196a99f34996ce3057a9defd9ac906359d8fa622e46f27adc534d2255db6"
+    },
+    "urn:csabs:concept/NaturalNumber": {
+      "kind": "model",
+      "symbol": "Catalog.NaturalNumber",
+      "module": "Catalog.Numeric",
+      "scope": "model",
+      "mapping": "Lean Nat, standard inductive naturals, exact arithmetic and induction.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "23de9ae053a272dd0fbe8f29150254e4593bc99693984b87c4a7e70bf6fedc38"
+    },
+    "urn:csabs:concept/OptionType": {
+      "kind": "model",
+      "symbol": "Catalog.OptionType",
+      "module": "Catalog.Foundations",
+      "scope": "model",
+      "mapping": "Lean Option A; none and some are disjoint constructors.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "6ec1bed69104960717e765dbbd9744edab6cb71c52462f241e2f787eac6d414f"
+    },
+    "urn:csabs:concept/OrderedSet": {
+      "kind": "model",
+      "symbol": "Catalog.OrderedSet",
+      "module": "Catalog.DataStructures",
+      "scope": "model",
+      "mapping": "Subtype of List A satisfying Nodup; equality retains position.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "fc6c456655ea635cd618326525f39aa74c8fe756c6cca7cd0e6573d1f97016b1"
+    },
+    "urn:csabs:concept/PartialFunction": {
+      "kind": "model",
+      "symbol": "Catalog.PartialFunction",
+      "module": "Catalog.Foundations",
+      "scope": "model",
+      "mapping": "A -> Option B; none means undefined, some b means the unique defined value; totalized representation of a partial map.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "de4c6aa0991101fcc08c51b538cb272fa1abf1f692988d1df5598c182219bd25"
+    },
+    "urn:csabs:concept/PartialOrder": {
+      "kind": "model",
+      "symbol": "Catalog.PartialOrder",
+      "module": "Catalog.Order",
+      "scope": "model",
+      "mapping": "Mathlib PartialOrder; antisymmetry uses Lean equality.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "2b250422c34a21aacf41926cb22d2b6cd5e8fd0ce0ad6e18b5af91911b401da2"
+    },
+    "urn:csabs:concept/Partition": {
+      "kind": "model",
+      "symbol": "Catalog.Partition",
+      "module": "Catalog.Foundations",
+      "scope": "model",
+      "mapping": "Set of nonempty pairwise disjoint blocks covering A; empty carrier admits empty partition.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "148223ea0714a26248697403734a49034424dbf443fcd81d59ce57e45c0fe762"
+    },
+    "urn:csabs:concept/PigeonholePrinciple": {
+      "kind": "model",
+      "symbol": "Catalog.PigeonholePrinciple",
+      "module": "Catalog.Foundations",
+      "scope": "model",
+      "mapping": "Explicit finite-cardinality proposition over any function A -> B, not an assumed theorem.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "3f2f1cdebe79cdabcece7ca2366dbb18742171c04ce4109eab69e6344aba6b4f"
+    },
+    "urn:csabs:concept/PowerSet": {
+      "kind": "model",
+      "symbol": "Catalog.PowerSet",
+      "module": "Catalog.Foundations",
+      "scope": "model",
+      "mapping": "Set A, the type of predicates on a fixed ambient carrier A; membership is predicate application.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "9047e2e9069753d36575fc029e9b520e17c55b81453248fc70e886e8623c9f85"
+    },
+    "urn:csabs:concept/PredicateLogic": {
+      "kind": "model",
+      "symbol": "Catalog.PredicateLogic",
+      "module": "Catalog.Logic",
+      "scope": "model",
+      "mapping": "Arity-indexed first-order syntax, total function-symbol interpretation, nonempty domain, de Bruijn quantification and equality.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "986bcd0306935b4f800ac9d10ebfe98f6f7cb70d5bbf1362edae500a648f37c8"
+    },
+    "urn:csabs:concept/Preorder": {
+      "kind": "model",
+      "symbol": "Catalog.Preorder",
+      "module": "Catalog.Order",
+      "scope": "model",
+      "mapping": "Mathlib Preorder with reflexivity and transitivity; no antisymmetry assumed.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "0f3232873f151a9ceb0f41aa8d578ee2e761f657b4ebcd5c5391b0c59da707a5"
+    },
+    "urn:csabs:concept/PriorityQueue": {
+      "kind": "model",
+      "symbol": "Catalog.PriorityQueue",
+      "module": "Catalog.DataStructures",
+      "scope": "model",
+      "mapping": "Multiset A with supplied LinearOrder on priorities; extractMin is a relation removing one minimal occurrence, allowing all ties.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "b852a309c1a322e001d9a93c7879b093f4b1af4204307fef46c678d321a37bc3"
+    },
+    "urn:csabs:concept/ProbabilitySpace": {
+      "kind": "model",
+      "symbol": "Catalog.ProbabilitySpace",
+      "module": "Catalog.Probability",
+      "scope": "model",
+      "mapping": "Mathlib ProbabilityMeasure, carrying a measure and normalization proof on the supplied measurable carrier.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "89c76dce734a4acab4370ef5554c335e368b599f1b2c048ecab8af740d68d6ce"
+    },
+    "urn:csabs:concept/ProductType": {
+      "kind": "model",
+      "symbol": "Catalog.ProductType",
+      "module": "Catalog.Foundations",
+      "scope": "model",
+      "mapping": "Lean Prod A B with constructor, projections, beta and eta.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "e3632167668e14e48b20b94b7f2dbedc0916a6b3407201b43c46c1ceeed1d9fd"
+    },
+    "urn:csabs:concept/PropositionalLogic": {
+      "kind": "model",
+      "symbol": "Catalog.PropositionalLogic",
+      "module": "Catalog.Logic",
+      "scope": "model",
+      "mapping": "Finite formulas interpreted by Bool valuations and classical Boolean truth functions.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "99994a0ada6e96985dbd06a102efe119c4bf3882ac38901d194ab34f3c419537"
+    },
+    "urn:csabs:concept/Queue": {
+      "kind": "model",
+      "symbol": "Catalog.Queue",
+      "module": "Catalog.DataStructures",
+      "scope": "model",
+      "mapping": "List A with front at head; enqueue appends, dequeue removes head; empty returns none.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "d7b06a5fe5d718db7d1ae9e2774cb417e0ba0b096bc348a8c3a14d80279d84ca"
+    },
+    "urn:csabs:concept/RandomVariable": {
+      "kind": "model",
+      "symbol": "Catalog.RandomVariable",
+      "module": "Catalog.Probability",
+      "scope": "model",
+      "mapping": "Measurable function with explicit probability-space parameter; law uses Measure.map.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "e062725d3f86cc0ac7a54d36731c82822e475253c8ea0c6dd32466264dc73ff5"
+    },
+    "urn:csabs:concept/RegularLanguage": {
+      "kind": "model",
+      "symbol": "Catalog.RegularLanguage",
+      "module": "Catalog.Languages",
+      "scope": "model",
+      "mapping": "Mathlib Language.IsRegular (existence of finite-state DFA) over an explicit finite alphabet.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "8d1e38cd142f6f1b75f097127a8f0b9bfb812773529aa9fc3b58ed4a871f17b3"
+    },
+    "urn:csabs:concept/Relation": {
+      "kind": "model",
+      "symbol": "Catalog.Relation",
+      "module": "Catalog.Foundations",
+      "scope": "model",
+      "mapping": "A -> B -> Prop; relational composition is existential over the middle carrier.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "782e265323f084c22fa961951ee24190b3d787103807e0164ba057d8c23a0008"
+    },
+    "urn:csabs:concept/RelationalSchema": {
+      "kind": "model",
+      "symbol": "Catalog.RelationalSchema",
+      "module": "Catalog.Database",
+      "scope": "model",
+      "mapping": "Finite named attribute type and dependent domain family; tuples assign every attribute.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "71e670a62e73dc118e9240f2f624937025cf085e0fab18b6707bbfd05275ce1a"
+    },
+    "urn:csabs:concept/Ring": {
+      "kind": "model",
+      "symbol": "Catalog.Ring",
+      "module": "Catalog.Algebra",
+      "scope": "model",
+      "mapping": "Mathlib unital Ring, allowing zero = one and noncommutative multiplication.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "f1529a2ca96c34eb62eeb829f085b94bcc7d9c69fbf59313e54f608ff35d009b"
+    },
+    "urn:csabs:concept/SafetyProperty": {
+      "kind": "model",
+      "symbol": "Catalog.SafetyProperty",
+      "module": "Catalog.Semantics",
+      "scope": "model",
+      "mapping": "Every violating infinite trace has a finite initial segment excluding every satisfying extension.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "116c983b6dbb357a08576e14d04e2118f2f6d84c0c3307244db8a5401d7e85f0"
+    },
+    "urn:csabs:concept/SaturatingInteger": {
+      "kind": "model",
+      "symbol": "Catalog.SaturatingInteger",
+      "module": "Catalog.Numeric",
+      "scope": "model",
+      "mapping": "Same bounded carrier with min/max clamp; saturatingAdd computes exact Int sum then clamps.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "61f1135bc86eb6928e121ccde8ebbf9dd7862243445f94f4ee4ffaa77a03b5e1"
+    },
+    "urn:csabs:concept/Semigroup": {
+      "kind": "model",
+      "symbol": "Catalog.Semigroup",
+      "module": "Catalog.Algebra",
+      "scope": "model",
+      "mapping": "Mathlib Semigroup plus explicit Nonempty A; multiplication total, associative and not necessarily commutative.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "eec6592a19fcc7eef604079c33dc72da4d460d1b8c86c39cb5e59eb69b08977d"
+    },
+    "urn:csabs:concept/Semiring": {
+      "kind": "model",
+      "symbol": "Catalog.Semiring",
+      "module": "Catalog.Algebra",
+      "scope": "model",
+      "mapping": "Mathlib unital Semiring, allowing zero = one and noncommutative multiplication.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "7a72c627aba054d4c7b67a27e1b2541cd7c0eb8b7e8a370190f579b661fe7e2b"
+    },
+    "urn:csabs:concept/Sequence": {
+      "kind": "model",
+      "symbol": "Catalog.Sequence",
+      "module": "Catalog.DataStructures",
+      "scope": "model",
+      "mapping": "List A, finite ordered values with duplicates allowed; structural list equality.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "dadc47653194d94a80cd2c287583090d8caa9e51903000bcf424c2efecb7f2c4"
+    },
+    "urn:csabs:concept/SequentialConsistency": {
+      "kind": "model",
+      "symbol": "Catalog.SequentialConsistency",
+      "module": "Catalog.Semantics",
+      "scope": "partial",
+      "mapping": "Completed well-formed history admitting a legal sequential witness with equivalent process projections.",
+      "limitations": "Process projection and legality predicates are abstract client parameters, not an event-level history construction.",
+      "catalogHash": "8044ebf124b28474f9dc26770e88cf3b6c8f3d25226dbce914d6b87d9ce1187a"
+    },
+    "urn:csabs:concept/Set": {
+      "kind": "model",
+      "symbol": "Catalog.Set",
+      "module": "Catalog.Foundations",
+      "scope": "partial",
+      "mapping": "Mathlib ZFSet: universe-indexed well-founded extensional sets; not a proof of the consistency of ZF and not a choice-free metatheory.",
+      "limitations": "ZFSet is a model in Lean type theory with its foundational axioms, not an implementation of all ZF schemas without choice or a consistency proof.",
+      "catalogHash": "f76d7388a12a8203b210b3bd4480283524baf6e647ee3bc79a196cbfe53b7f75"
+    },
+    "urn:csabs:concept/Simulation": {
+      "kind": "model",
+      "symbol": "Catalog.Simulation",
+      "module": "Catalog.Graphs",
+      "scope": "model",
+      "mapping": "Strong same-label forward step matching for an explicit relation; no silent actions or observation map.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "8c14db0403189bb2e072f0ccdc4ed8c9e8e9d165095196d5453674799fff56e8"
+    },
+    "urn:csabs:concept/SmoothManifold": {
+      "kind": "model",
+      "symbol": "Catalog.SmoothManifold",
+      "module": "Catalog.Topology",
+      "scope": "partial",
+      "mapping": "Boundaryless Euclidean charts with Mathlib IsManifold at smooth (not analytic) regularity, plus Hausdorff/second countability.",
+      "limitations": "Atlas smooth compatibility is formalized; the maximal compatible atlas is not explicitly constructed by the wrapper.",
+      "catalogHash": "2ea7f44e5f38b5d61ff0a2ac53a09d9a4632e7966f95a06a440388fae915d738"
+    },
+    "urn:csabs:concept/Stack": {
+      "kind": "model",
+      "symbol": "Catalog.Stack",
+      "module": "Catalog.DataStructures",
+      "scope": "model",
+      "mapping": "List A with head as top; pop/top return Option and are none exactly on empty.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "10ed0d3d4e49ce3306e28a7f405423fad9ebeb3996fa295e3f595d5dfc4b423d"
+    },
+    "urn:csabs:concept/StructuralInduction": {
+      "kind": "model",
+      "symbol": "Catalog.StructuralInduction",
+      "module": "Catalog.Foundations",
+      "scope": "partial",
+      "mapping": "Induction proposition for a representative binary inductive tree; use each datatype own recursor for general constructor signatures.",
+      "limitations": "Representative binary-tree signature only; generic arbitrary finitary signatures and their semantic bridge are not implemented.",
+      "catalogHash": "c950b5d49d3b2b7f4a5d0d7898e0e53d4eddeaa03e19294c29fb39693229cc99"
+    },
+    "urn:csabs:concept/SumType": {
+      "kind": "model",
+      "symbol": "Catalog.SumType",
+      "module": "Catalog.Foundations",
+      "scope": "model",
+      "mapping": "Lean Sum A B with disjoint injective constructors and recursor.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "8c1d37cfd0ffc1159f26cddaedb746304ea4664e417de451a281100db864bafe"
+    },
+    "urn:csabs:concept/Tensor": {
+      "kind": "model",
+      "symbol": "Catalog.Tensor",
+      "module": "Catalog.Algebra",
+      "scope": "model",
+      "mapping": "Finite indexed tensor powers of V then Dual F V; empty powers interpreted up to canonical linear equivalence with F.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "ac6656af53f80ab567dbda01755cf7139b1d9df397b6029119ff7339a238d8a6"
+    },
+    "urn:csabs:concept/TensorProduct": {
+      "kind": "model",
+      "symbol": "Catalog.TensorProduct",
+      "module": "Catalog.Algebra",
+      "scope": "model",
+      "mapping": "Mathlib TensorProduct F V W of explicit F-modules; universal property available in the pinned library.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "826d88c503c1a5f8ac63b9ba402ce2476c5056810d486bfa108cb75c9407f6b5"
+    },
+    "urn:csabs:concept/TerminationVariant": {
+      "kind": "model",
+      "symbol": "Catalog.TerminationVariant",
+      "module": "Catalog.Semantics",
+      "scope": "model",
+      "mapping": "Explicit well-founded target relation and measure strictly decreasing on body transitions.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "e1e85dbde5004181b09678e81715a65163f7b0dd4256099a83ae22d16fd7c2d3"
+    },
+    "urn:csabs:concept/TopologicalSpace": {
+      "kind": "model",
+      "symbol": "Catalog.TopologicalSpace",
+      "module": "Catalog.Topology",
+      "scope": "model",
+      "mapping": "Mathlib TopologicalSpace with arbitrary-union and finite-intersection open-set axioms.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "e9772c8a490cbfb35b1c4115b31d6ab7f28ae3224cde0ba588b718b67b0776d7"
+    },
+    "urn:csabs:concept/TotalOrder": {
+      "kind": "model",
+      "symbol": "Catalog.TotalOrder",
+      "module": "Catalog.Order",
+      "scope": "model",
+      "mapping": "Mathlib LinearOrder; adds decidable comparison data to the catalog total partial order.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "73d024645a4c33336176b13592c866b89781868d6130c5d4ebe60cbea98887f8"
+    },
+    "urn:csabs:concept/TraceEquivalence": {
+      "kind": "model",
+      "symbol": "Catalog.TraceEquivalence",
+      "module": "Catalog.Graphs",
+      "scope": "model",
+      "mapping": "Equality of all finite partial trace sets from two designated states; includes empty trace, no acceptance or silent-action abstraction.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "0689719ea2cd7227ae97daf0aa7e0f7444b73beb654c7271382671875ae32ce7"
+    },
+    "urn:csabs:concept/TransitionSystem": {
+      "kind": "model",
+      "symbol": "Catalog.TransitionSystem",
+      "module": "Catalog.Graphs",
+      "scope": "model",
+      "mapping": "Initial-state set and arbitrary binary next relation; reachable via ReflTransGen from an initial state.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "0f401c419280d23459048c809287bbb51e9742999d43f40711406176b6dda291"
+    },
+    "urn:csabs:concept/Tree": {
+      "kind": "model",
+      "symbol": "Catalog.Tree",
+      "module": "Catalog.Graphs",
+      "scope": "model",
+      "mapping": "Finite nonempty SimpleGraph with Mathlib IsTree (connected and acyclic).",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "6c5f918f737b2713755ef108fd780f78add5ac0afdd3b5aeae85ba4ba38dc20a"
+    },
+    "urn:csabs:concept/TuringMachine": {
+      "kind": "model",
+      "symbol": "Catalog.TuringMachine",
+      "module": "Catalog.Languages",
+      "scope": "partial",
+      "mapping": "Finite control/tape alphabet and total nonhalting transition table, one-sided tape, distinguished halting states, input initialization and deterministic step.",
+      "limitations": "Finite controller, input initialization and deterministic stay-at-zero left-boundary step are modeled. The configuration type currently admits arbitrary tapes; the eventual-blank invariant, halting outcome and recognition/decidability semantics remain to be formalized.",
+      "catalogHash": "5abe879ea6dd0f92d7f2cf1c683b867793fe4932966dd4fa0cb8bda01f14c868"
+    },
+    "urn:csabs:concept/UnitType": {
+      "kind": "model",
+      "symbol": "Catalog.UnitType",
+      "module": "Catalog.Foundations",
+      "scope": "model",
+      "mapping": "Lean Unit, with its unique constructor.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "0688399aeaaf43f61b2dc8ebfc156f901109dca02882ecf46431f8198b9cdee1"
+    },
+    "urn:csabs:concept/VectorSpace": {
+      "kind": "model",
+      "symbol": "Catalog.VectorSpace",
+      "module": "Catalog.Algebra",
+      "scope": "model",
+      "mapping": "Module F V with Field F and AddCommGroup V explicit; field and additive structure are parameters, not inferred from graph edges.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "04f672e10933fe755cdf053d6683786158649b3b5f37b9ea5a6926c94bb1020f"
+    },
+    "urn:csabs:concept/WeakestPrecondition": {
+      "kind": "model",
+      "symbol": "Catalog.WeakestPrecondition",
+      "module": "Catalog.Semantics",
+      "scope": "partial",
+      "mapping": "All-normal-termination predicate plus universal postcondition over normal outcomes; execution/scheduler semantics must substantiate the supplied predicate.",
+      "limitations": "Operational all-executions termination/no-fault semantics is supplied by clients, not derived from a concrete command language.",
+      "catalogHash": "b84c02a2ce3cea590a77603a1f3d2a9a9041554106fd943e5722a7e6147de079"
+    },
+    "urn:csabs:concept/WellFoundedRelation": {
+      "kind": "model",
+      "symbol": "Catalog.WellFoundedRelation",
+      "module": "Catalog.Order",
+      "scope": "model",
+      "mapping": "Lean accessibility-based WellFounded r; subset-minimal formulation needs a classical equivalence proof when used.",
+      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+      "catalogHash": "16c5658dad8c1f30c3f1a7d01400282f6511b7346e4cbf4858e79d859c935e8d"
+    },
+    "urn:csabs:theorem/Semigroup-four-factor-reassociation": {
+      "kind": "witness",
+      "symbol": "Catalog.Proofs.semigroup_four_factor",
+      "module": "Catalog.Witnesses",
+      "expectedType": "∀ {A : Type u} [Catalog.Semigroup A] (a b c d : A), ((a * b) * c) * d = (a * b) * (c * d) ∧ (a * b) * (c * d) = a * (b * (c * d))",
+      "mapping": "Mathlib Semigroup plus explicit Nonempty A; multiplication total, associative and not necessarily commutative.",
+      "premiseMapping": {
+        "urn:csabs:axiom/semigroup-closure": "Explicit interface premise: ∀x,y∈S: x·y∈S; interpreted by Catalog.Semigroup. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/semigroup-associativity": "Explicit interface premise: ∀x,y,z∈S: (x·y)·z=x·(y·z); interpreted by Catalog.Semigroup. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Semigroup-closed-carrier": "Explicit interface premise: S≠∅; ·:S×S→S; interpreted by Catalog.Semigroup. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Semigroup-associative": "Explicit interface premise: (x·y)·z=x·(y·z); interpreted by Catalog.Semigroup. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+      },
+      "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+      "allowedAxioms": [],
+      "catalogHash": "ddf18033b5ec82394830d273336dc991d5da78381f8382e1cd34d5c9cf0ac261"
+    },
+    "urn:csabs:theorem/Group-inverse-product": {
+      "kind": "witness",
+      "symbol": "Catalog.Proofs.group_inverse_product",
+      "module": "Catalog.Witnesses",
+      "expectedType": "∀ {A : Type u} [Catalog.Group A] (a b : A), (a * b)⁻¹ = b⁻¹ * a⁻¹",
+      "mapping": "Mathlib Group; chosen inverse, associativity and two-sided unit/inverse equations. Nonempty follows from one.",
+      "premiseMapping": {
+        "urn:csabs:axiom/group-inverses": "Explicit interface premise: ∀x∈G ∃y∈G: x·y=y·x=e; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Group-closed-carrier": "Explicit interface premise: S≠∅; ·:S×S→S; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Group-associative": "Explicit interface premise: (x·y)·z=x·(y·z); interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Group-identity": "Explicit interface premise: e∈S; e·x=x; x·e=x; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Group-inverse": "Explicit interface premise: inv:S→S; inv(x)·x=e; x·inv(x)=e; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+      },
+      "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+      "allowedAxioms": [
+        "propext"
+      ],
+      "catalogHash": "9c06e2ca240cfa737726fb0252822e14850fb81eda6d9457fb116b6232519c6b"
+    },
+    "urn:csabs:law/group-cancellation": {
+      "kind": "witness",
+      "symbol": "Catalog.Proofs.group_cancellation",
+      "module": "Catalog.Witnesses",
+      "expectedType": "∀ {A : Type u} [Catalog.Group A] (a x y : A), (a * x = a * y → x = y) ∧ (x * a = y * a → x = y)",
+      "mapping": "Mathlib Group; chosen inverse, associativity and two-sided unit/inverse equations. Nonempty follows from one.",
+      "premiseMapping": {
+        "urn:csabs:axiom/group-inverses": "Explicit interface premise: ∀x∈G ∃y∈G: x·y=y·x=e; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Group-closed-carrier": "Explicit interface premise: S≠∅; ·:S×S→S; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Group-associative": "Explicit interface premise: (x·y)·z=x·(y·z); interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Group-identity": "Explicit interface premise: e∈S; e·x=x; x·e=x; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Group-inverse": "Explicit interface premise: inv:S→S; inv(x)·x=e; x·inv(x)=e; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+      },
+      "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+      "allowedAxioms": [],
+      "catalogHash": "ddedaf17e0ba8b8435e523544e472614f846fb081d0cc691e6dd6d07a36d08cd"
+    },
+    "urn:csabs:law/monoid-identity-unique": {
+      "kind": "witness",
+      "symbol": "Catalog.Proofs.monoid_identity_unique",
+      "module": "Catalog.Witnesses",
+      "expectedType": "∀ {A : Type u} [Catalog.Monoid A] (e e' : A), ((∀ x, e * x = x) ∧ (∀ x, x * e = x)) → ((∀ x, e' * x = x) ∧ (∀ x, x * e' = x)) → e = e'",
+      "mapping": "Mathlib Monoid; one gives nonemptiness, mul_assoc and both identity equations.",
+      "premiseMapping": {
+        "urn:csabs:axiom/monoid-identity": "Explicit interface premise: ∃e∈M ∀x∈M: e·x=x·e=x; interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Monoid-closed-carrier": "Explicit interface premise: S≠∅; ·:S×S→S; interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Monoid-associative": "Explicit interface premise: (x·y)·z=x·(y·z); interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Monoid-identity": "Explicit interface premise: e∈S; e·x=x; x·e=x; interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+      },
+      "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+      "allowedAxioms": [],
+      "catalogHash": "c01bd20b227a31a0c4cc44acf9da162d0f92e92cb479d15ff1510e9d1b842405"
+    },
+    "urn:csabs:theorem/Monoid-power-addition": {
+      "kind": "witness",
+      "symbol": "Catalog.Proofs.monoid_power_addition",
+      "module": "Catalog.Witnesses",
+      "expectedType": "∀ {A : Type u} [Catalog.Monoid A] (a : A) (m n : Nat), a ^ 0 = 1 ∧ a ^ (n + 1) = a ^ n * a ∧ a ^ (m + n) = a ^ m * a ^ n",
+      "mapping": "Mathlib Monoid; one gives nonemptiness, mul_assoc and both identity equations.",
+      "premiseMapping": {
+        "urn:csabs:axiom/monoid-identity": "Explicit interface premise: ∃e∈M ∀x∈M: e·x=x·e=x; interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Monoid-closed-carrier": "Explicit interface premise: S≠∅; ·:S×S→S; interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Monoid-associative": "Explicit interface premise: (x·y)·z=x·(y·z); interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Monoid-identity": "Explicit interface premise: e∈S; e·x=x; x·e=x; interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+      },
+      "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+      "allowedAxioms": [],
+      "catalogHash": "f35eab3cfb160718bb86559cc06a226c4fcede7e3dd8bd3419f10c92a3d09aac"
+    },
+    "urn:csabs:law/stack-push-top": {
+      "kind": "witness",
+      "symbol": "Catalog.Proofs.stack_push_top",
+      "module": "Catalog.Witnesses",
+      "expectedType": "∀ {A : Type u} (s : Catalog.Stack A) (x : A), Catalog.Stack.top (Catalog.Stack.push s x) = some x",
+      "mapping": "List A with head as top; pop/top return Option and are none exactly on empty.",
+      "premiseMapping": {
+        "urn:csabs:axiom/Stack-sequence-model": "Explicit interface premise: Stack(V)=Seq(V); empty=nil; push(s,x)=cons(x,s); interpreted by Catalog.Stack. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Stack-observers": "Explicit interface premise: top(cons(x,s))=x; pop(cons(x,s))=(s,x); dom(top)=dom(pop)=Stack(V)−{empty}; interpreted by Catalog.Stack. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+      },
+      "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+      "allowedAxioms": [],
+      "catalogHash": "7f63df08ee4ba3ad975260ec69e645f1f071a4c39cd888dd5e8a9a5cf4f2d031"
+    },
+    "urn:csabs:law/stack-push-pop": {
+      "kind": "witness",
+      "symbol": "Catalog.Proofs.stack_push_pop",
+      "module": "Catalog.Witnesses",
+      "expectedType": "∀ {A : Type u} (s : Catalog.Stack A) (x : A), Catalog.Stack.pop (Catalog.Stack.push s x) = some (s, x)",
+      "mapping": "List A with head as top; pop/top return Option and are none exactly on empty.",
+      "premiseMapping": {
+        "urn:csabs:axiom/Stack-sequence-model": "Explicit interface premise: Stack(V)=Seq(V); empty=nil; push(s,x)=cons(x,s); interpreted by Catalog.Stack. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Stack-observers": "Explicit interface premise: top(cons(x,s))=x; pop(cons(x,s))=(s,x); dom(top)=dom(pop)=Stack(V)−{empty}; interpreted by Catalog.Stack. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+      },
+      "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+      "allowedAxioms": [],
+      "catalogHash": "7a4b31e90ea067cadb4f9ad604f2c228bfd66a0c6f22028831d6e5cb52fcfcc3"
+    },
+    "urn:csabs:theorem/Stack-push-injective": {
+      "kind": "witness",
+      "symbol": "Catalog.Proofs.stack_push_injective",
+      "module": "Catalog.Witnesses",
+      "expectedType": "∀ {A : Type u} (s t : Catalog.Stack A) (x y : A), Catalog.Stack.push s x = Catalog.Stack.push t y → s = t ∧ x = y",
+      "mapping": "List A with head as top; pop/top return Option and are none exactly on empty.",
+      "premiseMapping": {
+        "urn:csabs:axiom/Stack-sequence-model": "Explicit interface premise: Stack(V)=Seq(V); empty=nil; push(s,x)=cons(x,s); interpreted by Catalog.Stack. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Stack-observers": "Explicit interface premise: top(cons(x,s))=x; pop(cons(x,s))=(s,x); dom(top)=dom(pop)=Stack(V)−{empty}; interpreted by Catalog.Stack. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+      },
+      "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+      "allowedAxioms": [],
+      "catalogHash": "c21385e8112fa88bb8cec27e8fdd471611718dab0e4ee37a436f7064aa894e78"
+    },
+    "urn:csabs:law/array-read-after-write-same": {
+      "kind": "witness",
+      "symbol": "Catalog.Proofs.array_read_same",
+      "module": "Catalog.Witnesses",
+      "expectedType": "∀ {A : Type u} {n : Nat} (a : Catalog.Array A n) (i : Fin n) (x : A), Catalog.Array.store a i x i = x",
+      "mapping": "Fin n -> A; fixed-length total lookup and Function.update store; n = 0 permitted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/array-valid-index": "Explicit interface premise: 0≤i<n; interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Array-carrier": "Explicit interface premise: Array(n,V)=V^Index(n); Index(n)={i∈ℕ:i<n}; interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Array-extensionality": "Explicit interface premise: A=B iff ∀i∈Index(n):select(A,i)=select(B,i); interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Array-store-definition": "Explicit interface premise: select(store(A,i,v),j)=if j=i then v else select(A,j); i,j∈Index(n); interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+      },
+      "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+      "allowedAxioms": [
+        "propext"
+      ],
+      "catalogHash": "cc7e0778e2f090e6020cea9c07a22ced9d5a99c4d32b7c20187101f70b009e6a"
+    },
+    "urn:csabs:law/array-read-after-write-other": {
+      "kind": "witness",
+      "symbol": "Catalog.Proofs.array_read_other",
+      "module": "Catalog.Witnesses",
+      "expectedType": "∀ {A : Type u} {n : Nat} (a : Catalog.Array A n) (i j : Fin n) (x : A), i ≠ j → Catalog.Array.store a i x j = a j",
+      "mapping": "Fin n -> A; fixed-length total lookup and Function.update store; n = 0 permitted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/array-valid-index": "Explicit interface premise: 0≤i<n; interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Array-carrier": "Explicit interface premise: Array(n,V)=V^Index(n); Index(n)={i∈ℕ:i<n}; interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Array-extensionality": "Explicit interface premise: A=B iff ∀i∈Index(n):select(A,i)=select(B,i); interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Array-store-definition": "Explicit interface premise: select(store(A,i,v),j)=if j=i then v else select(A,j); i,j∈Index(n); interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+      },
+      "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+      "allowedAxioms": [
+        "propext"
+      ],
+      "catalogHash": "21f67e4b9993c025645cb4118b40e22e93cd079ad74adcd5dfcfcbf03e61754d"
+    },
+    "urn:csabs:theorem/Array-update-overwrite": {
+      "kind": "witness",
+      "symbol": "Catalog.Proofs.array_overwrite",
+      "module": "Catalog.Witnesses",
+      "expectedType": "∀ {A : Type u} {n : Nat} (a : Catalog.Array A n) (i : Fin n) (x y : A), Catalog.Array.store (Catalog.Array.store a i x) i y = Catalog.Array.store a i y",
+      "mapping": "Fin n -> A; fixed-length total lookup and Function.update store; n = 0 permitted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/array-valid-index": "Explicit interface premise: 0≤i<n; interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Array-carrier": "Explicit interface premise: Array(n,V)=V^Index(n); Index(n)={i∈ℕ:i<n}; interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Array-extensionality": "Explicit interface premise: A=B iff ∀i∈Index(n):select(A,i)=select(B,i); interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Array-store-definition": "Explicit interface premise: select(store(A,i,v),j)=if j=i then v else select(A,j); i,j∈Index(n); interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+      },
+      "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+      "allowedAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "catalogHash": "e0fc7ce516ffa3276b14af9355d1ae5496dac04ce6f0c4159548988584b22dc0"
+    },
+    "urn:csabs:law/function-composition-associative": {
+      "kind": "witness",
+      "symbol": "Catalog.Proofs.function_composition_associative",
+      "module": "Catalog.Witnesses",
+      "expectedType": "∀ {A : Type u} {B : Type v} {C : Type w} {D : Type x} (f : A → B) (g : B → C) (h : C → D), (h ∘ (g ∘ f)) = ((h ∘ g) ∘ f)",
+      "mapping": "Total typed A -> B; function equality is Lean equality, with funext when needed.",
+      "premiseMapping": {
+        "urn:csabs:axiom/function-totality": "Explicit interface premise: ∀a∈A ∃b∈B: f(a)=b; interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/function-functionality": "Explicit interface premise: ∀a∈A,b₁,b₂∈B: f(a)=b₁ ∧ f(a)=b₂ ⇒ b₁=b₂; interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Function-graph": "Explicit interface premise: graph(f)⊆A×B; ∀a∈A ∃!b∈B: (a,b)∈graph(f); interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Function-extensionality": "Explicit interface premise: f,g:A→B; f=g iff ∀a∈A: f(a)=g(a); interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Function-compose-definition": "Explicit interface premise: (g∘f)(a)=g(f(a)); interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+      },
+      "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+      "allowedAxioms": [],
+      "catalogHash": "875236e3d7070851e73438b847edd24e0a240b245b9535062e2dccdfb7986930"
+    },
+    "urn:csabs:theorem/Function-composition-injective": {
+      "kind": "witness",
+      "symbol": "Catalog.Proofs.function_composition_injective",
+      "module": "Catalog.Witnesses",
+      "expectedType": "∀ {A : Type u} {B : Type v} {C : Type w} (f : A → B) (g : B → C), _root_.Function.Injective f → _root_.Function.Injective g → _root_.Function.Injective (g ∘ f)",
+      "mapping": "Total typed A -> B; function equality is Lean equality, with funext when needed.",
+      "premiseMapping": {
+        "urn:csabs:axiom/function-totality": "Explicit interface premise: ∀a∈A ∃b∈B: f(a)=b; interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/function-functionality": "Explicit interface premise: ∀a∈A,b₁,b₂∈B: f(a)=b₁ ∧ f(a)=b₂ ⇒ b₁=b₂; interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Function-graph": "Explicit interface premise: graph(f)⊆A×B; ∀a∈A ∃!b∈B: (a,b)∈graph(f); interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Function-extensionality": "Explicit interface premise: f,g:A→B; f=g iff ∀a∈A: f(a)=g(a); interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/Function-compose-definition": "Explicit interface premise: (g∘f)(a)=g(f(a)); interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+      },
+      "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+      "allowedAxioms": [],
+      "catalogHash": "9c784472e02cb59ffe1a17754c369611a13cdacfb9a3beb3e99876d2cd238a2b"
+    },
+    "urn:csabs:law/HoareTriple-core": {
+      "kind": "witness",
+      "symbol": "Catalog.Proofs.hoare_sequence",
+      "module": "Catalog.Witnesses",
+      "expectedType": "∀ {S : Type u} (P R Q : S → Prop) (C D : Catalog.Command S), Catalog.HoareTriple P C R → Catalog.HoareTriple R D Q → Catalog.HoareTriple P (Catalog.seq C D) Q",
+      "mapping": "Partial correctness over every normally terminating relational outcome; no termination assumption.",
+      "premiseMapping": {
+        "urn:csabs:axiom/HoareTriple-partial-correctness": "Explicit interface premise: {P}C{Q} iff ∀s,t:(P(s)∧Exec_C(s,t))⇒Q(t); interpreted by Catalog.HoareTriple. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/HoareTriple-command-composition": "Explicit interface premise: Exec_(C;D)(s,t) iff ∃m:Exec_C(s,m)∧Exec_D(m,t); interpreted by Catalog.HoareTriple. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+      },
+      "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+      "allowedAxioms": [],
+      "catalogHash": "444dad44e1c650afd94a58563276e92edf375c14d9e4693492b1ec5530f44496"
+    },
+    "urn:csabs:theorem/HoareTriple-consequence": {
+      "kind": "witness",
+      "symbol": "Catalog.Proofs.hoare_consequence",
+      "module": "Catalog.Witnesses",
+      "expectedType": "∀ {S : Type u} (P' P Q Q' : S → Prop) (C : Catalog.Command S), (∀ s, P' s → P s) → Catalog.HoareTriple P C Q → (∀ s, Q s → Q' s) → Catalog.HoareTriple P' C Q'",
+      "mapping": "Partial correctness over every normally terminating relational outcome; no termination assumption.",
+      "premiseMapping": {
+        "urn:csabs:axiom/HoareTriple-partial-correctness": "Explicit interface premise: {P}C{Q} iff ∀s,t:(P(s)∧Exec_C(s,t))⇒Q(t); interpreted by Catalog.HoareTriple. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/HoareTriple-command-composition": "Explicit interface premise: Exec_(C;D)(s,t) iff ∃m:Exec_C(s,m)∧Exec_D(m,t); interpreted by Catalog.HoareTriple. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+      },
+      "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+      "allowedAxioms": [],
+      "catalogHash": "450f7232bdbeb0f382f8565481245a4b8c5f19cb0e54d4febf5ed66cf4e347cb"
+    },
+    "urn:csabs:theorem/NaturalNumber-zero-addition": {
+      "kind": "witness",
+      "symbol": "Catalog.Proofs.natural_zero_addition",
+      "module": "Catalog.Witnesses",
+      "expectedType": "∀ n : Catalog.NaturalNumber, 0 + n = n",
+      "mapping": "Lean Nat, standard inductive naturals, exact arithmetic and induction.",
+      "premiseMapping": {
+        "urn:csabs:axiom/NaturalNumber-constructors": "Explicit interface premise: 0∈ℕ; S:ℕ→ℕ; S(n)≠0; S(n)=S(m)⇒n=m; interpreted by Catalog.NaturalNumber. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/NaturalNumber-induction-schema": "Explicit interface premise: P(0)∧(∀n:P(n)⇒P(S(n))) ⇒ ∀n:P(n); interpreted by Catalog.NaturalNumber. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/NaturalNumber-arithmetic-recursion": "Explicit interface premise: a+0=a; a+S(b)=S(a+b); a·0=0; a·S(b)=a·b+a; interpreted by Catalog.NaturalNumber. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+      },
+      "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+      "allowedAxioms": [],
+      "catalogHash": "e37f3709d1b2cece84f03dbbac0c31976fab0358d714634c7dc8e99f4ea07d4c"
+    },
+    "urn:csabs:theorem/PartialOrder-order-extensionality": {
+      "kind": "witness",
+      "symbol": "Catalog.Proofs.order_extensionality",
+      "module": "Catalog.Witnesses",
+      "expectedType": "∀ {A : Type u} [Catalog.PartialOrder A] (x y : A), (∀ z, x ≤ z ↔ y ≤ z) → x = y",
+      "mapping": "Mathlib PartialOrder; antisymmetry uses Lean equality.",
+      "premiseMapping": {
+        "urn:csabs:axiom/PartialOrder-reflexive": "Explicit interface premise: ∀x∈A:x≤x; interpreted by Catalog.PartialOrder. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/PartialOrder-transitive": "Explicit interface premise: x≤y ∧ y≤z ⇒ x≤z; interpreted by Catalog.PartialOrder. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+        "urn:csabs:axiom/PartialOrder-antisymmetric": "Explicit interface premise: x≤y ∧ y≤x ⇒ x=y; interpreted by Catalog.PartialOrder. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+      },
+      "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+      "allowedAxioms": [],
+      "catalogHash": "83d939acb39c74fa5ff10216978f9800ccaae94203411e21b0da3fad2a9cc8f8"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+name: Verify Lean witnesses
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - uses: leanprover/lean-action@v1
+        env:
+          # Use the cache routing supported by the pinned Mathlib release.
+          MATHLIB_CACHE_GET_URL: ''
+        with:
+          lake-package-directory: lean
+          auto-config: 'false'
+          build: 'false'
+          test: 'false'
+          use-mathlib-cache: 'true'
+      - name: Verify bindings, proofs, and rejection checks
+        run: make test-lean
+      - name: Preserve compiler evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lean-verification
+          path: lean/verification.json
+          if-no-files-found: ignore

@@ -60,6 +60,10 @@ Before using a claim in Lean/Coq, map equality, carriers, assumptions and librar
 
 Keep imported stable IDs and context despite the broader repository name. `data/import_manifest.json` records original node hashes, context, and the initial provenance baseline; do not alter it to conceal import loss or bypass provenance. `python3 scripts/audit_import.py` reports differences. Importing citation metadata does not mean sources were consulted again.
 
+## Lean models and proof witnesses
+
+`lean/` is the pinned Lean/Mathlib Lake project; see `lean/README.md`. Keep a model binding for every concept in `lean/bindings.json`, keyed by stable graph ID, and disclose partial interfaces. Model coverage is not proof coverage. Witnesses require an independently reviewed Lean expected type, explicit carrier/equality/operation/assumption and `dependsOn` premise mappings, and current catalog fingerprints. Use structure laws/hypotheses rather than introducing global axioms for target results. Run `make check-lean` and `make test-lean` after relevant changes; only fresh compiler/axiom-audit evidence in ignored `lean/verification.json` supports a verified witness. Never accept `sorry`, fabricated axioms, or stale evidence, or silently relabel graph claims as machine-proved. Preserve source provenance separately; a compiled proof does not establish informal-statement correspondence or close citation gaps. CI retains verification reports as artifacts. Do not change Lean/Mathlib pins without an explicit dependency update request.
+
 ## ONTFS ontology dependency
 
 ONTFS is cloned and registered as a Git submodule at `deps/ONTFS`, pinned by `dependencies.lock.json` to `05f166cd3ba37f13984b2746ddbbe56de24d8113`. The parent repository was initialized and the gitlink staged on 2026-11-07. See docs/ONTOLOGY.md for setup. `make submodules` initializes or verifies the pinned dependency. Do not advance the pin without an explicit dependency update request.
