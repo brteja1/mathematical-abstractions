@@ -1,16 +1,25 @@
 # Mathematical Abstractions
 
-A local, linked Markdown knowledge graph for mathematical modeling across disciplines, proof planning, and software test design. It imports **all 106 concepts and 998 nodes** from `/linuxdev/ai_research/cs_data_abstractions`, preserving every graph field, stable ID, source record, and historical provenance gap.
+A knowledge graph of mathematical abstractions for modeling software, developing formal proofs, and deriving software tests. The catalog describes mathematical behavior independently of particular implementations, making definitions, assumptions and reusable properties available to people and AI agents.
 
-Start with the [concept index](CONCEPTS.md), open the [interactive radial atlas](visualization/index.html) in a browser, or query individual records with Python. The viewer works offline and includes the reference project's category arcs, progressive specialization hierarchy, search, typed relationship filters, details, keyboard selection, pan and zoom. Each concept's details link to its Markdown page.
+Start with the [concept index](CONCEPTS.md), explore the [interactive atlas](https://brteja1.github.io/mathematical-abstractions/), or query selected records with Python. Examples include [groups](concepts/Group.md), [binary trees](concepts/BinaryTree.md), [probability spaces](concepts/ProbabilitySpace.md), and [linearizability](concepts/Linearizability.md).
 
-The imported graph covers 19 categories, including algebra, logic, order, probability, topology, geometry, linear algebra, computation, databases, software semantics, and concurrency. This is a starting collection, not exhaustive coverage of mathematics or every discipline.
+The catalog spans foundations, types, logic, algebra, order, combinatorics, probability, measure theory, topology, geometry, linear algebra, numeric computation, data structures, databases, programming semantics and concurrency. Coverage grows through explicit definitions and sourced claims rather than an assumption that any subject is complete.
+
+## What each concept records
+
+- A definition, notation, carrier, equality convention and chosen mathematical basis.
+- Operations with signatures, preconditions, outcomes and definedness.
+- Axioms, laws and theorems with stable identities, assumptions, applicability and derivation premises.
+- Typed links to prerequisites, specializations and related concepts, without automatic axiom inheritance.
+- Source references, precise locators and provenance notes.
+- Separate Lean model and proof-witness bindings where available.
 
 ## Browse online
 
-The interactive atlas is published at **https://brteja1.github.io/mathematical-abstractions/** using GitHub Pages. Concept links in the hosted viewer open the corresponding Markdown records on GitHub; local copies retain relative links for offline use.
+The [interactive atlas](https://brteja1.github.io/mathematical-abstractions/) supports subject categories, specialization hierarchies, search, relationship filters, concept details, keyboard selection, pan and zoom. Concept links open the corresponding Markdown records on GitHub. The standalone [`visualization/index.html`](visualization/index.html) also works offline.
 
-In the repository's **Settings → Pages → Build and deployment**, select **GitHub Actions** as the source. The [Pages workflow](.github/workflows/pages.yml) rebuilds and validates the catalog, then deploys the standalone viewer on every push to `main`. It can also be started manually from **Actions → Deploy visualization to GitHub Pages → Run workflow**. Deployment progress and the published URL appear in the workflow run. Only the viewer is included in the Pages artifact; the optional ONTFS backend is not needed for hosting.
+The [Pages workflow](.github/workflows/pages.yml) rebuilds, validates and publishes the viewer on pushes to `main`.
 
 ## Storage and fields
 
@@ -22,12 +31,10 @@ In the repository's **Settings → Pages → Build and deployment**, select **Gi
 | [`CONCEPTS.md`](CONCEPTS.md) | Generated complete concept index. |
 | [`COVERAGE.md`](COVERAGE.md) | Generated counts and basis coverage, not a completeness certificate. |
 | [`visualization/template.html`](visualization/template.html) | Editable viewer template; `index.html` is generated. |
-| [`provenance_legacy.json`](provenance_legacy.json) | Imported historical citation baseline. New entries cannot use its exemptions. |
-| [`data/import_manifest.json`](data/import_manifest.json) | Original per-node hashes, context and baseline for import audit. |
 
-Concepts retain `shortForm`, `fullName`, `category`, `kind`, `definition`, `notation`, `axiomBasis`, `basisKind`, `basisScope`, and all optional fields from the original. Operations retain signatures, ownership, preconditions, outcomes and definedness. Axioms, laws and theorems remain individually identified, with assumptions, applicability, provenance and derivation dependencies. Prerequisites, specializations and related concepts remain distinct typed edges.
+Markdown graph records are authoritative. `make build` generates their readable prose, backlinks, indexes, JSON-LD export, coverage report and viewer. Edit the marked JSON blocks in concept pages or the shared context/source data, then rebuild.
 
-See [the inherited schema and SPARQL examples](docs/IMPORTED_SCHEMA.md) for the complete reference documentation. That document is an imported historical description: its JSON-LD-authority instructions are superseded by this repository's Markdown workflow. The [imported roadmap](CATALOG.md) provides additional mathematical context; the generated index is the current page inventory. Original URNs and vocabulary namespace are preserved for compatibility.
+See [agent workflows](docs/AGENT_WORKFLOWS.md) for proof planning and test design, and [AGENTS.md](AGENTS.md) for the catalog's contribution requirements.
 
 ## Query from AI agents
 
@@ -45,13 +52,13 @@ python3 scripts/agent_query.py node urn:csabs:concept/Group
 
 Commands emit JSON. Retrieval reads current Markdown records directly. `get` expands only requested sections; `node` fetches any stable concept/claim/operation/source ID. `neighbors` supports chosen edge types and incoming edges. A `dossier` traverses interfaces, prerequisites, sources and derivation premises within an explicit node limit, reports truncation, and includes task instructions. Retrieve omitted premises before relying on a truncated result.
 
-The graph can help an agent select definitions, assemble proof obligations, find premises, and derive test properties. Its Unicode statements and sketches are **not executable Lean/Coq theories**. No proof-assistant bridge, general proof generator, or automatic arbitrary-code test generator is claimed. [Agent workflows](docs/AGENT_WORKFLOWS.md) explain how to connect the retrieved specifications to those tools and other uses.
+The graph helps agents select definitions, assemble proof obligations, follow premises and derive test properties. Catalog statements and proof sketches are informal specifications; selected claims have separate compiled Lean witnesses. Applying either to software requires mapping the mathematical carriers, operations, equality and assumptions to the target API.
 
 ## Maintain and extend
 
 1. Search names, synonyms, notation and meaning before adding a concept or claim. Reuse existing records when appropriate; keep distinct semantic variants explicit.
 2. Edit the marked JSON array at the bottom of the relevant concept page. Keep the Concept and its operation/claim records together; shared claims have exactly one stored record and may be referenced from multiple concepts. Do not duplicate their IDs. To add a page, use the same block markers and filename equal to `shortForm`.
-3. Add new sources and vocabulary to `data/shared.json` as needed. Every new Concept/Axiom/Law/Theorem requires direct consulted sources, `sourceLocator`, `sourceNote` and `provenanceKind`. Derived claims need `dependsOn`. Record actual source consultation dates. Importing metadata is not fresh source verification.
+3. Add sources and vocabulary to `data/shared.json` as needed. Every new Concept/Axiom/Law/Theorem requires direct links to consulted sources, `sourceLocator`, `sourceNote` and `provenanceKind`. Derived claims need `dependsOn` and a meaningful proof sketch. Record actual source consultation dates and keep citation gaps visible.
 4. Record carriers, equality, empty cases, totality, overflow, rounding, nondeterminism and concurrency assumptions as relevant. Explain specialization mappings; never infer automatic axiom inheritance.
 5. Run the build and checks:
 
@@ -59,14 +66,13 @@ The graph can help an agent select definitions, assemble proof obligations, find
 make build
 make test
 make test-rdf  # optional: requires rdflib
-python3 scripts/audit_import.py
 ```
 
 `make build` validates authoritative records, regenerates readable page bodies and backlinks, exports JSON-LD, and rebuilds coverage and the offline viewer. Changes to generated prose alone are overwritten; `make test` rejects stale Markdown projections/exports and viewer data. Claims shared by pages are stored once in the first linked page by shortForm sort order after building. Find the marked record by stable ID to edit it.
 
-The checks preserve and extend the imported safeguards: unique IDs and short forms; typed, resolved links; operation ownership and claim applicability; required bases, assumptions and formal statements; acyclic derivation and specialization edges; mandatory new-entry provenance; and a non-expanding historical citation baseline. Tests also check local page links, anchors, bounded retrieval, generated data synchronization, and presence of imported IDs. `audit_import.py` reports original, changed, missing and added nodes, so deliberate later edits remain visible.
+Checks cover unique IDs and short forms, typed references, operation ownership, claim applicability, explicit bases and assumptions, acyclic derivation/specialization links, source provenance, page links and generated-artifact consistency.
 
-Validation checks structure and citation metadata. It does not establish mathematical truth, source entailment, formal consistency, or proof completeness. Historical source gaps remain disclosed. Use [AGENTS.md](AGENTS.md) as the entry instructions for future agents.
+Validation checks structure and citation metadata. Mathematical correctness, source entailment and informal-to-formal correspondence require separate review; compiled proof evidence is checked through the Lean workflow.
 
 ## AI skill for abstraction-based tests
 
