@@ -15,6 +15,7 @@ An ordered finite collection in which repeated values are allowed.
 ## Backlinks
 
 - [Fixed-length array](Array.md) — `relatedConcept`
+- [Finite ordered binary tree with node labels](BinaryTree.md) — `requiresConcept`
 - [Deque](Deque.md) — `requiresConcept`
 - [Finite set collection](FiniteSet.md) — `relatedConcept`
 - [Formal language of finite words](FormalLanguage.md) — `requiresConcept`

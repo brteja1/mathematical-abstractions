@@ -84,7 +84,7 @@ The helper works from other repositories via its absolute path. See the skill's 
 
 ## Lean formalization
 
-The [`lean/`](lean/README.md) Lake project provides models or explicitly partial interfaces for all 106 catalog concepts, with pinned Lean/Mathlib versions and 17 compiled law/theorem witnesses. A separate [`bindings.json`](lean/bindings.json) links stable catalog IDs to declarations, expected types, premise mappings and limitations. `make test-lean` compiles and audits witnesses, rejects admitted or fabricated proofs, and records fresh compiler evidence. Model coverage does not mean every catalog claim has been proved. See the [formalization guide](lean/README.md) for setup, coverage and adding a new theorem.
+The [`lean/`](lean/README.md) Lake project provides models or explicitly partial interfaces for all 107 catalog concepts, with pinned Lean/Mathlib versions and 28 compiled law/theorem witnesses. This includes the [finite ordered binary-tree abstraction](concepts/BinaryTree.md), with an explicit empty case and witnesses for every recorded binary-tree law/theorem. A separate [`bindings.json`](lean/bindings.json) links stable catalog IDs to declarations, expected types, premise mappings and limitations. `make test-lean` compiles and audits witnesses, rejects admitted or fabricated proofs, and records fresh compiler evidence. Model coverage does not mean every catalog claim has been proved. See the [formalization guide](lean/README.md) for setup, coverage and adding a new theorem.
 
 ## ONTFS ontology backend
 

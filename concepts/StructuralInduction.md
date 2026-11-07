@@ -12,6 +12,12 @@ A proof principle for inductively generated finite values: prove the property fo
 
 **Prerequisites:** [Natural Number](NaturalNumber.md)
 
+**Related concepts:** [Finite ordered binary tree with node labels](BinaryTree.md)
+
+## Backlinks
+
+- [Finite ordered binary tree with node labels](BinaryTree.md) — `relatedConcept`
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A proof principle for inductively generated finite values: prove the property for every constructor assuming it for its recursive arguments. Governing rules: Values form the least set closed under the given finitary constructors. A constructor-closed predicate contains every generated value.
@@ -19,6 +25,8 @@ A proof principle for inductively generated finite values: prove the property fo
 **basisKind:** defined-structure
 
 **basisScope:** Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.
+
+**basisInstantiation:** For BinaryTree(A), instantiate the constructor schema with E and N:A×BT(A)×BT(A)→BT(A), using induction hypotheses for the ordered left and right recursive arguments. This is an instance of the principle, not an inheritance of claims through concept links.
 
 **noPrimitiveOperationsReason:** This entry is a theorem/proof schema over its stated carriers and constructor signature. It introduces no new value-level operation; the quantified functions or constructors belong to its prerequisites.
 
@@ -168,7 +176,11 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
     "noPrimitiveOperationsReason": "This entry is a theorem/proof schema over its stated carriers and constructor signature. It introduces no new value-level operation; the quantified functions or constructors belong to its prerequisites.",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "relatedConcept": [
+      "urn:csabs:concept/BinaryTree"
+    ],
+    "basisInstantiation": "For BinaryTree(A), instantiate the constructor schema with E and N:A×BT(A)×BT(A)→BT(A), using induction hypotheses for the ordered left and right recursive arguments. This is an instance of the principle, not an inheritance of claims through concept links."
   },
   {
     "id": "urn:csabs:axiom/StructuralInduction-least-carrier",

@@ -14,6 +14,7 @@ The nonnegative integers with zero and successor, supporting exact finite counti
 
 ## Backlinks
 
+- [Finite ordered binary tree with node labels](BinaryTree.md) — `requiresConcept`
 - [Multiset](Multiset.md) — `requiresConcept`
 - [Structural Induction](StructuralInduction.md) — `requiresConcept`
 

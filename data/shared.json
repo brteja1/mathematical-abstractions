@@ -541,6 +541,34 @@
       "id": "urn:csabs:category/behavior",
       "type": "Category",
       "label": "Behavior and transition systems"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-binary-tree-v4-35-0",
+      "type": "Source",
+      "label": "Mathlib v4.35.0: binary-tree datatype, operations and counting theorems",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Data/Tree/Basic.lean",
+      "citation": "Mathlib contributors, Mathlib/Data/Tree/Basic.lean, commit 56a005855ea17e0b0958f73ec801ae140b0a1679 (Lean/Mathlib v4.35.0).",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "formal-library-definitions-and-selected-theorems",
+      "provenanceNote": "Consulted the exact pinned local file lean/.lake/packages/mathlib/Mathlib/Data/Tree/Basic.lean; definitions and named results were read, and catalog wrappers are compiled separately."
+    },
+    {
+      "id": "urn:csabs:source/lean4-inductive-types",
+      "type": "Source",
+      "label": "Theorem Proving in Lean 4, chapter 7: inductive types",
+      "url": "https://lean-lang.org/theorem_proving_in_lean4/Inductive-Types/",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "inductive-constructor-and-elimination-principles",
+      "provenanceNote": "Consulted §§7.5–7.6 for recursive datatype examples, constructor freeness, cases and induction; the unlabelled example is adapted using the pinned Mathlib node-labelled declaration."
+    },
+    {
+      "id": "urn:csabs:source/isabelle-hol-library-tree",
+      "type": "Source",
+      "label": "Isabelle/HOL Library, Theory Tree (Tobias Nipkow)",
+      "url": "https://isa-afp.org/browser_info/current/HOL/HOL-Library/Tree.html",
+      "accessedOn": "2026-11-07",
+      "sourceRole": "formal-library-definitions-and-selected-theorems",
+      "provenanceNote": "Consulted the displayed theory: datatype tree, size1, height_tree, inorder, mirror and the individually cited counting/traversal/mirroring lemmas. Constructor argument order and operation names are adapted; no Isabelle compilation is claimed here."
     }
   ]
 }

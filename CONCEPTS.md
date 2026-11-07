@@ -11,6 +11,7 @@ Each linked page contains the definition, assumptions, operations, claims, prove
 | [IEEE 754 binary16](concepts/Binary16.md) | Numeric computation |
 | [IEEE 754 binary32](concepts/Binary32.md) | Numeric computation |
 | [IEEE 754 binary64](concepts/Binary64.md) | Numeric computation |
+| [Finite ordered binary tree with node labels](concepts/BinaryTree.md) | Data structures, Types and semantics, Graph theory |
 | [Bisimulation](concepts/Bisimulation.md) | Programming-language semantics, Behavior and transition systems |
 | [Fixed-width bit vector](concepts/BitVector.md) | Numeric computation, Programming-language semantics |
 | [Boolean algebra](concepts/BooleanAlgebra.md) | Logic and proof, Algebra |

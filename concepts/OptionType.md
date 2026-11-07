@@ -14,6 +14,10 @@ A value that is either absent or a present payload, using a tag to distinguish a
 
 **Specializes:** [Sum Type](SumType.md)
 
+## Backlinks
+
+- [Finite ordered binary tree with node labels](BinaryTree.md) — `requiresConcept`
+
 ## Interface and scope
 
 **axiomBasis:** Extensional total set-like types: constructor/eliminator beta and eta equations; operation-definition equations where specified. Equality of functions is pointwise; no divergence, effects, or bottom values.

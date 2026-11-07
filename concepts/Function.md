@@ -16,6 +16,7 @@ A mapping assigning each element of a domain exactly one element of a codomain.
 
 ## Backlinks
 
+- [Finite ordered binary tree with node labels](BinaryTree.md) — `requiresConcept`
 - [Deterministic finite automaton with total transition](DFA.md) — `requiresConcept`
 - [Empty type](EmptyType.md) — `requiresConcept`
 - [Fixed Point](FixedPoint.md) — `requiresConcept`

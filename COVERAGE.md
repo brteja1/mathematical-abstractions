@@ -11,6 +11,7 @@ Generated from `catalog.jsonld` by `make coverage-report`. Counts describe recor
 | Binary16 | 4 | 4 | 1 | 1 | parameter-instance |
 | Binary32 | 4 | 4 | 1 | 1 | parameter-instance |
 | Binary64 | 4 | 4 | 1 | 1 | parameter-instance |
+| BinaryTree | 10 | 12 | 4 | 7 | inductive-data-type |
 | Bisimulation | 1 | 1 | 1 | 1 | defined-structure |
 | BitVector | 5 | 4 | 0 | 1 | defined-structure |
 | BooleanAlgebra | 3 | 8 | 1 | 1 | axiomatic-structure |
@@ -111,6 +112,6 @@ Generated from `catalog.jsonld` by `make coverage-report`. Counts describe recor
 | WeakestPrecondition | 1 | 1 | 1 | 1 | defined-structure |
 | WellFoundedRelation | 1 | 1 | 1 | 1 | defined-structure |
 
-All 106 current entries document their basis and scope. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
+All 107 current entries document their basis and scope. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
 
 Use `ruleRole` to distinguish foundational axioms, structure constraints, and defining equations. Use `basisScope` for interface boundaries. Alternate language policies, intensional equality, IEEE payload/trap details, and formal proof artifacts require further formalization.

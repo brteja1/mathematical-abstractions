@@ -14,6 +14,12 @@ A nonempty finite connected acyclic simple undirected graph.
 
 **Specializes:** [Graph](Graph.md)
 
+**Related concepts:** [Finite ordered binary tree with node labels](BinaryTree.md)
+
+## Backlinks
+
+- [Finite ordered binary tree with node labels](BinaryTree.md) — `relatedConcept`
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A nonempty connected acyclic simple undirected graph. Governing rules: This tree variant has a nonempty finite simple undirected underlying graph. Every pair of vertices is joined by a finite path. There is no simple undirected cycle.
@@ -21,6 +27,8 @@ A nonempty finite connected acyclic simple undirected graph.
 **basisKind:** defined-structure
 
 **basisScope:** Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.
+
+**basisInstantiation:** A nonempty BinaryTree value yields this Tree carrier by taking node occurrences as vertices, adding parent-child edges and forgetting labels, the root and left/right order. E is excluded; equal labels do not merge vertices. BinaryTree as a whole is therefore a related construction, not a specialization of this nonempty graph carrier.
 
 **specializationNote:** Keep the same finite simple undirected graph; nonemptiness, connectivity and acyclicity are additional constraints.
 
@@ -207,7 +215,11 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/Graph"
     ],
-    "specializationNote": "Keep the same finite simple undirected graph; nonemptiness, connectivity and acyclicity are additional constraints."
+    "specializationNote": "Keep the same finite simple undirected graph; nonemptiness, connectivity and acyclicity are additional constraints.",
+    "relatedConcept": [
+      "urn:csabs:concept/BinaryTree"
+    ],
+    "basisInstantiation": "A nonempty BinaryTree value yields this Tree carrier by taking node occurrences as vertices, adding parent-child edges and forgetting labels, the root and left/right order. E is excluded; equal labels do not merge vertices. BinaryTree as a whole is therefore a related construction, not a specialization of this nonempty graph carrier."
   },
   {
     "id": "urn:csabs:operation/Tree-basis-neighbors",

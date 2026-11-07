@@ -2,7 +2,7 @@
 
 This Lake project gives every current catalog concept a named Lean interpretation, grouped by subject in `Catalog/`. It uses **Lean 4.35.0** and **Mathlib commit `56a005855ea17e0b0958f73ec801ae140b0a1679`** (release `v4.35.0`). `lake-manifest.json` locks transitive dependencies. Normal catalog retrieval and the viewer still require only Python.
 
-There are currently **106 concept bindings**: 93 carrier/interface models and 13 explicitly partial interpretations. There are **17 registered proof witnesses** for existing laws/theorems. This does **not** mean every recorded operation or all 264 laws/theorems have been translated or proved. An alias to a library structure is a model binding, not a proof of all catalog claims.
+There are currently **107 concept bindings**: 94 carrier/interface models and 13 explicitly partial interpretations. There are **28 registered proof witnesses** for existing laws/theorems, including all 11 recorded binary-tree laws/theorems. This does **not** mean every recorded operation or all 275 laws/theorems have been translated or proved. An alias to a library structure is a model binding, not a proof of all catalog claims.
 
 ## Build and verify
 
@@ -38,6 +38,7 @@ The [GitHub workflow](../.github/workflows/lean.yml) runs verification on pushes
 | `Catalog/Algebra.lean` | Semigroups, monoids, groups, rings, fields, modules, linear maps, matrices and tensors |
 | `Catalog/Order.lean` | Preorders, partial/total orders, lattices, Boolean algebras, closure and fixed points |
 | `Catalog/DataStructures.lean` | Sequences, arrays, finite sets/maps, multisets, ordered sets, stacks, queues and deques |
+| `Catalog/BinaryTree.lean` | Finite ordered node-labelled trees, empty/node/view/fold, counts, traversal, mirror and label mapping; witnesses for all recorded binary-tree laws/theorems |
 | `Catalog/Numeric.lean` | Naturals, integers, bit vectors, bounded arithmetic and floating-point interfaces |
 | `Catalog/Graphs.lean` | Graphs, trees, transition systems, simulation, bisimulation and traces |
 | `Catalog/Semantics.lean` | Hoare logic, invariants, termination, safety/liveness and history interfaces |

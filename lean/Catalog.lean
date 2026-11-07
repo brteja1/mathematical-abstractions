@@ -4,6 +4,7 @@ public import Catalog.Foundations
 public import Catalog.Algebra
 public import Catalog.Order
 public import Catalog.DataStructures
+public import Catalog.BinaryTree
 public import Catalog.Numeric
 public import Catalog.Graphs
 public import Catalog.Semantics
