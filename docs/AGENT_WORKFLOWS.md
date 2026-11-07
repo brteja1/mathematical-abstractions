@@ -30,7 +30,17 @@ The implemented Lean project is [`lean/`](../lean/README.md). Its separate `lean
 
 ## Software test design
 
-For a stack implementation:
+Prefer bounded retrieval when designing tests from selected catalog claims.
+
+Use the repository-local [`mathematical-tests` skill](../ai/skills/mathematical-tests/SKILL.md) for the complete test-design workflow. Its bounded ONTFS helper avoids expanding a full dossier when only a few interface records or selected claims are needed:
+
+```sh
+.venv/bin/python ai/skills/mathematical-tests/scripts/query.py search stack --limit 4 --max-chars 4000
+.venv/bin/python ai/skills/mathematical-tests/scripts/query.py interface Stack --sections operations axioms --limit 6 --max-chars 8000
+.venv/bin/python ai/skills/mathematical-tests/scripts/query.py claims Stack --kind law --limit 3 --max-chars 6000
+```
+
+The projection must match current Markdown and have no local edits. Respect `nextOffset`, `needsLargerBudget` and `depthBoundary`; only fetch omitted records needed for the selected property. See the skill's retrieval reference for setup and scratch projections. The original standard-library CLI remains useful when ONTFS is unavailable, but it is a different retrieval backend and should be disclosed as such:
 
 ```sh
 python3 scripts/catalog.py get Stack --sections operations axioms laws theorems dependencies

@@ -68,6 +68,20 @@ The checks preserve and extend the imported safeguards: unique IDs and short for
 
 Validation checks structure and citation metadata. It does not establish mathematical truth, source entailment, formal consistency, or proof completeness. Historical source gaps remain disclosed. Use [AGENTS.md](AGENTS.md) as the entry instructions for future agents.
 
+## AI skill for abstraction-based tests
+
+[`ai/skills/mathematical-tests/SKILL.md`](ai/skills/mathematical-tests/SKILL.md) guides agents from a software API to applicable mathematical concepts, axioms and laws, then to runnable tests. It covers API/operation mappings, definedness, numeric policies, nondeterminism and evidence limitations. Agents should read the skill explicitly or register this directory using their host's skill-discovery mechanism.
+
+Its Python helper uses the pinned ONTFS projection for compact searches and selected interfaces, claims, premises and direct citations. Responses have hard record/character budgets, pagination and depth-boundary flags; complete mathematical records are preserved. Stale or locally edited runtime graphs are rejected. After the [ONTFS setup](docs/ONTOLOGY.md):
+
+```sh
+.venv/bin/python ai/skills/mathematical-tests/scripts/query.py search queue --limit 4 --max-chars 4000
+.venv/bin/python ai/skills/mathematical-tests/scripts/query.py interface Queue --limit 6 --max-chars 8000
+make PYTHON=.venv/bin/python test-ai
+```
+
+The helper works from other repositories via its absolute path. See the skill's [retrieval guide](ai/skills/mathematical-tests/references/retrieval.md) for setup, source freshness, pagination and exact limits. No full graph dump or embedding service is needed.
+
 ## Lean formalization
 
 The [`lean/`](lean/README.md) Lake project provides models or explicitly partial interfaces for all 106 catalog concepts, with pinned Lean/Mathlib versions and 17 compiled law/theorem witnesses. A separate [`bindings.json`](lean/bindings.json) links stable catalog IDs to declarations, expected types, premise mappings and limitations. `make test-lean` compiles and audits witnesses, rejects admitted or fabricated proofs, and records fresh compiler evidence. Model coverage does not mean every catalog claim has been proved. See the [formalization guide](lean/README.md) for setup, coverage and adding a new theorem.

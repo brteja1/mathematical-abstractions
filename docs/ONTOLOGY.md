@@ -4,7 +4,7 @@ The dependency is [brteja1/ONTFS](https://github.com/brteja1/ONTFS), pinned to [
 
 ## Setup status and completion
 
-The parent Git repository was initialized on 2026-11-07, and ONTFS was cloned and registered as a submodule at the locked commit. Both its checked-out HEAD and the parent's staged `160000` gitlink match the lock. `.gitmodules` and the gitlink are staged; no parent commit has been created.
+The parent Git repository was initialized on 2026-11-07, and ONTFS was cloned and committed as a submodule at the locked revision. Both its checked-out HEAD and the parent's `160000` gitlink match the lock. The parent repository is published on GitHub; fresh clones must initialize the submodule before using the backend.
 
 Earlier managed-environment filesystem and DNS restrictions prevented registration; these restrictions have been removed. The temporary upstream source used during initial integration checks is no longer needed.
 
@@ -44,6 +44,8 @@ The build loads authoritative Markdown, validates it, expands it to RDF, and use
 Use `scripts/ontology.py --directory /tmp/math-ontology build` for a separate scratch graph. Document identifiers are relocatable when pages are inside the graph directory and absolute when outside it, following ONTFS behavior. From the repository graph directory, the installed `ontfs context`, `ontfs query` and `ontfs validate` commands can also access the projection directly.
 
 The wrapper checks a present submodule's HEAD against the lock. Integration tests use the registered submodule when present. The checked-out commit and parent gitlink can be inspected with `git submodule status` and `git ls-files --stage -- deps/ONTFS`.
+
+For test-design agents, [`scripts/test_context.py`](../scripts/test_context.py) adds fixed ONTFS/SPARQL queries with record/character budgets, explicit pagination and premise-depth boundaries. It checks both source-input freshness and projection-file integrity before querying and returns lossless authoritative JSON records selected by ONTFS. The [`mathematical-tests` skill](../ai/skills/mathematical-tests/SKILL.md) uses this helper through its local `scripts/query.py` entrypoint; `make test-ai` exercises the real backend, budget behavior and stale/edit rejection paths.
 
 ## Editing and agent proposals
 

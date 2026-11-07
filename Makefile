@@ -18,7 +18,7 @@ test-rdf:
 coverage:
 	$(PYTHON) scripts/catalog.py coverage
 help:
-	@printf '%s\n' 'make build: validate Markdown and regenerate JSON-LD, links, index, coverage and viewer' 'make test: reject structural errors and stale generated records; run regression tests' 'make test-rdf: optional JSON-LD/SPARQL check (rdflib)' 'make coverage: query coverage counts' 'make check-lean: check model and witness bindings without compiling' 'make test-lean: compile models and proofs, audit axioms, and run rejection tests'
+	@printf '%s\n' 'make build: validate Markdown and regenerate JSON-LD, links, index, coverage and viewer' 'make test: reject structural errors and stale generated records; run regression tests' 'make test-rdf: optional JSON-LD/SPARQL check (rdflib)' 'make coverage: query coverage counts' 'make test-ai: exercise bounded ONTFS retrieval for the AI test-design skill' 'make check-lean: check model and witness bindings without compiling' 'make test-lean: compile models and proofs, audit axioms, and run rejection tests'
 
 VENV ?= .venv
 .PHONY: submodules deps-ontology ontology test-ontology
@@ -33,7 +33,11 @@ test-ontology:
 	$(PYTHON) scripts/ontology.py check
 	$(PYTHON) -B -m unittest discover -s tests -p 'test_ontology.py' -v
 
-.PHONY: check-lean test-lean
+.PHONY: test-ai check-lean test-lean
+test-ai:
+	$(PYTHON) -B -c "import sys; sys.path.insert(0, 'scripts'); from ontology import backend; backend()"
+	$(PYTHON) -B -m unittest discover -s tests -p 'test_test_context.py' -v
+
 check-lean:
 	$(PYTHON) scripts/lean.py check
 test-lean:
