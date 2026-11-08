@@ -47,6 +47,9 @@ Each linked page contains the definition, assumptions, operations, claims, prove
 | [Finite fused sequence iterator](concepts/FiniteIterator.md) | Data structures |
 | [Finite set collection](concepts/FiniteSet.md) | Data structures, Set theory and foundations |
 | [Finite carrier with exhaustive enumeration](concepts/FiniteType.md) | Types and semantics |
+| [First-order formula syntax with named variables](concepts/FirstOrderFormula.md) | Logic and proof |
+| [Classical first-order natural deduction with equality](concepts/FirstOrderNaturalDeduction.md) | Logic and proof |
+| [Single-sorted first-order signature](concepts/FirstOrderSignature.md) | Logic and proof |
 | [Fixed Point](concepts/FixedPoint.md) | Order and fixed points |
 | [Fixed-width signed integer](concepts/FixedWidthSignedInteger.md) | Numeric computation, Programming-language semantics |
 | [Fixed-width unsigned integer](concepts/FixedWidthUnsignedInteger.md) | Numeric computation, Programming-language semantics |
@@ -100,7 +103,9 @@ Each linked page contains the definition, assumptions, operations, claims, prove
 | [Probability space (normalized measure)](concepts/ProbabilitySpace.md) | Probability and stochastic models, Measure theory |
 | [Product Type](concepts/ProductType.md) | Types and semantics |
 | [Finite labelled property graph (single-valued profile)](concepts/PropertyGraph.md) | Relational data modelling |
+| [Finite propositional formula syntax](concepts/PropositionalFormula.md) | Logic and proof |
 | [Propositional Logic](concepts/PropositionalLogic.md) | Logic and proof |
+| [Classical propositional natural deduction](concepts/PropositionalNaturalDeduction.md) | Logic and proof |
 | [Queue abstract data type](concepts/Queue.md) | Data structures |
 | [Quotient by an equivalence relation](concepts/QuotientType.md) | Types and semantics |
 | [Finite RDF 1.1 dataset](concepts/RDFDataset.md) | Relational data modelling |

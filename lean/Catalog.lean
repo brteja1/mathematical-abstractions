@@ -9,6 +9,7 @@ public import Catalog.Numeric
 public import Catalog.Graphs
 public import Catalog.Semantics
 public import Catalog.Logic
+public import Catalog.LogicSyntax
 public import Catalog.Languages
 public import Catalog.Database
 public import Catalog.Probability

@@ -47,6 +47,9 @@ Generated from `catalog.jsonld` by `make coverage-report`. Counts describe recor
 | FiniteIterator | 3 | 3 | 1 | 1 | extensional-structural-definition |
 | FiniteSet | 3 | 2 | 2 | 2 | defined-structure |
 | FiniteType | 2 | 3 | 1 | 1 | extensional-structural-definition |
+| FirstOrderFormula | 3 | 3 | 1 | 1 | inductive-definition |
+| FirstOrderNaturalDeduction | 1 | 3 | 1 | 3 | inductive-definition |
+| FirstOrderSignature | 1 | 1 | 1 | 1 | defined-structure |
 | FixedPoint | 1 | 1 | 1 | 1 | defined-structure |
 | FixedWidthSignedInteger | 4 | 3 | 0 | 1 | defined-structure |
 | FixedWidthUnsignedInteger | 5 | 3 | 1 | 1 | defined-structure |
@@ -94,13 +97,15 @@ Generated from `catalog.jsonld` by `make coverage-report`. Counts describe recor
 | Partition | 1 | 3 | 0 | 2 | defined-structure |
 | PigeonholePrinciple | 0 | 1 | 0 | 2 | defined-structure |
 | PowerSet | 1 | 1 | 1 | 2 | defined-structure |
-| PredicateLogic | 1 | 3 | 1 | 1 | defined-structure |
+| PredicateLogic | 3 | 5 | 2 | 3 | defined-structure |
 | Preorder | 1 | 2 | 1 | 1 | defined-structure |
 | PriorityQueue | 3 | 3 | 1 | 1 | defined-structure |
 | ProbabilitySpace | 1 | 1 | 0 | 2 | defined-structure |
 | ProductType | 4 | 4 | 1 | 2 | extensional-type-theory |
 | PropertyGraph | 3 | 3 | 1 | 1 | extensional-structural-definition |
-| PropositionalLogic | 1 | 2 | 1 | 1 | defined-structure |
+| PropositionalFormula | 3 | 3 | 1 | 1 | inductive-definition |
+| PropositionalLogic | 2 | 3 | 1 | 4 | defined-structure |
+| PropositionalNaturalDeduction | 1 | 2 | 1 | 3 | inductive-definition |
 | Queue | 4 | 2 | 1 | 1 | defined-structure |
 | QuotientType | 2 | 3 | 1 | 1 | extensional-structural-definition |
 | RDFDataset | 3 | 3 | 1 | 1 | extensional-structural-definition |
@@ -147,6 +152,6 @@ Generated from `catalog.jsonld` by `make coverage-report`. Counts describe recor
 | WeightedDirectedGraph | 3 | 2 | 1 | 1 | extensional-structural-definition |
 | WellFoundedRelation | 1 | 1 | 1 | 1 | defined-structure |
 
-All 142 current entries document their basis and scope. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
+All 147 current entries document their basis and scope. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
 
 Use `ruleRole` to distinguish foundational axioms, structure constraints, and defining equations. Use `basisScope` for interface boundaries. Alternate language policies, intensional equality, IEEE payload/trap details, and formal proof artifacts require further formalization.

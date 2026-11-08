@@ -841,6 +841,30 @@
       "url": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Map.html",
       "accessedOn": "2026-11-07",
       "sourceRole": "consulted-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/open-logic-propositional-2026",
+      "type": "Source",
+      "label": "Open Logic Text: Propositional Logic (revision 9620cc7, 2026-07-12)",
+      "url": "https://builds.openlogicproject.org/content/propositional-logic/propositional-logic.pdf",
+      "accessedOn": "2026-11-08",
+      "sourceRole": "Definitions, inference rules and metatheory; individual records specify exact locators and adaptations."
+    },
+    {
+      "id": "urn:csabs:source/open-logic-first-order-2026",
+      "type": "Source",
+      "label": "Open Logic Text: First-order Logic (revision 9620cc7, 2026-07-12)",
+      "url": "https://builds.openlogicproject.org/content/first-order-logic/first-order-logic.pdf",
+      "accessedOn": "2026-11-08",
+      "sourceRole": "Definitions, inference rules and metatheory; individual records specify exact locators and adaptations."
+    },
+    {
+      "id": "urn:csabs:source/logic-and-proof-first-order-natural-deduction",
+      "type": "Source",
+      "label": "Logic and Proof, Chapter 8: Natural Deduction for First Order Logic",
+      "url": "https://leanprover-community.github.io/logic_and_proof/natural_deduction_for_first_order_logic.html",
+      "accessedOn": "2026-11-08",
+      "sourceRole": "Definitions, inference rules and metatheory; individual records specify exact locators and adaptations."
     }
   ]
 }

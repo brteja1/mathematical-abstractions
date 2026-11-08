@@ -631,8 +631,8 @@
       "module": "Catalog.Logic",
       "scope": "model",
       "mapping": "Arity-indexed first-order syntax, total function-symbol interpretation, nonempty domain, de Bruijn quantification and equality.",
-      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "986bcd0306935b4f800ac9d10ebfe98f6f7cb70d5bbf1362edae500a648f37c8"
+      "limitations": "Existing de Bruijn satisfaction model, distinct from the new raw named-variable syntax. No named/de Bruijn translation theorem or substitution correspondence is registered. Semantic queries and the new metatheorems have no compiled witnesses.",
+      "catalogHash": "4f05fd43c302db9401e0e987557c46323368f398871698d10421257fda3178a5"
     },
     "urn:csabs:concept/Preorder": {
       "kind": "model",
@@ -676,8 +676,8 @@
       "module": "Catalog.Logic",
       "scope": "model",
       "mapping": "Finite formulas interpreted by Bool valuations and classical Boolean truth functions.",
-      "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "99994a0ada6e96985dbd06a102efe119c4bf3882ac38901d194ab34f3c419537"
+      "limitations": "Selected Bool evaluation on primitive atom/bottom/neg/conj syntax; other connectives expand as graph macros. Semantic-query predicates and normal-form/truth-table algorithms have no wrapper or registered proof witness.",
+      "catalogHash": "46000cc8eeee4502811b3003521493e805d5b9cb715484c0242ce1b8889f914f"
     },
     "urn:csabs:concept/Queue": {
       "kind": "model",
@@ -1622,7 +1622,7 @@
       "scope": "model",
       "mapping": "T_Σ(X)=μT.(X+Σo:Σ. T^{Fin(arity(o))}). Ranked signature arity:Σ→ℕ; nullary symbols allowed. No binders, variable capture, sharing, cyclic terms or equations identifying distinct syntax trees. This is a free syntactic algebra, not evaluation modulo algebraic laws.",
       "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
-      "catalogHash": "91c83b8ccc7cb28c44d7e6f671bef514fd02e9c8591119a9575b9703f1dbfb16"
+      "catalogHash": "e6f781c35ef1a4f8075e2ca71dd49aecae72d1c13a42a23ba455b0e54d6c5821"
     },
     "urn:csabs:concept/BinarySearchTree": {
       "kind": "model",
@@ -2055,7 +2055,7 @@
         "Quot.sound",
         "Classical.choice"
       ],
-      "catalogHash": "26cb45ef24d9629f8aa4f2d3f1f288e8d9d1d19bab0c37848781e066bd4c0667"
+      "catalogHash": "8bbda61a528488e25bdb265e07912115da01cc9a31f6c5d6a5bc1784fa60ed4f"
     },
     "urn:csabs:law/DirectedMultigraph-single-edge-walk": {
       "kind": "witness",
@@ -2177,6 +2177,51 @@
         "Classical.choice"
       ],
       "catalogHash": "993b4dee917523b7a594728ee238ad8633d30bb46374c05add71f6f5018af137"
+    },
+    "urn:csabs:concept/PropositionalFormula": {
+      "kind": "model",
+      "symbol": "Catalog.PropFormula",
+      "module": "Catalog.Logic",
+      "scope": "model",
+      "mapping": "Raw finite syntax over arbitrary AP, primitive atom/bottom/neg/conj. Equality is constructor identity. The catalog macro connectives expand into this basis.",
+      "limitations": "Compiled carrier and selected interface only. No new graph law or metatheorem is registered as a proof witness. In particular substitution-support, semantic correspondence, soundness, completeness, compactness and normal-form existence are editorial claims here; grammar/rule declarations do not prove them.",
+      "catalogHash": "e1035fd954ee43e65c2f5785928b10c7aa912e6dba1214cf2fae06cb3e495998"
+    },
+    "urn:csabs:concept/FirstOrderSignature": {
+      "kind": "model",
+      "symbol": "Catalog.FirstOrderSignature",
+      "module": "Catalog.LogicSyntax",
+      "scope": "model",
+      "mapping": "Countable tagged symbol families: functions n and relations n are subsets of Nat, with n the arity. Instantiate Fn n and Pred n as their subtypes. Nullary symbols are allowed; sorts remain distinct.",
+      "limitations": "Compiled carrier and selected interface only. No new graph law or metatheorem is registered as a proof witness. In particular substitution-support, semantic correspondence, soundness, completeness, compactness and normal-form existence are editorial claims here; grammar/rule declarations do not prove them.",
+      "catalogHash": "b96972c0ff6918ab336e66927b89f1b86ce8c23be539b0ef36a883b2c845d191"
+    },
+    "urn:csabs:concept/FirstOrderFormula": {
+      "kind": "model",
+      "symbol": "Catalog.NamedFirstOrderFormula",
+      "module": "Catalog.LogicSyntax",
+      "scope": "model",
+      "mapping": "Nat names provide the countably infinite variable supply. Arity-indexed Fn/Pred instantiate the signature; terms reuse FirstOrderTerm, a ranked term algebra. Raw named binders preserve syntactic identity. freeVariables and term variables are Set-valued supports (finite by syntax, without a registered finiteness witness). Public substitute requires freeFor; rawSubstitute alone has no capture-free contract.",
+      "limitations": "Compiled carrier and selected interface only. No new graph law or metatheorem is registered as a proof witness. In particular substitution-support, semantic correspondence, soundness, completeness, compactness and normal-form existence are editorial claims here; grammar/rule declarations do not prove them.",
+      "catalogHash": "86c4395c23017707156e6d490a7e31164259bcf442d3673b70ffba092196ccb1"
+    },
+    "urn:csabs:concept/PropositionalNaturalDeduction": {
+      "kind": "model",
+      "symbol": "Catalog.PropositionalDerivable",
+      "module": "Catalog.LogicSyntax",
+      "scope": "model",
+      "mapping": "The inductive Prop-valued relation uses set contexts and finite rule trees: hypothesis, weakening, conjunction introduction/projections, negation introduction/elimination, explosion and classical reductio. AP must be countable when interpreting the catalog completeness/compactness claims.",
+      "limitations": "Compiled carrier and selected interface only. No new graph law or metatheorem is registered as a proof witness. In particular substitution-support, semantic correspondence, soundness, completeness, compactness and normal-form existence are editorial claims here; grammar/rule declarations do not prove them.",
+      "catalogHash": "540e778b948592f7cf37e80f030889faf4f6d8628497534374eb0e32825b6928"
+    },
+    "urn:csabs:concept/FirstOrderNaturalDeduction": {
+      "kind": "model",
+      "symbol": "Catalog.FirstOrderDerivable",
+      "module": "Catalog.LogicSyntax",
+      "scope": "model",
+      "mapping": "Inductive named-variable derivability on set contexts, with all explicit propositional rules, universal introduction guarded by context freshness, elimination guarded by freeFor, and equality reflexivity/substitution. Existentials and other connectives are macros. Restrict symbol families to the countable signature for the catalog metatheorems.",
+      "limitations": "Compiled carrier and selected interface only. No new graph law or metatheorem is registered as a proof witness. In particular substitution-support, semantic correspondence, soundness, completeness, compactness and normal-form existence are editorial claims here; grammar/rule declarations do not prove them.",
+      "catalogHash": "477fcd89db6708891f0ba5b119d4fc66987f0720afcafef1638dd0f4570035c5"
     }
   }
 }
