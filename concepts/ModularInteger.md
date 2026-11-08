@@ -12,6 +12,10 @@ An integer residue class modulo an explicit integer modulus n≥2.
 
 **Prerequisites:** [Unital ring (convention stated)](Ring.md), [Field](Field.md)
 
+## Backlinks
+
+- [Finite field (Galois field)](FiniteField.md) — `relatedConcept`
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: An integer residue class modulo an explicit integer modulus n≥2. Governing rules: Residue equivalence and operations are induced from integers modulo a fixed n≥2.

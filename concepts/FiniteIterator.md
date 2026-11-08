@@ -6,11 +6,11 @@ An immutable finite sequence cursor retaining its original sequence and a positi
 
 **Stable ID:** `urn:csabs:concept/FiniteIterator`
 
-**Categories:** Data structures
+**Categories:** Data structures → Sequential collections
 
 **Kind:** Abstract data type
 
-**Prerequisites:** [Finite sequence](Sequence.md), [Option Type](OptionType.md), [Natural Number](NaturalNumber.md)
+**Prerequisites:** [Finite sequence (List datatype)](Sequence.md), [Option Type](OptionType.md), [Natural Number](NaturalNumber.md)
 
 ## Interface and scope
 
@@ -254,7 +254,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "shortForm": "FiniteIterator",
     "fullName": "Finite fused sequence iterator",
     "category": [
-      "urn:csabs:category/data-structures"
+      "urn:csabs:category/sequential-collections"
     ],
     "kind": "urn:csabs:kind/abstract-data-type",
     "definition": "An immutable finite sequence cursor retaining its original sequence and a position from zero through length.",

@@ -21,6 +21,9 @@ ca:ConceptShape a sh:NodeShape ; sh:targetClass ca:Concept ;
  sh:property [ sh:path ca:specializationOf ; sh:class ca:Concept ] ;
  sh:property [ sh:path ca:relatedConcept ; sh:class ca:Concept ] .
 
+ca:CategoryShape a sh:NodeShape ; sh:targetClass ca:Category ;
+ sh:property [ sh:path ca:parentCategory ; sh:maxCount 1 ; sh:class ca:Category ] .
+
 ca:ClaimShape a sh:NodeShape ;
  sh:targetClass ca:Axiom, ca:Law, ca:Theorem ;
  sh:property [ sh:path ca:statement ; sh:minCount 1 ; sh:datatype xsd:string ] ;

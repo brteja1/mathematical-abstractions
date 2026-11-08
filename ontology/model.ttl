@@ -20,6 +20,8 @@ ca:Source a owl:Class .
 ca:Document a owl:Class .
 
 ca:category a owl:ObjectProperty ; rdfs:domain ca:Concept ; rdfs:range ca:Category .
+ca:parentCategory a owl:ObjectProperty ; rdfs:domain ca:Category ; rdfs:range ca:Category ;
+  rdfs:comment "Direct subject containment for navigation; distinct from concept specialization and axiom inheritance." .
 ca:kind a owl:ObjectProperty ; rdfs:domain ca:Concept ; rdfs:range ca:ConceptKind .
 ca:hasOperation a owl:ObjectProperty ; rdfs:domain ca:Concept ; rdfs:range ca:Operation .
 ca:hasAxiom a owl:ObjectProperty ; rdfs:domain ca:Concept ; rdfs:range ca:Axiom .

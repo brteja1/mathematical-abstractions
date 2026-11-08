@@ -59,6 +59,20 @@ class GraphValidationTests(unittest.TestCase):
         self.concept['hasOperation']=[]
         self.assertTrue(any('missing operations or' in e for e in validate(self.doc)))
 
+    def test_subject_parent_must_be_a_category(self):
+        subject=next(n for n in self.doc['@graph'] if n.get('type')=='Category')
+        subject['parentCategory']=self.concept['id']
+        self.assertTrue(any('wrong target type for parentCategory' in e for e in validate(self.doc)))
+
+    def test_subject_parent_is_single_and_only_on_categories(self):
+        self.concept['parentCategory']=['urn:csabs:category/algebra']
+        self.assertTrue(any('parentCategory must be a single Category ID on a Category' in e for e in validate(self.doc)))
+
+    def test_subject_cycles_rejected(self):
+        subjects={n['id']:n for n in self.doc['@graph'] if n.get('type')=='Category'}
+        subjects['urn:csabs:category/algebra']['parentCategory']='urn:csabs:category/linear-algebra'
+        self.assertTrue(any('Cyclic category hierarchy' in e for e in validate(self.doc)))
+
     def test_duplicate_ids_rejected(self):
         self.doc['@graph'].append(copy.deepcopy(self.concept))
         self.assertTrue(any('Duplicate ID' in e for e in validate(self.doc)))

@@ -16,6 +16,7 @@ A monoid in which every element has a two-sided inverse.
 
 ## Backlinks
 
+- [Finite field (Galois field)](FiniteField.md) — `relatedConcept`
 - [Vector space over a field](VectorSpace.md) — `requiresConcept`
 - [Vector space over a field](VectorSpace.md) — `specializationOf`
 
@@ -26,6 +27,10 @@ A monoid in which every element has a two-sided inverse.
 **basisKind:** axiomatic-structure
 
 **basisScope:** Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.
+
+**convention:**  Equality is equality of carrier elements; operations are exact. The empty carrier is excluded by the named constants.
+
+**specializationNote:** Forget the inverse operation and retain the same carrier, multiplication and identity to obtain a Monoid. The one-element group is permitted; commutativity is not required.
 
 **verificationObligation:** Use the stated carriers, equality, domain restrictions and semantic conventions; alternative conventions require an explicit variant.
 
@@ -45,6 +50,10 @@ A monoid in which every element has a two-sided inverse.
 
 **description:** Combines group elements.
 
+**precondition:** Inputs belong to the stated carrier.
+
+**definedness:** Total on the stated domain; exact algebraic arithmetic without rounding or overflow.
+
 <a id="node-urn-csabs-operation-group-inverse"></a>
 
 ### inverse
@@ -54,6 +63,10 @@ A monoid in which every element has a two-sided inverse.
 **signature:** inv : G→G
 
 **description:** Maps each element to its unique two-sided inverse.
+
+**precondition:** Inputs belong to the stated carrier.
+
+**definedness:** Total on the stated domain; exact algebraic arithmetic without rounding or overflow.
 
 ## Axioms and defining rules
 
@@ -228,6 +241,13 @@ A monoid in which every element has a two-sided inverse.
 ## Concept provenance
 
 - [Mathlib group definitions](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Group/Defs.html); sourceRole: reference-for-selected-basis
+- [Mathlib: group definitions (consulted 2026-11-08)](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Group/Defs.html); accessedOn: 2026-11-08; sourceRole: reference-for-selected-basis
+
+**sourceLocator:** Group: one, mul, mul_assoc, one_mul, mul_one, inv, inv_mul_cancel; mul_inv_cancel
+
+**sourceNote:** Selected algebraic interface; retain catalog conventions and stable identity.
+
+**provenanceKind:** adapted
 
 ## Structured record
 
@@ -280,8 +300,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
     "source": [
-      "urn:csabs:source/mathlib-group"
-    ]
+      "urn:csabs:source/mathlib-group",
+      "urn:csabs:source/mathlib-group-defs-2026-11-08"
+    ],
+    "sourceLocator": "Group: one, mul, mul_assoc, one_mul, mul_one, inv, inv_mul_cancel; mul_inv_cancel",
+    "sourceNote": "Selected algebraic interface; retain catalog conventions and stable identity.",
+    "provenanceKind": "adapted",
+    "convention": " Equality is equality of carrier elements; operations are exact. The empty carrier is excluded by the named constants.",
+    "specializationNote": "Forget the inverse operation and retain the same carrier, multiplication and identity to obtain a Monoid. The one-element group is permitted; commutativity is not required."
   },
   {
     "id": "urn:csabs:operation/group-product",
@@ -289,7 +315,9 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "name": "group operation",
     "signature": "· : G×G→G",
     "description": "Combines group elements.",
-    "concept": "urn:csabs:concept/Group"
+    "concept": "urn:csabs:concept/Group",
+    "precondition": "Inputs belong to the stated carrier.",
+    "definedness": "Total on the stated domain; exact algebraic arithmetic without rounding or overflow."
   },
   {
     "id": "urn:csabs:operation/group-inverse",
@@ -297,7 +325,9 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "name": "inverse",
     "signature": "inv : G→G",
     "description": "Maps each element to its unique two-sided inverse.",
-    "concept": "urn:csabs:concept/Group"
+    "concept": "urn:csabs:concept/Group",
+    "precondition": "Inputs belong to the stated carrier.",
+    "definedness": "Total on the stated domain; exact algebraic arithmetic without rounding or overflow."
   },
   {
     "id": "urn:csabs:axiom/group-inverses",

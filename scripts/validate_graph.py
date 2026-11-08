@@ -5,6 +5,7 @@ from datetime import date
 
 LINK_TYPES = {
     'category': {'Category'}, 'kind': {'ConceptKind'},
+    'parentCategory': {'Category'},
     'requiresConcept': {'Concept'}, 'specializationOf': {'Concept'},
     'relatedConcept': {'Concept'}, 'hasOperation': {'Operation'},
     'hasAxiom': {'Axiom'}, 'hasLaw': {'Law'}, 'hasTheorem': {'Theorem'},
@@ -39,6 +40,8 @@ def validate(doc):
     names=set()
     for ident,n in index.items():
         kind=n.get('type')
+        if 'parentCategory' in n and (kind != 'Category' or not isinstance(n['parentCategory'], str)):
+            errors.append(f'{ident}: parentCategory must be a single Category ID on a Category')
         for key,expected in LINK_TYPES.items():
             if key not in n: continue
             values=n[key] if isinstance(n[key],list) else [n[key]]
@@ -121,6 +124,19 @@ def validate(doc):
         hierarchy_active.remove(ident);hierarchy_done.add(ident)
     for ident,n in index.items():
         if n.get('type')=='Concept':visit_specialization(ident)
+    # Subject containment is independent of concept specialization.
+    category_done=set(); category_active=set()
+    def visit_category(ident):
+        if ident in category_active:
+            errors.append('Cyclic category hierarchy: '+ident);return
+        if ident in category_done:return
+        category_active.add(ident)
+        parent=index[ident].get('parentCategory')
+        if isinstance(parent,str) and parent in index and index[parent].get('type')=='Category':
+            visit_category(parent)
+        category_active.remove(ident);category_done.add(ident)
+    for ident,n in index.items():
+        if n.get('type')=='Category':visit_category(ident)
     # Derivation edges must also be acyclic.
     visited=set(); active=set()
     def visit(ident):

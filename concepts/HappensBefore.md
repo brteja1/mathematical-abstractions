@@ -6,11 +6,15 @@ The transitive closure of per-process event order and message send-before-receiv
 
 **Stable ID:** `urn:csabs:concept/HappensBefore`
 
-**Categories:** Concurrency and distributed systems
+**Categories:** Concurrency and distributed systems → Ordering and consistency
 
 **Kind:** Relation
 
 **Prerequisites:** [Partial Order](PartialOrder.md)
+
+## Backlinks
+
+- [Lock with compatible access modes](Lock.md) — `relatedConcept`
 
 ## Interface and scope
 
@@ -143,7 +147,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "shortForm": "HappensBefore",
     "fullName": "Happens Before",
     "category": [
-      "urn:csabs:category/concurrency"
+      "urn:csabs:category/ordering-consistency"
     ],
     "kind": "urn:csabs:kind/relation",
     "definition": "The transitive closure of per-process event order and message send-before-receive edges in the distributed execution model.",

@@ -20,6 +20,7 @@ A value that is either absent or a present payload, using a tag to distinguish a
 - [Nonempty bounded closed interval](ClosedInterval.md) — `requiresConcept`
 - [Finite fused sequence iterator](FiniteIterator.md) — `requiresConcept`
 - [Finite allocated heap store](HeapStore.md) — `requiresConcept`
+- [Mutex (non-reentrant mutual-exclusion lock)](Mutex.md) — `requiresConcept`
 - [Finite RDF 1.1 dataset](RDFDataset.md) — `requiresConcept`
 
 ## Interface and scope

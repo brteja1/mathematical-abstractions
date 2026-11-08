@@ -2,19 +2,249 @@
 
 Each linked page contains the definition, assumptions, operations, claims, provenance, typed relationships, and backlinks.
 
+## Browse by subject
+
+Subjects organize navigation. They do not imply specialization or transfer mathematical claims.
+
+- **Algebra**
+  - [Boolean algebra](concepts/BooleanAlgebra.md)
+  - [Field](concepts/Field.md)
+  - [Finite field (Galois field)](concepts/FiniteField.md)
+  - [Group](concepts/Group.md)
+  - [Mathematical integers](concepts/Integer.md)
+  - [Monoid](concepts/Monoid.md)
+  - [Unital ring (convention stated)](concepts/Ring.md)
+  - [Semigroup](concepts/Semigroup.md)
+  - [Semiring](concepts/Semiring.md)
+  - [Vector space over a field](concepts/VectorSpace.md)
+  - **Linear and multilinear algebra**
+    - [Linear map](concepts/LinearMap.md)
+    - [Markov chain (finite-state, discrete-time, time-homogeneous)](concepts/MarkovChain.md)
+    - [Finite rectangular matrix over a field](concepts/Matrix.md)
+    - [Finitely supported vector](concepts/SparseVector.md)
+    - [Tensor of specified valence on a finite-dimensional vector space](concepts/Tensor.md)
+    - [Tensor product of vector spaces](concepts/TensorProduct.md)
+    - [Vector space over a field](concepts/VectorSpace.md)
+- **Behavior and transition systems**
+  - [Bisimulation](concepts/Bisimulation.md)
+  - [Deterministic finite automaton with total transition](concepts/DFA.md)
+  - [Finite serial Kripke structure for model checking](concepts/KripkeStructure.md)
+  - [Action-labelled transition system with initial states](concepts/LabelledTransitionSystem.md)
+  - [Linear temporal logic on infinite discrete traces](concepts/LinearTemporalLogic.md)
+  - [Classical propositional modal logic K](concepts/ModalLogic.md)
+  - [Nondeterministic finite automaton without epsilon moves](concepts/NFA.md)
+  - [Simulation](concepts/Simulation.md)
+  - [Strong finite partial-trace equivalence](concepts/TraceEquivalence.md)
+  - [Transition System](concepts/TransitionSystem.md)
+- **Concurrency and distributed systems**
+  - **Behavioral models**
+    - [Action-labelled transition system with initial states](concepts/LabelledTransitionSystem.md)
+    - [Strong finite partial-trace equivalence](concepts/TraceEquivalence.md)
+  - **Correctness properties**
+    - [Liveness Property](concepts/LivenessProperty.md)
+    - [Safety Property](concepts/SafetyProperty.md)
+  - **Ordering and consistency**
+    - [Happens Before](concepts/HappensBefore.md)
+    - [Linearizability](concepts/Linearizability.md)
+    - [Sequential Consistency](concepts/SequentialConsistency.md)
+  - **Replication**
+    - [State-based CRDT replication algebra](concepts/StateBasedCRDT.md)
+  - **Synchronization**
+    - **Lock protocols**
+      - [Lamport bakery lock protocol](concepts/LamportBakery.md)
+    - **Locks**
+      - [Lock with compatible access modes](concepts/Lock.md)
+      - [Mutex (non-reentrant mutual-exclusion lock)](concepts/Mutex.md)
+- **Counting and induction**
+  - [Pigeonhole Principle](concepts/PigeonholePrinciple.md)
+  - [Structural Induction](concepts/StructuralInduction.md)
+- **Data structures**
+  - **Connectivity structures**
+    - [Union Find (disjoint-set union with representatives)](concepts/DisjointSet.md)
+  - **Intervals**
+    - [Nonempty bounded closed interval](concepts/ClosedInterval.md)
+  - **Priority collections**
+    - [Finite complete binary min-heap](concepts/BinaryHeap.md)
+    - [Priority Queue](concepts/PriorityQueue.md)
+  - **Sequential collections**
+    - [Fixed-length array](concepts/Array.md)
+    - [Deque](concepts/Deque.md)
+    - [Finite fused sequence iterator](concepts/FiniteIterator.md)
+    - [Ordered collection without duplicates](concepts/OrderedSet.md)
+    - [Queue abstract data type](concepts/Queue.md)
+    - [Finite sequence (List datatype)](concepts/Sequence.md)
+    - [Stack abstract data type](concepts/Stack.md)
+    - [Infinite discrete stream](concepts/Stream.md)
+  - **Sets and mappings**
+    - [Finite database relation under set semantics](concepts/DatabaseRelation.md)
+    - [Finite set collection](concepts/FiniteSet.md)
+    - [Map](concepts/Map.md)
+    - [Finite set-valued multimap](concepts/Multimap.md)
+    - [Multiset](concepts/Multiset.md)
+    - [Ordered collection without duplicates](concepts/OrderedSet.md)
+    - [Finite prefix dictionary](concepts/Trie.md)
+  - **Tree structures**
+    - [B-tree (balanced multiway search tree)](concepts/BTree.md)
+    - [Finite complete binary min-heap](concepts/BinaryHeap.md)
+    - [Strict binary search tree](concepts/BinarySearchTree.md)
+    - [Finite ordered binary tree with node labels](concepts/BinaryTree.md)
+    - [Finite ordered rose tree](concepts/RoseTree.md)
+    - [Finite prefix dictionary](concepts/Trie.md)
+- **Geometry and manifolds**
+  - [Topological manifold (fixed dimension, without boundary)](concepts/Manifold.md)
+  - [Smooth manifold (C∞, without boundary)](concepts/SmoothManifold.md)
+  - [Tensor of specified valence on a finite-dimensional vector space](concepts/Tensor.md)
+- **Graph theory**
+  - [Bayesian network (finite discrete variables)](concepts/BayesianNetwork.md)
+  - [Finite ordered binary tree with node labels](concepts/BinaryTree.md)
+  - [Finite simple graph with chosen bipartition](concepts/BipartiteGraph.md)
+  - [Directed acyclic graph](concepts/DAG.md)
+  - [Directed Graph](concepts/DirectedGraph.md)
+  - [Finite directed multigraph with edge identities](concepts/DirectedMultigraph.md)
+  - [Graph](concepts/Graph.md)
+  - [Finite simple undirected hypergraph](concepts/Hypergraph.md)
+  - [Finite rooted undirected tree](concepts/RootedTree.md)
+  - [Tree](concepts/Tree.md)
+  - [Finite real-weighted directed multigraph](concepts/WeightedDirectedGraph.md)
+- **Languages and computation**
+  - [Context-free grammar of finite words](concepts/ContextFreeGrammar.md)
+  - [Deterministic finite automaton with total transition](concepts/DFA.md)
+  - [Formal language of finite words](concepts/FormalLanguage.md)
+  - [Nondeterministic finite automaton without epsilon moves](concepts/NFA.md)
+  - [Regular language over a finite alphabet](concepts/RegularLanguage.md)
+  - [Deterministic one-tape Turing machine](concepts/TuringMachine.md)
+- **Logic and proof**
+  - [Boolean algebra](concepts/BooleanAlgebra.md)
+  - [First-order formula syntax with named variables](concepts/FirstOrderFormula.md)
+  - [Classical first-order natural deduction with equality](concepts/FirstOrderNaturalDeduction.md)
+  - [Single-sorted first-order signature](concepts/FirstOrderSignature.md)
+  - [Functional dependency on a relational schema](concepts/FunctionalDependency.md)
+  - [Finite serial Kripke structure for model checking](concepts/KripkeStructure.md)
+  - [Linear temporal logic on infinite discrete traces](concepts/LinearTemporalLogic.md)
+  - [Classical propositional modal logic K](concepts/ModalLogic.md)
+  - [Predicate Logic](concepts/PredicateLogic.md)
+  - [Finite propositional formula syntax](concepts/PropositionalFormula.md)
+  - [Propositional Logic](concepts/PropositionalLogic.md)
+  - [Classical propositional natural deduction](concepts/PropositionalNaturalDeduction.md)
+- **Measure theory**
+  - [Measurable function](concepts/MeasurableFunction.md)
+  - [Measurable space (sigma-algebra on a carrier)](concepts/MeasurableSpace.md)
+  - [Measure space (nonnegative countably additive measure)](concepts/MeasureSpace.md)
+  - [Probability space (normalized measure)](concepts/ProbabilitySpace.md)
+  - [Random variable (measurable random element)](concepts/RandomVariable.md)
+- **Numeric computation**
+  - [Arbitrary Precision Integer](concepts/ArbitraryPrecisionInteger.md)
+  - [IEEE 754 binary128](concepts/Binary128.md)
+  - [IEEE 754 binary16](concepts/Binary16.md)
+  - [IEEE 754 binary32](concepts/Binary32.md)
+  - [IEEE 754 binary64](concepts/Binary64.md)
+  - [Fixed-width bit vector](concepts/BitVector.md)
+  - [Checked Integer](concepts/CheckedInteger.md)
+  - [Exact complex number](concepts/ComplexNumber.md)
+  - [Field](concepts/Field.md)
+  - [Finite field (Galois field)](concepts/FiniteField.md)
+  - [Fixed-width signed integer](concepts/FixedWidthSignedInteger.md)
+  - [Fixed-width unsigned integer](concepts/FixedWidthUnsignedInteger.md)
+  - [Floating-point type](concepts/FloatingPointType.md)
+  - [Mathematical integers](concepts/Integer.md)
+  - [Modular Integer](concepts/ModularInteger.md)
+  - [Natural Number](concepts/NaturalNumber.md)
+  - [Exact rational number](concepts/RationalNumber.md)
+  - [Exact real number](concepts/RealNumber.md)
+  - [Saturating Integer](concepts/SaturatingInteger.md)
+- **Order and fixed points**
+  - [Closure Operator](concepts/ClosureOperator.md)
+  - [Complete Lattice](concepts/CompleteLattice.md)
+  - [Fixed Point](concepts/FixedPoint.md)
+  - [Galois Connection](concepts/GaloisConnection.md)
+  - [Join semilattice](concepts/JoinSemilattice.md)
+  - [Lattice](concepts/Lattice.md)
+  - [Monotone Function](concepts/MonotoneFunction.md)
+  - [Partial Order](concepts/PartialOrder.md)
+  - [Preorder](concepts/Preorder.md)
+  - [Total Order](concepts/TotalOrder.md)
+  - [Well Founded Relation](concepts/WellFoundedRelation.md)
+- **Probability and stochastic models**
+  - [Bayesian network (finite discrete variables)](concepts/BayesianNetwork.md)
+  - [Conditional probability given a positive-probability event](concepts/ConditionalProbability.md)
+  - [Finitely supported probability distribution](concepts/FiniteDistribution.md)
+  - [Markov chain (finite-state, discrete-time, time-homogeneous)](concepts/MarkovChain.md)
+  - [Probability space (normalized measure)](concepts/ProbabilitySpace.md)
+  - [Random variable (measurable random element)](concepts/RandomVariable.md)
+- **Programming-language semantics**
+  - [Bisimulation](concepts/Bisimulation.md)
+  - [Fixed-width bit vector](concepts/BitVector.md)
+  - [Fixed-width signed integer](concepts/FixedWidthSignedInteger.md)
+  - [Fixed-width unsigned integer](concepts/FixedWidthUnsignedInteger.md)
+  - [Floating-point type](concepts/FloatingPointType.md)
+  - [Finite allocated heap store](concepts/HeapStore.md)
+  - [Hoare Triple](concepts/HoareTriple.md)
+  - [Action-labelled transition system with initial states](concepts/LabelledTransitionSystem.md)
+  - [Loop Invariant](concepts/LoopInvariant.md)
+  - [Partial function](concepts/PartialFunction.md)
+  - [Simulation](concepts/Simulation.md)
+  - [Termination Variant](concepts/TerminationVariant.md)
+  - [Transition System](concepts/TransitionSystem.md)
+  - [Deterministic one-tape Turing machine](concepts/TuringMachine.md)
+  - [Weakest Precondition](concepts/WeakestPrecondition.md)
+- **Relational data modelling**
+  - [Finite database relation under bag semantics](concepts/BagRelation.md)
+  - [Candidate key relative to functional dependencies](concepts/CandidateKey.md)
+  - [Finite database relation under set semantics](concepts/DatabaseRelation.md)
+  - [Finite JSON document value (interoperable profile)](concepts/DocumentValue.md)
+  - [Finite typed entity-relationship instance](concepts/EntityRelationshipModel.md)
+  - [Functional dependency on a relational schema](concepts/FunctionalDependency.md)
+  - [Finite labelled property graph (single-valued profile)](concepts/PropertyGraph.md)
+  - [Finite RDF 1.1 dataset](concepts/RDFDataset.md)
+  - [Finite RDF 1.1 graph](concepts/RDFGraph.md)
+  - [Named relational schema with attribute domains](concepts/RelationalSchema.md)
+- **Set theory and foundations**
+  - [Cartesian product](concepts/CartesianProduct.md)
+  - [Equivalence relation](concepts/EquivalenceRelation.md)
+  - [Finite set collection](concepts/FiniteSet.md)
+  - [Total function](concepts/Function.md)
+  - [Partial function](concepts/PartialFunction.md)
+  - [Partition of a set](concepts/Partition.md)
+  - [Power set](concepts/PowerSet.md)
+  - [Binary relation](concepts/Relation.md)
+  - [Set](concepts/Set.md)
+- **Topology**
+  - [Topological manifold (fixed dimension, without boundary)](concepts/Manifold.md)
+  - [Smooth manifold (C∞, without boundary)](concepts/SmoothManifold.md)
+  - [Topological space (topology on a carrier)](concepts/TopologicalSpace.md)
+- **Types and semantics**
+  - [Finite ordered binary tree with node labels](concepts/BinaryTree.md)
+  - [Two-valued Boolean type](concepts/BooleanType.md)
+  - [Dependent function (Pi type)](concepts/DependentFunction.md)
+  - [Dependent pair (Sigma type)](concepts/DependentPair.md)
+  - [Empty type](concepts/EmptyType.md)
+  - [Finite carrier with exhaustive enumeration](concepts/FiniteType.md)
+  - [Function type](concepts/FunctionType.md)
+  - [Option Type](concepts/OptionType.md)
+  - [Product Type](concepts/ProductType.md)
+  - [Quotient by an equivalence relation](concepts/QuotientType.md)
+  - [Named relational schema with attribute domains](concepts/RelationalSchema.md)
+  - [Predicate-restricted subtype](concepts/Subtype.md)
+  - [Sum Type](concepts/SumType.md)
+  - [Free ranked term algebra with variables](concepts/TermAlgebra.md)
+  - [Unit type](concepts/UnitType.md)
+
+## Alphabetical index
+
 | Concept | Categories |
 | --- | --- |
 | [Arbitrary Precision Integer](concepts/ArbitraryPrecisionInteger.md) | Numeric computation |
-| [Fixed-length array](concepts/Array.md) | Data structures |
+| [Fixed-length array](concepts/Array.md) | Data structures → Sequential collections |
+| [B-tree (balanced multiway search tree)](concepts/BTree.md) | Data structures → Tree structures |
 | [Finite database relation under bag semantics](concepts/BagRelation.md) | Relational data modelling |
 | [Bayesian network (finite discrete variables)](concepts/BayesianNetwork.md) | Probability and stochastic models, Graph theory |
 | [IEEE 754 binary128](concepts/Binary128.md) | Numeric computation |
 | [IEEE 754 binary16](concepts/Binary16.md) | Numeric computation |
 | [IEEE 754 binary32](concepts/Binary32.md) | Numeric computation |
 | [IEEE 754 binary64](concepts/Binary64.md) | Numeric computation |
-| [Finite complete binary min-heap](concepts/BinaryHeap.md) | Data structures |
-| [Strict binary search tree](concepts/BinarySearchTree.md) | Data structures |
-| [Finite ordered binary tree with node labels](concepts/BinaryTree.md) | Data structures, Types and semantics, Graph theory |
+| [Finite complete binary min-heap](concepts/BinaryHeap.md) | Data structures → Tree structures, Data structures → Priority collections |
+| [Strict binary search tree](concepts/BinarySearchTree.md) | Data structures → Tree structures |
+| [Finite ordered binary tree with node labels](concepts/BinaryTree.md) | Data structures → Tree structures, Types and semantics, Graph theory |
 | [Finite simple graph with chosen bipartition](concepts/BipartiteGraph.md) | Graph theory |
 | [Bisimulation](concepts/Bisimulation.md) | Programming-language semantics, Behavior and transition systems |
 | [Fixed-width bit vector](concepts/BitVector.md) | Numeric computation, Programming-language semantics |
@@ -23,7 +253,7 @@ Each linked page contains the definition, assumptions, operations, claims, prove
 | [Candidate key relative to functional dependencies](concepts/CandidateKey.md) | Relational data modelling |
 | [Cartesian product](concepts/CartesianProduct.md) | Set theory and foundations |
 | [Checked Integer](concepts/CheckedInteger.md) | Numeric computation |
-| [Nonempty bounded closed interval](concepts/ClosedInterval.md) | Data structures |
+| [Nonempty bounded closed interval](concepts/ClosedInterval.md) | Data structures → Intervals |
 | [Closure Operator](concepts/ClosureOperator.md) | Order and fixed points |
 | [Complete Lattice](concepts/CompleteLattice.md) | Order and fixed points |
 | [Exact complex number](concepts/ComplexNumber.md) | Numeric computation |
@@ -31,21 +261,22 @@ Each linked page contains the definition, assumptions, operations, claims, prove
 | [Context-free grammar of finite words](concepts/ContextFreeGrammar.md) | Languages and computation |
 | [Directed acyclic graph](concepts/DAG.md) | Graph theory |
 | [Deterministic finite automaton with total transition](concepts/DFA.md) | Languages and computation, Behavior and transition systems |
-| [Finite database relation under set semantics](concepts/DatabaseRelation.md) | Relational data modelling, Data structures |
+| [Finite database relation under set semantics](concepts/DatabaseRelation.md) | Relational data modelling, Data structures → Sets and mappings |
 | [Dependent function (Pi type)](concepts/DependentFunction.md) | Types and semantics |
 | [Dependent pair (Sigma type)](concepts/DependentPair.md) | Types and semantics |
-| [Deque](concepts/Deque.md) | Data structures |
+| [Deque](concepts/Deque.md) | Data structures → Sequential collections |
 | [Directed Graph](concepts/DirectedGraph.md) | Graph theory |
 | [Finite directed multigraph with edge identities](concepts/DirectedMultigraph.md) | Graph theory |
-| [Disjoint-set union with representatives](concepts/DisjointSet.md) | Data structures |
+| [Union Find (disjoint-set union with representatives)](concepts/DisjointSet.md) | Data structures → Connectivity structures |
 | [Finite JSON document value (interoperable profile)](concepts/DocumentValue.md) | Relational data modelling |
 | [Empty type](concepts/EmptyType.md) | Types and semantics |
 | [Finite typed entity-relationship instance](concepts/EntityRelationshipModel.md) | Relational data modelling |
 | [Equivalence relation](concepts/EquivalenceRelation.md) | Set theory and foundations |
 | [Field](concepts/Field.md) | Algebra, Numeric computation |
 | [Finitely supported probability distribution](concepts/FiniteDistribution.md) | Probability and stochastic models |
-| [Finite fused sequence iterator](concepts/FiniteIterator.md) | Data structures |
-| [Finite set collection](concepts/FiniteSet.md) | Data structures, Set theory and foundations |
+| [Finite field (Galois field)](concepts/FiniteField.md) | Algebra, Numeric computation |
+| [Finite fused sequence iterator](concepts/FiniteIterator.md) | Data structures → Sequential collections |
+| [Finite set collection](concepts/FiniteSet.md) | Data structures → Sets and mappings, Set theory and foundations |
 | [Finite carrier with exhaustive enumeration](concepts/FiniteType.md) | Types and semantics |
 | [First-order formula syntax with named variables](concepts/FirstOrderFormula.md) | Logic and proof |
 | [Classical first-order natural deduction with equality](concepts/FirstOrderNaturalDeduction.md) | Logic and proof |
@@ -61,24 +292,26 @@ Each linked page contains the definition, assumptions, operations, claims, prove
 | [Galois Connection](concepts/GaloisConnection.md) | Order and fixed points |
 | [Graph](concepts/Graph.md) | Graph theory |
 | [Group](concepts/Group.md) | Algebra |
-| [Happens Before](concepts/HappensBefore.md) | Concurrency and distributed systems |
+| [Happens Before](concepts/HappensBefore.md) | Concurrency and distributed systems → Ordering and consistency |
 | [Finite allocated heap store](concepts/HeapStore.md) | Programming-language semantics |
 | [Hoare Triple](concepts/HoareTriple.md) | Programming-language semantics |
 | [Finite simple undirected hypergraph](concepts/Hypergraph.md) | Graph theory |
 | [Mathematical integers](concepts/Integer.md) | Numeric computation, Algebra |
 | [Join semilattice](concepts/JoinSemilattice.md) | Order and fixed points |
 | [Finite serial Kripke structure for model checking](concepts/KripkeStructure.md) | Behavior and transition systems, Logic and proof |
-| [Action-labelled transition system with initial states](concepts/LabelledTransitionSystem.md) | Behavior and transition systems, Programming-language semantics, Concurrency and distributed systems |
+| [Action-labelled transition system with initial states](concepts/LabelledTransitionSystem.md) | Behavior and transition systems, Programming-language semantics, Concurrency and distributed systems → Behavioral models |
+| [Lamport bakery lock protocol](concepts/LamportBakery.md) | Concurrency and distributed systems → Synchronization → Lock protocols |
 | [Lattice](concepts/Lattice.md) | Order and fixed points |
-| [Linear map](concepts/LinearMap.md) | Linear and multilinear algebra |
+| [Linear map](concepts/LinearMap.md) | Algebra → Linear and multilinear algebra |
 | [Linear temporal logic on infinite discrete traces](concepts/LinearTemporalLogic.md) | Logic and proof, Behavior and transition systems |
-| [Linearizability](concepts/Linearizability.md) | Concurrency and distributed systems |
-| [Liveness Property](concepts/LivenessProperty.md) | Concurrency and distributed systems |
+| [Linearizability](concepts/Linearizability.md) | Concurrency and distributed systems → Ordering and consistency |
+| [Liveness Property](concepts/LivenessProperty.md) | Concurrency and distributed systems → Correctness properties |
+| [Lock with compatible access modes](concepts/Lock.md) | Concurrency and distributed systems → Synchronization → Locks |
 | [Loop Invariant](concepts/LoopInvariant.md) | Programming-language semantics |
 | [Topological manifold (fixed dimension, without boundary)](concepts/Manifold.md) | Geometry and manifolds, Topology |
-| [Map](concepts/Map.md) | Data structures |
-| [Markov chain (finite-state, discrete-time, time-homogeneous)](concepts/MarkovChain.md) | Probability and stochastic models, Linear and multilinear algebra |
-| [Finite rectangular matrix over a field](concepts/Matrix.md) | Linear and multilinear algebra |
+| [Map](concepts/Map.md) | Data structures → Sets and mappings |
+| [Markov chain (finite-state, discrete-time, time-homogeneous)](concepts/MarkovChain.md) | Probability and stochastic models, Algebra → Linear and multilinear algebra |
+| [Finite rectangular matrix over a field](concepts/Matrix.md) | Algebra → Linear and multilinear algebra |
 | [Measurable function](concepts/MeasurableFunction.md) | Measure theory |
 | [Measurable space (sigma-algebra on a carrier)](concepts/MeasurableSpace.md) | Measure theory |
 | [Measure space (nonnegative countably additive measure)](concepts/MeasureSpace.md) | Measure theory |
@@ -86,12 +319,13 @@ Each linked page contains the definition, assumptions, operations, claims, prove
 | [Modular Integer](concepts/ModularInteger.md) | Numeric computation |
 | [Monoid](concepts/Monoid.md) | Algebra |
 | [Monotone Function](concepts/MonotoneFunction.md) | Order and fixed points |
-| [Finite set-valued multimap](concepts/Multimap.md) | Data structures |
-| [Multiset](concepts/Multiset.md) | Data structures |
+| [Finite set-valued multimap](concepts/Multimap.md) | Data structures → Sets and mappings |
+| [Multiset](concepts/Multiset.md) | Data structures → Sets and mappings |
+| [Mutex (non-reentrant mutual-exclusion lock)](concepts/Mutex.md) | Concurrency and distributed systems → Synchronization → Locks |
 | [Nondeterministic finite automaton without epsilon moves](concepts/NFA.md) | Languages and computation, Behavior and transition systems |
 | [Natural Number](concepts/NaturalNumber.md) | Numeric computation |
 | [Option Type](concepts/OptionType.md) | Types and semantics |
-| [Ordered collection without duplicates](concepts/OrderedSet.md) | Data structures |
+| [Ordered collection without duplicates](concepts/OrderedSet.md) | Data structures → Sets and mappings, Data structures → Sequential collections |
 | [Partial function](concepts/PartialFunction.md) | Set theory and foundations, Programming-language semantics |
 | [Partial Order](concepts/PartialOrder.md) | Order and fixed points |
 | [Partition of a set](concepts/Partition.md) | Set theory and foundations |
@@ -99,14 +333,14 @@ Each linked page contains the definition, assumptions, operations, claims, prove
 | [Power set](concepts/PowerSet.md) | Set theory and foundations |
 | [Predicate Logic](concepts/PredicateLogic.md) | Logic and proof |
 | [Preorder](concepts/Preorder.md) | Order and fixed points |
-| [Priority Queue](concepts/PriorityQueue.md) | Data structures |
+| [Priority Queue](concepts/PriorityQueue.md) | Data structures → Priority collections |
 | [Probability space (normalized measure)](concepts/ProbabilitySpace.md) | Probability and stochastic models, Measure theory |
 | [Product Type](concepts/ProductType.md) | Types and semantics |
 | [Finite labelled property graph (single-valued profile)](concepts/PropertyGraph.md) | Relational data modelling |
 | [Finite propositional formula syntax](concepts/PropositionalFormula.md) | Logic and proof |
 | [Propositional Logic](concepts/PropositionalLogic.md) | Logic and proof |
 | [Classical propositional natural deduction](concepts/PropositionalNaturalDeduction.md) | Logic and proof |
-| [Queue abstract data type](concepts/Queue.md) | Data structures |
+| [Queue abstract data type](concepts/Queue.md) | Data structures → Sequential collections |
 | [Quotient by an equivalence relation](concepts/QuotientType.md) | Types and semantics |
 | [Finite RDF 1.1 dataset](concepts/RDFDataset.md) | Relational data modelling |
 | [Finite RDF 1.1 graph](concepts/RDFGraph.md) | Relational data modelling |
@@ -118,36 +352,36 @@ Each linked page contains the definition, assumptions, operations, claims, prove
 | [Named relational schema with attribute domains](concepts/RelationalSchema.md) | Relational data modelling, Types and semantics |
 | [Unital ring (convention stated)](concepts/Ring.md) | Algebra |
 | [Finite rooted undirected tree](concepts/RootedTree.md) | Graph theory |
-| [Finite ordered rose tree](concepts/RoseTree.md) | Data structures |
-| [Safety Property](concepts/SafetyProperty.md) | Concurrency and distributed systems |
+| [Finite ordered rose tree](concepts/RoseTree.md) | Data structures → Tree structures |
+| [Safety Property](concepts/SafetyProperty.md) | Concurrency and distributed systems → Correctness properties |
 | [Saturating Integer](concepts/SaturatingInteger.md) | Numeric computation |
 | [Semigroup](concepts/Semigroup.md) | Algebra |
 | [Semiring](concepts/Semiring.md) | Algebra |
-| [Finite sequence](concepts/Sequence.md) | Data structures |
-| [Sequential Consistency](concepts/SequentialConsistency.md) | Concurrency and distributed systems |
+| [Finite sequence (List datatype)](concepts/Sequence.md) | Data structures → Sequential collections |
+| [Sequential Consistency](concepts/SequentialConsistency.md) | Concurrency and distributed systems → Ordering and consistency |
 | [Set](concepts/Set.md) | Set theory and foundations |
 | [Simulation](concepts/Simulation.md) | Programming-language semantics, Behavior and transition systems |
 | [Smooth manifold (C∞, without boundary)](concepts/SmoothManifold.md) | Geometry and manifolds, Topology |
-| [Finitely supported vector](concepts/SparseVector.md) | Linear and multilinear algebra |
-| [Stack abstract data type](concepts/Stack.md) | Data structures |
-| [State-based CRDT replication algebra](concepts/StateBasedCRDT.md) | Concurrency and distributed systems |
-| [Infinite discrete stream](concepts/Stream.md) | Data structures |
+| [Finitely supported vector](concepts/SparseVector.md) | Algebra → Linear and multilinear algebra |
+| [Stack abstract data type](concepts/Stack.md) | Data structures → Sequential collections |
+| [State-based CRDT replication algebra](concepts/StateBasedCRDT.md) | Concurrency and distributed systems → Replication |
+| [Infinite discrete stream](concepts/Stream.md) | Data structures → Sequential collections |
 | [Structural Induction](concepts/StructuralInduction.md) | Counting and induction |
 | [Predicate-restricted subtype](concepts/Subtype.md) | Types and semantics |
 | [Sum Type](concepts/SumType.md) | Types and semantics |
-| [Tensor of specified valence on a finite-dimensional vector space](concepts/Tensor.md) | Linear and multilinear algebra, Geometry and manifolds |
-| [Tensor product of vector spaces](concepts/TensorProduct.md) | Linear and multilinear algebra |
+| [Tensor of specified valence on a finite-dimensional vector space](concepts/Tensor.md) | Algebra → Linear and multilinear algebra, Geometry and manifolds |
+| [Tensor product of vector spaces](concepts/TensorProduct.md) | Algebra → Linear and multilinear algebra |
 | [Free ranked term algebra with variables](concepts/TermAlgebra.md) | Types and semantics |
 | [Termination Variant](concepts/TerminationVariant.md) | Programming-language semantics |
 | [Topological space (topology on a carrier)](concepts/TopologicalSpace.md) | Topology |
 | [Total Order](concepts/TotalOrder.md) | Order and fixed points |
-| [Strong finite partial-trace equivalence](concepts/TraceEquivalence.md) | Behavior and transition systems, Concurrency and distributed systems |
+| [Strong finite partial-trace equivalence](concepts/TraceEquivalence.md) | Behavior and transition systems, Concurrency and distributed systems → Behavioral models |
 | [Transition System](concepts/TransitionSystem.md) | Programming-language semantics, Behavior and transition systems |
 | [Tree](concepts/Tree.md) | Graph theory |
-| [Finite prefix dictionary](concepts/Trie.md) | Data structures |
+| [Finite prefix dictionary](concepts/Trie.md) | Data structures → Tree structures, Data structures → Sets and mappings |
 | [Deterministic one-tape Turing machine](concepts/TuringMachine.md) | Languages and computation, Programming-language semantics |
 | [Unit type](concepts/UnitType.md) | Types and semantics |
-| [Vector space over a field](concepts/VectorSpace.md) | Linear and multilinear algebra, Algebra |
+| [Vector space over a field](concepts/VectorSpace.md) | Algebra → Linear and multilinear algebra, Algebra |
 | [Weakest Precondition](concepts/WeakestPrecondition.md) | Programming-language semantics |
 | [Finite real-weighted directed multigraph](concepts/WeightedDirectedGraph.md) | Graph theory |
 | [Well Founded Relation](concepts/WellFoundedRelation.md) | Order and fixed points |

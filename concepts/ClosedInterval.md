@@ -6,7 +6,7 @@ An ordered endpoint pair representing the closed interval between its endpoints 
 
 **Stable ID:** `urn:csabs:concept/ClosedInterval`
 
-**Categories:** Data structures
+**Categories:** Data structures → Intervals
 
 **Kind:** Abstract data type
 
@@ -253,7 +253,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "shortForm": "ClosedInterval",
     "fullName": "Nonempty bounded closed interval",
     "category": [
-      "urn:csabs:category/data-structures"
+      "urn:csabs:category/interval-structures"
     ],
     "kind": "urn:csabs:kind/abstract-data-type",
     "definition": "An ordered endpoint pair representing the closed interval between its endpoints in a linearly ordered carrier.",

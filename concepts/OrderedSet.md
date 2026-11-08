@@ -6,18 +6,18 @@ A finite sequence with pairwise distinct elements; sequence position is part of 
 
 **Stable ID:** `urn:csabs:concept/OrderedSet`
 
-**Categories:** Data structures
+**Categories:** Data structures → Sets and mappings, Data structures → Sequential collections
 
 **Kind:** Abstract data type
 
-**Prerequisites:** [Finite sequence](Sequence.md), [Finite set collection](FiniteSet.md)
+**Prerequisites:** [Finite sequence (List datatype)](Sequence.md), [Finite set collection](FiniteSet.md)
 
 **Related concepts:** [Multiset](Multiset.md), [Map](Map.md)
 
 ## Backlinks
 
 - [Multiset](Multiset.md) — `relatedConcept`
-- [Finite sequence](Sequence.md) — `relatedConcept`
+- [Finite sequence (List datatype)](Sequence.md) — `relatedConcept`
 
 ## Interface and scope
 
@@ -324,7 +324,8 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "shortForm": "OrderedSet",
     "fullName": "Ordered collection without duplicates",
     "category": [
-      "urn:csabs:category/data-structures"
+      "urn:csabs:category/associative-collections",
+      "urn:csabs:category/sequential-collections"
     ],
     "kind": "urn:csabs:kind/abstract-data-type",
     "definition": "A finite sequence with pairwise distinct elements; sequence position is part of equality.",

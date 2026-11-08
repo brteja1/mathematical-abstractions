@@ -6,11 +6,11 @@ States evolve through an arbitrary relation labelled by actions; a chosen initia
 
 **Stable ID:** `urn:csabs:concept/LabelledTransitionSystem`
 
-**Categories:** Behavior and transition systems, Programming-language semantics, Concurrency and distributed systems
+**Categories:** Behavior and transition systems, Programming-language semantics, Concurrency and distributed systems → Behavioral models
 
 **Kind:** semantic-model
 
-**Prerequisites:** [Transition System](TransitionSystem.md), [Binary relation](Relation.md), [Finite sequence](Sequence.md)
+**Prerequisites:** [Transition System](TransitionSystem.md), [Binary relation](Relation.md), [Finite sequence (List datatype)](Sequence.md)
 
 **Specializes:** [Transition System](TransitionSystem.md)
 
@@ -18,6 +18,8 @@ States evolve through an arbitrary relation labelled by actions; a chosen initia
 
 ## Backlinks
 
+- [Lamport bakery lock protocol](LamportBakery.md) — `requiresConcept`
+- [Lock with compatible access modes](Lock.md) — `requiresConcept`
 - [Nondeterministic finite automaton without epsilon moves](NFA.md) — `requiresConcept`
 - [Nondeterministic finite automaton without epsilon moves](NFA.md) — `specializationOf`
 - [Strong finite partial-trace equivalence](TraceEquivalence.md) — `requiresConcept`
@@ -288,7 +290,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "category": [
       "urn:csabs:category/behavior",
       "urn:csabs:category/programming-semantics",
-      "urn:csabs:category/concurrency"
+      "urn:csabs:category/concurrent-behavior"
     ],
     "kind": "urn:csabs:kind/semantic-model",
     "definition": "States evolve through an arbitrary relation labelled by actions; a chosen initial-state set supports system-level executions.",

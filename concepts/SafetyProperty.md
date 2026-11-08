@@ -6,7 +6,7 @@ A property of infinite executions for which every violating trace has a finite p
 
 **Stable ID:** `urn:csabs:concept/SafetyProperty`
 
-**Categories:** Concurrency and distributed systems
+**Categories:** Concurrency and distributed systems → Correctness properties
 
 **Kind:** principle
 
@@ -14,7 +14,9 @@ A property of infinite executions for which every violating trace has a finite p
 
 ## Backlinks
 
+- [Lamport bakery lock protocol](LamportBakery.md) — `relatedConcept`
 - [Linear temporal logic on infinite discrete traces](LinearTemporalLogic.md) — `relatedConcept`
+- [Mutex (non-reentrant mutual-exclusion lock)](Mutex.md) — `relatedConcept`
 
 ## Interface and scope
 
@@ -129,7 +131,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "shortForm": "SafetyProperty",
     "fullName": "Safety Property",
     "category": [
-      "urn:csabs:category/concurrency"
+      "urn:csabs:category/concurrency-properties"
     ],
     "kind": "urn:csabs:kind/principle",
     "definition": "A property of infinite executions for which every violating trace has a finite prefix with no satisfying extension.",

@@ -6,7 +6,7 @@ A vector indexed by I whose coordinates in a field F vanish outside a finite set
 
 **Stable ID:** `urn:csabs:concept/SparseVector`
 
-**Categories:** Linear and multilinear algebra
+**Categories:** Algebra → Linear and multilinear algebra
 
 **Kind:** Abstract data type
 

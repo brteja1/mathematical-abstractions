@@ -6,13 +6,17 @@ A finite ordered binary tree whose inorder key sequence is strictly increasing u
 
 **Stable ID:** `urn:csabs:concept/BinarySearchTree`
 
-**Categories:** Data structures
+**Categories:** Data structures → Tree structures
 
 **Kind:** Abstract data type
 
 **Prerequisites:** [Finite ordered binary tree with node labels](BinaryTree.md), [Total Order](TotalOrder.md), [Finite set collection](FiniteSet.md)
 
 **Specializes:** [Finite ordered binary tree with node labels](BinaryTree.md)
+
+## Backlinks
+
+- [B-tree (balanced multiway search tree)](BTree.md) — `relatedConcept`
 
 ## Interface and scope
 
@@ -281,7 +285,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "shortForm": "BinarySearchTree",
     "fullName": "Strict binary search tree",
     "category": [
-      "urn:csabs:category/data-structures"
+      "urn:csabs:category/tree-structures"
     ],
     "kind": "urn:csabs:kind/abstract-data-type",
     "definition": "A finite ordered binary tree whose inorder key sequence is strictly increasing under a fixed linear order.",

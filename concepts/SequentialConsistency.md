@@ -6,11 +6,15 @@ A completed well-formed concurrent history is sequentially consistent when a leg
 
 **Stable ID:** `urn:csabs:concept/SequentialConsistency`
 
-**Categories:** Concurrency and distributed systems
+**Categories:** Concurrency and distributed systems → Ordering and consistency
 
 **Kind:** semantic-model
 
 **Prerequisites:** [Binary relation](Relation.md)
+
+## Backlinks
+
+- [Lamport bakery lock protocol](LamportBakery.md) — `relatedConcept`
 
 ## Interface and scope
 
@@ -125,7 +129,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "shortForm": "SequentialConsistency",
     "fullName": "Sequential Consistency",
     "category": [
-      "urn:csabs:category/concurrency"
+      "urn:csabs:category/ordering-consistency"
     ],
     "kind": "urn:csabs:kind/semantic-model",
     "definition": "A completed well-formed concurrent history is sequentially consistent when a legal sequential history preserves each process’s projection. Pending calls require a separate completion convention.",

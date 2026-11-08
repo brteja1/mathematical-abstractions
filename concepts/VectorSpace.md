@@ -6,7 +6,7 @@ An additive abelian group V equipped with scalar multiplication by a specified f
 
 **Stable ID:** `urn:csabs:concept/VectorSpace`
 
-**Categories:** Linear and multilinear algebra, Algebra
+**Categories:** Algebra → Linear and multilinear algebra, Algebra
 
 **Kind:** Mathematical structure
 

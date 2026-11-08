@@ -6,7 +6,7 @@ A total function between vector spaces over the same field that preserves vector
 
 **Stable ID:** `urn:csabs:concept/LinearMap`
 
-**Categories:** Linear and multilinear algebra
+**Categories:** Algebra → Linear and multilinear algebra
 
 **Kind:** Function
 

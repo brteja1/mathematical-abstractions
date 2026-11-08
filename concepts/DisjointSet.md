@@ -1,12 +1,12 @@
-# Disjoint-set union with representatives
+# Union Find (disjoint-set union with representatives)
 
-A finite universe partition represented by an idempotent choice of representative for each element.
+The Union Find (UnionFind, disjoint-set union, DSU) abstract data structure: a finite universe partition represented by an idempotent choice of representative for each element, supporting find, connected and union.
 
 **Notation:** D_n={r:Fin(n)→Fin(n) | r(r(x))=r(x)}
 
 **Stable ID:** `urn:csabs:concept/DisjointSet`
 
-**Categories:** Data structures
+**Categories:** Data structures → Connectivity structures
 
 **Kind:** Abstract data type
 
@@ -260,7 +260,7 @@ A finite universe partition represented by an idempotent choice of representativ
 
 **sourceLocator:** Class contract: sites, components, representative, find, union and connected
 
-**sourceNote:** Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.
+**sourceNote:** Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation. Union Find and disjoint-sets synonymy reconfirmed from the UF class contract on 2026-11-08; stable ID and representative semantics are preserved.
 
 **provenanceKind:** adapted
 
@@ -275,12 +275,12 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "id": "urn:csabs:concept/DisjointSet",
     "type": "Concept",
     "shortForm": "DisjointSet",
-    "fullName": "Disjoint-set union with representatives",
+    "fullName": "Union Find (disjoint-set union with representatives)",
     "category": [
-      "urn:csabs:category/data-structures"
+      "urn:csabs:category/connectivity-structures"
     ],
     "kind": "urn:csabs:kind/abstract-data-type",
-    "definition": "A finite universe partition represented by an idempotent choice of representative for each element.",
+    "definition": "The Union Find (UnionFind, disjoint-set union, DSU) abstract data structure: a finite universe partition represented by an idempotent choice of representative for each element, supporting find, connected and union.",
     "notation": "D_n={r:Fin(n)→Fin(n) | r(r(x))=r(x)}",
     "requiresConcept": [
       "urn:csabs:concept/Partition",
@@ -319,7 +319,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:source/algs4-uf-core"
     ],
     "sourceLocator": "Class contract: sites, components, representative, find, union and connected",
-    "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
+    "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation. Union Find and disjoint-sets synonymy reconfirmed from the UF class contract on 2026-11-08; stable ID and representative semantics are preserved.",
     "provenanceKind": "adapted"
   },
   {

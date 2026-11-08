@@ -6,7 +6,7 @@ A function from a finite row-index and column-index product to a specified field
 
 **Stable ID:** `urn:csabs:concept/Matrix`
 
-**Categories:** Linear and multilinear algebra
+**Categories:** Algebra → Linear and multilinear algebra
 
 **Kind:** Mathematical structure
 

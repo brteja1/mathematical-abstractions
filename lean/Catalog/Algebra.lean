@@ -23,6 +23,11 @@ abbrev Semiring (A : Type u) := _root_.Semiring A
 abbrev Ring (A : Type u) := _root_.Ring A
 abbrev Field (A : Type u) := _root_.Field A
 
+/-- Exact field structure with a finite carrier; no particular encoding is chosen.
+Mathlib totalizes inverse at zero; the catalog interface restricts it to nonzero inputs. -/
+class FiniteField (A : Type u) extends _root_.Field A where
+  carrier_finite : Finite A
+
 abbrev VectorSpace (F : Type u) (V : Type v) [_root_.Field F]
     [AddCommGroup V] := Module F V
 abbrev LinearMap (F : Type u) (V : Type v) (W : Type w)

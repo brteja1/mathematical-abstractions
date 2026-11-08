@@ -19,6 +19,10 @@ The catalog spans foundations, types, logic, algebra, order, combinatorics, prob
 
 The [interactive atlas](https://brteja1.github.io/mathematical-abstractions/) supports subject categories, specialization hierarchies, search, relationship filters, concept details, keyboard selection, pan and zoom. Concept links open the corresponding Markdown records on GitHub. The standalone [`visualization/index.html`](visualization/index.html) also works offline.
 
+Choose **Subjects**, **Specializations**, or **Dependencies** in the atlas. Subjects use nested arcs; the other views place general concepts or prerequisites above their dependents. Dependency cycles share a level. See the [hierarchy guide](docs/HIERARCHY.md) for the first data-structure/concurrency organization pass and reviewed relationship mappings.
+
+Subject categories use `parentCategory` in `data/shared.json` for nesting. Broad subjects appear on outer arcs; subsubjects appear on inner arcs within the same angular span. Linear and multilinear algebra sits under Algebra. Data structures and concurrency have nested subject families, including synchronization → locks and lock protocols. Selecting a subject includes its subsubjects; this navigation hierarchy does not imply concept specialization or axiom inheritance.
+
 The [Pages workflow](.github/workflows/pages.yml) rebuilds, validates and publishes the viewer on pushes to `main`.
 
 ## Installation
@@ -33,7 +37,10 @@ Clone this repository and run `make` to install ONTFS and build the catalog, vie
 | [`data/shared.json`](data/shared.json) | Authoritative JSON-LD context, categories, concept kinds, vocabulary and shared sources. |
 | [`CONCEPTS.md`](CONCEPTS.md) | Generated complete concept index. |
 | [`COVERAGE.md`](COVERAGE.md) | Generated counts and basis coverage, not a completeness certificate. |
-| [`visualization/template.html`](visualization/template.html) | Editable viewer template; `index.html` is generated. |
+| [`visualization/template.html`](visualization/template.html) | Readable page shell for the standalone viewer. |
+| [`visualization/styles.css`](visualization/styles.css) | Viewer theme, graph styles and responsive layout. |
+| [`visualization/app.js`](visualization/app.js) | Organized graph rendering, labels, selection, details and camera behavior. |
+| [`visualization/index.html`](visualization/index.html) | Generated offline page with the styles, script and catalog embedded. |
 
 Edit concepts directly in their `concepts/<shortForm>.md` files. Each file stores its authoritative structured records in a marked JSON block; the readable sections above that block are generated from those records. Update definitions, operations, claims and references in that block, then run `make` to refresh the page, links, indexes, viewer and ontology. Shared vocabulary and sources live in `data/shared.json`.
 
@@ -58,6 +65,8 @@ python3 scripts/agent_query.py dossier Group --purpose proof --limit 80
 python3 scripts/agent_query.py dossier Stack --purpose tests --limit 80
 python3 scripts/agent_query.py node urn:csabs:concept/Group
 ```
+
+Category queries include all descendant subjects and accept a suffix or full category ID; for example, `--category synchronization` includes Lock, Mutex and LamportBakery.
 
 Commands emit JSON. Retrieval reads current Markdown records directly. `get` expands only requested sections; `node` fetches any stable concept/claim/operation/source ID. `neighbors` supports chosen edge types and incoming edges. A `dossier` traverses interfaces, prerequisites, sources and derivation premises within an explicit node limit, reports truncation, and includes task instructions. Retrieve omitted premises before relying on a truncated result.
 
@@ -103,7 +112,7 @@ I would like to thank my colleague, Mr. Devendra Bhave, for introducing me to th
 
 ## Lean formalization
 
-The [`lean/`](lean/README.md) Lake project provides models or explicitly partial interfaces for all 147 catalog concepts, with pinned Lean/Mathlib versions and 52 compiled law/theorem witnesses. This includes the [finite ordered binary-tree abstraction](concepts/BinaryTree.md), with an explicit empty case and witnesses for every recorded binary-tree law/theorem. A separate [`bindings.json`](lean/bindings.json) links stable catalog IDs to declarations, expected types, premise mappings and limitations. `make test-lean` compiles and audits witnesses, rejects admitted or fabricated proofs, and records fresh compiler evidence. Model coverage does not mean every catalog claim has been proved. See the [formalization guide](lean/README.md) for setup, coverage and adding a new theorem.
+The [`lean/`](lean/README.md) Lake project provides models or explicitly partial interfaces for all current catalog concepts, with pinned Lean/Mathlib versions and 52 compiled law/theorem witnesses. This includes the [finite ordered binary-tree abstraction](concepts/BinaryTree.md), with an explicit empty case and witnesses for every recorded binary-tree law/theorem. A separate [`bindings.json`](lean/bindings.json) links stable catalog IDs to declarations, expected types, premise mappings and limitations. `make test-lean` compiles and audits witnesses, rejects admitted or fabricated proofs, and records fresh compiler evidence. Model coverage does not mean every catalog claim has been proved. See the [formalization guide](lean/README.md) for setup, coverage and adding a new theorem.
 
 ## ONTFS ontology backend
 

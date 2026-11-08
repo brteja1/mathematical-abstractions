@@ -6,7 +6,7 @@ A join-semilattice state space with bottom and inflationary local updates, merge
 
 **Stable ID:** `urn:csabs:concept/StateBasedCRDT`
 
-**Categories:** Concurrency and distributed systems
+**Categories:** Concurrency and distributed systems → Replication
 
 **Kind:** semantic-model
 
@@ -254,7 +254,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "shortForm": "StateBasedCRDT",
     "fullName": "State-based CRDT replication algebra",
     "category": [
-      "urn:csabs:category/concurrency"
+      "urn:csabs:category/replication"
     ],
     "kind": "urn:csabs:kind/semantic-model",
     "definition": "A join-semilattice state space with bottom and inflationary local updates, merged by join.",

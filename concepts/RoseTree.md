@@ -6,16 +6,18 @@ A finite nonempty node-labelled rooted tree with an ordered finite list of child
 
 **Stable ID:** `urn:csabs:concept/RoseTree`
 
-**Categories:** Data structures
+**Categories:** Data structures → Tree structures
 
 **Kind:** Abstract data type
 
-**Prerequisites:** [Finite sequence](Sequence.md), [Structural Induction](StructuralInduction.md)
+**Prerequisites:** [Finite sequence (List datatype)](Sequence.md), [Structural Induction](StructuralInduction.md)
 
 **Related concepts:** [Finite rooted undirected tree](RootedTree.md), [Finite ordered binary tree with node labels](BinaryTree.md)
 
 ## Backlinks
 
+- [B-tree (balanced multiway search tree)](BTree.md) — `requiresConcept`
+- [B-tree (balanced multiway search tree)](BTree.md) — `specializationOf`
 - [Free ranked term algebra with variables](TermAlgebra.md) — `relatedConcept`
 
 ## Interface and scope
@@ -308,7 +310,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "shortForm": "RoseTree",
     "fullName": "Finite ordered rose tree",
     "category": [
-      "urn:csabs:category/data-structures"
+      "urn:csabs:category/tree-structures"
     ],
     "kind": "urn:csabs:kind/abstract-data-type",
     "definition": "A finite nonempty node-labelled rooted tree with an ordered finite list of children at every node.",

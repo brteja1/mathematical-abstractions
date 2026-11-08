@@ -6,11 +6,15 @@ A concurrent operation history can be completed by appending responses to some p
 
 **Stable ID:** `urn:csabs:concept/Linearizability`
 
-**Categories:** Concurrency and distributed systems
+**Categories:** Concurrency and distributed systems → Ordering and consistency
 
 **Kind:** semantic-model
 
 **Prerequisites:** [Binary relation](Relation.md)
+
+## Backlinks
+
+- [Lock with compatible access modes](Lock.md) — `relatedConcept`
 
 ## Interface and scope
 
@@ -145,7 +149,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "shortForm": "Linearizability",
     "fullName": "Linearizability",
     "category": [
-      "urn:csabs:category/concurrency"
+      "urn:csabs:category/ordering-consistency"
     ],
     "kind": "urn:csabs:kind/semantic-model",
     "definition": "A concurrent operation history can be completed by appending responses to some pending calls and discarding others so that it is equivalent to a legal sequential history preserving real-time precedence.",

@@ -10,7 +10,7 @@ A finite recursive tagged value: null, Boolean, exact finite decimal, Unicode sc
 
 **Kind:** Abstract data type
 
-**Prerequisites:** [Two-valued Boolean type](BooleanType.md), [Exact rational number](RationalNumber.md), [Finite sequence](Sequence.md), [Map](Map.md), [Structural Induction](StructuralInduction.md)
+**Prerequisites:** [Two-valued Boolean type](BooleanType.md), [Exact rational number](RationalNumber.md), [Finite sequence (List datatype)](Sequence.md), [Map](Map.md), [Structural Induction](StructuralInduction.md)
 
 ## Interface and scope
 

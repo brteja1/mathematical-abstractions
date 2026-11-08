@@ -10,7 +10,7 @@ An arbitrary set of finite words over a fixed finite alphabet. The set of words 
 
 **Kind:** Mathematical structure
 
-**Prerequisites:** [Set](Set.md), [Finite sequence](Sequence.md)
+**Prerequisites:** [Set](Set.md), [Finite sequence (List datatype)](Sequence.md)
 
 **Specializes:** [Set](Set.md)
 
@@ -23,7 +23,7 @@ An arbitrary set of finite words over a fixed finite alphabet. The set of words 
 - [Nondeterministic finite automaton without epsilon moves](NFA.md) — `requiresConcept`
 - [Regular language over a finite alphabet](RegularLanguage.md) — `requiresConcept`
 - [Regular language over a finite alphabet](RegularLanguage.md) — `specializationOf`
-- [Finite sequence](Sequence.md) — `relatedConcept`
+- [Finite sequence (List datatype)](Sequence.md) — `relatedConcept`
 - [Set](Set.md) — `relatedConcept`
 - [Strong finite partial-trace equivalence](TraceEquivalence.md) — `relatedConcept`
 - [Deterministic one-tape Turing machine](TuringMachine.md) — `requiresConcept`

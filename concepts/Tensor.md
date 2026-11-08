@@ -6,7 +6,7 @@ An element of a mixed tensor power of a finite-dimensional vector space V and it
 
 **Stable ID:** `urn:csabs:concept/Tensor`
 
-**Categories:** Linear and multilinear algebra, Geometry and manifolds
+**Categories:** Algebra → Linear and multilinear algebra, Geometry and manifolds
 
 **Kind:** Mathematical structure
 

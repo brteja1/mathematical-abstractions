@@ -10,7 +10,7 @@ Finite vertex and edge carriers with source and target functions; different edge
 
 **Kind:** Mathematical structure
 
-**Prerequisites:** [Finite carrier with exhaustive enumeration](FiniteType.md), [Total function](Function.md), [Finite sequence](Sequence.md)
+**Prerequisites:** [Finite carrier with exhaustive enumeration](FiniteType.md), [Total function](Function.md), [Finite sequence (List datatype)](Sequence.md)
 
 **Related concepts:** [Directed Graph](DirectedGraph.md)
 

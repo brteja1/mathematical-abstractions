@@ -84,7 +84,14 @@ class OntfsTestContextTests(unittest.TestCase):
     def test_category_filter(self):
         result = self.context.search('', category='data-structures', limit=4)
         self.assertGreater(result['returned'], 0)
-        self.assertTrue(all('urn:csabs:category/data-structures' in n['category'] for n in result['records']))
+        from subjects import in_category
+        self.assertTrue(all(in_category(self.context.index, n, 'data-structures') for n in result['records']))
+
+    def test_nested_category_search_includes_descendants(self):
+        result = self.context.search('', category='synchronization', limit=20)
+        self.assertEqual({n['shortForm'] for n in result['records']}, {'Lock', 'Mutex', 'LamportBakery'})
+        full = self.context.search('', category='urn:csabs:category/synchronization', limit=20)
+        self.assertEqual(full['records'], result['records'])
 
     def test_interface_keeps_root_first_and_does_not_inherit_axioms(self):
         result = self.context.interface('Group', sections=['axioms'], limit=32, max_chars=40000)

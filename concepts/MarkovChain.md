@@ -6,7 +6,7 @@ A stochastic process on a nonempty finite state set whose next-state distributio
 
 **Stable ID:** `urn:csabs:concept/MarkovChain`
 
-**Categories:** Probability and stochastic models, Linear and multilinear algebra
+**Categories:** Probability and stochastic models, Algebra → Linear and multilinear algebra
 
 **Kind:** semantic-model
 

@@ -6,11 +6,11 @@ A finite indexed collection with one value per valid index; mutable variants are
 
 **Stable ID:** `urn:csabs:concept/Array`
 
-**Categories:** Data structures
+**Categories:** Data structures → Sequential collections
 
 **Kind:** Abstract data type
 
-**Related concepts:** [Finite sequence](Sequence.md)
+**Related concepts:** [Finite sequence (List datatype)](Sequence.md)
 
 ## Backlinks
 
@@ -221,7 +221,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "shortForm": "Array",
     "fullName": "Fixed-length array",
     "category": [
-      "urn:csabs:category/data-structures"
+      "urn:csabs:category/sequential-collections"
     ],
     "kind": "urn:csabs:kind/abstract-data-type",
     "definition": "A finite indexed collection with one value per valid index; mutable variants are modeled by state-changing update operations.",

@@ -6,6 +6,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | --- | ---: | ---: | ---: | ---: | --- |
 | ArbitraryPrecisionInteger | 3 | 1 | 1 | 1 | defined-structure |
 | Array | 2 | 4 | 2 | 1 | defined-structure |
+| BTree | 6 | 6 | 2 | 1 | extensional-structural-definition |
 | BagRelation | 4 | 5 | 1 | 1 | extensional-structural-definition |
 | BayesianNetwork | 3 | 2 | 0 | 1 | defined-structure |
 | Binary128 | 4 | 4 | 1 | 1 | parameter-instance |
@@ -44,6 +45,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | EquivalenceRelation | 1 | 4 | 0 | 2 | defined-structure |
 | Field | 3 | 13 | 0 | 1 | axiomatic-structure |
 | FiniteDistribution | 3 | 3 | 1 | 1 | extensional-structural-definition |
+| FiniteField | 7 | 14 | 0 | 3 | axiomatic-structure |
 | FiniteIterator | 3 | 3 | 1 | 1 | extensional-structural-definition |
 | FiniteSet | 3 | 2 | 2 | 2 | defined-structure |
 | FiniteType | 2 | 3 | 1 | 1 | extensional-structural-definition |
@@ -69,11 +71,13 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | JoinSemilattice | 2 | 5 | 1 | 1 | extensional-structural-definition |
 | KripkeStructure | 2 | 2 | 1 | 3 | defined-structure |
 | LabelledTransitionSystem | 2 | 2 | 2 | 2 | defined-structure |
+| LamportBakery | 4 | 4 | 1 | 1 | operational-state-machine-definition |
 | Lattice | 2 | 3 | 1 | 1 | defined-structure |
 | LinearMap | 4 | 2 | 0 | 1 | defined-structure |
 | LinearTemporalLogic | 2 | 3 | 2 | 3 | defined-structure |
 | Linearizability | 1 | 2 | 0 | 2 | defined-structure |
 | LivenessProperty | 1 | 1 | 1 | 1 | defined-structure |
+| Lock | 5 | 4 | 1 | 0 | operational-state-machine-definition |
 | LoopInvariant | 1 | 2 | 1 | 1 | defined-structure |
 | Manifold | 3 | 3 | 0 | 2 | defined-structure |
 | Map | 4 | 5 | 2 | 1 | defined-structure |
@@ -88,6 +92,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | MonotoneFunction | 1 | 1 | 1 | 1 | defined-structure |
 | Multimap | 3 | 3 | 1 | 1 | extensional-structural-definition |
 | Multiset | 5 | 3 | 1 | 1 | defined-structure |
+| Mutex | 4 | 4 | 1 | 1 | operational-state-machine-definition |
 | NFA | 2 | 2 | 2 | 2 | defined-structure |
 | NaturalNumber | 4 | 3 | 1 | 1 | defined-structure |
 | OptionType | 4 | 4 | 3 | 2 | extensional-type-theory |
@@ -123,7 +128,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | SaturatingInteger | 3 | 2 | 2 | 1 | defined-structure |
 | Semigroup | 1 | 4 | 0 | 1 | axiomatic-structure |
 | Semiring | 2 | 12 | 0 | 1 | axiomatic-structure |
-| Sequence | 3 | 4 | 3 | 1 | defined-structure |
+| Sequence | 7 | 5 | 3 | 1 | defined-structure |
 | SequentialConsistency | 1 | 1 | 1 | 1 | defined-structure |
 | Set | 6 | 9 | 2 | 2 | foundational-theory |
 | Simulation | 1 | 1 | 1 | 1 | defined-structure |
@@ -152,6 +157,6 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | WeightedDirectedGraph | 3 | 2 | 1 | 1 | extensional-structural-definition |
 | WellFoundedRelation | 1 | 1 | 1 | 1 | defined-structure |
 
-147 of 147 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
+152 of 152 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
 
 Use `ruleRole` to distinguish foundational axioms, structure constraints, and defining equations. Use `basisScope` for interface boundaries. Alternate language policies, intensional equality, IEEE payload/trap details, and formal proof artifacts require further formalization.

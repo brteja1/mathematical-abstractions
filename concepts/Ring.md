@@ -26,7 +26,7 @@ A set whose addition is an abelian group and whose multiplication is associative
 
 **basisScope:** Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.
 
-**convention:** Unital; this entry permits the zero ring unless a specific theorem excludes it.
+**convention:** Unital; this entry permits the zero ring unless a specific theorem excludes it. Equality is equality of carrier elements; operations are exact. The empty carrier is excluded by the named constants.
 
 **specializationNote:** Retain addition, multiplication, zero and one and forget additive inverse as named structure; both entries use the unital convention and permit zero=one.
 
@@ -35,8 +35,6 @@ A set whose addition is an abelian group and whose multiplication is associative
 **reviewStatus:** editorial basis review; no machine-checked mathematical proof
 
 **coverageStatus:** basis-reviewed
-
-**provenanceStatus:** legacy-source-missing
 
 ## Operations
 
@@ -50,6 +48,10 @@ A set whose addition is an abelian group and whose multiplication is associative
 
 **description:** The abelian-group operation on ring elements.
 
+**precondition:** Inputs belong to the stated carrier.
+
+**definedness:** Total on the stated domain; exact algebraic arithmetic without rounding or overflow.
+
 <a id="node-urn-csabs-operation-ring-multiplication"></a>
 
 ### multiplication
@@ -60,6 +62,10 @@ A set whose addition is an abelian group and whose multiplication is associative
 
 **description:** Associative ring multiplication with identity under this entry's convention.
 
+**precondition:** Inputs belong to the stated carrier.
+
+**definedness:** Total on the stated domain; exact algebraic arithmetic without rounding or overflow.
+
 <a id="node-urn-csabs-operation-ring-negation"></a>
 
 ### additive inverse
@@ -69,6 +75,10 @@ A set whose addition is an abelian group and whose multiplication is associative
 **signature:** − : R→R
 
 **description:** Returns the additive inverse.
+
+**precondition:** Inputs belong to the stated carrier.
+
+**definedness:** Total on the stated domain; exact algebraic arithmetic without rounding or overflow.
 
 ## Axioms and defining rules
 
@@ -322,7 +332,13 @@ No entries recorded. This does not assert absence of mathematical facts.
 
 ## Concept provenance
 
-Historical source gap retained; see `provenanceStatus` and the frozen baseline.
+- [Mathlib: ring definitions (consulted 2026-11-08)](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Ring/Defs.html); accessedOn: 2026-11-08; sourceRole: reference-for-selected-basis
+
+**sourceLocator:** Ring: additive commutative group, multiplicative monoid and distributivity
+
+**sourceNote:** Selected algebraic interface; retain catalog conventions and stable identity.
+
+**provenanceKind:** adapted
 
 ## Structured record
 
@@ -364,7 +380,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "hasTheorem": [
       "urn:csabs:theorem/Ring-zero-multiplication"
     ],
-    "convention": "Unital; this entry permits the zero ring unless a specific theorem excludes it.",
+    "convention": "Unital; this entry permits the zero ring unless a specific theorem excludes it. Equality is equality of carrier elements; operations are exact. The empty carrier is excluded by the named constants.",
     "coverageStatus": "basis-reviewed",
     "requiresConcept": [],
     "verificationObligation": [
@@ -374,11 +390,16 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "axiomatic-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing",
     "specializationOf": [
       "urn:csabs:concept/Semiring"
     ],
-    "specializationNote": "Retain addition, multiplication, zero and one and forget additive inverse as named structure; both entries use the unital convention and permit zero=one."
+    "specializationNote": "Retain addition, multiplication, zero and one and forget additive inverse as named structure; both entries use the unital convention and permit zero=one.",
+    "source": [
+      "urn:csabs:source/mathlib-ring-defs-2026-11-08"
+    ],
+    "sourceLocator": "Ring: additive commutative group, multiplicative monoid and distributivity",
+    "sourceNote": "Selected algebraic interface; retain catalog conventions and stable identity.",
+    "provenanceKind": "adapted"
   },
   {
     "id": "urn:csabs:operation/ring-addition",
@@ -386,7 +407,9 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "name": "addition",
     "signature": "+ : R×R→R",
     "description": "The abelian-group operation on ring elements.",
-    "concept": "urn:csabs:concept/Ring"
+    "concept": "urn:csabs:concept/Ring",
+    "precondition": "Inputs belong to the stated carrier.",
+    "definedness": "Total on the stated domain; exact algebraic arithmetic without rounding or overflow."
   },
   {
     "id": "urn:csabs:operation/ring-multiplication",
@@ -394,7 +417,9 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "name": "multiplication",
     "signature": "· : R×R→R",
     "description": "Associative ring multiplication with identity under this entry's convention.",
-    "concept": "urn:csabs:concept/Ring"
+    "concept": "urn:csabs:concept/Ring",
+    "precondition": "Inputs belong to the stated carrier.",
+    "definedness": "Total on the stated domain; exact algebraic arithmetic without rounding or overflow."
   },
   {
     "id": "urn:csabs:operation/ring-negation",
@@ -402,7 +427,9 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "name": "additive inverse",
     "signature": "− : R→R",
     "description": "Returns the additive inverse.",
-    "concept": "urn:csabs:concept/Ring"
+    "concept": "urn:csabs:concept/Ring",
+    "precondition": "Inputs belong to the stated carrier.",
+    "definedness": "Total on the stated domain; exact algebraic arithmetic without rounding or overflow."
   },
   {
     "id": "urn:csabs:axiom/ring-additive-abelian-group",

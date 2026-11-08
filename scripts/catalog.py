@@ -3,6 +3,7 @@
 import argparse
 import json
 from pathlib import Path
+from subjects import in_category
 
 ROOT = Path(__file__).resolve().parents[1]
 LINKS = {'category','kind','specializationOf','relatedConcept','hasOperation','hasAxiom','hasLaw','hasTheorem','appliesTo','source','concept','requiresConcept','dependsOn'}
@@ -12,7 +13,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--file',type=Path,default=None)
     sub=parser.add_subparsers(dest='command',required=True)
-    ls=sub.add_parser('list'); ls.add_argument('--category'); ls.add_argument('--search',default='')
+    ls=sub.add_parser('list'); ls.add_argument('--category', help='Subject ID or suffix; includes all subsubjects'); ls.add_argument('--search',default='')
     get=sub.add_parser('get'); get.add_argument('id'); get.add_argument('--sections',nargs='*',choices=list(SECTIONS),default=[])
     sub.add_parser('coverage', help='Report recorded claims and whether an axiom basis is documented')
     check=sub.add_parser('check'); check.add_argument('--rdf',action='store_true')
@@ -22,7 +23,7 @@ def main():
     concepts=[n for n in graph if n.get('type')=='Concept']
     if args.command=='list':
         result=[{k:n[k] for k in ['shortForm','fullName','category','kind']} for n in concepts
-                if (not args.category or any(c.endswith('/'+args.category) for c in n['category']))
+                if (not args.category or in_category(index, n, args.category))
                 and args.search.casefold() in (json.dumps(n,ensure_ascii=False)).casefold()]
     elif args.command=='coverage':
         result={'concepts':len(concepts),

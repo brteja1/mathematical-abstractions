@@ -6,7 +6,7 @@ A finite collection represented by nonnegative multiplicities, with only finitel
 
 **Stable ID:** `urn:csabs:concept/Multiset`
 
-**Categories:** Data structures
+**Categories:** Data structures → Sets and mappings
 
 **Kind:** Abstract data type
 
@@ -216,7 +216,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "shortForm": "Multiset",
     "fullName": "Multiset",
     "category": [
-      "urn:csabs:category/data-structures"
+      "urn:csabs:category/associative-collections"
     ],
     "kind": "urn:csabs:kind/abstract-data-type",
     "definition": "A finite collection represented by nonnegative multiplicities, with only finitely many nonzero counts.",

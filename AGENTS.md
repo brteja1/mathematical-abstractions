@@ -48,7 +48,9 @@ Regenerate the derived artifacts after changing the graph:
 make build
 ```
 
-The standalone radial viewer is `visualization/index.html`. Edit `visualization/template.html` and rebuild rather than editing the generated HTML. It embeds the canonical graph, colors subject arcs, places concept nodes on an inner ring, and highlights incoming/outgoing links on hover or selection. Preserve search, relationship filters, keyboard selection, and concept details. Normal graph retrieval and `make markdown` viewer generation use Python's standard library; full builds, coverage and RDF checks use ONTFS.
+Subject navigation uses Category `parentCategory` links separately from concept `specializationOf`. See docs/HIERARCHY.md. Category searches include descendants; preserve multiple memberships. Keep the viewer’s Subjects, Specializations and Dependencies views distinct and cycle-safe for prerequisite links.
+
+The standalone radial viewer is `visualization/index.html`. Edit `visualization/template.html` (page shell), `visualization/styles.css` (styles), and `visualization/app.js` (graph behavior), then rebuild rather than editing the generated HTML. The builder inlines these sources and the catalog into one offline page. It embeds the canonical graph, colors subject arcs, places concept nodes on an inner ring, and highlights incoming/outgoing links on hover or selection. Preserve search, relationship filters, keyboard selection, and concept details. Normal graph retrieval and `make markdown` viewer generation use Python's standard library; full builds, coverage and RDF checks use ONTFS.
 
 Project requirements belong in this file so future agents discover them at workspace entry. Keep it concise; put detailed mathematics in the graph and detailed usage in README.md. Preserve the mandatory source policy when updating this context.
 

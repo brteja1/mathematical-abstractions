@@ -6,7 +6,7 @@ A finite bag of items with ordered priorities, returning an item of minimal prio
 
 **Stable ID:** `urn:csabs:concept/PriorityQueue`
 
-**Categories:** Data structures
+**Categories:** Data structures → Priority collections
 
 **Kind:** Abstract data type
 
@@ -189,7 +189,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "shortForm": "PriorityQueue",
     "fullName": "Priority Queue",
     "category": [
-      "urn:csabs:category/data-structures"
+      "urn:csabs:category/priority-collections"
     ],
     "kind": "urn:csabs:kind/abstract-data-type",
     "definition": "A finite bag of items with ordered priorities, returning an item of minimal priority; tie choice is unspecified.",

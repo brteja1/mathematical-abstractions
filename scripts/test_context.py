@@ -144,7 +144,7 @@ class TestContext:
                      'VALUES ?field { ca:name ca:description ca:signature } } } '
                      'FILTER(CONTAINS(LCASE(STR(?text)), LCASE(' + self.literal(term) + '))) ')
         if category:
-            body += ('?id ca:category ?category . FILTER(STR(?category) = ' + self.literal(category) +
+            body += ('?id ca:category/ca:parentCategory* ?category . FILTER(STR(?category) = ' + self.literal(category) +
                      ' || STRENDS(STR(?category), CONCAT("/", ' + self.literal(category) + '))) ')
         return self.page('search', body, compact=True, extra={'term': term, 'category': category}, **bounds)
 

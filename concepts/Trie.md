@@ -6,11 +6,11 @@ A finite dictionary keyed by finite words, with an explicit whole-key prefix sel
 
 **Stable ID:** `urn:csabs:concept/Trie`
 
-**Categories:** Data structures
+**Categories:** Data structures → Tree structures, Data structures → Sets and mappings
 
 **Kind:** Abstract data type
 
-**Prerequisites:** [Map](Map.md), [Finite sequence](Sequence.md)
+**Prerequisites:** [Map](Map.md), [Finite sequence (List datatype)](Sequence.md)
 
 **Specializes:** [Map](Map.md)
 
@@ -289,7 +289,8 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "shortForm": "Trie",
     "fullName": "Finite prefix dictionary",
     "category": [
-      "urn:csabs:category/data-structures"
+      "urn:csabs:category/tree-structures",
+      "urn:csabs:category/associative-collections"
     ],
     "kind": "urn:csabs:kind/abstract-data-type",
     "definition": "A finite dictionary keyed by finite words, with an explicit whole-key prefix selection operation.",

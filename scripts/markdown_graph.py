@@ -3,6 +3,7 @@
 import argparse
 import json
 import re
+from subjects import category_path
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -67,7 +68,7 @@ def render(nodes, index):
     c = next(n for n in nodes if n['type'] == 'Concept')
     lines = [f"# {c['fullName']}", '', c['definition'], '', f"**Notation:** {c['notation']}", '',
              f"**Stable ID:** `{c['id']}`", '',
-             '**Categories:** ' + ', '.join(index[x]['label'] for x in c['category']), '',
+             '**Categories:** ' + ', '.join(' → '.join(index[p]['label'] for p in category_path(index, x)) for x in c['category']), '',
              f"**Kind:** {index[c['kind']]['label']}", '']
     for field, title in RELATIONS.items():
         if c.get(field):
@@ -128,14 +129,28 @@ def outputs(doc):
     result = {}
     concepts = sorted((n for n in index.values() if n['type'] == 'Concept'), key=lambda n:n['shortForm'])
     overview = ['# Mathematical abstractions', '', 'Each linked page contains the definition, assumptions, operations, claims, provenance, typed relationships, and backlinks.', '',
-                '| Concept | Categories |', '| --- | --- |']
+                '## Browse by subject', '', 'Subjects organize navigation. They do not imply specialization or transfer mathematical claims.', '']
+    categories = sorted((n for n in index.values() if n['type'] == 'Category'), key=lambda n: n['label'])
+    def subject(ident, depth=0):
+        category = index[ident]
+        overview.append('  ' * depth + '- **' + category['label'] + '**')
+        for c in concepts:
+            if ident in c['category']:
+                overview.append('  ' * (depth + 1) + f"- [{c['fullName']}](concepts/{c['shortForm']}.md)")
+        for child in categories:
+            if child.get('parentCategory') == ident:
+                subject(child['id'], depth + 1)
+    for category in categories:
+        if not category.get('parentCategory'):
+            subject(category['id'])
+    overview += ['', '## Alphabetical index', '', '| Concept | Categories |', '| --- | --- |']
     assigned = set()
     for c in concepts:
         refs = list(dict.fromkeys(ref for key in SECTIONS for ref in c[key] if ref not in assigned))
         nodes = [c] + [index[ref] for ref in refs]
         assigned.update(refs)
         result[ROOT / 'concepts' / (c['shortForm'] + '.md')] = render(nodes, index)
-        overview.append(f"| [{c['fullName']}](concepts/{c['shortForm']}.md) | " + ', '.join(index[x]['label'] for x in c['category']) + ' |')
+        overview.append(f"| [{c['fullName']}](concepts/{c['shortForm']}.md) | " + ', '.join(' → '.join(index[p]['label'] for p in category_path(index, x)) for x in c['category']) + ' |')
     result[ROOT / 'CONCEPTS.md'] = '\n'.join(overview) + '\n'
     return result
 

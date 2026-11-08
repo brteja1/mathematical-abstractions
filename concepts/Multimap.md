@@ -6,7 +6,7 @@ A finite relation of key/value pairs with a set of associated values at each key
 
 **Stable ID:** `urn:csabs:concept/Multimap`
 
-**Categories:** Data structures
+**Categories:** Data structures → Sets and mappings
 
 **Kind:** Abstract data type
 
@@ -253,7 +253,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "shortForm": "Multimap",
     "fullName": "Finite set-valued multimap",
     "category": [
-      "urn:csabs:category/data-structures"
+      "urn:csabs:category/associative-collections"
     ],
     "kind": "urn:csabs:kind/abstract-data-type",
     "definition": "A finite relation of key/value pairs with a set of associated values at each key.",

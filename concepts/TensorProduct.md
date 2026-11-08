@@ -6,7 +6,7 @@ A vector space V⊗_F W with a bilinear pairing that turns each bilinear map V×
 
 **Stable ID:** `urn:csabs:concept/TensorProduct`
 
-**Categories:** Linear and multilinear algebra
+**Categories:** Algebra → Linear and multilinear algebra
 
 **Kind:** Mathematical construction
 

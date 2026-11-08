@@ -15,9 +15,11 @@ def main():
               'changed': sorted(k for k, v in original.items() if k in hashes and hashes[k] != v),
               'missing': sorted(set(original) - set(hashes)),
               'added': sorted(set(hashes) - set(original)),
-              'contextUnchanged': doc['@context'] == manifest['context']}
+              'contextUnchanged': doc['@context'] == manifest['context'],
+              'contextPreserved': all(doc['@context'].get(k) == v for k, v in manifest['context'].items()),
+              'addedContextTerms': sorted(set(doc['@context']) - set(manifest['context']))}
     print(json.dumps(result, indent=2))
-    return bool(result['missing'] or not result['contextUnchanged'])
+    return bool(result['missing'] or not result['contextPreserved'])
 
 
 if __name__ == '__main__':

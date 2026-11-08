@@ -12,7 +12,7 @@ A family of nonempty, pairwise disjoint subsets whose union is the entire carrie
 
 ## Backlinks
 
-- [Disjoint-set union with representatives](DisjointSet.md) — `requiresConcept`
+- [Union Find (disjoint-set union with representatives)](DisjointSet.md) — `requiresConcept`
 - [Equivalence relation](EquivalenceRelation.md) — `relatedConcept`
 
 ## Interface and scope

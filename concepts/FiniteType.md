@@ -15,7 +15,7 @@ A carrier A equipped with an exhaustive duplicate-free finite set of all its val
 ## Backlinks
 
 - [Finite directed multigraph with edge identities](DirectedMultigraph.md) — `requiresConcept`
-- [Disjoint-set union with representatives](DisjointSet.md) — `requiresConcept`
+- [Union Find (disjoint-set union with representatives)](DisjointSet.md) — `requiresConcept`
 
 ## Interface and scope
 

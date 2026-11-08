@@ -28,7 +28,9 @@ class MarkdownGraphTests(unittest.TestCase):
     def test_imported_ids_remain_present(self):
         manifest = json.loads((ROOT / 'data/import_manifest.json').read_text())
         self.assertTrue(set(manifest['nodeHashes']) <= set(self.index))
-        self.assertEqual(manifest['context'], self.doc['@context'])
+        # New vocabulary may extend the context without changing any imported term.
+        for term, definition in manifest['context'].items():
+            self.assertEqual(definition, self.doc['@context'].get(term), term)
 
     def test_markdown_links_resolve(self):
         for page in (ROOT / 'concepts').glob('*.md'):

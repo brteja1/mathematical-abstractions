@@ -66,6 +66,9 @@
     },
     "verificationObligation": {
       "@container": "@set"
+    },
+    "parentCategory": {
+      "@type": "@id"
     }
   },
   "@graph": [
@@ -421,7 +424,8 @@
     {
       "id": "urn:csabs:category/linear-algebra",
       "type": "Category",
-      "label": "Linear and multilinear algebra"
+      "label": "Linear and multilinear algebra",
+      "parentCategory": "urn:csabs:category/algebra"
     },
     {
       "id": "urn:csabs:source/mathlib-matrix-defs",
@@ -874,6 +878,164 @@
       "citation": "David Goldberg, ACM Computing Surveys 23(1), March 1991, pp. 5–48; edited reprint in Oracle Numerical Computation Guide, Appendix D, including later addendum.",
       "accessedOn": "2026-11-08",
       "sourceRole": "consulted-expository-reference; historical IEEE discussion, not a replacement for IEEE 754-2019"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-group-defs-2026-11-08",
+      "type": "Source",
+      "label": "Mathlib: group definitions (consulted 2026-11-08)",
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Group/Defs.html",
+      "accessedOn": "2026-11-08",
+      "sourceRole": "reference-for-selected-basis"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-ring-defs-2026-11-08",
+      "type": "Source",
+      "label": "Mathlib: ring definitions (consulted 2026-11-08)",
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Ring/Defs.html",
+      "accessedOn": "2026-11-08",
+      "sourceRole": "reference-for-selected-basis"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-field-defs-2026-11-08",
+      "type": "Source",
+      "label": "Mathlib: field definitions (consulted 2026-11-08)",
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Field/Defs.html",
+      "accessedOn": "2026-11-08",
+      "sourceRole": "reference-for-selected-basis"
+    },
+    {
+      "id": "urn:csabs:source/conrad-finite-fields",
+      "type": "Source",
+      "label": "Keith Conrad: Finite Fields",
+      "url": "https://kconrad.math.uconn.edu/blurbs/galoistheory/finitefields.pdf",
+      "accessedOn": "2026-11-08",
+      "sourceRole": "reference-for-selected-basis"
+    },
+    {
+      "id": "urn:csabs:source/milne-fields-galois-5-10",
+      "type": "Source",
+      "label": "J. S. Milne: Fields and Galois Theory, version 5.10 (2022)",
+      "url": "https://www.jmilne.org/math/CourseNotes/FT.pdf",
+      "accessedOn": "2026-11-08",
+      "sourceRole": "reference-for-selected-basis"
+    },
+    {
+      "id": "urn:csabs:source/lean-list-reference",
+      "type": "Source",
+      "label": "Lean Language Reference: Linked Lists",
+      "url": "https://lean-lang.org/doc/reference/latest/Basic-Types/Linked-Lists/",
+      "accessedOn": "2026-11-08",
+      "sourceRole": "datatype-and-operation-reference"
+    },
+    {
+      "id": "urn:csabs:source/ods-btrees",
+      "type": "Source",
+      "label": "Pat Morin: Open Data Structures, section 14.2 B-Trees",
+      "url": "https://opendatastructures.org/ods-python/14_2_B_Trees.html",
+      "accessedOn": "2026-11-08",
+      "sourceRole": "definition-and-search-tree-interface-reference"
+    },
+    {
+      "id": "urn:csabs:source/java-lock-contract",
+      "type": "Source",
+      "label": "Java SE 25 Lock interface",
+      "url": "https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/locks/Lock.html",
+      "accessedOn": "2026-11-08",
+      "sourceRole": "interface-contract"
+    },
+    {
+      "id": "urn:csabs:source/java-rwlock-contract",
+      "type": "Source",
+      "label": "Java SE 25 ReadWriteLock interface",
+      "url": "https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/locks/ReadWriteLock.html",
+      "accessedOn": "2026-11-08",
+      "sourceRole": "shared-exclusive-mode-and-policy-reference"
+    },
+    {
+      "id": "urn:csabs:source/lamport-bakery-1974",
+      "type": "Source",
+      "label": "Leslie Lamport: A New Solution of Dijkstra’s Concurrent Programming Problem (1974)",
+      "url": "https://lamport.azurewebsites.net/pubs/bakery.pdf",
+      "accessedOn": "2026-11-08",
+      "sourceRole": "algorithm-and-correctness-proof"
+    },
+    {
+      "id": "urn:csabs:category/sequential-collections",
+      "type": "Category",
+      "label": "Sequential collections",
+      "parentCategory": "urn:csabs:category/data-structures"
+    },
+    {
+      "id": "urn:csabs:category/associative-collections",
+      "type": "Category",
+      "label": "Sets and mappings",
+      "parentCategory": "urn:csabs:category/data-structures"
+    },
+    {
+      "id": "urn:csabs:category/tree-structures",
+      "type": "Category",
+      "label": "Tree structures",
+      "parentCategory": "urn:csabs:category/data-structures"
+    },
+    {
+      "id": "urn:csabs:category/priority-collections",
+      "type": "Category",
+      "label": "Priority collections",
+      "parentCategory": "urn:csabs:category/data-structures"
+    },
+    {
+      "id": "urn:csabs:category/connectivity-structures",
+      "type": "Category",
+      "label": "Connectivity structures",
+      "parentCategory": "urn:csabs:category/data-structures"
+    },
+    {
+      "id": "urn:csabs:category/interval-structures",
+      "type": "Category",
+      "label": "Intervals",
+      "parentCategory": "urn:csabs:category/data-structures"
+    },
+    {
+      "id": "urn:csabs:category/synchronization",
+      "type": "Category",
+      "label": "Synchronization",
+      "parentCategory": "urn:csabs:category/concurrency"
+    },
+    {
+      "id": "urn:csabs:category/locks",
+      "type": "Category",
+      "label": "Locks",
+      "parentCategory": "urn:csabs:category/synchronization"
+    },
+    {
+      "id": "urn:csabs:category/lock-protocols",
+      "type": "Category",
+      "label": "Lock protocols",
+      "parentCategory": "urn:csabs:category/synchronization"
+    },
+    {
+      "id": "urn:csabs:category/ordering-consistency",
+      "type": "Category",
+      "label": "Ordering and consistency",
+      "parentCategory": "urn:csabs:category/concurrency"
+    },
+    {
+      "id": "urn:csabs:category/concurrency-properties",
+      "type": "Category",
+      "label": "Correctness properties",
+      "parentCategory": "urn:csabs:category/concurrency"
+    },
+    {
+      "id": "urn:csabs:category/replication",
+      "type": "Category",
+      "label": "Replication",
+      "parentCategory": "urn:csabs:category/concurrency"
+    },
+    {
+      "id": "urn:csabs:category/concurrent-behavior",
+      "type": "Category",
+      "label": "Behavioral models",
+      "parentCategory": "urn:csabs:category/concurrency"
     }
   ]
 }

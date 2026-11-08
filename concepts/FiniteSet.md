@@ -6,7 +6,7 @@ An unordered finite subset of a fixed carrier, with extensional equality and no 
 
 **Stable ID:** `urn:csabs:concept/FiniteSet`
 
-**Categories:** Data structures, Set theory and foundations
+**Categories:** Data structures → Sets and mappings, Set theory and foundations
 
 **Kind:** Abstract data type
 
@@ -14,10 +14,11 @@ An unordered finite subset of a fixed carrier, with extensional equality and no 
 
 **Specializes:** [Set](Set.md)
 
-**Related concepts:** [Multiset](Multiset.md), [Finite sequence](Sequence.md)
+**Related concepts:** [Multiset](Multiset.md), [Finite sequence (List datatype)](Sequence.md)
 
 ## Backlinks
 
+- [B-tree (balanced multiway search tree)](BTree.md) — `requiresConcept`
 - [Strict binary search tree](BinarySearchTree.md) — `requiresConcept`
 - [Finite database relation under set semantics](DatabaseRelation.md) — `requiresConcept`
 - [Finite database relation under set semantics](DatabaseRelation.md) — `specializationOf`
@@ -312,7 +313,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "shortForm": "FiniteSet",
     "fullName": "Finite set collection",
     "category": [
-      "urn:csabs:category/data-structures",
+      "urn:csabs:category/associative-collections",
       "urn:csabs:category/foundations"
     ],
     "kind": "urn:csabs:kind/abstract-data-type",

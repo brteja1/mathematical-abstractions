@@ -6,7 +6,7 @@ A finite set of admissible named tuples over one schema; row order and duplicate
 
 **Stable ID:** `urn:csabs:concept/DatabaseRelation`
 
-**Categories:** Relational data modelling, Data structures
+**Categories:** Relational data modelling, Data structures → Sets and mappings
 
 **Kind:** Abstract data type
 
@@ -377,7 +377,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "fullName": "Finite database relation under set semantics",
     "category": [
       "urn:csabs:category/data-modelling",
-      "urn:csabs:category/data-structures"
+      "urn:csabs:category/associative-collections"
     ],
     "kind": "urn:csabs:kind/abstract-data-type",
     "definition": "A finite set of admissible named tuples over one schema; row order and duplicate occurrences have no meaning.",

@@ -6,11 +6,11 @@ A total natural-indexed family of values with pointwise observations and product
 
 **Stable ID:** `urn:csabs:concept/Stream`
 
-**Categories:** Data structures
+**Categories:** Data structures → Sequential collections
 
 **Kind:** Abstract data type
 
-**Prerequisites:** [Total function](Function.md), [Natural Number](NaturalNumber.md), [Finite sequence](Sequence.md)
+**Prerequisites:** [Total function](Function.md), [Natural Number](NaturalNumber.md), [Finite sequence (List datatype)](Sequence.md)
 
 ## Interface and scope
 
@@ -275,7 +275,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "shortForm": "Stream",
     "fullName": "Infinite discrete stream",
     "category": [
-      "urn:csabs:category/data-structures"
+      "urn:csabs:category/sequential-collections"
     ],
     "kind": "urn:csabs:kind/abstract-data-type",
     "definition": "A total natural-indexed family of values with pointwise observations and productive head/tail decomposition.",

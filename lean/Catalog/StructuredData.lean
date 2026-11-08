@@ -70,6 +70,10 @@ def DisjointSet.unites {n : Nat} (d : DisjointSet n) (a b : Fin n) (out : Disjoi
 inductive RoseTree (A : Type u) where
   | node : A → List (RoseTree A) → RoseTree A
 
+/-- Raw B-tree shape only: key lists at nodes and ordered children.
+Occupancy, search ordering, equal leaf depth and updates are not formalized. -/
+abbrev BTreeShape (A : Type u) := RoseTree (List A)
+
 def RoseTree.root {A : Type u} : RoseTree A → A
   | .node a _ => a
 

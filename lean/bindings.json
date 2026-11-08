@@ -20,7 +20,7 @@
       "scope": "model",
       "mapping": "Fin n -> A; fixed-length total lookup and Function.update store; n = 0 permitted.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "d6dad76dca6e4303551cc54d28423d763600fc6f0bbcf05b35c88fcab77e9c87"
+      "catalogHash": "f1373743dc8f03ed6829dcb2e7ad9c8eebc0296735fbdddef0ee6f81de4462ef"
     },
     "urn:csabs:concept/BayesianNetwork": {
       "kind": "model",
@@ -182,7 +182,7 @@
       "scope": "model",
       "mapping": "Finset of dependent named tuples, set semantics and extensional equality; projection/join algorithms remain to be exposed.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "7be557b3c93ed556e5fbfaaf05a958f3bd72cc638d164520cd735cae3a45d131"
+      "catalogHash": "965919f23825d1365bd78c23fc7e49129b85adffb4a1917d1d33118cefc6c152"
     },
     "urn:csabs:concept/Deque": {
       "kind": "model",
@@ -191,7 +191,7 @@
       "scope": "model",
       "mapping": "List A with front/back insertion and Option endpoint removal.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "57417d1c32c8857c94df60f5e46def6fdc0109e58e80430cd05095fb38bc17ae"
+      "catalogHash": "6e1ddcba3ed543de5b7fc07ba9b5b1ecbed050f2abddb5a6e4fe63933eebdd0e"
     },
     "urn:csabs:concept/DirectedGraph": {
       "kind": "model",
@@ -227,7 +227,7 @@
       "scope": "model",
       "mapping": "Mathlib Field, commutative and nontrivial; inverse is totalized at zero, but division results require nonzero side conditions.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "0820fdfa7c9e77c350f71f8df9e55576ec4a9f39addd8ce6df5bbd43f1133b32"
+      "catalogHash": "2087fd5eced8c1637b265aa101123c848b6ea87b6ee564b47a8015e028624268"
     },
     "urn:csabs:concept/FiniteSet": {
       "kind": "model",
@@ -236,7 +236,7 @@
       "scope": "model",
       "mapping": "Finset A, quotient-based finite sets with extensional equality.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "4148bcf61aeae00357491156d5c88b7b43af568aff281eee1d177fb3b5fd8ba6"
+      "catalogHash": "14b91c2c398b176cb883faff87decc0d7ab09e904e59e02543c0e383dd163ccc"
     },
     "urn:csabs:concept/FixedPoint": {
       "kind": "model",
@@ -290,7 +290,7 @@
       "scope": "model",
       "mapping": "Total typed A -> B; function equality is Lean equality, with funext when needed.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "c01445130603bb06b78f934caaeb8b1dbc45cf3a4b486b41481626897fea7ad5"
+      "catalogHash": "d8c542854307f3a2ced787bd734a122da82dfb83a22d5091f5e87e3069f75ae8"
     },
     "urn:csabs:concept/FunctionType": {
       "kind": "model",
@@ -335,7 +335,7 @@
       "scope": "model",
       "mapping": "Mathlib Group; chosen inverse, associativity and two-sided unit/inverse equations. Nonempty follows from one.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "468d4981889d0878ab187a8ef42adb040a7079ac081880ca3a096f6ccb470a3d"
+      "catalogHash": "7e61c0ad9b7384c8515e7dff984811de121c3158738ce8cb1ab1332660abc5b5"
     },
     "urn:csabs:concept/HappensBefore": {
       "kind": "model",
@@ -344,7 +344,7 @@
       "scope": "model",
       "mapping": "Positive transitive closure of process/send-receive edges, with explicit no-causal-cycle condition.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "c710c4b6140033e3928eabd41ac9324c4bffe3439703a997afb07a509e758065"
+      "catalogHash": "bc256a16e447dd100d6e629caae07e48de59ad00fe93e4ef47dea32eeaa36014"
     },
     "urn:csabs:concept/HoareTriple": {
       "kind": "model",
@@ -380,7 +380,7 @@
       "scope": "model",
       "mapping": "Initial states and S -> Act -> S -> Prop; finite paths include empty path.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "9c989458e805caf506880f8fc6408d4b66ebfb8fb162cd341430270fc25f5882"
+      "catalogHash": "3dfe8010656d1d7e9b3fd1015bf07974a054fd810fe6519c30f56233a46612a2"
     },
     "urn:csabs:concept/Lattice": {
       "kind": "model",
@@ -416,7 +416,7 @@
       "scope": "partial",
       "mapping": "Permissible completion admitting a legal sequential witness preserving process and real-time order.",
       "limitations": "Well-formed histories, matching, projections and permissible completions are abstract client predicates; event-level consistency conditions remain to be instantiated.",
-      "catalogHash": "0bf7c00e930b91e33e232dfad26700e6efe658d9e0b9790403eaf8f9ec66c6c4"
+      "catalogHash": "ca03f436abcce88f21bbd70e99426b2023c03944ae01e94af7fad05b00da1989"
     },
     "urn:csabs:concept/LivenessProperty": {
       "kind": "model",
@@ -425,7 +425,7 @@
       "scope": "model",
       "mapping": "Each finite List prefix admits a satisfying infinite trace; empty-alphabet cases stay explicit in types.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "92ed050cf2b186259df0ec534c44bdd3f011426c69d1c0290c2aae04c829260c"
+      "catalogHash": "b127fdc7e473a7e5e148d8cf357bf0412edd812f3a8784b2b700999d5299ac05"
     },
     "urn:csabs:concept/LoopInvariant": {
       "kind": "model",
@@ -452,7 +452,7 @@
       "scope": "model",
       "mapping": "Lookup K -> Option V plus proof that the defined-key set is finite; record proof fields are propositionally irrelevant.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "55ce9b29e2b52474b657cb22aaec85e2ffbe13d5326c8119215d3b76edd6a776"
+      "catalogHash": "0687c26d0ffa5e7067a86c678d56041c7b29be94a44515c6262a76219098b424"
     },
     "urn:csabs:concept/MarkovChain": {
       "kind": "model",
@@ -542,7 +542,7 @@
       "scope": "model",
       "mapping": "Mathlib Multiset A, quotient of lists by permutation, equivalent finite multiplicity representation.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "50b20a900344f6f9614f5b06698e3ae5e4c1a433f9c7303a05f917b1b5b2990b"
+      "catalogHash": "494e08f85343c048fb06d1628ec352341d57b7c8eaee36f3eeb53c351d5141d8"
     },
     "urn:csabs:concept/NFA": {
       "kind": "model",
@@ -578,7 +578,7 @@
       "scope": "model",
       "mapping": "Subtype of List A satisfying Nodup; equality retains position.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "fc6c456655ea635cd618326525f39aa74c8fe756c6cca7cd0e6573d1f97016b1"
+      "catalogHash": "811d42d37c995c9c83d506fedef6259bc017a9e0e6faf29ebd95c1f242f2c870"
     },
     "urn:csabs:concept/PartialFunction": {
       "kind": "model",
@@ -650,7 +650,7 @@
       "scope": "model",
       "mapping": "Multiset A with supplied LinearOrder on priorities; extractMin is a relation removing one minimal occurrence, allowing all ties.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "b852a309c1a322e001d9a93c7879b093f4b1af4204307fef46c678d321a37bc3"
+      "catalogHash": "ce88656fc78ed2c85cd1b0f9ec3d8f491baa110166cfbee838d5c2b4a6086a0d"
     },
     "urn:csabs:concept/ProbabilitySpace": {
       "kind": "model",
@@ -686,7 +686,7 @@
       "scope": "model",
       "mapping": "List A with front at head; enqueue appends, dequeue removes head; empty returns none.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "d7b06a5fe5d718db7d1ae9e2774cb417e0ba0b096bc348a8c3a14d80279d84ca"
+      "catalogHash": "a42fb3c52c458ed8c1e49fb27435ea5772b10035fcedf7af462cc8d76add2d7c"
     },
     "urn:csabs:concept/RandomVariable": {
       "kind": "model",
@@ -731,7 +731,7 @@
       "scope": "model",
       "mapping": "Mathlib unital Ring, allowing zero = one and noncommutative multiplication.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "f1529a2ca96c34eb62eeb829f085b94bcc7d9c69fbf59313e54f608ff35d009b"
+      "catalogHash": "cca35698625377e4ecd473176e35dfdc67e51278ad41bd6026ff2abba96b869c"
     },
     "urn:csabs:concept/SafetyProperty": {
       "kind": "model",
@@ -740,7 +740,7 @@
       "scope": "model",
       "mapping": "Every violating infinite trace has a finite initial segment excluding every satisfying extension.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "116c983b6dbb357a08576e14d04e2118f2f6d84c0c3307244db8a5401d7e85f0"
+      "catalogHash": "8f98d3b59ed9327c90b78ffe7b3d594c507110e475c7638573d9aa70ffa77d54"
     },
     "urn:csabs:concept/SaturatingInteger": {
       "kind": "model",
@@ -776,7 +776,7 @@
       "scope": "model",
       "mapping": "List A, finite ordered values with duplicates allowed; structural list equality.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "dadc47653194d94a80cd2c287583090d8caa9e51903000bcf424c2efecb7f2c4"
+      "catalogHash": "1b1a3877ba6ca29634c3e626b95f8976bc50956c2540c5b601cb346029abb44f"
     },
     "urn:csabs:concept/SequentialConsistency": {
       "kind": "model",
@@ -785,7 +785,7 @@
       "scope": "partial",
       "mapping": "Completed well-formed history admitting a legal sequential witness with equivalent process projections.",
       "limitations": "Process projection and legality predicates are abstract client parameters, not an event-level history construction.",
-      "catalogHash": "8044ebf124b28474f9dc26770e88cf3b6c8f3d25226dbce914d6b87d9ce1187a"
+      "catalogHash": "a702db318513cd92a3d9f9fe1de5792435b79d5614686ece2cb1371c719b8f91"
     },
     "urn:csabs:concept/Set": {
       "kind": "model",
@@ -821,7 +821,7 @@
       "scope": "model",
       "mapping": "List A with head as top; pop/top return Option and are none exactly on empty.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "10ed0d3d4e49ce3306e28a7f405423fad9ebeb3996fa295e3f595d5dfc4b423d"
+      "catalogHash": "176295d142f7eba9dae172b9b4fa953fdd8c67a1a8cbc58eb734b1423db1f935"
     },
     "urn:csabs:concept/StructuralInduction": {
       "kind": "model",
@@ -893,7 +893,7 @@
       "scope": "model",
       "mapping": "Equality of all finite partial trace sets from two designated states; includes empty trace, no acceptance or silent-action abstraction.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "0689719ea2cd7227ae97daf0aa7e0f7444b73beb654c7271382671875ae32ce7"
+      "catalogHash": "959393feb6788b6f2f9671d8bcd9c674ce719d86aeac134a46bf389413f02456"
     },
     "urn:csabs:concept/TransitionSystem": {
       "kind": "model",
@@ -991,7 +991,7 @@
       "allowedAxioms": [
         "propext"
       ],
-      "catalogHash": "9c06e2ca240cfa737726fb0252822e14850fb81eda6d9457fb116b6232519c6b"
+      "catalogHash": "f8070e1eec7595dba6c7f78af29499ca04979506987f4f3ffe8015bc61acc76a"
     },
     "urn:csabs:law/group-cancellation": {
       "kind": "witness",
@@ -1008,7 +1008,7 @@
       },
       "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
       "allowedAxioms": [],
-      "catalogHash": "ddedaf17e0ba8b8435e523544e472614f846fb081d0cc691e6dd6d07a36d08cd"
+      "catalogHash": "d009e0e835054261dd5d1984c1578dd9ca30c2b4a316ca6f22a38b0e11d3e903"
     },
     "urn:csabs:law/monoid-identity-unique": {
       "kind": "witness",
@@ -1054,7 +1054,7 @@
       },
       "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
       "allowedAxioms": [],
-      "catalogHash": "7f63df08ee4ba3ad975260ec69e645f1f071a4c39cd888dd5e8a9a5cf4f2d031"
+      "catalogHash": "4d5c23049d2533294147a35ff7361e55fd21639aa799f380b9e5fdcd120419b9"
     },
     "urn:csabs:law/stack-push-pop": {
       "kind": "witness",
@@ -1068,7 +1068,7 @@
       },
       "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
       "allowedAxioms": [],
-      "catalogHash": "7a4b31e90ea067cadb4f9ad604f2c228bfd66a0c6f22028831d6e5cb52fcfcc3"
+      "catalogHash": "dd4ff7cb59385bad789db43bd04a678dd1eabb546d0824978970b40f63210e25"
     },
     "urn:csabs:theorem/Stack-push-injective": {
       "kind": "witness",
@@ -1082,7 +1082,7 @@
       },
       "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
       "allowedAxioms": [],
-      "catalogHash": "c21385e8112fa88bb8cec27e8fdd471611718dab0e4ee37a436f7064aa894e78"
+      "catalogHash": "6ec1666e4f6a732e0f59951ccf6c1e06813b474420dc8bdb91bf355947c2e3b9"
     },
     "urn:csabs:law/array-read-after-write-same": {
       "kind": "witness",
@@ -1100,7 +1100,7 @@
       "allowedAxioms": [
         "propext"
       ],
-      "catalogHash": "cc7e0778e2f090e6020cea9c07a22ced9d5a99c4d32b7c20187101f70b009e6a"
+      "catalogHash": "0f80d7659d170880fb79f282e8eb60ca1945a9dbf578da4201836918cc007af6"
     },
     "urn:csabs:law/array-read-after-write-other": {
       "kind": "witness",
@@ -1118,7 +1118,7 @@
       "allowedAxioms": [
         "propext"
       ],
-      "catalogHash": "21f67e4b9993c025645cb4118b40e22e93cd079ad74adcd5dfcfcbf03e61754d"
+      "catalogHash": "1e420b890d9b43d16b96c614a0211368e13c09a4b013e3bbde1bab11fe84e86b"
     },
     "urn:csabs:theorem/Array-update-overwrite": {
       "kind": "witness",
@@ -1138,7 +1138,7 @@
         "Quot.sound",
         "propext"
       ],
-      "catalogHash": "e0fc7ce516ffa3276b14af9355d1ae5496dac04ce6f0c4159548988584b22dc0"
+      "catalogHash": "28cf0076ee07f7936ca3bcefade31ea60fdbb675da23f02309617f46633135d0"
     },
     "urn:csabs:law/function-composition-associative": {
       "kind": "witness",
@@ -1155,7 +1155,7 @@
       },
       "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
       "allowedAxioms": [],
-      "catalogHash": "4b7417d0b50ae82ed9c3c03490d8021d2175ee0f925502e1dedde1d174adba0c"
+      "catalogHash": "114af31cd15fe2a08430f6b229310ba17b9f589ac59361ebd9b60800612b94ca"
     },
     "urn:csabs:theorem/Function-composition-injective": {
       "kind": "witness",
@@ -1172,7 +1172,7 @@
       },
       "limitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
       "allowedAxioms": [],
-      "catalogHash": "1a090196f9880dba1d84b73cec65f52426eaab045588b1b4ded6cfc025e8e483"
+      "catalogHash": "2998ff531a988aeb25c17a83a94b660f49fdde56e2e0576dbf0e17c1b44d310c"
     },
     "urn:csabs:law/HoareTriple-core": {
       "kind": "witness",
@@ -1239,7 +1239,7 @@
       "scope": "model",
       "mapping": "Catalog.BinaryTree A is the pinned Mathlib BinaryTree A, freely generated by nil and node a l r. Product signatures are curried in Lean. E=empty=nil; node labels/ordered subtrees use Lean equality. view uses Option of the right-associated triple (a,(l,r)). size=numNodes; externalLeaves=numLeaves counts nil occurrences; height(nil)=0 and a singleton has height 1. fold, mirror and inorder are explicit recursive wrappers; map is Mathlib label mapping. A may be empty. Functions are pure/total and counts exact Nat; no search-order, balance, pointer identity or sharing observations.",
       "limitations": "Selected finite ordered node-labelled datatype only. Conversion to the undirected graph Tree is an editorial occurrence-graph instantiation, not a registered Lean theorem. Concrete mutable/shared/cyclic implementations require a refinement mapping.",
-      "catalogHash": "578d839b52f9036040889c8f4e8b7fcaf0a3aeca73f634f8ccf9c73702e96d15"
+      "catalogHash": "301ae0eced09f674d591eb8785b6576be113cb41528c57d09c3f14d5ed87edc6"
     },
     "urn:csabs:law/BinaryTree-map-identity": {
       "kind": "witness",
@@ -1253,7 +1253,7 @@
       },
       "limitations": "Proof of the explicitly translated proposition for finite pure values. Graph-source correspondence and representation refinement remain reviewed metadata; no implementation or Isabelle verification is implied.",
       "allowedAxioms": [],
-      "catalogHash": "5e292d8a073fff28ba2a94b803c3e452d657aa2795dd110c9aeee3b8750a262d"
+      "catalogHash": "f1d03431a67bf2c801f54f8c4695ef2433e8ec2cf53e08b625aa40cb0e9896a1"
     },
     "urn:csabs:law/BinaryTree-map-composition": {
       "kind": "witness",
@@ -1268,7 +1268,7 @@
       },
       "limitations": "Proof of the explicitly translated proposition for finite pure values. Graph-source correspondence and representation refinement remain reviewed metadata; no implementation or Isabelle verification is implied.",
       "allowedAxioms": [],
-      "catalogHash": "37eb12401ac0af6cf4fe88d6196d206841d75ba93fbc60ff35ebc3e44692e5e7"
+      "catalogHash": "32985db1f74d1942a4c845bab5bc7469074c79c0a002bd96902412962e875af4"
     },
     "urn:csabs:law/BinaryTree-mirror-involution": {
       "kind": "witness",
@@ -1284,7 +1284,7 @@
       "allowedAxioms": [
         "propext"
       ],
-      "catalogHash": "fa788ba9a6c637c349b75b877adc09327e2266fd947d4be8b2c2ce4ee46af476"
+      "catalogHash": "752362d76c531b38d316d1d5fc98d6b8e02fcbc2d9108ee33730588af9a8b73c"
     },
     "urn:csabs:law/BinaryTree-size-zero-iff-empty": {
       "kind": "witness",
@@ -1302,7 +1302,7 @@
       "allowedAxioms": [
         "propext"
       ],
-      "catalogHash": "b376445dcbd2ff6b5e82ca8e6d815bde578263915e796b6d24472db719e62dcc"
+      "catalogHash": "77f5947e3a57150b4c31d2ed6f9d805532cef0f777011545c3e5c69b3f24c41a"
     },
     "urn:csabs:theorem/BinaryTree-fold-unique": {
       "kind": "witness",
@@ -1319,7 +1319,7 @@
       "allowedAxioms": [
         "Quot.sound"
       ],
-      "catalogHash": "40444939467a1d69db3661bc5b07aa08113ecd3a87e0389b96c33a4a6910f7d1"
+      "catalogHash": "5a4dd3db133bcb9ca387cec5b2db4a1a8b65f1cf3bf5eb9b077ec88c4661cb23"
     },
     "urn:csabs:theorem/BinaryTree-inorder-length": {
       "kind": "witness",
@@ -1340,7 +1340,7 @@
         "Quot.sound",
         "propext"
       ],
-      "catalogHash": "fae771499ee85200143aa0827501294f386af36c4cc2e17ec4eaf165c3d2b9f7"
+      "catalogHash": "b13e5499a667b6e0d4c55071d4ca84eed61549d9e2bf648f2c6c5299313f9721"
     },
     "urn:csabs:theorem/BinaryTree-mirror-size": {
       "kind": "witness",
@@ -1359,7 +1359,7 @@
       "allowedAxioms": [
         "propext"
       ],
-      "catalogHash": "d292e2ed04ae79d35fbcb969e913a3ab8c5c564bec39fc2b919a87fc0c0f18e0"
+      "catalogHash": "7f632d796432e33c5631669aea4448ac4ddd7084aa06a067c3461cdd14fdfa82"
     },
     "urn:csabs:theorem/BinaryTree-mirror-height": {
       "kind": "witness",
@@ -1376,7 +1376,7 @@
       "allowedAxioms": [
         "propext"
       ],
-      "catalogHash": "4165a0e18112e2132fe872aeb6fdc93fc62e01b3df06a835ec06189c7f7d472f"
+      "catalogHash": "7e0efcc862ca984dec1814647f23a3a2d7ea5503619b2cb1659f7dbf533429c8"
     },
     "urn:csabs:theorem/BinaryTree-inorder-mirror": {
       "kind": "witness",
@@ -1396,7 +1396,7 @@
       "allowedAxioms": [
         "propext"
       ],
-      "catalogHash": "acc98330c63be1e6c18f18a8ca374aec765f6638d20b53608811f13c15a2da5c"
+      "catalogHash": "7ec6c648a10e67c76baa83b3f72177657299e59fb9d7e7c0417de94c7bc95f43"
     },
     "urn:csabs:theorem/BinaryTree-external-leaves-size": {
       "kind": "witness",
@@ -1415,7 +1415,7 @@
       "allowedAxioms": [
         "propext"
       ],
-      "catalogHash": "1242706c5635e623f01f5ca2612e6d31836331ae689e3b6cbdc21368ffef0c7c"
+      "catalogHash": "b2958c53051629d873e6bef4d05240b39756b995417a2ea33fd769fa878fe4fe"
     },
     "urn:csabs:theorem/BinaryTree-height-le-size": {
       "kind": "witness",
@@ -1433,7 +1433,7 @@
       "allowedAxioms": [
         "propext"
       ],
-      "catalogHash": "29da33228c271b4dc250cd0644a47a3323c432e953e6ca3612cbc05e5cde6ca6"
+      "catalogHash": "40a9ac88a16a25ffb02aa54b32d4ad3bf9964bbf31c6adf0aa2393a25310c72f"
     },
     "urn:csabs:concept/BooleanType": {
       "kind": "model",
@@ -1523,7 +1523,7 @@
       "scope": "model",
       "mapping": "Stream(A)=ℕ→A. Infinite streams only; there is no end marker. Equality is pointwise at all natural indices. No effects, time-of-arrival, fairness or termination of arbitrary filters is assumed. Stream(∅) is empty.",
       "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
-      "catalogHash": "c01445130603bb06b78f934caaeb8b1dbc45cf3a4b486b41481626897fea7ad5"
+      "catalogHash": "d8c542854307f3a2ced787bd734a122da82dfb83a22d5091f5e87e3069f75ae8"
     },
     "urn:csabs:concept/SparseVector": {
       "kind": "model",
@@ -1550,7 +1550,7 @@
       "scope": "model",
       "mapping": "Iter(A)={(s,p) | s∈Seq(A), 0≤p≤|s|}. State equality retains original s and p, even when remaining suffixes agree. Finite pure fused profile; generic effectful or resumable iterators require another model. None is exhaustion, not a payload.",
       "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
-      "catalogHash": "c65c3541bcff87799b9487683029f5f47fe7234557d916c2df1ec6b7b6c1490f"
+      "catalogHash": "57007171925f6b2f2e083b2f718deeac96c2008672a7eff74b6be1e855c4dadb"
     },
     "urn:csabs:concept/ClosedInterval": {
       "kind": "model",
@@ -1559,7 +1559,7 @@
       "scope": "model",
       "mapping": "[l,u], l≤u. A has a linear order. Singleton intervals allowed. No empty, open, unbounded or NaN endpoints in the carrier. Intersection returns Option to represent disjointness. Equality is endpoint equality.",
       "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
-      "catalogHash": "5b5ee63cc77b409e7634f22dcd918f07b4ac8663aec88a206d510cb3b6caa89f"
+      "catalogHash": "93e9da0de782cb245048116c70d4bd408c6e8bbabab8a658d8099ee887d098cd"
     },
     "urn:csabs:concept/FiniteDistribution": {
       "kind": "model",
@@ -1577,7 +1577,7 @@
       "scope": "model",
       "mapping": "(S,≤,⊔,⊥,update). Pure state-based algebra only. Updates need not commute or be order preserving beyond inflation. Eventual convergence requires delivery assumptions outside this record; no loss-free transport, liveness or Byzantine tolerance is asserted.",
       "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
-      "catalogHash": "7e43c449b7efb7f26601a5d49f7c89112acab59d2610789e2fc220ab93a7809e"
+      "catalogHash": "8b74ca8902533ab302f31a8d00265b215f83673b986f9e8c1db42e3a09bae0be"
     },
     "urn:csabs:concept/Multimap": {
       "kind": "model",
@@ -1586,7 +1586,7 @@
       "scope": "model",
       "mapping": "M⊆fin K×V; values_M(k)={v | (k,v)∈M}. No duplicate pair or ordering. Missing key yields empty set, not None; there are no explicit stored empty buckets. List-valued or bag-valued multimaps are different variants. Equality is pair-set equality.",
       "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
-      "catalogHash": "3135a75fc26db8eba726dca63680fa3b347ab420fef7166b6e5fe4c17a4dd78e"
+      "catalogHash": "d22136fa313ea8e1da1962081aa3ec78f0b55fd6724ebe7e8aca006f3eb80947"
     },
     "urn:csabs:concept/HeapStore": {
       "kind": "model",
@@ -1604,7 +1604,7 @@
       "scope": "model",
       "mapping": "D_n={r:Fin(n)→Fin(n) | r(r(x))=r(x)}. Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.",
       "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
-      "catalogHash": "4a79f2810866788aa2e4f4088030fb06a26c31a95783b8c2a1510314bb288c63"
+      "catalogHash": "4ffa8d7a62b4e590571500e12d9c28d3053ab5d268e920ff278bcdbceb7ea88a"
     },
     "urn:csabs:concept/RoseTree": {
       "kind": "model",
@@ -1613,7 +1613,7 @@
       "scope": "model",
       "mapping": "Rose(A)=μX.(A×Seq(X)); node(a,children). No empty tree constructor; a leaf is node(a,[]). Child order, shape and repeated label occurrences are observable; no pointer sharing/cycles/infinite branches. If A is empty there are no values.",
       "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
-      "catalogHash": "7a52be6a4fd51bf57c9335fa6a6318d06187ddb24baf01c064d6ddd68b8d8ad1"
+      "catalogHash": "04502982b83998dbca892b297511bc0ae4ed5ae0d18569ac1bf054c674c81e95"
     },
     "urn:csabs:concept/TermAlgebra": {
       "kind": "model",
@@ -1631,7 +1631,7 @@
       "scope": "model",
       "mapping": "BST(A)={t∈BT(A) | inorder(t) strictly increasing}. Set-valued key profile: duplicates excluded, empty tree allowed. Equality retains tree shape; different trees with identical keys can differ. No balancing or logarithmic bound. Insert/delete are invariant-preserving specifications and may admit several shapes.",
       "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
-      "catalogHash": "279d2e3be9a4bbe271ac1e4b8b244deecf42c50d386198d00f237d5ec9fcb014"
+      "catalogHash": "71e2365e8efcb51a75d1618434fafb252d6dc06b62fc2703a41415d71de81453"
     },
     "urn:csabs:concept/BinaryHeap": {
       "kind": "model",
@@ -1640,7 +1640,7 @@
       "scope": "model",
       "mapping": "H_p(A)={xs∈Seq(A) | ∀0<i<|xs|, p(xs[⌊(i-1)/2⌋])≤p(xs[i])}. Fixed p:A→K into a linear order. Empty allowed, duplicate values/priorities allowed, ties unspecified. Equality retains level-order sequence. No capacity/overflow bound, stable tie order, or algorithm complexity promised.",
       "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
-      "catalogHash": "7b96e7934c8ef200768b8527f7e1ad89900286a557585f66597f9d1b118d93f4"
+      "catalogHash": "c93f731af9ec5710a0d84c36ef8d23c47f9ff7d1a8bd549f8f64fcba144b019a"
     },
     "urn:csabs:concept/Trie": {
       "kind": "model",
@@ -1649,7 +1649,7 @@
       "scope": "model",
       "mapping": "Trie(A,V)=Map(Seq(A),V). Observable finite-map/prefix interface. Empty word can be a key, and a word can be both stored and a prefix of another. Equality compares key lookups, not radix-node shape or compression; prefix selection retains full keys.",
       "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
-      "catalogHash": "55ce9b29e2b52474b657cb22aaec85e2ffbe13d5326c8119215d3b76edd6a776"
+      "catalogHash": "0687c26d0ffa5e7067a86c678d56041c7b29be94a44515c6262a76219098b424"
     },
     "urn:csabs:concept/RootedTree": {
       "kind": "model",
@@ -1703,7 +1703,7 @@
       "scope": "model",
       "mapping": "BagRel(S)=Multiset(Tuple(S)). No tuple ordering; equal rows retain natural-number multiplicity. No SQL NULL, three-valued predicates, ordering or aggregation overflow. Schema fixed; projection adds multiplicities when distinct rows collapse.",
       "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
-      "catalogHash": "50b20a900344f6f9614f5b06698e3ae5e4c1a433f9c7303a05f917b1b5b2990b"
+      "catalogHash": "494e08f85343c048fb06d1628ec352341d57b7c8eaee36f3eeb53c351d5141d8"
     },
     "urn:csabs:concept/DocumentValue": {
       "kind": "model",
@@ -1890,7 +1890,7 @@
         "Quot.sound",
         "Classical.choice"
       ],
-      "catalogHash": "b6a05639c11084f2094817e4e9a69bbdc563d13edfcc076e1a308a078ff1d025"
+      "catalogHash": "ca1b0420fe356f2490ea74a5cfdf54f4d199103a36e6a01bac8c0ac02bc1aa36"
     },
     "urn:csabs:law/ClosedInterval-endpoints-contained": {
       "kind": "witness",
@@ -1908,7 +1908,7 @@
         "Quot.sound",
         "Classical.choice"
       ],
-      "catalogHash": "258930da7df89a34e96ba1fe832b1efa4c56ff3df92c8853175cb80a919a5339"
+      "catalogHash": "3055b32d2cf53abdbb0f63ee95d137591a5286167f3aacb8e093f80758059621"
     },
     "urn:csabs:law/JoinSemilattice-commutativity": {
       "kind": "witness",
@@ -1968,7 +1968,7 @@
         "Quot.sound",
         "Classical.choice"
       ],
-      "catalogHash": "d57f942bdc9f3496598ea16c5a345a5045523b1d755e49c9fb0183c13abf7ae3"
+      "catalogHash": "8e96b2cd69b43ce05c440b3c48c34798fa23758f672241f3c79da894920449b9"
     },
     "urn:csabs:law/FiniteIterator-fused-exhaustion": {
       "kind": "witness",
@@ -1986,7 +1986,7 @@
         "Quot.sound",
         "Classical.choice"
       ],
-      "catalogHash": "890c06442f580ea4f825ab93d40ff6ddf7a9425cd87c2147b94c08b6f0937b11"
+      "catalogHash": "9988561a891c6e09bc598552b233b1ce7223d74e63f5709e6ac9cce60759356b"
     },
     "urn:csabs:law/DisjointSet-find-idempotent": {
       "kind": "witness",
@@ -2003,7 +2003,7 @@
         "Quot.sound",
         "Classical.choice"
       ],
-      "catalogHash": "f2666f99b0c1d9cb8515b45c809ae05cd4b08d508f6db4e3bc2b29a9cd43c9e9"
+      "catalogHash": "d1e4d94b6e66390f7fb0ffad92485cd43a54ca8fe92c21acc21cf5cc2f23a4d5"
     },
     "urn:csabs:theorem/DisjointSet-connected-symmetric": {
       "kind": "witness",
@@ -2020,7 +2020,7 @@
         "Quot.sound",
         "Classical.choice"
       ],
-      "catalogHash": "1d65f054df3f81690ab37fba01da53936eb95bfa2c2fcf8fa638d9dbb29c4018"
+      "catalogHash": "d49efbd2fc0831eed6258fb1538806223548b97c5edf64f353c1b911eaff0650"
     },
     "urn:csabs:law/RoseTree-eta": {
       "kind": "witness",
@@ -2038,7 +2038,7 @@
         "Quot.sound",
         "Classical.choice"
       ],
-      "catalogHash": "d807af540d8d76c58a2925024017d658fff9408cc64361dd07d11d42cc1b44bc"
+      "catalogHash": "78c37e69ad1004ac74c497c877e80c0b45cf0cd856e97093ff76c087ac156151"
     },
     "urn:csabs:law/TermAlgebra-eval-variable": {
       "kind": "witness",
@@ -2142,7 +2142,7 @@
         "Quot.sound",
         "Classical.choice"
       ],
-      "catalogHash": "d8a33f48d360bd00f7354d6b42d07d81d9c7b40398481dcc629c8931fbbb86c4"
+      "catalogHash": "9249f5194d75958dcdfa7de4dbb7b0efe7a4e041a7f04f36d60f5a06fe89cc39"
     },
     "urn:csabs:law/DocumentValue-boolean-injective": {
       "kind": "witness",
@@ -2222,6 +2222,51 @@
       "mapping": "Inductive named-variable derivability on set contexts, with all explicit propositional rules, universal introduction guarded by context freshness, elimination guarded by freeFor, and equality reflexivity/substitution. Existentials and other connectives are macros. Restrict symbol families to the countable signature for the catalog metatheorems.",
       "limitations": "Compiled carrier and selected interface only. No new graph law or metatheorem is registered as a proof witness. In particular substitution-support, semantic correspondence, soundness, completeness, compactness and normal-form existence are editorial claims here; grammar/rule declarations do not prove them.",
       "catalogHash": "477fcd89db6708891f0ba5b119d4fc66987f0720afcafef1638dd0f4570035c5"
+    },
+    "urn:csabs:concept/FiniteField": {
+      "kind": "model",
+      "symbol": "Catalog.FiniteField",
+      "module": "Catalog.Algebra",
+      "scope": "model",
+      "mapping": "Mathlib Field A with an explicit Finite A witness, equality of elements, and unchanged exact operations. Catalog inverse/division restrict Mathlib total operations to nonzero inputs.",
+      "limitations": "No chosen size, polynomial basis or encoding. No proof witnesses for the new finite-field classification or Frobenius results.",
+      "catalogHash": "2087fd5eced8c1637b265aa101123c848b6ea87b6ee564b47a8015e028624268"
+    },
+    "urn:csabs:concept/BTree": {
+      "kind": "model",
+      "symbol": "Catalog.BTreeShape",
+      "module": "Catalog.StructuredData",
+      "scope": "partial",
+      "mapping": "Raw RoseTree (List A): each node carries a finite key list and an ordered finite child list. Empty B-tree shape is RoseTree.node [] []. Structural equality preserves keys and child order.",
+      "limitations": "Partial raw-shape interpretation only. Minimum degree, occupancy, arity, key ordering, balance, membership, height and updates are not formalized; no B-tree proof witnesses.",
+      "catalogHash": "a88fbc3ac0de9c51d55fb3dd1813b07f101a68a896acf95760c1c5b4b1088847"
+    },
+    "urn:csabs:concept/Lock": {
+      "kind": "model",
+      "symbol": "Catalog.Lock",
+      "module": "Catalog.Concurrency",
+      "scope": "model",
+      "mapping": "Finite-support P→Option M holder map, symmetric compatibility C and pairwise compatibility proof. Identity equality of holder maps; at most one mode per process. canAcquire and guarded acquires/releases correspond to the recorded atomic state steps.",
+      "limitations": "No waiting queues, scheduling, Boolean decision wrappers, timeouts, memory visibility or implementation refinement. No compiled witnesses for the new graph claims.",
+      "catalogHash": "5a17f9814da8fd6a08de5ece07d665e147d44e05ddf87141fd2aaf832f7af836"
+    },
+    "urn:csabs:concept/Mutex": {
+      "kind": "model",
+      "symbol": "Catalog.Mutex",
+      "module": "Catalog.Concurrency",
+      "scope": "model",
+      "mapping": "Option P with none unowned and some p owned. acquires/releases are guarded state relations; tryAcquire has exact non-spurious Boolean results. Equality is Option equality and process identity.",
+      "limitations": "No blocking-call histories, fairness, recursive acquisition, crash recovery or memory fences. No compiled witnesses for the new graph claims.",
+      "catalogHash": "18f349709066a596afec2f1428ccd0ad7f014bd93935b8b0af1a35334be2ded9"
+    },
+    "urn:csabs:concept/LamportBakery": {
+      "kind": "model",
+      "symbol": "Catalog.LamportBakeryState",
+      "module": "Catalog.Concurrency",
+      "scope": "partial",
+      "mapping": "Raw state for Fin n processes: choosing flags, unbounded Nat tickets, and uninterpreted natural program counters, scan indices and per-process local read data.",
+      "limitations": "No legal control-state invariant, SC transition relation, reachability, protocol refinement, fairness, mutual-exclusion proof or failure/weak-memory model. This binding supplies raw state fields only.",
+      "catalogHash": "60e628540a7f938d7df88bb98da960b3e307f4faf5a85718e0e158e5c47736c5"
     }
   }
 }

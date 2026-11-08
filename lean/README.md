@@ -2,7 +2,7 @@
 
 This Lake project gives every current catalog concept a named Lean interpretation, grouped by subject in `Catalog/`. It uses **Lean 4.35.0** and **Mathlib commit `56a005855ea17e0b0958f73ec801ae140b0a1679`** (release `v4.35.0`). `lake-manifest.json` locks transitive dependencies. Normal catalog retrieval and the viewer still require only Python.
 
-There are currently **147 concept bindings**: 134 carrier/interface models and 13 explicitly partial interpretations. There are **52 registered proof witnesses** for existing laws/theorems, including all 11 recorded binary-tree laws/theorems. This does **not** mean every recorded operation or all 365 laws/theorems have been translated or proved. An alias to a library structure is a model binding, not a proof of all catalog claims. The [broad-core expansion](../docs/FOUNDATIONAL_DATA_MODELS.md) adds 35 carrier models and 24 individually mapped witnesses. Its remaining operation specifications and derived results are not blanket formalizations.
+There are currently **152 concept bindings**: 137 carrier/interface models and 15 explicitly partial interpretations. There are **52 registered proof witnesses** for existing laws/theorems, including all 11 recorded binary-tree laws/theorems. This does **not** mean every recorded operation or all catalog laws/theorems have been translated or proved. An alias to a library structure is a model binding, not a proof of all catalog claims. The [broad-core expansion](../docs/FOUNDATIONAL_DATA_MODELS.md) adds 35 carrier models and 24 individually mapped witnesses. Its remaining operation specifications and derived results are not blanket formalizations.
 
 ## Build and verify
 
@@ -35,7 +35,7 @@ The [GitHub workflow](../.github/workflows/lean.yml) runs verification on pushes
 | Module | Models |
 | --- | --- |
 | `Catalog/Foundations.lean` | Sets, relations, functions, products, sums, option, empty/unit, partitions and proof principles |
-| `Catalog/Algebra.lean` | Semigroups, monoids, groups, rings, fields, modules, linear maps, matrices and tensors |
+| `Catalog/Algebra.lean` | Semigroups, monoids, groups, rings, fields, finite fields, modules, linear maps, matrices and tensors |
 | `Catalog/Order.lean` | Preorders, partial/total orders, lattices, Boolean algebras, closure and fixed points |
 | `Catalog/DataStructures.lean` | Sequences, arrays, finite sets/maps, multisets, ordered sets, stacks, queues and deques |
 | `Catalog/CoreData.lean` | Dependent/refined/quotient types, exact numbers, streams, finite iterators, intervals, sparse vectors, distributions and join-based replication |
@@ -45,6 +45,7 @@ The [GitHub workflow](../.github/workflows/lean.yml) runs verification on pushes
 | `Catalog/BinaryTree.lean` | Finite ordered node-labelled trees, empty/node/view/fold, counts, traversal, mirror and label mapping; witnesses for all recorded binary-tree laws/theorems |
 | `Catalog/Numeric.lean` | Naturals, integers, bit vectors, bounded arithmetic and floating-point interfaces |
 | `Catalog/Graphs.lean` | Graphs, trees, transition systems, simulation, bisimulation and traces |
+| `Catalog/Concurrency.lean` | Compatible-mode locks, non-reentrant mutex owners and a partial bakery-protocol state carrier |
 | `Catalog/Semantics.lean` | Hoare logic, invariants, termination, safety/liveness and history interfaces |
 | `Catalog/Logic.lean` | Propositional, first-order, modal and temporal syntax and satisfaction |
 | `Catalog/LogicSyntax.lean` | Countable signatures, named binders, guarded substitution and classical natural deduction; see [logic coverage](../docs/LOGIC.md) |
@@ -96,6 +97,10 @@ The verifier compiles the library with warnings treated as errors, checks that e
 The permitted foundational names are `propext`, `Quot.sound` and `Classical.choice`; actual use is recorded individually. Structure laws such as associativity are explicit hypotheses in the theorem's type, rather than extra global Lean axioms. The type checker verifies the Lean proposition conditional on those hypotheses. It does not decide that the chosen model matches every nuance of an informal definition, establish consistency of all mathematical assumptions, or supply missing bibliographic evidence. See [Lean's axiom documentation](https://lean-lang.org/doc/reference/latest/Axioms/).
 
 Partial interpretations needing further work are:
+
+- `LamportBakery`: raw flags, tickets and local-state fields; protocol transitions, reachability and correctness are not yet formalized.
+
+- `BTree`: raw rose-tree shapes with finite key-list labels; occupancy, arity, ordering, balance and update specifications are not yet formalized.
 
 - `Set`: a universe-indexed `ZFSet` interpretation in Lean, without a claim to choice-free ZF metatheory or consistency.
 - `StructuralInduction`: a representative finitary tree rather than all constructor signatures.

@@ -6,7 +6,7 @@ A collection supporting first-in, first-out insertion and removal, with empty be
 
 **Stable ID:** `urn:csabs:concept/Queue`
 
-**Categories:** Data structures
+**Categories:** Data structures → Sequential collections
 
 **Kind:** Abstract data type
 
@@ -175,7 +175,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "shortForm": "Queue",
     "fullName": "Queue abstract data type",
     "category": [
-      "urn:csabs:category/data-structures"
+      "urn:csabs:category/sequential-collections"
     ],
     "kind": "urn:csabs:kind/abstract-data-type",
     "definition": "A collection supporting first-in, first-out insertion and removal, with empty behavior specified by the contract.",

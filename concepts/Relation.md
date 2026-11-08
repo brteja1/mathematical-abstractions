@@ -20,6 +20,7 @@ A relation from A to B is a set of ordered pairs with first component in A and s
 - [Hoare Triple](HoareTriple.md) — `requiresConcept`
 - [Action-labelled transition system with initial states](LabelledTransitionSystem.md) — `requiresConcept`
 - [Linearizability](Linearizability.md) — `requiresConcept`
+- [Lock with compatible access modes](Lock.md) — `requiresConcept`
 - [Classical propositional modal logic K](ModalLogic.md) — `requiresConcept`
 - [Finite set-valued multimap](Multimap.md) — `requiresConcept`
 - [Partial function](PartialFunction.md) — `requiresConcept`

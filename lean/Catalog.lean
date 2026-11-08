@@ -21,3 +21,5 @@ public import Catalog.CoreData
 public import Catalog.StructuredData
 public import Catalog.GraphData
 public import Catalog.InformationData
+
+public import Catalog.Concurrency

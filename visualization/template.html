@@ -1,174 +1,83 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Atlas · Mathematical abstractions</title>
-<style>
-:root{color-scheme:dark;--bg:#10141c;--panel:#171d28;--line:#2b3545;--text:#e6edf6;--muted:#a2b0c4;--code:"Cascadia Code","JetBrains Mono","SFMono-Regular",Consolas,"Liberation Mono",monospace}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 var(--code)}header{padding:26px 32px 18px;border-bottom:1px solid var(--line);display:flex;gap:24px;align-items:center;justify-content:space-between}h1{font-family:var(--code);font-weight:600;font-size:36px;letter-spacing:-.7px;line-height:1.2;margin:0 0 6px}.eyebrow{font-size:14px;font-weight:600;letter-spacing:2px;color:#b9a383;text-transform:uppercase;margin-bottom:9px}p{margin:6px 0;color:var(--muted)}.stats{white-space:nowrap;font-family:var(--code);font-size:14px;font-variant-numeric:tabular-nums;color:var(--muted)}main{display:grid;grid-template-columns:minmax(0,1fr) 400px;min-height:calc(100vh - 120px)}.workspace{min-width:0;padding:20px 24px}.toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap}input,select,button{font:inherit;color:var(--text);background:var(--panel);border:1px solid var(--line);border-radius:7px;padding:8px 11px}input{width:230px}select{max-width:240px}button{cursor:pointer}button:hover{border-color:#a2b0c4}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #86c9ff;outline-offset:3px}.checks{display:flex;gap:13px;flex-wrap:wrap;margin:14px 0 0;font-size:14px;color:var(--muted)}.checks input{width:auto;accent-color:#86c9ff}.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;margin:12px 0;color:var(--muted)}.line-key{display:inline-block;width:22px;height:2px;vertical-align:middle;margin-right:6px}.stage{position:relative;border:1px solid var(--line);border-radius:12px;margin-top:18px;background:radial-gradient(ellipse at center,#1c2636 0,#121923 68%,#10141c);overflow:hidden}svg{display:block;width:100%;height:auto;min-height:480px;touch-action:none}.zoom{position:absolute;right:14px;bottom:14px;display:flex;gap:6px}.hint{font-size:14px;margin-top:10px}.edge{fill:none;stroke-width:1;opacity:.24;pointer-events:none}.edge.incoming,.edge.outgoing{stroke-width:2;opacity:.95}.edge.dim{opacity:.018}.membership{stroke-width:.7;opacity:.18;pointer-events:none}.node{cursor:pointer;outline:none}.node circle{stroke:#131923;stroke-width:2}.node text{font-size:14px;font-weight:500;fill:#d1dbea;paint-order:stroke;stroke:#121923;stroke-width:2px;stroke-linejoin:round;pointer-events:none}.node.dim{opacity:.16}.node.neighbor circle{stroke:white;stroke-width:1.5}.node.active circle{stroke:white;stroke-width:3;filter:drop-shadow(0 0 6px #ffffff88)}.node.active text,.node.neighbor text{fill:white;font-weight:600}.node:focus-visible circle{stroke:white;stroke-width:4}.sector{cursor:pointer;outline:none}.sector path{fill:none;stroke-width:12;opacity:.76}.sector:hover path,.sector:focus-visible path{stroke-width:18;opacity:1}.sector text{font-size:13px;font-weight:600;letter-spacing:.4px;fill:#dce5f3;pointer-events:none}.center-title{fill:#7f91ab;font-size:13px;letter-spacing:2px;pointer-events:none}.empty{font-size:14px;color:var(--muted)}aside{border-left:1px solid var(--line);padding:25px 25px;max-height:calc(100vh - 120px);overflow:auto;background:#141a24;position:sticky;top:0}.badge{display:inline-block;padding:3px 8px;margin:3px 4px 3px 0;border:1px solid var(--line);border-radius:5px;color:var(--muted);font-size:13px}.detail-title{font-family:var(--code);font-weight:600;font-size:30px;line-height:1.25;margin:12px 0}h2{font-size:14px;text-transform:uppercase;letter-spacing:1.3px;color:#b8c7da;margin:26px 0 10px}.notation{white-space:pre-wrap;font:14px/1.8 var(--code);background:#0e141e;border:1px solid var(--line);border-radius:8px;padding:13px;overflow-wrap:anywhere;color:#d4e0f4}.relation-button{display:block;text-align:left;width:100%;margin-bottom:6px;padding:8px 10px;font-size:14px}.relation-button small{display:block;font-size:13px;color:var(--muted)}details{border-top:1px solid var(--line);padding:9px 0}summary{cursor:pointer;font-size:14px}details p{font-size:14px}.footer{font-size:13px;border-top:1px solid var(--line);margin-top:28px;padding-top:14px;color:var(--muted)}.category-chips{display:flex;flex-wrap:wrap;gap:5px;margin:14px 0}.category-chips button{font-size:13px;padding:4px 7px}.error{padding:30px;color:#ffb2a5}a{color:#93c9ff}.sr-only{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}@media(min-width:1500px){main{grid-template-columns:minmax(0,1fr) 440px}.workspace{padding:25px 40px}svg{max-height:1000px}}@media(max-width:1000px){main{grid-template-columns:1fr}aside{max-height:none;position:static;border-top:1px solid var(--line);border-left:0}header{padding:20px}.workspace{padding:15px}svg{min-height:0}.stats{display:none}}
-.node text{visibility:hidden}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atlas · Mathematical abstractions</title>
+  <!-- Generated as one offline page from this shell, styles.css, and app.js. -->
+  <style>
+/*__STYLES__*/
+  </style>
 </head>
 <body>
-<header><div><div class="eyebrow">The mathematical catalog</div><h1>Concept atlas</h1><p>Explore structures, their foundations, and the connections between them.</p></div><div class="stats" id="stats"></div></header>
-<main><section class="workspace" aria-label="Interactive concept graph"><div class="toolbar"><label><span class="sr-only">Search concepts</span><input id="search" type="search" placeholder="Find a concept…" autocomplete="off" aria-controls="concept-select"></label><label><span class="sr-only">Choose a concept</span><select id="concept-select"><option value="">Select a concept</option></select></label><button id="reset">Clear selection</button></div>
-<div class="checks" id="filters"><label><input type="checkbox" value="requiresConcept" checked>Prerequisites</label><label><input type="checkbox" value="specializationOf" checked>Specializations</label><label><input type="checkbox" value="relatedConcept" checked>Related concepts</label></div>
-<div class="legend"><span><i class="line-key" style="background:linear-gradient(to right,#bca5f7,#6ed7b6)"></i>Source colour → destination colour</span><span>Highlighted arrows point to the destination concept</span></div>
-<div class="stage"><svg id="graph" viewBox="-560 -560 1120 1120" role="group" aria-label="Radial knowledge graph. Focus or hover over a concept to highlight its connections; click or press Enter to select."><defs id="edge-defs"></defs><g id="scene"></g></svg><div class="zoom"><button id="zoom-in" aria-label="Zoom in">+</button><button id="zoom-out" aria-label="Zoom out">−</button><button id="fit">Fit</button></div></div><p class="hint">Names appear when you select a subject or concept, hover or focus a node, or zoom in. Select a concept to reveal its direct subconcepts and smoothly zoom into that section. Hover or focus to trace links. Search reaches every concept. Scroll or use + / − to zoom; drag the background to pan. Fit shows all visible concepts. Escape returns to the overview.</p><div id="categories" class="category-chips" aria-label="Subject areas"></div></section>
-<aside id="details" aria-live="polite"></aside></main>
-<script id="catalog-data" type="application/json">/*__CATALOG__*/null</script>
-<script>
-'use strict';
-const catalog=JSON.parse(document.getElementById('catalog-data').textContent);
-const all=new Map(catalog['@graph'].map(n=>[n.id,n]));
-const concepts=catalog['@graph'].filter(n=>n.type==='Concept');
-const ids=new Set(concepts.map(n=>n.id));
-const categories=catalog['@graph'].filter(n=>n.type==='Category');
-const palette=['#bca5f7','#f1c670','#8dc9fb','#6ed7b6','#f3a3c3','#eda983','#8fb6ff','#bacb79','#c89dcb','#82d2cf','#e38f87'];
-const colors=new Map(categories.map((c,i)=>[c.id,palette[i%palette.length]]));
-const relNames={requiresConcept:'requires',specializationOf:'specializes',relatedConcept:'related to'};
-const edges=concepts.flatMap(n=>Object.keys(relNames).flatMap(type=>(n[type]||[]).filter(id=>ids.has(id)&&id!==n.id).map(target=>({source:n.id,target,type}))));
-const $=id=>document.getElementById(id),ns='http://www.w3.org/2000/svg';
-let pinned=null,preview=null,category=null;
-const positions=new Map(),nodeEls=new Map(),edgeEls=[];
-const parents=new Map(concepts.map(n=>[n.id,(n.specializationOf||[]).filter(id=>ids.has(id))]));
-const children=new Map(concepts.map(n=>[n.id,concepts.filter(c=>parents.get(c.id).includes(n.id)).map(c=>c.id)]));
-let shown=new Set(),overviewSpan=1500;
-function hierarchy(){
- const visible=new Set(concepts.filter(n=>!parents.get(n.id).length).map(n=>n.id));
- // Keep every ancestor visible, including multiple-parent paths. Reveal one level at a time.
- const visit=id=>{if(visible.has(id))return;visible.add(id);parents.get(id).forEach(visit);};
- if(pinned){visit(pinned);children.get(pinned).forEach(id=>visible.add(id));}
- return visible;
-}
-function el(tag,attrs={},text){const n=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,v));if(text!==undefined)n.textContent=text;return n;}
-function html(tag,text,cls){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;}
-function point(angle,r){return [r*Math.cos(angle),r*Math.sin(angle)];}
-function enabled(){return new Set([...$('filters').querySelectorAll('input:checked')].map(n=>n.value));}
-function visibleEdges(){const types=enabled();return edges.filter(e=>types.has(e.type)&&shown.has(e.source)&&shown.has(e.target));}
-// Labels disclose context without changing node positions or camera bounds.
-function refreshLabels(){
- const active=preview||pinned,neighbors=new Set();
- if(active)visibleEdges().forEach(e=>{if(e.source===active)neighbors.add(e.target);if(e.target===active)neighbors.add(e.source);});
- const zoomed=overviewSpan/viewSpan>=2;
- nodeEls.forEach((group,id)=>{
-  const reveal=id===active||id===pinned||neighbors.has(id)||(category&&all.get(id).category.some(c=>{while(c){if(c===category)return true;c=all.get(c)?.parentCategory;}return false;}))||(!active&&!category&&zoomed);
-  group.querySelector('text').style.visibility=reveal?'visible':'hidden';
- });
-}
-function pick(id){pinned=id;preview=null;category=null;$('concept-select').value=id||'';layout();update();focusSelection();}
-function clear(){pinned=preview=category=null;$('search').value='';options();$('concept-select').value='';layout();update();fit();}
-function options(){const q=$('search').value.toLowerCase().trim(),select=$('concept-select');select.replaceChildren(new Option('Select a concept',''));concepts.filter(n=>(n.shortForm+' '+n.fullName).toLowerCase().includes(q)).sort((a,b)=>a.fullName.localeCompare(b.fullName)).forEach(n=>select.add(new Option(n.fullName,n.id)));if(pinned&&[...select.options].some(o=>o.value===pinned))select.value=pinned;}
-function showCategory(id){category=category===id?null:id;pinned=preview=null;$('concept-select').value='';layout();update();fit();}
-const edgeDefs=$('edge-defs');
-// Arrowheads use the same category colour as their destination node.
-categories.forEach((c,i)=>{const marker=el('marker',{id:`arrow-${i}`,viewBox:'0 0 10 10',refX:9,refY:5,markerWidth:5,markerHeight:5,orient:'auto'});marker.append(el('path',{d:'M 0 0 L 10 5 L 0 10 z',fill:colors.get(c.id)}));edgeDefs.append(marker);});
-const scene=$('scene'),membership=el('g'),edgeGroup=el('g'),nodeGroup=el('g'),sectorGroup=el('g');
-scene.append(membership,edgeGroup,nodeGroup,sectorGroup);
-const groups=categories.map(c=>({category:c,members:concepts.filter(n=>n.category?.[0]===c.id).sort((a,b)=>a.fullName.localeCompare(b.fullName))})).filter(g=>g.members.length);
-// Layout only the current hierarchy slice. Radial labels receive a minimum
-// tangential pitch; subject arcs sit beyond the longest concept label.
-function layout(){
- shown=hierarchy();membership.replaceChildren();sectorGroup.replaceChildren();
- const visibleGroups=groups.map(g=>({...g,members:g.members.filter(n=>shown.has(n.id))})).filter(g=>g.members.length);
- const gap=.085,usable=Math.PI*2-gap*visibleGroups.length;
- const radius=Math.max(343,shown.size*25/usable);
- const labelExtent=Math.max(...concepts.filter(n=>shown.has(n.id)).map(n=>n.shortForm.length*8.8));
- const outer=radius+labelExtent+52;
- overviewSpan=2*(outer+105);
- let offset=-Math.PI/2;
- visibleGroups.forEach(({category:c,members})=>{
- const span=usable*members.length/shown.size,start=offset,end=start+span,mid=(start+end)/2;
- const stroke=colors.get(c.id),[sx,sy]=point(start,outer),[ex,ey]=point(end,outer);
- const group=el('g',{class:'sector',tabindex:'0',role:'button','aria-label':c.label+': '+members.length+' visible concepts'});
- group.append(el('path',{d:`M${sx},${sy} A${outer},${outer} 0 ${span>Math.PI?1:0} 1 ${ex},${ey}`,stroke}));
- const [tx,ty]=point(mid,outer+35);let deg=mid*180/Math.PI+90;if(deg>90&&deg<270)deg+=180;
- const label=el('text',{x:tx,y:ty,'text-anchor':'middle',transform:`rotate(${deg} ${tx} ${ty})`});
- const limit=Math.max(12,Math.floor(outer*span*.8/8)),lines=[''];
- c.label.split(' ').forEach(word=>{const i=lines.length-1;if(lines[i]&&(lines[i]+' '+word).length>limit)lines.push(word);else lines[i]+=(lines[i]?' ':'')+word;});
- lines.forEach((line,i)=>label.append(el('tspan',{x:tx,dy:i?16:0},line)));group.append(label);
- group.addEventListener('click',()=>showCategory(c.id));group.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();showCategory(c.id);}});sectorGroup.append(group);
- members.forEach((n,i)=>{const a=start+span*(i+.5)/members.length,[x,y]=point(a,radius);positions.set(n.id,{x,y,a});const [ox,oy]=point(a,outer-10);membership.append(el('line',{x1:x,y1:y,x2:ox,y2:oy,stroke,class:'membership'}));});
- offset=end+gap;
- });
- nodeEls.forEach((group,id)=>{
- group.style.display=shown.has(id)?'':'none';group.setAttribute('tabindex',shown.has(id)?'0':'-1');
- if(!shown.has(id))return;
- const {x,y,a}=positions.get(id),[tx,ty]=point(a,radius+12),left=Math.cos(a)<0;
- const circle=group.querySelector('circle'),text=group.querySelector('text');
- // Layout retains label geometry; refreshLabels controls progressive visibility.
- text.style.display='';
- circle.setAttribute('cx',x);circle.setAttribute('cy',y);
- Object.entries({x:tx,y:ty,'text-anchor':left?'end':'start',transform:`rotate(${a*180/Math.PI+(left?180:0)} ${tx} ${ty})`}).forEach(([k,v])=>text.setAttribute(k,v));
- });
- edgeEls.forEach(({edge:e,element,gradient})=>{
- if(!shown.has(e.source)||!shown.has(e.target))return;
- const s=positions.get(e.source),t=positions.get(e.target),len=Math.hypot(t.x-s.x,t.y-s.y)||1,x=t.x-(t.x-s.x)/len*8,y=t.y-(t.y-s.y)/len*8;
- element.setAttribute('d',`M${s.x},${s.y} Q0,0 ${x},${y}`);
- Object.entries({x1:s.x,y1:s.y,x2:x,y2:y}).forEach(([k,v])=>gradient.setAttribute(k,v));
- });
-}
-// Initial positions are replaced by the visible hierarchy layout below.
-concepts.forEach((n,i)=>{const a=i/concepts.length*Math.PI*2,[x,y]=point(a,343);positions.set(n.id,{x,y,a});});
-// Paths terminate short of their destination circle so arrowheads remain visible.
-edges.forEach((e,i)=>{const s=positions.get(e.source),t=positions.get(e.target),dx=t.x-s.x,dy=t.y-s.y,len=Math.hypot(dx,dy),x=t.x-dx/len*8,y=t.y-dy/len*8;
-// Explicit coordinates keep gradients valid for horizontal and vertical paths too.
-const gradient=el('linearGradient',{id:`edge-gradient-${i}`,gradientUnits:'userSpaceOnUse',x1:s.x,y1:s.y,x2:x,y2:y,'color-interpolation':'sRGB'});
-gradient.append(el('stop',{offset:'0%','stop-color':colors.get(all.get(e.source).category[0])}),el('stop',{offset:'100%','stop-color':colors.get(all.get(e.target).category[0])}));edgeDefs.append(gradient);
-const p=el('path',{d:`M${s.x},${s.y} Q0,0 ${x},${y}`,class:'edge',stroke:`url(#edge-gradient-${i})`});edgeGroup.append(p);edgeEls.push({edge:e,element:p,gradient,marker:`url(#arrow-${categories.findIndex(c=>c.id===all.get(e.target).category[0])})`});});
-concepts.forEach(n=>{const {x,y,a}=positions.get(n.id),group=el('g',{class:'node',tabindex:'0',role:'button','aria-label':n.fullName,'aria-pressed':'false'});group.append(el('circle',{cx:x,cy:y,r:5.5,fill:colors.get(n.category[0])}));const [tx,ty]=point(a,354),left=Math.cos(a)<0;let deg=a*180/Math.PI+(left?180:0);group.append(el('text',{x:tx,y:ty,dy:3,'text-anchor':left?'end':'start',transform:`rotate(${deg} ${tx} ${ty})`},n.shortForm));group.append(el('title',{},n.fullName));group.addEventListener('mouseenter',()=>{preview=n.id;update();});group.addEventListener('mouseleave',()=>{preview=null;update();});group.addEventListener('focus',()=>{preview=n.id;update();});group.addEventListener('blur',()=>{preview=null;update();});group.addEventListener('click',()=>pick(pinned===n.id?null:n.id));group.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(n.id);}});nodeGroup.append(group);nodeEls.set(n.id,group);});
-scene.append(el('text',{x:0,y:-8,'text-anchor':'middle',class:'center-title'},'MATHEMATICAL'));
-scene.append(el('text',{x:0,y:12,'text-anchor':'middle',class:'center-title'},'ABSTRACTIONS'));
-function renderDetails(id,activeEdges){const panel=$('details');panel.replaceChildren();if(!id){panel.append(html('div',category?'SUBJECT AREA':'EXPLORE THE CATALOG','eyebrow'));panel.append(html('div',category?all.get(category).label:'Follow a connection','detail-title'));panel.append(html('p',category?'Colored nodes belong to this subject. Select a node to inspect its relationships and mathematical definition.':'Select a concept to see its definition, notation, operations, and governing claims. Hovering previews the same neighborhood.'));if(category){concepts.filter(n=>n.category.includes(category)).forEach(n=>{const b=html('button',n.fullName,'relation-button');b.onclick=()=>pick(n.id);panel.append(b);});}panel.append(html('p','Each concept is placed in its first catalog category; all category memberships appear in its details. Edges show explicit concept-to-concept links only.','footer'));return;}
-const n=all.get(id);panel.append(html('div',preview?'CONCEPT PREVIEW':'SELECTED CONCEPT','eyebrow'),html('div',n.fullName,'detail-title'));
-const page=html('a','Open Markdown concept page');page.href=(location.hostname==='brteja1.github.io'?'https://github.com/brteja1/mathematical-abstractions/blob/main/concepts/':'../concepts/')+encodeURIComponent(n.shortForm)+'.md';panel.append(page);
-n.category.forEach(c=>{const badge=html('span',all.get(c)?.label||c,'badge');badge.style.borderColor=colors.get(c);panel.append(badge);});panel.append(html('span',all.get(n.kind)?.label||n.kind,'badge'));panel.append(html('p',n.definition),html('h2','Mathematical definition'),html('div',n.notation,'notation'));
-if(n.axiomBasis){panel.append(html('h2','Mathematical basis'),html('p',n.axiomBasis));if(n.basisScope)panel.append(html('p',n.basisScope,'empty'));}
-['incoming','outgoing'].forEach(direction=>{const list=activeEdges.filter(e=>direction==='incoming'?e.target===id:e.source===id);panel.append(html('h2',`${direction} · ${list.length}`));if(!list.length)panel.append(html('p','No links of the enabled types are recorded.','empty'));list.forEach(e=>{const target=direction==='incoming'?e.source:e.target,b=html('button',all.get(target).fullName,'relation-button');b.append(html('small',direction==='incoming'?`${relNames[e.type]} this concept`:`This concept ${relNames[e.type]} →`));b.onclick=()=>pick(target);panel.append(b);});});
-[['hasOperation','Operations'],['hasAxiom','Axioms'],['hasLaw','Laws'],['hasTheorem','Theorems']].forEach(([key,label])=>{const refs=n[key]||[];panel.append(html('h2',`${label} · ${refs.length}`));if(!refs.length)panel.append(html('p','No entries recorded yet.','empty'));refs.forEach(ref=>{const item=all.get(ref);if(!item)return;const det=html('details'),summary=html('summary',item.name||item.statement);det.append(summary);if(item.signature||item.formalStatement)det.append(html('div',item.signature||item.formalStatement,'notation'));if(item.description)det.append(html('p',item.description));(item.assumptions||[]).forEach(a=>det.append(html('p','Assumption: '+a)));if(item.precondition)det.append(html('p','Precondition: '+item.precondition));if(item.proofSketch)det.append(html('p','Proof sketch: '+item.proofSketch));panel.append(det);});});
-if(n.specializationNote){panel.append(html('h2','Specialization interface'));panel.append(html('p',n.specializationNote));}
-if(n.verificationObligation?.length){panel.append(html('h2','Verification obligations'));n.verificationObligation.forEach(t=>panel.append(html('p',t)));}
-panel.append(html('p','Coverage: '+(n.coverageStatus||'seed')+'. Empty sections indicate unrecorded material. Statements and proof sketches are not machine-checked proofs.','footer'));}
-function update(){const active=preview||pinned,ve=visibleEdges(),neighbors=new Set();ve.forEach(e=>{if(e.source===active)neighbors.add(e.target);if(e.target===active)neighbors.add(e.source);});edgeEls.forEach(({edge:e,element:p,marker})=>{p.style.display=ve.includes(e)?'':'none';const incoming=active&&e.target===active,outgoing=active&&e.source===active,catEdge=category&&(all.get(e.source).category.includes(category)||all.get(e.target).category.includes(category));p.setAttribute('class','edge'+(incoming?' incoming':outgoing?' outgoing':(active||category&&!catEdge)?' dim':''));if(incoming||outgoing)p.setAttribute('marker-end',marker);else p.removeAttribute('marker-end');});nodeEls.forEach((group,id)=>{const isActive=id===active,isNeighbor=neighbors.has(id),dim=active?!isActive&&!isNeighbor:category&&!all.get(id).category.includes(category);group.setAttribute('class','node'+(isActive?' active':isNeighbor?' neighbor':dim?' dim':''));group.setAttribute('aria-pressed',String(id===pinned));});$('stats').textContent=`${shown.size} / ${concepts.length} concepts · ${ve.length} connections · ${groups.length} subjects`;renderDetails(active,edges.filter(e=>enabled().has(e.type)));refreshLabels();}
-$('search').addEventListener('input',options);$('search').addEventListener('keydown',e=>{if(e.key==='Enter'&&$('concept-select').options.length>1)pick($('concept-select').options[1].value);});$('concept-select').addEventListener('change',e=>pick(e.target.value||null));$('reset').onclick=clear;$('filters').addEventListener('change',update);document.addEventListener('keydown',e=>{if(e.key==='Escape'){clear();$('search').blur();}});
-let viewCenter={x:0,y:0},viewSpan=1500,targetView={x:0,y:0,span:1500},animation=null;
-const svg=$('graph'),reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
-function paintView(){svg.setAttribute('viewBox',`${viewCenter.x-viewSpan/2} ${viewCenter.y-viewSpan/2} ${viewSpan} ${viewSpan}`);refreshLabels();}
-function moveView(next,animate=true){
- cancelAnimationFrame(animation);targetView=next;
- const start={...viewCenter,span:viewSpan},began=performance.now();
- function frame(now){
- const t=animate&&!reducedMotion.matches?Math.min(1,(now-began)/550):1,k=1-Math.pow(1-t,3);
- viewCenter={x:start.x+(next.x-start.x)*k,y:start.y+(next.y-start.y)*k};viewSpan=start.span+(next.span-start.span)*k;paintView();
- if(t<1)animation=requestAnimationFrame(frame);else animation=null;
- }
- animation=requestAnimationFrame(frame);
-}
-function fit(){moveView({x:0,y:0,span:overviewSpan});}
-const zoomStep=1.25,selectionZoomOutSteps=7;
-function focusSelection(){
- if(!pinned){fit();return;}
- // Ancestors stay navigable, but the camera frames the selected family only.
- const focus=new Set([pinned,...children.get(pinned)]);
- const boxes=[...focus].filter(id=>shown.has(id)).map(id=>nodeEls.get(id).getBBox());
- const x0=Math.min(...boxes.map(b=>b.x)),y0=Math.min(...boxes.map(b=>b.y)),x1=Math.max(...boxes.map(b=>b.x+b.width)),y1=Math.max(...boxes.map(b=>b.y+b.height));
- const familySpan=Math.max(180,(x1-x0)*1.15+48,(y1-y0)*1.15+48);
- // Back off seven manual zoom steps to keep surrounding concepts in view.
- const span=Math.min(overviewSpan,familySpan*Math.pow(zoomStep,selectionZoomOutSteps));
- moveView({x:(x0+x1)/2,y:(y0+y1)/2,span});
-}
-function zoom(factor,anchor){
- const span=Math.min(overviewSpan*1.5,Math.max(140,targetView.span/factor));
- const ratio=span/targetView.span,at=anchor||{x:targetView.x,y:targetView.y};
- moveView({x:at.x+(targetView.x-at.x)*ratio,y:at.y+(targetView.y-at.y)*ratio,span});
-}
-$('zoom-in').onclick=()=>zoom(zoomStep);$('zoom-out').onclick=()=>zoom(1/zoomStep);$('fit').onclick=fit;
-svg.addEventListener('wheel',e=>{e.preventDefault();const pt=new DOMPoint(e.clientX,e.clientY).matrixTransform(svg.getScreenCTM().inverse());zoom(Math.exp(-Math.max(-100,Math.min(100,e.deltaY))*.002),pt);},{passive:false});
-let drag=null;
-svg.addEventListener('pointerdown',e=>{if(e.button!==0||e.target.closest('.node,.sector'))return;cancelAnimationFrame(animation);const pt=new DOMPoint(e.clientX,e.clientY).matrixTransform(svg.getScreenCTM().inverse());drag=pt;svg.setPointerCapture(e.pointerId);svg.style.cursor='grabbing';});
-svg.addEventListener('pointermove',e=>{if(!drag)return;const pt=new DOMPoint(e.clientX,e.clientY).matrixTransform(svg.getScreenCTM().inverse());viewCenter={x:viewCenter.x+drag.x-pt.x,y:viewCenter.y+drag.y-pt.y};targetView={...viewCenter,span:viewSpan};paintView();});
-function endDrag(){drag=null;svg.style.cursor='';}
-svg.addEventListener('pointerup',endDrag);svg.addEventListener('pointercancel',endDrag);svg.addEventListener('lostpointercapture',endDrag);
-categories.forEach(c=>{const b=html('button',c.label);b.style.borderColor=colors.get(c.id);b.onclick=()=>showCategory(c.id);$('categories').append(b);});options();layout();update();moveView({x:0,y:0,span:overviewSpan},false);
-</script>
-</body></html>
+  <header>
+    <div>
+      <div class="eyebrow">The mathematical catalog</div>
+      <h1>Concept atlas</h1>
+      <p>Explore structures, their foundations, and the connections between them.</p>
+    </div>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <main>
+    <section class="workspace" aria-label="Interactive concept graph">
+      <div class="toolbar">
+        <label>
+          <span class="sr-only">Search concepts</span><input id="search" type="search" placeholder="Find a concept…" autocomplete="off" aria-controls="concept-select">
+        </label>
+        <label>
+          <span class="sr-only">Choose a concept</span><select id="concept-select"><option value="">Select a concept</option></select>
+        </label>
+        <label>View <select id="view-mode">
+          <option value="subject">Subjects</option>
+          <option value="specialization">Specializations</option>
+          <option value="dependency">Dependencies</option>
+        </select></label>
+        <button id="reset">Clear selection</button>
+      </div>
+
+      <div class="checks" id="filters">
+        <label><input type="checkbox" value="requiresConcept" checked>Prerequisites</label>
+        <label><input type="checkbox" value="specializationOf" checked>Specializations</label>
+        <label><input type="checkbox" value="relatedConcept" checked>Related concepts</label>
+      </div>
+      <p class="hint" id="view-description"></p>
+      <div class="legend">
+        <span><i class="line-key"></i>Source colour → destination colour</span>
+        <span>Highlighted arrows point to the destination concept</span>
+      </div>
+
+      <div class="stage">
+        <div id="label-preview" role="tooltip" hidden></div>
+        <svg id="graph" tabindex="0" aria-keyshortcuts="F" viewBox="-560 -560 1120 1120" role="group" aria-label="Radial knowledge graph. Focus or hover over a concept to highlight its connections; click or press Enter to select.">
+          <defs id="edge-defs"></defs>
+          <g id="scene"></g>
+        </svg>
+        <div class="zoom">
+          <button id="zoom-in" aria-label="Zoom in">+</button>
+          <button id="zoom-out" aria-label="Zoom out">−</button>
+          <button id="fit" title="Fit graph (F)" aria-keyshortcuts="F">Fit</button>
+        </div>
+      </div>
+
+      <p class="hint">
+        Subjects view groups concepts in nested arcs; Specializations and Dependencies
+        use level layouts. Select a topic, sub-topic, or concept to smoothly focus it.
+        Top-level subject names and all concept names stay visible. Nested subject
+        headings appear only when selected. Hover or focus for a full-name callout.
+        Zoom and pan keep label positions and visibility fixed. Search reaches every
+        concept. Scroll or use + / − to zoom; drag the background to pan. Press F
+        while hovering over or focusing the graph to fit it. Escape clears the
+        selection and returns to the overview.
+      </p>
+    </section>
+
+    <aside id="details" aria-live="polite"></aside>
+  </main>
+
+  <script id="catalog-data" type="application/json">/*__CATALOG__*/null</script>
+  <script>
+/*__APP__*/
+  </script>
+</body>
+</html>

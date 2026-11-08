@@ -10,7 +10,7 @@ A finite directed multigraph with a string label per vertex and edge and a finit
 
 **Kind:** Abstract data type
 
-**Prerequisites:** [Finite directed multigraph with edge identities](DirectedMultigraph.md), [Map](Map.md), [Finite sequence](Sequence.md)
+**Prerequisites:** [Finite directed multigraph with edge identities](DirectedMultigraph.md), [Map](Map.md), [Finite sequence (List datatype)](Sequence.md)
 
 **Specializes:** [Finite directed multigraph with edge identities](DirectedMultigraph.md)
 

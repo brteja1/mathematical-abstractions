@@ -6,11 +6,11 @@ A finite sequence allowing insertion and removal at both ends, with explicit emp
 
 **Stable ID:** `urn:csabs:concept/Deque`
 
-**Categories:** Data structures
+**Categories:** Data structures → Sequential collections
 
 **Kind:** Abstract data type
 
-**Prerequisites:** [Finite sequence](Sequence.md)
+**Prerequisites:** [Finite sequence (List datatype)](Sequence.md)
 
 ## Interface and scope
 
@@ -205,7 +205,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "shortForm": "Deque",
     "fullName": "Deque",
     "category": [
-      "urn:csabs:category/data-structures"
+      "urn:csabs:category/sequential-collections"
     ],
     "kind": "urn:csabs:kind/abstract-data-type",
     "definition": "A finite sequence allowing insertion and removal at both ends, with explicit empty behavior.",

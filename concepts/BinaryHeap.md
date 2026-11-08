@@ -6,11 +6,11 @@ A finite level-order sequence with complete binary-tree shape and parent priorit
 
 **Stable ID:** `urn:csabs:concept/BinaryHeap`
 
-**Categories:** Data structures
+**Categories:** Data structures → Tree structures, Data structures → Priority collections
 
 **Kind:** Abstract data type
 
-**Prerequisites:** [Finite sequence](Sequence.md), [Priority Queue](PriorityQueue.md), [Total Order](TotalOrder.md)
+**Prerequisites:** [Finite sequence (List datatype)](Sequence.md), [Priority Queue](PriorityQueue.md), [Total Order](TotalOrder.md)
 
 **Related concepts:** [Finite ordered binary tree with node labels](BinaryTree.md)
 
@@ -303,7 +303,8 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "shortForm": "BinaryHeap",
     "fullName": "Finite complete binary min-heap",
     "category": [
-      "urn:csabs:category/data-structures"
+      "urn:csabs:category/tree-structures",
+      "urn:csabs:category/priority-collections"
     ],
     "kind": "urn:csabs:kind/abstract-data-type",
     "definition": "A finite level-order sequence with complete binary-tree shape and parent priority at most child priority.",

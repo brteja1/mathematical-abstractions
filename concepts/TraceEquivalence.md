@@ -6,7 +6,7 @@ Two states of one fixed labelled transition system are equivalent when their set
 
 **Stable ID:** `urn:csabs:concept/TraceEquivalence`
 
-**Categories:** Behavior and transition systems, Concurrency and distributed systems
+**Categories:** Behavior and transition systems, Concurrency and distributed systems → Behavioral models
 
 **Kind:** Relation
 
@@ -240,7 +240,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "fullName": "Strong finite partial-trace equivalence",
     "category": [
       "urn:csabs:category/behavior",
-      "urn:csabs:category/concurrency"
+      "urn:csabs:category/concurrent-behavior"
     ],
     "kind": "urn:csabs:kind/relation",
     "definition": "Two states of one fixed labelled transition system are equivalent when their sets of finite observable action traces are equal.",
