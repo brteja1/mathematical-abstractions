@@ -6,7 +6,7 @@ Maintain a problem-agnostic knowledge graph of mathematical abstractions used to
 
 ## Retrieve only relevant context
 
-`concepts/*.md` are authoritative concept records: edit their marked JSON blocks. `data/shared.json` holds the JSON-LD context, controlled vocabulary, and sources. `catalog.jsonld`, page prose/backlinks, `CONCEPTS.md`, coverage, and the HTML viewer are generated with `make build`. Never edit generated prose or the JSON-LD export as the source of facts. Claims shared between concepts have one structured record; search by stable ID before moving or editing a claim. Use the local CLI to retrieve small slices instead of reading the whole graph into the agent context:
+`concepts/*.md` are authoritative concept records: edit their marked JSON blocks. `data/shared.json` holds the JSON-LD context, controlled vocabulary, and sources. Page prose/backlinks, `CONCEPTS.md`, the ONTFS projection, SPARQL coverage, and the HTML viewer are generated with `make build`. No monolithic `catalog.jsonld` file is stored or generated. Never edit generated prose or runtime RDF as the source of facts. Claims shared between concepts have one structured record; search by stable ID before moving or editing a claim. Use the local CLI to retrieve small slices instead of reading the whole graph into the agent context:
 
 ```sh
 python3 scripts/catalog.py list --search TERM
@@ -40,7 +40,7 @@ A new Source needs a title (`label`), `url`, `path`, or full bibliographic `cita
 
 ## Validation and generated artifacts
 
-After editing Markdown graph records or shared data, run `make build`, then `make test`. Also run `make test-rdf` when rdflib is available; report an unavailable optional check honestly. These check graph structure, sources, ownership, typed references, derivation cycles, and RDF/SPARQL access, not mathematical truth. Use `make coverage` for the queryable coverage summary.
+After editing Markdown graph records or shared data, run `make build`, then `make test`. Also run `make test-rdf` to validate the fresh ONTFS projection with SHACL and SPARQL. Full builds install the backend automatically; report dependency blockers honestly. These check graph structure, sources, ownership, typed references, derivation cycles, and RDF/SPARQL access, not mathematical truth. Use `make coverage` for the queryable coverage summary.
 
 Regenerate the derived artifacts after changing the graph:
 
@@ -48,7 +48,7 @@ Regenerate the derived artifacts after changing the graph:
 make build
 ```
 
-The standalone radial viewer is `visualization/index.html`. Edit `visualization/template.html` and rebuild rather than editing the generated HTML. It embeds the canonical graph, colors subject arcs, places concept nodes on an inner ring, and highlights incoming/outgoing links on hover or selection. Preserve search, relationship filters, keyboard selection, and concept details. Normal graph retrieval and viewer generation use Python's standard library; RDF checks additionally require rdflib.
+The standalone radial viewer is `visualization/index.html`. Edit `visualization/template.html` and rebuild rather than editing the generated HTML. It embeds the canonical graph, colors subject arcs, places concept nodes on an inner ring, and highlights incoming/outgoing links on hover or selection. Preserve search, relationship filters, keyboard selection, and concept details. Normal graph retrieval and `make markdown` viewer generation use Python's standard library; full builds, coverage and RDF checks use ONTFS.
 
 Project requirements belong in this file so future agents discover them at workspace entry. Keep it concise; put detailed mathematics in the graph and detailed usage in README.md. Preserve the mandatory source policy when updating this context.
 
@@ -70,6 +70,6 @@ For software tests derived from this catalog, use `ai/skills/mathematical-tests/
 
 ## ONTFS ontology dependency
 
-ONTFS is cloned and registered as a Git submodule at `deps/ONTFS`, pinned by `dependencies.lock.json` to `05f166cd3ba37f13984b2746ddbbe56de24d8113`. The parent repository was initialized and the gitlink staged on 2026-11-07. See docs/ONTOLOGY.md for setup. `make submodules` initializes or verifies the pinned dependency. Do not advance the pin without an explicit dependency update request.
+ONTFS is cloned and registered as a Git submodule at `deps/ONTFS`, pinned by `dependencies.lock.json` to `05f166cd3ba37f13984b2746ddbbe56de24d8113`. Default `make` initializes/verifies the dependency, installs it in `.venv`, and builds the catalog and ontology; repeat builds reuse the installed environment. See INSTALL.md for setup and docs/ONTOLOGY.md for the model. Setup must not stage Git changes or overwrite local dependency edits. `make markdown` remains a dependency-free catalog/viewer build. Full builds validate through ONTFS SHACL and derive coverage with SPARQL; retain Python preflight checks before RDF conversion. Do not advance the pin without an explicit dependency update request.
 
 `ontology/model.ttl` and `ontology/shapes.ttl` define the ontology and SHACL layer. With the dependency installed, run `make PYTHON=.venv/bin/python ontology test-ontology`. The `.ontfs.ttl` runtime is a generated projection; Markdown remains authoritative. Never transfer axioms through OWL inference on concept links. Keep experiments/proposals in a scratch graph, promote reviewed facts into Markdown, and run all catalog checks before rebuilding. Do not overwrite modified runtime graphs or edit the upstream submodule as part of ordinary concept maintenance.

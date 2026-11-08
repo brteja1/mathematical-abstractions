@@ -1,6 +1,6 @@
 # Mathematical Abstractions for Computer Science
 
-This is a compact topic index. Authoritative concept records live in [`concepts/`](concepts/); [`catalog.jsonld`](catalog.jsonld) is their generated export. See [`CONCEPTS.md`](CONCEPTS.md) for all current pages, [`README.md`](README.md) for maintenance, and [`docs/IMPORTED_SCHEMA.md`](docs/IMPORTED_SCHEMA.md) for the inherited schema and SPARQL examples. For a task, query the graph by `shortForm` and retrieve only the requested definition, operations, axioms, laws, theorems, or sources. Avoid loading this index as a substitute for a targeted graph query.
+This is a compact topic index. Authoritative concept records live in [`concepts/`](concepts/); ONTFS provides their generated RDF projection for validation and coverage. See [`CONCEPTS.md`](CONCEPTS.md) for all current pages, [`README.md`](README.md) for maintenance, and [`docs/IMPORTED_SCHEMA.md`](docs/IMPORTED_SCHEMA.md) for the inherited schema and SPARQL examples. For a task, query the graph by `shortForm` and retrieve only the requested definition, operations, axioms, laws, theorems, or sources. Avoid loading this index as a substitute for a targeted graph query.
 
 The [foundational data-model guide](docs/FOUNDATIONAL_DATA_MODELS.md) defines the broad-core baseline, including explicit instantiations and selected semantic profiles.
 

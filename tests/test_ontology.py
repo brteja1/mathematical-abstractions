@@ -74,6 +74,54 @@ class OntologyTests(unittest.TestCase):
         build(self.directory)
         self.assertTrue(isomorphic(old, backend()(str(self.directory)).graph.graph))
 
+    def test_sparql_coverage_matches_every_authoritative_interface(self):
+        from coverage_report import coverage, RELATIONS
+        report = coverage(self.directory)
+        actual = {n['shortForm']: n for n in report['entries']}
+        concepts = [n for n in load_graph()['@graph'] if n['type'] == 'Concept']
+        self.assertEqual(report['concepts'], len(concepts))
+        for concept in concepts:
+            row = actual[concept['shortForm']]
+            for section, predicate in RELATIONS.items():
+                self.assertEqual(row[section], len(set(concept.get(predicate, []))),
+                                 (concept['shortForm'], section))
+            self.assertEqual(row['basisKind'], concept['basisKind'])
+            self.assertEqual(row['documentedAxiomBasis'], bool(concept['axiomBasis']))
+        self.assertEqual(actual['StructuralInduction']['operations'], 0)
+
+    def test_validation_and_coverage_reject_modified_runtime_graph(self):
+        from ontology import check
+        from coverage_report import coverage
+        target = self.directory / '.ontfs.ttl'
+        target.write_text(target.read_text() + '\n# unexported work\n')
+        for operation in [check, coverage]:
+            with self.subTest(operation=operation.__name__):
+                with self.assertRaisesRegex(ValueError, 'local edits'):
+                    operation(self.directory)
+        self.assertTrue(target.read_text().endswith('# unexported work\n'))
+
+    def test_validation_and_coverage_reject_stale_projection(self):
+        from ontology import check
+        from coverage_report import coverage
+        marker = self.directory / '.ontfs.generated.json'
+        stamp = json.loads(marker.read_text())
+        stamp['inputSha256'] = 'stale'
+        marker.write_text(json.dumps(stamp))
+        for operation in [check, coverage]:
+            with self.subTest(operation=operation.__name__):
+                with self.assertRaisesRegex(ValueError, 'inputs changed'):
+                    operation(self.directory)
+
+    def test_validation_and_coverage_reject_modified_shapes(self):
+        from ontology import check
+        from coverage_report import coverage
+        target = self.directory / '.ontfs.shapes.ttl'
+        target.write_text('')
+        for operation in [check, coverage]:
+            with self.subTest(operation=operation.__name__):
+                with self.assertRaisesRegex(ValueError, 'SHACL shapes'):
+                    operation(self.directory)
+
 
 if __name__ == '__main__':
     unittest.main()

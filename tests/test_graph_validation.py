@@ -6,12 +6,13 @@ import sys
 import unittest
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from validate_graph import validate
+from markdown_graph import load_graph
 ROOT=Path(__file__).resolve().parents[1]
 
 class GraphValidationTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.document=json.loads((ROOT/'catalog.jsonld').read_text())
+        cls.document=load_graph()
 
     def setUp(self):
         self.doc=copy.deepcopy(self.document)

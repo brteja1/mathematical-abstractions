@@ -56,7 +56,7 @@
       "scope": "partial",
       "mapping": "FloatingPointType instance: 32 bits, radix 2, precision 24, exponents [-126,127], gradual underflow enabled.",
       "limitations": "No correctly-rounded arithmetic or exception/NaN payload specification has been proved; run and round are unconstrained client parameters. Not a complete IEEE model.",
-      "catalogHash": "8c8dfd7fa13f32673ca958f707b405a8f29f868ac440cd2ea47668f9617daf31"
+      "catalogHash": "1bdb020804eeab3d6b4060079982c65e78825d2c12718c8d54a98ed63c06dcc5"
     },
     "urn:csabs:concept/Binary64": {
       "kind": "model",
@@ -65,7 +65,7 @@
       "scope": "partial",
       "mapping": "FloatingPointType instance: 64 bits, radix 2, precision 53, exponents [-1022,1023], gradual underflow enabled.",
       "limitations": "No correctly-rounded arithmetic or exception/NaN payload specification has been proved; run and round are unconstrained client parameters. Not a complete IEEE model.",
-      "catalogHash": "03ac14535440d9ac243f25dda31fd91f32ce86092f25ec928dbd58544facec0a"
+      "catalogHash": "16a90f6543d2bfa0a2fb71a5e7b55b6a22c09611a6f6b96cdd1ef08d1d634a74"
     },
     "urn:csabs:concept/Bisimulation": {
       "kind": "model",
@@ -271,8 +271,8 @@
       "module": "Catalog.Numeric",
       "scope": "partial",
       "mapping": "Explicit format, representable finite values, signed zero, infinities, NaNs, rounding modes and result/flag execution interface.",
-      "limitations": "No correctly-rounded arithmetic or exception/NaN payload specification has been proved; run and round are unconstrained client parameters. Not a complete IEEE model.",
-      "catalogHash": "521f667af23ac6293996d59168138a9785fc693f0a13745b55e49cf95b491598"
+      "limitations": "No correctly-rounded arithmetic or exception/NaN payload specification has been proved; run and round are unconstrained client parameters. Not a complete IEEE model. Goldberg error metrics, guarded evaluation, sticky-flag union rule and numerical results are catalog-only; this model supplies no witnesses for them or the square-root interface.",
+      "catalogHash": "b4773210ce7cfac4ab48fed00ec2d917170fbfa69f9586913a31c63083bf7b3d"
     },
     "urn:csabs:concept/FormalLanguage": {
       "kind": "model",

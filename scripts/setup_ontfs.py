@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Register/initialize ONTFS as a real submodule and pin its reviewed revision."""
+"""Initialize the registered ONTFS dependency without staging repository changes."""
 import json
 from pathlib import Path
 import subprocess
@@ -16,19 +16,20 @@ def main():
     try:
         top = Path(git('rev-parse', '--show-toplevel')).resolve()
     except subprocess.CalledProcessError:
-        raise SystemExit('Cannot register a submodule: this workspace needs a valid, writable parent Git repository. No Git metadata was initialized or replaced.')
+        raise SystemExit('ONTFS setup needs a Git clone of this repository; see INSTALL.md.')
     if top != ROOT:
         raise SystemExit('Run in a standalone mathematical-abstractions Git checkout.')
     path = ROOT / lock['path']
     staged = git('ls-files', '--stage', '--', lock['path'])
-    if staged and not staged.startswith('160000 '):
-        raise SystemExit('Dependency path is tracked as ordinary files; refusing to replace it.')
-    if staged:
+    if not staged.startswith('160000 ' + lock['commit'] + ' 0\t'):
+        raise SystemExit('Registered ONTFS dependency differs from dependencies.lock.json; refusing to change the Git index.')
+    if not (path / '.git').exists():
         git('submodule', 'update', '--init', '--', lock['path'])
-    else:
-        git('submodule', 'add', '--name', 'ONTFS', lock['url'], lock['path'])
     if git('remote', 'get-url', 'origin', cwd=path) != lock['url']:
         raise SystemExit('ONTFS origin differs from dependencies.lock.json; refusing checkout.')
+    if git('rev-parse', 'HEAD', cwd=path) == lock['commit']:
+        print('ONTFS dependency is ready')
+        return
     if git('status', '--porcelain', cwd=path):
         raise SystemExit('ONTFS contains local changes; refusing to change its revision.')
     try:
@@ -36,13 +37,12 @@ def main():
     except subprocess.CalledProcessError:
         git('fetch', 'origin', lock['commit'], cwd=path)
     git('checkout', '--detach', lock['commit'], cwd=path)
-    git('add', '--', '.gitmodules', lock['path'])
     if git('rev-parse', 'HEAD', cwd=path) != lock['commit']:
         raise SystemExit('ONTFS pin verification failed')
     entry = git('ls-files', '--stage', '--', lock['path'])
     if not entry.startswith('160000 ' + lock['commit'] + ' '):
         raise SystemExit('Parent gitlink pin verification failed')
-    print('Registered ONTFS submodule at ' + lock['commit'])
+    print('ONTFS dependency is ready')
 
 
 if __name__ == '__main__':

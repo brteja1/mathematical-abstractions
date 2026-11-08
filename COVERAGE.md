@@ -1,6 +1,6 @@
 # Catalog basis coverage
 
-Generated from `catalog.jsonld` by `make coverage-report`. Counts describe recorded interfaces, not machine-checked proofs or an enumeration of every consequence.
+Generated from the ONTFS projection with SPARQL by `make coverage-report`. Counts describe recorded interfaces, not machine-checked proofs or an enumeration of every consequence.
 
 | Concept | Operations | Defining rules | Laws | Theorems | Basis kind |
 | --- | ---: | ---: | ---: | ---: | --- |
@@ -53,7 +53,7 @@ Generated from `catalog.jsonld` by `make coverage-report`. Counts describe recor
 | FixedPoint | 1 | 1 | 1 | 1 | defined-structure |
 | FixedWidthSignedInteger | 4 | 3 | 0 | 1 | defined-structure |
 | FixedWidthUnsignedInteger | 5 | 3 | 1 | 1 | defined-structure |
-| FloatingPointType | 6 | 9 | 5 | 1 | defined-structure |
+| FloatingPointType | 11 | 12 | 7 | 7 | defined-structure |
 | FormalLanguage | 4 | 3 | 2 | 3 | defined-structure |
 | Function | 2 | 5 | 2 | 2 | defined-structure |
 | FunctionType | 2 | 3 | 0 | 1 | extensional-type-theory |
@@ -152,6 +152,6 @@ Generated from `catalog.jsonld` by `make coverage-report`. Counts describe recor
 | WeightedDirectedGraph | 3 | 2 | 1 | 1 | extensional-structural-definition |
 | WellFoundedRelation | 1 | 1 | 1 | 1 | defined-structure |
 
-All 147 current entries document their basis and scope. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
+147 of 147 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
 
 Use `ruleRole` to distinguish foundational axioms, structure constraints, and defining equations. Use `basisScope` for interface boundaries. Alternate language policies, intensional equality, IEEE payload/trap details, and formal proof artifacts require further formalization.

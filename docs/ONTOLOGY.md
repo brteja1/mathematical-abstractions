@@ -1,24 +1,6 @@
 # ONTFS ontology integration
 
-The dependency is [brteja1/ONTFS](https://github.com/brteja1/ONTFS), pinned to [`05f166cd3ba37f13984b2746ddbbe56de24d8113`](https://github.com/brteja1/ONTFS/commit/05f166cd3ba37f13984b2746ddbbe56de24d8113), the remote default-branch HEAD verified on 2026-11-07. The declared submodule lives at `deps/ONTFS`. A fixed commit makes future clones reproducible; it does not follow a moving HEAD automatically.
-
-## Setup status and completion
-
-The parent Git repository was initialized on 2026-11-07, and ONTFS was cloned and committed as a submodule at the locked revision. Both its checked-out HEAD and the parent's `160000` gitlink match the lock. The parent repository is published on GitHub; fresh clones must initialize the submodule before using the backend.
-
-Earlier managed-environment filesystem and DNS restrictions prevented registration; these restrictions have been removed. The temporary upstream source used during initial integration checks is no longer needed.
-
-To initialize the dependency in another checkout and install the backend:
-
-```sh
-make submodules
-make deps-ontology
-make PYTHON=.venv/bin/python ontology test-ontology
-```
-
-`make submodules` runs `scripts/setup_ontfs.py`: it creates or initializes the real submodule, checks out the locked commit in detached HEAD mode, and stages `.gitmodules` and the `160000` gitlink. It does not commit or push. It refuses to replace a non-Git parent or a dependency checkout containing local edits. Subsequent parent clones can use `git submodule update --init --recursive` after the gitlink is committed.
-
-`make deps-ontology` installs the local submodule and its SHACL extra in a project virtual environment. It does not modify the system Python. Use `PYTHON=.venv/bin/python` for ontology commands once installed. The basic Markdown queries and viewer build remain available without this backend.
+[ONTFS](https://github.com/brteja1/ONTFS) provides local RDF graph storage, SPARQL queries and SHACL validation for the catalog. Run `make` from the repository root to configure and install it and build the projection. See [INSTALL.md](../INSTALL.md) for installation and troubleshooting.
 
 ## Ontology model
 
@@ -29,6 +11,12 @@ The classes describe catalog records. For example, Group is a Concept individual
 The model declares object properties with appropriate domains/ranges, selected literal metadata, and comments describing interpretation. Export also declares remaining imported predicates as RDF properties without inventing ranges for heterogeneous legacy metadata. No graph content is rewritten to fit a different ontology.
 
 [`ontology/shapes.ttl`](../ontology/shapes.ttl) checks concept interfaces, operation ownership targets, typed claim links and dependency targets. It complements the Python validator. The frozen historical provenance policy, global uniqueness, cycle checks and mathematical entry requirements continue to be enforced by `make test` and the export's preflight validation. SHACL alone is not a replacement for those checks and does not validate mathematical truth.
+
+## Validation and coverage
+
+`make` builds the ONTFS projection, validates it with native SHACL, and writes `COVERAGE.md` using SPARQL counts of explicit interface links. `make coverage` returns the same coverage as JSON; `make test-rdf` checks the existing projection without rebuilding it. There is no stored JSON-LD catalog. Python validates authoritative records before conversion to preserve duplicate-ID, provenance-history, ownership and derivation-cycle safeguards.
+
+Validation and coverage require a fresh, unmodified projection and the original generated shapes. They refuse stale inputs, local runtime edits or changed shapes rather than overwriting them. `make test` also checks the generated coverage report for staleness.
 
 ## Build and query
 
@@ -42,8 +30,6 @@ The model declares object properties with appropriate domains/ranges, selected l
 The build loads authoritative Markdown, validates it, expands it to RDF, and uses ONTFS transactions/storage to create `.ontfs.ttl`. It adds the ontology and Markdown document pointers while preserving all original RDF triples. `.ontfs.shapes.ttl` enables native ONTFS validation; a generation marker tracks inputs and detects local edits before another export. The generated runtime files are ignored by Git and can be reproduced from source.
 
 Use `scripts/ontology.py --directory /tmp/math-ontology build` for a separate scratch graph. Document identifiers are relocatable when pages are inside the graph directory and absolute when outside it, following ONTFS behavior. From the repository graph directory, the installed `ontfs context`, `ontfs query` and `ontfs validate` commands can also access the projection directly.
-
-The wrapper checks a present submodule's HEAD against the lock. Integration tests use the registered submodule when present. The checked-out commit and parent gitlink can be inspected with `git submodule status` and `git ls-files --stage -- deps/ONTFS`.
 
 For test-design agents, [`scripts/test_context.py`](../scripts/test_context.py) adds fixed ONTFS/SPARQL queries with record/character budgets, explicit pagination and premise-depth boundaries. It checks both source-input freshness and projection-file integrity before querying and returns lossless authoritative JSON records selected by ONTFS. The [`mathematical-tests` skill](../ai/skills/mathematical-tests/SKILL.md) uses this helper through its local `scripts/query.py` entrypoint; `make test-ai` exercises the real backend, budget behavior and stale/edit rejection paths.
 

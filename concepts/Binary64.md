@@ -94,7 +94,13 @@ A 64-bit IEEE binary interchange format with 53 binary significand digits for no
 
 **notationLanguage:** informal mathematical Unicode
 
-**provenanceStatus:** legacy-source-missing
+**source:** [David Goldberg: What Every Computer Scientist Should Know About Floating-Point Arithmetic (Oracle edited reprint)](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html); citation: David Goldberg, ACM Computing Surveys 23(1), March 1991, pp. 5–48; edited reprint in Oracle Numerical Computation Guide, Appendix D, including later addendum.; accessedOn: 2026-11-08; sourceRole: consulted-expository-reference; historical IEEE discussion, not a replacement for IEEE 754-2019
+
+**sourceLocator:** Floating-point Formats; Base; Table D-1
+
+**sourceNote:** Instantiates the normal binary grid using the consulted single/double precision parameters.
+
+**provenanceKind:** adapted
 
 <a id="node-urn-csabs-axiom-Binary64-subnormal-grid"></a>
 
@@ -114,7 +120,13 @@ A 64-bit IEEE binary interchange format with 53 binary significand digits for no
 
 **notationLanguage:** informal mathematical Unicode
 
-**provenanceStatus:** legacy-source-missing
+**source:** [David Goldberg: What Every Computer Scientist Should Know About Floating-Point Arithmetic (Oracle edited reprint)](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html); citation: David Goldberg, ACM Computing Surveys 23(1), March 1991, pp. 5–48; edited reprint in Oracle Numerical Computation Guide, Appendix D, including later addendum.; accessedOn: 2026-11-08; sourceRole: consulted-expository-reference; historical IEEE discussion, not a replacement for IEEE 754-2019
+
+**sourceLocator:** Denormalized Numbers; Table D-1
+
+**sourceNote:** Instantiates the subnormal binary grid at the existing single/double parameters.
+
+**provenanceKind:** adapted
 
 <a id="node-urn-csabs-axiom-Binary64-special-values"></a>
 
@@ -201,6 +213,13 @@ A 64-bit IEEE binary interchange format with 53 binary significand digits for no
 ## Concept provenance
 
 - [IEEE 754-2019](https://standards.ieee.org/ieee/754/6210/); sourceRole: normative-standard
+- [David Goldberg: What Every Computer Scientist Should Know About Floating-Point Arithmetic (Oracle edited reprint)](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html); citation: David Goldberg, ACM Computing Surveys 23(1), March 1991, pp. 5–48; edited reprint in Oracle Numerical Computation Guide, Appendix D, including later addendum.; accessedOn: 2026-11-08; sourceRole: consulted-expository-reference; historical IEEE discussion, not a replacement for IEEE 754-2019
+
+**sourceLocator:** The IEEE Standard; Formats and Operations / Precision, Table D-1
+
+**sourceNote:** Single/double parameters match this existing binary32/binary64 entry; retain the current normative standard reference.
+
+**provenanceKind:** adapted
 
 ## Structured record
 
@@ -247,7 +266,8 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/FloatingPointType"
     ],
     "source": [
-      "urn:csabs:source/ieee754"
+      "urn:csabs:source/ieee754",
+      "urn:csabs:source/goldberg-floating-point-oracle"
     ],
     "coverageStatus": "basis-reviewed",
     "verificationObligation": [
@@ -262,7 +282,10 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/FloatingPointType"
     ],
-    "specializationNote": "Instantiate FloatingPointType at this entry’s radix, precision and exponent range as specified by basisInstantiation; rounding and exception environment remain explicit parameters."
+    "specializationNote": "Instantiate FloatingPointType at this entry’s radix, precision and exponent range as specified by basisInstantiation; rounding and exception environment remain explicit parameters.",
+    "sourceLocator": "The IEEE Standard; Formats and Operations / Precision, Table D-1",
+    "sourceNote": "Single/double parameters match this existing binary32/binary64 entry; retain the current normative standard reference.",
+    "provenanceKind": "adapted"
   },
   {
     "id": "urn:csabs:operation/Binary64-add",
@@ -311,7 +334,12 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "ruleRole": "defining-rule",
     "reviewStatus": "editorial-summary; not machine-proved",
     "notationLanguage": "informal mathematical Unicode",
-    "provenanceStatus": "legacy-source-missing"
+    "source": [
+      "urn:csabs:source/goldberg-floating-point-oracle"
+    ],
+    "sourceLocator": "Floating-point Formats; Base; Table D-1",
+    "sourceNote": "Instantiates the normal binary grid using the consulted single/double precision parameters.",
+    "provenanceKind": "adapted"
   },
   {
     "id": "urn:csabs:axiom/Binary64-subnormal-grid",
@@ -328,7 +356,12 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "ruleRole": "defining-rule",
     "reviewStatus": "editorial-summary; not machine-proved",
     "notationLanguage": "informal mathematical Unicode",
-    "provenanceStatus": "legacy-source-missing"
+    "source": [
+      "urn:csabs:source/goldberg-floating-point-oracle"
+    ],
+    "sourceLocator": "Denormalized Numbers; Table D-1",
+    "sourceNote": "Instantiates the subnormal binary grid at the existing single/double parameters.",
+    "provenanceKind": "adapted"
   },
   {
     "id": "urn:csabs:axiom/Binary64-special-values",

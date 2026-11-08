@@ -21,18 +21,23 @@ The [interactive atlas](https://brteja1.github.io/mathematical-abstractions/) su
 
 The [Pages workflow](.github/workflows/pages.yml) rebuilds, validates and publishes the viewer on pushes to `main`.
 
+## Installation
+
+Clone this repository and run `make` to install ONTFS and build the catalog, viewer and ontology. See [INSTALL.md](INSTALL.md) for prerequisites, setup, usage and troubleshooting.
+
 ## Storage and fields
 
 | Location | Role |
 | --- | --- |
 | [`concepts/`](concepts/) | One editable Markdown file per concept, with typed links, backlinks, readable operations/claims, and an authoritative marked JSON record block. |
 | [`data/shared.json`](data/shared.json) | Authoritative JSON-LD context, categories, concept kinds, vocabulary and shared sources. |
-| [`catalog.jsonld`](catalog.jsonld) | Generated interoperable JSON-LD export for RDF/SPARQL tools. |
 | [`CONCEPTS.md`](CONCEPTS.md) | Generated complete concept index. |
 | [`COVERAGE.md`](COVERAGE.md) | Generated counts and basis coverage, not a completeness certificate. |
 | [`visualization/template.html`](visualization/template.html) | Editable viewer template; `index.html` is generated. |
 
-Markdown graph records are authoritative. `make build` generates their readable prose, backlinks, indexes, JSON-LD export, coverage report and viewer. Edit the marked JSON blocks in concept pages or the shared context/source data, then rebuild.
+Edit concepts directly in their `concepts/<shortForm>.md` files. Each file stores its authoritative structured records in a marked JSON block; the readable sections above that block are generated from those records. Update definitions, operations, claims and references in that block, then run `make` to refresh the page, links, indexes, viewer and ontology. Shared vocabulary and sources live in `data/shared.json`.
+
+ONTFS supplies the generated RDF projection for SHACL validation and SPARQL coverage reporting. There is no separately stored JSON-LD catalog. Ordinary catalog queries and viewer generation read the Markdown records directly. See the [editing workflow](INSTALL.md#edit-and-validate).
 
 The [foundational data-model guide](docs/FOUNDATIONAL_DATA_MODELS.md) maps the broad computer-science core to the catalog: types and values, collection ADTs, trees and graphs, streams, numeric data, state, and database/interchange models. It documents 35 additions, explicit instantiations such as strings and records, selected conventions, and remaining variants.
 
@@ -69,10 +74,10 @@ The graph helps agents select definitions, assemble proof obligations, follow pr
 ```sh
 make build
 make test
-make test-rdf  # optional: requires rdflib
+make test-rdf  # ONTFS SHACL validation and SPARQL count check
 ```
 
-`make build` validates authoritative records, regenerates readable page bodies and backlinks, exports JSON-LD, and rebuilds coverage and the offline viewer. Changes to generated prose alone are overwritten; `make test` rejects stale Markdown projections/exports and viewer data. Claims shared by pages are stored once in the first linked page by shortForm sort order after building. Find the marked record by stable ID to edit it.
+`make build` validates authoritative records, regenerates readable page bodies and backlinks, builds and validates the ONTFS projection, and rebuilds SPARQL coverage and the offline viewer. Changes to generated prose alone are overwritten; `make test` rejects stale Markdown pages, ontology projections, coverage and viewer data. Claims shared by pages are stored once in the first linked page by shortForm sort order after building. Find the marked record by stable ID to edit it.
 
 Checks cover unique IDs and short forms, typed references, operation ownership, claim applicability, explicit bases and assumptions, acyclic derivation/specialization links, source provenance, page links and generated-artifact consistency.
 
@@ -82,12 +87,12 @@ Validation checks structure and citation metadata. Mathematical correctness, sou
 
 [`ai/skills/mathematical-tests/SKILL.md`](ai/skills/mathematical-tests/SKILL.md) guides agents from a software API to applicable mathematical concepts, axioms and laws, then to runnable tests. It covers API/operation mappings, definedness, numeric policies, nondeterminism and evidence limitations. Agents should read the skill explicitly or register this directory using their host's skill-discovery mechanism.
 
-Its Python helper uses the pinned ONTFS projection for compact searches and selected interfaces, claims, premises and direct citations. Responses have hard record/character budgets, pagination and depth-boundary flags; complete mathematical records are preserved. Stale or locally edited runtime graphs are rejected. After the [ONTFS setup](docs/ONTOLOGY.md):
+Its Python helper uses the ONTFS projection for compact searches and selected interfaces, claims, premises and direct citations. Responses have hard record/character budgets, pagination and depth-boundary flags; complete mathematical records are preserved. Stale or locally edited runtime graphs are rejected. After [installation](INSTALL.md):
 
 ```sh
 .venv/bin/python ai/skills/mathematical-tests/scripts/query.py search queue --limit 4 --max-chars 4000
 .venv/bin/python ai/skills/mathematical-tests/scripts/query.py interface Queue --limit 6 --max-chars 8000
-make PYTHON=.venv/bin/python test-ai
+make test-ai
 ```
 
 The helper works from other repositories via its absolute path. See the skill's [retrieval guide](ai/skills/mathematical-tests/references/retrieval.md) for setup, source freshness, pagination and exact limits. No full graph dump or embedding service is needed.
@@ -102,14 +107,4 @@ The [`lean/`](lean/README.md) Lake project provides models or explicitly partial
 
 ## ONTFS ontology backend
 
-The ontology is modeled in [`ontology/model.ttl`](ontology/model.ttl), with [`SHACL shapes`](ontology/shapes.ttl), an ONTFS exporter and bounded context/SPARQL access. ONTFS is configured as the submodule dependency `deps/ONTFS`, pinned to `05f166cd3ba37f13984b2746ddbbe56de24d8113` in [`dependencies.lock.json`](dependencies.lock.json). See [setup status and ontology workflow](docs/ONTOLOGY.md).
-
-```sh
-make submodules
-make deps-ontology
-make PYTHON=.venv/bin/python ontology test-ontology
-.venv/bin/python scripts/ontology.py context urn:csabs:concept/Group --limit 30
-.venv/bin/python scripts/ontology.py query ontology/prerequisites.rq
-```
-
-ONTFS is registered as a submodule at the locked commit. After cloning this repository, run `make submodules`, then `make deps-ontology` to install the ontology backend into the project virtual environment.
+[ONTFS](https://github.com/brteja1/ONTFS) is a local ontology knowledge-graph tool for organizing and querying linked records. This repository uses it to expose the catalog through RDF/SPARQL, validate graph constraints with SHACL, and retrieve bounded context for AI test design. Markdown remains the authoritative source. See the [ontology guide](docs/ONTOLOGY.md) for the model and query workflow.

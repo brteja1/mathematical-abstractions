@@ -7,13 +7,11 @@ The checkout containing this skill is the catalog root. The helper locates it re
 Normal catalog commands require only Python. This skill's queries deliberately require ONTFS and RDF support. From the catalog root:
 
 ```sh
-make submodules
-make deps-ontology
-.venv/bin/python scripts/ontology.py build
+make
 .venv/bin/python ai/skills/mathematical-tests/scripts/query.py search stack --limit 4
 ```
 
-Use the project virtual environment; do not install into an externally managed system Python. Respect the locked ONTFS revision. `make submodules` refuses a modified dependency checkout; ordinary query work does not require resetting or updating that checkout. Consult `docs/ONTOLOGY.md` for dependency recovery rather than discarding local changes.
+Use the project virtual environment; do not install into an externally managed system Python. Respect the locked ONTFS revision. `make` reuses an initialized dependency at the expected revision without changing its files, and refuses to switch revisions when local edits are present. Consult [INSTALL.md](../../../../INSTALL.md) for dependency recovery rather than discarding local changes.
 
 Projection queries are read-only. If `.ontfs.ttl` is missing or stale, the ordinary exporter can rebuild a clean generated projection. If it contains unexported edits, preserve it and build a separate directory:
 

@@ -1,34 +1,41 @@
-PYTHON ?= python3
-.DEFAULT_GOAL := build
-.PHONY: all build test test-rdf check coverage coverage-report visualization help
+VENV ?= .venv
+PYTHON ?= $(if $(wildcard $(VENV)/bin/python),$(VENV)/bin/python,python3)
+.DEFAULT_GOAL := all
+.PHONY: all build markdown test test-rdf check coverage coverage-report visualization help
 all: build
-build:
+build: coverage-report
+markdown:
 	$(PYTHON) scripts/markdown_graph.py
-	$(PYTHON) scripts/coverage_report.py
 	$(PYTHON) scripts/build_visualization.py
-visualization: build
-coverage-report: build
-check:
+visualization: markdown
+coverage-report: ontology
+	$(PYTHON) scripts/coverage_report.py
+check: deps-ontology
 	$(PYTHON) scripts/markdown_graph.py --check
 	$(PYTHON) scripts/catalog.py check
+	$(PYTHON) scripts/ontology.py check
+	$(PYTHON) scripts/coverage_report.py --check
 test: check
 	$(PYTHON) -B -m unittest discover -s tests -v
-test-rdf:
-	$(PYTHON) scripts/catalog.py check --rdf
-coverage:
-	$(PYTHON) scripts/catalog.py coverage
+test-rdf: deps-ontology
+	$(PYTHON) scripts/ontology.py check
+coverage: deps-ontology
+	$(PYTHON) scripts/coverage_report.py --json
 help:
-	@printf '%s\n' 'make build: validate Markdown and regenerate JSON-LD, links, index, coverage and viewer' 'make test: reject structural errors and stale generated records; run regression tests' 'make test-rdf: optional JSON-LD/SPARQL check (rdflib)' 'make coverage: query coverage counts' 'make test-ai: exercise bounded ONTFS retrieval for the AI test-design skill' 'make check-lean: check model and witness bindings without compiling' 'make test-lean: compile models and proofs, audit axioms, and run rejection tests'
+	@printf '%s\n' 'make: install ONTFS in the project environment and build the catalog and ontology' 'See INSTALL.md for installation, usage and troubleshooting.'
+	@printf '%s\n' 'make build: install ONTFS, build and validate the graph, and regenerate coverage and viewer' 'make markdown: regenerate Markdown pages, index and viewer without ONTFS' 'make test: reject structural errors and stale generated records; run regression tests' 'make test-rdf: validate the ONTFS projection with SHACL and SPARQL' 'make coverage: query ONTFS coverage counts' 'make test-ai: exercise bounded ONTFS retrieval for the AI test-design skill' 'make check-lean: check model and witness bindings without compiling' 'make test-lean: compile models and proofs, audit axioms, and run rejection tests'
 
-VENV ?= .venv
 .PHONY: submodules deps-ontology ontology test-ontology
 submodules:
 	$(PYTHON) scripts/setup_ontfs.py
-deps-ontology:
+deps-ontology: $(VENV)/.ontology-installed
+$(VENV)/.ontology-installed: requirements-ontology.txt dependencies.lock.json scripts/setup_ontfs.py | submodules
 	$(PYTHON) -m venv $(VENV)
 	$(VENV)/bin/python -m pip install -r requirements-ontology.txt
-ontology:
+	@touch $@
+ontology: markdown deps-ontology
 	$(PYTHON) scripts/ontology.py build
+	$(PYTHON) scripts/ontology.py check
 test-ontology:
 	$(PYTHON) scripts/ontology.py check
 	$(PYTHON) -B -m unittest discover -s tests -p 'test_ontology.py' -v

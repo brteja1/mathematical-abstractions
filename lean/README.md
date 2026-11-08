@@ -87,7 +87,7 @@ The [GitHub workflow](../.github/workflows/lean.yml) runs verification on pushes
 
    Store the returned hash as `catalogHash` after reviewing the mapping. A hash mismatch means the claim, interface, source metadata or premises changed; review the affected mapping before refreshing it. A graph specialization is not an implicit transfer of axioms. Every new concept also needs a model binding; partial models must say so.
 
-5. Run `make build`, `make test`, `make test-rdf` when available, and `make test-lean`. Inspect the witness using `scripts/lean.py get ID`. The proof term is the named compiled theorem; the manifest connects it to the graph, and the report records the check and actual axiom dependencies.
+5. Run `make build`, `make test`, `make test-rdf`, and `make test-lean`. Inspect the witness using `scripts/lean.py get ID`. The proof term is the named compiled theorem; the manifest connects it to the graph, and the report records the check and actual axiom dependencies.
 
 ## What verification establishes
 

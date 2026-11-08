@@ -22,6 +22,9 @@ class MarkdownGraphTests(unittest.TestCase):
         for path, text in outputs(self.doc).items():
             self.assertEqual(path.read_text(), text, path.name)
 
+    def test_build_does_not_emit_monolithic_jsonld_catalog(self):
+        self.assertNotIn(ROOT / 'catalog.jsonld', outputs(self.doc))
+
     def test_imported_ids_remain_present(self):
         manifest = json.loads((ROOT / 'data/import_manifest.json').read_text())
         self.assertTrue(set(manifest['nodeHashes']) <= set(self.index))

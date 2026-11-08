@@ -20,14 +20,14 @@ def backend():
         try:
             head = subprocess.check_output(['git', '-C', str(path), 'rev-parse', 'HEAD'], text=True, stderr=subprocess.DEVNULL).strip()
         except subprocess.CalledProcessError:
-            raise RuntimeError('ONTFS dependency is not a Git checkout; run make submodules')
+            raise RuntimeError('ONTFS dependency is not initialized; run make')
         if head != lock['commit']:
             raise RuntimeError('ONTFS checkout does not match dependencies.lock.json')
         sys.path.insert(0, str(path))
     try:
         from ontfs.core import OntFS
     except ImportError as exc:
-        raise RuntimeError('ONTFS is unavailable. Run make submodules and make deps-ontology first.') from exc
+        raise RuntimeError('ONTFS is unavailable. Run make, then use the project virtual environment; see INSTALL.md.') from exc
     return OntFS
 
 
@@ -91,15 +91,35 @@ def input_digest(doc):
     return hashlib.sha256(payload).hexdigest()
 
 
-def check(directory):
+def load_projection(directory):
+    """Load an intact, fresh ONTFS snapshot without overwriting local experiments."""
     OntFS = backend()
-    directory = Path(directory)
-    if not (directory / '.ontfs.ttl').is_file():
+    from ontfs.storage import locked
+    directory = Path(directory).resolve()
+    target = directory / '.ontfs.ttl'
+    if not target.is_file():
         raise ValueError('ONTFS projection is missing; run make ontology')
+    doc = load_graph()
+    errors = validate(doc)
+    if errors:
+        raise ValueError('; '.join(errors))
     marker = directory / '.ontfs.generated.json'
-    if not marker.exists() or json.loads(marker.read_text()).get('inputSha256') != input_digest(load_graph()):
-        raise ValueError('ONTFS projection inputs changed; run make ontology')
-    store = OntFS(str(directory))
+    with locked(target):
+        stamp = json.loads(marker.read_text()) if marker.is_file() else {}
+        if not isinstance(stamp, dict) or stamp.get('inputSha256') != input_digest(doc):
+            raise ValueError('ONTFS projection inputs changed; run make ontology')
+        if hashlib.sha256(target.read_bytes()).hexdigest() != stamp.get('sha256'):
+            raise ValueError('ONTFS projection has local edits; preserve it before rebuilding')
+        shapes = directory / '.ontfs.shapes.ttl'
+        if not shapes.is_file() or shapes.read_bytes() != (ROOT / 'ontology/shapes.ttl').read_bytes():
+            raise ValueError('SHACL shapes are missing or modified; preserve local edits before rebuilding')
+        store = OntFS(str(directory))
+        store.graph  # eagerly load the graph under the exporter lock
+    return store
+
+
+def check(directory):
+    store = load_projection(directory)
     result = store.validate()
     if not result['shapes_loaded']:
         raise ValueError('SHACL shapes are missing; run make ontology')

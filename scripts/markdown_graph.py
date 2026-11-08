@@ -125,7 +125,7 @@ def source_text(source):
 
 def outputs(doc):
     index = {n['id']: n for n in doc['@graph']}
-    result = {ROOT / 'catalog.jsonld': json.dumps(doc, ensure_ascii=False, indent=2) + '\n'}
+    result = {}
     concepts = sorted((n for n in index.values() if n['type'] == 'Concept'), key=lambda n:n['shortForm'])
     overview = ['# Mathematical abstractions', '', 'Each linked page contains the definition, assumptions, operations, claims, provenance, typed relationships, and backlinks.', '',
                 '| Concept | Categories |', '| --- | --- |']

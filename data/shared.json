@@ -865,6 +865,15 @@
       "url": "https://leanprover-community.github.io/logic_and_proof/natural_deduction_for_first_order_logic.html",
       "accessedOn": "2026-11-08",
       "sourceRole": "Definitions, inference rules and metatheory; individual records specify exact locators and adaptations."
+    },
+    {
+      "id": "urn:csabs:source/goldberg-floating-point-oracle",
+      "type": "Source",
+      "label": "David Goldberg: What Every Computer Scientist Should Know About Floating-Point Arithmetic (Oracle edited reprint)",
+      "url": "https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html",
+      "citation": "David Goldberg, ACM Computing Surveys 23(1), March 1991, pp. 5–48; edited reprint in Oracle Numerical Computation Guide, Appendix D, including later addendum.",
+      "accessedOn": "2026-11-08",
+      "sourceRole": "consulted-expository-reference; historical IEEE discussion, not a replacement for IEEE 754-2019"
     }
   ]
 }

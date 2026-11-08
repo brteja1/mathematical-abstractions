@@ -57,6 +57,6 @@ Run the resulting tests against the actual implementation. Cite the claim IDs an
 
 ## Other uses
 
-Use `neighbors` for educational prerequisite navigation and impact analysis. Incoming edges identify explicit dependents; they are not evidence that every possible dependent has been recorded. Use the JSON-LD export for cross-disciplinary queries and external RDF tooling. `specializationOf` means an explicitly described interface specialization, while `requiresConcept` is a retrieval prerequisite and `dependsOn` connects a claim to derivation premises.
+Use `neighbors` for educational prerequisite navigation and impact analysis. Incoming edges identify explicit dependents; they are not evidence that every possible dependent has been recorded. Use the catalog CLI or ONTFS projection for cross-disciplinary queries; external RDF tools can read the generated ONTFS Turtle projection. Edit concept Markdown records rather than the projection. `specializationOf` means an explicitly described interface specialization, while `requiresConcept` is a retrieval prerequisite and `dependsOn` connects a claim to derivation premises.
 
 Commands default to bounded slices or explicitly chosen sections. They do not perform symbolic theorem search, semantic equivalence checking, natural-language question answering, or automatic reasoning over inheritance. An AI agent interprets the retrieved records and verifies the result in the chosen downstream tool.

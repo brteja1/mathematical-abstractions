@@ -1,6 +1,10 @@
-# Mathematical Abstractions for Computer Science
+# Catalog record schema and RDF interoperability
 
-The machine-readable catalog is [`catalog.jsonld`](catalog.jsonld), a JSON-LD knowledge graph. Treat it as the source of truth for concept facts. [`CATALOG.md`](CATALOG.md) is a discovery roadmap and explanatory overview; consult individual graph records for authoritative structured definitions, operations, axioms, laws, and theorems.
+The authoritative concept records live in [`concepts/*.md`](../concepts/), in each file's marked JSON block. Edit those Markdown files directly and rebuild; see [installation and editing](../INSTALL.md#edit-and-validate). Shared vocabulary, context and sources live in [`data/shared.json`](../data/shared.json). The readable page sections, backlinks, indexes and other projections are generated from these records.
+
+The ONTFS projection supplies RDF storage, SHACL validation and SPARQL coverage reporting. No monolithic JSON-LD catalog file is stored or generated. The structured context in `data/shared.json` is used internally when converting Markdown records to RDF; it does not require users to maintain a separate export. This guide documents the record fields and their RDF interpretation.
+
+[`CATALOG.md`](../CATALOG.md) is a discovery roadmap; [`CONCEPTS.md`](../CONCEPTS.md) indexes the concept pages.
 
 ## Why a graph
 
@@ -26,7 +30,7 @@ Categories and kinds are controlled vocabulary nodes, not free text. Use multipl
 
 ## Query examples
 
-JSON-LD expands to RDF. With Apache Jena `arq` and a JSON-LD-capable RDF loader, queries can be run over the graph. The following are SPARQL patterns over the catalog namespace (`https://w3id.org/cs-abstractions/v1#`); a production loader should use the bundled JSON-LD context.
+The following SPARQL patterns can be used against the ONTFS projection after running `make`; see the [ontology guide](ONTOLOGY.md) for query commands. External RDF tools can read the generated `.ontfs.ttl` Turtle projection. These queries use the catalog namespace (`https://w3id.org/cs-abstractions/v1#`).
 
 Retrieve a concept's concise definition and notation:
 
@@ -77,7 +81,7 @@ The graph starts with sets, relations, functions, products and power sets, equiv
 
 ## Local retrieval without an RDF service
 
-The standard-library CLI reads the graph locally and emits only the requested concept and sections:
+The standard-library CLI reads the authoritative Markdown records locally and emits only the requested concept and sections:
 
 ```sh
 python3 scripts/catalog.py list --category concurrency
@@ -135,10 +139,12 @@ Run these commands from the project root:
 
 | Command | Action |
 | --- | --- |
-| `make` or `make visualization` | Generate `visualization/index.html` when the catalog, template, or builder changes; check graph sanity before rebuilding. |
+| `make` | Configure and install ONTFS, regenerate the catalog and viewer, and build the ontology projection. See [INSTALL.md](../INSTALL.md). |
+| `make build` | Build Markdown pages, viewer and ONTFS projection, validate with SHACL, and generate SPARQL coverage. |
+| `make markdown` or `make visualization` | Regenerate Markdown pages, links, index and viewer without ONTFS. |
 | `make -B visualization` | Force graph checks and regenerate the visualization. |
 | `make test` | Check unique node IDs and concept short forms, resolved graph references, and required concept, operation, and claim fields. |
-| `make test-rdf` | Run the same checks, expand JSON-LD to RDF, and verify the SPARQL concept count. Requires `rdflib`. |
+| `make test-rdf` | Check projection freshness and integrity, validate through ONTFS SHACL, and verify the SPARQL concept count. |
 | `make help` | List targets. |
 
 Override the Python interpreter as needed, for example `make PYTHON=.venv/bin/python test-rdf`. Tests check graph structure and RDF access; they do not prove the mathematical claims or test browser rendering.
@@ -158,9 +164,9 @@ Use `make coverage` or `python3 scripts/catalog.py coverage` to inspect per-conc
 
 All 89 current concepts document a chosen basis, individually identified governing rules, and selected derived results. Defining rules include first-order ZF schemas, algebraic structure equations, relational constraints, constructor/eliminator rules, ADT contracts, and operational semantic definitions. The `ruleRole` field identifies their role; a construction’s definition is not a new axiom of the foundational logic. All variables range over the stated carriers.
 
-[The coverage table](COVERAGE.md) summarizes every entry. Regenerate it with `make coverage-report`; use `make coverage` for JSON. Claim dependencies are explicit where recorded, and concept prerequisites remain separate. The current interface uses informal mathematical Unicode, with proof sketches for selected consequences. It is not an executable formal theory. Floating-point entries describe the listed numeric interfaces; bit-level NaN payloads, complete trap handling, and transcendental-library contracts remain outside the declared scope.
+[The coverage table](../COVERAGE.md) summarizes every entry. Regenerate it with `make coverage-report`; use `make coverage` for JSON. Claim dependencies are explicit where recorded, and concept prerequisites remain separate. The current interface uses informal mathematical Unicode, with proof sketches for selected consequences. It is not an executable formal theory. Floating-point entries describe the listed numeric interfaces; bit-level NaN payloads, complete trap handling, and transcendental-library contracts remain outside the declared scope.
 
-`make test` now checks basis metadata, operation ownership, claim-link types, assumptions and formal statements, and acyclic derivation links. Mutation tests demonstrate rejection of missing bases, wrongly typed claims, dangling/cyclic dependencies, duplicate IDs, absent operation explanations, and missing formal rules. `make test-rdf` additionally checks JSON-LD expansion and SPARQL access. These are structural checks, not proofs that all mathematical statements are valid.
+`make test` now checks basis metadata, operation ownership, claim-link types, assumptions and formal statements, and acyclic derivation links. Mutation tests demonstrate rejection of missing bases, wrongly typed claims, dangling/cyclic dependencies, duplicate IDs, absent operation explanations, and missing formal rules. `make test-rdf` checks the ONTFS projection through SHACL and SPARQL, including freshness and integrity checks. These are structural checks, not proofs that all mathematical statements are valid.
 
 ## Required provenance for new data
 
