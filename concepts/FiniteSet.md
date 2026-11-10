@@ -22,9 +22,11 @@ An unordered finite subset of a fixed carrier, with extensional equality and no 
 - [Strict binary search tree](BinarySearchTree.md) — `requiresConcept`
 - [Finite database relation under set semantics](DatabaseRelation.md) — `requiresConcept`
 - [Finite database relation under set semantics](DatabaseRelation.md) — `specializationOf`
+- [Definition/instantiation lookup for dependent calls](DependentNameLookup.md) — `requiresConcept`
 - [Finite typed entity-relationship instance](EntityRelationshipModel.md) — `requiresConcept`
 - [Finitely supported probability distribution](FiniteDistribution.md) — `requiresConcept`
 - [Finite carrier with exhaustive enumeration](FiniteType.md) — `requiresConcept`
+- [Finite kinded generic parameter signature](GenericSignature.md) — `requiresConcept`
 - [Finite simple undirected hypergraph](Hypergraph.md) — `requiresConcept`
 - [Finite set-valued multimap](Multimap.md) — `requiresConcept`
 - [Multiset](Multiset.md) — `relatedConcept`
@@ -32,6 +34,7 @@ An unordered finite subset of a fixed carrier, with extensional equality and no 
 - [Finite RDF 1.1 graph](RDFGraph.md) — `requiresConcept`
 - [Set](Set.md) — `relatedConcept`
 - [Finitely supported vector](SparseVector.md) — `requiresConcept`
+- [Class template partial-specialization selection](TemplateSpecialization.md) — `requiresConcept`
 
 ## Interface and scope
 

@@ -15,14 +15,19 @@ A relation from A to B is a set of ordered pairs with first component in A and s
 ## Backlinks
 
 - [Finite database relation under set semantics](DatabaseRelation.md) — `relatedConcept`
+- [Definition/instantiation lookup for dependent calls](DependentNameLookup.md) — `requiresConcept`
 - [Directed Graph](DirectedGraph.md) — `requiresConcept`
 - [Equivalence relation](EquivalenceRelation.md) — `relatedConcept`
 - [Hoare Triple](HoareTriple.md) — `requiresConcept`
+- [Java generic inference constraints and resolution obligations](JavaTypeInference.md) — `requiresConcept`
+- [Java wildcard capture with fresh bounded variables](JavaWildcardCapture.md) — `requiresConcept`
 - [Action-labelled transition system with initial states](LabelledTransitionSystem.md) — `requiresConcept`
 - [Linearizability](Linearizability.md) — `requiresConcept`
 - [Lock with compatible access modes](Lock.md) — `requiresConcept`
+- [Relational method contract with write effects](MethodContract.md) — `requiresConcept`
 - [Classical propositional modal logic K](ModalLogic.md) — `requiresConcept`
 - [Finite set-valued multimap](Multimap.md) — `requiresConcept`
+- [Contextual parametric declaration instantiation](ParametricInstantiation.md) — `requiresConcept`
 - [Partial function](PartialFunction.md) — `requiresConcept`
 - [Partial function](PartialFunction.md) — `specializationOf`
 - [Preorder](Preorder.md) — `requiresConcept`

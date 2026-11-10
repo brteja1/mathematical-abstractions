@@ -16,6 +16,7 @@ A relation between transition systems matching each step of the first with a ste
 
 ## Backlinks
 
+- [Behavioral subtyping with explicit history constraints](BehavioralSubtyping.md) — `relatedConcept`
 - [Bisimulation](Bisimulation.md) — `requiresConcept`
 - [Bisimulation](Bisimulation.md) — `specializationOf`
 - [Action-labelled transition system with initial states](LabelledTransitionSystem.md) — `relatedConcept`

@@ -18,6 +18,7 @@ The tagged disjoint union of A and B: each value is exactly a left-tagged A valu
 - [Option Type](OptionType.md) — `requiresConcept`
 - [Option Type](OptionType.md) — `specializationOf`
 - [Finite RDF 1.1 graph](RDFGraph.md) — `requiresConcept`
+- [Kinded partial template metafunction](TemplateMetafunction.md) — `requiresConcept`
 - [Free ranked term algebra with variables](TermAlgebra.md) — `requiresConcept`
 
 ## Interface and scope

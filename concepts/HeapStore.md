@@ -12,6 +12,12 @@ A finite map from nonnull addresses to values, with partial allocated-cell acces
 
 **Prerequisites:** [Map](Map.md), [Option Type](OptionType.md), [Natural Number](NaturalNumber.md)
 
+## Backlinks
+
+- [Exclusive finite-heap separation predicates](HeapSeparation.md) — `requiresConcept`
+- [Sequential object heap with reference identity](ObjectHeap.md) — `requiresConcept`
+- [Sequential object heap with reference identity](ObjectHeap.md) — `specializationOf`
+
 ## Interface and scope
 
 **axiomBasis:** dom(h) is a finite subset of positive addresses; heap equality is lookup equality; a∈dom(h) ⇒ write(h,a,v)(b)=Some(v) if b=a, else h(b); a∈dom(h) ⇒ free(h,a)(b)=None if b=a, else h(b); (a,h′)∈alloc(h,v) ⇔ a∉dom(h) ∧ h′=h[a↦v]

@@ -15,6 +15,7 @@ A partial-correctness contract: starting in a state satisfying P, every terminat
 ## Backlinks
 
 - [Loop Invariant](LoopInvariant.md) — `requiresConcept`
+- [Relational method contract with write effects](MethodContract.md) — `requiresConcept`
 - [Weakest Precondition](WeakestPrecondition.md) — `requiresConcept`
 
 ## Interface and scope

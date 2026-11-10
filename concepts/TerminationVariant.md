@@ -12,6 +12,10 @@ A measure from states into a well-founded carrier that strictly decreases on eac
 
 **Prerequisites:** [Well Founded Relation](WellFoundedRelation.md)
 
+## Backlinks
+
+- [Checked signed-integer constant-evaluation fragment](CompileTimeEvaluation.md) — `relatedConcept`
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A measure from states into a well-founded carrier that strictly decreases on each loop iteration or recursive call. Governing rules: The measure maps loop states to a specified well-founded strict relation. Each enabled iteration that finishes decreases the measure.

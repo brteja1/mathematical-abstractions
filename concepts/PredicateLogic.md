@@ -19,9 +19,11 @@ First-order formulas over a signature, interpreted in a nonempty domain with var
 - [First-order formula syntax with named variables](FirstOrderFormula.md) — `relatedConcept`
 - [Classical first-order natural deduction with equality](FirstOrderNaturalDeduction.md) — `requiresConcept`
 - [Functional dependency on a relational schema](FunctionalDependency.md) — `requiresConcept`
+- [Exclusive finite-heap separation predicates](HeapSeparation.md) — `requiresConcept`
 - [Hoare Triple](HoareTriple.md) — `requiresConcept`
 - [Classical propositional modal logic K](ModalLogic.md) — `relatedConcept`
 - [Predicate-restricted subtype](Subtype.md) — `requiresConcept`
+- [Normalized template constraints with atomic identity](TemplateConstraint.md) — `relatedConcept`
 - [Free ranked term algebra with variables](TermAlgebra.md) — `relatedConcept`
 
 ## Interface and scope

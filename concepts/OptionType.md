@@ -19,8 +19,10 @@ A value that is either absent or a present payload, using a tag to distinguish a
 - [Finite ordered binary tree with node labels](BinaryTree.md) — `requiresConcept`
 - [Nonempty bounded closed interval](ClosedInterval.md) — `requiresConcept`
 - [Finite fused sequence iterator](FiniteIterator.md) — `requiresConcept`
+- [Resolved generic argument binding with ordered defaults](GenericArgumentBinding.md) — `requiresConcept`
 - [Finite allocated heap store](HeapStore.md) — `requiresConcept`
 - [Mutex (non-reentrant mutual-exclusion lock)](Mutex.md) — `requiresConcept`
+- [Sequential object heap with reference identity](ObjectHeap.md) — `requiresConcept`
 - [Finite RDF 1.1 dataset](RDFDataset.md) — `requiresConcept`
 
 ## Interface and scope

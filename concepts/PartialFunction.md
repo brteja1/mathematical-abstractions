@@ -16,11 +16,16 @@ A function defined on a specified subset of an ambient input set, with no value 
 
 ## Backlinks
 
+- [Single-inheritance class table and dynamic dispatch](ClassTable.md) — `requiresConcept`
+- [Checked signed-integer constant-evaluation fragment](CompileTimeEvaluation.md) — `requiresConcept`
 - [Total function](Function.md) — `relatedConcept`
 - [Total function](Function.md) — `specializationOf`
+- [Java type erasure and selected reifiability rules](JavaTypeErasure.md) — `requiresConcept`
 - [Topological manifold (fixed dimension, without boundary)](Manifold.md) — `requiresConcept`
 - [Map](Map.md) — `requiresConcept`
 - [Map](Map.md) — `specializationOf`
+- [Kinded partial template metafunction](TemplateMetafunction.md) — `requiresConcept`
+- [Kinded partial template metafunction](TemplateMetafunction.md) — `specializationOf`
 - [Deterministic one-tape Turing machine](TuringMachine.md) — `requiresConcept`
 
 ## Interface and scope

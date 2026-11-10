@@ -19,6 +19,7 @@ A semigroup with a two-sided identity element.
 - [Formal language of finite words](FormalLanguage.md) — `relatedConcept`
 - [Group](Group.md) — `requiresConcept`
 - [Group](Group.md) — `specializationOf`
+- [Exclusive finite-heap separation predicates](HeapSeparation.md) — `relatedConcept`
 
 ## Interface and scope
 

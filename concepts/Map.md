@@ -19,10 +19,12 @@ A finite partial function associating each present key with exactly one value; a
 ## Backlinks
 
 - [Candidate key relative to functional dependencies](CandidateKey.md) — `relatedConcept`
+- [Single-inheritance class table and dynamic dispatch](ClassTable.md) — `requiresConcept`
 - [Finite JSON document value (interoperable profile)](DocumentValue.md) — `requiresConcept`
 - [Finite allocated heap store](HeapStore.md) — `requiresConcept`
 - [Lock with compatible access modes](Lock.md) — `requiresConcept`
 - [Finite set-valued multimap](Multimap.md) — `requiresConcept`
+- [Sequential object heap with reference identity](ObjectHeap.md) — `requiresConcept`
 - [Ordered collection without duplicates](OrderedSet.md) — `relatedConcept`
 - [Finite labelled property graph (single-valued profile)](PropertyGraph.md) — `requiresConcept`
 - [Finite RDF 1.1 dataset](RDFDataset.md) — `requiresConcept`

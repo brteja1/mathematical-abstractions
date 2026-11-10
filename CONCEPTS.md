@@ -187,6 +187,33 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Transition System](concepts/TransitionSystem.md)
   - [Deterministic one-tape Turing machine](concepts/TuringMachine.md)
   - [Weakest Precondition](concepts/WeakestPrecondition.md)
+  - **Generic programming**
+    - [Resolved generic argument binding with ordered defaults](concepts/GenericArgumentBinding.md)
+    - [Finite kinded generic parameter signature](concepts/GenericSignature.md)
+    - [Contextual parametric declaration instantiation](concepts/ParametricInstantiation.md)
+    - **Java generics**
+      - [Java bounded parameterized types and nominal subtyping](concepts/JavaParameterizedType.md)
+      - [Java type erasure and selected reifiability rules](concepts/JavaTypeErasure.md)
+      - [Java generic inference constraints and resolution obligations](concepts/JavaTypeInference.md)
+      - [Java wildcard capture with fresh bounded variables](concepts/JavaWildcardCapture.md)
+    - **Template metaprogramming**
+      - [Checked signed-integer constant-evaluation fragment](concepts/CompileTimeEvaluation.md)
+      - [Definition/instantiation lookup for dependent calls](concepts/DependentNameLookup.md)
+      - [Normalized template constraints with atomic identity](concepts/TemplateConstraint.md)
+      - [Kinded partial template metafunction](concepts/TemplateMetafunction.md)
+      - [Ordered template packs and structural expansion](concepts/TemplateParameterPack.md)
+      - [Class template partial-specialization selection](concepts/TemplateSpecialization.md)
+      - [Ordered substitution with immediate-context failure](concepts/TemplateSubstitution.md)
+    - **VHDL generics**
+      - [VHDL generic elaboration and static structural generation](concepts/VHDLGenericElaboration.md)
+      - [VHDL generic interfaces and whole-formal association](concepts/VHDLGenericInterface.md)
+  - **Object-oriented semantics**
+    - [Behavioral subtyping with explicit history constraints](concepts/BehavioralSubtyping.md)
+    - [Single-inheritance class table and dynamic dispatch](concepts/ClassTable.md)
+    - [Exclusive finite-heap separation predicates](concepts/HeapSeparation.md)
+    - [Relational method contract with write effects](concepts/MethodContract.md)
+    - [Sequential object heap with reference identity](concepts/ObjectHeap.md)
+    - [Visible-state object invariant protocol](concepts/ObjectInvariant.md)
 - **Relational data modelling**
   - [Finite database relation under bag semantics](concepts/BagRelation.md)
   - [Candidate key relative to functional dependencies](concepts/CandidateKey.md)
@@ -238,6 +265,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [B-tree (balanced multiway search tree)](concepts/BTree.md) | Data structures → Tree structures |
 | [Finite database relation under bag semantics](concepts/BagRelation.md) | Relational data modelling |
 | [Bayesian network (finite discrete variables)](concepts/BayesianNetwork.md) | Probability and stochastic models, Graph theory |
+| [Behavioral subtyping with explicit history constraints](concepts/BehavioralSubtyping.md) | Programming-language semantics → Object-oriented semantics |
 | [IEEE 754 binary128](concepts/Binary128.md) | Numeric computation |
 | [IEEE 754 binary16](concepts/Binary16.md) | Numeric computation |
 | [IEEE 754 binary32](concepts/Binary32.md) | Numeric computation |
@@ -253,8 +281,10 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Candidate key relative to functional dependencies](concepts/CandidateKey.md) | Relational data modelling |
 | [Cartesian product](concepts/CartesianProduct.md) | Set theory and foundations |
 | [Checked Integer](concepts/CheckedInteger.md) | Numeric computation |
+| [Single-inheritance class table and dynamic dispatch](concepts/ClassTable.md) | Programming-language semantics → Object-oriented semantics |
 | [Nonempty bounded closed interval](concepts/ClosedInterval.md) | Data structures → Intervals |
 | [Closure Operator](concepts/ClosureOperator.md) | Order and fixed points |
+| [Checked signed-integer constant-evaluation fragment](concepts/CompileTimeEvaluation.md) | Programming-language semantics → Generic programming → Template metaprogramming |
 | [Complete Lattice](concepts/CompleteLattice.md) | Order and fixed points |
 | [Exact complex number](concepts/ComplexNumber.md) | Numeric computation |
 | [Conditional probability given a positive-probability event](concepts/ConditionalProbability.md) | Probability and stochastic models |
@@ -263,6 +293,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Deterministic finite automaton with total transition](concepts/DFA.md) | Languages and computation, Behavior and transition systems |
 | [Finite database relation under set semantics](concepts/DatabaseRelation.md) | Relational data modelling, Data structures → Sets and mappings |
 | [Dependent function (Pi type)](concepts/DependentFunction.md) | Types and semantics |
+| [Definition/instantiation lookup for dependent calls](concepts/DependentNameLookup.md) | Programming-language semantics → Generic programming → Template metaprogramming |
 | [Dependent pair (Sigma type)](concepts/DependentPair.md) | Types and semantics |
 | [Deque](concepts/Deque.md) | Data structures → Sequential collections |
 | [Directed Graph](concepts/DirectedGraph.md) | Graph theory |
@@ -290,13 +321,20 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Function type](concepts/FunctionType.md) | Types and semantics |
 | [Functional dependency on a relational schema](concepts/FunctionalDependency.md) | Relational data modelling, Logic and proof |
 | [Galois Connection](concepts/GaloisConnection.md) | Order and fixed points |
+| [Resolved generic argument binding with ordered defaults](concepts/GenericArgumentBinding.md) | Programming-language semantics → Generic programming |
+| [Finite kinded generic parameter signature](concepts/GenericSignature.md) | Programming-language semantics → Generic programming |
 | [Graph](concepts/Graph.md) | Graph theory |
 | [Group](concepts/Group.md) | Algebra |
 | [Happens Before](concepts/HappensBefore.md) | Concurrency and distributed systems → Ordering and consistency |
+| [Exclusive finite-heap separation predicates](concepts/HeapSeparation.md) | Programming-language semantics → Object-oriented semantics |
 | [Finite allocated heap store](concepts/HeapStore.md) | Programming-language semantics |
 | [Hoare Triple](concepts/HoareTriple.md) | Programming-language semantics |
 | [Finite simple undirected hypergraph](concepts/Hypergraph.md) | Graph theory |
 | [Mathematical integers](concepts/Integer.md) | Numeric computation, Algebra |
+| [Java bounded parameterized types and nominal subtyping](concepts/JavaParameterizedType.md) | Programming-language semantics → Generic programming → Java generics |
+| [Java type erasure and selected reifiability rules](concepts/JavaTypeErasure.md) | Programming-language semantics → Generic programming → Java generics |
+| [Java generic inference constraints and resolution obligations](concepts/JavaTypeInference.md) | Programming-language semantics → Generic programming → Java generics |
+| [Java wildcard capture with fresh bounded variables](concepts/JavaWildcardCapture.md) | Programming-language semantics → Generic programming → Java generics |
 | [Join semilattice](concepts/JoinSemilattice.md) | Order and fixed points |
 | [Finite serial Kripke structure for model checking](concepts/KripkeStructure.md) | Behavior and transition systems, Logic and proof |
 | [Action-labelled transition system with initial states](concepts/LabelledTransitionSystem.md) | Behavior and transition systems, Programming-language semantics, Concurrency and distributed systems → Behavioral models |
@@ -315,6 +353,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Measurable function](concepts/MeasurableFunction.md) | Measure theory |
 | [Measurable space (sigma-algebra on a carrier)](concepts/MeasurableSpace.md) | Measure theory |
 | [Measure space (nonnegative countably additive measure)](concepts/MeasureSpace.md) | Measure theory |
+| [Relational method contract with write effects](concepts/MethodContract.md) | Programming-language semantics → Object-oriented semantics |
 | [Classical propositional modal logic K](concepts/ModalLogic.md) | Logic and proof, Behavior and transition systems |
 | [Modular Integer](concepts/ModularInteger.md) | Numeric computation |
 | [Monoid](concepts/Monoid.md) | Algebra |
@@ -324,8 +363,11 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Mutex (non-reentrant mutual-exclusion lock)](concepts/Mutex.md) | Concurrency and distributed systems → Synchronization → Locks |
 | [Nondeterministic finite automaton without epsilon moves](concepts/NFA.md) | Languages and computation, Behavior and transition systems |
 | [Natural Number](concepts/NaturalNumber.md) | Numeric computation |
+| [Sequential object heap with reference identity](concepts/ObjectHeap.md) | Programming-language semantics → Object-oriented semantics |
+| [Visible-state object invariant protocol](concepts/ObjectInvariant.md) | Programming-language semantics → Object-oriented semantics |
 | [Option Type](concepts/OptionType.md) | Types and semantics |
 | [Ordered collection without duplicates](concepts/OrderedSet.md) | Data structures → Sets and mappings, Data structures → Sequential collections |
+| [Contextual parametric declaration instantiation](concepts/ParametricInstantiation.md) | Programming-language semantics → Generic programming |
 | [Partial function](concepts/PartialFunction.md) | Set theory and foundations, Programming-language semantics |
 | [Partial Order](concepts/PartialOrder.md) | Order and fixed points |
 | [Partition of a set](concepts/Partition.md) | Set theory and foundations |
@@ -369,6 +411,11 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Structural Induction](concepts/StructuralInduction.md) | Counting and induction |
 | [Predicate-restricted subtype](concepts/Subtype.md) | Types and semantics |
 | [Sum Type](concepts/SumType.md) | Types and semantics |
+| [Normalized template constraints with atomic identity](concepts/TemplateConstraint.md) | Programming-language semantics → Generic programming → Template metaprogramming |
+| [Kinded partial template metafunction](concepts/TemplateMetafunction.md) | Programming-language semantics → Generic programming → Template metaprogramming |
+| [Ordered template packs and structural expansion](concepts/TemplateParameterPack.md) | Programming-language semantics → Generic programming → Template metaprogramming |
+| [Class template partial-specialization selection](concepts/TemplateSpecialization.md) | Programming-language semantics → Generic programming → Template metaprogramming |
+| [Ordered substitution with immediate-context failure](concepts/TemplateSubstitution.md) | Programming-language semantics → Generic programming → Template metaprogramming |
 | [Tensor of specified valence on a finite-dimensional vector space](concepts/Tensor.md) | Algebra → Linear and multilinear algebra, Geometry and manifolds |
 | [Tensor product of vector spaces](concepts/TensorProduct.md) | Algebra → Linear and multilinear algebra |
 | [Free ranked term algebra with variables](concepts/TermAlgebra.md) | Types and semantics |
@@ -381,6 +428,8 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Finite prefix dictionary](concepts/Trie.md) | Data structures → Tree structures, Data structures → Sets and mappings |
 | [Deterministic one-tape Turing machine](concepts/TuringMachine.md) | Languages and computation, Programming-language semantics |
 | [Unit type](concepts/UnitType.md) | Types and semantics |
+| [VHDL generic elaboration and static structural generation](concepts/VHDLGenericElaboration.md) | Programming-language semantics → Generic programming → VHDL generics |
+| [VHDL generic interfaces and whole-formal association](concepts/VHDLGenericInterface.md) | Programming-language semantics → Generic programming → VHDL generics |
 | [Vector space over a field](concepts/VectorSpace.md) | Algebra → Linear and multilinear algebra, Algebra |
 | [Weakest Precondition](concepts/WeakestPrecondition.md) | Programming-language semantics |
 | [Finite real-weighted directed multigraph](concepts/WeightedDirectedGraph.md) | Graph theory |

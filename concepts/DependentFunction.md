@@ -16,6 +16,8 @@ A total function choosing a value in B(a) at each input a.
 
 - [Finite typed entity-relationship instance](EntityRelationshipModel.md) — `requiresConcept`
 - [Function type](FunctionType.md) — `specializationOf`
+- [Contextual parametric declaration instantiation](ParametricInstantiation.md) — `relatedConcept`
+- [Kinded partial template metafunction](TemplateMetafunction.md) — `relatedConcept`
 - [Free ranked term algebra with variables](TermAlgebra.md) — `requiresConcept`
 
 ## Interface and scope

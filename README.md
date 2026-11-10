@@ -34,7 +34,7 @@ Clone this repository and run `make` to install ONTFS and build the catalog, vie
 | Location | Role |
 | --- | --- |
 | [`concepts/`](concepts/) | One editable Markdown file per concept, with typed links, backlinks, readable operations/claims, and an authoritative marked JSON record block. |
-| [`data/shared.json`](data/shared.json) | Authoritative JSON-LD context, categories, concept kinds, vocabulary and shared sources. |
+| [`data/shared.json`](data/shared.json) | Authoritative categories, concept kinds, vocabulary and shared sources. |
 | [`CONCEPTS.md`](CONCEPTS.md) | Generated complete concept index. |
 | [`COVERAGE.md`](COVERAGE.md) | Generated counts and basis coverage, not a completeness certificate. |
 | [`visualization/template.html`](visualization/template.html) | Readable page shell for the standalone viewer. |
@@ -44,11 +44,17 @@ Clone this repository and run `make` to install ONTFS and build the catalog, vie
 
 Edit concepts directly in their `concepts/<shortForm>.md` files. Each file stores its authoritative structured records in a marked JSON block; the readable sections above that block are generated from those records. Update definitions, operations, claims and references in that block, then run `make` to refresh the page, links, indexes, viewer and ontology. Shared vocabulary and sources live in `data/shared.json`.
 
-ONTFS supplies the generated RDF projection for SHACL validation and SPARQL coverage reporting. There is no separately stored JSON-LD catalog. Ordinary catalog queries and viewer generation read the Markdown records directly. See the [editing workflow](INSTALL.md#edit-and-validate).
+ONTFS supplies the generated RDF projection for SHACL validation and SPARQL coverage reporting. Ordinary catalog queries and viewer generation read the Markdown records directly. See the [editing workflow](INSTALL.md#edit-and-validate).
 
 The [foundational data-model guide](docs/FOUNDATIONAL_DATA_MODELS.md) maps the broad computer-science core to the catalog: types and values, collection ADTs, trees and graphs, streams, numeric data, state, and database/interchange models. It documents 35 additions, explicit instantiations such as strings and records, selected conventions, and remaining variants.
 
 The [logic guide](docs/LOGIC.md) maps propositional and first-order syntax, semantic queries, substitution, natural deduction, normal forms, completeness and compactness, with explicit provenance and formalization limits.
+
+The [object-oriented models guide](docs/OBJECT_ORIENTED_MODELS.md) connects object identity and aliasing, class lookup and dispatch, method contracts and write effects, visible-state invariants, behavioral subtyping and exclusive heap separation. It explains how exposed representations can break invariants and documents the Lean model limitations.
+
+The [template metaprogramming guide](docs/TEMPLATE_METAPROGRAMMING.md) covers kinded partial metafunctions, class partial-specialization selection, SFINAE versus hard errors, identity-based constraint subsumption, packs/folds, staged name lookup and a checked constant-evaluation fragment. It uses an explicit C++20 draft profile and includes [compiler-checked examples](examples/template_metaprogramming.md).
+
+The [generic-programming guide](docs/GENERIC_PROGRAMMING.md) adds shared signatures, argument binding and instantiation, then separate Java and VHDL profiles. Java covers bounds, nominal generic subtyping, capture, erasure and inference, with runnable compiler examples. VHDL covers generic interfaces, association and elaboration; its illustrative example is explicitly unexecuted because no VHDL compiler is installed locally.
 
 See [agent workflows](docs/AGENT_WORKFLOWS.md) for proof planning, test design and specification consistency reviews, and [AGENTS.md](AGENTS.md) for the catalog's contribution requirements.
 
@@ -92,6 +98,34 @@ Checks cover unique IDs and short forms, typed references, operation ownership, 
 
 Validation checks structure and citation metadata. Mathematical correctness, source entailment and informal-to-formal correspondence require separate review; compiled proof evidence is checked through the Lean workflow.
 
+## AI skill for specification consistency
+
+The [specification-consistency skill](ai/skills/specification-consistency/SKILL.md) guides agents in finding conflicting requirements and impossible operation contracts. It maps specification clauses to catalog definitions and explicit assumptions, then helps agents construct and execute suitable checks. It covers joint satisfiability, required input coverage, vacuous preconditions, and stateful or temporal obligations.
+
+To use it, ask an agent:
+
+> Read `ai/skills/specification-consistency/SKILL.md` and check `path/to/spec.md` for inconsistencies. Report conflicting clause IDs, required scenarios, reproducible evidence, assumptions and unchecked obligations.
+
+Agents can read the skill explicitly or register its directory using their host's skill-discovery mechanism. It reuses the standard-library catalog commands and, when available, the bounded ONTFS retrieval helper. Depending on the specification, checks may use exhaustive finite enumeration, an installed solver/model checker, or Lean. The skill does not install a general-purpose consistency solver.
+
+The [runnable Boolean example](ai/skills/specification-consistency/references/boolean-example.md) uses only Python's standard library. It demonstrates a conflict missed by pairwise checks, an input with no permitted output, and verification of a proposed repair. The [checking and reporting guide](ai/skills/specification-consistency/references/checking-and-reporting.md) explains backend selection and evidence requirements.
+
+Catalog and SHACL validation check structure; semantic consistency requires a justified model and a separate check. Findings distinguish demonstrated conflicts from ambiguities, conditional results and inconclusive searches. A bounded search or a single satisfying instance does not establish that every required input or behavior is supported.
+
+## AI skills for implementation and review
+
+Use [implementation-mapping](ai/skills/implementation-mapping/SKILL.md) to translate a catalog-based specification into concrete types, API operations, equality/observations, state representations, errors and implementation obligations. Its [mapping template](ai/skills/implementation-mapping/assets/implementation-map.md) belongs beside the target software and records specification clauses, catalog IDs, decisions and evidence. When code generation is requested, the skill guides implementation from that mapping.
+
+Use [implementation-conformance](ai/skills/implementation-conformance/SKILL.md) to compare code with the specification and mapping. It checks the mapping's interpretation as well as implementation behavior, distinguishes defects from ambiguities, and reports supported, violated and unchecked obligations with scoped evidence. The [worked stack example](ai/skills/implementation-mapping/references/stack-example.md) demonstrates a capacity mismatch that small push/pop tests can miss and includes runnable Python checks.
+
+For example, ask an agent:
+
+> Read `ai/skills/implementation-mapping/SKILL.md`, map `path/to/spec.md` to the API in `path/to/project`, then implement the resolved obligations using that project's conventions. Keep unresolved semantic decisions explicit.
+
+> Read `ai/skills/implementation-conformance/SKILL.md` and review `path/to/project` against its specification and implementation mapping. Report clause/obligation IDs, counterexamples, execution evidence and unchecked behavior.
+
+The skills reuse existing catalog retrieval, specification-consistency and mathematical-test workflows. Read them explicitly or register their directories with the agent host; placing them in `ai/skills/` alone does not enable automatic discovery. They add no runtime dependency to generated software. Tests and abstract model proofs do not by themselves establish implementation refinement.
+
 ## AI skill for abstraction-based tests
 
 [`ai/skills/mathematical-tests/SKILL.md`](ai/skills/mathematical-tests/SKILL.md) guides agents from a software API to applicable mathematical concepts, axioms and laws, then to runnable tests. It covers API/operation mappings, definedness, numeric policies, nondeterminism and evidence limitations. Agents should read the skill explicitly or register this directory using their host's skill-discovery mechanism.
@@ -109,20 +143,6 @@ The helper works from other repositories via its absolute path. See the skill's 
 ### Acknowledgment
 
 I would like to thank my colleague, Mr. Devendra Bhave, for introducing me to the technique of using mathematical abstractions to guide software test design.
-
-## AI skill for specification consistency
-
-The [specification-consistency skill](ai/skills/specification-consistency/SKILL.md) guides agents in finding conflicting requirements and impossible operation contracts. It maps specification clauses to catalog definitions and explicit assumptions, then helps agents construct and execute suitable checks. It covers joint satisfiability, required input coverage, vacuous preconditions, and stateful or temporal obligations.
-
-To use it, ask an agent:
-
-> Read `ai/skills/specification-consistency/SKILL.md` and check `path/to/spec.md` for inconsistencies. Report conflicting clause IDs, required scenarios, reproducible evidence, assumptions and unchecked obligations.
-
-Agents can read the skill explicitly or register its directory using their host's skill-discovery mechanism. It reuses the standard-library catalog commands and, when available, the bounded ONTFS retrieval helper. Depending on the specification, checks may use exhaustive finite enumeration, an installed solver/model checker, or Lean. The skill does not install a general-purpose consistency solver.
-
-The [runnable Boolean example](ai/skills/specification-consistency/references/boolean-example.md) uses only Python's standard library. It demonstrates a conflict missed by pairwise checks, an input with no permitted output, and verification of a proposed repair. The [checking and reporting guide](ai/skills/specification-consistency/references/checking-and-reporting.md) explains backend selection and evidence requirements.
-
-Catalog and SHACL validation check structure; semantic consistency requires a justified model and a separate check. Findings distinguish demonstrated conflicts from ambiguities, conditional results and inconclusive searches. A bounded search or a single satisfying instance does not establish that every required input or behavior is supported.
 
 ## Lean formalization
 

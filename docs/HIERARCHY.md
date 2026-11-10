@@ -38,6 +38,14 @@ Other connections retain their stated meanings. Stack, Queue and Deque use finit
 
 This pass changes navigation memberships and presentation. It introduces no mathematical claim, axiom inheritance or protocol-refinement proof. Future specialization additions require a carrier/interface mapping and sourced review under [AGENTS.md](../AGENTS.md).
 
+## Object-oriented semantics
+
+Object-oriented semantics is nested under Programming-language semantics. `ObjectHeap` specializes `HeapStore` with class-tagged field records, retaining the parent interface and adding field operations. `ClassTable`, `MethodContract`, `ObjectInvariant`, `BehavioralSubtyping` and `HeapSeparation` use prerequisites/related links rather than identifying inheritance, contracts, invariants and ownership with one another. See [the OOP guide](OBJECT_ORIENTED_MODELS.md).
+
+## Template metaprogramming
+
+Template metaprogramming is nested under Generic programming, itself under Programming-language semantics. Java generics and VHDL generics are sibling subjects. Shared signatures/binding/instantiation do not inherit language-specific laws. `TemplateMetafunction` specializes `PartialFunction` on canonical argument lists and type/value observations; `TemplateParameterPack` specializes `Sequence` for one fixed argument kind. C++ partial-specialization selection is modeled by `TemplateSpecialization`, rather than conflating language specialization with class inheritance or automatic catalog axiom inheritance. Other mechanisms retain explicit prerequisites/related links. See [the template guide](TEMPLATE_METAPROGRAMMING.md) and [shared/Java/VHDL guide](GENERIC_PROGRAMMING.md).
+
 ## Label rendering
 
 Every concept name, including leaf concepts, is always displayed in all three views. In the Subjects view, top-level subject headings are always shown; a nested subject heading appears only when that exact subject is selected. Nested headings are displayed in full on one line. Their text is centered halfway between their own arc and the parent arc; collision placement never shifts these headings. Selecting a concept clears nested-heading selection. Hidden headings retain their fixed layout slots, so revealing them does not move other labels. There is no name-visibility toggle and no automatic hiding based on selection, zoom, viewport size or collisions. Names wrap without truncation. Placement prefers non-overlapping positions, with the original anchor used when no free position is available; visibility takes priority over collision suppression. Label placement is independent of hover and selection. The canvas clips naturally at its edges when panning or zooming.

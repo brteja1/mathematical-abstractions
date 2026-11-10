@@ -15,6 +15,7 @@ A bounded signed integer with two’s-complement value range, modeled here by ex
 ## Backlinks
 
 - [Fixed-width bit vector](BitVector.md) — `relatedConcept`
+- [Checked signed-integer constant-evaluation fragment](CompileTimeEvaluation.md) — `requiresConcept`
 - [Mathematical integers](Integer.md) — `relatedConcept`
 
 ## Interface and scope

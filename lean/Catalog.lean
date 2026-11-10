@@ -23,3 +23,6 @@ public import Catalog.GraphData
 public import Catalog.InformationData
 
 public import Catalog.Concurrency
+public import Catalog.ObjectOrientation
+public import Catalog.TemplateMetaprogramming
+public import Catalog.GenericProgramming

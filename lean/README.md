@@ -2,7 +2,7 @@
 
 This Lake project gives every current catalog concept a named Lean interpretation, grouped by subject in `Catalog/`. It uses **Lean 4.35.0** and **Mathlib commit `56a005855ea17e0b0958f73ec801ae140b0a1679`** (release `v4.35.0`). `lake-manifest.json` locks transitive dependencies. Normal catalog retrieval and the viewer still require only Python.
 
-There are currently **152 concept bindings**: 137 carrier/interface models and 15 explicitly partial interpretations. There are **52 registered proof witnesses** for existing laws/theorems, including all 11 recorded binary-tree laws/theorems. This does **not** mean every recorded operation or all catalog laws/theorems have been translated or proved. An alias to a library structure is a model binding, not a proof of all catalog claims. The [broad-core expansion](../docs/FOUNDATIONAL_DATA_MODELS.md) adds 35 carrier models and 24 individually mapped witnesses. Its remaining operation specifications and derived results are not blanket formalizations.
+There are currently **174 concept bindings**: 149 carrier/interface models and 25 explicitly partial interpretations. There are **52 registered proof witnesses** for existing laws/theorems, including all 11 recorded binary-tree laws/theorems. This does **not** mean every recorded operation or all catalog laws/theorems have been translated or proved. An alias to a library structure is a model binding, not a proof of all catalog claims. The [broad-core expansion](../docs/FOUNDATIONAL_DATA_MODELS.md) adds 35 carrier models and 24 individually mapped witnesses. Its remaining operation specifications and derived results are not blanket formalizations.
 
 ## Build and verify
 
@@ -40,6 +40,9 @@ The [GitHub workflow](../.github/workflows/lean.yml) runs verification on pushes
 | `Catalog/DataStructures.lean` | Sequences, arrays, finite sets/maps, multisets, ordered sets, stacks, queues and deques |
 | `Catalog/CoreData.lean` | Dependent/refined/quotient types, exact numbers, streams, finite iterators, intervals, sparse vectors, distributions and join-based replication |
 | `Catalog/StructuredData.lean` | Multimaps, allocated heap stores, union-find, rose trees, ranked terms, BSTs, binary heaps and prefix dictionaries |
+| `Catalog/ObjectOrientation.lean` | Object heaps/aliasing, class lookup/dispatch, method effects, visible-state invariants, behavioral subtyping and heap separation; see [OOP scope](../docs/OBJECT_ORIENTED_MODELS.md) |
+| `Catalog/TemplateMetaprogramming.lean` | Kinded partial metafunctions, specialization selection, substitution outcomes, constraints, packs, staged lookup and bounded signed constant evaluation; see [template scope](../docs/TEMPLATE_METAPROGRAMMING.md) |
+| `Catalog/GenericProgramming.lean` | Shared generic signatures/binding/instantiation, Java parameterization/capture/erasure/inference and VHDL association/elaboration interfaces; see [scope](../docs/GENERIC_PROGRAMMING.md) |
 | `Catalog/GraphData.lean` | Rooted trees, edge-identity multigraphs, real weights, hypergraphs and chosen bipartitions |
 | `Catalog/InformationData.lean` | Bag relations, JSON value profile, typed ER instances, property graphs and RDF graphs/datasets |
 | `Catalog/BinaryTree.lean` | Finite ordered node-labelled trees, empty/node/view/fold, counts, traversal, mirror and label mapping; witnesses for all recorded binary-tree laws/theorems |
@@ -97,6 +100,18 @@ The verifier compiles the library with warnings treated as errors, checks that e
 The permitted foundational names are `propext`, `Quot.sound` and `Classical.choice`; actual use is recorded individually. Structure laws such as associativity are explicit hypotheses in the theorem's type, rather than extra global Lean axioms. The type checker verifies the Lean proposition conditional on those hypotheses. It does not decide that the chosen model matches every nuance of an informal definition, establish consistency of all mathematical assumptions, or supply missing bibliographic evidence. See [Lean's axiom documentation](https://lean-lang.org/doc/reference/latest/Axioms/).
 
 Partial interpretations needing further work are:
+
+- `ParametricInstantiation`: simultaneous argument/name binding and a supplied language realization; hygienic syntax substitution and full phase semantics remain obligations.
+- `JavaParameterizedType`, `JavaWildcardCapture`: selected well-formedness, substitution and fresh-bound interfaces; actual JLS declaration/subtyping/capture frontends remain obligations.
+- `JavaTypeErasure`: a fuel-bounded owner-free type core; adequate fuel, full reifiability, signature and nested-type translation are not established.
+- `JavaTypeInference`: semantic constraints and an explicitly sound supplied resolver; Chapter 18 algorithms and their correspondence to compiler behavior are not implemented.
+- `VHDLGenericElaboration`: ordered event execution and finite generate lists; actual VHDL evaluation, staticness, conformance and instance semantics remain obligations.
+
+- `TemplateSubstitution`: ordered failure events and a supplied frontend; actual substitution, lexical event generation and immediate-context classification remain obligations.
+- `TemplateConstraint`: normalized identity-bearing trees and subsumption; actual normalization, source-origin/parameter-map equality and atomic expression checking remain frontend obligations.
+
+- `ClassTable`: finite ranked single-inheritance hierarchy and bounded lookup; the general fuel-sufficiency and recursive-lookup correspondence proofs are not registered.
+- `BehavioralSubtyping`: invariant, method and history-constraint implications; the supplied history relation needs connection to concrete executions, and general signature adapters remain obligations.
 
 - `LamportBakery`: raw flags, tickets and local-state fields; protocol transitions, reachability and correctness are not yet formalized.
 

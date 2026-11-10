@@ -9,6 +9,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | BTree | 6 | 6 | 2 | 1 | extensional-structural-definition |
 | BagRelation | 4 | 5 | 1 | 1 | extensional-structural-definition |
 | BayesianNetwork | 3 | 2 | 0 | 1 | defined-structure |
+| BehavioralSubtyping | 4 | 4 | 2 | 0 | extensional-structural-definition |
 | Binary128 | 4 | 4 | 1 | 1 | parameter-instance |
 | Binary16 | 4 | 4 | 1 | 1 | parameter-instance |
 | Binary32 | 4 | 4 | 1 | 1 | parameter-instance |
@@ -24,8 +25,10 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | CandidateKey | 2 | 1 | 2 | 2 | defined-structure |
 | CartesianProduct | 2 | 3 | 1 | 2 | defined-structure |
 | CheckedInteger | 3 | 2 | 1 | 1 | defined-structure |
+| ClassTable | 4 | 3 | 2 | 1 | extensional-structural-definition |
 | ClosedInterval | 3 | 3 | 1 | 1 | extensional-structural-definition |
 | ClosureOperator | 1 | 3 | 1 | 1 | defined-structure |
+| CompileTimeEvaluation | 2 | 3 | 2 | 0 | extensional-structural-definition |
 | CompleteLattice | 2 | 3 | 0 | 2 | defined-structure |
 | ComplexNumber | 5 | 3 | 1 | 1 | extensional-structural-definition |
 | ConditionalProbability | 1 | 1 | 0 | 2 | defined-structure |
@@ -34,6 +37,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | DFA | 2 | 2 | 1 | 3 | defined-structure |
 | DatabaseRelation | 6 | 3 | 2 | 2 | defined-structure |
 | DependentFunction | 2 | 2 | 1 | 1 | extensional-structural-definition |
+| DependentNameLookup | 2 | 2 | 2 | 0 | extensional-structural-definition |
 | DependentPair | 4 | 3 | 1 | 1 | extensional-structural-definition |
 | Deque | 5 | 3 | 1 | 1 | defined-structure |
 | DirectedGraph | 1 | 2 | 1 | 1 | defined-structure |
@@ -61,13 +65,20 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | FunctionType | 2 | 3 | 0 | 1 | extensional-type-theory |
 | FunctionalDependency | 3 | 3 | 1 | 3 | defined-structure |
 | GaloisConnection | 2 | 1 | 1 | 1 | defined-structure |
+| GenericArgumentBinding | 2 | 2 | 2 | 0 | extensional-structural-definition |
+| GenericSignature | 2 | 2 | 2 | 0 | extensional-structural-definition |
 | Graph | 1 | 2 | 1 | 1 | defined-structure |
 | Group | 2 | 5 | 1 | 2 | axiomatic-structure |
 | HappensBefore | 1 | 2 | 1 | 1 | defined-structure |
+| HeapSeparation | 5 | 3 | 3 | 0 | extensional-structural-definition |
 | HeapStore | 4 | 4 | 1 | 1 | extensional-structural-definition |
 | HoareTriple | 1 | 2 | 1 | 1 | defined-structure |
 | Hypergraph | 3 | 3 | 1 | 1 | extensional-structural-definition |
 | Integer | 4 | 3 | 3 | 1 | derived-construction |
+| JavaParameterizedType | 3 | 3 | 2 | 0 | extensional-structural-definition |
+| JavaTypeErasure | 3 | 2 | 2 | 0 | extensional-structural-definition |
+| JavaTypeInference | 3 | 3 | 2 | 0 | extensional-structural-definition |
+| JavaWildcardCapture | 2 | 2 | 2 | 0 | extensional-structural-definition |
 | JoinSemilattice | 2 | 5 | 1 | 1 | extensional-structural-definition |
 | KripkeStructure | 2 | 2 | 1 | 3 | defined-structure |
 | LabelledTransitionSystem | 2 | 2 | 2 | 2 | defined-structure |
@@ -86,6 +97,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | MeasurableFunction | 2 | 1 | 0 | 1 | defined-structure |
 | MeasurableSpace | 2 | 3 | 0 | 1 | defined-structure |
 | MeasureSpace | 1 | 2 | 0 | 2 | defined-structure |
+| MethodContract | 3 | 3 | 2 | 0 | extensional-structural-definition |
 | ModalLogic | 1 | 2 | 2 | 3 | defined-structure |
 | ModularInteger | 2 | 1 | 0 | 2 | defined-structure |
 | Monoid | 1 | 4 | 1 | 1 | axiomatic-structure |
@@ -95,8 +107,11 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | Mutex | 4 | 4 | 1 | 1 | operational-state-machine-definition |
 | NFA | 2 | 2 | 2 | 2 | defined-structure |
 | NaturalNumber | 4 | 3 | 1 | 1 | defined-structure |
+| ObjectHeap | 5 | 3 | 2 | 0 | extensional-structural-definition |
+| ObjectInvariant | 3 | 3 | 0 | 1 | extensional-structural-definition |
 | OptionType | 4 | 4 | 3 | 2 | extensional-type-theory |
 | OrderedSet | 3 | 3 | 2 | 2 | defined-structure |
+| ParametricInstantiation | 2 | 2 | 2 | 0 | extensional-structural-definition |
 | PartialFunction | 2 | 4 | 0 | 1 | defined-structure |
 | PartialOrder | 1 | 3 | 1 | 1 | defined-structure |
 | Partition | 1 | 3 | 0 | 2 | defined-structure |
@@ -140,6 +155,11 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | StructuralInduction | 0 | 2 | 1 | 1 | defined-structure |
 | Subtype | 3 | 3 | 1 | 1 | extensional-structural-definition |
 | SumType | 6 | 6 | 7 | 6 | extensional-type-theory |
+| TemplateConstraint | 3 | 4 | 2 | 0 | extensional-structural-definition |
+| TemplateMetafunction | 3 | 3 | 2 | 0 | extensional-structural-definition |
+| TemplateParameterPack | 3 | 3 | 2 | 0 | extensional-structural-definition |
+| TemplateSpecialization | 3 | 3 | 2 | 0 | extensional-structural-definition |
+| TemplateSubstitution | 3 | 2 | 2 | 0 | extensional-structural-definition |
 | Tensor | 3 | 1 | 0 | 2 | defined-structure |
 | TensorProduct | 2 | 2 | 0 | 1 | defined-structure |
 | TermAlgebra | 3 | 3 | 1 | 1 | extensional-structural-definition |
@@ -152,11 +172,13 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | Trie | 3 | 4 | 1 | 1 | extensional-structural-definition |
 | TuringMachine | 3 | 4 | 1 | 3 | defined-structure |
 | UnitType | 1 | 1 | 0 | 2 | extensional-type-theory |
+| VHDLGenericElaboration | 4 | 3 | 2 | 0 | extensional-structural-definition |
+| VHDLGenericInterface | 2 | 3 | 2 | 0 | extensional-structural-definition |
 | VectorSpace | 3 | 3 | 0 | 1 | defined-structure |
 | WeakestPrecondition | 1 | 1 | 1 | 1 | defined-structure |
 | WeightedDirectedGraph | 3 | 2 | 1 | 1 | extensional-structural-definition |
 | WellFoundedRelation | 1 | 1 | 1 | 1 | defined-structure |
 
-152 of 152 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
+174 of 174 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
 
 Use `ruleRole` to distinguish foundational axioms, structure constraints, and defining equations. Use `basisScope` for interface boundaries. Alternate language policies, intensional equality, IEEE payload/trap details, and formal proof artifacts require further formalization.

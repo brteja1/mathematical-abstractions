@@ -19,6 +19,7 @@ The free finite formula syntax over a fixed set A of atoms with primitive falsit
 - [First-order formula syntax with named variables](FirstOrderFormula.md) — `relatedConcept`
 - [Propositional Logic](PropositionalLogic.md) — `requiresConcept`
 - [Classical propositional natural deduction](PropositionalNaturalDeduction.md) — `requiresConcept`
+- [Normalized template constraints with atomic identity](TemplateConstraint.md) — `requiresConcept`
 
 ## Interface and scope
 

@@ -16,6 +16,7 @@ A reflexive, antisymmetric, transitive relation.
 
 ## Backlinks
 
+- [Single-inheritance class table and dynamic dispatch](ClassTable.md) — `relatedConcept`
 - [Closure Operator](ClosureOperator.md) — `requiresConcept`
 - [Galois Connection](GaloisConnection.md) — `requiresConcept`
 - [Happens Before](HappensBefore.md) — `requiresConcept`
@@ -25,6 +26,7 @@ A reflexive, antisymmetric, transitive relation.
 - [Lattice](Lattice.md) — `specializationOf`
 - [Monotone Function](MonotoneFunction.md) — `requiresConcept`
 - [State-based CRDT replication algebra](StateBasedCRDT.md) — `requiresConcept`
+- [Class template partial-specialization selection](TemplateSpecialization.md) — `requiresConcept`
 - [Total Order](TotalOrder.md) — `requiresConcept`
 - [Total Order](TotalOrder.md) — `specializationOf`
 

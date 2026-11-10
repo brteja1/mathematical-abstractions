@@ -2267,6 +2267,204 @@
       "mapping": "Raw state for Fin n processes: choosing flags, unbounded Nat tickets, and uninterpreted natural program counters, scan indices and per-process local read data.",
       "limitations": "No legal control-state invariant, SC transition relation, reachability, protocol refinement, fairness, mutual-exclusion proof or failure/weak-memory model. This binding supplies raw state fields only.",
       "catalogHash": "60e628540a7f938d7df88bb98da960b3e307f4faf5a85718e0e158e5c47736c5"
+    },
+    "urn:csabs:concept/ObjectHeap": {
+      "kind": "model",
+      "symbol": "Catalog.OOP.ObjectHeap",
+      "module": "Catalog.ObjectOrientation",
+      "scope": "model",
+      "mapping": "HeapStore instantiated with class tags and finite qualified-field maps; primitive/reference sum, null Option, partial field access/update, identity and allocated aliasing are explicit.",
+      "limitations": "Inherited raw heap operations remain available. No typing, encapsulation, lifetime, GC, concurrency or implementation refinement is established.",
+      "catalogHash": "95a66659ed46df1def14afcdc18909fdfd9f2bd4accdc4beb44f8017089723e4"
+    },
+    "urn:csabs:concept/ClassTable": {
+      "kind": "model",
+      "symbol": "Catalog.OOP.ClassTable",
+      "module": "Catalog.ObjectOrientation",
+      "scope": "partial",
+      "mapping": "Classes are Fin(n+1); parent/root, finite local declarations and a decreasing auxiliary rank certify the single-inheritance profile. Ancestor/lookup traversal uses n+1 fuel; dispatch reads the heap class tag. Erase rank evidence for extensional table equality.",
+      "limitations": "Lookup and ancestors are implemented, but the general proof that n+1 fuel suffices and correspondence with the recursive graph equations is not registered. Bodies are opaque; type safety and behavioral compatibility are absent.",
+      "catalogHash": "246b3828eaa922871b2018d534400930b4fe2179252e2231e5706637f1c4399c"
+    },
+    "urn:csabs:concept/MethodContract": {
+      "kind": "model",
+      "symbol": "Catalog.OOP.MethodContract",
+      "module": "Catalog.ObjectOrientation",
+      "scope": "model",
+      "mapping": "Pre/post/writable predicates over fixed-domain total stores; trace after-state, outcome and all writes; allows, satisfies and covered match the selected relational profile. Instantiate Outcome with Sum Result Exception.",
+      "limitations": "Allocation, faults outside the outcome carrier, execution instrumentation correctness and termination are not modeled. Preconditions may be empty and coverage is separate.",
+      "catalogHash": "ab5ade78563fbd49482dcbe336ab951d0f6026b1f0bb0cc682ce92e7e334b63e"
+    },
+    "urn:csabs:concept/ObjectInvariant": {
+      "kind": "model",
+      "symbol": "Catalog.OOP.ObjectInvariant",
+      "module": "Catalog.ObjectOrientation",
+      "scope": "model",
+      "mapping": "Whole-object-heap predicate, allocated receiver, constructor poststates and receiver-preserving boundary relation. Establishment and preservation are explicit structure hypotheses; reachable uses finite reflexive-transitive closure.",
+      "limitations": "Boundary completeness is a client obligation: callbacks and alias interference must be included. No compiled reachable-valid witness or hidden-instruction, liveness or concurrency claim is registered.",
+      "catalogHash": "7c073cf3d2c971f179b6bb761533a4bfdff53363a0faa174e00e083d0a62e779"
+    },
+    "urn:csabs:concept/BehavioralSubtyping": {
+      "kind": "model",
+      "symbol": "Catalog.OOP.BehavioralSubtyping",
+      "module": "Catalog.ObjectOrientation",
+      "scope": "partial",
+      "mapping": "Explicit legal-state, method-coverage, pre/post and history-constraint implications under an abstraction function and method map. Fixed input/outcome carriers encode already-compatible signatures; historyPair records all admissible ordered history pairs.",
+      "limitations": "The semantic implications are modeled, but connection of historyPair to actual executions, general signature adapters, full trace/contextual substitutability and total correctness remain obligations. No nominal inheritance implication or subtype theorem is asserted.",
+      "catalogHash": "7dc3c733e475ab17c7effe475148b3d141a8036f31ed4b275e566df429a43313"
+    },
+    "urn:csabs:concept/HeapSeparation": {
+      "kind": "model",
+      "symbol": "Catalog.OOP.HeapSeparation",
+      "module": "Catalog.ObjectOrientation",
+      "scope": "model",
+      "mapping": "Extensional HeapStore(V) predicates; disjoint domains, relational graph of partial merge, exact emp/singleton and existential star splitting. Model equality of predicates by pointwise logical equivalence.",
+      "limitations": "Selected mathematical interface, with merge given relationally. No general frame rule, local operational semantics, fractional permissions, concurrent rule or automatically proved separation laws is registered.",
+      "catalogHash": "23213e55965814728a11b342e143a5b7abbe13d9e3e5a62cd3e523cc61d69ebc"
+    },
+    "urn:csabs:concept/TemplateMetafunction": {
+      "kind": "model",
+      "symbol": "Catalog.TMP.TemplateMetafunction",
+      "module": "Catalog.TemplateMetaprogramming",
+      "scope": "model",
+      "mapping": "Kind-correct List Arg to Option Result in a fixed environment; TemplateArgument supplies disjoint type/value/template tags; partial composition is explicit. Instantiate carriers with canonical argument identities and result observations.",
+      "limitations": "The function is a mathematical interpretation, not a decision procedure for compilation, equivalence, instantiation termination or compiler limits. Apply only after target-environment and canonical-argument mapping.",
+      "catalogHash": "ce7e68410705fab351efb70b42479d51175e0d2ffb2db54a8e497f5713c24955"
+    },
+    "urn:csabs:concept/TemplateSpecialization": {
+      "kind": "model",
+      "symbol": "Catalog.TMP.TemplateSpecialization",
+      "module": "Catalog.TemplateMetaprogramming",
+      "scope": "model",
+      "mapping": "Finite matching set, explicit irreflexive/transitive more-specialized relation, winner predicate and Primary/Chosen/Ambiguous selection.",
+      "limitations": "Deduction, associated constraints, standard C++ partial ordering and visibility are supplied adapters, not inferred from match-set inclusion. No general compiler or chosen-body correctness theorem is registered.",
+      "catalogHash": "318570e773f17cd04902f2ce13d9c6efa35944f2c0f86147923bb75b1bed22a0"
+    },
+    "urn:csabs:concept/TemplateSubstitution": {
+      "kind": "model",
+      "symbol": "Catalog.TMP.TemplateSubstitution",
+      "module": "Catalog.TemplateMetaprogramming",
+      "scope": "partial",
+      "mapping": "Ordered Continue/ImmediateInvalid/RequiredHardError events with a stopping scan; a supplied frontend connects environment, substitution and syntax to events and a successful artifact.",
+      "limitations": "Actual syntactic substitution, lexical event generation, access checking and immediate-context/side-effect classification remain frontend obligations. IFNDR cases are excluded. No complete C++ deduction algorithm or SFINAE theorem is registered.",
+      "catalogHash": "fc65eefbe45d865abade708b26def44661059b4f02e060fe05f4b778cb3de8c0"
+    },
+    "urn:csabs:concept/TemplateConstraint": {
+      "kind": "model",
+      "symbol": "Catalog.TMP.TemplateConstraint",
+      "module": "Catalog.TemplateMetaprogramming",
+      "scope": "partial",
+      "mapping": "Atom/conjunction/disjunction trees, three-way short-circuit satisfaction, DNF/CNF clauses and identity-based subsumption. Atom equality must encode resolved source-expression origin and parameter mappings.",
+      "limitations": "Actual C++ normalization, argument substitution, atomic equivalence and constant-expression checking remain adapters. Invalid normalization/IFNDR and later-standard fold-expanded subsumption are outside the profile.",
+      "catalogHash": "57d34d6328545a4bed283c17577ac17c9a3a75532c75cef239c44c3586fcc1a2"
+    },
+    "urn:csabs:concept/TemplateParameterPack": {
+      "kind": "model",
+      "symbol": "Catalog.TMP.TemplateParameterPack",
+      "module": "Catalog.TemplateMetaprogramming",
+      "scope": "model",
+      "mapping": "List of canonical same-kind arguments; map expansion, length-checked zip expansion and explicit left/right binary fold trees.",
+      "limitations": "Kind compatibility and actual pattern validity must be established before using the pure pattern functions. Unary empty-fold typing and language grammar are stated in the catalog but not separate Lean wrappers; no evaluation-order or universal compiler equivalence claim.",
+      "catalogHash": "0adfffdbb4abf6ede1306ce575ecc5d5f37be7493b8327efee3ef92bd783fd1e"
+    },
+    "urn:csabs:concept/DependentNameLookup": {
+      "kind": "model",
+      "symbol": "Catalog.TMP.DependentNameLookup",
+      "module": "Catalog.TemplateMetaprogramming",
+      "scope": "model",
+      "mapping": "Finite ordinary-definition, ADL-definition and ADL-instantiation candidate sets with an explicit ADL-enable guard; candidates uses the guarded union.",
+      "limitations": "Classification of dependent names, admissible ADL sets/guard and visibility are supplied frontend facts. Qualified/member lookup, modules, cross-TU consistency and overload ranking are excluded; no complete name resolver is claimed.",
+      "catalogHash": "a0fc6e481724419242a6237a8db002bfbc3c6365098310725d9dd87108825e2c"
+    },
+    "urn:csabs:concept/CompileTimeEvaluation": {
+      "kind": "model",
+      "symbol": "Catalog.TMP.CompileTimeEvaluation",
+      "module": "Catalog.TemplateMetaprogramming",
+      "scope": "model",
+      "mapping": "Closed Lit/Add/Mul/Boolean-branch syntax and an Option Int evaluator with per-step signed range checks. Instantiate width at least 16 and a signed type of rank at least int; literal leaves are in range.",
+      "limitations": "Not a complete constexpr machine: no calls, recursion, pointers, state, promotions or required-context classification. Exclude malformed literals and record target integer width and compiler resource limits. No new law/theorem witness is registered.",
+      "catalogHash": "cba64ce9ddb1f25601d8f6d954f48c1517087f6e1a2edb6a806de95f467dbef8"
+    },
+    "urn:csabs:concept/GenericSignature": {
+      "kind": "model",
+      "symbol": "Catalog.Generics.GenericSignature",
+      "module": "Catalog.GenericProgramming",
+      "scope": "model",
+      "mapping": "Finite ordered name/kind pairs with distinct names; kindOf supplies canonical argument tags. kindCorrect uses pointwise Forall₂, including exact length.",
+      "limitations": "Language-specific kind compatibility, bounds, defaults and pack flattening are separate; no universal generic type system or theorem witness.",
+      "catalogHash": "79d59f28b5b71f85fb6d3619f7f32a2d9983494179cb72347b9990e3c04a294d"
+    },
+    "urn:csabs:concept/GenericArgumentBinding": {
+      "kind": "model",
+      "symbol": "Catalog.Generics.GenericArgumentBinding",
+      "module": "Catalog.GenericProgramming",
+      "scope": "model",
+      "mapping": "Resolved actual slots and prefix-dependent defaults; bind traverses declaration slots, gives explicit actuals precedence, checks kinds and appends one result per slot. Decidable kind equality is an implementation convention.",
+      "limitations": "Association syntax, duplicate/unknown-name rejection, inference and full simultaneous bounds are preceding/following language adapters. Selected ordered-default profile only.",
+      "catalogHash": "333fae88c1e7531bd363a6993c9e84642bef8b8f924c3127d8eb0c39a1eeaf32"
+    },
+    "urn:csabs:concept/ParametricInstantiation": {
+      "kind": "model",
+      "symbol": "Catalog.Generics.ParametricInstantiation",
+      "module": "Catalog.GenericProgramming",
+      "scope": "partial",
+      "mapping": "Explicit signature, admissibility and realization relation with simultaneous name/argument zip. Instantiation remains a relation, allowing fresh/generative instance identities.",
+      "limitations": "Actual syntax substitution, binder hygiene, language body semantics and realization/instance identity are supplied. A complete shared substitution calculus is not implemented.",
+      "catalogHash": "aa3bafa38b9b07a173d210054bfdb628ac1f37d6cdb7ce4ea5fa46bc853e9112"
+    },
+    "urn:csabs:concept/JavaParameterizedType": {
+      "kind": "model",
+      "symbol": "Catalog.Generics.JavaParameterizedType",
+      "module": "Catalog.GenericProgramming",
+      "scope": "partial",
+      "mapping": "Well-formed declaration, arity, reference/wildcard forms, capture-adjusted bounds, member substitution and reflexive-transitive closure of a supplied nominal direct-supertype relation.",
+      "limitations": "Faithful Java declaration checks, capture, full member accessibility and JLS direct-supertype/containment rules remain adapters; this is not a subtype checker or universal behavioral guarantee.",
+      "catalogHash": "293a18dc95ee0849143a4194da817c4f9be4702333aee7024ac1a994d120f78f"
+    },
+    "urn:csabs:concept/JavaWildcardCapture": {
+      "kind": "model",
+      "symbol": "Catalog.Generics.JavaWildcardCapture",
+      "module": "Catalog.GenericProgramming",
+      "scope": "partial",
+      "mapping": "Exact/unbounded/upper/lower argument constructors; per-slot capture bounds, simultaneous declared-bound adapter, fresh distinct variables and nonrecursive outer-argument processing.",
+      "limitations": "Resolved nominal identities, intersection validity, well-formed input bounds and Java scoping remain frontend obligations. Capture is relational, not a unique runtime conversion.",
+      "catalogHash": "d08dd1a0d63b3e8502f7b4f8353b27296ea19050b7fd929747ad73370aed13c8"
+    },
+    "urn:csabs:concept/JavaTypeErasure": {
+      "kind": "model",
+      "symbol": "Catalog.Generics.JavaTypeErasure",
+      "module": "Catalog.GenericProgramming",
+      "scope": "partial",
+      "mapping": "Named/parameterized/array/variable type core, plus an unbounded wildcard marker used only inside arguments; fuel-bounded erasure discards argument lists and follows the supplied leftmost variable bound.",
+      "limitations": "Nested-owner typing, reifiability and signature translation are not encoded; adequate fuel and terminating well-formed bound chains require justification. Fuel exhaustion does not establish invalidity. No JVM translation or erasure theorem witness.",
+      "catalogHash": "e6d9bf03a0ce6afcf4545dc925098c149723978e3e88222436c8027cea97fa33"
+    },
+    "urn:csabs:concept/JavaTypeInference": {
+      "kind": "model",
+      "symbol": "Catalog.Generics.JavaTypeInference",
+      "module": "Catalog.GenericProgramming",
+      "scope": "partial",
+      "mapping": "Assignments to proper in-scope types, supplied interpreted constraints and an explicitly sound partial resolver; solutions is the all-obligations predicate.",
+      "limitations": "Actual JLS reduction, incorporation, applicability/target stages, capture/boxing/lambda rules and resolution algorithms are not implemented. Soundness is an explicit structure hypothesis, not proof about javac or arbitrary resolver code.",
+      "catalogHash": "310ac39fb47866fd6ef2e91e3f34ae7cbc6bd25ecb27431a684506dcfbc6cec2"
+    },
+    "urn:csabs:concept/VHDLGenericInterface": {
+      "kind": "model",
+      "symbol": "Catalog.Generics.VHDLGenericInterface",
+      "module": "Catalog.GenericProgramming",
+      "scope": "model",
+      "mapping": "Constant/type/subprogram/package kinds; finite distinct signature, compatibility/default obligations and whole-formal positional-prefix/named association normalizer. Unknown/repeated targets and late positional associations are rejected.",
+      "limitations": "Selected whole-formal interface only. Subtype/type-category/profile/package matching, default expressions and anonymous generic type associations require language adapters; syntax normalization does not execute elaboration.",
+      "catalogHash": "59175d2c5dd4b935b2469f9a635cbf7cd3a1d1e66e04fb3965938e4322e30494"
+    },
+    "urn:csabs:concept/VHDLGenericElaboration": {
+      "kind": "model",
+      "symbol": "Catalog.Generics.VHDLGenericElaboration",
+      "module": "Catalog.GenericProgramming",
+      "scope": "partial",
+      "mapping": "Ordered event execution with partial environment steps and final instance construction; separate staticness predicates and finite list-valued for/if generation.",
+      "limitations": "Events must encode declaration order and applicable header phases; concrete VHDL evaluation, conformance, staticness, configurations, package identity and simulation are not implemented. GHDL examples require separate tool evidence.",
+      "catalogHash": "e34a689417f4eb50a189ac977ebab30b660e7073fd42a163e7c7c8a36b214765"
     }
   }
 }

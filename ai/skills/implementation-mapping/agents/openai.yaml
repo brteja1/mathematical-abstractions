@@ -1,0 +1,4 @@
+interface:
+  display_name: "Implementation Mapping"
+  short_description: "Map catalog specifications to concrete software contracts"
+  default_prompt: "Use $implementation-mapping to map this catalog-based specification to the target API and record implementation obligations and unresolved choices."

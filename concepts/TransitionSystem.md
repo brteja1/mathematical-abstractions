@@ -23,9 +23,11 @@ States, initial states, and a transition relation describe allowed executions.
 - [Action-labelled transition system with initial states](LabelledTransitionSystem.md) — `specializationOf`
 - [Liveness Property](LivenessProperty.md) — `requiresConcept`
 - [Markov chain (finite-state, discrete-time, time-homogeneous)](MarkovChain.md) — `relatedConcept`
+- [Visible-state object invariant protocol](ObjectInvariant.md) — `requiresConcept`
 - [Safety Property](SafetyProperty.md) — `requiresConcept`
 - [Simulation](Simulation.md) — `requiresConcept`
 - [Deterministic one-tape Turing machine](TuringMachine.md) — `requiresConcept`
+- [VHDL generic elaboration and static structural generation](VHDLGenericElaboration.md) — `relatedConcept`
 
 ## Interface and scope
 

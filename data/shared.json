@@ -1036,6 +1036,268 @@
       "type": "Category",
       "label": "Behavioral models",
       "parentCategory": "urn:csabs:category/concurrency"
+    },
+    {
+      "id": "urn:csabs:source/oop-jls25-objects",
+      "type": "Source",
+      "label": "Java Language Specification, Java SE 25, §4.3.1 Objects",
+      "url": "https://docs.oracle.com/javase/specs/jls/se25/html/jls-4.html#jls-4.3.1",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-definition-and-semantics-reference"
+    },
+    {
+      "id": "urn:csabs:source/oop-featherweight-java",
+      "type": "Source",
+      "label": "Igarashi, Pierce and Wadler: Featherweight Java: A Minimal Core Calculus for Java and GJ",
+      "url": "https://www.cis.upenn.edu/~bcpierce/papers/fj-toplas.pdf",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-definition-and-semantics-reference"
+    },
+    {
+      "id": "urn:csabs:source/oop-jml-postconditions",
+      "type": "Source",
+      "label": "OpenJML tutorial: Postconditions",
+      "url": "https://www.openjml.org/tutorial/Postconditions",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-definition-and-semantics-reference"
+    },
+    {
+      "id": "urn:csabs:source/oop-jml-exceptions",
+      "type": "Source",
+      "label": "OpenJML tutorial: Specifying Exceptions",
+      "url": "https://www.openjml.org/tutorial/SpecifyingExceptions",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-definition-and-semantics-reference"
+    },
+    {
+      "id": "urn:csabs:source/oop-jml-frames",
+      "type": "Source",
+      "label": "OpenJML tutorial: Frame Conditions",
+      "url": "https://www.openjml.org/tutorial/FrameConditions",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-definition-and-semantics-reference"
+    },
+    {
+      "id": "urn:csabs:source/oop-jml-invariants",
+      "type": "Source",
+      "label": "OpenJML tutorial: Invariants",
+      "url": "https://www.openjml.org/tutorial/Invariants",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-definition-and-semantics-reference"
+    },
+    {
+      "id": "urn:csabs:source/oop-liskov-wing",
+      "type": "Source",
+      "label": "Liskov and Wing: A Behavioral Notion of Subtyping, TOPLAS 16(6), 1811–1841, 1994",
+      "url": "https://www.cs.cmu.edu/~wing/publications/LiskovWing94.pdf",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-definition-and-semantics-reference"
+    },
+    {
+      "id": "urn:csabs:source/oop-slf-separation",
+      "type": "Source",
+      "label": "Software Foundations, Separation Logic Foundations: Hprop — Heap Predicates",
+      "url": "https://softwarefoundations.cis.upenn.edu/slf-current/Hprop.html",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-definition-and-semantics-reference"
+    },
+    {
+      "id": "urn:csabs:category/object-oriented-semantics",
+      "type": "Category",
+      "label": "Object-oriented semantics",
+      "parentCategory": "urn:csabs:category/programming-semantics"
+    },
+    {
+      "id": "urn:csabs:source/cpp20-n4861-temp.arg",
+      "type": "Source",
+      "label": "C++20 working draft N4861 [temp.arg] (HTML rendering)",
+      "url": "https://timsong-cpp.github.io/cppwp/n4861/temp.arg",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-primary-working-draft-clause"
+    },
+    {
+      "id": "urn:csabs:source/cpp20-n4861-temp.type",
+      "type": "Source",
+      "label": "C++20 working draft N4861 [temp.type] (HTML rendering)",
+      "url": "https://timsong-cpp.github.io/cppwp/n4861/temp.type",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-primary-working-draft-clause"
+    },
+    {
+      "id": "urn:csabs:source/cpp20-n4861-temp.inst",
+      "type": "Source",
+      "label": "C++20 working draft N4861 [temp.inst] (HTML rendering)",
+      "url": "https://timsong-cpp.github.io/cppwp/n4861/temp.inst",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-primary-working-draft-clause"
+    },
+    {
+      "id": "urn:csabs:source/cpp20-n4861-temp.class.spec.match",
+      "type": "Source",
+      "label": "C++20 working draft N4861 [temp.class.spec.match] (HTML rendering)",
+      "url": "https://timsong-cpp.github.io/cppwp/n4861/temp.class.spec.match",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-primary-working-draft-clause"
+    },
+    {
+      "id": "urn:csabs:source/cpp20-n4861-temp.class.order",
+      "type": "Source",
+      "label": "C++20 working draft N4861 [temp.class.order] (HTML rendering)",
+      "url": "https://timsong-cpp.github.io/cppwp/n4861/temp.class.order",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-primary-working-draft-clause"
+    },
+    {
+      "id": "urn:csabs:source/cpp20-n4861-temp.deduct",
+      "type": "Source",
+      "label": "C++20 working draft N4861 [temp.deduct] (HTML rendering)",
+      "url": "https://timsong-cpp.github.io/cppwp/n4861/temp.deduct",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-primary-working-draft-clause"
+    },
+    {
+      "id": "urn:csabs:source/cpp20-n4861-temp.constr.atomic",
+      "type": "Source",
+      "label": "C++20 working draft N4861 [temp.constr.atomic] (HTML rendering)",
+      "url": "https://timsong-cpp.github.io/cppwp/n4861/temp.constr.atomic",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-primary-working-draft-clause"
+    },
+    {
+      "id": "urn:csabs:source/cpp20-n4861-temp.constr.normal",
+      "type": "Source",
+      "label": "C++20 working draft N4861 [temp.constr.normal] (HTML rendering)",
+      "url": "https://timsong-cpp.github.io/cppwp/n4861/temp.constr.normal",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-primary-working-draft-clause"
+    },
+    {
+      "id": "urn:csabs:source/cpp20-n4861-temp.constr.order",
+      "type": "Source",
+      "label": "C++20 working draft N4861 [temp.constr.order] (HTML rendering)",
+      "url": "https://timsong-cpp.github.io/cppwp/n4861/temp.constr.order",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-primary-working-draft-clause"
+    },
+    {
+      "id": "urn:csabs:source/cpp20-n4861-temp.constr.op",
+      "type": "Source",
+      "label": "C++20 working draft N4861 [temp.constr.op] (HTML rendering)",
+      "url": "https://timsong-cpp.github.io/cppwp/n4861/temp.constr.op",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-primary-working-draft-clause"
+    },
+    {
+      "id": "urn:csabs:source/cpp20-n4861-temp.variadic",
+      "type": "Source",
+      "label": "C++20 working draft N4861 [temp.variadic] (HTML rendering)",
+      "url": "https://timsong-cpp.github.io/cppwp/n4861/temp.variadic",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-primary-working-draft-clause"
+    },
+    {
+      "id": "urn:csabs:source/cpp20-n4861-temp.dep.candidate",
+      "type": "Source",
+      "label": "C++20 working draft N4861 [temp.dep.candidate] (HTML rendering)",
+      "url": "https://timsong-cpp.github.io/cppwp/n4861/temp.dep.candidate",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-primary-working-draft-clause"
+    },
+    {
+      "id": "urn:csabs:source/cpp20-n4861-temp.res",
+      "type": "Source",
+      "label": "C++20 working draft N4861 [temp.res] (HTML rendering)",
+      "url": "https://timsong-cpp.github.io/cppwp/n4861/temp.res",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-primary-working-draft-clause"
+    },
+    {
+      "id": "urn:csabs:source/cpp20-n4861-expr.const",
+      "type": "Source",
+      "label": "C++20 working draft N4861 [expr.const] (HTML rendering)",
+      "url": "https://timsong-cpp.github.io/cppwp/n4861/expr.const",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-primary-working-draft-clause"
+    },
+    {
+      "id": "urn:csabs:source/cpp20-n4861-expr.cond",
+      "type": "Source",
+      "label": "C++20 working draft N4861 [expr.cond] (HTML rendering)",
+      "url": "https://timsong-cpp.github.io/cppwp/n4861/expr.cond",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-primary-working-draft-clause"
+    },
+    {
+      "id": "urn:csabs:source/cpp20-n4861-basic.fundamental",
+      "type": "Source",
+      "label": "C++20 working draft N4861 [basic.fundamental] (HTML rendering)",
+      "url": "https://timsong-cpp.github.io/cppwp/n4861/basic.fundamental",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-primary-working-draft-clause"
+    },
+    {
+      "id": "urn:csabs:source/cpp20-n4861-dcl.constexpr",
+      "type": "Source",
+      "label": "C++20 working draft N4861 [dcl.constexpr] (HTML rendering)",
+      "url": "https://timsong-cpp.github.io/cppwp/n4861/dcl.constexpr",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-primary-working-draft-clause"
+    },
+    {
+      "id": "urn:csabs:category/template-metaprogramming",
+      "type": "Category",
+      "label": "Template metaprogramming",
+      "parentCategory": "urn:csabs:category/generic-programming"
+    },
+    {
+      "id": "urn:csabs:source/generics-jls25-types",
+      "type": "Source",
+      "label": "Java Language Specification, Java SE 25, §§4.4–4.10: generic types, erasure and subtyping",
+      "url": "https://docs.oracle.com/javase/specs/jls/se25/html/jls-4.html",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-primary-language-specification"
+    },
+    {
+      "id": "urn:csabs:source/generics-jls25-capture",
+      "type": "Source",
+      "label": "Java Language Specification, Java SE 25, §5.1.10: Capture Conversion",
+      "url": "https://docs.oracle.com/javase/specs/jls/se25/html/jls-5.html#jls-5.1.10",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-primary-language-specification"
+    },
+    {
+      "id": "urn:csabs:source/generics-jls25-inference",
+      "type": "Source",
+      "label": "Java Language Specification, Java SE 25, Chapter 18: Type Inference",
+      "url": "https://docs.oracle.com/javase/specs/jls/se25/html/jls-18.html",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-primary-language-specification"
+    },
+    {
+      "id": "urn:csabs:source/generics-vhdl2019",
+      "type": "Source",
+      "label": "IEEE Std 1076-2019: VHDL Language Reference Manual, generic interfaces, staticness and elaboration",
+      "url": "https://www.0x04.net/~mwk/vstd/ieee-1076-2019.pdf",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "consulted-primary-language-specification"
+    },
+    {
+      "id": "urn:csabs:category/generic-programming",
+      "type": "Category",
+      "label": "Generic programming",
+      "parentCategory": "urn:csabs:category/programming-semantics"
+    },
+    {
+      "id": "urn:csabs:category/java-generics",
+      "type": "Category",
+      "label": "Java generics",
+      "parentCategory": "urn:csabs:category/generic-programming"
+    },
+    {
+      "id": "urn:csabs:category/vhdl-generics",
+      "type": "Category",
+      "label": "VHDL generics",
+      "parentCategory": "urn:csabs:category/generic-programming"
     }
   ]
 }

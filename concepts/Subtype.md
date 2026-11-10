@@ -12,6 +12,11 @@ Values of a carrier A satisfying a fixed predicate P, with evidence irrelevant t
 
 **Prerequisites:** [Set](Set.md), [Predicate Logic](PredicateLogic.md)
 
+## Backlinks
+
+- [Behavioral subtyping with explicit history constraints](BehavioralSubtyping.md) — `relatedConcept`
+- [Java wildcard capture with fresh bounded variables](JavaWildcardCapture.md) — `relatedConcept`
+
 ## Interface and scope
 
 **axiomBasis:** value(pack(a,h))=a; ∀x:Subtype(A,P), P(value(x)); x=y ⇔ value(x)=value(y)

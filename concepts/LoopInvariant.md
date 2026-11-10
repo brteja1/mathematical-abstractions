@@ -12,6 +12,10 @@ A predicate true before a loop and preserved whenever its body executes; termina
 
 **Prerequisites:** [Hoare Triple](HoareTriple.md)
 
+## Backlinks
+
+- [Visible-state object invariant protocol](ObjectInvariant.md) — `relatedConcept`
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A predicate true before a loop and preserved whenever its body executes; termination requires a separate argument. Governing rules: The proposed invariant holds before entering the loop. Each normally terminating enabled body execution preserves the invariant.

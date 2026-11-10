@@ -19,6 +19,7 @@ The type of total functions from A to B, with application and abstraction and ex
 - [Dependent function (Pi type)](DependentFunction.md) — `requiresConcept`
 - [Product Type](ProductType.md) — `requiresConcept`
 - [Sum Type](SumType.md) — `requiresConcept`
+- [Ordered template packs and structural expansion](TemplateParameterPack.md) — `requiresConcept`
 
 ## Interface and scope
 

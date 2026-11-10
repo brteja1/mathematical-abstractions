@@ -24,12 +24,19 @@ A finite ordered collection allowing repeated values, equivalently the inductive
 - [Finite fused sequence iterator](FiniteIterator.md) — `requiresConcept`
 - [Finite set collection](FiniteSet.md) — `relatedConcept`
 - [Formal language of finite words](FormalLanguage.md) — `requiresConcept`
+- [Finite kinded generic parameter signature](GenericSignature.md) — `requiresConcept`
 - [Action-labelled transition system with initial states](LabelledTransitionSystem.md) — `requiresConcept`
 - [Ordered collection without duplicates](OrderedSet.md) — `requiresConcept`
 - [Finite labelled property graph (single-valued profile)](PropertyGraph.md) — `requiresConcept`
 - [Finite ordered rose tree](RoseTree.md) — `requiresConcept`
 - [Infinite discrete stream](Stream.md) — `requiresConcept`
+- [Normalized template constraints with atomic identity](TemplateConstraint.md) — `requiresConcept`
+- [Kinded partial template metafunction](TemplateMetafunction.md) — `requiresConcept`
+- [Ordered template packs and structural expansion](TemplateParameterPack.md) — `requiresConcept`
+- [Ordered template packs and structural expansion](TemplateParameterPack.md) — `specializationOf`
+- [Ordered substitution with immediate-context failure](TemplateSubstitution.md) — `requiresConcept`
 - [Finite prefix dictionary](Trie.md) — `requiresConcept`
+- [VHDL generic elaboration and static structural generation](VHDLGenericElaboration.md) — `requiresConcept`
 
 ## Interface and scope
 
