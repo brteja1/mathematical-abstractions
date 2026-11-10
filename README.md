@@ -50,7 +50,7 @@ The [foundational data-model guide](docs/FOUNDATIONAL_DATA_MODELS.md) maps the b
 
 The [logic guide](docs/LOGIC.md) maps propositional and first-order syntax, semantic queries, substitution, natural deduction, normal forms, completeness and compactness, with explicit provenance and formalization limits.
 
-See [agent workflows](docs/AGENT_WORKFLOWS.md) for proof planning and test design, and [AGENTS.md](AGENTS.md) for the catalog's contribution requirements.
+See [agent workflows](docs/AGENT_WORKFLOWS.md) for proof planning, test design and specification consistency reviews, and [AGENTS.md](AGENTS.md) for the catalog's contribution requirements.
 
 ## Query from AI agents
 
@@ -109,6 +109,20 @@ The helper works from other repositories via its absolute path. See the skill's 
 ### Acknowledgment
 
 I would like to thank my colleague, Mr. Devendra Bhave, for introducing me to the technique of using mathematical abstractions to guide software test design.
+
+## AI skill for specification consistency
+
+The [specification-consistency skill](ai/skills/specification-consistency/SKILL.md) guides agents in finding conflicting requirements and impossible operation contracts. It maps specification clauses to catalog definitions and explicit assumptions, then helps agents construct and execute suitable checks. It covers joint satisfiability, required input coverage, vacuous preconditions, and stateful or temporal obligations.
+
+To use it, ask an agent:
+
+> Read `ai/skills/specification-consistency/SKILL.md` and check `path/to/spec.md` for inconsistencies. Report conflicting clause IDs, required scenarios, reproducible evidence, assumptions and unchecked obligations.
+
+Agents can read the skill explicitly or register its directory using their host's skill-discovery mechanism. It reuses the standard-library catalog commands and, when available, the bounded ONTFS retrieval helper. Depending on the specification, checks may use exhaustive finite enumeration, an installed solver/model checker, or Lean. The skill does not install a general-purpose consistency solver.
+
+The [runnable Boolean example](ai/skills/specification-consistency/references/boolean-example.md) uses only Python's standard library. It demonstrates a conflict missed by pairwise checks, an input with no permitted output, and verification of a proposed repair. The [checking and reporting guide](ai/skills/specification-consistency/references/checking-and-reporting.md) explains backend selection and evidence requirements.
+
+Catalog and SHACL validation check structure; semantic consistency requires a justified model and a separate check. Findings distinguish demonstrated conflicts from ambiguities, conditional results and inconclusive searches. A bounded search or a single satisfying instance does not establish that every required input or behavior is supported.
 
 ## Lean formalization
 

@@ -55,6 +55,14 @@ For arithmetic, retrieve the correct concept: exact integers, fixed-width unsign
 
 Run the resulting tests against the actual implementation. Cite the claim IDs and representation assumptions in the test report. A finite set of passing examples or generated cases is not a proof of a universal law.
 
+## Specification consistency
+
+Use the repository-local [specification-consistency skill](../ai/skills/specification-consistency/SKILL.md) to review conflicting requirements and impossible contracts. It guides clause-to-catalog mappings, joint satisfiability, required input coverage and nonvacuity, backend selection, conflict diagnosis and evidence reporting. It includes a runnable exhaustive Boolean example and reuses the existing catalog and bounded ONTFS retrieval tools.
+
+Invoke it by asking an agent to read that skill and check a named specification, for example: “Use `ai/skills/specification-consistency/SKILL.md` to review `path/to/spec.md`; report conflicting clause IDs, required scenarios, runnable evidence and any unchecked obligations.” The folder alone does not register the skill with every agent host.
+
+Keep specification assumptions distinct from catalog laws and agent-added modeling assumptions. Structural validation does not establish satisfiability. A satisfying instance does not ensure every required input has an outcome, and a counterexample to one implementation does not establish specification unrealizability. Report the check's precise scope and preserve normative documents unless edits are requested.
+
 ## Other uses
 
 Use `neighbors` for educational prerequisite navigation and impact analysis. Incoming edges identify explicit dependents; they are not evidence that every possible dependent has been recorded. Use the catalog CLI or ONTFS projection for cross-disciplinary queries; external RDF tools can read the generated ONTFS Turtle projection. Edit concept Markdown records rather than the projection. `specializationOf` means an explicitly described interface specialization, while `requiresConcept` is a retrieval prerequisite and `dependsOn` connects a claim to derivation premises.

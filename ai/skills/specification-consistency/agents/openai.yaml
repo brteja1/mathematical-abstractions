@@ -1,0 +1,4 @@
+interface:
+  display_name: "Specification Consistency"
+  short_description: "Find specification conflicts with mathematical evidence"
+  default_prompt: "Use $specification-consistency to check this specification for conflicting requirements and report reproducible evidence and limitations."
