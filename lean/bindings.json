@@ -2465,6 +2465,60 @@
       "mapping": "Ordered event execution with partial environment steps and final instance construction; separate staticness predicates and finite list-valued for/if generation.",
       "limitations": "Events must encode declaration order and applicable header phases; concrete VHDL evaluation, conformance, staticness, configurations, package identity and simulation are not implemented. GHDL examples require separate tool evidence.",
       "catalogHash": "e34a689417f4eb50a189ac977ebab30b660e7073fd42a163e7c7c8a36b214765"
+    },
+    "urn:csabs:concept/AEAD": {
+      "kind": "model",
+      "symbol": "Catalog.AEADInterface",
+      "module": "Catalog.Cryptography",
+      "scope": "partial",
+      "mapping": "Abstract deterministic seal/open and functional correctness as a structure hypothesis. Option.none denotes FAIL; some empty plaintext remains distinct.",
+      "limitations": "Length domains, byte encoding, nonce histories, failure-release behavior and computational security are not encoded. No registered claim witness.",
+      "catalogHash": "ddbcf09e787c6f492a3f50e98b65c85e09eb4955c6775a5da7fa3b900844aeb5"
+    },
+    "urn:csabs:concept/AES": {
+      "kind": "model",
+      "symbol": "Catalog.AESInterface",
+      "module": "Catalog.Cryptography",
+      "scope": "partial",
+      "mapping": "Supported key width 128/192/256 and a parameterized permutation on 128-bit blocks.",
+      "limitations": "No FIPS round computation, key expansion, field representation or correspondence proof; the supplied permutation is not asserted to be AES.",
+      "catalogHash": "2cabaa3636471a09bd24531d53767c47b1dafb7cc660202b4a9eaa1c73e3790d"
+    },
+    "urn:csabs:concept/AESGCM": {
+      "kind": "model",
+      "symbol": "Catalog.AESGCMInterface",
+      "module": "Catalog.Cryptography",
+      "scope": "partial",
+      "mapping": "Carrier containing the partial AES component interface.",
+      "limitations": "No FIPS algorithm implementation, AES/GCM composition equations, byte wire encoding, authenticated decryption or security proof.",
+      "catalogHash": "1cc84c14929fca107cec95ac49e53f3cdab022e9073c7119e5f9b85741c87e1f"
+    },
+    "urn:csabs:concept/BlockCipher": {
+      "kind": "model",
+      "symbol": "Catalog.BlockCipher",
+      "module": "Catalog.Cryptography",
+      "scope": "model",
+      "mapping": "Key-indexed Equiv on Fin n → Bool, with exact function equality. Require n≥1 and nonempty K at instantiation.",
+      "limitations": "Permutation model only; no key-generation distribution, pseudorandomness, mode or side-channel properties.",
+      "catalogHash": "121c2b11a1861128fd5a33e3431a98f36a9c4a065e3081f12129ef4353dac0d9"
+    },
+    "urn:csabs:concept/GCM": {
+      "kind": "model",
+      "symbol": "Catalog.GCMInterface",
+      "module": "Catalog.Cryptography",
+      "scope": "partial",
+      "mapping": "Carrier for a parameterized 128-bit keyed block permutation.",
+      "limitations": "Counter transform, GHASH composition, nonce/tag lengths, length blocks, tag verification, uniqueness discipline and GCM claims remain unformalized.",
+      "catalogHash": "d2ee75ecc2105b0ca77a2d5bcec45201e7003aec3d8a1cc0babbff448ccfd3c4"
+    },
+    "urn:csabs:concept/GHASH": {
+      "kind": "model",
+      "symbol": "Catalog.GHASHInterface",
+      "module": "Catalog.Cryptography",
+      "scope": "partial",
+      "mapping": "128-bit subkey, parameterized multiplication, and XOR Horner fold over an explicit head plus tail (nonempty sequence).",
+      "limitations": "Multiplication has no field-law or polynomial-encoding constraint. No verified NIST multiplication, polynomial theorem or security bound.",
+      "catalogHash": "e75f80f859ffec0842e7a883f03ada927f7b50f0c3f850b8e8395e1c675c9644"
     }
   }
 }

@@ -16,6 +16,11 @@ A field with finitely many elements, also called a Galois field.
 
 **Related concepts:** [Group](Group.md), [Modular Integer](ModularInteger.md)
 
+## Backlinks
+
+- [Advanced Encryption Standard (AES)](AES.md) — `requiresConcept`
+- [GHASH polynomial accumulator](GHASH.md) — `requiresConcept`
+
 ## Interface and scope
 
 **axiomBasis:** The explicitly linked field laws (commutative unital ring, 0 ≠ 1, inverses for nonzero elements) and finite carrier. Prime-power order is derived, not an extra axiom.

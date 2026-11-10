@@ -14,6 +14,7 @@ A finite ordered collection allowing repeated values, equivalently the inductive
 
 ## Backlinks
 
+- [Nonce-based authenticated encryption with associated data](AEAD.md) — `requiresConcept`
 - [Fixed-length array](Array.md) — `relatedConcept`
 - [B-tree (balanced multiway search tree)](BTree.md) — `requiresConcept`
 - [Finite complete binary min-heap](BinaryHeap.md) — `requiresConcept`
@@ -24,6 +25,7 @@ A finite ordered collection allowing repeated values, equivalently the inductive
 - [Finite fused sequence iterator](FiniteIterator.md) — `requiresConcept`
 - [Finite set collection](FiniteSet.md) — `relatedConcept`
 - [Formal language of finite words](FormalLanguage.md) — `requiresConcept`
+- [GHASH polynomial accumulator](GHASH.md) — `requiresConcept`
 - [Finite kinded generic parameter signature](GenericSignature.md) — `requiresConcept`
 - [Action-labelled transition system with initial states](LabelledTransitionSystem.md) — `requiresConcept`
 - [Ordered collection without duplicates](OrderedSet.md) — `requiresConcept`

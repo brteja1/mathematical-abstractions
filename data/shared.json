@@ -1298,6 +1298,41 @@
       "type": "Category",
       "label": "VHDL generics",
       "parentCategory": "urn:csabs:category/generic-programming"
+    },
+    {
+      "id": "urn:csabs:category/cryptography",
+      "type": "Category",
+      "label": "Cryptography"
+    },
+    {
+      "id": "urn:csabs:category/symmetric-cryptography",
+      "type": "Category",
+      "label": "Symmetric cryptography",
+      "parentCategory": "urn:csabs:category/cryptography"
+    },
+    {
+      "id": "urn:csabs:source/nist-fips197-upd1",
+      "type": "Source",
+      "label": "NIST FIPS 197-upd1: Advanced Encryption Standard (2023 editorial update)",
+      "url": "https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197-upd1.pdf",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "primary normative specification"
+    },
+    {
+      "id": "urn:csabs:source/nist-sp800-38d",
+      "type": "Source",
+      "label": "NIST SP 800-38D: Galois/Counter Mode (GCM) and GMAC (2007)",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "primary normative specification"
+    },
+    {
+      "id": "urn:csabs:source/rfc5116",
+      "type": "Source",
+      "label": "RFC 5116: An Interface and Algorithms for Authenticated Encryption",
+      "url": "https://www.rfc-editor.org/rfc/rfc5116.html",
+      "accessedOn": "2026-11-10",
+      "sourceRole": "primary normative specification"
     }
   ]
 }

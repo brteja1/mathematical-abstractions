@@ -12,6 +12,11 @@ A sequence of exactly w bits, with bitwise operations and optional signed or uns
 
 **Related concepts:** [Fixed-width unsigned integer](FixedWidthUnsignedInteger.md), [Fixed-width signed integer](FixedWidthSignedInteger.md)
 
+## Backlinks
+
+- [Keyed block cipher](BlockCipher.md) — `requiresConcept`
+- [GHASH polynomial accumulator](GHASH.md) — `requiresConcept`
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A sequence of exactly w bits, with bitwise operations and optional signed or unsigned interpretations for arithmetic and comparison. Governing rules: Every value contains exactly w bits. Bit vectors are fixed-length maps into two bit values. Bitwise Boolean operations are defined independently at every index. Logical shifts use zero fill and return zero for counts at least the width; this convention is not a programming-language shift rule.

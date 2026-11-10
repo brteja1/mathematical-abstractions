@@ -4,6 +4,9 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 
 | Concept | Operations | Defining rules | Laws | Theorems | Basis kind |
 | --- | ---: | ---: | ---: | ---: | --- |
+| AEAD | 2 | 2 | 0 | 1 | defined-structure |
+| AES | 2 | 1 | 1 | 0 | defined-structure |
+| AESGCM | 4 | 2 | 0 | 1 | defined-structure |
 | ArbitraryPrecisionInteger | 3 | 1 | 1 | 1 | defined-structure |
 | Array | 2 | 4 | 2 | 1 | defined-structure |
 | BTree | 6 | 6 | 2 | 1 | extensional-structural-definition |
@@ -20,6 +23,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | BipartiteGraph | 3 | 4 | 1 | 1 | extensional-structural-definition |
 | Bisimulation | 1 | 1 | 1 | 1 | defined-structure |
 | BitVector | 5 | 4 | 0 | 1 | defined-structure |
+| BlockCipher | 2 | 1 | 0 | 1 | defined-structure |
 | BooleanAlgebra | 3 | 8 | 1 | 1 | axiomatic-structure |
 | BooleanType | 4 | 3 | 1 | 1 | extensional-structural-definition |
 | CandidateKey | 2 | 1 | 2 | 2 | defined-structure |
@@ -64,6 +68,8 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | Function | 2 | 5 | 2 | 2 | defined-structure |
 | FunctionType | 2 | 3 | 0 | 1 | extensional-type-theory |
 | FunctionalDependency | 3 | 3 | 1 | 3 | defined-structure |
+| GCM | 4 | 4 | 0 | 2 | defined-structure |
+| GHASH | 2 | 2 | 0 | 1 | defined-structure |
 | GaloisConnection | 2 | 1 | 1 | 1 | defined-structure |
 | GenericArgumentBinding | 2 | 2 | 2 | 0 | extensional-structural-definition |
 | GenericSignature | 2 | 2 | 2 | 0 | extensional-structural-definition |
@@ -179,6 +185,6 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | WeightedDirectedGraph | 3 | 2 | 1 | 1 | extensional-structural-definition |
 | WellFoundedRelation | 1 | 1 | 1 | 1 | defined-structure |
 
-174 of 174 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
+180 of 180 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
 
 Use `ruleRole` to distinguish foundational axioms, structure constraints, and defining equations. Use `basisScope` for interface boundaries. Alternate language policies, intensional equality, IEEE payload/trap details, and formal proof artifacts require further formalization.

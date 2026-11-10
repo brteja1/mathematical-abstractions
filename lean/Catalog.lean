@@ -26,3 +26,4 @@ public import Catalog.Concurrency
 public import Catalog.ObjectOrientation
 public import Catalog.TemplateMetaprogramming
 public import Catalog.GenericProgramming
+public import Catalog.Cryptography

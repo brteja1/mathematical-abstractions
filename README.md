@@ -4,7 +4,9 @@ A knowledge graph of mathematical abstractions for modeling software, developing
 
 Start with the [concept index](CONCEPTS.md), explore the [interactive atlas](https://brteja1.github.io/mathematical-abstractions/), or query selected records with Python. Examples include [groups](concepts/Group.md), [binary trees](concepts/BinaryTree.md), [probability spaces](concepts/ProbabilitySpace.md), and [linearizability](concepts/Linearizability.md).
 
-The catalog spans foundations, types, logic, algebra, order, combinatorics, probability, measure theory, topology, geometry, linear algebra, numeric computation, data structures, databases, programming semantics and concurrency. Coverage grows through explicit definitions and sourced claims rather than an assumption that any subject is complete.
+The catalog spans foundations, types, logic, algebra, order, combinatorics, probability, measure theory, topology, geometry, linear algebra, numeric computation, data structures, databases, programming semantics, concurrency and cryptography. Coverage grows through explicit definitions and sourced claims rather than an assumption that any subject is complete.
+
+Cryptography entries connect [block ciphers](concepts/BlockCipher.md), [AES](concepts/AES.md), [AEAD](concepts/AEAD.md), [GHASH](concepts/GHASH.md), [GCM](concepts/GCM.md) and [AES-GCM](concepts/AESGCM.md). The GCM records select 96-bit nonces and 128-bit tags, with explicit byte limits, nonce obligations and failure semantics. Functional round-trip results do not establish cryptographic security. See the [scope and source notes](docs/CRYPTOGRAPHY.md).
 
 ## What each concept records
 

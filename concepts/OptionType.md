@@ -16,6 +16,7 @@ A value that is either absent or a present payload, using a tag to distinguish a
 
 ## Backlinks
 
+- [Nonce-based authenticated encryption with associated data](AEAD.md) — `requiresConcept`
 - [Finite ordered binary tree with node labels](BinaryTree.md) — `requiresConcept`
 - [Nonempty bounded closed interval](ClosedInterval.md) — `requiresConcept`
 - [Finite fused sequence iterator](FiniteIterator.md) — `requiresConcept`

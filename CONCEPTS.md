@@ -58,6 +58,14 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 - **Counting and induction**
   - [Pigeonhole Principle](concepts/PigeonholePrinciple.md)
   - [Structural Induction](concepts/StructuralInduction.md)
+- **Cryptography**
+  - **Symmetric cryptography**
+    - [Nonce-based authenticated encryption with associated data](concepts/AEAD.md)
+    - [Advanced Encryption Standard (AES)](concepts/AES.md)
+    - [AES-GCM (96-bit nonce, 128-bit tag profile)](concepts/AESGCM.md)
+    - [Keyed block cipher](concepts/BlockCipher.md)
+    - [Galois/Counter Mode (96-bit IV, 128-bit tag profile)](concepts/GCM.md)
+    - [GHASH polynomial accumulator](concepts/GHASH.md)
 - **Data structures**
   - **Connectivity structures**
     - [Union Find (disjoint-set union with representatives)](concepts/DisjointSet.md)
@@ -260,6 +268,9 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 
 | Concept | Categories |
 | --- | --- |
+| [Nonce-based authenticated encryption with associated data](concepts/AEAD.md) | Cryptography → Symmetric cryptography |
+| [Advanced Encryption Standard (AES)](concepts/AES.md) | Cryptography → Symmetric cryptography |
+| [AES-GCM (96-bit nonce, 128-bit tag profile)](concepts/AESGCM.md) | Cryptography → Symmetric cryptography |
 | [Arbitrary Precision Integer](concepts/ArbitraryPrecisionInteger.md) | Numeric computation |
 | [Fixed-length array](concepts/Array.md) | Data structures → Sequential collections |
 | [B-tree (balanced multiway search tree)](concepts/BTree.md) | Data structures → Tree structures |
@@ -276,6 +287,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Finite simple graph with chosen bipartition](concepts/BipartiteGraph.md) | Graph theory |
 | [Bisimulation](concepts/Bisimulation.md) | Programming-language semantics, Behavior and transition systems |
 | [Fixed-width bit vector](concepts/BitVector.md) | Numeric computation, Programming-language semantics |
+| [Keyed block cipher](concepts/BlockCipher.md) | Cryptography → Symmetric cryptography |
 | [Boolean algebra](concepts/BooleanAlgebra.md) | Logic and proof, Algebra |
 | [Two-valued Boolean type](concepts/BooleanType.md) | Types and semantics |
 | [Candidate key relative to functional dependencies](concepts/CandidateKey.md) | Relational data modelling |
@@ -320,6 +332,8 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Total function](concepts/Function.md) | Set theory and foundations |
 | [Function type](concepts/FunctionType.md) | Types and semantics |
 | [Functional dependency on a relational schema](concepts/FunctionalDependency.md) | Relational data modelling, Logic and proof |
+| [Galois/Counter Mode (96-bit IV, 128-bit tag profile)](concepts/GCM.md) | Cryptography → Symmetric cryptography |
+| [GHASH polynomial accumulator](concepts/GHASH.md) | Cryptography → Symmetric cryptography |
 | [Galois Connection](concepts/GaloisConnection.md) | Order and fixed points |
 | [Resolved generic argument binding with ordered defaults](concepts/GenericArgumentBinding.md) | Programming-language semantics → Generic programming |
 | [Finite kinded generic parameter signature](concepts/GenericSignature.md) | Programming-language semantics → Generic programming |
