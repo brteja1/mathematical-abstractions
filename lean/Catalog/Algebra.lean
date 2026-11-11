@@ -7,6 +7,8 @@ public import Mathlib.LinearAlgebra.TensorProduct.Basic
 public import Mathlib.LinearAlgebra.PiTensorProduct.Basic
 public import Mathlib.LinearAlgebra.Dual.Defs
 public import Mathlib.Data.Matrix.Basic
+public import Mathlib.Algebra.Tropical.Basic
+public import Mathlib.Basic.Real.Basic
 
 @[expose] public section
 
@@ -20,6 +22,21 @@ class Semigroup (A : Type u) extends _root_.Semigroup A where
 abbrev Monoid (A : Type u) := _root_.Monoid A
 abbrev Group (A : Type u) := _root_.Group A
 abbrev Semiring (A : Type u) := _root_.Semiring A
+
+/-- The catalog's unital convention permits zero = one. -/
+class IdempotentSemiring (A : Type u) extends _root_.Semiring A where
+  add_idem (a : A) : a + a = a
+
+/-- Exact min-plus values; tropical zero is top and tropical one is real zero.
+The library's transported order is numerical order, not the canonical semiring order. -/
+abbrev MinPlusSemiring := MinTropical (WithTop ℝ)
+
+noncomputable instance : IdempotentSemiring MinPlusSemiring where
+  add_idem := MinTropical.add_self
+
+def canonicalSemiringOrder {A : Type u} [IdempotentSemiring A] (a b : A) : Prop :=
+  a + b = b
+
 abbrev Ring (A : Type u) := _root_.Ring A
 abbrev Field (A : Type u) := _root_.Field A
 

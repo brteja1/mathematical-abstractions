@@ -2,7 +2,7 @@
 
 This Lake project gives every current catalog concept a named Lean interpretation, grouped by subject in `Catalog/`. It uses **Lean 4.35.0** and **Mathlib commit `56a005855ea17e0b0958f73ec801ae140b0a1679`** (release `v4.35.0`). `lake-manifest.json` locks transitive dependencies. Normal catalog retrieval and the viewer still require only Python.
 
-There are currently **180 concept bindings**: 150 carrier/interface models and 30 explicitly partial interpretations. There are **52 registered proof witnesses** for existing laws/theorems, including all 11 recorded binary-tree laws/theorems. This does **not** mean every recorded operation or all catalog laws/theorems have been translated or proved. An alias to a library structure is a model binding, not a proof of all catalog claims. The [broad-core expansion](../docs/FOUNDATIONAL_DATA_MODELS.md) adds 35 carrier models and 24 individually mapped witnesses. Its remaining operation specifications and derived results are not blanket formalizations.
+There are currently **182 concept bindings**: 152 carrier/interface models and 30 explicitly partial interpretations. There are **52 registered proof witnesses** for existing laws/theorems, including all 11 recorded binary-tree laws/theorems. This does **not** mean every recorded operation or all catalog laws/theorems have been translated or proved. An alias to a library structure is a model binding, not a proof of all catalog claims. The [broad-core expansion](../docs/FOUNDATIONAL_DATA_MODELS.md) adds 35 carrier models and 24 individually mapped witnesses. Its remaining operation specifications and derived results are not blanket formalizations.
 
 ## Build and verify
 

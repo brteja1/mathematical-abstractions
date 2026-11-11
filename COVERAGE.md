@@ -80,6 +80,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | HeapStore | 4 | 4 | 1 | 1 | extensional-structural-definition |
 | HoareTriple | 1 | 2 | 1 | 1 | defined-structure |
 | Hypergraph | 3 | 3 | 1 | 1 | extensional-structural-definition |
+| IdempotentSemiring | 5 | 5 | 0 | 1 | axiomatic-structure |
 | Integer | 4 | 3 | 3 | 1 | derived-construction |
 | JavaParameterizedType | 3 | 3 | 2 | 0 | extensional-structural-definition |
 | JavaTypeErasure | 3 | 2 | 2 | 0 | extensional-structural-definition |
@@ -104,6 +105,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | MeasurableSpace | 2 | 3 | 0 | 1 | defined-structure |
 | MeasureSpace | 1 | 2 | 0 | 2 | defined-structure |
 | MethodContract | 3 | 3 | 2 | 0 | extensional-structural-definition |
+| MinPlusSemiring | 5 | 6 | 0 | 1 | extensional-structural-definition |
 | ModalLogic | 1 | 2 | 2 | 3 | defined-structure |
 | ModularInteger | 2 | 1 | 0 | 2 | defined-structure |
 | Monoid | 1 | 4 | 1 | 1 | axiomatic-structure |
@@ -185,6 +187,6 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | WeightedDirectedGraph | 3 | 2 | 1 | 1 | extensional-structural-definition |
 | WellFoundedRelation | 1 | 1 | 1 | 1 | defined-structure |
 
-180 of 180 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
+182 of 182 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
 
 Use `ruleRole` to distinguish foundational axioms, structure constraints, and defining equations. Use `basisScope` for interface boundaries. Alternate language policies, intensional equality, IEEE payload/trap details, and formal proof artifacts require further formalization.

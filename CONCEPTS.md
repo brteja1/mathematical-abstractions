@@ -11,7 +11,9 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Field](concepts/Field.md)
   - [Finite field (Galois field)](concepts/FiniteField.md)
   - [Group](concepts/Group.md)
+  - [Idempotent semiring (additively idempotent, unital)](concepts/IdempotentSemiring.md)
   - [Mathematical integers](concepts/Integer.md)
+  - [Min-plus semiring (tropical semiring, min convention)](concepts/MinPlusSemiring.md)
   - [Monoid](concepts/Monoid.md)
   - [Unital ring (convention stated)](concepts/Ring.md)
   - [Semigroup](concepts/Semigroup.md)
@@ -165,8 +167,10 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Complete Lattice](concepts/CompleteLattice.md)
   - [Fixed Point](concepts/FixedPoint.md)
   - [Galois Connection](concepts/GaloisConnection.md)
+  - [Idempotent semiring (additively idempotent, unital)](concepts/IdempotentSemiring.md)
   - [Join semilattice](concepts/JoinSemilattice.md)
   - [Lattice](concepts/Lattice.md)
+  - [Min-plus semiring (tropical semiring, min convention)](concepts/MinPlusSemiring.md)
   - [Monotone Function](concepts/MonotoneFunction.md)
   - [Partial Order](concepts/PartialOrder.md)
   - [Preorder](concepts/Preorder.md)
@@ -344,6 +348,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Finite allocated heap store](concepts/HeapStore.md) | Programming-language semantics |
 | [Hoare Triple](concepts/HoareTriple.md) | Programming-language semantics |
 | [Finite simple undirected hypergraph](concepts/Hypergraph.md) | Graph theory |
+| [Idempotent semiring (additively idempotent, unital)](concepts/IdempotentSemiring.md) | Algebra, Order and fixed points |
 | [Mathematical integers](concepts/Integer.md) | Numeric computation, Algebra |
 | [Java bounded parameterized types and nominal subtyping](concepts/JavaParameterizedType.md) | Programming-language semantics → Generic programming → Java generics |
 | [Java type erasure and selected reifiability rules](concepts/JavaTypeErasure.md) | Programming-language semantics → Generic programming → Java generics |
@@ -368,6 +373,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Measurable space (sigma-algebra on a carrier)](concepts/MeasurableSpace.md) | Measure theory |
 | [Measure space (nonnegative countably additive measure)](concepts/MeasureSpace.md) | Measure theory |
 | [Relational method contract with write effects](concepts/MethodContract.md) | Programming-language semantics → Object-oriented semantics |
+| [Min-plus semiring (tropical semiring, min convention)](concepts/MinPlusSemiring.md) | Algebra, Order and fixed points |
 | [Classical propositional modal logic K](concepts/ModalLogic.md) | Logic and proof, Behavior and transition systems |
 | [Modular Integer](concepts/ModularInteger.md) | Numeric computation |
 | [Monoid](concepts/Monoid.md) | Algebra |

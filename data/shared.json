@@ -1333,6 +1333,23 @@
       "url": "https://www.rfc-editor.org/rfc/rfc5116.html",
       "accessedOn": "2026-11-10",
       "sourceRole": "primary normative specification"
+    },
+    {
+      "id": "urn:csabs:source/litvinov-esi1588",
+      "type": "Source",
+      "label": "G. L. Litvinov: The Maslov Dequantization, Idempotent and Tropical Mathematics: a Very Brief Introduction (ESI 1588, 2005)",
+      "url": "https://www.esi.ac.at/preprints/esi1588.pdf",
+      "accessedOn": "2026-11-11",
+      "sourceRole": "reference-for-selected-basis"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-min-tropical-pinned",
+      "type": "Source",
+      "label": "Mathlib tropical algebra, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Algebra/Tropical/Basic.lean",
+      "path": "lean/.lake/packages/mathlib/Mathlib/Algebra/Tropical/Basic.lean",
+      "accessedOn": "2026-11-11",
+      "sourceRole": "formal-interface-reference"
     }
   ]
 }

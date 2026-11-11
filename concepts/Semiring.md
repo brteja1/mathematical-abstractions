@@ -12,6 +12,8 @@ A ring-like structure whose addition is a commutative monoid rather than a group
 
 ## Backlinks
 
+- [Idempotent semiring (additively idempotent, unital)](IdempotentSemiring.md) — `requiresConcept`
+- [Idempotent semiring (additively idempotent, unital)](IdempotentSemiring.md) — `specializationOf`
 - [Unital ring (convention stated)](Ring.md) — `specializationOf`
 
 ## Interface and scope
@@ -395,74 +397,6 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "signature": "· : S×S→S",
     "description": "Associative multiplication with identity under this entry's convention.",
     "concept": "urn:csabs:concept/Semiring"
-  },
-  {
-    "id": "urn:csabs:axiom/semiring-additive-monoid",
-    "type": "Axiom",
-    "statement": "Addition forms a commutative monoid; additive inverses are not required.",
-    "appliesTo": [
-      "urn:csabs:concept/Semiring"
-    ],
-    "reviewStatus": "editorial-summary; not machine-proved",
-    "notationLanguage": "informal mathematical Unicode",
-    "ruleRole": "structure-law",
-    "name": "semiring-additive-monoid",
-    "formalStatement": "Addition forms a commutative monoid; additive inverses are not required.",
-    "assumptions": [
-      "Use the linked concept’s explicit basis and carrier conventions."
-    ],
-    "provenanceStatus": "legacy-source-missing"
-  },
-  {
-    "id": "urn:csabs:axiom/semiring-multiplicative-monoid",
-    "type": "Axiom",
-    "statement": "Multiplication forms a monoid under the stated unital convention.",
-    "appliesTo": [
-      "urn:csabs:concept/Semiring"
-    ],
-    "reviewStatus": "editorial-summary; not machine-proved",
-    "notationLanguage": "informal mathematical Unicode",
-    "ruleRole": "structure-law",
-    "name": "semiring-multiplicative-monoid",
-    "formalStatement": "Multiplication forms a monoid under the stated unital convention.",
-    "assumptions": [
-      "Use the linked concept’s explicit basis and carrier conventions."
-    ],
-    "provenanceStatus": "legacy-source-missing"
-  },
-  {
-    "id": "urn:csabs:axiom/semiring-distributivity",
-    "type": "Axiom",
-    "statement": "Multiplication distributes over addition on both sides.",
-    "appliesTo": [
-      "urn:csabs:concept/Semiring"
-    ],
-    "reviewStatus": "editorial-summary; not machine-proved",
-    "notationLanguage": "informal mathematical Unicode",
-    "ruleRole": "structure-law",
-    "name": "semiring-distributivity",
-    "formalStatement": "Multiplication distributes over addition on both sides.",
-    "assumptions": [
-      "Use the linked concept’s explicit basis and carrier conventions."
-    ],
-    "provenanceStatus": "legacy-source-missing"
-  },
-  {
-    "id": "urn:csabs:axiom/semiring-zero-annihilation",
-    "type": "Axiom",
-    "statement": "Zero annihilates multiplication.",
-    "formalStatement": "0·x=x·0=0",
-    "appliesTo": [
-      "urn:csabs:concept/Semiring"
-    ],
-    "reviewStatus": "editorial-summary; not machine-proved",
-    "notationLanguage": "informal mathematical Unicode",
-    "ruleRole": "structure-law",
-    "name": "semiring-zero-annihilation",
-    "assumptions": [
-      "Use the linked concept’s explicit basis and carrier conventions."
-    ],
-    "provenanceStatus": "legacy-source-missing"
   },
   {
     "id": "urn:csabs:axiom/Semiring-closure",

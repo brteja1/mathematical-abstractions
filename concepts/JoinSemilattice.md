@@ -16,7 +16,9 @@ A partially ordered carrier with a least upper bound for each pair.
 
 ## Backlinks
 
+- [Idempotent semiring (additively idempotent, unital)](IdempotentSemiring.md) — `relatedConcept`
 - [Lattice](Lattice.md) — `specializationOf`
+- [Min-plus semiring (tropical semiring, min convention)](MinPlusSemiring.md) — `relatedConcept`
 - [State-based CRDT replication algebra](StateBasedCRDT.md) — `requiresConcept`
 
 ## Interface and scope
