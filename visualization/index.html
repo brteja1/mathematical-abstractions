@@ -1368,7 +1368,9 @@ function focusSelection() {
       height: Math.max(p.y + 8, r.bottom) - y
     };
   });
-  const camera = selectionCamera(boxes, overviewSpan, zoomStep, selectionZoomOutSteps);
+  // Concept families use a deliberately loose frame. Subjects already span
+  // whole sectors, so that backoff would expand most selections to overview.
+  const camera = selectionCamera(boxes, overviewSpan, zoomStep, pinned ? selectionZoomOutSteps : 0);
   if (camera) moveView(camera);else fit();
 }
 

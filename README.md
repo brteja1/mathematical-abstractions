@@ -2,19 +2,9 @@
 
 A knowledge graph of mathematical abstractions for modeling software, developing formal proofs, and deriving software tests. The catalog describes mathematical behavior independently of particular implementations, making definitions, assumptions and reusable properties available to people and AI agents.
 
-Start with the [concept index](CONCEPTS.md), explore the [interactive atlas](https://brteja1.github.io/mathematical-abstractions/), or query selected records with Python. Examples include [groups](concepts/Group.md), [binary trees](concepts/BinaryTree.md), [probability spaces](concepts/ProbabilitySpace.md), and [linearizability](concepts/Linearizability.md).
+Start with the [concept index](CONCEPTS.md), explore the [interactive atlas](https://brteja1.github.io/mathematical-abstractions/), or query selected records with Python.
 
-The catalog spans foundations, types, logic, algebra, order, combinatorics, probability, measure theory, topology, geometry, linear algebra, numeric computation, data structures, databases, programming semantics, concurrency, cryptography, information theory and coding theory. Coverage grows through explicit definitions and sourced claims rather than an assumption that any subject is complete.
-
-Cryptography entries connect [block ciphers](concepts/BlockCipher.md), [AES](concepts/AES.md), [AEAD](concepts/AEAD.md), [GHASH](concepts/GHASH.md), [GCM](concepts/GCM.md) and [AES-GCM](concepts/AESGCM.md). The GCM records select 96-bit nonces and 128-bit tags, with explicit byte limits, nonce obligations and failure semantics. Functional round-trip results do not establish cryptographic security. Public-key entries add [Diffie–Hellman](concepts/DiffieHellman.md), [RSA primitives](concepts/RSA.md), the [ECC point group](concepts/ECC.md) and [ECDH](concepts/ECDH.md), with explicit subgroup, representative and validation domains. See the [scope and source notes](docs/CRYPTOGRAPHY.md).
-
-[Geometric lattices](concepts/EuclideanLattice.md) and [q-ary kernel lattices](concepts/QaryLattice.md) connect to [SVP](concepts/SVP.md), [CVP](concepts/CVP.md), [SIS](concepts/SIS.md) and [LWE](concepts/LWE.md). These use discrete point sets in Euclidean space; the existing order-theoretic lattice records have a different meaning. See [geometric-lattice scope and assumptions](docs/GEOMETRIC_LATTICES.md).
-
-Information theory entries cover entropy, mutual information, stochastic channels, source compression, and linear/nonlinear block codes with explicit decoding and distance conventions. See the [information-theory and coding guide](docs/INFORMATION_THEORY.md) for the concept map and popular theorems, and the [concrete Lean formulations](lean/INFORMATION_THEORY.md) for all 29 targets and 13 full proof witnesses.
-
-Matrix decompositions add [row-pivoted LU](concepts/LUDecomposition.md), [full QR](concepts/QRDecomposition.md), [full SVD](concepts/SVD.md), [eigendecomposition](concepts/EigenDecomposition.md) and [positive-definite Cholesky](concepts/CholeskyDecomposition.md) under a shared [exact factor-witness interface](concepts/MatrixDecomposition.md). See the [matrix-decomposition guide](docs/MATRIX_DECOMPOSITIONS.md) for shapes, permutation/adjoint conventions, input guards and the six mapped Lean laws.
-
-Descriptive statistics add [arithmetic mean](concepts/ArithmeticMean.md), [numeric median](concepts/Median.md) and [empirical mode sets](concepts/Mode.md) with explicit empty-sample, multiplicity, even-median and tied-mode conventions. See the [descriptive-statistics guide](docs/DESCRIPTIVE_STATISTICS.md) for formulas, examples and the six mapped Lean laws.
+Key subject areas include logic and foundations, algebra and linear algebra, probability and statistics, geometry, data structures, programming semantics, concurrency, cryptography and information theory. See the concept index for current coverage and individual concept pages for definitions, assumptions and sources.
 
 ## What each concept records
 
@@ -29,9 +19,9 @@ Descriptive statistics add [arithmetic mean](concepts/ArithmeticMean.md), [numer
 
 The [interactive atlas](https://brteja1.github.io/mathematical-abstractions/) supports subject categories, specialization hierarchies, search, relationship filters, concept details, keyboard selection, pan and zoom. Concept links open the corresponding Markdown records on GitHub. The standalone [`visualization/index.html`](visualization/index.html) also works offline.
 
-Choose **Subjects**, **Specializations**, or **Dependencies** in the atlas. Subjects use nested arcs; the other views place general concepts or prerequisites above their dependents. Dependency cycles share a level. See the [hierarchy guide](docs/HIERARCHY.md) for the first data-structure/concurrency organization pass and reviewed relationship mappings.
+Choose **Subjects**, **Specializations**, or **Dependencies** in the atlas. Subjects use nested arcs; the other views place general concepts or prerequisites above their dependents. Dependency cycles share a level. See the [hierarchy guide](docs/HIERARCHY.md) for navigation and relationship conventions.
 
-Subject categories use `parentCategory` in `data/shared.json` for nesting. Broad subjects appear on outer arcs; subsubjects appear on inner arcs within the same angular span. Linear and multilinear algebra sits under Algebra. Data structures and concurrency have nested subject families, including synchronization → locks and lock protocols. Selecting a subject includes its subsubjects; this navigation hierarchy does not imply concept specialization or axiom inheritance.
+Subject categories use `parentCategory` in `data/shared.json` for nesting. Broad subjects appear on outer arcs; subsubjects appear on inner arcs within the same angular span. Selecting a subject includes its subsubjects; this navigation hierarchy does not imply concept specialization or axiom inheritance.
 
 The [Pages workflow](.github/workflows/pages.yml) rebuilds, validates and publishes the viewer on pushes to `main`.
 
@@ -57,16 +47,6 @@ After reviewing catalog changes against their Lean mappings, run `make update-le
 Edit concepts directly in their `concepts/<shortForm>.md` files. Each file stores its authoritative structured records in a marked JSON block; the readable sections above that block are generated from those records. Update definitions, operations, claims and references in that block, then run `make` to refresh the page, links, indexes, viewer and ontology. Shared vocabulary and sources live in `data/shared.json`.
 
 ONTFS supplies the generated RDF projection for SHACL validation and SPARQL coverage reporting. Ordinary catalog queries and viewer generation read the Markdown records directly. See the [editing workflow](INSTALL.md#edit-and-validate).
-
-The [foundational data-model guide](docs/FOUNDATIONAL_DATA_MODELS.md) maps the broad computer-science core to the catalog: types and values, collection ADTs, trees and graphs, streams, numeric data, state, and database/interchange models. It documents 35 additions, explicit instantiations such as strings and records, selected conventions, and remaining variants.
-
-The [logic guide](docs/LOGIC.md) maps propositional and first-order syntax, semantic queries, substitution, natural deduction, normal forms, completeness and compactness, with explicit provenance and formalization limits.
-
-The [object-oriented models guide](docs/OBJECT_ORIENTED_MODELS.md) connects object identity and aliasing, class lookup and dispatch, method contracts and write effects, visible-state invariants, behavioral subtyping and exclusive heap separation. It explains how exposed representations can break invariants and documents the Lean model limitations.
-
-The [template metaprogramming guide](docs/TEMPLATE_METAPROGRAMMING.md) covers kinded partial metafunctions, class partial-specialization selection, SFINAE versus hard errors, identity-based constraint subsumption, packs/folds, staged name lookup and a checked constant-evaluation fragment. It uses an explicit C++20 draft profile and includes [compiler-checked examples](examples/template_metaprogramming.md).
-
-The [generic-programming guide](docs/GENERIC_PROGRAMMING.md) adds shared signatures, argument binding and instantiation, then separate Java and VHDL profiles. Java covers bounds, nominal generic subtyping, capture, erasure and inference, with runnable compiler examples. VHDL covers generic interfaces, association and elaboration; its illustrative example is explicitly unexecuted because no VHDL compiler is installed locally.
 
 See [agent workflows](docs/AGENT_WORKFLOWS.md) for proof planning, test design and specification consistency reviews, and [AGENTS.md](AGENTS.md) for the catalog's contribution requirements.
 
@@ -157,9 +137,9 @@ I would like to thank my colleague, Mr. Devendra Bhave, for introducing me to th
 
 ## Lean formalization
 
-Every concept page now includes a readable mathematical formulation and the selected Lean declaration, with its carrier/assumption mapping, source module and limitations. Registered witness claims also show their quantified Lean proposition and direct premise mapping. These fields live in the authoritative Markdown JSON records and are visible in the offline viewer. For examples, see [Stack](concepts/Stack.md#mathematical-formulation), [Galois connection](concepts/GaloisConnection.md#mathematical-formulation) and [linearizability](concepts/Linearizability.md#mathematical-formulation). Read excerpts in their linked module context; library aliases are interpretations, and partial models retain their missing obligations. `make check-lean` rejects excerpts or mappings that drift from the Lean sources/bindings. The local formulation sources are distinct from independent mathematical references and do not repair historical citation gaps.
+Every concept page now includes a readable mathematical formulation and the selected Lean declaration, with its carrier/assumption mapping, source module and limitations. Registered witness claims also show their quantified Lean proposition and direct premise mapping. These fields live in the authoritative Markdown JSON records and are visible in the offline viewer. Read excerpts in their linked module context; library aliases are interpretations, and partial models retain their missing obligations. `make check-lean` rejects excerpts or mappings that drift from the Lean sources/bindings. The local formulation sources are distinct from independent mathematical references and do not repair historical citation gaps.
 
-The [`lean/`](lean/README.md) Lake project provides models or explicitly partial interfaces for all current catalog concepts, with pinned Lean/Mathlib versions and individually mapped law/theorem witnesses. This includes the [finite ordered binary-tree abstraction](concepts/BinaryTree.md), with an explicit empty case and witnesses for every recorded binary-tree law/theorem. A separate [`bindings.json`](lean/bindings.json) links stable catalog IDs to declarations, expected types, premise mappings and limitations. `make test-lean` compiles and audits witnesses, rejects admitted or fabricated proofs, and records fresh compiler evidence. Model coverage does not mean every catalog claim has been proved. See the [formalization guide](lean/README.md) for setup, coverage and adding a new theorem.
+The [`lean/`](lean/README.md) Lake project provides models or explicitly partial interfaces for all current catalog concepts, with pinned Lean/Mathlib versions and individually mapped law/theorem witnesses. A separate [`bindings.json`](lean/bindings.json) links stable catalog IDs to declarations, expected types, premise mappings and limitations. `make test-lean` compiles and audits witnesses, rejects admitted or fabricated proofs, and records fresh compiler evidence. Model coverage does not mean every catalog claim has been proved. See the [formalization guide](lean/README.md) for setup, coverage and adding a new theorem.
 
 ## ONTFS ontology backend
 

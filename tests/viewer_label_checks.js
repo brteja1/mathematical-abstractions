@@ -100,6 +100,22 @@ function runLabelChecks(){
  const topic='urn:csabs:category/locks',subtree='urn:csabs:category/synchronization';
  const arc=()=>sectorGroup.querySelector(`[data-category="${topic}"]`);
  const sameCamera=(a,b)=>['x','y','span'].every(key=>Math.abs(a[key]-b[key])<1e-7);
+ // Broad subjects and intermediate subsubjects must zoom too, not only tiny leaves.
+ for(const subject of ['algebra','data-structures','concurrency','synchronization','sequential-collections']){
+  const subjectId='urn:csabs:category/'+subject;
+  clear();settleLabels();
+  sectorGroup.querySelector(`[data-category="${subjectId}"]`).dispatchEvent(new MouseEvent('click',{bubbles:true}));
+  settleLabels();
+  assertLabel(category===subjectId&&targetView.span<overviewSpan*.9,subject+': selecting subject visibly zooms into its members');
+  for(const n of concepts.filter(n=>inCategory(n,subjectId))){
+   const p=positions.get(n.id);
+   assertLabel(Math.abs(p.x-targetView.x)<targetView.span/2&&Math.abs(p.y-targetView.y)<targetView.span/2,subject+': camera includes every descendant member');
+  }
+  const selectedCamera={...targetView};
+  sectorGroup.querySelector(`[data-category="${subjectId}"]`).dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}));
+  assertLabel(sameCamera(targetView,selectedCamera),subject+': keyboard and repeated selection preserve framing');
+ }
+ clear();settleLabels();
  arc().dispatchEvent(new MouseEvent('click',{bubbles:true}));
  const arcCamera={...targetView};
  assertLabel(category===topic&&!pinned,'sub-topic arc selects its subject');
