@@ -14,7 +14,7 @@ A function from a finite row-index and column-index product to a specified field
 
 **Specializes:** [Total function](Function.md)
 
-**Related concepts:** [Fixed-length array](Array.md), [Linear map](LinearMap.md), [Tensor of specified valence on a finite-dimensional vector space](Tensor.md)
+**Related concepts:** [Fixed-length array](Array.md), [Linear map](LinearMap.md), [Tensor of specified valence on a finite-dimensional vector space](Tensor.md), [Exact structured matrix decomposition witness](MatrixDecomposition.md)
 
 ## Backlinks
 
@@ -22,6 +22,7 @@ A function from a finite row-index and column-index product to a specified field
 - [Generator matrix of a linear block code (row convention)](GeneratorMatrix.md) — `requiresConcept`
 - [Linear map](LinearMap.md) — `relatedConcept`
 - [Markov chain (finite-state, discrete-time, time-homogeneous)](MarkovChain.md) — `requiresConcept`
+- [Exact structured matrix decomposition witness](MatrixDecomposition.md) — `requiresConcept`
 - [Parity-check matrix of a linear block code (row convention)](ParityCheckMatrix.md) — `requiresConcept`
 - [Finite stochastic channel](StochasticChannel.md) — `requiresConcept`
 - [Tensor of specified valence on a finite-dimensional vector space](Tensor.md) — `relatedConcept`
@@ -391,7 +392,8 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "relatedConcept": [
       "urn:csabs:concept/Array",
       "urn:csabs:concept/LinearMap",
-      "urn:csabs:concept/Tensor"
+      "urn:csabs:concept/Tensor",
+      "urn:csabs:concept/MatrixDecomposition"
     ],
     "leanFormulation": "abbrev Matrix (F : Type u) [_root_.Field F] (m n : Nat) :=\n  _root_.Matrix (Fin m) (Fin n) F",
     "formulationSource": "urn:csabs:source/local-lean-Algebra",

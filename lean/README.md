@@ -2,7 +2,7 @@
 
 This Lake project gives every current catalog concept a named Lean interpretation, grouped by subject in `Catalog/`. It uses **Lean 4.35.0** and **Mathlib commit `56a005855ea17e0b0958f73ec801ae140b0a1679`** (release `v4.35.0`). `lake-manifest.json` locks transitive dependencies. Normal catalog retrieval and the viewer still require only Python.
 
-There are currently **211 concept bindings**: 160 carrier/interface models and 51 explicitly partial interpretations. There are **65 registered proof witnesses** for existing laws/theorems, including all 11 recorded binary-tree laws/theorems and 13 information-theory/coding claims. This does **not** mean every recorded operation or all catalog laws/theorems have been translated or proved. An alias to a library structure is a model binding, not a proof of all catalog claims. The [broad-core expansion](../docs/FOUNDATIONAL_DATA_MODELS.md) adds 35 carrier models and 24 individually mapped witnesses. Its remaining operation specifications and derived results are not blanket formalizations.
+There are currently **217 concept bindings**: 166 carrier/interface models and 51 explicitly partial interpretations. There are **71 registered proof witnesses** for existing laws/theorems, including all 11 recorded binary-tree laws/theorems, 13 information-theory/coding claims and six matrix-decomposition identities. This does **not** mean every recorded operation or all catalog laws/theorems have been translated or proved. An alias to a library structure is a model binding, not a proof of all catalog claims. The [broad-core expansion](../docs/FOUNDATIONAL_DATA_MODELS.md) adds 35 carrier models and 24 individually mapped witnesses. Its remaining operation specifications and derived results are not blanket formalizations.
 
 ## Build and verify
 
@@ -38,6 +38,7 @@ Concept records expose `mathematicalFormulation` (readable mathematics), `leanFo
 | --- | --- |
 | `Catalog/Foundations.lean` | Sets, relations, functions, products, sums, option, empty/unit, partitions and proof principles |
 | `Catalog/Algebra.lean` | Semigroups, monoids, groups, rings, fields, finite fields, modules, linear maps, matrices and tensors |
+| `Catalog/MatrixDecompositions.lean` | Exact LU, full QR/SVD, field-relative eigendecomposition and positive-definite Cholesky witnesses; six derived identities, with existence/uniqueness claims kept separate; see [scope](../docs/MATRIX_DECOMPOSITIONS.md) |
 | `Catalog/GeometricLattices.lean` | Independent real lattice bases, modular kernels and partial SVP/CVP/SIS/LWE interpretations |
 | `Catalog/Order.lean` | Preorders, partial/total orders, lattices, Boolean algebras, closure and fixed points |
 | `Catalog/DataStructures.lean` | Sequences, arrays, finite sets/maps, multisets, ordered sets, stacks, queues and deques |

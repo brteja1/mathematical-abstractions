@@ -32,6 +32,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | CartesianProduct | 2 | 3 | 1 | 2 | defined-structure |
 | ChannelCapacity | 1 | 1 | 0 | 1 | extensional-structural-definition |
 | CheckedInteger | 3 | 2 | 1 | 1 | defined-structure |
+| CholeskyDecomposition | 2 | 2 | 1 | 1 | defined-structure |
 | ClassTable | 4 | 3 | 2 | 1 | extensional-structural-definition |
 | ClosedInterval | 3 | 3 | 1 | 1 | extensional-structural-definition |
 | ClosureOperator | 1 | 3 | 1 | 1 | defined-structure |
@@ -58,6 +59,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | DualCode | 1 | 1 | 0 | 1 | extensional-structural-definition |
 | ECC | 3 | 4 | 0 | 1 | defined-structure |
 | ECDH | 3 | 1 | 0 | 1 | defined-structure |
+| EigenDecomposition | 2 | 2 | 1 | 1 | defined-structure |
 | EmptyType | 1 | 1 | 0 | 2 | extensional-type-theory |
 | EntityRelationshipModel | 4 | 3 | 1 | 1 | extensional-structural-definition |
 | EquivalenceRelation | 1 | 4 | 0 | 2 | defined-structure |
@@ -101,6 +103,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | JavaWildcardCapture | 2 | 2 | 2 | 0 | extensional-structural-definition |
 | JoinSemilattice | 2 | 5 | 1 | 1 | extensional-structural-definition |
 | KripkeStructure | 2 | 2 | 1 | 3 | defined-structure |
+| LUDecomposition | 2 | 2 | 1 | 0 | defined-structure |
 | LWE | 3 | 2 | 0 | 2 | defined-structure |
 | LabelledTransitionSystem | 2 | 2 | 2 | 2 | defined-structure |
 | LamportBakery | 4 | 4 | 1 | 1 | operational-state-machine-definition |
@@ -116,6 +119,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | Map | 4 | 5 | 2 | 1 | defined-structure |
 | MarkovChain | 2 | 2 | 0 | 2 | defined-structure |
 | Matrix | 5 | 3 | 0 | 3 | defined-structure |
+| MatrixDecomposition | 2 | 1 | 1 | 0 | defined-structure |
 | MeasurableFunction | 2 | 1 | 0 | 1 | defined-structure |
 | MeasurableSpace | 2 | 3 | 0 | 1 | defined-structure |
 | MeasureSpace | 1 | 2 | 0 | 2 | defined-structure |
@@ -153,6 +157,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | PropositionalFormula | 3 | 3 | 1 | 1 | inductive-definition |
 | PropositionalLogic | 2 | 3 | 1 | 4 | defined-structure |
 | PropositionalNaturalDeduction | 1 | 2 | 1 | 3 | inductive-definition |
+| QRDecomposition | 2 | 2 | 1 | 1 | defined-structure |
 | QaryLattice | 2 | 1 | 0 | 2 | defined-structure |
 | Queue | 4 | 2 | 1 | 1 | defined-structure |
 | QuotientType | 2 | 3 | 1 | 1 | extensional-structural-definition |
@@ -171,6 +176,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | RootedTree | 3 | 3 | 1 | 1 | extensional-structural-definition |
 | RoseTree | 4 | 4 | 1 | 1 | extensional-structural-definition |
 | SIS | 2 | 2 | 0 | 2 | defined-structure |
+| SVD | 2 | 2 | 1 | 1 | defined-structure |
 | SVP | 2 | 2 | 0 | 2 | defined-structure |
 | SafetyProperty | 1 | 1 | 1 | 1 | defined-structure |
 | SaturatingInteger | 3 | 2 | 2 | 1 | defined-structure |
@@ -216,6 +222,6 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | WeightedDirectedGraph | 3 | 2 | 1 | 1 | extensional-structural-definition |
 | WellFoundedRelation | 1 | 1 | 1 | 1 | defined-structure |
 
-211 of 211 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
+217 of 217 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
 
 Use `ruleRole` to distinguish foundational axioms, structure constraints, and defining equations. Use `basisScope` for interface boundaries. Alternate language policies, intensional equality, IEEE payload/trap details, and formal proof artifacts require further formalization.

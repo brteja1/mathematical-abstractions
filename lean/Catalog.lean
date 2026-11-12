@@ -32,3 +32,4 @@ public import Catalog.GenericProgramming
 public import Catalog.Cryptography
 
 public import Catalog.GeometricLattices
+public import Catalog.MatrixDecompositions

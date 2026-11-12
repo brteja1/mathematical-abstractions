@@ -14,6 +14,12 @@ Pairs of exact real coordinates equipped with complex-field arithmetic.
 
 **Specializes:** [Field](Field.md)
 
+## Backlinks
+
+- [Cholesky decomposition (Hermitian positive definite, lower profile)](CholeskyDecomposition.md) — `requiresConcept`
+- [Full QR decomposition (real or complex, rectangular)](QRDecomposition.md) — `requiresConcept`
+- [Full singular value decomposition (rectangular real or complex SVD)](SVD.md) — `requiresConcept`
+
 ## Mathematical formulation
 
 ℂ=ℝ×ℝ with (a,b)+(c,d)=(a+c,b+d), (a,b)(c,d)=(ac−bd,ad+bc), and i=(0,1). Equality is equality of both real coordinates.

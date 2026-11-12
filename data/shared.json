@@ -1740,6 +1740,60 @@
       "path": "lean/Catalog/Topology.lean",
       "accessedOn": "2026-11-12",
       "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/lapack-lug-linear-equations",
+      "type": "Source",
+      "label": "LAPACK Users’ Guide, Third Edition: Linear Equations",
+      "url": "https://netlib.org/lapack/lug/node38.html",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Consulted mathematical definition and factorization exposition; numerical algorithm/storage details are outside the selected exact model."
+    },
+    {
+      "id": "urn:csabs:source/lapack-lug-qr",
+      "type": "Source",
+      "label": "LAPACK Users’ Guide, Third Edition: QR Factorization",
+      "url": "https://netlib.org/lapack/lug/node40.html",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Consulted mathematical definition and factorization exposition; numerical algorithm/storage details are outside the selected exact model."
+    },
+    {
+      "id": "urn:csabs:source/lapack-lug-svd",
+      "type": "Source",
+      "label": "LAPACK Users’ Guide, Third Edition: Singular Value Decomposition",
+      "url": "https://netlib.org/lapack/lug/node53.html",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Consulted mathematical definition and factorization exposition; numerical algorithm/storage details are outside the selected exact model."
+    },
+    {
+      "id": "urn:csabs:source/ila-diagonalization",
+      "type": "Source",
+      "label": "Interactive Linear Algebra: §5.4 Diagonalization",
+      "url": "https://textbooks.math.gatech.edu/ila/diagonalization.html",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Consulted mathematical definition and factorization exposition; numerical algorithm/storage details are outside the selected exact model."
+    },
+    {
+      "id": "urn:csabs:source/higham-cholesky",
+      "type": "Source",
+      "label": "Nicholas J. Higham: What Is a Cholesky Factorization? (2020-08-11)",
+      "url": "https://nhigham.com/2020/08/11/what-is-a-cholesky-factorization/",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Consulted mathematical definition and factorization exposition; numerical algorithm/storage details are outside the selected exact model."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-MatrixDecompositions",
+      "type": "Source",
+      "label": "Catalog Lean module MatrixDecompositions",
+      "path": "lean/Catalog/MatrixDecompositions.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local exact witness models and selected derived proofs; separate from independent mathematical provenance."
+    },
+    {
+      "id": "urn:csabs:category/matrix-decompositions",
+      "type": "Category",
+      "label": "Matrix decompositions",
+      "parentCategory": "urn:csabs:category/linear-algebra"
     }
   ]
 }

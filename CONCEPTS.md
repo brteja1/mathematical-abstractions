@@ -28,6 +28,13 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
     - [Tensor of specified valence on a finite-dimensional vector space](concepts/Tensor.md)
     - [Tensor product of vector spaces](concepts/TensorProduct.md)
     - [Vector space over a field](concepts/VectorSpace.md)
+    - **Matrix decompositions**
+      - [Cholesky decomposition (Hermitian positive definite, lower profile)](concepts/CholeskyDecomposition.md)
+      - [Eigendecomposition by a complete eigenbasis (diagonalization)](concepts/EigenDecomposition.md)
+      - [Row-pivoted LU decomposition (square PA=LU profile)](concepts/LUDecomposition.md)
+      - [Exact structured matrix decomposition witness](concepts/MatrixDecomposition.md)
+      - [Full QR decomposition (real or complex, rectangular)](concepts/QRDecomposition.md)
+      - [Full singular value decomposition (rectangular real or complex SVD)](concepts/SVD.md)
 - **Behavior and transition systems**
   - [Bisimulation](concepts/Bisimulation.md)
   - [Deterministic finite automaton with total transition](concepts/DFA.md)
@@ -337,6 +344,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Cartesian product](concepts/CartesianProduct.md) | Set theory and foundations |
 | [Channel capacity (finite DMC, vanishing error)](concepts/ChannelCapacity.md) | Information theory |
 | [Checked Integer](concepts/CheckedInteger.md) | Numeric computation |
+| [Cholesky decomposition (Hermitian positive definite, lower profile)](concepts/CholeskyDecomposition.md) | Algebra → Linear and multilinear algebra → Matrix decompositions |
 | [Single-inheritance class table and dynamic dispatch](concepts/ClassTable.md) | Programming-language semantics → Object-oriented semantics |
 | [Nonempty bounded closed interval](concepts/ClosedInterval.md) | Data structures → Intervals |
 | [Closure Operator](concepts/ClosureOperator.md) | Order and fixed points |
@@ -363,6 +371,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Euclidean dual of a finite-field linear code](concepts/DualCode.md) | Information theory → Coding theory → Channel coding |
 | [Elliptic curve cryptography group (prime-field short-Weierstrass profile)](concepts/ECC.md) | Cryptography → Public-key cryptography |
 | [Elliptic curve Diffie–Hellman (validated full-point profile)](concepts/ECDH.md) | Cryptography → Public-key cryptography |
+| [Eigendecomposition by a complete eigenbasis (diagonalization)](concepts/EigenDecomposition.md) | Algebra → Linear and multilinear algebra → Matrix decompositions |
 | [Empty type](concepts/EmptyType.md) | Types and semantics |
 | [Finite typed entity-relationship instance](concepts/EntityRelationshipModel.md) | Relational data modelling |
 | [Equivalence relation](concepts/EquivalenceRelation.md) | Set theory and foundations |
@@ -406,6 +415,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Java wildcard capture with fresh bounded variables](concepts/JavaWildcardCapture.md) | Programming-language semantics → Generic programming → Java generics |
 | [Join semilattice](concepts/JoinSemilattice.md) | Order and fixed points |
 | [Finite serial Kripke structure for model checking](concepts/KripkeStructure.md) | Behavior and transition systems, Logic and proof |
+| [Row-pivoted LU decomposition (square PA=LU profile)](concepts/LUDecomposition.md) | Algebra → Linear and multilinear algebra → Matrix decompositions |
 | [Learning with errors (finite modular distribution profile)](concepts/LWE.md) | Cryptography → Public-key cryptography → Lattice-based cryptography |
 | [Action-labelled transition system with initial states](concepts/LabelledTransitionSystem.md) | Behavior and transition systems, Programming-language semantics, Concurrency and distributed systems → Behavioral models |
 | [Lamport bakery lock protocol](concepts/LamportBakery.md) | Concurrency and distributed systems → Synchronization → Lock protocols |
@@ -421,6 +431,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Map](concepts/Map.md) | Data structures → Sets and mappings |
 | [Markov chain (finite-state, discrete-time, time-homogeneous)](concepts/MarkovChain.md) | Probability and stochastic models, Algebra → Linear and multilinear algebra |
 | [Finite rectangular matrix over a field](concepts/Matrix.md) | Algebra → Linear and multilinear algebra |
+| [Exact structured matrix decomposition witness](concepts/MatrixDecomposition.md) | Algebra → Linear and multilinear algebra → Matrix decompositions |
 | [Measurable function](concepts/MeasurableFunction.md) | Measure theory |
 | [Measurable space (sigma-algebra on a carrier)](concepts/MeasurableSpace.md) | Measure theory |
 | [Measure space (nonnegative countably additive measure)](concepts/MeasureSpace.md) | Measure theory |
@@ -458,6 +469,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Finite propositional formula syntax](concepts/PropositionalFormula.md) | Logic and proof |
 | [Propositional Logic](concepts/PropositionalLogic.md) | Logic and proof |
 | [Classical propositional natural deduction](concepts/PropositionalNaturalDeduction.md) | Logic and proof |
+| [Full QR decomposition (real or complex, rectangular)](concepts/QRDecomposition.md) | Algebra → Linear and multilinear algebra → Matrix decompositions |
 | [q-ary kernel lattice](concepts/QaryLattice.md) | Cryptography → Public-key cryptography → Lattice-based cryptography |
 | [Queue abstract data type](concepts/Queue.md) | Data structures → Sequential collections |
 | [Quotient by an equivalence relation](concepts/QuotientType.md) | Types and semantics |
@@ -476,6 +488,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Finite rooted undirected tree](concepts/RootedTree.md) | Graph theory |
 | [Finite ordered rose tree](concepts/RoseTree.md) | Data structures → Tree structures |
 | [Short integer solution problem (Euclidean norm profile)](concepts/SIS.md) | Cryptography → Public-key cryptography → Lattice-based cryptography |
+| [Full singular value decomposition (rectangular real or complex SVD)](concepts/SVD.md) | Algebra → Linear and multilinear algebra → Matrix decompositions |
 | [Shortest vector problem (Euclidean search relation)](concepts/SVP.md) | Cryptography → Public-key cryptography → Lattice-based cryptography |
 | [Safety Property](concepts/SafetyProperty.md) | Concurrency and distributed systems → Correctness properties |
 | [Saturating Integer](concepts/SaturatingInteger.md) | Numeric computation |

@@ -16,7 +16,10 @@ A complete Archimedean linearly ordered field extending the rational numbers.
 
 ## Backlinks
 
+- [Cholesky decomposition (Hermitian positive definite, lower profile)](CholeskyDecomposition.md) — `requiresConcept`
 - [Exact complex number](ComplexNumber.md) — `requiresConcept`
+- [Full QR decomposition (real or complex, rectangular)](QRDecomposition.md) — `requiresConcept`
+- [Full singular value decomposition (rectangular real or complex SVD)](SVD.md) — `requiresConcept`
 - [Finite real-weighted directed multigraph](WeightedDirectedGraph.md) — `requiresConcept`
 
 ## Mathematical formulation

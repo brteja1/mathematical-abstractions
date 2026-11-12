@@ -470,7 +470,7 @@
       "scope": "model",
       "mapping": "Mathlib Matrix (Fin m) (Fin n) F over a field; zero dimensions permitted; extensional entry equality.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "bd0c637156b4590f766be54784c1f9a0e9a691610349ab9bd6287248a8d419bd"
+      "catalogHash": "b689f01c57dad2ff62fd7abede6e286aa3c9b3e633650231311bc5a790a00750"
     },
     "urn:csabs:concept/MeasurableFunction": {
       "kind": "model",
@@ -3025,6 +3025,166 @@
         "Classical.choice"
       ],
       "catalogHash": "2d1502055dfc958e8e57fb7b52c846a2e47b8f2009a7edcb635a35d7127e8050"
+    },
+    "urn:csabs:concept/MatrixDecomposition": {
+      "kind": "model",
+      "symbol": "Catalog.MatrixDecomposition",
+      "module": "Catalog.MatrixDecompositions",
+      "scope": "model",
+      "mapping": "Dependent witness structure indexed by W, a fixed reconstruction map and target A; factors are data and reconstructs is an equality proof. Equality is equality of factors; proof fields are irrelevant.",
+      "limitations": "Exact selected witness/carrier model and factor observations. No factor-finding algorithm, decidable equality on real/complex entries, floating-point error analysis or general numerical implementation refinement. Only individually registered claims have compiled witnesses; existence/uniqueness results are not proved by structure fields.",
+      "catalogHash": "a384bd7cc1d8aaccb8b8fb006aaaa65fd6c82ec127c9cbbfcc0fc0021988cafd"
+    },
+    "urn:csabs:law/MatrixDecomposition-target-unique": {
+      "kind": "witness",
+      "symbol": "Catalog.MatrixDecompositionProofs.target_unique",
+      "module": "Catalog.MatrixDecompositions",
+      "expectedType": "∀ {F : Type u} [Field F] {m n : Nat} {W : Type v} {r : W → Catalog.Matrix F m n} {A B : Catalog.Matrix F m n} (d : Catalog.MatrixDecomposition W r A) (e : Catalog.MatrixDecomposition W r B), d.factors = e.factors → A = B",
+      "mapping": "Dependent witness structure indexed by W, a fixed reconstruction map and target A; factors are data and reconstructs is an equality proof. Equality is equality of factors; proof fields are irrelevant.",
+      "premiseMapping": {
+        "urn:csabs:axiom/MatrixDecomposition-reconstruction": "The corresponding explicit structure fields supply this premise: w∈D_ρ(A) ⇔ w∈W ∧ ρ(w)=A"
+      },
+      "limitations": "Proves the displayed algebraic identity for a supplied valid witness, under the mapped exact scalar/dimension conventions. It does not prove factor existence/uniqueness, a numerical algorithm, stability or implementation conformance.",
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "de6c794845717575232a52912d4b5b9e77a381cb389dddd03916250ed7d9bea0"
+    },
+    "urn:csabs:concept/LUDecomposition": {
+      "kind": "model",
+      "symbol": "Catalog.LUDecomposition",
+      "module": "Catalog.MatrixDecompositions",
+      "scope": "model",
+      "mapping": "Equiv.Perm (Fin n), explicit lower and upper matrices, triangular/unit-diagonal proof fields and rowPermute p A = L*U. The helper rowPermute p A evaluates A(p i,j), fixing the permutation convention.",
+      "limitations": "Exact selected witness/carrier model and factor observations. No factor-finding algorithm, decidable equality on real/complex entries, floating-point error analysis or general numerical implementation refinement. Only individually registered claims have compiled witnesses; existence/uniqueness results are not proved by structure fields.",
+      "catalogHash": "6a633aadcc2f4f6344881abaae026690f238cd48b915b008704394acd7d869b5"
+    },
+    "urn:csabs:law/LUDecomposition-unpermute": {
+      "kind": "witness",
+      "symbol": "Catalog.MatrixDecompositionProofs.lu_unpermute",
+      "module": "Catalog.MatrixDecompositions",
+      "expectedType": "∀ {F : Type u} [Field F] {n : Nat} {A : Catalog.Matrix F n n} (d : Catalog.LUDecomposition A), A = Catalog.rowPermute d.permutation.symm (d.lower * d.upper)",
+      "mapping": "Equiv.Perm (Fin n), explicit lower and upper matrices, triangular/unit-diagonal proof fields and rowPermute p A = L*U. The helper rowPermute p A evaluates A(p i,j), fixing the permutation convention.",
+      "premiseMapping": {
+        "urn:csabs:axiom/LUDecomposition-factor-constraints": "The corresponding explicit structure fields supply this premise: p is a permutation of Fin(n); P_ij=δ_{p(i),j}; ∀i<j,L_ij=0; ∀i,L_ii=1; ∀i>j,U_ij=0. The proof uses the unitary or inverse identities; unused triangular/order/positivity fields remain profile constraints.",
+        "urn:csabs:axiom/LUDecomposition-reconstruction": "The corresponding explicit structure fields supply this premise: PA=LU, equivalently ∀i,j,A_{p(i),j}=Σ_k L_ik U_kj. The proof uses the unitary or inverse identities; unused triangular/order/positivity fields remain profile constraints."
+      },
+      "limitations": "Proves the displayed algebraic identity for a supplied valid witness, under the mapped exact scalar/dimension conventions. It does not prove factor existence/uniqueness, a numerical algorithm, stability or implementation conformance.",
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "bb4e35c393ad57bbb62e5dc287c8931b5c755d775ca19389dcb4eeda27af2d15"
+    },
+    "urn:csabs:concept/QRDecomposition": {
+      "kind": "model",
+      "symbol": "Catalog.QRDecomposition",
+      "module": "Catalog.MatrixDecompositions",
+      "scope": "model",
+      "mapping": "RCLike scalar F with full square orthogonal field Q, both unitary equations, rectangular upper factor and upper-trapezoidal predicate, and exact A=Q*R. RCLike is instantiated by real or complex scalars.",
+      "limitations": "Exact selected witness/carrier model and factor observations. No factor-finding algorithm, decidable equality on real/complex entries, floating-point error analysis or general numerical implementation refinement. Only individually registered claims have compiled witnesses; existence/uniqueness results are not proved by structure fields.",
+      "catalogHash": "97cb65630876512448021addfe00a5456106745d014eda08d4647aa13e85a1e7"
+    },
+    "urn:csabs:law/QRDecomposition-gram": {
+      "kind": "witness",
+      "symbol": "Catalog.MatrixDecompositionProofs.qr_gram",
+      "module": "Catalog.MatrixDecompositions",
+      "expectedType": "∀ {F : Type u} [RCLike F] {m n : Nat} {A : Catalog.Matrix F m n} (d : Catalog.QRDecomposition A), A.conjTranspose * A = d.upper.conjTranspose * d.upper",
+      "mapping": "RCLike scalar F with full square orthogonal field Q, both unitary equations, rectangular upper factor and upper-trapezoidal predicate, and exact A=Q*R. RCLike is instantiated by real or complex scalars.",
+      "premiseMapping": {
+        "urn:csabs:axiom/QRDecomposition-factor-constraints": "The corresponding explicit structure fields supply this premise: Q*Q=QQ*=I_m; R∈F^{m×n}; ∀i,j with i>j,R_ij=0. The proof uses the unitary or inverse identities; unused triangular/order/positivity fields remain profile constraints.",
+        "urn:csabs:axiom/QRDecomposition-reconstruction": "The corresponding explicit structure fields supply this premise: A=QR. The proof uses the unitary or inverse identities; unused triangular/order/positivity fields remain profile constraints."
+      },
+      "limitations": "Proves the displayed algebraic identity for a supplied valid witness, under the mapped exact scalar/dimension conventions. It does not prove factor existence/uniqueness, a numerical algorithm, stability or implementation conformance.",
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "4d624f60642bea28da14b30f7c82ed8aea00fc503c80b3cf710d3399313e74f5"
+    },
+    "urn:csabs:concept/SVD": {
+      "kind": "model",
+      "symbol": "Catalog.SVD",
+      "module": "Catalog.MatrixDecompositions",
+      "scope": "model",
+      "mapping": "RCLike scalar F, full left and right unitary matrices, Fin(min m n)-indexed real singular values with nonnegativity/order proofs, rectangularSingularDiagonal and exact reconstruction. Adjoint is Matrix.conjTranspose, never plain transpose in the complex case.",
+      "limitations": "Exact selected witness/carrier model and factor observations. No factor-finding algorithm, decidable equality on real/complex entries, floating-point error analysis or general numerical implementation refinement. Only individually registered claims have compiled witnesses; existence/uniqueness results are not proved by structure fields.",
+      "catalogHash": "ad8d71b4b4f05747de079665a44a6d57f450c778d04bf45180ec18b853d1487d"
+    },
+    "urn:csabs:law/SVD-coordinates": {
+      "kind": "witness",
+      "symbol": "Catalog.MatrixDecompositionProofs.svd_coordinates",
+      "module": "Catalog.MatrixDecompositions",
+      "expectedType": "∀ {F : Type u} [RCLike F] {m n : Nat} {A : Catalog.Matrix F m n} (d : Catalog.SVD A), d.left.conjTranspose * A * d.right = Catalog.rectangularSingularDiagonal d.singularValues",
+      "mapping": "RCLike scalar F, full left and right unitary matrices, Fin(min m n)-indexed real singular values with nonnegativity/order proofs, rectangularSingularDiagonal and exact reconstruction. Adjoint is Matrix.conjTranspose, never plain transpose in the complex case.",
+      "premiseMapping": {
+        "urn:csabs:axiom/SVD-factor-constraints": "The corresponding explicit structure fields supply this premise: U*U=UU*=I_m; V*V=VV*=I_n; σ:Fin(min(m,n))→ℝ; ∀i,σ_i≥0; i≤j⇒σ_i≥σ_j; Σ_ij=if i=j<min(m,n) then σ_i else 0. The proof uses the unitary or inverse identities; unused triangular/order/positivity fields remain profile constraints.",
+        "urn:csabs:axiom/SVD-reconstruction": "The corresponding explicit structure fields supply this premise: A=UΣV*. The proof uses the unitary or inverse identities; unused triangular/order/positivity fields remain profile constraints."
+      },
+      "limitations": "Proves the displayed algebraic identity for a supplied valid witness, under the mapped exact scalar/dimension conventions. It does not prove factor existence/uniqueness, a numerical algorithm, stability or implementation conformance.",
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "a06bb6b60dcaf59f0f8634dab6763f3f2ca07887c4384d4ee6e7ade51aff01c3"
+    },
+    "urn:csabs:concept/EigenDecomposition": {
+      "kind": "model",
+      "symbol": "Catalog.EigenDecomposition",
+      "module": "Catalog.MatrixDecompositions",
+      "scope": "model",
+      "mapping": "Field F, basis matrix vectors, an explicitly supplied two-sided inverse, scalar eigenvalues and exact similarity. No global diagonalizability or eigenvalue-existence axiom is introduced; a defective matrix has no such structure value.",
+      "limitations": "Exact selected witness/carrier model and factor observations. No factor-finding algorithm, decidable equality on real/complex entries, floating-point error analysis or general numerical implementation refinement. Only individually registered claims have compiled witnesses; existence/uniqueness results are not proved by structure fields.",
+      "catalogHash": "40fe1b1db38b4b652646d447008dddec736aed811eb6e1fbe48c5e9727af0f49"
+    },
+    "urn:csabs:law/EigenDecomposition-basis-equation": {
+      "kind": "witness",
+      "symbol": "Catalog.MatrixDecompositionProofs.eigen_basis_equation",
+      "module": "Catalog.MatrixDecompositions",
+      "expectedType": "∀ {F : Type u} [Field F] {n : Nat} {A : Catalog.Matrix F n n} (d : Catalog.EigenDecomposition A), A * d.vectors = d.vectors * Matrix.diagonal d.eigenvalues",
+      "mapping": "Field F, basis matrix vectors, an explicitly supplied two-sided inverse, scalar eigenvalues and exact similarity. No global diagonalizability or eigenvalue-existence axiom is introduced; a defective matrix has no such structure value.",
+      "premiseMapping": {
+        "urn:csabs:axiom/EigenDecomposition-factor-constraints": "The corresponding explicit structure fields supply this premise: V,W∈F^{n×n}; WV=VW=I_n; λ∈F^n; Λ=diag(λ). The proof uses the unitary or inverse identities; unused triangular/order/positivity fields remain profile constraints.",
+        "urn:csabs:axiom/EigenDecomposition-reconstruction": "The corresponding explicit structure fields supply this premise: A=VΛW. The proof uses the unitary or inverse identities; unused triangular/order/positivity fields remain profile constraints."
+      },
+      "limitations": "Proves the displayed algebraic identity for a supplied valid witness, under the mapped exact scalar/dimension conventions. It does not prove factor existence/uniqueness, a numerical algorithm, stability or implementation conformance.",
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "a0232d755401ca21fe5d81b23ed16caf2356a3aa4a156d41183945b58a4d0f71"
+    },
+    "urn:csabs:concept/CholeskyDecomposition": {
+      "kind": "model",
+      "symbol": "Catalog.CholeskyDecomposition",
+      "module": "Catalog.MatrixDecompositions",
+      "scope": "model",
+      "mapping": "RCLike F, explicit exact Hermitian/quadratic-form positive-definiteness guard, a lower-triangular factor with each diagonal entry equal to a positive real, and exact A=L*L.conjTranspose. Positivity is supplied as a structure hypothesis, not a theorem fabricated by the model.",
+      "limitations": "Exact selected witness/carrier model and factor observations. No factor-finding algorithm, decidable equality on real/complex entries, floating-point error analysis or general numerical implementation refinement. Only individually registered claims have compiled witnesses; existence/uniqueness results are not proved by structure fields.",
+      "catalogHash": "00d409299499319f95eba352872cbbb908da0916f8b1c72c370c675c1a95c043"
+    },
+    "urn:csabs:law/CholeskyDecomposition-determinant": {
+      "kind": "witness",
+      "symbol": "Catalog.MatrixDecompositionProofs.cholesky_determinant",
+      "module": "Catalog.MatrixDecompositions",
+      "expectedType": "∀ {F : Type u} [RCLike F] {n : Nat} {A : Catalog.Matrix F n n} (d : Catalog.CholeskyDecomposition A), A.det = d.lower.det * star d.lower.det",
+      "mapping": "RCLike F, explicit exact Hermitian/quadratic-form positive-definiteness guard, a lower-triangular factor with each diagonal entry equal to a positive real, and exact A=L*L.conjTranspose. Positivity is supplied as a structure hypothesis, not a theorem fabricated by the model.",
+      "premiseMapping": {
+        "urn:csabs:axiom/CholeskyDecomposition-reconstruction": "The corresponding explicit structure fields supply this premise: A=LL*."
+      },
+      "limitations": "Proves the displayed algebraic identity for a supplied valid witness, under the mapped exact scalar/dimension conventions. It does not prove factor existence/uniqueness, a numerical algorithm, stability or implementation conformance.",
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "2753f55a6d46db5cd9f1fb2f877f4af57fd8f92c8a90a0514acb8a690e4c0ea8"
     }
   }
 }
