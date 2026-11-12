@@ -180,7 +180,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "kind": "urn:csabs:kind/mathematical-structure",
     "definition": "A finite simple undirected graph consists of vertices and unordered pairs of distinct vertices as edges; loops and multiple edges are excluded in this variant.",
-    "notation": "G=(V,E); E⊆{{u,v}:u,v∈V,u≠v}",
+    "notation": "G=(V,E); E⊆{e: e={u,v},u,v∈V,u≠v }",
     "hasOperation": [
       "urn:csabs:operation/Graph-neighbors"
     ],
