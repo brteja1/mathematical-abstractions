@@ -291,6 +291,11 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Power set](concepts/PowerSet.md)
   - [Binary relation](concepts/Relation.md)
   - [Set](concepts/Set.md)
+- **Statistics**
+  - **Descriptive statistics**
+    - [Arithmetic mean of a finite real sample](concepts/ArithmeticMean.md)
+    - [Numeric sample median (midpoint convention)](concepts/Median.md)
+    - [Empirical mode set (all observed frequency maximizers)](concepts/Mode.md)
 - **Topology**
   - [Topological manifold (fixed dimension, without boundary)](concepts/Manifold.md)
   - [Smooth manifold (C∞, without boundary)](concepts/SmoothManifold.md)
@@ -320,6 +325,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Advanced Encryption Standard (AES)](concepts/AES.md) | Cryptography → Symmetric cryptography |
 | [AES-GCM (96-bit nonce, 128-bit tag profile)](concepts/AESGCM.md) | Cryptography → Symmetric cryptography |
 | [Arbitrary Precision Integer](concepts/ArbitraryPrecisionInteger.md) | Numeric computation |
+| [Arithmetic mean of a finite real sample](concepts/ArithmeticMean.md) | Statistics → Descriptive statistics |
 | [Fixed-length array](concepts/Array.md) | Data structures → Sequential collections |
 | [B-tree (balanced multiway search tree)](concepts/BTree.md) | Data structures → Tree structures |
 | [Finite database relation under bag semantics](concepts/BagRelation.md) | Relational data modelling |
@@ -435,9 +441,11 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Measurable function](concepts/MeasurableFunction.md) | Measure theory |
 | [Measurable space (sigma-algebra on a carrier)](concepts/MeasurableSpace.md) | Measure theory |
 | [Measure space (nonnegative countably additive measure)](concepts/MeasureSpace.md) | Measure theory |
+| [Numeric sample median (midpoint convention)](concepts/Median.md) | Statistics → Descriptive statistics |
 | [Relational method contract with write effects](concepts/MethodContract.md) | Programming-language semantics → Object-oriented semantics |
 | [Min-plus semiring (tropical semiring, min convention)](concepts/MinPlusSemiring.md) | Algebra, Order and fixed points |
 | [Classical propositional modal logic K](concepts/ModalLogic.md) | Logic and proof, Behavior and transition systems |
+| [Empirical mode set (all observed frequency maximizers)](concepts/Mode.md) | Statistics → Descriptive statistics |
 | [Modular Integer](concepts/ModularInteger.md) | Numeric computation |
 | [Monoid](concepts/Monoid.md) | Algebra |
 | [Monotone Function](concepts/MonotoneFunction.md) | Order and fixed points |

@@ -16,6 +16,8 @@ A function defined on a specified subset of an ambient input set, with no value 
 
 ## Backlinks
 
+- [Arithmetic mean of a finite real sample](ArithmeticMean.md) — `requiresConcept`
+- [Arithmetic mean of a finite real sample](ArithmeticMean.md) — `specializationOf`
 - [Single-inheritance class table and dynamic dispatch](ClassTable.md) — `requiresConcept`
 - [Checked signed-integer constant-evaluation fragment](CompileTimeEvaluation.md) — `requiresConcept`
 - [Total function](Function.md) — `relatedConcept`
@@ -24,6 +26,8 @@ A function defined on a specified subset of an ambient input set, with no value 
 - [Topological manifold (fixed dimension, without boundary)](Manifold.md) — `requiresConcept`
 - [Map](Map.md) — `requiresConcept`
 - [Map](Map.md) — `specializationOf`
+- [Numeric sample median (midpoint convention)](Median.md) — `requiresConcept`
+- [Numeric sample median (midpoint convention)](Median.md) — `specializationOf`
 - [Kinded partial template metafunction](TemplateMetafunction.md) — `requiresConcept`
 - [Kinded partial template metafunction](TemplateMetafunction.md) — `specializationOf`
 - [Deterministic one-tape Turing machine](TuringMachine.md) — `requiresConcept`

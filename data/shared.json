@@ -1794,6 +1794,33 @@
       "type": "Category",
       "label": "Matrix decompositions",
       "parentCategory": "urn:csabs:category/linear-algebra"
+    },
+    {
+      "id": "urn:csabs:source/nist-measures-of-location",
+      "type": "Source",
+      "label": "NIST/SEMATECH e-Handbook of Statistical Methods: §1.3.5.1 Measures of Location",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda351.htm",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Consulted definitions of arithmetic mean, odd/even sample median and nonunique empirical modes; the catalog makes empty-data and tie conventions explicit."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-DescriptiveStatistics",
+      "type": "Source",
+      "label": "Catalog Lean module DescriptiveStatistics",
+      "path": "lean/Catalog/DescriptiveStatistics.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local finite-multiset models and selected derived proofs; independent statistical provenance remains separate."
+    },
+    {
+      "id": "urn:csabs:category/statistics",
+      "type": "Category",
+      "label": "Statistics"
+    },
+    {
+      "id": "urn:csabs:category/descriptive-statistics",
+      "type": "Category",
+      "label": "Descriptive statistics",
+      "parentCategory": "urn:csabs:category/statistics"
     }
   ]
 }

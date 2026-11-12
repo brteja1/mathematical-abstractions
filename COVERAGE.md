@@ -8,6 +8,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | AES | 2 | 1 | 1 | 0 | defined-structure |
 | AESGCM | 4 | 2 | 0 | 1 | defined-structure |
 | ArbitraryPrecisionInteger | 3 | 1 | 1 | 1 | defined-structure |
+| ArithmeticMean | 1 | 1 | 2 | 1 | defined-function |
 | Array | 2 | 4 | 2 | 1 | defined-structure |
 | BTree | 6 | 6 | 2 | 1 | extensional-structural-definition |
 | BagRelation | 4 | 5 | 1 | 1 | extensional-structural-definition |
@@ -123,9 +124,11 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | MeasurableFunction | 2 | 1 | 0 | 1 | defined-structure |
 | MeasurableSpace | 2 | 3 | 0 | 1 | defined-structure |
 | MeasureSpace | 1 | 2 | 0 | 2 | defined-structure |
+| Median | 2 | 2 | 2 | 1 | defined-function |
 | MethodContract | 3 | 3 | 2 | 0 | extensional-structural-definition |
 | MinPlusSemiring | 5 | 6 | 0 | 1 | extensional-structural-definition |
 | ModalLogic | 1 | 2 | 2 | 3 | defined-structure |
+| Mode | 2 | 1 | 2 | 1 | defined-function |
 | ModularInteger | 2 | 1 | 0 | 2 | defined-structure |
 | Monoid | 1 | 4 | 1 | 1 | axiomatic-structure |
 | MonotoneFunction | 1 | 1 | 1 | 1 | defined-structure |
@@ -222,6 +225,6 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | WeightedDirectedGraph | 3 | 2 | 1 | 1 | extensional-structural-definition |
 | WellFoundedRelation | 1 | 1 | 1 | 1 | defined-structure |
 
-217 of 217 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
+220 of 220 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
 
 Use `ruleRole` to distinguish foundational axioms, structure constraints, and defining equations. Use `basisScope` for interface boundaries. Alternate language policies, intensional equality, IEEE payload/trap details, and formal proof artifacts require further formalization.

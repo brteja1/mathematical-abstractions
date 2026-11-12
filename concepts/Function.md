@@ -30,6 +30,8 @@ A mapping assigning each element of a domain exactly one element of a codomain.
 - [Finite rectangular matrix over a field](Matrix.md) — `specializationOf`
 - [Measurable function](MeasurableFunction.md) — `requiresConcept`
 - [Measurable function](MeasurableFunction.md) — `specializationOf`
+- [Empirical mode set (all observed frequency maximizers)](Mode.md) — `requiresConcept`
+- [Empirical mode set (all observed frequency maximizers)](Mode.md) — `specializationOf`
 - [Monotone Function](MonotoneFunction.md) — `requiresConcept`
 - [Monotone Function](MonotoneFunction.md) — `specializationOf`
 - [Partial function](PartialFunction.md) — `requiresConcept`

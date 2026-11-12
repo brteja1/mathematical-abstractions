@@ -542,7 +542,7 @@
       "scope": "model",
       "mapping": "Mathlib Multiset A, quotient of lists by permutation, equivalent finite multiplicity representation.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "cbb0e94cec91c7035579af87c31e6668d86b6511b71ccffb540f8a42c2a88d6f"
+      "catalogHash": "1ab72b339086858823ab76dc13c6f831ad762e1b8ceb7b8bf7005f50ffcfa7e0"
     },
     "urn:csabs:concept/NFA": {
       "kind": "model",
@@ -1568,7 +1568,7 @@
       "scope": "model",
       "mapping": "A→₀NNReal plus an exact normalization proof. NNReal is the nonnegative real carrier, not the field parameter of SparseVector. Dist_fin(A)={p:A→ℝ≥0 | supp(p) finite, Σa p(a)=1}. Ambient A may be infinite. No distribution exists on empty A. Exact real probabilities; no random generator, floating-point error or independent sampling assumption. Equality is pointwise mass equality.",
       "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
-      "catalogHash": "f2e458bff0f9073e0d3f3b100f0bb1f18216f825395393ae1d9d743e5b073299"
+      "catalogHash": "f98d0c8be33e62fd4991797c1fdd0e965901793034d431d4e5a5ad2dbcefa7ff"
     },
     "urn:csabs:concept/StateBasedCRDT": {
       "kind": "model",
@@ -1703,7 +1703,7 @@
       "scope": "model",
       "mapping": "BagRel(S)=Multiset(Tuple(S)). No tuple ordering; equal rows retain natural-number multiplicity. No SQL NULL, three-valued predicates, ordering or aggregation overflow. Schema fixed; projection adds multiplicities when distinct rows collapse.",
       "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
-      "catalogHash": "cbb0e94cec91c7035579af87c31e6668d86b6511b71ccffb540f8a42c2a88d6f"
+      "catalogHash": "1ab72b339086858823ab76dc13c6f831ad762e1b8ceb7b8bf7005f50ffcfa7e0"
     },
     "urn:csabs:concept/DocumentValue": {
       "kind": "model",
@@ -2142,7 +2142,7 @@
         "Quot.sound",
         "Classical.choice"
       ],
-      "catalogHash": "e5cab9c7faab10104e5bef1b08e39df51d136745ec9af5ee56bb468239f4a398"
+      "catalogHash": "c2e600f4f7a379559787132c6f31a3deab8168021c324e034c95cc6feb61189e"
     },
     "urn:csabs:law/DocumentValue-boolean-injective": {
       "kind": "witness",
@@ -3185,6 +3185,137 @@
         "Classical.choice"
       ],
       "catalogHash": "2753f55a6d46db5cd9f1fb2f877f4af57fd8f92c8a90a0514acb8a690e4c0ea8"
+    },
+    "urn:csabs:concept/ArithmeticMean": {
+      "kind": "model",
+      "symbol": "Catalog.ArithmeticMean",
+      "module": "Catalog.DescriptiveStatistics",
+      "scope": "model",
+      "mapping": "Multiset ℝ with exact sum and occurrence cardinality. ArithmeticMean returns Option ℝ; card=0 yields none before division, otherwise some(sum/card). The input quotient removes order but preserves multiplicity; no arithmetic rounding is modeled.",
+      "limitations": "Exact selected finite-multiset interface. No floating-point error analysis, missing-data handling, weighted/population inference, complexity claim or numerical implementation refinement. Only individually registered results have compiled witnesses; the separately recorded theorem is not a registered proof.",
+      "catalogHash": "662db64e2db1fb4a657b77d06cb9d12c4c2e846d92d74022a01c565f2d130ffe"
+    },
+    "urn:csabs:law/ArithmeticMean-singleton": {
+      "kind": "witness",
+      "symbol": "Catalog.DescriptiveStatisticsProofs.mean_singleton",
+      "module": "Catalog.DescriptiveStatistics",
+      "expectedType": "∀ (x : ℝ), Catalog.ArithmeticMean {x} = some x",
+      "mapping": "Multiset ℝ with exact sum and occurrence cardinality. ArithmeticMean returns Option ℝ; card=0 yields none before division, otherwise some(sum/card). The input quotient removes order but preserves multiplicity; no arithmetic rounding is modeled.",
+      "premiseMapping": {
+        "urn:csabs:axiom/ArithmeticMean-definition": "Interpreted by the explicit data guard/count/sort definition: N=|S|; T=Σ_{x∈S}x; meanOption(S)=if N=0 then none else some(T/N); dom(μ)={S | |S|>0}."
+      },
+      "limitations": "Proves the displayed result under the selected exact carrier/equality/empty/tie conventions. No proof of an arbitrary software implementation, population claim or numerical stability bound.",
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "49a17924d740b6baac69f5d089bee22883a4328e01e201ccca74335efd45c045"
+    },
+    "urn:csabs:law/ArithmeticMean-balance": {
+      "kind": "witness",
+      "symbol": "Catalog.DescriptiveStatisticsProofs.mean_balance",
+      "module": "Catalog.DescriptiveStatistics",
+      "expectedType": "∀ (sample : Multiset ℝ) (m : ℝ), Catalog.ArithmeticMean sample = some m → (sample.card : ℝ) * m = sample.sum",
+      "mapping": "Multiset ℝ with exact sum and occurrence cardinality. ArithmeticMean returns Option ℝ; card=0 yields none before division, otherwise some(sum/card). The input quotient removes order but preserves multiplicity; no arithmetic rounding is modeled.",
+      "premiseMapping": {
+        "urn:csabs:axiom/ArithmeticMean-definition": "Interpreted by the explicit data guard/count/sort definition: N=|S|; T=Σ_{x∈S}x; meanOption(S)=if N=0 then none else some(T/N); dom(μ)={S | |S|>0}."
+      },
+      "limitations": "Proves the displayed result under the selected exact carrier/equality/empty/tie conventions. No proof of an arbitrary software implementation, population claim or numerical stability bound.",
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "ada3ca04a740805f67fab14831e69b8de4dcc582338f2d01d06a35fdf34b7693"
+    },
+    "urn:csabs:concept/Median": {
+      "kind": "model",
+      "symbol": "Catalog.Median",
+      "module": "Catalog.DescriptiveStatistics",
+      "scope": "model",
+      "mapping": "Multiset ℝ sorted with Multiset.sort (≤). medianCenters guards card=0 and uses proof-bounded Fin indices (card−1)/2 and card/2. Median maps the central pair to its exact arithmetic midpoint. Real comparisons/operations are noncomputable semantic interpretations, not a floating-point selection implementation.",
+      "limitations": "Exact selected finite-multiset interface. No floating-point error analysis, missing-data handling, weighted/population inference, complexity claim or numerical implementation refinement. Only individually registered results have compiled witnesses; the separately recorded theorem is not a registered proof.",
+      "catalogHash": "971bee905c50340a86129d251aeb551f4591231c25d148431a36eb49912da89e"
+    },
+    "urn:csabs:law/Median-singleton": {
+      "kind": "witness",
+      "symbol": "Catalog.DescriptiveStatisticsProofs.median_singleton",
+      "module": "Catalog.DescriptiveStatistics",
+      "expectedType": "∀ (x : ℝ), Catalog.Median {x} = some x",
+      "mapping": "Multiset ℝ sorted with Multiset.sort (≤). medianCenters guards card=0 and uses proof-bounded Fin indices (card−1)/2 and card/2. Median maps the central pair to its exact arithmetic midpoint. Real comparisons/operations are noncomputable semantic interpretations, not a floating-point selection implementation.",
+      "premiseMapping": {
+        "urn:csabs:axiom/Median-central-pair": "Interpreted by the explicit data guard/count/sort definition: sort(S)=(y₀,…,y_{N−1}); N>0 ⇒ centers(S)=(y_{⌊(N−1)/2⌋},y_{⌊N/2⌋}); centersOption(∅)=none.",
+        "urn:csabs:axiom/Median-midpoint": "Interpreted by the explicit data guard/count/sort definition: centersOption(S)=some(l,u) ⇒ medianOption(S)=some((l+u)/2); centersOption(S)=none ⇒ medianOption(S)=none."
+      },
+      "limitations": "Proves the displayed result under the selected exact carrier/equality/empty/tie conventions. No proof of an arbitrary software implementation, population claim or numerical stability bound.",
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "53902ef9ff6ed6d6e466833f9d99cf918ea7303f5f925e6e6c2249c030a966be"
+    },
+    "urn:csabs:law/Median-pair": {
+      "kind": "witness",
+      "symbol": "Catalog.DescriptiveStatisticsProofs.median_pair",
+      "module": "Catalog.DescriptiveStatistics",
+      "expectedType": "∀ (a b : ℝ), Catalog.Median ({a, b} : Multiset ℝ) = some ((a + b) / 2)",
+      "mapping": "Multiset ℝ sorted with Multiset.sort (≤). medianCenters guards card=0 and uses proof-bounded Fin indices (card−1)/2 and card/2. Median maps the central pair to its exact arithmetic midpoint. Real comparisons/operations are noncomputable semantic interpretations, not a floating-point selection implementation.",
+      "premiseMapping": {
+        "urn:csabs:axiom/Median-central-pair": "Interpreted by the explicit data guard/count/sort definition: sort(S)=(y₀,…,y_{N−1}); N>0 ⇒ centers(S)=(y_{⌊(N−1)/2⌋},y_{⌊N/2⌋}); centersOption(∅)=none.",
+        "urn:csabs:axiom/Median-midpoint": "Interpreted by the explicit data guard/count/sort definition: centersOption(S)=some(l,u) ⇒ medianOption(S)=some((l+u)/2); centersOption(S)=none ⇒ medianOption(S)=none."
+      },
+      "limitations": "Proves the displayed result under the selected exact carrier/equality/empty/tie conventions. No proof of an arbitrary software implementation, population claim or numerical stability bound.",
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "1cfeefc209f33d4d83dc2e8b42ae989bc5872b3032ca52ab02574f0b0c593488"
+    },
+    "urn:csabs:concept/Mode": {
+      "kind": "model",
+      "symbol": "Catalog.Mode",
+      "module": "Catalog.DescriptiveStatistics",
+      "scope": "model",
+      "mapping": "For A with DecidableEq, Mode filters sample.toFinset by the universal maximum-count condition over observed sample values. Output is Finset A, with every tied maximizer retained and no ordering assumption on A. The semantic definition uses classical decidability for the bounded predicate; it is not a claimed efficient frequency-table implementation.",
+      "limitations": "Exact selected finite-multiset interface. No floating-point error analysis, missing-data handling, weighted/population inference, complexity claim or numerical implementation refinement. Only individually registered results have compiled witnesses; the separately recorded theorem is not a registered proof.",
+      "catalogHash": "a83fe6aae3f948177410d0d0d7443fe24786e86d1734689784b9d1e1d0943db3"
+    },
+    "urn:csabs:law/Mode-singleton": {
+      "kind": "witness",
+      "symbol": "Catalog.DescriptiveStatisticsProofs.mode_singleton",
+      "module": "Catalog.DescriptiveStatistics",
+      "expectedType": "∀ {A : Type u} [DecidableEq A] (x : A), Catalog.Mode {x} = {x}",
+      "mapping": "For A with DecidableEq, Mode filters sample.toFinset by the universal maximum-count condition over observed sample values. Output is Finset A, with every tied maximizer retained and no ordering assumption on A. The semantic definition uses classical decidability for the bounded predicate; it is not a claimed efficient frequency-table implementation.",
+      "premiseMapping": {
+        "urn:csabs:axiom/Mode-maximizer-set": "Interpreted by the explicit data guard/count/sort definition: M(S)={a∈supp(S) | ∀b∈supp(S),c_S(b)≤c_S(a)}; supp(S)={a | c_S(a)>0}; M(∅)=∅."
+      },
+      "limitations": "Proves the displayed result under the selected exact carrier/equality/empty/tie conventions. No proof of an arbitrary software implementation, population claim or numerical stability bound.",
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "665eba56c9baa7457af3af0cf517b7b39b29f2163c002f50ff3ef09f8c31680a"
+    },
+    "urn:csabs:law/Mode-nonempty": {
+      "kind": "witness",
+      "symbol": "Catalog.DescriptiveStatisticsProofs.mode_nonempty",
+      "module": "Catalog.DescriptiveStatistics",
+      "expectedType": "∀ {A : Type u} [DecidableEq A] (sample : Multiset A), sample ≠ 0 → (Catalog.Mode sample).Nonempty",
+      "mapping": "For A with DecidableEq, Mode filters sample.toFinset by the universal maximum-count condition over observed sample values. Output is Finset A, with every tied maximizer retained and no ordering assumption on A. The semantic definition uses classical decidability for the bounded predicate; it is not a claimed efficient frequency-table implementation.",
+      "premiseMapping": {
+        "urn:csabs:axiom/Mode-maximizer-set": "Interpreted by the explicit data guard/count/sort definition: M(S)={a∈supp(S) | ∀b∈supp(S),c_S(b)≤c_S(a)}; supp(S)={a | c_S(a)>0}; M(∅)=∅."
+      },
+      "limitations": "Proves the displayed result under the selected exact carrier/equality/empty/tie conventions. No proof of an arbitrary software implementation, population claim or numerical stability bound.",
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "d489c45e48f6df9b12d589dc711e977e719d23ab40e919736cdfb111d9994b67"
     }
   }
 }

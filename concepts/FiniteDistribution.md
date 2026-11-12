@@ -12,10 +12,14 @@ An exactly normalized nonnegative mass function with finite support on a value c
 
 **Prerequisites:** [Probability space (normalized measure)](ProbabilitySpace.md), [Finitely supported vector](SparseVector.md), [Finite set collection](FiniteSet.md)
 
+**Related concepts:** [Arithmetic mean of a finite real sample](ArithmeticMean.md), [Empirical mode set (all observed frequency maximizers)](Mode.md)
+
 ## Backlinks
 
+- [Arithmetic mean of a finite real sample](ArithmeticMean.md) — `relatedConcept`
 - [Finite single-letter distortion measure](DistortionMeasure.md) — `requiresConcept`
 - [Learning with errors (finite modular distribution profile)](LWE.md) — `requiresConcept`
+- [Empirical mode set (all observed frequency maximizers)](Mode.md) — `relatedConcept`
 - [Relative entropy (finite Kullback–Leibler divergence)](RelativeEntropy.md) — `requiresConcept`
 - [Short integer solution problem (Euclidean norm profile)](SIS.md) — `requiresConcept`
 - [Shannon entropy (finite discrete profile)](ShannonEntropy.md) — `requiresConcept`
@@ -295,7 +299,10 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/SparseVector",
       "urn:csabs:concept/FiniteSet"
     ],
-    "relatedConcept": [],
+    "relatedConcept": [
+      "urn:csabs:concept/ArithmeticMean",
+      "urn:csabs:concept/Mode"
+    ],
     "hasOperation": [
       "urn:csabs:operation/FiniteDistribution-mass",
       "urn:csabs:operation/FiniteDistribution-dirac",

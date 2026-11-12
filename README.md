@@ -14,6 +14,8 @@ Information theory entries cover entropy, mutual information, stochastic channel
 
 Matrix decompositions add [row-pivoted LU](concepts/LUDecomposition.md), [full QR](concepts/QRDecomposition.md), [full SVD](concepts/SVD.md), [eigendecomposition](concepts/EigenDecomposition.md) and [positive-definite Cholesky](concepts/CholeskyDecomposition.md) under a shared [exact factor-witness interface](concepts/MatrixDecomposition.md). See the [matrix-decomposition guide](docs/MATRIX_DECOMPOSITIONS.md) for shapes, permutation/adjoint conventions, input guards and the six mapped Lean laws.
 
+Descriptive statistics add [arithmetic mean](concepts/ArithmeticMean.md), [numeric median](concepts/Median.md) and [empirical mode sets](concepts/Mode.md) with explicit empty-sample, multiplicity, even-median and tied-mode conventions. See the [descriptive-statistics guide](docs/DESCRIPTIVE_STATISTICS.md) for formulas, examples and the six mapped Lean laws.
+
 ## What each concept records
 
 - A definition, notation, carrier, equality convention and chosen mathematical basis.

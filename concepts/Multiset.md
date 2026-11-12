@@ -12,14 +12,17 @@ A finite collection represented by nonnegative multiplicities, with only finitel
 
 **Prerequisites:** [Set](Set.md), [Natural Number](NaturalNumber.md)
 
-**Related concepts:** [Finite set collection](FiniteSet.md), [Ordered collection without duplicates](OrderedSet.md)
+**Related concepts:** [Finite set collection](FiniteSet.md), [Ordered collection without duplicates](OrderedSet.md), [Arithmetic mean of a finite real sample](ArithmeticMean.md), [Numeric sample median (midpoint convention)](Median.md), [Empirical mode set (all observed frequency maximizers)](Mode.md)
 
 ## Backlinks
 
+- [Arithmetic mean of a finite real sample](ArithmeticMean.md) — `requiresConcept`
 - [Finite database relation under bag semantics](BagRelation.md) — `requiresConcept`
 - [Finite database relation under bag semantics](BagRelation.md) — `specializationOf`
 - [Finite database relation under set semantics](DatabaseRelation.md) — `relatedConcept`
 - [Finite set collection](FiniteSet.md) — `relatedConcept`
+- [Numeric sample median (midpoint convention)](Median.md) — `requiresConcept`
+- [Empirical mode set (all observed frequency maximizers)](Mode.md) — `requiresConcept`
 - [Ordered collection without duplicates](OrderedSet.md) — `relatedConcept`
 - [Priority Queue](PriorityQueue.md) — `requiresConcept`
 
@@ -275,7 +278,10 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "provenanceStatus": "legacy-source-missing",
     "relatedConcept": [
       "urn:csabs:concept/FiniteSet",
-      "urn:csabs:concept/OrderedSet"
+      "urn:csabs:concept/OrderedSet",
+      "urn:csabs:concept/ArithmeticMean",
+      "urn:csabs:concept/Median",
+      "urn:csabs:concept/Mode"
     ],
     "leanFormulation": "abbrev Multiset (A : Type u) := _root_.Multiset A",
     "formulationSource": "urn:csabs:source/local-lean-DataStructures",

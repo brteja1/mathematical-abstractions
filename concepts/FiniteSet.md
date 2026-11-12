@@ -30,6 +30,7 @@ An unordered finite subset of a fixed carrier, with extensional equality and no 
 - [Finite kinded generic parameter signature](GenericSignature.md) — `requiresConcept`
 - [Hamming space (finite fixed-length words)](HammingSpace.md) — `requiresConcept`
 - [Finite simple undirected hypergraph](Hypergraph.md) — `requiresConcept`
+- [Empirical mode set (all observed frequency maximizers)](Mode.md) — `requiresConcept`
 - [Finite set-valued multimap](Multimap.md) — `requiresConcept`
 - [Multiset](Multiset.md) — `relatedConcept`
 - [Ordered collection without duplicates](OrderedSet.md) — `requiresConcept`
