@@ -2,7 +2,7 @@
 
 A finite simple undirected graph consists of vertices and unordered pairs of distinct vertices as edges; loops and multiple edges are excluded in this variant.
 
-**Notation:** G=(V,E); E⊆{{u,v}:u,v∈V,u≠v}
+**Notation:** G=(V,E); E⊆{e: e={u,v},u,v∈V,u≠v }
 
 **Stable ID:** `urn:csabs:concept/Graph`
 

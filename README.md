@@ -39,6 +39,8 @@ The [Pages workflow](.github/workflows/pages.yml) rebuilds, validates and publis
 
 Clone this repository and run `make` to install ONTFS and build the catalog, viewer and ontology. See [INSTALL.md](INSTALL.md) for prerequisites, setup, usage and troubleshooting.
 
+After reviewing catalog changes against their Lean mappings, run `make update-lean-bindings` to refresh binding fingerprints, then `make check-lean` and `make test-lean`. Preview changes with `LEAN_FLAGS=--dry-run`, or select bindings with `LEAN_IDS="Graph BipartiteGraph"`. See the [Lean workflow](lean/README.md).
+
 ## Storage and fields
 
 | Location | Role |

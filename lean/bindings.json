@@ -326,7 +326,7 @@
       "scope": "model",
       "mapping": "Mathlib SimpleGraph V with explicit Fintype V; symmetric irreflexive adjacency.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "908495fab614fef4c7f0e21239a515fdd9e56a7bce54219a1245b2ed97a1e805"
+      "catalogHash": "927e1cb41d2e583563f2533709a3ea9391dd58ee29b86c845d62356c64138ee4"
     },
     "urn:csabs:concept/Group": {
       "kind": "model",
@@ -1694,7 +1694,7 @@
       "scope": "model",
       "mapping": "(G,c:V→Bool), Adj(u,v)⇒c(u)≠c(v). The chosen coloring is observable: swapping colors gives a possibly different value. Empty graph and empty color classes allowed. This is a bundled bipartition, not only the existential property of admitting one.",
       "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
-      "catalogHash": "908495fab614fef4c7f0e21239a515fdd9e56a7bce54219a1245b2ed97a1e805"
+      "catalogHash": "927e1cb41d2e583563f2533709a3ea9391dd58ee29b86c845d62356c64138ee4"
     },
     "urn:csabs:concept/BagRelation": {
       "kind": "model",
@@ -2123,7 +2123,7 @@
         "Quot.sound",
         "Classical.choice"
       ],
-      "catalogHash": "5cdb6685800ac2ef44e8c470d4a35bed3dfb7f7055e03ec077f81ffb8ee8182b"
+      "catalogHash": "5ecf042842b96ba85a03bbebd1aef21174352bbc8908112c076463172d7ed94b"
     },
     "urn:csabs:law/BagRelation-union-commutative": {
       "kind": "witness",

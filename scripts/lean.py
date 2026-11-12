@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Check catalog bindings, compile Lean witnesses, and report fresh evidence."""
 import argparse
+import copy
 from collections import Counter
 from datetime import datetime, timezone
 import hashlib
@@ -40,6 +41,39 @@ def catalog_slice(index, ident):
 
 def catalog_hash(index, ident):
     return digest(catalog_slice(index, ident))
+
+
+def refresh_bindings(manifest, index, identifiers=()):
+    """Refresh reviewed hashes; reject unrelated metadata errors before writing."""
+    candidate = copy.deepcopy(manifest)
+    bindings = candidate['bindings']
+    selected = set()
+    for ident in identifiers:
+        if ident not in index:
+            ident = next((i for i, n in index.items() if n.get('shortForm') == ident), ident)
+        if ident not in bindings or ident not in index:
+            raise ValueError('No Lean binding registered for ' + ident)
+        selected.add(ident)
+    if not identifiers:
+        selected = set(bindings)
+    changes = []
+    # Validate all metadata against current hashes, so unselected stale hashes
+    # do not prevent a targeted refresh. No other errors are suppressed.
+    for ident, binding in bindings.items():
+        if ident not in index:
+            continue
+        current = catalog_hash(index, ident)
+        if ident in selected and binding.get('catalogHash') != current:
+            changes.append({'id': ident, 'oldHash': binding.get('catalogHash'),
+                            'catalogHash': current})
+        binding['catalogHash'] = current
+    errors = validate(candidate, index)
+    if errors:
+        raise ValueError('\n'.join(errors))
+    result = copy.deepcopy(manifest)
+    for change in changes:
+        result['bindings'][change['id']]['catalogHash'] = change['catalogHash']
+    return result, changes
 
 
 def validate(manifest, index):
@@ -222,10 +256,20 @@ def main():
         sub.add_parser(name)
     sub.add_parser('get').add_argument('id')
     sub.add_parser('fingerprint').add_argument('id')
+    refresh = sub.add_parser('refresh-bindings', help='Refresh catalogHash after reviewing Lean mappings')
+    refresh.add_argument('ids', nargs='*', help='Stable IDs or concept short forms; default: all bindings')
+    refresh.add_argument('--dry-run', action='store_true', help='List changes without writing')
     args = parser.parse_args()
     try:
         manifest = json.loads(MANIFEST.read_text())
         index = {n['id']: n for n in load_graph()['@graph']}
+        if args.command == 'refresh-bindings':
+            updated, changes = refresh_bindings(manifest, index, args.ids)
+            if changes and not args.dry_run:
+                MANIFEST.write_text(json.dumps(updated, ensure_ascii=False, indent=2) + '\n')
+            print(json.dumps({'dryRun': args.dry_run, 'changes': changes,
+                              'verification': 'Run make check-lean and make test-lean after refreshing.'}, indent=2))
+            return 0
         if args.command == 'fingerprint':
             ident = args.id
             if ident not in index:

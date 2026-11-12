@@ -23,6 +23,7 @@ coverage: deps-ontology
 	$(PYTHON) scripts/coverage_report.py --json
 help:
 	@printf '%s\n' 'make: install ONTFS in the project environment and build the catalog and ontology' 'See INSTALL.md for installation, usage and troubleshooting.'
+	@printf '%s\n' 'make update-lean-bindings: refresh reviewed catalog fingerprints (LEAN_IDS="..." selects bindings; LEAN_FLAGS=--dry-run previews)'
 	@printf '%s\n' 'make build: install ONTFS, build and validate the graph, and regenerate coverage and viewer' 'make markdown: regenerate Markdown pages, index and viewer without ONTFS' 'make test: reject structural errors and stale generated records; run regression tests' 'make test-rdf: validate the ONTFS projection with SHACL and SPARQL' 'make coverage: query ONTFS coverage counts' 'make test-ai: exercise bounded ONTFS retrieval for the AI test-design skill' 'make check-lean: check model and witness bindings without compiling' 'make test-lean: compile models and proofs, audit axioms, and run rejection tests'
 
 .PHONY: submodules deps-ontology ontology test-ontology
@@ -40,7 +41,12 @@ test-ontology:
 	$(PYTHON) scripts/ontology.py check
 	$(PYTHON) -B -m unittest discover -s tests -p 'test_ontology.py' -v
 
-.PHONY: test-ai check-lean test-lean
+.PHONY: test-ai check-lean test-lean update-lean-bindings
+LEAN_IDS ?=
+LEAN_FLAGS ?=
+update-lean-bindings:
+	$(PYTHON) scripts/lean.py refresh-bindings $(LEAN_IDS) $(LEAN_FLAGS)
+
 test-ai:
 	$(PYTHON) -B -c "import sys; sys.path.insert(0, 'scripts'); from ontology import backend; backend()"
 	$(PYTHON) -B -m unittest discover -s tests -p 'test_test_context.py' -v

@@ -97,6 +97,19 @@ Concept records expose `mathematicalFormulation` (readable mathematics), `leanFo
 
    Store the returned hash as `catalogHash` after reviewing the mapping. A hash mismatch means the claim, interface, source metadata or premises changed; review the affected mapping before refreshing it. A graph specialization is not an implicit transfer of axioms. Every new concept also needs a model binding; partial models must say so.
 
+   To refresh existing bindings after that review, use:
+
+   ```sh
+   make update-lean-bindings LEAN_FLAGS=--dry-run
+   make update-lean-bindings
+   # Or refresh only selected bindings (stable IDs or concept short forms):
+   make update-lean-bindings LEAN_IDS="Graph BipartiteGraph urn:csabs:law/BipartiteGraph-adjacent-colors"
+   make check-lean
+   make test-lean
+   ```
+
+   The target defaults to all registered bindings and changes only stale `catalogHash` fields in `lean/bindings.json`. It reports old/new hashes and rejects invalid binding metadata before writing. It does not review mathematical correspondence, change Lean code or mappings, or generate proof evidence. Selected updates can leave other fingerprints stale; `make check-lean` reports those. Existing verification evidence becomes stale when bindings change; `make test-lean` regenerates it through compilation and axiom auditing.
+
 5. Run `make build`, `make test`, `make test-rdf`, and `make test-lean`. Inspect the witness using `scripts/lean.py get ID`. The proof term is the named compiled theorem; the manifest connects it to the graph, and the report records the check and actual axiom dependencies.
 
 ## What verification establishes
