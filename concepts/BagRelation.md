@@ -14,6 +14,26 @@ A finite multiset of well-typed named tuples over a fixed relational schema.
 
 **Specializes:** [Multiset](Multiset.md)
 
+## Mathematical formulation
+
+For schema s, BagRelation(s)=Multiset(Π\_a D(a)). Equality compares each tuple's multiplicity and bag union adds multiplicities; row order is not observable.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev BagRelation (s : RelationalSchema) := _root_.Multiset (Catalog.NamedTuple s)
+```
+
+**Source:** [`Catalog.BagRelation`](../lean/Catalog/InformationData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** BagRel(S)=Multiset(Tuple(S)). No tuple ordering; equal rows retain natural-number multiplicity. No SQL NULL, three-valued predicates, ordering or aggregation overflow. Schema fixed; projection adds multiplicities when distinct rows collapse.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** count(R,t) has finite support in t; R=T iff ∀t,count(R,t)=count(T,t); count(unionAll(R,T),t)=count(R,t)+count(T,t); count(project_X(R),u)=Σ{t∈supp(R) | t|X=u}count(R,t); count(select_P(R),t)=count(R,t) if P(t), else 0
@@ -266,6 +286,34 @@ A finite multiset of well-typed named tuples over a fixed relational schema.
 
 **provenanceKind:** derived
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {s : Catalog.RelationalSchema} (r t : Catalog.BagRelation s), r + t = t + r
+```
+
+**Source:** [`Catalog.InformationDataProofs.bag_union_commutes`](../lean/Catalog/InformationData.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** NamedTuple s is the dependent tuple carrier; BagRelation is Multiset of tuples, modulo row permutation. + means occurrence-additive unionAll, not max union; add_comm is the multiset additive law.
+
+**Limits:** Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Multiset-count-extensionality": "Interpreted premise: m=n iff ∀x:count(m,x)=count(n,x). NamedTuple s is the dependent tuple carrier; BagRelation is Multiset of tuples, modulo row permutation. + means occurrence-additive unionAll, not max union; add_comm is the multiset additive law.",
+  "urn:csabs:axiom/Multiset-finite-support": "Interpreted premise: Bag(A)={m:A→ℕ:support(m)={x:m(x)>0} is finite}. NamedTuple s is the dependent tuple carrier; BagRelation is Multiset of tuples, modulo row permutation. + means occurrence-additive unionAll, not max union; add_comm is the multiset additive law.",
+  "urn:csabs:axiom/Multiset-operations": "Interpreted premise: count(empty,x)=0; count(insert(m,a),x)=count(m,x)+[x=a]; count(remove(m,a),x)=max(0,count(m,x)−[x=a]); count(m⊎n,x)=count(m,x)+count(n,x). NamedTuple s is the dependent tuple carrier; BagRelation is Multiset of tuples, modulo row permutation. + means occurrence-additive unionAll, not max union; add_comm is the multiset additive law."
+}
+```
+
 ## Theorems
 
 <a id="node-urn-csabs-theorem-BagRelation-projection-cardinality"></a>
@@ -366,7 +414,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/Multiset"
     ],
-    "specializationNote": "Instantiate Multiset at the dependent named-tuple carrier of S. unionAll is multiset additive union ⊎; count, empty, insert and remove keep their occurrence-count meanings. Projection and selection are additional typed operations. All reused axioms have explicit applicability; the hierarchy alone transfers no rule."
+    "specializationNote": "Instantiate Multiset at the dependent named-tuple carrier of S. unionAll is multiset additive union ⊎; count, empty, insert and remove keep their occurrence-count meanings. Projection and selection are additional typed operations. All reused axioms have explicit applicability; the hierarchy alone transfers no rule.",
+    "leanFormulation": "abbrev BagRelation (s : RelationalSchema) := _root_.Multiset (Catalog.NamedTuple s)",
+    "formulationSource": "urn:csabs:source/local-lean-InformationData",
+    "formulationLocator": "Catalog.BagRelation",
+    "formulationScope": "model",
+    "leanModelMapping": "BagRel(S)=Multiset(Tuple(S)). No tuple ordering; equal rows retain natural-number multiplicity. No SQL NULL, three-valued predicates, ordering or aggregation overflow. Schema fixed; projection adds multiplicities when distinct rows collapse.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "For schema s, BagRelation(s)=Multiset(Π_a D(a)). Equality compares each tuple's multiplicity and bag union adds multiplicities; row order is not observable."
   },
   {
     "id": "urn:csabs:operation/BagRelation-multiplicity",
@@ -559,7 +614,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Multiset as lists modulo permutation; count, addition, cardinality",
     "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
-    "provenanceKind": "derived"
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {s : Catalog.RelationalSchema} (r t : Catalog.BagRelation s), r + t = t + r",
+    "formulationSource": "urn:csabs:source/local-lean-InformationData",
+    "formulationLocator": "Catalog.InformationDataProofs.bag_union_commutes",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "NamedTuple s is the dependent tuple carrier; BagRelation is Multiset of tuples, modulo row permutation. + means occurrence-additive unionAll, not max union; add_comm is the multiset additive law.",
+    "leanModelLimitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Multiset-count-extensionality\": \"Interpreted premise: m=n iff ∀x:count(m,x)=count(n,x). NamedTuple s is the dependent tuple carrier; BagRelation is Multiset of tuples, modulo row permutation. + means occurrence-additive unionAll, not max union; add_comm is the multiset additive law.\", \"urn:csabs:axiom/Multiset-finite-support\": \"Interpreted premise: Bag(A)={m:A→ℕ:support(m)={x:m(x)>0} is finite}. NamedTuple s is the dependent tuple carrier; BagRelation is Multiset of tuples, modulo row permutation. + means occurrence-additive unionAll, not max union; add_comm is the multiset additive law.\", \"urn:csabs:axiom/Multiset-operations\": \"Interpreted premise: count(empty,x)=0; count(insert(m,a),x)=count(m,x)+[x=a]; count(remove(m,a),x)=max(0,count(m,x)−[x=a]); count(m⊎n,x)=count(m,x)+count(n,x). NamedTuple s is the dependent tuple carrier; BagRelation is Multiset of tuples, modulo row permutation. + means occurrence-additive unionAll, not max union; add_comm is the multiset additive law.\"}"
   },
   {
     "id": "urn:csabs:theorem/BagRelation-projection-cardinality",

@@ -19,6 +19,26 @@ An extensive, monotone, idempotent self-map on a partially ordered set.
 - [Functional dependency on a relational schema](FunctionalDependency.md) — `relatedConcept`
 - [Topological space (topology on a carrier)](TopologicalSpace.md) — `relatedConcept`
 
+## Mathematical formulation
+
+For a partial order A, c:A→A is a closure operator iff (∀x,x≤c(x)), (∀x,y,x≤y⇒c(x)≤c(y)), and (∀x,c(c(x))=c(x)).
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev ClosureOperator (A : Type u) [_root_.PartialOrder A] := _root_.ClosureOperator A
+```
+
+**Source:** [`Catalog.ClosureOperator`](../lean/Catalog/Order.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib ClosureOperator on an explicitly supplied PartialOrder.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: An extensive, monotone, idempotent self-map on a partially ordered set. Governing rules: Closure lies above its input. Closure preserves the partial order. Applying closure twice equals applying it once.
@@ -211,7 +231,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/MonotoneFunction"
     ],
-    "specializationNote": "Use the same poset for domain and codomain and the same map; extensivity and idempotence are additional constraints."
+    "specializationNote": "Use the same poset for domain and codomain and the same map; extensivity and idempotence are additional constraints.",
+    "leanFormulation": "abbrev ClosureOperator (A : Type u) [_root_.PartialOrder A] := _root_.ClosureOperator A",
+    "formulationSource": "urn:csabs:source/local-lean-Order",
+    "formulationLocator": "Catalog.ClosureOperator",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib ClosureOperator on an explicitly supplied PartialOrder.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For a partial order A, c:A→A is a closure operator iff (∀x,x≤c(x)), (∀x,y,x≤y⇒c(x)≤c(y)), and (∀x,c(c(x))=c(x))."
   },
   {
     "id": "urn:csabs:operation/ClosureOperator-closure",

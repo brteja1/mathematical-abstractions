@@ -19,6 +19,32 @@ Finite raw first-order formulas over a single-sorted signature, using the existi
 - [Classical first-order natural deduction with equality](FirstOrderNaturalDeduction.md) — `requiresConcept`
 - [Predicate Logic](PredicateLogic.md) — `requiresConcept`
 
+## Mathematical formulation
+
+For arity-indexed Fn,Pred and named variables in ℕ, terms are var(x) or app(f,t₁,…,t\_n); formulas are atom(p,t₁,…,t\_n), t=u, ⊥, ¬φ, φ∧ψ or ∀x.φ. Equality retains binder names. Substitution φ[t/x] requires the free-for predicate to exclude capture; no alpha quotient is imposed.
+
+**Lean formulation** (in its source module context):
+
+```lean
+inductive NamedFirstOrderFormula (Fn : Nat → Type u) (Pred : Nat → Type v) where
+  | atom (n : Nat) : Pred n → (Fin n → FirstOrderTerm Fn) → NamedFirstOrderFormula Fn Pred
+  | equal : FirstOrderTerm Fn → FirstOrderTerm Fn → NamedFirstOrderFormula Fn Pred
+  | bottom : NamedFirstOrderFormula Fn Pred
+  | neg : NamedFirstOrderFormula Fn Pred → NamedFirstOrderFormula Fn Pred
+  | conj : NamedFirstOrderFormula Fn Pred → NamedFirstOrderFormula Fn Pred → NamedFirstOrderFormula Fn Pred
+  | all : Nat → NamedFirstOrderFormula Fn Pred → NamedFirstOrderFormula Fn Pred
+```
+
+**Source:** [`Catalog.NamedFirstOrderFormula`](../lean/Catalog/LogicSyntax.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Nat names provide the countably infinite variable supply. Arity-indexed Fn/Pred instantiate the signature; terms reuse FirstOrderTerm, a ranked term algebra. Raw named binders preserve syntactic identity. freeVariables and term variables are Set-valued supports (finite by syntax, without a registered finiteness witness). Public substitute requires freeFor; rawSubstitute alone has no capture-free contract.
+
+**Limits:** Compiled carrier and selected interface only. No new graph law or metatheorem is registered as a proof witness. In particular substitution-support, semantic correspondence, soundness, completeness, compactness and normal-form existence are editorial claims here; grammar/rule declarations do not prove them.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Free finite relation/equality/⊥/¬/∧/∀ syntax with named binders; structural induction; recursive free-variable support; substitution defined only for terms free for the substituted name.
@@ -289,7 +315,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "§2.3 Definitions 2.4–2.6; §§2.8–2.9 Definitions 2.32–2.40",
     "sourceNote": "Selected presentation in catalog notation; finite raw syntax and the stated primitive basis are explicit choices. No executable proof is implied.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "inductive NamedFirstOrderFormula (Fn : Nat → Type u) (Pred : Nat → Type v) where\n  | atom (n : Nat) : Pred n → (Fin n → FirstOrderTerm Fn) → NamedFirstOrderFormula Fn Pred\n  | equal : FirstOrderTerm Fn → FirstOrderTerm Fn → NamedFirstOrderFormula Fn Pred\n  | bottom : NamedFirstOrderFormula Fn Pred\n  | neg : NamedFirstOrderFormula Fn Pred → NamedFirstOrderFormula Fn Pred\n  | conj : NamedFirstOrderFormula Fn Pred → NamedFirstOrderFormula Fn Pred → NamedFirstOrderFormula Fn Pred\n  | all : Nat → NamedFirstOrderFormula Fn Pred → NamedFirstOrderFormula Fn Pred",
+    "formulationSource": "urn:csabs:source/local-lean-LogicSyntax",
+    "formulationLocator": "Catalog.NamedFirstOrderFormula",
+    "formulationScope": "model",
+    "leanModelMapping": "Nat names provide the countably infinite variable supply. Arity-indexed Fn/Pred instantiate the signature; terms reuse FirstOrderTerm, a ranked term algebra. Raw named binders preserve syntactic identity. freeVariables and term variables are Set-valued supports (finite by syntax, without a registered finiteness witness). Public substitute requires freeFor; rawSubstitute alone has no capture-free contract.",
+    "leanModelLimitations": "Compiled carrier and selected interface only. No new graph law or metatheorem is registered as a proof witness. In particular substitution-support, semantic correspondence, soundness, completeness, compactness and normal-form existence are editorial claims here; grammar/rule declarations do not prove them.",
+    "mathematicalFormulation": "For arity-indexed Fn,Pred and named variables in ℕ, terms are var(x) or app(f,t₁,…,t_n); formulas are atom(p,t₁,…,t_n), t=u, ⊥, ¬φ, φ∧ψ or ∀x.φ. Equality retains binder names. Substitution φ[t/x] requires the free-for predicate to exclude capture; no alpha quotient is imposed."
   },
   {
     "id": "urn:csabs:operation/FirstOrderFormula-construct",

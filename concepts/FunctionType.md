@@ -21,6 +21,26 @@ The type of total functions from A to B, with application and abstraction and ex
 - [Sum Type](SumType.md) — `requiresConcept`
 - [Ordered template packs and structural expansion](TemplateParameterPack.md) — `requiresConcept`
 
+## Mathematical formulation
+
+A→B is the carrier of total functions. Application is ev(f,a)=f(a); λ-abstraction satisfies (λa.t)(x)=t[x/a] and (λa.f(a))=f, with extensional equality.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev FunctionType (A : Type u) (B : Type v) := A → B
+```
+
+**Source:** [`Catalog.FunctionType`](../lean/Catalog/Foundations.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Total pure A -> B; no bottom, effects or divergence; extensional comparison uses funext.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Extensional total set-like types: constructor/eliminator beta and eta equations; operation-definition equations where specified. Equality of functions is pointwise; no divergence, effects, or bottom values.
@@ -214,7 +234,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/DependentFunction"
     ],
-    "specializationNote": " Use the constant family B(a)=B. Abstraction and application are the same total operations, with extensional equality. No automatic inheritance of claims."
+    "specializationNote": " Use the constant family B(a)=B. Abstraction and application are the same total operations, with extensional equality. No automatic inheritance of claims.",
+    "leanFormulation": "abbrev FunctionType (A : Type u) (B : Type v) := A → B",
+    "formulationSource": "urn:csabs:source/local-lean-Foundations",
+    "formulationLocator": "Catalog.FunctionType",
+    "formulationScope": "model",
+    "leanModelMapping": "Total pure A -> B; no bottom, effects or divergence; extensional comparison uses funext.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A→B is the carrier of total functions. Application is ev(f,a)=f(a); λ-abstraction satisfies (λa.t)(x)=t[x/a] and (λa.f(a))=f, with extensional equality."
   },
   {
     "id": "urn:csabs:operation/function-abstraction",

@@ -18,6 +18,26 @@ The set of ordered pairs whose first and second components come from the respect
 - [Named relational schema with attribute domains](RelationalSchema.md) — `requiresConcept`
 - [Set](Set.md) — `relatedConcept`
 
+## Mathematical formulation
+
+A×B={(a,b) | a∈A,b∈B}; π₁(a,b)=a and π₂(a,b)=b. (a,b)=(a′,b′) ⇔ a=a′∧b=b′. Either empty factor makes the product empty.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev CartesianProduct (A : Type u) (B : Type v) := A × B
+```
+
+**Source:** [`Catalog.CartesianProduct`](../lean/Catalog/Foundations.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** A × B with pair equality and projections; factors may be empty.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: The set of ordered pairs whose first and second components come from the respective factor sets. Governing rules: Ordered pairs are equal exactly when both components agree. The product contains exactly the pairs of elements of the two factors. Projections recover the two components.
@@ -231,7 +251,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "axiomBasis": "Selected presentation: The set of ordered pairs whose first and second components come from the respective factor sets. Governing rules: Ordered pairs are equal exactly when both components agree. The product contains exactly the pairs of elements of the two factors. Projections recover the two components.",
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
-    "reviewStatus": "editorial basis review; no machine-checked mathematical proof"
+    "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
+    "leanFormulation": "abbrev CartesianProduct (A : Type u) (B : Type v) := A × B",
+    "formulationSource": "urn:csabs:source/local-lean-Foundations",
+    "formulationLocator": "Catalog.CartesianProduct",
+    "formulationScope": "model",
+    "leanModelMapping": "A × B with pair equality and projections; factors may be empty.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A×B={(a,b) | a∈A,b∈B}; π₁(a,b)=a and π₂(a,b)=b. (a,b)=(a′,b′) ⇔ a=a′∧b=b′. Either empty factor makes the product empty."
   },
   {
     "id": "urn:csabs:operation/product-projection-first",

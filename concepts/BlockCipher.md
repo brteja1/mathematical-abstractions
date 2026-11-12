@@ -18,6 +18,26 @@ A family of permutations on fixed-length bit strings, indexed by a nonempty key 
 - [Advanced Encryption Standard (AES)](AES.md) — `specializationOf`
 - [Galois/Counter Mode (96-bit IV, 128-bit tag profile)](GCM.md) — `requiresConcept`
 
+## Mathematical formulation
+
+For B={0,1}^{Fin(n)}, BlockCipher(K,n)=K→Equiv(B,B). Each key selects a permutation E\_k with two-sided inverse D\_k; this carrier alone has no pseudorandomness assertion.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev BlockCipher (K : Type) (n : Nat) := K → (CryptoBits n ≃ CryptoBits n)
+```
+
+**Source:** [`Catalog.BlockCipher`](../lean/Catalog/Cryptography.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Key-indexed Equiv on Fin n → Bool, with exact function equality. Require n≥1 and nonempty K at instantiation.
+
+**Limits:** Permutation model only; no key-generation distribution, pseudorandomness, mode or side-channel properties.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Fixed block and key carriers; mutually inverse keyed maps.
@@ -201,7 +221,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Section 5.1",
     "sourceNote": "Abstract keyed permutation interface; block size generalized from GCM’s 128-bit requirement.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "abbrev BlockCipher (K : Type) (n : Nat) := K → (CryptoBits n ≃ CryptoBits n)",
+    "formulationSource": "urn:csabs:source/local-lean-Cryptography",
+    "formulationLocator": "Catalog.BlockCipher",
+    "formulationScope": "model",
+    "leanModelMapping": "Key-indexed Equiv on Fin n → Bool, with exact function equality. Require n≥1 and nonempty K at instantiation.",
+    "leanModelLimitations": "Permutation model only; no key-generation distribution, pseudorandomness, mode or side-channel properties.",
+    "mathematicalFormulation": "For B={0,1}^{Fin(n)}, BlockCipher(K,n)=K→Equiv(B,B). Each key selects a permutation E_k with two-sided inverse D_k; this carrier alone has no pseudorandomness assertion."
   },
   {
     "id": "urn:csabs:operation/BlockCipher-encrypt",

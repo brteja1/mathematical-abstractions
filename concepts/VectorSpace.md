@@ -16,6 +16,9 @@ An additive abelian group V equipped with scalar multiplication by a specified f
 
 ## Backlinks
 
+- [Euclidean dual of a finite-field linear code](DualCode.md) — `requiresConcept`
+- [Euclidean lattice (discrete integer-span lattice)](EuclideanLattice.md) — `requiresConcept`
+- [Linear block code over a finite field](LinearBlockCode.md) — `requiresConcept`
 - [Linear map](LinearMap.md) — `requiresConcept`
 - [Finite rectangular matrix over a field](Matrix.md) — `requiresConcept`
 - [Finitely supported vector](SparseVector.md) — `requiresConcept`
@@ -24,6 +27,27 @@ An additive abelian group V equipped with scalar multiplication by a specified f
 - [Tensor of specified valence on a finite-dimensional vector space](Tensor.md) — `specializationOf`
 - [Tensor product of vector spaces](TensorProduct.md) — `requiresConcept`
 - [Tensor product of vector spaces](TensorProduct.md) — `specializationOf`
+
+## Mathematical formulation
+
+Over a field F, V is an abelian additive group with scalar multiplication F×V→V satisfying a(u+v)=au+av, (a+b)v=av+bv, (ab)v=a(bv), and 1v=v. The zero vector space is permitted.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev VectorSpace (F : Type u) (V : Type v) [_root_.Field F]
+    [AddCommGroup V] := Module F V
+```
+
+**Source:** [`Catalog.VectorSpace`](../lean/Catalog/Algebra.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Module F V with Field F and AddCommGroup V explicit; field and additive structure are parameters, not inferred from graph edges.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
 
 ## Interface and scope
 
@@ -275,7 +299,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/Group"
     ],
     "specializationNote": "Retain (V,+,0_V,−) as the underlying additive group; forget the scalar action. The additive group is additionally commutative.",
-    "basisInstantiation": "Instantiate Group using multiplication x*y := x+y, identity 0_V and inverse −x on V. Require commutativity of this additive reduct, then impose the stated field-action axioms."
+    "basisInstantiation": "Instantiate Group using multiplication x*y := x+y, identity 0_V and inverse −x on V. Require commutativity of this additive reduct, then impose the stated field-action axioms.",
+    "leanFormulation": "abbrev VectorSpace (F : Type u) (V : Type v) [_root_.Field F]\n    [AddCommGroup V] := Module F V",
+    "formulationSource": "urn:csabs:source/local-lean-Algebra",
+    "formulationLocator": "Catalog.VectorSpace",
+    "formulationScope": "model",
+    "leanModelMapping": "Module F V with Field F and AddCommGroup V explicit; field and additive structure are parameters, not inferred from graph edges.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "Over a field F, V is an abelian additive group with scalar multiplication F×V→V satisfying a(u+v)=au+av, (a+b)v=av+bv, (ab)v=a(bv), and 1v=v. The zero vector space is permitted."
   },
   {
     "id": "urn:csabs:operation/VectorSpace-add",

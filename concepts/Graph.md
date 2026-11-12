@@ -21,6 +21,26 @@ A finite simple undirected graph consists of vertices and unordered pairs of dis
 - [Tree](Tree.md) — `requiresConcept`
 - [Tree](Tree.md) — `specializationOf`
 
+## Mathematical formulation
+
+For a finite vertex type V, a simple undirected graph is Adj:V→V→Prop with Adj(u,v)↔Adj(v,u) and ¬Adj(v,v). There are no parallel edges; an empty vertex type is permitted.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Graph (V : Type u) [Fintype V] := SimpleGraph V
+```
+
+**Source:** [`Catalog.Graph`](../lean/Catalog/Graphs.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib SimpleGraph V with explicit Fintype V; symmetric irreflexive adjacency.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A finite simple undirected graph consists of vertices and unordered pairs of distinct vertices as edges; loops and multiple edges are excluded in this variant. Governing rules: A graph has a finite vertex set and edges are unordered two-element subsets. Adjacency means sharing an edge; it is symmetric and irreflexive in this variant.
@@ -190,7 +210,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/Hypergraph"
     ],
-    "specializationNote": " Represent each undirected simple edge {u,v}, u≠v, by its two-element vertex subset. The 2-uniform hypergraph retains exactly the finite simple graph; adjacency corresponds to membership of {u,v} in H. No automatic inheritance of claims."
+    "specializationNote": " Represent each undirected simple edge {u,v}, u≠v, by its two-element vertex subset. The 2-uniform hypergraph retains exactly the finite simple graph; adjacency corresponds to membership of {u,v} in H. No automatic inheritance of claims.",
+    "leanFormulation": "abbrev Graph (V : Type u) [Fintype V] := SimpleGraph V",
+    "formulationSource": "urn:csabs:source/local-lean-Graphs",
+    "formulationLocator": "Catalog.Graph",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib SimpleGraph V with explicit Fintype V; symmetric irreflexive adjacency.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For a finite vertex type V, a simple undirected graph is Adj:V→V→Prop with Adj(u,v)↔Adj(v,u) and ¬Adj(v,v). There are no parallel edges; an empty vertex type is permitted."
   },
   {
     "id": "urn:csabs:operation/Graph-neighbors",

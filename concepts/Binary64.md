@@ -14,6 +14,26 @@ A 64-bit IEEE binary interchange format with 53 binary significand digits for no
 
 **Specializes:** [Floating-point type](FloatingPointType.md)
 
+## Mathematical formulation
+
+The partial format instance has (width,radix,precision,e\_min,e\_max)=(64,2,53,−1022,1023), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−52}, 0<m<2^{53}, −1022≤e≤1023, and m≥2^{52} unless e=−1022. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Binary64 := FloatingPointType binary64Format
+```
+
+**Source:** [`Catalog.Binary64`](../lean/Catalog/Numeric.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** FloatingPointType instance: 64 bits, radix 2, precision 53, exponents [-1022,1023], gradual underflow enabled.
+
+**Limits:** No correctly-rounded arithmetic or exception/NaN payload specification has been proved; run and round are unconstrained client parameters. Not a complete IEEE model.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** IEEE binary interchange instance: bits=64, radix=2, precision=53, normal exponent range [-1022,1023], gradual underflow, signed zeros, infinities and NaNs. Rounding and flags are explicit environment parameters.
@@ -285,7 +305,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationNote": "Instantiate FloatingPointType at this entry’s radix, precision and exponent range as specified by basisInstantiation; rounding and exception environment remain explicit parameters.",
     "sourceLocator": "The IEEE Standard; Formats and Operations / Precision, Table D-1",
     "sourceNote": "Single/double parameters match this existing binary32/binary64 entry; retain the current normative standard reference.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "abbrev Binary64 := FloatingPointType binary64Format",
+    "formulationSource": "urn:csabs:source/local-lean-Numeric",
+    "formulationLocator": "Catalog.Binary64",
+    "formulationScope": "partial",
+    "leanModelMapping": "FloatingPointType instance: 64 bits, radix 2, precision 53, exponents [-1022,1023], gradual underflow enabled.",
+    "leanModelLimitations": "No correctly-rounded arithmetic or exception/NaN payload specification has been proved; run and round are unconstrained client parameters. Not a complete IEEE model.",
+    "mathematicalFormulation": "The partial format instance has (width,radix,precision,e_min,e_max)=(64,2,53,−1022,1023), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−52}, 0<m<2^{53}, −1022≤e≤1023, and m≥2^{52} unless e=−1022. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim."
   },
   {
     "id": "urn:csabs:operation/Binary64-add",

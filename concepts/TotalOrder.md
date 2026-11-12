@@ -24,6 +24,26 @@ A partial order in which every two elements are comparable.
 - [Priority Queue](PriorityQueue.md) — `requiresConcept`
 - [Exact real number](RealNumber.md) — `requiresConcept`
 
+## Mathematical formulation
+
+A total order is a partial order with ∀a,b,a≤b∨b≤a. The selected Lean LinearOrder also supplies decidable equality and comparisons.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev TotalOrder (A : Type u) := LinearOrder A
+```
+
+**Source:** [`Catalog.TotalOrder`](../lean/Catalog/Order.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib LinearOrder; adds decidable comparison data to the catalog total partial order.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A partial order in which every two elements are comparable. Governing rules: The order is reflexive. The order is transitive. Mutual ordering implies equality. Any pair is comparable.
@@ -235,7 +255,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/PartialOrder"
     ],
-    "specializationNote": "Keep the same carrier and relation; comparability of every pair is the additional constraint."
+    "specializationNote": "Keep the same carrier and relation; comparability of every pair is the additional constraint.",
+    "leanFormulation": "abbrev TotalOrder (A : Type u) := LinearOrder A",
+    "formulationSource": "urn:csabs:source/local-lean-Order",
+    "formulationLocator": "Catalog.TotalOrder",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib LinearOrder; adds decidable comparison data to the catalog total partial order.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A total order is a partial order with ∀a,b,a≤b∨b≤a. The selected Lean LinearOrder also supplies decidable equality and comparisons."
   },
   {
     "id": "urn:csabs:operation/TotalOrder-basis-le",

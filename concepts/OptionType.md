@@ -26,6 +26,26 @@ A value that is either absent or a present payload, using a tag to distinguish a
 - [Sequential object heap with reference identity](ObjectHeap.md) — `requiresConcept`
 - [Finite RDF 1.1 dataset](RDFDataset.md) — `requiresConcept`
 
+## Mathematical formulation
+
+Option(A)=1+A with constructors none and some(a). some(a)=some(b) ⇔ a=b; none≠some(a). Case analysis distinguishes absence from every present value.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev OptionType (A : Type u) := Option A
+```
+
+**Source:** [`Catalog.OptionType`](../lean/Catalog/Foundations.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Lean Option A; none and some are disjoint constructors.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Extensional total set-like types: constructor/eliminator beta and eta equations; operation-definition equations where specified. Equality of functions is pointwise; no divergence, effects, or bottom values.
@@ -356,7 +376,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/SumType"
     ],
-    "specializationNote": "Instantiate SumType at UnitType and A: None corresponds to inl(⋆), Some(a) to inr(a), with the corresponding case eliminator. This is an explicit tagged-type identification."
+    "specializationNote": "Instantiate SumType at UnitType and A: None corresponds to inl(⋆), Some(a) to inr(a), with the corresponding case eliminator. This is an explicit tagged-type identification.",
+    "leanFormulation": "abbrev OptionType (A : Type u) := Option A",
+    "formulationSource": "urn:csabs:source/local-lean-Foundations",
+    "formulationLocator": "Catalog.OptionType",
+    "formulationScope": "model",
+    "leanModelMapping": "Lean Option A; none and some are disjoint constructors.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "Option(A)=1+A with constructors none and some(a). some(a)=some(b) ⇔ a=b; none≠some(a). Case analysis distinguishes absence from every present value."
   },
   {
     "id": "urn:csabs:operation/OptionType-some",

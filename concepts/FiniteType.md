@@ -17,6 +17,26 @@ A carrier A equipped with an exhaustive duplicate-free finite set of all its val
 - [Finite directed multigraph with edge identities](DirectedMultigraph.md) — `requiresConcept`
 - [Union Find (disjoint-set union with representatives)](DisjointSet.md) — `requiresConcept`
 
+## Mathematical formulation
+
+A finite-type structure on A supplies an enumeration E containing each a∈A exactly once. |A| is the enumeration cardinality; the empty type is permitted.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev FiniteType (A : Type u) := Fintype A
+```
+
+**Source:** [`Catalog.FiniteType`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Catalog.FiniteType A is Fintype A evidence, bundling a Finset enumeration and completeness proof; A remains the actual value carrier. Finite(A) ⇔ ∃U∈FinSet(A), ∀a:A, a∈U. The empty carrier is permitted. Enumeration has no observable order; finiteness is evidence about A, not a finite collection drawn from a possibly infinite carrier. Equality of evidence is proof irrelevant in the Lean model.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** ∀a:A, a∈universe_A; universe_A is a finite set; equality is set equality; card_A=|universe_A|
@@ -274,7 +294,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Fintype.elems and Fintype.complete",
     "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "abbrev FiniteType (A : Type u) := Fintype A",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.FiniteType",
+    "formulationScope": "model",
+    "leanModelMapping": "Catalog.FiniteType A is Fintype A evidence, bundling a Finset enumeration and completeness proof; A remains the actual value carrier. Finite(A) ⇔ ∃U∈FinSet(A), ∀a:A, a∈U. The empty carrier is permitted. Enumeration has no observable order; finiteness is evidence about A, not a finite collection drawn from a possibly infinite carrier. Equality of evidence is proof irrelevant in the Lean model.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "A finite-type structure on A supplies an enumeration E containing each a∈A exactly once. |A| is the enumeration cardinality; the empty type is permitted."
   },
   {
     "id": "urn:csabs:operation/FiniteType-universe",

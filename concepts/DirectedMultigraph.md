@@ -21,6 +21,28 @@ Finite vertex and edge carriers with source and target functions; different edge
 - [Finite real-weighted directed multigraph](WeightedDirectedGraph.md) — `requiresConcept`
 - [Finite real-weighted directed multigraph](WeightedDirectedGraph.md) — `specializationOf`
 
+## Mathematical formulation
+
+A finite directed multigraph is (V,E,s,t) with source s:E→V and target t:E→V. Distinct edge identities may share endpoints and s(e)=t(e) is allowed.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure DirectedMultigraph (V : Type u) (E : Type v) [Fintype V] [Fintype E] where
+  source : E → V
+  target : E → V
+```
+
+**Source:** [`Catalog.DirectedMultigraph`](../lean/Catalog/GraphData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** (V,E,s:E→V,t:E→V). Empty carriers permitted when endpoint functions exist: V empty forces E empty. Loops and parallel edges allowed. Equality retains carriers, edge identities and endpoints; not equality up to graph isomorphism.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** V,E finite; s,t total from E to V; no injectivity constraint on e↦(s(e),t(e)); walk(a,[],b)⇔a=b; walk(a,e::p,b)⇔s(e)=a ∧ walk(t(e),p,b)
@@ -187,6 +209,32 @@ Finite vertex and edge carriers with source and target functions; different edge
 
 **provenanceKind:** derived
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {V E : Type} [Fintype V] [Fintype E] (g : Catalog.DirectedMultigraph V E) (e : E), g.path (g.source e) [e] (g.target e)
+```
+
+**Source:** [`Catalog.GraphDataProofs.single_edge_path`](../lean/Catalog/GraphData.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Catalog path is the graph walk predicate (not a simple path); finite List E retains edge identity and repeated traversals. The singleton follows the cons and empty walk equations.
+
+**Limits:** Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/DirectedMultigraph-walk-equations": "Interpreted premise: walk(a,[],b)⇔a=b; walk(a,e::p,b)⇔s(e)=a ∧ walk(t(e),p,b). Catalog path is the graph walk predicate (not a simple path); finite List E retains edge identity and repeated traversals. The singleton follows the cons and empty walk equations."
+}
+```
+
 ## Theorems
 
 <a id="node-urn-csabs-theorem-DirectedMultigraph-walk-concatenation"></a>
@@ -283,7 +331,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Quiver: typed arrows for each ordered vertex pair; distinct arrows may have the same endpoints; Chapter 12: directed edges and paths; adapted to distinct edge identities and weights",
     "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "structure DirectedMultigraph (V : Type u) (E : Type v) [Fintype V] [Fintype E] where\n  source : E → V\n  target : E → V",
+    "formulationSource": "urn:csabs:source/local-lean-GraphData",
+    "formulationLocator": "Catalog.DirectedMultigraph",
+    "formulationScope": "model",
+    "leanModelMapping": "(V,E,s:E→V,t:E→V). Empty carriers permitted when endpoint functions exist: V empty forces E empty. Loops and parallel edges allowed. Equality retains carriers, edge identities and endpoints; not equality up to graph isomorphism.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "A finite directed multigraph is (V,E,s,t) with source s:E→V and target t:E→V. Distinct edge identities may share endpoints and s(e)=t(e) is allowed."
   },
   {
     "id": "urn:csabs:operation/DirectedMultigraph-source",
@@ -410,7 +465,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Quiver: typed arrows for each ordered vertex pair; distinct arrows may have the same endpoints; Chapter 12: directed edges and paths; adapted to distinct edge identities and weights",
     "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
-    "provenanceKind": "derived"
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {V E : Type} [Fintype V] [Fintype E] (g : Catalog.DirectedMultigraph V E) (e : E), g.path (g.source e) [e] (g.target e)",
+    "formulationSource": "urn:csabs:source/local-lean-GraphData",
+    "formulationLocator": "Catalog.GraphDataProofs.single_edge_path",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Catalog path is the graph walk predicate (not a simple path); finite List E retains edge identity and repeated traversals. The singleton follows the cons and empty walk equations.",
+    "leanModelLimitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/DirectedMultigraph-walk-equations\": \"Interpreted premise: walk(a,[],b)⇔a=b; walk(a,e::p,b)⇔s(e)=a ∧ walk(t(e),p,b). Catalog path is the graph walk predicate (not a simple path); finite List E retains edge identity and repeated traversals. The singleton follows the cons and empty walk equations.\"}"
   },
   {
     "id": "urn:csabs:theorem/DirectedMultigraph-walk-concatenation",

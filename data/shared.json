@@ -69,6 +69,9 @@
     },
     "parentCategory": {
       "@type": "@id"
+    },
+    "formulationSource": {
+      "@type": "@id"
     }
   },
   "@graph": [
@@ -1350,6 +1353,393 @@
       "path": "lean/.lake/packages/mathlib/Mathlib/Algebra/Tropical/Basic.lean",
       "accessedOn": "2026-11-11",
       "sourceRole": "formal-interface-reference"
+    },
+    {
+      "id": "urn:csabs:category/public-key-cryptography",
+      "type": "Category",
+      "label": "Public-key cryptography",
+      "parentCategory": "urn:csabs:category/cryptography"
+    },
+    {
+      "id": "urn:csabs:source/rfc2631",
+      "type": "Source",
+      "label": "RFC 2631: Diffie-Hellman Key Agreement Method",
+      "url": "https://www.rfc-editor.org/rfc/rfc2631.txt",
+      "accessedOn": "2026-11-11",
+      "sourceRole": "primary algorithm specification"
+    },
+    {
+      "id": "urn:csabs:source/rfc6090",
+      "type": "Source",
+      "label": "RFC 6090: Fundamental Elliptic Curve Cryptography Algorithms",
+      "url": "https://www.rfc-editor.org/rfc/rfc6090.txt",
+      "accessedOn": "2026-11-11",
+      "sourceRole": "primary algorithm specification"
+    },
+    {
+      "id": "urn:csabs:source/rfc8017",
+      "type": "Source",
+      "label": "RFC 8017: PKCS #1: RSA Cryptography Specifications Version 2.2",
+      "url": "https://www.rfc-editor.org/rfc/rfc8017.txt",
+      "accessedOn": "2026-11-11",
+      "sourceRole": "primary algorithm specification"
+    },
+    {
+      "id": "urn:csabs:category/lattice-cryptography",
+      "type": "Category",
+      "label": "Lattice-based cryptography",
+      "parentCategory": "urn:csabs:category/public-key-cryptography"
+    },
+    {
+      "id": "urn:csabs:source/peikert-lattice-survey-2016",
+      "type": "Source",
+      "label": "Chris Peikert: A Decade of Lattice Cryptography (2016-02-17 author manuscript)",
+      "url": "https://web.eecs.umich.edu/~cpeikert/pubs/lattice-survey.pdf",
+      "accessedOn": "2026-11-11",
+      "sourceRole": "author survey and mathematical definitions"
+    },
+    {
+      "id": "urn:csabs:source/regev-lattice-introduction-2004",
+      "type": "Source",
+      "label": "Oded Regev: Lattices in Computer Science, Introduction (Fall 2004 lecture notes)",
+      "url": "https://cims.nyu.edu/~regev/teaching/lattices_fall_2004/ln/introduction.pdf",
+      "accessedOn": "2026-11-11",
+      "sourceRole": "author course notes with definitions and proofs"
+    },
+    {
+      "id": "urn:csabs:source/regev-lwe-2009",
+      "type": "Source",
+      "label": "Oded Regev: On Lattices, Learning with Errors, Random Linear Codes, and Cryptography (2009-05-02 author manuscript)",
+      "url": "https://cims.nyu.edu/~regev/papers/qcrypto.pdf",
+      "accessedOn": "2026-11-11",
+      "sourceRole": "original research paper"
+    },
+    {
+      "id": "urn:csabs:source/mit-information-1",
+      "type": "Source",
+      "label": "Yury Polyanskiy, MIT 6.441 (2016), Chapter 1: Information measures: entropy and divergence",
+      "url": "https://ocw.mit.edu/courses/6-441-information-theory-spring-2016/2243edffb30f57181ed97dcb77691580_MIT6_441S16_chapter_1.pdf",
+      "accessedOn": "2026-11-11",
+      "sourceRole": "consulted author lecture notes; mathematical definitions and theorem statements"
+    },
+    {
+      "id": "urn:csabs:source/mit-information-2",
+      "type": "Source",
+      "label": "Yury Polyanskiy, MIT 6.441 (2016), Chapter 2: Information measures: mutual information",
+      "url": "https://ocw.mit.edu/courses/6-441-information-theory-spring-2016/184197ca5d5418da2415d37e929860b9_MIT6_441S16_chapter_2.pdf",
+      "accessedOn": "2026-11-11",
+      "sourceRole": "consulted author lecture notes; mathematical definitions and theorem statements"
+    },
+    {
+      "id": "urn:csabs:source/mit-information-5",
+      "type": "Source",
+      "label": "Yury Polyanskiy, MIT 6.441 (2016), Chapter 5: Probability of error and entropy rate",
+      "url": "https://ocw.mit.edu/courses/6-441-information-theory-spring-2016/b208f091f76052d60eda895dc8d13e97_MIT6_441S16_chapter_5.pdf",
+      "accessedOn": "2026-11-11",
+      "sourceRole": "consulted author lecture notes; mathematical definitions and theorem statements"
+    },
+    {
+      "id": "urn:csabs:source/mit-information-6",
+      "type": "Source",
+      "label": "Yury Polyanskiy, MIT 6.441 (2016), Chapter 6: Variable-length lossless compression",
+      "url": "https://ocw.mit.edu/courses/6-441-information-theory-spring-2016/67d8e68cd8fda55366e3f9f0a9465c17_MIT6_441S16_chapter_6.pdf",
+      "accessedOn": "2026-11-11",
+      "sourceRole": "consulted author lecture notes; mathematical definitions and theorem statements"
+    },
+    {
+      "id": "urn:csabs:source/mit-information-7",
+      "type": "Source",
+      "label": "Yury Polyanskiy, MIT 6.441 (2016), Chapter 7: Fixed-length almost lossless compression",
+      "url": "https://ocw.mit.edu/courses/6-441-information-theory-spring-2016/85014cb1add9f415ef38f60f678f16b2_MIT6_441S16_chapter_7.pdf",
+      "accessedOn": "2026-11-11",
+      "sourceRole": "consulted author lecture notes; mathematical definitions and theorem statements"
+    },
+    {
+      "id": "urn:csabs:source/mit-information-14",
+      "type": "Source",
+      "label": "Yury Polyanskiy, MIT 6.441 (2016), Chapter 14: Channel coding",
+      "url": "https://ocw.mit.edu/courses/6-441-information-theory-spring-2016/8d9b42a8d43e28ca4a75e09fb4a89371_MIT6_441S16_chapter_14.pdf",
+      "accessedOn": "2026-11-11",
+      "sourceRole": "consulted author lecture notes; mathematical definitions and theorem statements"
+    },
+    {
+      "id": "urn:csabs:source/mit-information-16",
+      "type": "Source",
+      "label": "Yury Polyanskiy, MIT 6.441 (2016), Chapter 16: Linear codes and channel capacity",
+      "url": "https://ocw.mit.edu/courses/6-441-information-theory-spring-2016/f417578e714d472cb08d463825e45f03_MIT6_441S16_chapter_16.pdf",
+      "accessedOn": "2026-11-11",
+      "sourceRole": "consulted author lecture notes; mathematical definitions and theorem statements"
+    },
+    {
+      "id": "urn:csabs:source/mit-information-23",
+      "type": "Source",
+      "label": "Yury Polyanskiy, MIT 6.441 (2016), Chapter 23: Rate-distortion theory",
+      "url": "https://ocw.mit.edu/courses/6-441-information-theory-spring-2016/880c39878ba7dc35a5fbb35758d42a69_MIT6_441S16_chapter_23.pdf",
+      "accessedOn": "2026-11-11",
+      "sourceRole": "consulted author lecture notes; mathematical definitions and theorem statements"
+    },
+    {
+      "id": "urn:csabs:source/mit-information-24",
+      "type": "Source",
+      "label": "Yury Polyanskiy, MIT 6.441 (2016), Chapter 24: Rate-distortion achievability",
+      "url": "https://ocw.mit.edu/courses/6-441-information-theory-spring-2016/aaa8d18ddecde45f97134d3f3dcee4a3_MIT6_441S16_chapter_24.pdf",
+      "accessedOn": "2026-11-11",
+      "sourceRole": "consulted author lecture notes; mathematical definitions and theorem statements"
+    },
+    {
+      "id": "urn:csabs:source/boecherer-channel-coding",
+      "type": "Source",
+      "label": "Georg Böcherer, Lecture Notes on Channel Coding (2016)",
+      "url": "https://arxiv.org/html/1607.00974v1",
+      "accessedOn": "2026-11-11",
+      "sourceRole": "consulted author lecture notes; mathematical definitions and theorem statements"
+    },
+    {
+      "id": "urn:csabs:category/information-theory",
+      "type": "Category",
+      "label": "Information theory"
+    },
+    {
+      "id": "urn:csabs:category/coding-theory",
+      "type": "Category",
+      "label": "Coding theory",
+      "parentCategory": "urn:csabs:category/information-theory"
+    },
+    {
+      "id": "urn:csabs:category/source-coding",
+      "type": "Category",
+      "label": "Source coding",
+      "parentCategory": "urn:csabs:category/coding-theory"
+    },
+    {
+      "id": "urn:csabs:category/channel-coding",
+      "type": "Category",
+      "label": "Channel coding",
+      "parentCategory": "urn:csabs:category/coding-theory"
+    },
+    {
+      "id": "urn:csabs:source/guruswami-coding-introduction",
+      "type": "Source",
+      "label": "Venkatesan Guruswami, Introduction to Coding Theory, Notes 1 (CMU, January 2010)",
+      "url": "https://www.cs.cmu.edu/~venkatg/teaching/codingtheory/notes/notes1.pdf",
+      "accessedOn": "2026-11-11",
+      "sourceRole": "consulted lecturer-authored definitions and Hamming packing argument"
+    },
+    {
+      "id": "urn:csabs:source/local-lean-Cryptography",
+      "type": "Source",
+      "label": "Catalog Lean module Cryptography",
+      "path": "lean/Catalog/Cryptography.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-Numeric",
+      "type": "Source",
+      "label": "Catalog Lean module Numeric",
+      "path": "lean/Catalog/Numeric.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-DataStructures",
+      "type": "Source",
+      "label": "Catalog Lean module DataStructures",
+      "path": "lean/Catalog/DataStructures.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-Witnesses",
+      "type": "Source",
+      "label": "Catalog Lean module Witnesses",
+      "path": "lean/Catalog/Witnesses.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-StructuredData",
+      "type": "Source",
+      "label": "Catalog Lean module StructuredData",
+      "path": "lean/Catalog/StructuredData.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-InformationData",
+      "type": "Source",
+      "label": "Catalog Lean module InformationData",
+      "path": "lean/Catalog/InformationData.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-Probability",
+      "type": "Source",
+      "label": "Catalog Lean module Probability",
+      "path": "lean/Catalog/Probability.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-ObjectOrientation",
+      "type": "Source",
+      "label": "Catalog Lean module ObjectOrientation",
+      "path": "lean/Catalog/ObjectOrientation.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-BinaryTree",
+      "type": "Source",
+      "label": "Catalog Lean module BinaryTree",
+      "path": "lean/Catalog/BinaryTree.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-GraphData",
+      "type": "Source",
+      "label": "Catalog Lean module GraphData",
+      "path": "lean/Catalog/GraphData.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-Graphs",
+      "type": "Source",
+      "label": "Catalog Lean module Graphs",
+      "path": "lean/Catalog/Graphs.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-InformationTheory",
+      "type": "Source",
+      "label": "Catalog Lean module InformationTheory",
+      "path": "lean/Catalog/InformationTheory.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-Order",
+      "type": "Source",
+      "label": "Catalog Lean module Order",
+      "path": "lean/Catalog/Order.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-CoreData",
+      "type": "Source",
+      "label": "Catalog Lean module CoreData",
+      "path": "lean/Catalog/CoreData.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-GeometricLattices",
+      "type": "Source",
+      "label": "Catalog Lean module GeometricLattices",
+      "path": "lean/Catalog/GeometricLattices.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-Database",
+      "type": "Source",
+      "label": "Catalog Lean module Database",
+      "path": "lean/Catalog/Database.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-Foundations",
+      "type": "Source",
+      "label": "Catalog Lean module Foundations",
+      "path": "lean/Catalog/Foundations.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-InformationTheoryStatements",
+      "type": "Source",
+      "label": "Catalog Lean module InformationTheoryStatements",
+      "path": "lean/Catalog/InformationTheoryStatements.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-TemplateMetaprogramming",
+      "type": "Source",
+      "label": "Catalog Lean module TemplateMetaprogramming",
+      "path": "lean/Catalog/TemplateMetaprogramming.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-Languages",
+      "type": "Source",
+      "label": "Catalog Lean module Languages",
+      "path": "lean/Catalog/Languages.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-Algebra",
+      "type": "Source",
+      "label": "Catalog Lean module Algebra",
+      "path": "lean/Catalog/Algebra.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-LogicSyntax",
+      "type": "Source",
+      "label": "Catalog Lean module LogicSyntax",
+      "path": "lean/Catalog/LogicSyntax.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-GenericProgramming",
+      "type": "Source",
+      "label": "Catalog Lean module GenericProgramming",
+      "path": "lean/Catalog/GenericProgramming.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-Semantics",
+      "type": "Source",
+      "label": "Catalog Lean module Semantics",
+      "path": "lean/Catalog/Semantics.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-Concurrency",
+      "type": "Source",
+      "label": "Catalog Lean module Concurrency",
+      "path": "lean/Catalog/Concurrency.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-Logic",
+      "type": "Source",
+      "label": "Catalog Lean module Logic",
+      "path": "lean/Catalog/Logic.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-Topology",
+      "type": "Source",
+      "label": "Catalog Lean module Topology",
+      "path": "lean/Catalog/Topology.lean",
+      "accessedOn": "2026-11-12",
+      "sourceRole": "Repository-local formal model or proposition; evidence for this selected Lean interpretation, not an independent mathematical reference or proof-status assertion."
     }
   ]
 }

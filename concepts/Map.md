@@ -32,6 +32,28 @@ A finite partial function associating each present key with exactly one value; a
 - [Finite prefix dictionary](Trie.md) — `requiresConcept`
 - [Finite prefix dictionary](Trie.md) — `specializationOf`
 
+## Mathematical formulation
+
+Map(K,V)={f:K→Option(V) | {k | f(k)≠none} is finite}. lookup(f,k)=f(k); setting k to v replaces f(k) with some(v); erasing k replaces it with none. Equality is extensional on lookup.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure Map (K : Type u) (V : Type v) where
+  lookup : K → Option V
+  finite_domain : {k | (lookup k).isSome}.Finite
+```
+
+**Source:** [`Catalog.Map`](../lean/Catalog/DataStructures.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Lookup K -> Option V plus proof that the defined-key set is finite; record proof fields are propositionally irrelevant.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A finite partial function associating each present key with exactly one value; absence is distinct from stored values. Governing rules: A finite map is a partial function with a finite defined domain. Empty has no bindings. Updating a key overwrites it and leaves other bindings unchanged. Deleting a key makes it absent and preserves other bindings. Maps are equal if all lookups agree.
@@ -337,7 +359,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationNote": "Interpret a map state as a partial function K⇀V with finite defined domain. None denotes absence, not a stored V value; update and lookup remain the Map interface.",
     "relatedConcept": [
       "urn:csabs:concept/RelationalSchema"
-    ]
+    ],
+    "leanFormulation": "structure Map (K : Type u) (V : Type v) where\n  lookup : K → Option V\n  finite_domain : {k | (lookup k).isSome}.Finite",
+    "formulationSource": "urn:csabs:source/local-lean-DataStructures",
+    "formulationLocator": "Catalog.Map",
+    "formulationScope": "model",
+    "leanModelMapping": "Lookup K -> Option V plus proof that the defined-key set is finite; record proof fields are propositionally irrelevant.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "Map(K,V)={f:K→Option(V) | {k | f(k)≠none} is finite}. lookup(f,k)=f(k); setting k to v replaces f(k) with some(v); erasing k replaces it with none. Equality is extensional on lookup."
   },
   {
     "id": "urn:csabs:operation/Map-lookup",

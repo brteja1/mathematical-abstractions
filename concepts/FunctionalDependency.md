@@ -19,6 +19,27 @@ An attribute agreement constraint requiring agreement on one attribute set to fo
 - [Candidate key relative to functional dependencies](CandidateKey.md) — `requiresConcept`
 - [Finite database relation under set semantics](DatabaseRelation.md) — `relatedConcept`
 
+## Mathematical formulation
+
+For a finite relation r and attribute sets X,Y, r⊨X→Y ⇔ ∀t,u∈r,[(∀a∈X,t(a)=u(a))⇒(∀b∈Y,t(b)=u(b))]. Null values and SQL comparison semantics are outside this carrier.
+
+**Lean formulation** (in its source module context):
+
+```lean
+def FunctionalDependency {s : RelationalSchema} (r : DatabaseRelation s) (d : FD s) : Prop :=
+  ∀ a ∈ r, ∀ b ∈ r, agreeOn d.1 a b → agreeOn d.2 a b
+```
+
+**Source:** [`Catalog.FunctionalDependency`](../lean/Catalog/Database.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Agreement on determinant implies agreement on dependent attributes; implication quantifies all finite relation instances.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining presentation: An FD requires equal determinant values to imply equal dependent values. Schema implication ranges over all finite instances satisfying the premise FDs. Attribute closure collects all individually determined attributes.
@@ -370,7 +391,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "reviewStatus": "editorial review of defining basis and selected laws, theorems and proof principles; no machine-checked proof",
     "verificationObligation": [
       "X,Y,Z⊆U for a fixed schema. Relations use identity equality, no NULL and set semantics. Empty and singleton relations satisfy every FD; observed satisfaction alone does not assert a schema-wide constraint."
-    ]
+    ],
+    "leanFormulation": "def FunctionalDependency {s : RelationalSchema} (r : DatabaseRelation s) (d : FD s) : Prop :=\n  ∀ a ∈ r, ∀ b ∈ r, agreeOn d.1 a b → agreeOn d.2 a b",
+    "formulationSource": "urn:csabs:source/local-lean-Database",
+    "formulationLocator": "Catalog.FunctionalDependency",
+    "formulationScope": "model",
+    "leanModelMapping": "Agreement on determinant implies agreement on dependent attributes; implication quantifies all finite relation instances.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For a finite relation r and attribute sets X,Y, r⊨X→Y ⇔ ∀t,u∈r,[(∀a∈X,t(a)=u(a))⇒(∀b∈Y,t(b)=u(b))]. Null values and SQL comparison semantics are outside this carrier."
   },
   {
     "id": "urn:csabs:operation/FunctionalDependency-satisfies",

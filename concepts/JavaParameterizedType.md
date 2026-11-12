@@ -22,6 +22,34 @@ Java class/interface parameterizations checked for arity and capture-adjusted bo
 - [Java wildcard capture with fresh bounded variables](JavaWildcardCapture.md) — `requiresConcept`
 - [Contextual parametric declaration instantiation](ParametricInstantiation.md) — `relatedConcept`
 
+## Mathematical formulation
+
+WF(d,args) ⇔ declarationValid(d)∧|args|=arity(d)∧(∀a∈args,referenceOrWildcard(a))∧∃captured,capture(d,args,captured)∧|captured|=arity(d)∧boundsHold(d,captured). Member types use supplied substitution on captured arguments; subtyping is the reflexive-transitive closure of supplied directSupertype.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure JavaParameterizedType (Decl Arg Ty Member : Type u) where
+  declarationValid : Decl → Prop
+  arity : Decl → Nat
+  referenceOrWildcard : Arg → Prop
+  capture : Decl → List Arg → List Ty → Prop
+  boundsHold : Decl → List Ty → Prop
+  memberDeclaredType : Decl → Member → Option Ty
+  substitute : Decl → List Ty → Ty → Ty
+  directSupertype : Ty → Ty → Prop
+```
+
+**Source:** [`Catalog.Generics.JavaParameterizedType`](../lean/Catalog/GenericProgramming.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Well-formed declaration, arity, reference/wildcard forms, capture-adjusted bounds, member substitution and reflexive-transitive closure of a supplied nominal direct-supertype relation.
+
+**Limits:** Faithful Java declaration checks, capture, full member accessibility and JLS direct-supertype/containment rules remain adapters; this is not a subtype checker or universal behavioral guarantee.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining rules: WF(C<T>) requires the correct number of reference/wildcard arguments and, after capture to S with θ=[A:=S], Sᵢ<:θ(B) for each declared bound B of Aᵢ; declaration well-formedness is also required. For a well-formed exact-argument C<T> and selected declared member with type U, its instantiated type is U[A:=T]; wildcard access uses capture first. Declared generic superclass/interface types are substituted simultaneously; same-head wildcard argument containment follows JLS §4.5.1. S<:T alone does not imply C<S><:C<T> for exact arguments.
@@ -321,7 +349,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "JLS §§4.4,4.5–4.5.2,4.10–4.10.2; §5.1.10 for capture-adjusted bounds",
     "sourceNote": "Records well-formedness and selected nominal/member substitution rules; Java nominal subtyping is not itself behavioral subtyping or C++ partial specialization.",
     "provenanceKind": "adapted",
-    "axiomBasis": "Selected defining rules: WF(C<T>) requires the correct number of reference/wildcard arguments and, after capture to S with θ=[A:=S], Sᵢ<:θ(B) for each declared bound B of Aᵢ; declaration well-formedness is also required. For a well-formed exact-argument C<T> and selected declared member with type U, its instantiated type is U[A:=T]; wildcard access uses capture first. Declared generic superclass/interface types are substituted simultaneously; same-head wildcard argument containment follows JLS §4.5.1. S<:T alone does not imply C<S><:C<T> for exact arguments."
+    "axiomBasis": "Selected defining rules: WF(C<T>) requires the correct number of reference/wildcard arguments and, after capture to S with θ=[A:=S], Sᵢ<:θ(B) for each declared bound B of Aᵢ; declaration well-formedness is also required. For a well-formed exact-argument C<T> and selected declared member with type U, its instantiated type is U[A:=T]; wildcard access uses capture first. Declared generic superclass/interface types are substituted simultaneously; same-head wildcard argument containment follows JLS §4.5.1. S<:T alone does not imply C<S><:C<T> for exact arguments.",
+    "leanFormulation": "structure JavaParameterizedType (Decl Arg Ty Member : Type u) where\n  declarationValid : Decl → Prop\n  arity : Decl → Nat\n  referenceOrWildcard : Arg → Prop\n  capture : Decl → List Arg → List Ty → Prop\n  boundsHold : Decl → List Ty → Prop\n  memberDeclaredType : Decl → Member → Option Ty\n  substitute : Decl → List Ty → Ty → Ty\n  directSupertype : Ty → Ty → Prop",
+    "formulationSource": "urn:csabs:source/local-lean-GenericProgramming",
+    "formulationLocator": "Catalog.Generics.JavaParameterizedType",
+    "formulationScope": "partial",
+    "leanModelMapping": "Well-formed declaration, arity, reference/wildcard forms, capture-adjusted bounds, member substitution and reflexive-transitive closure of a supplied nominal direct-supertype relation.",
+    "leanModelLimitations": "Faithful Java declaration checks, capture, full member accessibility and JLS direct-supertype/containment rules remain adapters; this is not a subtype checker or universal behavioral guarantee.",
+    "mathematicalFormulation": "WF(d,args) ⇔ declarationValid(d)∧|args|=arity(d)∧(∀a∈args,referenceOrWildcard(a))∧∃captured,capture(d,args,captured)∧|captured|=arity(d)∧boundsHold(d,captured). Member types use supplied substitution on captured arguments; subtyping is the reflexive-transitive closure of supplied directSupertype."
   },
   {
     "id": "urn:csabs:operation/JavaParameterizedType-well-formed",

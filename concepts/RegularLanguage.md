@@ -23,6 +23,26 @@ A language recognized by some deterministic finite automaton over the same alpha
 - [Formal language of finite words](FormalLanguage.md) — `relatedConcept`
 - [Nondeterministic finite automaton without epsilon moves](NFA.md) — `relatedConcept`
 
+## Mathematical formulation
+
+For a finite alphabet A, Regular(L) ⇔ ∃ finite-state DFA M,L=L(M), using the library's regular-language predicate. This is a proposition about L⊆A\*, not a representation by one chosen automaton.
+
+**Lean formulation** (in its source module context):
+
+```lean
+def RegularLanguage {A : Type u} [Fintype A] (L : Language A) : Prop := L.IsRegular
+```
+
+**Source:** [`Catalog.RegularLanguage`](../lean/Catalog/Languages.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib Language.IsRegular (existence of finite-state DFA) over an explicit finite alphabet.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining presentation: Regularity means the existence of a DFA recognizing exactly the language.
@@ -320,7 +340,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/FormalLanguage"
     ],
-    "specializationNote": "Restrict the parent carrier Lang(Σ) to languages with a DFA witness. Word membership and extensional language equality are unchanged. Closure of particular operations must be proved explicitly."
+    "specializationNote": "Restrict the parent carrier Lang(Σ) to languages with a DFA witness. Word membership and extensional language equality are unchanged. Closure of particular operations must be proved explicitly.",
+    "leanFormulation": "def RegularLanguage {A : Type u} [Fintype A] (L : Language A) : Prop := L.IsRegular",
+    "formulationSource": "urn:csabs:source/local-lean-Languages",
+    "formulationLocator": "Catalog.RegularLanguage",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib Language.IsRegular (existence of finite-state DFA) over an explicit finite alphabet.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For a finite alphabet A, Regular(L) ⇔ ∃ finite-state DFA M,L=L(M), using the library's regular-language predicate. This is a proposition about L⊆A*, not a representation by one chosen automaton."
   },
   {
     "id": "urn:csabs:operation/RegularLanguage-union",

@@ -20,6 +20,34 @@ Classical temporal formulas evaluated along an infinite sequence of propositiona
 - [Classical propositional modal logic K](ModalLogic.md) — `relatedConcept`
 - [Propositional Logic](PropositionalLogic.md) — `relatedConcept`
 
+## Mathematical formulation
+
+For trace α:ℕ→(AP→Prop), α,i⊨Xφ ⇔ α,i+1⊨φ, and α,i⊨φ U ψ ⇔ ∃j≥i,[α,j⊨ψ ∧ ∀k,i≤k<j⇒α,k⊨φ]. Atoms use α(i); Boolean connectives have classical semantics. Until is strong and time is discrete infinite ℕ.
+
+**Lean formulation** (in its source module context):
+
+```lean
+def LinearTemporalLogic {AP : Type u} (trace : Nat → AP → Prop) :
+    TemporalFormula AP → Nat → Prop
+  | .atom p, i => trace i p
+  | .bottom, _ => False
+  | .neg p, i => ¬ LinearTemporalLogic trace p i
+  | .conj p q, i => LinearTemporalLogic trace p i ∧ LinearTemporalLogic trace q i
+  | .next p, i => LinearTemporalLogic trace p (i + 1)
+  | .until p q, i => ∃ j, i ≤ j ∧ LinearTemporalLogic trace q j ∧
+      ∀ k, i ≤ k → k < j → LinearTemporalLogic trace p k
+```
+
+**Source:** [`Catalog.LinearTemporalLogic`](../lean/Catalog/Logic.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Infinite discrete trace semantics; next advances once and strong until has a finite future witness.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining presentation: Atoms and Boolean connectives are evaluated at the current position. Next advances one position; strong until requires a finite future witness. Eventually and always abbreviate until and negation; system satisfaction ranges over initial paths.
@@ -387,7 +415,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "reviewStatus": "editorial review of defining basis and selected laws, theorems and proof principles; no machine-checked proof",
     "verificationObligation": [
       "Positions i∈ℕ. All traces are infinite; no finite-trace or termination semantics, fairness or probabilistic assumption is implicit. When interpreted on a Kripke structure, satisfaction is universal over its initial paths. No generic evaluation algorithm for arbitrary trace representations is promised."
-    ]
+    ],
+    "leanFormulation": "def LinearTemporalLogic {AP : Type u} (trace : Nat → AP → Prop) :\n    TemporalFormula AP → Nat → Prop\n  | .atom p, i => trace i p\n  | .bottom, _ => False\n  | .neg p, i => ¬ LinearTemporalLogic trace p i\n  | .conj p q, i => LinearTemporalLogic trace p i ∧ LinearTemporalLogic trace q i\n  | .next p, i => LinearTemporalLogic trace p (i + 1)\n  | .until p q, i => ∃ j, i ≤ j ∧ LinearTemporalLogic trace q j ∧\n      ∀ k, i ≤ k → k < j → LinearTemporalLogic trace p k",
+    "formulationSource": "urn:csabs:source/local-lean-Logic",
+    "formulationLocator": "Catalog.LinearTemporalLogic",
+    "formulationScope": "model",
+    "leanModelMapping": "Infinite discrete trace semantics; next advances once and strong until has a finite future witness.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For trace α:ℕ→(AP→Prop), α,i⊨Xφ ⇔ α,i+1⊨φ, and α,i⊨φ U ψ ⇔ ∃j≥i,[α,j⊨ψ ∧ ∀k,i≤k<j⇒α,k⊨φ]. Atoms use α(i); Boolean connectives have classical semantics. Until is strong and time is discrete infinite ℕ."
   },
   {
     "id": "urn:csabs:operation/LinearTemporalLogic-satisfies",

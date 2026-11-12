@@ -44,6 +44,8 @@ def catalog_hash(index, ident):
 
 def validate(manifest, index):
     errors = []
+    from lean_formulations import formulation_errors
+    errors.extend(formulation_errors(manifest, index, ROOT))
     if manifest.get('schemaVersion') != 1:
         errors.append('Unsupported Lean binding schema version')
     if manifest.get('toolchain') != (LEAN / 'lean-toolchain').read_text().strip():
@@ -101,7 +103,7 @@ def validate(manifest, index):
 def inputs_digest():
     paths = sorted([*LEAN.glob('*.lean'), *(LEAN / 'Catalog').rglob('*.lean')])
     paths += [MANIFEST, LEAN / 'lakefile.toml', LEAN / 'lake-manifest.json',
-              LEAN / 'lean-toolchain', ROOT / 'scripts/lean.py']
+              LEAN / 'lean-toolchain', ROOT / 'scripts/lean.py', ROOT / 'scripts/lean_formulations.py']
     return digest({'files': {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
                              for p in paths}, 'catalog': load_graph()})
 

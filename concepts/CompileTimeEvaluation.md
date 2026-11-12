@@ -19,6 +19,30 @@ A pure partial evaluator for closed signed-integer literal, addition, multiplica
 - [Kinded partial template metafunction](TemplateMetafunction.md) — `relatedConcept`
 - [VHDL generic elaboration and static structural generation](VHDLGenericElaboration.md) — `relatedConcept`
 
+## Mathematical formulation
+
+Expressions are lit(z), add(e,f), mul(e,f), or branch(b,e,f). Evaluation at positive width w uses the range −2^{w−1}≤z≤2^{w−1}−1; every intermediate literal/add/multiply is checked and overflow returns none. A branch evaluates only its selected arm. This is a small pure language, not the full C++ constexpr semantics.
+
+**Lean formulation** (in its source module context):
+
+```lean
+inductive CompileTimeEvaluation where
+  | lit : Int → CompileTimeEvaluation
+  | add : CompileTimeEvaluation → CompileTimeEvaluation → CompileTimeEvaluation
+  | mul : CompileTimeEvaluation → CompileTimeEvaluation → CompileTimeEvaluation
+  | branch : Bool → CompileTimeEvaluation → CompileTimeEvaluation → CompileTimeEvaluation
+```
+
+**Source:** [`Catalog.TMP.CompileTimeEvaluation`](../lean/Catalog/TemplateMetaprogramming.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Closed Lit/Add/Mul/Boolean-branch syntax and an Option Int evaluator with per-step signed range checks. Instantiate width at least 16 and a signed type of rank at least int; literal leaves are in range.
+
+**Limits:** Not a complete constexpr machine: no calls, recursion, pointers, state, promotions or required-context classification. Exclude malformed literals and record target integer width and compiler resource limits. No new law/theorem witness is registered.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining rules: evalw(Lit(z))=z for z∈Rw; every defined evaluator result belongs to Rw. evalw(Add(e,f))=x+y iff evalw(e)=x, evalw(f)=y and x+y∈Rw; multiplication uses x·y with the same range requirement. An evaluated overflowing intermediate makes the enclosing arithmetic undefined. evalw(If(true,e,f))=evalw(e); evalw(If(false,e,f))=evalw(f), including equality of partial results; both branches are structurally well-formed.
@@ -295,7 +319,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "[expr.const] ¶5, implementation limits/undefined operations; [expr.cond] ¶1, selected operand; [basic.fundamental] ¶1–3; [dcl.constexpr]",
     "sourceNote": "Defines a deliberately small evaluator using the cited integer range and evaluated-path rules. It is not the complete constexpr abstract machine; the C++ example records its compiler and uses actual int limits.",
     "provenanceKind": "adapted",
-    "axiomBasis": "Selected defining rules: evalw(Lit(z))=z for z∈Rw; every defined evaluator result belongs to Rw. evalw(Add(e,f))=x+y iff evalw(e)=x, evalw(f)=y and x+y∈Rw; multiplication uses x·y with the same range requirement. An evaluated overflowing intermediate makes the enclosing arithmetic undefined. evalw(If(true,e,f))=evalw(e); evalw(If(false,e,f))=evalw(f), including equality of partial results; both branches are structurally well-formed."
+    "axiomBasis": "Selected defining rules: evalw(Lit(z))=z for z∈Rw; every defined evaluator result belongs to Rw. evalw(Add(e,f))=x+y iff evalw(e)=x, evalw(f)=y and x+y∈Rw; multiplication uses x·y with the same range requirement. An evaluated overflowing intermediate makes the enclosing arithmetic undefined. evalw(If(true,e,f))=evalw(e); evalw(If(false,e,f))=evalw(f), including equality of partial results; both branches are structurally well-formed.",
+    "leanFormulation": "inductive CompileTimeEvaluation where\n  | lit : Int → CompileTimeEvaluation\n  | add : CompileTimeEvaluation → CompileTimeEvaluation → CompileTimeEvaluation\n  | mul : CompileTimeEvaluation → CompileTimeEvaluation → CompileTimeEvaluation\n  | branch : Bool → CompileTimeEvaluation → CompileTimeEvaluation → CompileTimeEvaluation",
+    "formulationSource": "urn:csabs:source/local-lean-TemplateMetaprogramming",
+    "formulationLocator": "Catalog.TMP.CompileTimeEvaluation",
+    "formulationScope": "model",
+    "leanModelMapping": "Closed Lit/Add/Mul/Boolean-branch syntax and an Option Int evaluator with per-step signed range checks. Instantiate width at least 16 and a signed type of rank at least int; literal leaves are in range.",
+    "leanModelLimitations": "Not a complete constexpr machine: no calls, recursion, pointers, state, promotions or required-context classification. Exclude malformed literals and record target integer width and compiler resource limits. No new law/theorem witness is registered.",
+    "mathematicalFormulation": "Expressions are lit(z), add(e,f), mul(e,f), or branch(b,e,f). Evaluation at positive width w uses the range −2^{w−1}≤z≤2^{w−1}−1; every intermediate literal/add/multiply is checked and overflow returns none. A branch evaluates only its selected arm. This is a small pure language, not the full C++ constexpr semantics."
   },
   {
     "id": "urn:csabs:operation/CompileTimeEvaluation-evaluate",

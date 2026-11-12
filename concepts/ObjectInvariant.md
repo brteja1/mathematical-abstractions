@@ -19,6 +19,33 @@ A predicate on an allocated receiver and whole-object environment, established b
 - [Behavioral subtyping with explicit history constraints](BehavioralSubtyping.md) — `requiresConcept`
 - [Relational method contract with write effects](MethodContract.md) — `relatedConcept`
 
+## Mathematical formulation
+
+For heap/receiver states (h,a), Holds(h,a) ⇔ a∈dom(h)∧Inv(h,a). The protocol requires Init⇒Holds and Holds(h,a)∧Boundary((h,a),(k,b))⇒Holds(k,b), with a=b across boundary transitions. No assertion is imposed at hidden intermediate instructions.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure ObjectInvariant (C : Type u) (F : Type v) (P : Type w) where
+  predicate : ObjectHeap C F P → PNat → Prop
+  initial : ObjectHeap C F P × PNat → Prop
+  boundary : (ObjectHeap C F P × PNat) → (ObjectHeap C F P × PNat) → Prop
+  receiver_stable : ∀ a b, boundary a b → a.2 = b.2
+  establishes : ∀ h a, initial (h, a) → (h.lookup a).isSome ∧ predicate h a
+  preserves : ∀ h a k b, (h.lookup a).isSome ∧ predicate h a →
+    boundary (h, a) (k, b) → (k.lookup b).isSome ∧ predicate k b
+```
+
+**Source:** [`Catalog.OOP.ObjectInvariant`](../lean/Catalog/ObjectOrientation.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Whole-object-heap predicate, allocated receiver, constructor poststates and receiver-preserving boundary relation. Establishment and preservation are explicit structure hypotheses; reachable uses finite reflexive-transitive closure.
+
+**Limits:** Boundary completeness is a client obligation: callbacks and alias interference must be included. No compiled reachable-valid witness or hidden-instruction, liveness or concurrency claim is registered.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining rules: ∀(h,a)∈Init, a∈dom(h) ∧ I(h,a). ∀x,y, Good(x) ∧ B(x,y) ⇒ Good(y); all externally permitted receiver exposures/interference belong to B. reachable(Init,B,x) iff ∃n≥0, x₀,…,xₙ=x with x₀∈Init and B(xⱼ,xⱼ₊₁) for every j<n.
@@ -286,7 +313,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "Simple invariants and helper methods; Invariants when calling methods, including callbacks",
     "sourceNote": "Abstracts constructor establishment and visible-call preservation. Boundary relation includes relevant interference explicitly; visibility and helper policies of particular languages require their own instantiation.",
     "provenanceKind": "adapted",
-    "axiomBasis": "Selected defining rules: ∀(h,a)∈Init, a∈dom(h) ∧ I(h,a). ∀x,y, Good(x) ∧ B(x,y) ⇒ Good(y); all externally permitted receiver exposures/interference belong to B. reachable(Init,B,x) iff ∃n≥0, x₀,…,xₙ=x with x₀∈Init and B(xⱼ,xⱼ₊₁) for every j<n."
+    "axiomBasis": "Selected defining rules: ∀(h,a)∈Init, a∈dom(h) ∧ I(h,a). ∀x,y, Good(x) ∧ B(x,y) ⇒ Good(y); all externally permitted receiver exposures/interference belong to B. reachable(Init,B,x) iff ∃n≥0, x₀,…,xₙ=x with x₀∈Init and B(xⱼ,xⱼ₊₁) for every j<n.",
+    "leanFormulation": "structure ObjectInvariant (C : Type u) (F : Type v) (P : Type w) where\n  predicate : ObjectHeap C F P → PNat → Prop\n  initial : ObjectHeap C F P × PNat → Prop\n  boundary : (ObjectHeap C F P × PNat) → (ObjectHeap C F P × PNat) → Prop\n  receiver_stable : ∀ a b, boundary a b → a.2 = b.2\n  establishes : ∀ h a, initial (h, a) → (h.lookup a).isSome ∧ predicate h a\n  preserves : ∀ h a k b, (h.lookup a).isSome ∧ predicate h a →\n    boundary (h, a) (k, b) → (k.lookup b).isSome ∧ predicate k b",
+    "formulationSource": "urn:csabs:source/local-lean-ObjectOrientation",
+    "formulationLocator": "Catalog.OOP.ObjectInvariant",
+    "formulationScope": "model",
+    "leanModelMapping": "Whole-object-heap predicate, allocated receiver, constructor poststates and receiver-preserving boundary relation. Establishment and preservation are explicit structure hypotheses; reachable uses finite reflexive-transitive closure.",
+    "leanModelLimitations": "Boundary completeness is a client obligation: callbacks and alias interference must be included. No compiled reachable-valid witness or hidden-instruction, liveness or concurrency claim is registered.",
+    "mathematicalFormulation": "For heap/receiver states (h,a), Holds(h,a) ⇔ a∈dom(h)∧Inv(h,a). The protocol requires Init⇒Holds and Holds(h,a)∧Boundary((h,a),(k,b))⇒Holds(k,b), with a=b across boundary transitions. No assertion is imposed at hidden intermediate instructions."
   },
   {
     "id": "urn:csabs:operation/ObjectInvariant-holds",

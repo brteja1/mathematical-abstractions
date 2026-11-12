@@ -2,7 +2,7 @@
 
 This Lake project gives every current catalog concept a named Lean interpretation, grouped by subject in `Catalog/`. It uses **Lean 4.35.0** and **Mathlib commit `56a005855ea17e0b0958f73ec801ae140b0a1679`** (release `v4.35.0`). `lake-manifest.json` locks transitive dependencies. Normal catalog retrieval and the viewer still require only Python.
 
-There are currently **182 concept bindings**: 152 carrier/interface models and 30 explicitly partial interpretations. There are **52 registered proof witnesses** for existing laws/theorems, including all 11 recorded binary-tree laws/theorems. This does **not** mean every recorded operation or all catalog laws/theorems have been translated or proved. An alias to a library structure is a model binding, not a proof of all catalog claims. The [broad-core expansion](../docs/FOUNDATIONAL_DATA_MODELS.md) adds 35 carrier models and 24 individually mapped witnesses. Its remaining operation specifications and derived results are not blanket formalizations.
+There are currently **211 concept bindings**: 160 carrier/interface models and 51 explicitly partial interpretations. There are **65 registered proof witnesses** for existing laws/theorems, including all 11 recorded binary-tree laws/theorems and 13 information-theory/coding claims. This does **not** mean every recorded operation or all catalog laws/theorems have been translated or proved. An alias to a library structure is a model binding, not a proof of all catalog claims. The [broad-core expansion](../docs/FOUNDATIONAL_DATA_MODELS.md) adds 35 carrier models and 24 individually mapped witnesses. Its remaining operation specifications and derived results are not blanket formalizations.
 
 ## Build and verify
 
@@ -32,10 +32,13 @@ The [GitHub workflow](../.github/workflows/lean.yml) runs verification on pushes
 
 ## Find a model
 
+Concept records expose `mathematicalFormulation` (readable mathematics), `leanFormulation` (the selected declaration), `formulationScope`, `formulationSource`/`formulationLocator`, and the binding's interpretation and limitations. Witness records expose their expected proposition, expanding named target definitions, and a direct premise mapping. Maintain these fields when changing a binding or module; `make check-lean` compares the excerpts, source locators, scopes and mappings against current Lean sources and metadata. Excerpts use their source module's imports and section context. Local Lean sources document an interpretation, while independent mathematical provenance remains in the existing `source` links.
+
 | Module | Models |
 | --- | --- |
 | `Catalog/Foundations.lean` | Sets, relations, functions, products, sums, option, empty/unit, partitions and proof principles |
 | `Catalog/Algebra.lean` | Semigroups, monoids, groups, rings, fields, finite fields, modules, linear maps, matrices and tensors |
+| `Catalog/GeometricLattices.lean` | Independent real lattice bases, modular kernels and partial SVP/CVP/SIS/LWE interpretations |
 | `Catalog/Order.lean` | Preorders, partial/total orders, lattices, Boolean algebras, closure and fixed points |
 | `Catalog/DataStructures.lean` | Sequences, arrays, finite sets/maps, multisets, ordered sets, stacks, queues and deques |
 | `Catalog/CoreData.lean` | Dependent/refined/quotient types, exact numbers, streams, finite iterators, intervals, sparse vectors, distributions and join-based replication |
@@ -54,6 +57,7 @@ The [GitHub workflow](../.github/workflows/lean.yml) runs verification on pushes
 | `Catalog/LogicSyntax.lean` | Countable signatures, named binders, guarded substitution and classical natural deduction; see [logic coverage](../docs/LOGIC.md) |
 | `Catalog/Languages.lean` | Languages, automata, context-free grammars and a Turing-machine interface |
 | `Catalog/Database.lean` | Schemas, dependent tuples, finite relations, functional dependencies and keys |
+| `Catalog/InformationTheory*.lean` | Finite information measures, concrete operational coding targets, matrices and 13 full witnesses; see [claim-by-claim status](INFORMATION_THEORY.md) |
 | `Catalog/Probability.lean` | Measurable/measure/probability spaces, random variables, conditioning and stochastic models |
 | `Catalog/Topology.lean` | Topologies and Euclidean charted manifold interfaces |
 
@@ -127,3 +131,7 @@ Partial interpretations needing further work are:
 - `TuringMachine`: finite controller, input initialization and deterministic step; eventual-blank tape invariants, outcomes and recognition/decision semantics remain to be completed.
 
 Other models also have declared instantiation conventions: semigroups are nonempty; fields have a totalized inverse at zero; total orders carry decidable comparisons; finite arrays include length zero; stacks use Option to represent undefined empty operations; unsigned integers require positive width; signed overflow is undefined; and priority extraction permits nondeterministic ties. Check each binding before using library results as witnesses.
+
+- `DiffieHellman`, `RSA`, `ECC`, `ECDH`: partial group/action or exponent interfaces; see [cryptography scope](../docs/CRYPTOGRAPHY.md). No new proof witnesses or security proofs.
+
+- `EuclideanLattice`, `QaryLattice`, `SVP`, `CVP`, `SIS`, `LWE`: partial geometric-lattice and relation models; see [lattice scope](../docs/GEOMETRIC_LATTICES.md). No new registered witnesses or hardness proofs.

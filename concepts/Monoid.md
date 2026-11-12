@@ -21,6 +21,26 @@ A semigroup with a two-sided identity element.
 - [Group](Group.md) — `specializationOf`
 - [Exclusive finite-heap separation predicates](HeapSeparation.md) — `relatedConcept`
 
+## Mathematical formulation
+
+A monoid is (A,·,1) with associative multiplication and ∀a,1·a=a=a·1. Equality is carrier equality; the singleton carrier is permitted.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Monoid (A : Type u) := _root_.Monoid A
+```
+
+**Source:** [`Catalog.Monoid`](../lean/Catalog/Algebra.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib Monoid; one gives nonemptiness, mul_assoc and both identity equations.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Nonempty carrier with closed binary multiplication; associativity; two-sided identity. Multiplication need not commute.
@@ -153,6 +173,35 @@ A semigroup with a two-sided identity element.
 
 **provenanceStatus:** legacy-source-missing
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} [Catalog.Monoid A] (e e' : A), ((∀ x, e * x = x) ∧ (∀ x, x * e = x)) → ((∀ x, e' * x = x) ∧ (∀ x, x * e' = x)) → e = e'
+```
+
+**Source:** [`Catalog.Proofs.monoid_identity_unique`](../lean/Catalog/Witnesses.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Mathlib Monoid; one gives nonemptiness, mul_assoc and both identity equations.
+
+**Limits:** Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Monoid-associative": "Explicit interface premise: (x·y)·z=x·(y·z); interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Monoid-closed-carrier": "Explicit interface premise: S≠∅; ·:S×S→S; interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Monoid-identity": "Explicit interface premise: e∈S; e·x=x; x·e=x; interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/monoid-identity": "Explicit interface premise: ∃e∈M ∀x∈M: e·x=x·e=x; interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+}
+```
+
 ## Theorems
 
 <a id="node-urn-csabs-theorem-Monoid-power-addition"></a>
@@ -176,6 +225,35 @@ A semigroup with a two-sided identity element.
 **notationLanguage:** informal mathematical Unicode
 
 **provenanceStatus:** legacy-source-missing
+
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} [Catalog.Monoid A] (a : A) (m n : Nat), a ^ 0 = 1 ∧ a ^ (n + 1) = a ^ n * a ∧ a ^ (m + n) = a ^ m * a ^ n
+```
+
+**Source:** [`Catalog.Proofs.monoid_power_addition`](../lean/Catalog/Witnesses.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Mathlib Monoid; one gives nonemptiness, mul_assoc and both identity equations.
+
+**Limits:** Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Monoid-associative": "Explicit interface premise: (x·y)·z=x·(y·z); interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Monoid-closed-carrier": "Explicit interface premise: S≠∅; ·:S×S→S; interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Monoid-identity": "Explicit interface premise: e∈S; e·x=x; x·e=x; interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/monoid-identity": "Explicit interface premise: ∃e∈M ∀x∈M: e·x=x·e=x; interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+}
+```
 
 ## Concept provenance
 
@@ -230,7 +308,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
     "source": [
       "urn:csabs:source/mathlib-group"
-    ]
+    ],
+    "leanFormulation": "abbrev Monoid (A : Type u) := _root_.Monoid A",
+    "formulationSource": "urn:csabs:source/local-lean-Algebra",
+    "formulationLocator": "Catalog.Monoid",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib Monoid; one gives nonemptiness, mul_assoc and both identity equations.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A monoid is (A,·,1) with associative multiplication and ∀a,1·a=a=a·1. Equality is carrier equality; the singleton carrier is permitted."
   },
   {
     "id": "urn:csabs:operation/monoid-product",
@@ -328,7 +413,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "assumptions": [
       "Use the explicit mathematical bases and typed carriers of the linked concepts."
     ],
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "∀ {A : Type u} [Catalog.Monoid A] (e e' : A), ((∀ x, e * x = x) ∧ (∀ x, x * e = x)) → ((∀ x, e' * x = x) ∧ (∀ x, x * e' = x)) → e = e'",
+    "formulationSource": "urn:csabs:source/local-lean-Witnesses",
+    "formulationLocator": "Catalog.Proofs.monoid_identity_unique",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Mathlib Monoid; one gives nonemptiness, mul_assoc and both identity equations.",
+    "leanModelLimitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Monoid-associative\": \"Explicit interface premise: (x·y)·z=x·(y·z); interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Monoid-closed-carrier\": \"Explicit interface premise: S≠∅; ·:S×S→S; interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Monoid-identity\": \"Explicit interface premise: e∈S; e·x=x; x·e=x; interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/monoid-identity\": \"Explicit interface premise: ∃e∈M ∀x∈M: e·x=x·e=x; interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\"}"
   },
   {
     "id": "urn:csabs:theorem/Monoid-power-addition",
@@ -351,7 +443,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "reviewStatus": "editorial-summary; not machine-proved",
     "notationLanguage": "informal mathematical Unicode",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "∀ {A : Type u} [Catalog.Monoid A] (a : A) (m n : Nat), a ^ 0 = 1 ∧ a ^ (n + 1) = a ^ n * a ∧ a ^ (m + n) = a ^ m * a ^ n",
+    "formulationSource": "urn:csabs:source/local-lean-Witnesses",
+    "formulationLocator": "Catalog.Proofs.monoid_power_addition",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Mathlib Monoid; one gives nonemptiness, mul_assoc and both identity equations.",
+    "leanModelLimitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Monoid-associative\": \"Explicit interface premise: (x·y)·z=x·(y·z); interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Monoid-closed-carrier\": \"Explicit interface premise: S≠∅; ·:S×S→S; interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Monoid-identity\": \"Explicit interface premise: e∈S; e·x=x; x·e=x; interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/monoid-identity\": \"Explicit interface premise: ∃e∈M ∀x∈M: e·x=x·e=x; interpreted by Catalog.Monoid. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\"}"
   }
 ]
 ```

@@ -17,6 +17,26 @@ A type with one value, used as the terminal object for total functions.
 - [Option Type](OptionType.md) — `requiresConcept`
 - [Sum Type](SumType.md) — `requiresConcept`
 
+## Mathematical formulation
+
+The carrier 1={⋆} has one constructor. ∀x∈1, x=⋆; every function A→1 is the constant function a↦⋆, including when A is empty.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev UnitType := Unit
+```
+
+**Source:** [`Catalog.UnitType`](../lean/Catalog/Foundations.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Lean Unit, with its unique constructor.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Extensional total set-like types: constructor/eliminator beta and eta equations; operation-definition equations where specified. Equality of functions is pointwise; no divergence, effects, or bottom values.
@@ -168,7 +188,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "basisKind": "extensional-type-theory"
+    "basisKind": "extensional-type-theory",
+    "leanFormulation": "abbrev UnitType := Unit",
+    "formulationSource": "urn:csabs:source/local-lean-Foundations",
+    "formulationLocator": "Catalog.UnitType",
+    "formulationScope": "model",
+    "leanModelMapping": "Lean Unit, with its unique constructor.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "The carrier 1={⋆} has one constructor. ∀x∈1, x=⋆; every function A→1 is the constant function a↦⋆, including when A is empty."
   },
   {
     "id": "urn:csabs:operation/unit-value",

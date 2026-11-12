@@ -19,6 +19,26 @@ A graph whose edges are ordered vertex pairs; loops are allowed unless excluded 
 - [Finite directed multigraph with edge identities](DirectedMultigraph.md) — `relatedConcept`
 - [Markov chain (finite-state, discrete-time, time-homogeneous)](MarkovChain.md) — `relatedConcept`
 
+## Mathematical formulation
+
+A directed graph on V is an arbitrary relation E⊆V×V. This selected carrier allows loops and collapses repeated endpoint pairs; it does not itself require V to be finite.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev DirectedGraph (V : Type u) := V → V → Prop
+```
+
+**Source:** [`Catalog.DirectedGraph`](../lean/Catalog/Graphs.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** V -> V -> Prop, allowing loops; no finiteness or determinism inferred.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A graph whose edges are ordered vertex pairs; loops are allowed unless excluded by an additional condition. Governing rules: A directed graph is a vertex set with a binary edge relation. Reachability admits zero steps; positive reachability requires at least one.
@@ -182,7 +202,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "abbrev DirectedGraph (V : Type u) := V → V → Prop",
+    "formulationSource": "urn:csabs:source/local-lean-Graphs",
+    "formulationLocator": "Catalog.DirectedGraph",
+    "formulationScope": "model",
+    "leanModelMapping": "V -> V -> Prop, allowing loops; no finiteness or determinism inferred.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A directed graph on V is an arbitrary relation E⊆V×V. This selected carrier allows loops and collapses repeated endpoint pairs; it does not itself require V to be finite."
   },
   {
     "id": "urn:csabs:operation/DirectedGraph-successors",

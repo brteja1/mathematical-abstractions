@@ -14,6 +14,29 @@ A finite simple undirected graph with a designated Boolean color for each vertex
 
 **Specializes:** [Graph](Graph.md)
 
+## Mathematical formulation
+
+The selected carrier is a finite simple graph with a chosen color c:V→Bool satisfying Adj(u,v)⇒c(u)≠c(v). The two parts are the inverse images of false and true; either part may be empty.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure BipartiteGraph (V : Type u) [Fintype V] where
+  graph : SimpleGraph V
+  color : V → Bool
+  proper : ∀ u v, graph.Adj u v → color u ≠ color v
+```
+
+**Source:** [`Catalog.BipartiteGraph`](../lean/Catalog/GraphData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** (G,c:V→Bool), Adj(u,v)⇒c(u)≠c(v). The chosen coloring is observable: swapping colors gives a possibly different value. Empty graph and empty color classes allowed. This is a bundled bipartition, not only the existential property of admitting one.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Adj is symmetric and irreflexive on finite V; ∀u,v, Adj(u,v)⇒c(u)≠c(v); side(b)={v∈V | c(v)=b}
@@ -224,6 +247,32 @@ A finite simple undirected graph with a designated Boolean color for each vertex
 
 **provenanceKind:** derived
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {V : Type} [Fintype V] (g : Catalog.BipartiteGraph V) (x y : V), g.graph.Adj x y → g.color x ≠ g.color y
+```
+
+**Source:** [`Catalog.GraphDataProofs.bipartite_adjacent_colors`](../lean/Catalog/GraphData.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Finite SimpleGraph adjacency is the catalog simple undirected graph; the chosen color is V→Bool. proper stores the exact additional coloring invariant.
+
+**Limits:** Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/BipartiteGraph-proper-coloring": "Interpreted premise: ∀u,v, Adj(u,v)⇒c(u)≠c(v). Finite SimpleGraph adjacency is the catalog simple undirected graph; the chosen color is V→Bool. proper stores the exact additional coloring invariant."
+}
+```
+
 ## Theorems
 
 <a id="node-urn-csabs-theorem-BipartiteGraph-sides-partition"></a>
@@ -322,7 +371,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/Graph"
     ],
     "specializationNote": "Forget c and keep the same finite simple undirected adjacency. Proper coloring is an additional explicit invariant; bipartition sides may be empty.",
-    "basisInstantiation": "Reuse Graph rules with the same finite V, two-element undirected edges and adjacent=adj. Boolean coloring covers all V, including isolated vertices; sides are the two color fibers."
+    "basisInstantiation": "Reuse Graph rules with the same finite V, two-element undirected edges and adjacent=adj. Boolean coloring covers all V, including isolated vertices; sides are the two color fibers.",
+    "leanFormulation": "structure BipartiteGraph (V : Type u) [Fintype V] where\n  graph : SimpleGraph V\n  color : V → Bool\n  proper : ∀ u v, graph.Adj u v → color u ≠ color v",
+    "formulationSource": "urn:csabs:source/local-lean-GraphData",
+    "formulationLocator": "Catalog.BipartiteGraph",
+    "formulationScope": "model",
+    "leanModelMapping": "(G,c:V→Bool), Adj(u,v)⇒c(u)≠c(v). The chosen coloring is observable: swapping colors gives a possibly different value. Empty graph and empty color classes allowed. This is a bundled bipartition, not only the existential property of admitting one.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "The selected carrier is a finite simple graph with a chosen color c:V→Bool satisfying Adj(u,v)⇒c(u)≠c(v). The two parts are the inverse images of false and true; either part may be empty."
   },
   {
     "id": "urn:csabs:operation/BipartiteGraph-color",
@@ -478,7 +534,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "SimpleGraph bipartite graphs, bipartitions and two-colorability",
     "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
-    "provenanceKind": "derived"
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {V : Type} [Fintype V] (g : Catalog.BipartiteGraph V) (x y : V), g.graph.Adj x y → g.color x ≠ g.color y",
+    "formulationSource": "urn:csabs:source/local-lean-GraphData",
+    "formulationLocator": "Catalog.GraphDataProofs.bipartite_adjacent_colors",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Finite SimpleGraph adjacency is the catalog simple undirected graph; the chosen color is V→Bool. proper stores the exact additional coloring invariant.",
+    "leanModelLimitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/BipartiteGraph-proper-coloring\": \"Interpreted premise: ∀u,v, Adj(u,v)⇒c(u)≠c(v). Finite SimpleGraph adjacency is the catalog simple undirected graph; the chosen color is V→Bool. proper stores the exact additional coloring invariant.\"}"
   },
   {
     "id": "urn:csabs:theorem/BipartiteGraph-sides-partition",

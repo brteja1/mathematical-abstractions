@@ -76,6 +76,8 @@ For translating catalog-based specifications into software, use `ai/skills/imple
 
 ## Lean models and proof witnesses
 
+Maintain each concept's readable `mathematicalFormulation` and selected `leanFormulation` in its Markdown record, with `formulationSource`, `formulationLocator`, scope, mapping and limitations. Registered witnesses also expose their expected proposition and direct premise mapping. `make check-lean` rejects drift between these excerpts and the current Lean sources/bindings; local formulation sources do not replace independent mathematical provenance.
+
 `lean/` is the pinned Lean/Mathlib Lake project; see `lean/README.md`. Keep a model binding for every concept in `lean/bindings.json`, keyed by stable graph ID, and disclose partial interfaces. Model coverage is not proof coverage. Witnesses require an independently reviewed Lean expected type, explicit carrier/equality/operation/assumption and `dependsOn` premise mappings, and current catalog fingerprints. Use structure laws/hypotheses rather than introducing global axioms for target results. Run `make check-lean` and `make test-lean` after relevant changes; only fresh compiler/axiom-audit evidence in ignored `lean/verification.json` supports a verified witness. Never accept `sorry`, fabricated axioms, or stale evidence, or silently relabel graph claims as machine-proved. Preserve source provenance separately; a compiled proof does not establish informal-statement correspondence or close citation gaps. CI retains verification reports as artifacts. Do not change Lean/Mathlib pins without an explicit dependency update request.
 
 ## ONTFS ontology dependency

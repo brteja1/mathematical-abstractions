@@ -10,6 +10,7 @@ LINK_TYPES = {
     'relatedConcept': {'Concept'}, 'hasOperation': {'Operation'},
     'hasAxiom': {'Axiom'}, 'hasLaw': {'Law'}, 'hasTheorem': {'Theorem'},
     'source': {'Source'}, 'concept': {'Concept'}, 'appliesTo': {'Concept'},
+    'formulationSource': {'Source'},
     'dependsOn': {'Axiom', 'Law', 'Theorem', 'Operation'},
 }
 CLAIMS = {'Axiom', 'Law', 'Theorem'}

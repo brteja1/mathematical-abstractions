@@ -19,6 +19,33 @@ A staged constraint/bound interface for unknown generic argument types, separati
 - [Java bounded parameterized types and nominal subtyping](JavaParameterizedType.md) — `relatedConcept`
 - [Java wildcard capture with fresh bounded variables](JavaWildcardCapture.md) — `relatedConcept`
 
+## Mathematical formulation
+
+For constraints C and assignment θ:Var→Ty, Solution(C,θ) ⇔ (∀v,proper(θ(v))∧inScope(θ(v)))∧∀c∈C,satisfies(θ,c). A supplied resolver must satisfy resolve(C)=some(θ)⇒Solution(C,θ). Completeness or a JLS Chapter 18 algorithm is not encoded.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure JavaTypeInference (Var Ty Constraint : Type u) where
+  proper : Ty → Prop
+  inScope : Ty → Prop
+  satisfies : (Var → Ty) → Constraint → Prop
+  resolve : List Constraint → Option (Var → Ty)
+  resolution_sound : ∀ constraints assignment, resolve constraints = some assignment →
+    (∀ v, proper (assignment v) ∧ inScope (assignment v)) ∧
+      ∀ c ∈ constraints, satisfies assignment c
+```
+
+**Source:** [`Catalog.Generics.JavaTypeInference`](../lean/Catalog/GenericProgramming.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Assignments to proper in-scope types, supplied interpreted constraints and an explicitly sound partial resolver; solutions is the all-obligations predicate.
+
+**Limits:** Actual JLS reduction, incorporation, applicability/target stages, capture/boxing/lambda rules and resolution algorithms are not implemented. Soundness is an explicit structure hypothesis, not proof about javac or arbitrary resolver code.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining rules: Sol(B)={θ | θ maps inference variables to in-scope proper types and ∀b∈B, satisfiesBound(θ,b)}. addTarget(B,T)=B∪T; resolution success requires θ∈Sol(B∪T) when a target is required; applicability alone uses its argument-stage obligations. resolve(Γ,B)=Some(θ) ⇒ θ∈Sol(B); no converse, uniqueness or completeness is assumed for the supplied JLS-stage adapter.
@@ -315,7 +342,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "JLS §§18.1–18.4 and18.5.1–18.5.2, applicability versus target compatibility; §18.2 completeness limitations",
     "sourceNote": "Records semantic solution obligations and stage boundaries rather than a complete Java inference engine or arbitrary logical constraint solver.",
     "provenanceKind": "adapted",
-    "axiomBasis": "Selected defining rules: Sol(B)={θ | θ maps inference variables to in-scope proper types and ∀b∈B, satisfiesBound(θ,b)}. addTarget(B,T)=B∪T; resolution success requires θ∈Sol(B∪T) when a target is required; applicability alone uses its argument-stage obligations. resolve(Γ,B)=Some(θ) ⇒ θ∈Sol(B); no converse, uniqueness or completeness is assumed for the supplied JLS-stage adapter."
+    "axiomBasis": "Selected defining rules: Sol(B)={θ | θ maps inference variables to in-scope proper types and ∀b∈B, satisfiesBound(θ,b)}. addTarget(B,T)=B∪T; resolution success requires θ∈Sol(B∪T) when a target is required; applicability alone uses its argument-stage obligations. resolve(Γ,B)=Some(θ) ⇒ θ∈Sol(B); no converse, uniqueness or completeness is assumed for the supplied JLS-stage adapter.",
+    "leanFormulation": "structure JavaTypeInference (Var Ty Constraint : Type u) where\n  proper : Ty → Prop\n  inScope : Ty → Prop\n  satisfies : (Var → Ty) → Constraint → Prop\n  resolve : List Constraint → Option (Var → Ty)\n  resolution_sound : ∀ constraints assignment, resolve constraints = some assignment →\n    (∀ v, proper (assignment v) ∧ inScope (assignment v)) ∧\n      ∀ c ∈ constraints, satisfies assignment c",
+    "formulationSource": "urn:csabs:source/local-lean-GenericProgramming",
+    "formulationLocator": "Catalog.Generics.JavaTypeInference",
+    "formulationScope": "partial",
+    "leanModelMapping": "Assignments to proper in-scope types, supplied interpreted constraints and an explicitly sound partial resolver; solutions is the all-obligations predicate.",
+    "leanModelLimitations": "Actual JLS reduction, incorporation, applicability/target stages, capture/boxing/lambda rules and resolution algorithms are not implemented. Soundness is an explicit structure hypothesis, not proof about javac or arbitrary resolver code.",
+    "mathematicalFormulation": "For constraints C and assignment θ:Var→Ty, Solution(C,θ) ⇔ (∀v,proper(θ(v))∧inScope(θ(v)))∧∀c∈C,satisfies(θ,c). A supplied resolver must satisfy resolve(C)=some(θ)⇒Solution(C,θ). Completeness or a JLS Chapter 18 algorithm is not encoded."
   },
   {
     "id": "urn:csabs:operation/JavaTypeInference-solutions",

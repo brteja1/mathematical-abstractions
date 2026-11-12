@@ -28,6 +28,26 @@ A commutative unital ring with distinct zero and one in which each nonzero eleme
 - [Exact real number](RealNumber.md) — `specializationOf`
 - [Vector space over a field](VectorSpace.md) — `requiresConcept`
 
+## Mathematical formulation
+
+A field is a commutative unital ring F with 0≠1 and ∀a≠0, a·a⁻¹=1. Lean totalizes inverse with 0⁻¹=0; the catalog's division/inverse operations are restricted to nonzero denominators.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Field (A : Type u) := _root_.Field A
+```
+
+**Source:** [`Catalog.Field`](../lean/Catalog/Algebra.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib Field, commutative and nontrivial; inverse is totalized at zero, but division results require nonzero side conditions.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Unital field: total addition and multiplication; additive abelian group; multiplicative monoid; both distributivities. Multiplication commutative, 0≠1, every nonzero element invertible.
@@ -532,7 +552,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceNote": "Selected algebraic interface; retain catalog conventions and stable identity.",
     "provenanceKind": "adapted",
     "convention": " Equality is equality of carrier elements; operations are exact. The empty carrier is excluded by the named constants.",
-    "specializationNote": "Retain the same carrier, addition, multiplication, negation, zero and one to obtain a Ring; impose commutative multiplication, distinct constants and nonzero inverses explicitly."
+    "specializationNote": "Retain the same carrier, addition, multiplication, negation, zero and one to obtain a Ring; impose commutative multiplication, distinct constants and nonzero inverses explicitly.",
+    "leanFormulation": "abbrev Field (A : Type u) := _root_.Field A",
+    "formulationSource": "urn:csabs:source/local-lean-Algebra",
+    "formulationLocator": "Catalog.Field",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib Field, commutative and nontrivial; inverse is totalized at zero, but division results require nonzero side conditions.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A field is a commutative unital ring F with 0≠1 and ∀a≠0, a·a⁻¹=1. Lean totalizes inverse with 0⁻¹=0; the catalog's division/inverse operations are restricted to nonzero denominators."
   },
   {
     "id": "urn:csabs:operation/field-addition",

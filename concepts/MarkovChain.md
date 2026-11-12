@@ -14,6 +14,28 @@ A stochastic process on a nonempty finite state set whose next-state distributio
 
 **Related concepts:** [Transition System](TransitionSystem.md), [Directed Graph](DirectedGraph.md)
 
+## Mathematical formulation
+
+The selected finite-state homogeneous kernel is (π,K), π:S→[0,1], K:S×S→[0,1], Σ\_sπ(s)=1 and ∀s,Σ\_tK(s,t)=1. A nonempty path (s₀,…,s\_n) has weight π(s₀)∏\_{i<n}K(s\_i,s\_{i+1}); the empty path has weight 1. Infinite-process construction is separate.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure MarkovChain (S : Type u) [Fintype S] [Nonempty S] where
+  initial : PMF S
+  transition : S → PMF S
+```
+
+**Source:** [`Catalog.MarkovChain`](../lean/Catalog/Probability.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Finite nonempty state PMF initial law and homogeneous stochastic PMF kernel; finite path probabilities defined by products.
+
+**Limits:** Infinite sample process, conditional Markov property and its equivalence to this finite path construction are not formalized.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Normalized initial law, row-stochastic transition matrix, and the time-homogeneous Markov property on positive-probability histories.
@@ -245,7 +267,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "relatedConcept": [
       "urn:csabs:concept/TransitionSystem",
       "urn:csabs:concept/DirectedGraph"
-    ]
+    ],
+    "leanFormulation": "structure MarkovChain (S : Type u) [Fintype S] [Nonempty S] where\n  initial : PMF S\n  transition : S → PMF S",
+    "formulationSource": "urn:csabs:source/local-lean-Probability",
+    "formulationLocator": "Catalog.MarkovChain",
+    "formulationScope": "partial",
+    "leanModelMapping": "Finite nonempty state PMF initial law and homogeneous stochastic PMF kernel; finite path probabilities defined by products.",
+    "leanModelLimitations": "Infinite sample process, conditional Markov property and its equivalence to this finite path construction are not formalized.",
+    "mathematicalFormulation": "The selected finite-state homogeneous kernel is (π,K), π:S→[0,1], K:S×S→[0,1], Σ_sπ(s)=1 and ∀s,Σ_tK(s,t)=1. A nonempty path (s₀,…,s_n) has weight π(s₀)∏_{i<n}K(s_i,s_{i+1}); the empty path has weight 1. Infinite-process construction is separate."
   },
   {
     "id": "urn:csabs:operation/MarkovChain-evolve",

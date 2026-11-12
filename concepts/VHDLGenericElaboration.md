@@ -19,6 +19,30 @@ A staged elaboration relation that binds generic actuals in formal declaration o
 - [Contextual parametric declaration instantiation](ParametricInstantiation.md) — `relatedConcept`
 - [VHDL generic interfaces and whole-formal association](VHDLGenericInterface.md) — `relatedConcept`
 
+## Mathematical formulation
+
+For partial step:Env×Event⇀Env, run(e,[])=some(e), run(e,a::as)=step(e,a) >>= (e′↦run(e′,as)); elaborate(e,as)=run(e,as) >>= finish. forGenerate(xs,b)=map(b,xs); ifGenerate(true,b)=[b], ifGenerate(false,b)=[]. Staticness predicates and language event semantics remain supplied.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure VHDLGenericElaboration (Env Event Instance : Type u) where
+  step : Env → Event → Option Env
+  finish : Env → Option Instance
+  locallyStatic : Env → Event → Prop
+  globallyStatic : Env → Event → Prop
+```
+
+**Source:** [`Catalog.Generics.VHDLGenericElaboration`](../lean/Catalog/GenericProgramming.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Ordered event execution with partial environment steps and final instance construction; separate staticness predicates and finite list-valued for/if generation.
+
+**Limits:** Events must encode declaration order and applicable header phases; concrete VHDL evaluation, conformance, staticness, configurations, package identity and simulation are not implemented. GHDL examples require separate tool evidence.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining rules: After association matching, generic declarations/associations are elaborated in formal declaration order. Block headers elaborate generic clause, generic map, port clause and port map in that order; package headers use their applicable generic phases. A constant actual must fit the elaborated formal subtype; a formal type denotes its elaborated actual subtype; formal subprogram/package associations must meet their conformance/matching obligations. Missing required or incompatible actuals prevent successful elaboration. For a valid finite discrete range R, forGenerate(R,B)=[B(i) | i∈R in declared direction]; valid single-condition ifGenerate(true,B)=[B] and ifGenerate(false,B)=[]. Locally/global-static status is supplied by the cited language rules.
@@ -340,7 +364,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "IEEE 1076-2019 §§9.4.1–9.4.3;14.3.1–14.3.3.5;14.4.2.10 packages;14.5.3 generate statements",
     "sourceNote": "Models phase order, explicit checks and finite generate expansion, retaining the distinction between VHDL elaboration and C++ constant-expression evaluation.",
     "provenanceKind": "adapted",
-    "axiomBasis": "Selected defining rules: After association matching, generic declarations/associations are elaborated in formal declaration order. Block headers elaborate generic clause, generic map, port clause and port map in that order; package headers use their applicable generic phases. A constant actual must fit the elaborated formal subtype; a formal type denotes its elaborated actual subtype; formal subprogram/package associations must meet their conformance/matching obligations. Missing required or incompatible actuals prevent successful elaboration. For a valid finite discrete range R, forGenerate(R,B)=[B(i) | i∈R in declared direction]; valid single-condition ifGenerate(true,B)=[B] and ifGenerate(false,B)=[]. Locally/global-static status is supplied by the cited language rules."
+    "axiomBasis": "Selected defining rules: After association matching, generic declarations/associations are elaborated in formal declaration order. Block headers elaborate generic clause, generic map, port clause and port map in that order; package headers use their applicable generic phases. A constant actual must fit the elaborated formal subtype; a formal type denotes its elaborated actual subtype; formal subprogram/package associations must meet their conformance/matching obligations. Missing required or incompatible actuals prevent successful elaboration. For a valid finite discrete range R, forGenerate(R,B)=[B(i) | i∈R in declared direction]; valid single-condition ifGenerate(true,B)=[B] and ifGenerate(false,B)=[]. Locally/global-static status is supplied by the cited language rules.",
+    "leanFormulation": "structure VHDLGenericElaboration (Env Event Instance : Type u) where\n  step : Env → Event → Option Env\n  finish : Env → Option Instance\n  locallyStatic : Env → Event → Prop\n  globallyStatic : Env → Event → Prop",
+    "formulationSource": "urn:csabs:source/local-lean-GenericProgramming",
+    "formulationLocator": "Catalog.Generics.VHDLGenericElaboration",
+    "formulationScope": "partial",
+    "leanModelMapping": "Ordered event execution with partial environment steps and final instance construction; separate staticness predicates and finite list-valued for/if generation.",
+    "leanModelLimitations": "Events must encode declaration order and applicable header phases; concrete VHDL evaluation, conformance, staticness, configurations, package identity and simulation are not implemented. GHDL examples require separate tool evidence.",
+    "mathematicalFormulation": "For partial step:Env×Event⇀Env, run(e,[])=some(e), run(e,a::as)=step(e,a) >>= (e′↦run(e′,as)); elaborate(e,as)=run(e,as) >>= finish. forGenerate(xs,b)=map(b,xs); ifGenerate(true,b)=[b], ifGenerate(false,b)=[]. Staticness predicates and language event semantics remain supplied."
   },
   {
     "id": "urn:csabs:operation/VHDLGenericElaboration-elaborate",

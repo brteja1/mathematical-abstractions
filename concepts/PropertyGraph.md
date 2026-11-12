@@ -18,6 +18,31 @@ A finite directed multigraph with a string label per vertex and edge and a finit
 
 - [Finite RDF 1.1 graph](RDFGraph.md) — `relatedConcept`
 
+## Mathematical formulation
+
+The selected property graph is a finite edge-identity directed multigraph (V,E,s,t) with labels ℓ\_V:V→String, ℓ\_E:E→String and finite partial property maps p\_V:V→(String⇀Value), p\_E:E→(String⇀Value). Each vertex/edge has one label and each property key at most one value.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure PropertyGraph (V : Type u) (E : Type v) (Value : Type w)
+    [Fintype V] [Fintype E] extends DirectedMultigraph V E where
+  vertexLabel : V → String
+  edgeLabel : E → String
+  vertexProperties : V → Catalog.Map String Value
+  edgeProperties : E → Catalog.Map String Value
+```
+
+**Source:** [`Catalog.PropertyGraph`](../lean/Catalog/InformationData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** (V,E,s,t,label_V,label_E,prop_V,prop_E). Separate vertex/edge identities; loops and parallel edges allowed. Fixed property-value carrier Value; absence differs from a stored null-like Value. Selected single-label, single-valued property profile; TinkerPop multi/meta-properties require an extension. No automatic relationship-to-RDF encoding or schema constraint.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** (V,E,s,t) is a finite directed multigraph retaining edge identities; label_V and label_E are total string-valued functions; Every element has a finite partial string→Value map; property reads return its lookup; absent keys return None
@@ -312,7 +337,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/DirectedMultigraph"
     ],
     "specializationNote": "Forget labels and property maps, retaining the same V,E,s,t. Property values and label equality do not collapse edge identities.",
-    "basisInstantiation": "DirectedMultigraph-endpoints applies explicitly to the same V,E,s,t; labels and property maps add independent fields on existing identities."
+    "basisInstantiation": "DirectedMultigraph-endpoints applies explicitly to the same V,E,s,t; labels and property maps add independent fields on existing identities.",
+    "leanFormulation": "structure PropertyGraph (V : Type u) (E : Type v) (Value : Type w)\n    [Fintype V] [Fintype E] extends DirectedMultigraph V E where\n  vertexLabel : V → String\n  edgeLabel : E → String\n  vertexProperties : V → Catalog.Map String Value\n  edgeProperties : E → Catalog.Map String Value",
+    "formulationSource": "urn:csabs:source/local-lean-InformationData",
+    "formulationLocator": "Catalog.PropertyGraph",
+    "formulationScope": "model",
+    "leanModelMapping": "(V,E,s,t,label_V,label_E,prop_V,prop_E). Separate vertex/edge identities; loops and parallel edges allowed. Fixed property-value carrier Value; absence differs from a stored null-like Value. Selected single-label, single-valued property profile; TinkerPop multi/meta-properties require an extension. No automatic relationship-to-RDF encoding or schema constraint.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "The selected property graph is a finite edge-identity directed multigraph (V,E,s,t) with labels ℓ_V:V→String, ℓ_E:E→String and finite partial property maps p_V:V→(String⇀Value), p_E:E→(String⇀Value). Each vertex/edge has one label and each property key at most one value."
   },
   {
     "id": "urn:csabs:operation/PropertyGraph-endpoints",

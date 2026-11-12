@@ -20,6 +20,28 @@ Two states of one fixed labelled transition system are equivalent when their set
 
 - [Action-labelled transition system with initial states](LabelledTransitionSystem.md) — `relatedConcept`
 
+## Mathematical formulation
+
+For pointed LTSs (S,x),(T,y), x≡tr y ⇔ Traces\_finite(S,x)=Traces\_finite(T,y). This chosen interpretation compares finite action words, including the empty trace, rather than infinite traces or branching structure.
+
+**Lean formulation** (in its source module context):
+
+```lean
+def TraceEquivalence {S : Type u} {T : Type v} {Act : Type w}
+    (s : LabelledTransitionSystem S Act) (t : LabelledTransitionSystem T Act)
+    (x : S) (y : T) : Prop := finiteTraces s x = finiteTraces t y
+```
+
+**Source:** [`Catalog.TraceEquivalence`](../lean/Catalog/Graphs.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Equality of all finite partial trace sets from two designated states; includes empty trace, no acceptance or silent-action abstraction.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining presentation: Equivalence is equality of the entire finite partial-trace sets.
@@ -284,7 +306,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/EquivalenceRelation"
     ],
-    "specializationNote": "Use the fixed LTS state set S as the parent carrier and equality of trace sets as its binary relation. Reflexivity, symmetry and transitivity are recorded below as a derived result, not inherited from prerequisites."
+    "specializationNote": "Use the fixed LTS state set S as the parent carrier and equality of trace sets as its binary relation. Reflexivity, symmetry and transitivity are recorded below as a derived result, not inherited from prerequisites.",
+    "leanFormulation": "def TraceEquivalence {S : Type u} {T : Type v} {Act : Type w}\n    (s : LabelledTransitionSystem S Act) (t : LabelledTransitionSystem T Act)\n    (x : S) (y : T) : Prop := finiteTraces s x = finiteTraces t y",
+    "formulationSource": "urn:csabs:source/local-lean-Graphs",
+    "formulationLocator": "Catalog.TraceEquivalence",
+    "formulationScope": "model",
+    "leanModelMapping": "Equality of all finite partial trace sets from two designated states; includes empty trace, no acceptance or silent-action abstraction.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For pointed LTSs (S,x),(T,y), x≡tr y ⇔ Traces_finite(S,x)=Traces_finite(T,y). This chosen interpretation compares finite action words, including the empty trace, rather than infinite traces or branching structure."
   },
   {
     "id": "urn:csabs:operation/TraceEquivalence-equivalent",

@@ -30,6 +30,26 @@ A collection of distinct elements, characterized by which elements belong to it.
 - [Sum Type](SumType.md) — `requiresConcept`
 - [Topological space (topology on a carrier)](TopologicalSpace.md) — `requiresConcept`
 
+## Mathematical formulation
+
+The selected carrier is Mathlib ZFSet, a universe-indexed model of sets with membership x∈y. Set extensionality is expressed by (∀x,x∈a↔x∈b)⇒a=b. This typed interpretation is not a proof of consistency or a choice-free metatheory for ZF.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Set := ZFSet
+```
+
+**Source:** [`Catalog.Set`](../lean/Catalog/Foundations.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Mathlib ZFSet: universe-indexed well-founded extensional sets; not a proof of the consistency of ZF and not a choice-free metatheory.
+
+**Limits:** ZFSet is a model in Lean type theory with its foundational axioms, not an implementation of all ZF schemas without choice or a consistency proof.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Classical first-order ZF set theory with equality; extensionality, empty set, pairing, union, power set, infinity, separation and replacement schemas, and foundation. Choice is not assumed.
@@ -443,7 +463,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "axiomBasis": "Classical first-order ZF set theory with equality; extensionality, empty set, pairing, union, power set, infinity, separation and replacement schemas, and foundation. Choice is not assumed.",
     "basisKind": "foundational-theory",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
-    "reviewStatus": "editorial basis review; no machine-checked mathematical proof"
+    "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
+    "leanFormulation": "abbrev Set := ZFSet",
+    "formulationSource": "urn:csabs:source/local-lean-Foundations",
+    "formulationLocator": "Catalog.Set",
+    "formulationScope": "partial",
+    "leanModelMapping": "Mathlib ZFSet: universe-indexed well-founded extensional sets; not a proof of the consistency of ZF and not a choice-free metatheory.",
+    "leanModelLimitations": "ZFSet is a model in Lean type theory with its foundational axioms, not an implementation of all ZF schemas without choice or a consistency proof.",
+    "mathematicalFormulation": "The selected carrier is Mathlib ZFSet, a universe-indexed model of sets with membership x∈y. Set extensionality is expressed by (∀x,x∈a↔x∈b)⇒a=b. This typed interpretation is not a proof of consistency or a choice-free metatheory for ZF."
   },
   {
     "id": "urn:csabs:operation/set-membership",

@@ -21,6 +21,26 @@ The tagged disjoint union of A and B: each value is exactly a left-tagged A valu
 - [Kinded partial template metafunction](TemplateMetafunction.md) — `requiresConcept`
 - [Free ranked term algebra with variables](TermAlgebra.md) — `requiresConcept`
 
+## Mathematical formulation
+
+A+B has disjoint constructors inl:A→A+B and inr:B→A+B. Each constructor is injective, inl(a)≠inr(b), and case(f,g)(inl(a))=f(a), case(f,g)(inr(b))=g(b).
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev SumType (A : Type u) (B : Type v) := A ⊕ B
+```
+
+**Source:** [`Catalog.SumType`](../lean/Catalog/Foundations.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Lean Sum A B with disjoint injective constructors and recursor.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Extensional total set-like types: constructor/eliminator beta and eta equations; operation-definition equations where specified. Equality of functions is pointwise; no divergence, effects, or bottom values.
@@ -603,7 +623,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "basisKind": "extensional-type-theory"
+    "basisKind": "extensional-type-theory",
+    "leanFormulation": "abbrev SumType (A : Type u) (B : Type v) := A ⊕ B",
+    "formulationSource": "urn:csabs:source/local-lean-Foundations",
+    "formulationLocator": "Catalog.SumType",
+    "formulationScope": "model",
+    "leanModelMapping": "Lean Sum A B with disjoint injective constructors and recursor.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A+B has disjoint constructors inl:A→A+B and inr:B→A+B. Each constructor is injective, inl(a)≠inr(b), and case(f,g)(inl(a))=f(a), case(f,g)(inr(b))=g(b)."
   },
   {
     "id": "urn:csabs:operation/SumType-injectLeft",

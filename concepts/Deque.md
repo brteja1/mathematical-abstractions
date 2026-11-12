@@ -12,6 +12,26 @@ A finite sequence allowing insertion and removal at both ends, with explicit emp
 
 **Prerequisites:** [Finite sequence (List datatype)](Sequence.md)
 
+## Mathematical formulation
+
+Deque(A)=A\*. pushFront(q,x)=x::q; pushBack(q,x)=q++[x]. popFront(x::q)=some(q,x); popBack(q++[x])=some(q,x); either pop on [] gives none.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Deque (A : Type u) := List A
+```
+
+**Source:** [`Catalog.Deque`](../lean/Catalog/DataStructures.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** List A with front/back insertion and Option endpoint removal.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A finite sequence allowing insertion and removal at both ends, with explicit empty behavior. Governing rules: A deque is a finite sequence and empty deque is empty sequence. Front and back insertions prepend and append. Removals return the matching endpoint and leave the other values in order.
@@ -240,7 +260,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "abbrev Deque (A : Type u) := List A",
+    "formulationSource": "urn:csabs:source/local-lean-DataStructures",
+    "formulationLocator": "Catalog.Deque",
+    "formulationScope": "model",
+    "leanModelMapping": "List A with front/back insertion and Option endpoint removal.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "Deque(A)=A*. pushFront(q,x)=x::q; pushBack(q,x)=q++[x]. popFront(x::q)=some(q,x); popBack(q++[x])=some(q,x); either pop on [] gives none."
   },
   {
     "id": "urn:csabs:operation/Deque-pushFront",

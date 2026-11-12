@@ -51,7 +51,7 @@ def traverse(index, seed, predicates, depth=1, limit=40, incoming=False):
 
 
 def dossier(index, seed, purpose, limit):
-    predicates = list(SECTIONS) + ['requiresConcept', 'dependsOn', 'source']
+    predicates = list(SECTIONS) + ['requiresConcept', 'dependsOn', 'source', 'formulationSource']
     result = traverse(index, seed, predicates, depth=len(index), limit=limit)
     result['purpose'] = purpose
     result['concept'] = seed
@@ -84,7 +84,7 @@ def main():
     neighbors.add_argument('--depth', type=int, default=1)
     neighbors.add_argument('--limit', type=int, default=40)
     neighbors.add_argument('--incoming', action='store_true')
-    neighbors.add_argument('--relations', nargs='+', choices=list(RELATIONS)+['dependsOn', 'source']+list(SECTIONS), default=list(RELATIONS))
+    neighbors.add_argument('--relations', nargs='+', choices=list(RELATIONS)+['dependsOn', 'source', 'formulationSource']+list(SECTIONS), default=list(RELATIONS))
     task = sub.add_parser('dossier'); task.add_argument('id')
     task.add_argument('--purpose', choices=['proof', 'tests'], required=True)
     task.add_argument('--limit', type=int, default=80)

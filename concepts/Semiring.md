@@ -16,6 +16,26 @@ A ring-like structure whose addition is a commutative monoid rather than a group
 - [Idempotent semiring (additively idempotent, unital)](IdempotentSemiring.md) — `specializationOf`
 - [Unital ring (convention stated)](Ring.md) — `specializationOf`
 
+## Mathematical formulation
+
+A semiring is (S,+,0,·,1): (S,+,0) is a commutative monoid, (S,·,1) is a monoid, multiplication distributes over addition on both sides, and 0·a=0=a·0. Multiplication may be noncommutative; 0=1 is allowed.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Semiring (A : Type u) := _root_.Semiring A
+```
+
+**Source:** [`Catalog.Semiring`](../lean/Catalog/Algebra.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib unital Semiring, allowing zero = one and noncommutative multiplication.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Unital semiring: total addition and multiplication; additive commutative monoid; multiplicative monoid; both distributivities. Multiplication need not commute; 0=1 is permitted.
@@ -380,7 +400,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "axiomatic-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "abbrev Semiring (A : Type u) := _root_.Semiring A",
+    "formulationSource": "urn:csabs:source/local-lean-Algebra",
+    "formulationLocator": "Catalog.Semiring",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib unital Semiring, allowing zero = one and noncommutative multiplication.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A semiring is (S,+,0,·,1): (S,+,0) is a commutative monoid, (S,·,1) is a monoid, multiplication distributes over addition on both sides, and 0·a=0=a·0. Multiplication may be noncommutative; 0=1 is allowed."
   },
   {
     "id": "urn:csabs:operation/semiring-addition",

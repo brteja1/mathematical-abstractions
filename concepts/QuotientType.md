@@ -12,6 +12,26 @@ Equivalence classes of values under a fixed equivalence relation, with eliminati
 
 **Prerequisites:** [Equivalence relation](EquivalenceRelation.md)
 
+## Mathematical formulation
+
+For an equivalence relation ≈ on A, A/≈ has classes [a] with [a]=[b] iff a≈b. A map f:A→B descends to the quotient only if a≈b⇒f(a)=f(b).
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev QuotientType (A : Type u) (r : Setoid A) := Quotient r
+```
+
+**Source:** [`Catalog.QuotientType`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Quotient r for a Setoid r on A; Quotient.mk/lift require invariant maps. A/≈; [a]∈A/≈. ≈ must be reflexive, symmetric and transitive. No canonical representative or computable equality is promised. Equality is class equality, not equality of representatives.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** [a]=[b] ⇔ a≈b; ∀q:A/≈, ∃a:A, q=[a]; If f respects ≈, lift(f)([a])=f(a)
@@ -268,7 +288,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "§§12.3–12.4: function extensionality and quotients of setoids",
     "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "abbrev QuotientType (A : Type u) (r : Setoid A) := Quotient r",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.QuotientType",
+    "formulationScope": "model",
+    "leanModelMapping": "Quotient r for a Setoid r on A; Quotient.mk/lift require invariant maps. A/≈; [a]∈A/≈. ≈ must be reflexive, symmetric and transitive. No canonical representative or computable equality is promised. Equality is class equality, not equality of representatives.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "For an equivalence relation ≈ on A, A/≈ has classes [a] with [a]=[b] iff a≈b. A map f:A→B descends to the quotient only if a≈b⇒f(a)=f(b)."
   },
   {
     "id": "urn:csabs:operation/QuotientType-class",

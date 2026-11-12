@@ -18,6 +18,29 @@ A finite nonempty simple undirected connected acyclic graph with a distinguished
 
 - [Finite ordered rose tree](RoseTree.md) — `relatedConcept`
 
+## Mathematical formulation
+
+A rooted tree is (V,E,r), with V finite, r∈V and (V,E) a connected acyclic simple undirected graph. The distinguished root guarantees V≠∅.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure RootedTree (V : Type u) [Fintype V] where
+  graph : SimpleGraph V
+  root : V
+  tree : graph.IsTree
+```
+
+**Source:** [`Catalog.RootedTree`](../lean/Catalog/GraphData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** (V,E,r), r∈V; (V,E) a Tree. Vertex identities retained; child order and labels not built in. Single-vertex tree valid. Parent of root undefined. No empty rooted tree, binary branching constraint or pointer representation.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** V finite; r∈V; (V,E) is simple, undirected, connected and acyclic; For v≠r, parent(v) is the next vertex on the unique simple path v→r; depth(v) is the edge length of the unique simple path v→r, including length 0 at r
@@ -305,7 +328,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/Tree"
     ],
-    "specializationNote": "Forget r and retain the same finite nonempty simple graph. Adding a root does not add child ordering or a binary-tree empty constructor."
+    "specializationNote": "Forget r and retain the same finite nonempty simple graph. Adding a root does not add child ordering or a binary-tree empty constructor.",
+    "leanFormulation": "structure RootedTree (V : Type u) [Fintype V] where\n  graph : SimpleGraph V\n  root : V\n  tree : graph.IsTree",
+    "formulationSource": "urn:csabs:source/local-lean-GraphData",
+    "formulationLocator": "Catalog.RootedTree",
+    "formulationScope": "model",
+    "leanModelMapping": "(V,E,r), r∈V; (V,E) a Tree. Vertex identities retained; child order and labels not built in. Single-vertex tree valid. Parent of root undefined. No empty rooted tree, binary branching constraint or pointer representation.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "A rooted tree is (V,E,r), with V finite, r∈V and (V,E) a connected acyclic simple undirected graph. The distinguished root guarantees V≠∅."
   },
   {
     "id": "urn:csabs:operation/RootedTree-root",

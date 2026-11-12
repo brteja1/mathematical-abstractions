@@ -14,6 +14,27 @@ The selected GCM profile instantiated with AES-128, AES-192 or AES-256, with exp
 
 **Specializes:** [Galois/Counter Mode (96-bit IV, 128-bit tag profile)](GCM.md)
 
+## Mathematical formulation
+
+The current Lean composition carrier is AESGCMInterface={aes:AESInterface}. It supplies the AES-shaped permutation component only. The catalog's GCM profile, nonce obligations and tag/decryption algorithms are not encoded by this structure.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure AESGCMInterface where
+  aes : AESInterface
+```
+
+**Source:** [`Catalog.AESGCMInterface`](../lean/Catalog/Cryptography.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Carrier containing the partial AES component interface.
+
+**Limits:** No FIPS algorithm implementation, AES/GCM composition equations, byte wire encoding, authenticated decryption or security proof.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Explicit AES instantiation of the GCM equations and unambiguous fixed-length trailing tag encoding.
@@ -285,7 +306,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/GCM"
     ],
-    "specializationNote": "Set the underlying keyed block permutation E_k to the exact AES_ℓ(k,−), with ℓ=128,192 or 256. Preserve IV, AAD, plaintext, length encoding, counter order and tag equations. AES is a component prerequisite, not a parent of this authenticated-encryption construction."
+    "specializationNote": "Set the underlying keyed block permutation E_k to the exact AES_ℓ(k,−), with ℓ=128,192 or 256. Preserve IV, AAD, plaintext, length encoding, counter order and tag equations. AES is a component prerequisite, not a parent of this authenticated-encryption construction.",
+    "leanFormulation": "structure AESGCMInterface where\n  aes : AESInterface",
+    "formulationSource": "urn:csabs:source/local-lean-Cryptography",
+    "formulationLocator": "Catalog.AESGCMInterface",
+    "formulationScope": "partial",
+    "leanModelMapping": "Carrier containing the partial AES component interface.",
+    "leanModelLimitations": "No FIPS algorithm implementation, AES/GCM composition equations, byte wire encoding, authenticated decryption or security proof.",
+    "mathematicalFormulation": "The current Lean composition carrier is AESGCMInterface={aes:AESInterface}. It supplies the AES-shaped permutation component only. The catalog's GCM profile, nonce obligations and tag/decryption algorithms are not encoded by this structure."
   },
   {
     "id": "urn:csabs:operation/AESGCM-seal",

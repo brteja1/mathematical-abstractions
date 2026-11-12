@@ -23,6 +23,27 @@ A finite allocated heap whose cells contain class tags and finite field maps; re
 - [Relational method contract with write effects](MethodContract.md) — `relatedConcept`
 - [Visible-state object invariant protocol](ObjectInvariant.md) — `requiresConcept`
 
+## Mathematical formulation
+
+Let Ref=1+ℕ\_{>0}, Value=Primitive+Ref and Object=Class×FiniteMap(Field,Value). A heap is a finite partial map ℕ\_{>0}⇀Object. References alias when they denote the same allocated address; null and missing fields/objects make the corresponding accesses undefined.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev ObjectHeap (Class : Type u) (Field : Type v) (Primitive : Type w) :=
+  Catalog.HeapStore (ObjectRecord Class Field Primitive)
+```
+
+**Source:** [`Catalog.OOP.ObjectHeap`](../lean/Catalog/ObjectOrientation.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** HeapStore instantiated with class tags and finite qualified-field maps; primitive/reference sum, null Option, partial field access/update, identity and allocated aliasing are explicit.
+
+**Limits:** Inherited raw heap operations remain available. No typing, encapsulation, lifetime, GC, concurrency or implementation refinement is established.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining rules: Every h is a finite address map of pairs (C,F) with finite field maps F; h=k iff all allocated-cell lookups agree. h(a)=(C,F) ∧ f∈dom(F) ⇒ writeField(h,a,f,v)=h[a↦(C,F[f↦v])]; readField(h,a,f)=F(f). sameRef(r,s)=true ⇔ r=s as tagged references; aliases(h,r,s) ⇔ ∃a∈dom(h), r=a ∧ s=a. Contents equality does not identify distinct addresses.
@@ -377,7 +398,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/HeapStore"
     ],
     "specializationNote": "Instantiate HeapStore value carrier V with Obj=Class×Map(Field,Value), using the same positive addresses, extensional heap equality and read/write/free/fresh-allocation operations. Field observers/updates are additional operations; references are values, not separate heap cells. Raw inherited operations retain their original definedness.",
-    "axiomBasis": "Selected defining rules: Every h is a finite address map of pairs (C,F) with finite field maps F; h=k iff all allocated-cell lookups agree. h(a)=(C,F) ∧ f∈dom(F) ⇒ writeField(h,a,f,v)=h[a↦(C,F[f↦v])]; readField(h,a,f)=F(f). sameRef(r,s)=true ⇔ r=s as tagged references; aliases(h,r,s) ⇔ ∃a∈dom(h), r=a ∧ s=a. Contents equality does not identify distinct addresses."
+    "axiomBasis": "Selected defining rules: Every h is a finite address map of pairs (C,F) with finite field maps F; h=k iff all allocated-cell lookups agree. h(a)=(C,F) ∧ f∈dom(F) ⇒ writeField(h,a,f,v)=h[a↦(C,F[f↦v])]; readField(h,a,f)=F(f). sameRef(r,s)=true ⇔ r=s as tagged references; aliases(h,r,s) ⇔ ∃a∈dom(h), r=a ∧ s=a. Contents equality does not identify distinct addresses.",
+    "leanFormulation": "abbrev ObjectHeap (Class : Type u) (Field : Type v) (Primitive : Type w) :=\n  Catalog.HeapStore (ObjectRecord Class Field Primitive)",
+    "formulationSource": "urn:csabs:source/local-lean-ObjectOrientation",
+    "formulationLocator": "Catalog.OOP.ObjectHeap",
+    "formulationScope": "model",
+    "leanModelMapping": "HeapStore instantiated with class tags and finite qualified-field maps; primitive/reference sum, null Option, partial field access/update, identity and allocated aliasing are explicit.",
+    "leanModelLimitations": "Inherited raw heap operations remain available. No typing, encapsulation, lifetime, GC, concurrency or implementation refinement is established.",
+    "mathematicalFormulation": "Let Ref=1+ℕ_{>0}, Value=Primitive+Ref and Object=Class×FiniteMap(Field,Value). A heap is a finite partial map ℕ_{>0}⇀Object. References alias when they denote the same allocated address; null and missing fields/objects make the corresponding accesses undefined."
   },
   {
     "id": "urn:csabs:operation/ObjectHeap-class-of",

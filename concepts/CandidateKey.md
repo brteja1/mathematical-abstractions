@@ -18,6 +18,29 @@ An inclusion-minimal attribute set whose agreement identifies an entire row in e
 
 - [Functional dependency on a relational schema](FunctionalDependency.md) — `relatedConcept`
 
+## Mathematical formulation
+
+Relative to an FD theory F, K is a candidate key iff F⊨K→Attr and ∀J⊊K,F⊭J→Attr, where entailment quantifies over all finite instances satisfying F. Minimality is by inclusion, not minimum cardinality.
+
+**Lean formulation** (in its source module context):
+
+```lean
+def CandidateKey {s : RelationalSchema} (F : _root_.Set (FD s))
+    (K : _root_.Set s.Attribute) : Prop :=
+  impliesFD F (K, _root_.Set.univ) ∧
+    ∀ J, J ⊂ K → ¬ impliesFD F (J, _root_.Set.univ)
+```
+
+**Source:** [`Catalog.CandidateKey`](../lean/Catalog/Database.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Minimal superkey relative to explicit FD theory, with semantic implication over all finite instances.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining presentation: A candidate key is an inclusion-minimal superkey.
@@ -291,7 +314,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "reviewStatus": "editorial review of defining basis and selected laws, theorems and proof principles; no machine-checked proof",
     "verificationObligation": [
       "U is finite, possibly empty; F is a set of FDs over the fixed schema. Empty keys are allowed. Minimality uses proper subsets. No SQL primary-key selection or NULL convention is added."
-    ]
+    ],
+    "leanFormulation": "def CandidateKey {s : RelationalSchema} (F : _root_.Set (FD s))\n    (K : _root_.Set s.Attribute) : Prop :=\n  impliesFD F (K, _root_.Set.univ) ∧\n    ∀ J, J ⊂ K → ¬ impliesFD F (J, _root_.Set.univ)",
+    "formulationSource": "urn:csabs:source/local-lean-Database",
+    "formulationLocator": "Catalog.CandidateKey",
+    "formulationScope": "model",
+    "leanModelMapping": "Minimal superkey relative to explicit FD theory, with semantic implication over all finite instances.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "Relative to an FD theory F, K is a candidate key iff F⊨K→Attr and ∀J⊊K,F⊭J→Attr, where entailment quantifies over all finite instances satisfying F. Minimality is by inclusion, not minimum cardinality."
   },
   {
     "id": "urn:csabs:operation/CandidateKey-isSuperkey",

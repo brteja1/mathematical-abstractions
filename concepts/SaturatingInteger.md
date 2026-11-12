@@ -12,6 +12,27 @@ A bounded integer whose arithmetic clamps exact results to the nearest bound whe
 
 **Prerequisites:** [Mathematical integers](Integer.md)
 
+## Mathematical formulation
+
+For L≤U, clamp(z)=min(U,max(L,z)) and satAdd(x,y)=clamp(x+y) on {z∈ℤ | L≤z≤U}. Every input has a result; this differs from checked addition on overflow.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev SaturatingInteger (lower upper : Int) (h : lower ≤ upper) :=
+  CheckedInteger lower upper h
+```
+
+**Source:** [`Catalog.SaturatingInteger`](../lean/Catalog/Numeric.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Same bounded carrier with min/max clamp; saturatingAdd computes exact Int sum then clamps.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A bounded integer whose arithmetic clamps exact results to the nearest bound when they leave the interval. Governing rules: Clamping projects integers onto a finite nonempty interval. Saturating arithmetic computes exactly and then clamps.
@@ -216,7 +237,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "abbrev SaturatingInteger (lower upper : Int) (h : lower ≤ upper) :=\n  CheckedInteger lower upper h",
+    "formulationSource": "urn:csabs:source/local-lean-Numeric",
+    "formulationLocator": "Catalog.SaturatingInteger",
+    "formulationScope": "model",
+    "leanModelMapping": "Same bounded carrier with min/max clamp; saturatingAdd computes exact Int sum then clamps.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For L≤U, clamp(z)=min(U,max(L,z)) and satAdd(x,y)=clamp(x+y) on {z∈ℤ | L≤z≤U}. Every input has a result; this differs from checked addition on overflow."
   },
   {
     "id": "urn:csabs:operation/SaturatingInteger-add",

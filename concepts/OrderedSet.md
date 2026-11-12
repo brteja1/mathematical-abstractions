@@ -19,6 +19,26 @@ A finite sequence with pairwise distinct elements; sequence position is part of 
 - [Multiset](Multiset.md) — `relatedConcept`
 - [Finite sequence (List datatype)](Sequence.md) — `relatedConcept`
 
+## Mathematical formulation
+
+The selected carrier is {s∈A\* | s has no repeated elements}. Equality retains sequence order. This is insertion-order observation, without requiring a linear order on A.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev OrderedSet (A : Type u) := {xs : List A // xs.Nodup}
+```
+
+**Source:** [`Catalog.OrderedSet`](../lean/Catalog/DataStructures.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Subtype of List A satisfying Nodup; equality retains position.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining presentation: The carrier is the duplicate-free finite sequences, with positional equality. Fresh append preserves every old position and adds one new final position. Indexing is defined exactly at valid positions and returns the stored component.
@@ -369,7 +389,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "reviewStatus": "editorial review of defining basis and selected laws, theorems and proof principles; no machine-checked proof",
     "verificationObligation": [
       "Identity equality on A; empty sequence allowed. No sorting order on A is assumed. This is related to Sequence rather than specializing its full concatenation algebra, which is not closed on duplicate-free inputs."
-    ]
+    ],
+    "leanFormulation": "abbrev OrderedSet (A : Type u) := {xs : List A // xs.Nodup}",
+    "formulationSource": "urn:csabs:source/local-lean-DataStructures",
+    "formulationLocator": "Catalog.OrderedSet",
+    "formulationScope": "model",
+    "leanModelMapping": "Subtype of List A satisfying Nodup; equality retains position.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "The selected carrier is {s∈A* | s has no repeated elements}. Equality retains sequence order. This is insertion-order observation, without requiring a linear order on A."
   },
   {
     "id": "urn:csabs:operation/OrderedSet-empty",

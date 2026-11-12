@@ -18,6 +18,28 @@ A property of infinite executions for which every violating trace has a finite p
 - [Linear temporal logic on infinite discrete traces](LinearTemporalLogic.md) — `relatedConcept`
 - [Mutex (non-reentrant mutual-exclusion lock)](Mutex.md) — `relatedConcept`
 
+## Mathematical formulation
+
+For P⊆A^ℕ, Safety(P) ⇔ ∀α∉P,∃n∈ℕ,∀β,[(∀i<n,β(i)=α(i))⇒β∉P]. Thus a finite prefix witnesses every violation, over the selected full infinite-trace carrier.
+
+**Lean formulation** (in its source module context):
+
+```lean
+def SafetyProperty {A : Type u} (P : (Nat → A) → Prop) : Prop :=
+  ∀ trace, ¬ P trace → ∃ n, ∀ other,
+    (∀ i, i < n → other i = trace i) → ¬ P other
+```
+
+**Source:** [`Catalog.SafetyProperty`](../lean/Catalog/Semantics.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Every violating infinite trace has a finite initial segment excluding every satisfying extension.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A property of infinite executions for which every violating trace has a finite prefix with no satisfying extension. Governing rules: A safety property is defined relative to a stated trace alphabet by finite witnesses of every violation.
@@ -160,7 +182,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "def SafetyProperty {A : Type u} (P : (Nat → A) → Prop) : Prop :=\n  ∀ trace, ¬ P trace → ∃ n, ∀ other,\n    (∀ i, i < n → other i = trace i) → ¬ P other",
+    "formulationSource": "urn:csabs:source/local-lean-Semantics",
+    "formulationLocator": "Catalog.SafetyProperty",
+    "formulationScope": "model",
+    "leanModelMapping": "Every violating infinite trace has a finite initial segment excluding every satisfying extension.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For P⊆A^ℕ, Safety(P) ⇔ ∀α∉P,∃n∈ℕ,∀β,[(∀i<n,β(i)=α(i))⇒β∉P]. Thus a finite prefix witnesses every violation, over the selected full infinite-trace carrier."
   },
   {
     "id": "urn:csabs:operation/SafetyProperty-basis-badPrefix",

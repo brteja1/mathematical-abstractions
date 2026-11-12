@@ -17,6 +17,26 @@ The free enumeration with exactly two distinct values, false and true, with tota
 - [Finite simple graph with chosen bipartition](BipartiteGraph.md) — `requiresConcept`
 - [Finite JSON document value (interoperable profile)](DocumentValue.md) — `requiresConcept`
 
+## Mathematical formulation
+
+Bool={false,true}; neg(false)=true and neg(true)=false. This is a two-constructor value type, with constructor equality, distinct from the universe Prop of propositions.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev BooleanType := Bool
+```
+
+**Source:** [`Catalog.BooleanType`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Bool = {false,true}. Value equality is tagged equality. These are Boolean values, not arbitrary propositions, three-valued SQL logic or bit vectors.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** false≠true ∧ ∀b:Bool, b=false ∨ b=true; case(x,y,false)=x ∧ case(x,y,true)=y; not(false)=true ∧ not(true)=false
@@ -233,6 +253,33 @@ The free enumeration with exactly two distinct values, false and true, with tota
 
 **provenanceKind:** derived
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ (b : Catalog.BooleanType), !(!b) = b
+```
+
+**Source:** [`Catalog.CoreDataProofs.bool_not_not`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Bool has the two disjoint constructors false/true; not is Lean Bool.not; equality is Boolean value equality. Case elimination supplies enumeration and not-equations.
+
+**Limits:** Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/BooleanType-enumeration": "Interpreted premise: false≠true ∧ ∀b:Bool, b=false ∨ b=true. Bool has the two disjoint constructors false/true; not is Lean Bool.not; equality is Boolean value equality. Case elimination supplies enumeration and not-equations.",
+  "urn:csabs:axiom/BooleanType-not-equations": "Interpreted premise: not(false)=true ∧ not(true)=false. Bool has the two disjoint constructors false/true; not is Lean Bool.not; equality is Boolean value equality. Case elimination supplies enumeration and not-equations."
+}
+```
+
 ## Theorems
 
 <a id="node-urn-csabs-theorem-BooleanType-case-uniqueness"></a>
@@ -327,7 +374,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/BooleanAlgebra"
     ],
-    "specializationNote": "Instantiate BooleanAlgebra with carrier Bool, bottom=false, top=true, join=or, meet=and and complement=not. The truth tables supply the structure; this edge transfers no claims automatically."
+    "specializationNote": "Instantiate BooleanAlgebra with carrier Bool, bottom=false, top=true, join=or, meet=and and complement=not. The truth tables supply the structure; this edge transfers no claims automatically.",
+    "leanFormulation": "abbrev BooleanType := Bool",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.BooleanType",
+    "formulationScope": "model",
+    "leanModelMapping": "Bool = {false,true}. Value equality is tagged equality. These are Boolean values, not arbitrary propositions, three-valued SQL logic or bit vectors.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "Bool={false,true}; neg(false)=true and neg(true)=false. This is a two-constructor value type, with constructor equality, distinct from the universe Prop of propositions."
   },
   {
     "id": "urn:csabs:operation/BooleanType-false",
@@ -487,7 +541,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "§§7.1, 7.5–7.6, 7.9: enumeration, recursive/nested inductives, constructors and recursors",
     "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
-    "provenanceKind": "derived"
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ (b : Catalog.BooleanType), !(!b) = b",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.CoreDataProofs.bool_not_not",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Bool has the two disjoint constructors false/true; not is Lean Bool.not; equality is Boolean value equality. Case elimination supplies enumeration and not-equations.",
+    "leanModelLimitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/BooleanType-enumeration\": \"Interpreted premise: false≠true ∧ ∀b:Bool, b=false ∨ b=true. Bool has the two disjoint constructors false/true; not is Lean Bool.not; equality is Boolean value equality. Case elimination supplies enumeration and not-equations.\", \"urn:csabs:axiom/BooleanType-not-equations\": \"Interpreted premise: not(false)=true ∧ not(true)=false. Bool has the two disjoint constructors false/true; not is Lean Bool.not; equality is Boolean value equality. Case elimination supplies enumeration and not-equations.\"}"
   },
   {
     "id": "urn:csabs:theorem/BooleanType-case-uniqueness",

@@ -21,6 +21,30 @@ The free finite formula syntax over a fixed set A of atoms with primitive falsit
 - [Classical propositional natural deduction](PropositionalNaturalDeduction.md) — `requiresConcept`
 - [Normalized template constraints with atomic identity](TemplateConstraint.md) — `requiresConcept`
 
+## Mathematical formulation
+
+For atoms AP, formulas are the free inductive syntax φ ::= atom(p) | ⊥ | ¬φ | (φ∧φ). Equality is constructor equality of finite syntax trees, distinct from logical equivalence under all valuations.
+
+**Lean formulation** (in its source module context):
+
+```lean
+inductive PropFormula (AP : Type u) where
+  | atom : AP → PropFormula AP
+  | bottom : PropFormula AP
+  | neg : PropFormula AP → PropFormula AP
+  | conj : PropFormula AP → PropFormula AP → PropFormula AP
+```
+
+**Source:** [`Catalog.PropFormula`](../lean/Catalog/Logic.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Raw finite syntax over arbitrary AP, primitive atom/bottom/neg/conj. Equality is constructor identity. The catalog macro connectives expand into this basis.
+
+**Limits:** Compiled carrier and selected interface only. No new graph law or metatheorem is registered as a proof witness. In particular substitution-support, semantic correspondence, soundness, completeness, compactness and normal-form existence are editorial claims here; grammar/rule declarations do not prove them.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Free finite syntax on atom(a), ⊥, ¬p and p∧q; disjoint/injective constructors, structural induction and unique recursion; recursive atom support and simultaneous substitution.
@@ -294,7 +318,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/TermAlgebra"
     ],
-    "specializationNote": "Instantiate variables X=A and the ranked operation symbols with bottom of arity 0, negation of arity 1, and conjunction of arity 2. The carriers are identified by constructor-preserving tree translation; no semantic equations are imposed."
+    "specializationNote": "Instantiate variables X=A and the ranked operation symbols with bottom of arity 0, negation of arity 1, and conjunction of arity 2. The carriers are identified by constructor-preserving tree translation; no semantic equations are imposed.",
+    "leanFormulation": "inductive PropFormula (AP : Type u) where\n  | atom : AP → PropFormula AP\n  | bottom : PropFormula AP\n  | neg : PropFormula AP → PropFormula AP\n  | conj : PropFormula AP → PropFormula AP → PropFormula AP",
+    "formulationSource": "urn:csabs:source/local-lean-Logic",
+    "formulationLocator": "Catalog.PropFormula",
+    "formulationScope": "model",
+    "leanModelMapping": "Raw finite syntax over arbitrary AP, primitive atom/bottom/neg/conj. Equality is constructor identity. The catalog macro connectives expand into this basis.",
+    "leanModelLimitations": "Compiled carrier and selected interface only. No new graph law or metatheorem is registered as a proof witness. In particular substitution-support, semantic correspondence, soundness, completeness, compactness and normal-form existence are editorial claims here; grammar/rule declarations do not prove them.",
+    "mathematicalFormulation": "For atoms AP, formulas are the free inductive syntax φ ::= atom(p) | ⊥ | ¬φ | (φ∧φ). Equality is constructor equality of finite syntax trees, distinct from logical equivalence under all valuations."
   },
   {
     "id": "urn:csabs:operation/PropositionalFormula-construct",

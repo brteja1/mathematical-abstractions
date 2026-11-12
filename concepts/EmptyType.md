@@ -16,6 +16,26 @@ A type with no values; its eliminator supplies a unique total function into any 
 
 - [Sum Type](SumType.md) — `requiresConcept`
 
+## Mathematical formulation
+
+The carrier 0=∅ has no constructors. For every type B the eliminator abort\_B:0→B is uniquely determined because no input exists.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev EmptyType := Empty
+```
+
+**Source:** [`Catalog.EmptyType`](../lean/Catalog/Foundations.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Lean Empty and its eliminator; no inhabitants.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Extensional total set-like types: constructor/eliminator beta and eta equations; operation-definition equations where specified. Equality of functions is pointwise; no divergence, effects, or bottom values.
@@ -169,7 +189,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "basisKind": "extensional-type-theory"
+    "basisKind": "extensional-type-theory",
+    "leanFormulation": "abbrev EmptyType := Empty",
+    "formulationSource": "urn:csabs:source/local-lean-Foundations",
+    "formulationLocator": "Catalog.EmptyType",
+    "formulationScope": "model",
+    "leanModelMapping": "Lean Empty and its eliminator; no inhabitants.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "The carrier 0=∅ has no constructors. For every type B the eliminator abort_B:0→B is uniquely determined because no input exists."
   },
   {
     "id": "urn:csabs:operation/empty-absurd",

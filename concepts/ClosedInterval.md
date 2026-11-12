@@ -12,6 +12,29 @@ An ordered endpoint pair representing the closed interval between its endpoints 
 
 **Prerequisites:** [Total Order](TotalOrder.md), [Option Type](OptionType.md)
 
+## Mathematical formulation
+
+For a linear order A, interval values are pairs (l,u) with l≤u; x∈[l,u] ⇔ l≤x≤u. Intersection returns [max(l,l′),min(u,u′)] if these endpoints are ordered, and none otherwise.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure ClosedInterval (A : Type u) [LinearOrder A] where
+  lower : A
+  upper : A
+  ordered : lower ≤ upper
+```
+
+**Source:** [`Catalog.ClosedInterval`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** [l,u], l≤u. A has a linear order. Singleton intervals allowed. No empty, open, unbounded or NaN endpoints in the carrier. Intersection returns Option to represent disjointness. Equality is endpoint equality.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** l≤u; x∈[l,u] ⇔ l≤x ∧ x≤u; intersect([l,u],[a,b])=Some([max(l,a),min(u,b)]) if max(l,a)≤min(u,b), otherwise None
@@ -202,6 +225,33 @@ An ordered endpoint pair representing the closed interval between its endpoints 
 
 **provenanceKind:** derived
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type} [LinearOrder A] (i : Catalog.ClosedInterval A), i.contains i.lower ∧ i.contains i.upper
+```
+
+**Source:** [`Catalog.CoreDataProofs.interval_endpoints`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** ClosedInterval stores ordered endpoints; contains is lower≤x∧x≤upper. LinearOrder supplies reflexivity and the stored ordered proof supplies lower≤upper; no empty interval is an inhabitant.
+
+**Limits:** Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/ClosedInterval-membership": "Interpreted premise: x∈[l,u] ⇔ l≤x ∧ x≤u. ClosedInterval stores ordered endpoints; contains is lower≤x∧x≤upper. LinearOrder supplies reflexivity and the stored ordered proof supplies lower≤upper; no empty interval is an inhabitant.",
+  "urn:csabs:axiom/ClosedInterval-ordered-endpoints": "Interpreted premise: l≤u. ClosedInterval stores ordered endpoints; contains is lower≤x∧x≤upper. LinearOrder supplies reflexivity and the stored ordered proof supplies lower≤upper; no empty interval is an inhabitant."
+}
+```
+
 ## Theorems
 
 <a id="node-urn-csabs-theorem-ClosedInterval-intersection-membership"></a>
@@ -294,7 +344,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Set.Icc and membership definition",
     "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "structure ClosedInterval (A : Type u) [LinearOrder A] where\n  lower : A\n  upper : A\n  ordered : lower ≤ upper",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.ClosedInterval",
+    "formulationScope": "model",
+    "leanModelMapping": "[l,u], l≤u. A has a linear order. Singleton intervals allowed. No empty, open, unbounded or NaN endpoints in the carrier. Intersection returns Option to represent disjointness. Equality is endpoint equality.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "For a linear order A, interval values are pairs (l,u) with l≤u; x∈[l,u] ⇔ l≤x≤u. Intersection returns [max(l,l′),min(u,u′)] if these endpoints are ordered, and none otherwise."
   },
   {
     "id": "urn:csabs:operation/ClosedInterval-construct",
@@ -437,7 +494,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Set.Icc and membership definition",
     "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
-    "provenanceKind": "derived"
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type} [LinearOrder A] (i : Catalog.ClosedInterval A), i.contains i.lower ∧ i.contains i.upper",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.CoreDataProofs.interval_endpoints",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "ClosedInterval stores ordered endpoints; contains is lower≤x∧x≤upper. LinearOrder supplies reflexivity and the stored ordered proof supplies lower≤upper; no empty interval is an inhabitant.",
+    "leanModelLimitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/ClosedInterval-membership\": \"Interpreted premise: x∈[l,u] ⇔ l≤x ∧ x≤u. ClosedInterval stores ordered endpoints; contains is lower≤x∧x≤upper. LinearOrder supplies reflexivity and the stored ordered proof supplies lower≤upper; no empty interval is an inhabitant.\", \"urn:csabs:axiom/ClosedInterval-ordered-endpoints\": \"Interpreted premise: l≤u. ClosedInterval stores ordered endpoints; contains is lower≤x∧x≤upper. LinearOrder supplies reflexivity and the stored ordered proof supplies lower≤upper; no empty interval is an inhabitant.\"}"
   },
   {
     "id": "urn:csabs:theorem/ClosedInterval-intersection-membership",

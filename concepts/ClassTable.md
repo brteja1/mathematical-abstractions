@@ -21,6 +21,33 @@ A finite rooted acyclic nominal class hierarchy with finite local method declara
 - [Java type erasure and selected reifiability rules](JavaTypeErasure.md) — `relatedConcept`
 - [Sequential object heap with reference identity](ObjectHeap.md) — `relatedConcept`
 
+## Mathematical formulation
+
+The selected finite single-inheritance table has root r∈Fin(n+1), parent:Fin(n+1)→Option(Fin(n+1)), parent(r)=none, and every nonroot has a parent. A rank decreases along parent edges, excluding cycles. Method tables are finite maps; lookup scans the receiver class and ancestors with fuel n+1.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure ClassTable (n : Nat) (Selector : Type u) (Body : Type v) where
+  root : Fin (n + 1)
+  parent : Fin (n + 1) → Option (Fin (n + 1))
+  root_parent : parent root = none
+  has_parent : ∀ c, c ≠ root → (parent c).isSome
+  rank : Fin (n + 1) → Nat
+  parent_decreases : ∀ c d, parent c = some d → rank d < rank c
+  methods : Fin (n + 1) → Catalog.Map Selector Body
+```
+
+**Source:** [`Catalog.OOP.ClassTable`](../lean/Catalog/ObjectOrientation.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Classes are Fin(n+1); parent/root, finite local declarations and a decreasing auxiliary rank certify the single-inheritance profile. Ancestor/lookup traversal uses n+1 fuel; dispatch reads the heap class tag. Erase rank evidence for extensional table equality.
+
+**Limits:** Lookup and ancestors are implemented, but the general proof that n+1 fuel suffices and correspondence with the recursive graph equations is not registered. Bodies are opaque; type safety and behavioral compatibility are absent.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining rules: parent(root)=None; every C≠root has exactly one parent in C; every parent chain reaches root without repetition. lookup(CT,C,m)=methods(C)(m) when locally declared; otherwise lookup(CT,parent(C),m) if a parent exists; otherwise undefined. dispatch(CT,h,r,m)=lookup(CT,classOf(h,r),m) on the stated domain; nominalSubtype(CT,C,D) ⇔ D∈ancestors(CT,C).
@@ -370,7 +397,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "§2.1 and Figure 1, class tables/subtyping/method-body lookup; §2.3 and Figure 3, invocation reduction",
     "sourceNote": "Extracts the single-inheritance lookup fragment of Featherweight Java. Represents the distinguished root explicitly and allows root declarations as a stated generalization; does not import FJ type safety or its entire calculus.",
     "provenanceKind": "adapted",
-    "axiomBasis": "Selected defining rules: parent(root)=None; every C≠root has exactly one parent in C; every parent chain reaches root without repetition. lookup(CT,C,m)=methods(C)(m) when locally declared; otherwise lookup(CT,parent(C),m) if a parent exists; otherwise undefined. dispatch(CT,h,r,m)=lookup(CT,classOf(h,r),m) on the stated domain; nominalSubtype(CT,C,D) ⇔ D∈ancestors(CT,C)."
+    "axiomBasis": "Selected defining rules: parent(root)=None; every C≠root has exactly one parent in C; every parent chain reaches root without repetition. lookup(CT,C,m)=methods(C)(m) when locally declared; otherwise lookup(CT,parent(C),m) if a parent exists; otherwise undefined. dispatch(CT,h,r,m)=lookup(CT,classOf(h,r),m) on the stated domain; nominalSubtype(CT,C,D) ⇔ D∈ancestors(CT,C).",
+    "leanFormulation": "structure ClassTable (n : Nat) (Selector : Type u) (Body : Type v) where\n  root : Fin (n + 1)\n  parent : Fin (n + 1) → Option (Fin (n + 1))\n  root_parent : parent root = none\n  has_parent : ∀ c, c ≠ root → (parent c).isSome\n  rank : Fin (n + 1) → Nat\n  parent_decreases : ∀ c d, parent c = some d → rank d < rank c\n  methods : Fin (n + 1) → Catalog.Map Selector Body",
+    "formulationSource": "urn:csabs:source/local-lean-ObjectOrientation",
+    "formulationLocator": "Catalog.OOP.ClassTable",
+    "formulationScope": "partial",
+    "leanModelMapping": "Classes are Fin(n+1); parent/root, finite local declarations and a decreasing auxiliary rank certify the single-inheritance profile. Ancestor/lookup traversal uses n+1 fuel; dispatch reads the heap class tag. Erase rank evidence for extensional table equality.",
+    "leanModelLimitations": "Lookup and ancestors are implemented, but the general proof that n+1 fuel suffices and correspondence with the recursive graph equations is not registered. Bodies are opaque; type safety and behavioral compatibility are absent.",
+    "mathematicalFormulation": "The selected finite single-inheritance table has root r∈Fin(n+1), parent:Fin(n+1)→Option(Fin(n+1)), parent(r)=none, and every nonroot has a parent. A rank decreases along parent edges, excluding cycles. Method tables are finite maps; lookup scans the receiver class and ancestors with fuel n+1."
   },
   {
     "id": "urn:csabs:operation/ClassTable-ancestors",

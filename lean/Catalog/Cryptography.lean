@@ -1,6 +1,7 @@
 module
 
 public import Mathlib.Logic.Equiv.Defs
+public import Mathlib.Algebra.Group.Defs
 
 @[expose] public section
 
@@ -47,5 +48,47 @@ structure GCMInterface (K : Type) where
 from the normative algorithms and there is no registered security witness. -/
 structure AESGCMInterface where
   aes : AESInterface
+
+/-- Partial DH carrier/action interface. Prime order, generation, validation,
+random sampling and protocol authentication remain correspondence obligations. -/
+structure DiffieHellmanInterface (H : Type) [Group H] where
+  generator : H
+  subgroupOrder : Nat
+
+def DiffieHellmanInterface.publicValue {H : Type} [Group H]
+    (params : DiffieHellmanInterface H) (secret : Nat) : H :=
+  params.generator ^ secret
+
+/-- Exact exponent maps only. This interface does not enforce RSA prime,
+exponent or representative-range conditions and carries no inverse theorem. -/
+structure RSAInterface where
+  modulus : Nat
+  publicExponent : Nat
+  privateExponent : Nat
+
+def RSAInterface.publicMap (params : RSAInterface) (message : Nat) : Nat :=
+  message ^ params.publicExponent % params.modulus
+
+def RSAInterface.privateMap (params : RSAInterface) (ciphertext : Nat) : Nat :=
+  ciphertext ^ params.privateExponent % params.modulus
+
+/-- Partial abstract point-group interpretation: affine coordinates, field
+characteristic, nonsingularity and base-point order are not encoded here. -/
+structure ECCInterface (Point : Type) [AddCommGroup Point] where
+  basePoint : Point
+  subgroupOrder : Nat
+
+def ECCInterface.publicPoint {Point : Type} [AddCommGroup Point]
+    (params : ECCInterface Point) (secret : Nat) : Point :=
+  secret • params.basePoint
+
+/-- Partial ECDH composition. Secret range, subgroup validation, point
+representation and conversion to key material remain obligations. -/
+structure ECDHInterface (Point : Type) [AddCommGroup Point] where
+  curve : ECCInterface Point
+
+def ECDHInterface.sharedPoint {Point : Type} [AddCommGroup Point]
+    (_params : ECDHInterface Point) (secret : Nat) (peer : Point) : Point :=
+  secret • peer
 
 end Catalog

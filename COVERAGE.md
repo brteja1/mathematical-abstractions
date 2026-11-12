@@ -24,10 +24,13 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | Bisimulation | 1 | 1 | 1 | 1 | defined-structure |
 | BitVector | 5 | 4 | 0 | 1 | defined-structure |
 | BlockCipher | 2 | 1 | 0 | 1 | defined-structure |
+| BlockCode | 5 | 1 | 0 | 3 | extensional-structural-definition |
 | BooleanAlgebra | 3 | 8 | 1 | 1 | axiomatic-structure |
 | BooleanType | 4 | 3 | 1 | 1 | extensional-structural-definition |
+| CVP | 2 | 2 | 0 | 2 | defined-structure |
 | CandidateKey | 2 | 1 | 2 | 2 | defined-structure |
 | CartesianProduct | 2 | 3 | 1 | 2 | defined-structure |
+| ChannelCapacity | 1 | 1 | 0 | 1 | extensional-structural-definition |
 | CheckedInteger | 3 | 2 | 1 | 1 | defined-structure |
 | ClassTable | 4 | 3 | 2 | 1 | extensional-structural-definition |
 | ClosedInterval | 3 | 3 | 1 | 1 | extensional-structural-definition |
@@ -35,6 +38,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | CompileTimeEvaluation | 2 | 3 | 2 | 0 | extensional-structural-definition |
 | CompleteLattice | 2 | 3 | 0 | 2 | defined-structure |
 | ComplexNumber | 5 | 3 | 1 | 1 | extensional-structural-definition |
+| ConditionalEntropy | 1 | 1 | 1 | 2 | extensional-structural-definition |
 | ConditionalProbability | 1 | 1 | 0 | 2 | defined-structure |
 | ContextFreeGrammar | 2 | 2 | 1 | 3 | defined-structure |
 | DAG | 1 | 2 | 0 | 2 | defined-structure |
@@ -44,13 +48,20 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | DependentNameLookup | 2 | 2 | 2 | 0 | extensional-structural-definition |
 | DependentPair | 4 | 3 | 1 | 1 | extensional-structural-definition |
 | Deque | 5 | 3 | 1 | 1 | defined-structure |
+| DiffieHellman | 3 | 2 | 0 | 1 | defined-structure |
 | DirectedGraph | 1 | 2 | 1 | 1 | defined-structure |
 | DirectedMultigraph | 3 | 2 | 1 | 1 | extensional-structural-definition |
+| DiscreteMemorylessChannel | 1 | 1 | 1 | 0 | extensional-structural-definition |
 | DisjointSet | 4 | 3 | 1 | 1 | extensional-structural-definition |
+| DistortionMeasure | 1 | 1 | 1 | 0 | extensional-structural-definition |
 | DocumentValue | 4 | 4 | 1 | 1 | extensional-structural-definition |
+| DualCode | 1 | 1 | 0 | 1 | extensional-structural-definition |
+| ECC | 3 | 4 | 0 | 1 | defined-structure |
+| ECDH | 3 | 1 | 0 | 1 | defined-structure |
 | EmptyType | 1 | 1 | 0 | 2 | extensional-type-theory |
 | EntityRelationshipModel | 4 | 3 | 1 | 1 | extensional-structural-definition |
 | EquivalenceRelation | 1 | 4 | 0 | 2 | defined-structure |
+| EuclideanLattice | 6 | 2 | 0 | 3 | defined-structure |
 | Field | 3 | 13 | 0 | 1 | axiomatic-structure |
 | FiniteDistribution | 3 | 3 | 1 | 1 | extensional-structural-definition |
 | FiniteField | 7 | 14 | 0 | 3 | axiomatic-structure |
@@ -71,10 +82,12 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | GCM | 4 | 4 | 0 | 2 | defined-structure |
 | GHASH | 2 | 2 | 0 | 1 | defined-structure |
 | GaloisConnection | 2 | 1 | 1 | 1 | defined-structure |
+| GeneratorMatrix | 1 | 1 | 0 | 1 | extensional-structural-definition |
 | GenericArgumentBinding | 2 | 2 | 2 | 0 | extensional-structural-definition |
 | GenericSignature | 2 | 2 | 2 | 0 | extensional-structural-definition |
 | Graph | 1 | 2 | 1 | 1 | defined-structure |
 | Group | 2 | 5 | 1 | 2 | axiomatic-structure |
+| HammingSpace | 2 | 1 | 1 | 1 | extensional-structural-definition |
 | HappensBefore | 1 | 2 | 1 | 1 | defined-structure |
 | HeapSeparation | 5 | 3 | 3 | 0 | extensional-structural-definition |
 | HeapStore | 4 | 4 | 1 | 1 | extensional-structural-definition |
@@ -88,9 +101,11 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | JavaWildcardCapture | 2 | 2 | 2 | 0 | extensional-structural-definition |
 | JoinSemilattice | 2 | 5 | 1 | 1 | extensional-structural-definition |
 | KripkeStructure | 2 | 2 | 1 | 3 | defined-structure |
+| LWE | 3 | 2 | 0 | 2 | defined-structure |
 | LabelledTransitionSystem | 2 | 2 | 2 | 2 | defined-structure |
 | LamportBakery | 4 | 4 | 1 | 1 | operational-state-machine-definition |
 | Lattice | 2 | 3 | 1 | 1 | defined-structure |
+| LinearBlockCode | 1 | 1 | 0 | 5 | extensional-structural-definition |
 | LinearMap | 4 | 2 | 0 | 1 | defined-structure |
 | LinearTemporalLogic | 2 | 3 | 2 | 3 | defined-structure |
 | Linearizability | 1 | 2 | 0 | 2 | defined-structure |
@@ -113,19 +128,23 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | Multimap | 3 | 3 | 1 | 1 | extensional-structural-definition |
 | Multiset | 5 | 3 | 1 | 1 | defined-structure |
 | Mutex | 4 | 4 | 1 | 1 | operational-state-machine-definition |
+| MutualInformation | 2 | 1 | 0 | 2 | extensional-structural-definition |
 | NFA | 2 | 2 | 2 | 2 | defined-structure |
 | NaturalNumber | 4 | 3 | 1 | 1 | defined-structure |
+| NonlinearBlockCode | 1 | 1 | 0 | 4 | extensional-structural-definition |
 | ObjectHeap | 5 | 3 | 2 | 0 | extensional-structural-definition |
 | ObjectInvariant | 3 | 3 | 0 | 1 | extensional-structural-definition |
 | OptionType | 4 | 4 | 3 | 2 | extensional-type-theory |
 | OrderedSet | 3 | 3 | 2 | 2 | defined-structure |
 | ParametricInstantiation | 2 | 2 | 2 | 0 | extensional-structural-definition |
+| ParityCheckMatrix | 1 | 1 | 0 | 1 | extensional-structural-definition |
 | PartialFunction | 2 | 4 | 0 | 1 | defined-structure |
 | PartialOrder | 1 | 3 | 1 | 1 | defined-structure |
 | Partition | 1 | 3 | 0 | 2 | defined-structure |
 | PigeonholePrinciple | 0 | 1 | 0 | 2 | defined-structure |
 | PowerSet | 1 | 1 | 1 | 2 | defined-structure |
 | PredicateLogic | 3 | 5 | 2 | 3 | defined-structure |
+| PrefixFreeCode | 1 | 1 | 0 | 3 | extensional-structural-definition |
 | Preorder | 1 | 2 | 1 | 1 | defined-structure |
 | PriorityQueue | 3 | 3 | 1 | 1 | defined-structure |
 | ProbabilitySpace | 1 | 1 | 0 | 2 | defined-structure |
@@ -134,19 +153,25 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | PropositionalFormula | 3 | 3 | 1 | 1 | inductive-definition |
 | PropositionalLogic | 2 | 3 | 1 | 4 | defined-structure |
 | PropositionalNaturalDeduction | 1 | 2 | 1 | 3 | inductive-definition |
+| QaryLattice | 2 | 1 | 0 | 2 | defined-structure |
 | Queue | 4 | 2 | 1 | 1 | defined-structure |
 | QuotientType | 2 | 3 | 1 | 1 | extensional-structural-definition |
 | RDFDataset | 3 | 3 | 1 | 1 | extensional-structural-definition |
 | RDFGraph | 4 | 4 | 1 | 1 | extensional-structural-definition |
+| RSA | 2 | 2 | 0 | 1 | defined-structure |
 | RandomVariable | 1 | 1 | 0 | 1 | defined-structure |
+| RateDistortion | 1 | 1 | 0 | 2 | extensional-structural-definition |
 | RationalNumber | 4 | 3 | 1 | 1 | extensional-structural-definition |
 | RealNumber | 3 | 2 | 1 | 1 | extensional-structural-definition |
 | RegularLanguage | 3 | 1 | 1 | 3 | defined-structure |
 | Relation | 2 | 3 | 0 | 2 | defined-structure |
 | RelationalSchema | 3 | 3 | 3 | 1 | defined-structure |
+| RelativeEntropy | 1 | 1 | 0 | 1 | extensional-structural-definition |
 | Ring | 3 | 11 | 0 | 1 | axiomatic-structure |
 | RootedTree | 3 | 3 | 1 | 1 | extensional-structural-definition |
 | RoseTree | 4 | 4 | 1 | 1 | extensional-structural-definition |
+| SIS | 2 | 2 | 0 | 2 | defined-structure |
+| SVP | 2 | 2 | 0 | 2 | defined-structure |
 | SafetyProperty | 1 | 1 | 1 | 1 | defined-structure |
 | SaturatingInteger | 3 | 2 | 2 | 1 | defined-structure |
 | Semigroup | 1 | 4 | 0 | 1 | axiomatic-structure |
@@ -154,15 +179,18 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | Sequence | 7 | 5 | 3 | 1 | defined-structure |
 | SequentialConsistency | 1 | 1 | 1 | 1 | defined-structure |
 | Set | 6 | 9 | 2 | 2 | foundational-theory |
+| ShannonEntropy | 1 | 1 | 0 | 2 | extensional-structural-definition |
 | Simulation | 1 | 1 | 1 | 1 | defined-structure |
 | SmoothManifold | 1 | 2 | 0 | 1 | defined-structure |
 | SparseVector | 4 | 3 | 1 | 1 | extensional-structural-definition |
 | Stack | 4 | 2 | 2 | 1 | defined-structure |
 | StateBasedCRDT | 3 | 3 | 1 | 1 | extensional-structural-definition |
+| StochasticChannel | 1 | 1 | 1 | 0 | extensional-structural-definition |
 | Stream | 4 | 3 | 1 | 1 | extensional-structural-definition |
 | StructuralInduction | 0 | 2 | 1 | 1 | defined-structure |
 | Subtype | 3 | 3 | 1 | 1 | extensional-structural-definition |
 | SumType | 6 | 6 | 7 | 6 | extensional-type-theory |
+| Syndrome | 1 | 1 | 0 | 1 | extensional-structural-definition |
 | TemplateConstraint | 3 | 4 | 2 | 0 | extensional-structural-definition |
 | TemplateMetafunction | 3 | 3 | 2 | 0 | extensional-structural-definition |
 | TemplateParameterPack | 3 | 3 | 2 | 0 | extensional-structural-definition |
@@ -179,6 +207,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | Tree | 1 | 3 | 0 | 2 | defined-structure |
 | Trie | 3 | 4 | 1 | 1 | extensional-structural-definition |
 | TuringMachine | 3 | 4 | 1 | 3 | defined-structure |
+| UniquelyDecodableCode | 2 | 1 | 0 | 2 | extensional-structural-definition |
 | UnitType | 1 | 1 | 0 | 2 | extensional-type-theory |
 | VHDLGenericElaboration | 4 | 3 | 2 | 0 | extensional-structural-definition |
 | VHDLGenericInterface | 2 | 3 | 2 | 0 | extensional-structural-definition |
@@ -187,6 +216,6 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | WeightedDirectedGraph | 3 | 2 | 1 | 1 | extensional-structural-definition |
 | WellFoundedRelation | 1 | 1 | 1 | 1 | defined-structure |
 
-182 of 182 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
+211 of 211 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
 
 Use `ruleRole` to distinguish foundational axioms, structure constraints, and defining equations. Use `basisScope` for interface boundaries. Alternate language policies, intensional equality, IEEE payload/trap details, and formal proof artifacts require further formalization.

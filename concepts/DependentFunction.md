@@ -20,6 +20,26 @@ A total function choosing a value in B(a) at each input a.
 - [Kinded partial template metafunction](TemplateMetafunction.md) — `relatedConcept`
 - [Free ranked term algebra with variables](TermAlgebra.md) — `requiresConcept`
 
+## Mathematical formulation
+
+Π\_{a:A}B(a) consists of functions f with f(a):B(a). Evaluation satisfies (λa.t)(x)=t[x/a]; f=g iff ∀a,f(a)=g(a) in B(a).
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev DependentFunction (A : Type u) (B : A → Type v) := (a : A) → B a
+```
+
+**Source:** [`Catalog.DependentFunction`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** The actual Pi carrier (a:A)→B a, with total application. Πa:A. B(a). Extensional equality: f=g iff all typed applications agree. No effects, divergence or partiality. Empty A gives one function; some empty fibers may prevent inhabitants.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** (λa.t(a))(x)=t(x); f=g ⇔ ∀a:A, f(a)=g(a)
@@ -162,6 +182,33 @@ A total function choosing a value in B(a) at each input a.
 
 **provenanceKind:** derived
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type} {B : A → Type} (f : Catalog.DependentFunction A B), (fun a => f a) = f
+```
+
+**Source:** [`Catalog.CoreDataProofs.dependent_function_eta`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Pi types, lambda and application interpret the dependent function interface. Eta here is definitional; function extensionality is available where needed.
+
+**Limits:** Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/DependentFunction-beta": "Interpreted premise: (λa.t(a))(x)=t(x). Pi types, lambda and application interpret the dependent function interface. Eta here is definitional; function extensionality is available where needed.",
+  "urn:csabs:axiom/DependentFunction-extensionality": "Interpreted premise: f=g ⇔ ∀a:A, f(a)=g(a). Pi types, lambda and application interpret the dependent function interface. Eta here is definitional; function extensionality is available where needed."
+}
+```
+
 ## Theorems
 
 <a id="node-urn-csabs-theorem-DependentFunction-empty-domain"></a>
@@ -253,7 +300,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "§§2.3, 2.8: abstraction, application, Pi and Sigma types; §§12.3–12.4: function extensionality and quotients of setoids",
     "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "abbrev DependentFunction (A : Type u) (B : A → Type v) := (a : A) → B a",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.DependentFunction",
+    "formulationScope": "model",
+    "leanModelMapping": "The actual Pi carrier (a:A)→B a, with total application. Πa:A. B(a). Extensional equality: f=g iff all typed applications agree. No effects, divergence or partiality. Empty A gives one function; some empty fibers may prevent inhabitants.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "Π_{a:A}B(a) consists of functions f with f(a):B(a). Evaluation satisfies (λa.t)(x)=t[x/a]; f=g iff ∀a,f(a)=g(a) in B(a)."
   },
   {
     "id": "urn:csabs:operation/DependentFunction-abstract",
@@ -362,7 +416,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "§§2.3, 2.8: abstraction, application, Pi and Sigma types; §§12.3–12.4: function extensionality and quotients of setoids",
     "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
-    "provenanceKind": "derived"
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type} {B : A → Type} (f : Catalog.DependentFunction A B), (fun a => f a) = f",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.CoreDataProofs.dependent_function_eta",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Pi types, lambda and application interpret the dependent function interface. Eta here is definitional; function extensionality is available where needed.",
+    "leanModelLimitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/DependentFunction-beta\": \"Interpreted premise: (λa.t(a))(x)=t(x). Pi types, lambda and application interpret the dependent function interface. Eta here is definitional; function extensionality is available where needed.\", \"urn:csabs:axiom/DependentFunction-extensionality\": \"Interpreted premise: f=g ⇔ ∀a:A, f(a)=g(a). Pi types, lambda and application interpret the dependent function interface. Eta here is definitional; function extensionality is available where needed.\"}"
   },
   {
     "id": "urn:csabs:theorem/DependentFunction-empty-domain",

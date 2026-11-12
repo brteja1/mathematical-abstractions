@@ -20,6 +20,35 @@ A contract-based relation between subtype and supertype specifications, using an
 - [Java bounded parameterized types and nominal subtyping](JavaParameterizedType.md) — `relatedConcept`
 - [Relational method contract with write effects](MethodContract.md) — `relatedConcept`
 
+## Mathematical formulation
+
+For abstraction α:S\_sub→S\_sup and method renaming ρ, the selected relation requires Inv\_sub⇒Inv\_sup∘α, availability of every renamed super method, Pre\_sup(α(s),i)⇒Pre\_sub(s,i) on invariant states, and Post\_sub(s,i,t,o)⇒Inv\_sub(t)∧Post\_sup(α(s),i,α(t),o). It also requires sub history constraints to imply the abstract super constraints; full adapters and execution/history correspondence remain explicit obligations.
+
+**Lean formulation** (in its source module context):
+
+```lean
+def BehavioralSubtyping {S T : Type u} {MS MT : Type v} {I : Type w} {O : Type x}
+    (sub : BehavioralSpec S MS I O) (sup : BehavioralSpec T MT I O)
+    (abstract : S → T) (rename : MT → MS) : Prop :=
+  (∀ s, sub.invariant s → sup.invariant (abstract s)) ∧
+  (∀ m, m ∈ sup.available → rename m ∈ sub.available) ∧
+  (∀ m s i, m ∈ sup.available → sub.invariant s → sup.pre m (abstract s) i →
+    sub.pre (rename m) s i ∧ ∀ t o, sub.post (rename m) s i t o →
+      sub.invariant t ∧ sup.post m (abstract s) i (abstract t) o) ∧
+  (∀ s t, sub.invariant s → sub.invariant t → sub.constraint s t →
+    sup.constraint (abstract s) (abstract t))
+```
+
+**Source:** [`Catalog.OOP.BehavioralSubtyping`](../lean/Catalog/ObjectOrientation.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Explicit legal-state, method-coverage, pre/post and history-constraint implications under an abstraction function and method map. Fixed input/outcome carriers encode already-compatible signatures; historyPair records all admissible ordered history pairs.
+
+**Limits:** The semantic implications are modeled, but connection of historyPair to actual executions, general signature adapters, full trace/contextual substitutability and total correctness remain obligations. No nominal inheritance implication or subtype theorem is asserted.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining rules: S≼[α,ρ]T ⇒ ∀s, I_S(s)⇒I_T(αs). S≼[α,ρ]T ⇒ ∀m∈M_T,s,i, I_S(s)∧P_T(m,αs,i) ⇒ P_S(ρm,s,i) ∧ (∀s′,o, Q_S(ρm,s,i,s′,o) ⇒ I_S(s′)∧Q_T(m,αs,i,αs′,o)). S≼[α,ρ]T ⇒ ∀s,s′, I_S(s)∧I_S(s′)∧C_S(s,s′) ⇒ C_T(αs,αs′); every admissible ordered subtype-history pair satisfies C_S, including pairs spanning extra methods. S≼[α,ρ]T iff the invariant, methods and constraint rules hold and every supertype method has a signature-compatible provided method under ρ; subtype specs preserve their stated invariants and history constraints.
@@ -368,7 +397,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "§§4.1–4.3 method specifications/invariants; §5.2 and Figure 4, constraint-rule subtyping; §5.3 distinguishes the explanation approach",
     "sourceNote": "Adapts the constraint definition to explicit state functions and fixed input/outcome carriers. Retains separate history obligations; nominal subclassing and predicate-restricted Subtype are distinct concepts.",
     "provenanceKind": "adapted",
-    "axiomBasis": "Selected defining rules: S≼[α,ρ]T ⇒ ∀s, I_S(s)⇒I_T(αs). S≼[α,ρ]T ⇒ ∀m∈M_T,s,i, I_S(s)∧P_T(m,αs,i) ⇒ P_S(ρm,s,i) ∧ (∀s′,o, Q_S(ρm,s,i,s′,o) ⇒ I_S(s′)∧Q_T(m,αs,i,αs′,o)). S≼[α,ρ]T ⇒ ∀s,s′, I_S(s)∧I_S(s′)∧C_S(s,s′) ⇒ C_T(αs,αs′); every admissible ordered subtype-history pair satisfies C_S, including pairs spanning extra methods. S≼[α,ρ]T iff the invariant, methods and constraint rules hold and every supertype method has a signature-compatible provided method under ρ; subtype specs preserve their stated invariants and history constraints."
+    "axiomBasis": "Selected defining rules: S≼[α,ρ]T ⇒ ∀s, I_S(s)⇒I_T(αs). S≼[α,ρ]T ⇒ ∀m∈M_T,s,i, I_S(s)∧P_T(m,αs,i) ⇒ P_S(ρm,s,i) ∧ (∀s′,o, Q_S(ρm,s,i,s′,o) ⇒ I_S(s′)∧Q_T(m,αs,i,αs′,o)). S≼[α,ρ]T ⇒ ∀s,s′, I_S(s)∧I_S(s′)∧C_S(s,s′) ⇒ C_T(αs,αs′); every admissible ordered subtype-history pair satisfies C_S, including pairs spanning extra methods. S≼[α,ρ]T iff the invariant, methods and constraint rules hold and every supertype method has a signature-compatible provided method under ρ; subtype specs preserve their stated invariants and history constraints.",
+    "leanFormulation": "def BehavioralSubtyping {S T : Type u} {MS MT : Type v} {I : Type w} {O : Type x}\n    (sub : BehavioralSpec S MS I O) (sup : BehavioralSpec T MT I O)\n    (abstract : S → T) (rename : MT → MS) : Prop :=\n  (∀ s, sub.invariant s → sup.invariant (abstract s)) ∧\n  (∀ m, m ∈ sup.available → rename m ∈ sub.available) ∧\n  (∀ m s i, m ∈ sup.available → sub.invariant s → sup.pre m (abstract s) i →\n    sub.pre (rename m) s i ∧ ∀ t o, sub.post (rename m) s i t o →\n      sub.invariant t ∧ sup.post m (abstract s) i (abstract t) o) ∧\n  (∀ s t, sub.invariant s → sub.invariant t → sub.constraint s t →\n    sup.constraint (abstract s) (abstract t))",
+    "formulationSource": "urn:csabs:source/local-lean-ObjectOrientation",
+    "formulationLocator": "Catalog.OOP.BehavioralSubtyping",
+    "formulationScope": "partial",
+    "leanModelMapping": "Explicit legal-state, method-coverage, pre/post and history-constraint implications under an abstraction function and method map. Fixed input/outcome carriers encode already-compatible signatures; historyPair records all admissible ordered history pairs.",
+    "leanModelLimitations": "The semantic implications are modeled, but connection of historyPair to actual executions, general signature adapters, full trace/contextual substitutability and total correctness remain obligations. No nominal inheritance implication or subtype theorem is asserted.",
+    "mathematicalFormulation": "For abstraction α:S_sub→S_sup and method renaming ρ, the selected relation requires Inv_sub⇒Inv_sup∘α, availability of every renamed super method, Pre_sup(α(s),i)⇒Pre_sub(s,i) on invariant states, and Post_sub(s,i,t,o)⇒Inv_sub(t)∧Post_sup(α(s),i,α(t),o). It also requires sub history constraints to imply the abstract super constraints; full adapters and execution/history correspondence remain explicit obligations."
   },
   {
     "id": "urn:csabs:operation/BehavioralSubtyping-invariant-map",

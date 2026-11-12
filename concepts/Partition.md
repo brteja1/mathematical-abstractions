@@ -15,6 +15,30 @@ A family of nonempty, pairwise disjoint subsets whose union is the entire carrie
 - [Union Find (disjoint-set union with representatives)](DisjointSet.md) — `requiresConcept`
 - [Equivalence relation](EquivalenceRelation.md) — `relatedConcept`
 
+## Mathematical formulation
+
+A partition Π⊆℘(A) satisfies (∀B∈Π, B≠∅), ⋃Π=A, and ∀B,C∈Π, B≠C⇒B∩C=∅. For A=∅ these constraints force Π=∅.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure Partition (A : Type u) where
+  blocks : _root_.Set (_root_.Set A)
+  nonempty : ∀ b ∈ blocks, b.Nonempty
+  cover : ∀ x, ∃ b ∈ blocks, x ∈ b
+  disjoint : ∀ b ∈ blocks, ∀ c ∈ blocks, b ≠ c → Disjoint b c
+```
+
+**Source:** [`Catalog.Partition`](../lean/Catalog/Foundations.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Set of nonempty pairwise disjoint blocks covering A; empty carrier admits empty partition.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A family of nonempty, pairwise disjoint subsets whose union is the entire carrier. Governing rules: Every carrier element belongs to a block of the partition. Distinct blocks are pairwise disjoint and blocks are nonempty. Blocks are nonempty, disjoint, and cover the carrier, including the empty family when the carrier is empty.
@@ -197,7 +221,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "structure Partition (A : Type u) where\n  blocks : _root_.Set (_root_.Set A)\n  nonempty : ∀ b ∈ blocks, b.Nonempty\n  cover : ∀ x, ∃ b ∈ blocks, x ∈ b\n  disjoint : ∀ b ∈ blocks, ∀ c ∈ blocks, b ≠ c → Disjoint b c",
+    "formulationSource": "urn:csabs:source/local-lean-Foundations",
+    "formulationLocator": "Catalog.Partition",
+    "formulationScope": "model",
+    "leanModelMapping": "Set of nonempty pairwise disjoint blocks covering A; empty carrier admits empty partition.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A partition Π⊆℘(A) satisfies (∀B∈Π, B≠∅), ⋃Π=A, and ∀B,C∈Π, B≠C⇒B∩C=∅. For A=∅ these constraints force Π=∅."
   },
   {
     "id": "urn:csabs:operation/Partition-basis-blockOf",

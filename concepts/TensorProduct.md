@@ -20,6 +20,28 @@ A vector space V⊗_F W with a bilinear pairing that turns each bilinear map V×
 
 - [Tensor of specified valence on a finite-dimensional vector space](Tensor.md) — `requiresConcept`
 
+## Mathematical formulation
+
+For F-vector spaces V,W, V⊗\_F W is equipped with a bilinear map (v,w)↦v⊗w. For each bilinear b:V×W→U there is a unique F-linear b̄:V⊗\_F W→U with b̄(v⊗w)=b(v,w).
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev TensorProduct (F : Type u) (V W : Type v) [_root_.Field F]
+    [AddCommGroup V] [AddCommGroup W] [Module F V] [Module F W] :=
+  _root_.TensorProduct F V W
+```
+
+**Source:** [`Catalog.TensorProduct`](../lean/Catalog/Algebra.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib TensorProduct F V W of explicit F-modules; universal property available in the pinned library.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Bilinearity of the canonical pairing and the unique linear extension property for every bilinear map into any F-vector space.
@@ -227,7 +249,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "relatedConcept": [
       "urn:csabs:concept/Tensor"
     ],
-    "basisInstantiation": "Instantiate VectorSpace over F on V, W, U and the constructed tensor product. The pairing is bilinear; its universal extension maps are LinearMap instances over the same F."
+    "basisInstantiation": "Instantiate VectorSpace over F on V, W, U and the constructed tensor product. The pairing is bilinear; its universal extension maps are LinearMap instances over the same F.",
+    "leanFormulation": "abbrev TensorProduct (F : Type u) (V W : Type v) [_root_.Field F]\n    [AddCommGroup V] [AddCommGroup W] [Module F V] [Module F W] :=\n  _root_.TensorProduct F V W",
+    "formulationSource": "urn:csabs:source/local-lean-Algebra",
+    "formulationLocator": "Catalog.TensorProduct",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib TensorProduct F V W of explicit F-modules; universal property available in the pinned library.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For F-vector spaces V,W, V⊗_F W is equipped with a bilinear map (v,w)↦v⊗w. For each bilinear b:V×W→U there is a unique F-linear b̄:V⊗_F W→U with b̄(v⊗w)=b(v,w)."
   },
   {
     "id": "urn:csabs:operation/TensorProduct-pure",

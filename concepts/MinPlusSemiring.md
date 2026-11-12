@@ -16,6 +16,26 @@ The real min-plus algebra: minimum combines alternative costs and extended ordin
 
 **Related concepts:** [Join semilattice](JoinSemilattice.md)
 
+## Mathematical formulation
+
+The carrier is ℝ∪{+∞}; a⊕b=min(a,b), a⊗b=a+b with +∞ absorbing for ⊗. Semiring zero is +∞ and semiring one is the real number 0. The canonical semiring order is reverse numerical order.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev MinPlusSemiring := MinTropical (WithTop ℝ)
+```
+
+**Source:** [`Catalog.MinPlusSemiring`](../lean/Catalog/Algebra.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** MinTropical (WithTop ℝ), exact extended real equality; tropical addition=min, multiplication=extended ordinary addition, zero=+∞, one=real 0. The IdempotentSemiring instance uses Mathlib add_self. canonicalSemiringOrder is reverse numerical order; do not use the transported library ≤ as the canonical order.
+
+**Limits:** Carrier and interface binding only. No registered witness for the new canonical-order theorems; the graph statements and source correspondence remain editorial.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Explicit unital semiring basis plus additive idempotence and the concrete carrier/operation/constant profile.
@@ -400,7 +420,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "§§1–3, printed pp. 2–5",
     "sourceNote": "Concrete real min-plus profile and terminology, with explicit infinity and exact-arithmetic conventions.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "abbrev MinPlusSemiring := MinTropical (WithTop ℝ)",
+    "formulationSource": "urn:csabs:source/local-lean-Algebra",
+    "formulationLocator": "Catalog.MinPlusSemiring",
+    "formulationScope": "model",
+    "leanModelMapping": "MinTropical (WithTop ℝ), exact extended real equality; tropical addition=min, multiplication=extended ordinary addition, zero=+∞, one=real 0. The IdempotentSemiring instance uses Mathlib add_self. canonicalSemiringOrder is reverse numerical order; do not use the transported library ≤ as the canonical order.",
+    "leanModelLimitations": "Carrier and interface binding only. No registered witness for the new canonical-order theorems; the graph statements and source correspondence remain editorial.",
+    "mathematicalFormulation": "The carrier is ℝ∪{+∞}; a⊕b=min(a,b), a⊗b=a+b with +∞ absorbing for ⊗. Semiring zero is +∞ and semiring one is the real number 0. The canonical semiring order is reverse numerical order."
   },
   {
     "id": "urn:csabs:operation/MinPlusSemiring-addition",

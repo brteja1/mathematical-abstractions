@@ -39,6 +39,26 @@ A relation from A to B is a set of ordered pairs with first component in A and s
 - [Well Founded Relation](WellFoundedRelation.md) — `requiresConcept`
 - [Well Founded Relation](WellFoundedRelation.md) — `specializationOf`
 
+## Mathematical formulation
+
+Rel(A,B)=A→B→Prop, equivalently ℘(A×B). R=S ⇔ ∀a∈A ∀b∈B, R(a,b)↔S(a,b). No totality, functionality or nonemptiness is imposed.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Relation (A : Type u) (B : Type v) := A → B → Prop
+```
+
+**Source:** [`Catalog.Relation`](../lean/Catalog/Foundations.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** A -> B -> Prop; relational composition is existential over the middle carrier.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A relation from A to B is a set of ordered pairs with first component in A and second in B; properties such as reflexivity or transitivity are optional constraints. Governing rules: A relation is a subset of its typed Cartesian product. Inverse reverses the ordered pairs. Relational composition existentially joins over the middle carrier.
@@ -239,7 +259,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "abbrev Relation (A : Type u) (B : Type v) := A → B → Prop",
+    "formulationSource": "urn:csabs:source/local-lean-Foundations",
+    "formulationLocator": "Catalog.Relation",
+    "formulationScope": "model",
+    "leanModelMapping": "A -> B -> Prop; relational composition is existential over the middle carrier.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "Rel(A,B)=A→B→Prop, equivalently ℘(A×B). R=S ⇔ ∀a∈A ∀b∈B, R(a,b)↔S(a,b). No totality, functionality or nonemptiness is imposed."
   },
   {
     "id": "urn:csabs:operation/relation-inverse",

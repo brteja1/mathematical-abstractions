@@ -12,6 +12,28 @@ An immutable finite sequence cursor retaining its original sequence and a positi
 
 **Prerequisites:** [Finite sequence (List datatype)](Sequence.md), [Option Type](OptionType.md), [Natural Number](NaturalNumber.md)
 
+## Mathematical formulation
+
+A cursor is (xs,p) with xs∈A\*,0≤p≤|xs|. next(xs,p)=(some(xs[p]),(xs,p+1)) when p<|xs|, and (none,(xs,p)) otherwise. Equality retains both xs and p.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure FiniteIterator (A : Type u) where
+  values : List A
+  position : Fin (values.length + 1)
+```
+
+**Source:** [`Catalog.FiniteIterator`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Iter(A)={(s,p) | s∈Seq(A), 0≤p≤|s|}. State equality retains original s and p, even when remaining suffixes agree. Finite pure fused profile; generic effectful or resumable iterators require another model. None is exhaustion, not a payload.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** 0≤p≤|s| for every (s,p)∈Iter(A); p<|s| ⇒ next(s,p)=(Some(s[p]),(s,p+1)); p=|s| ⇒ next(s,p)=(None,(s,p)); remaining(s,p)=drop(p,s)
@@ -202,6 +224,33 @@ An immutable finite sequence cursor retaining its original sequence and a positi
 
 **provenanceKind:** derived
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type} (it j : Catalog.FiniteIterator A), it.next = (none, j) → j.next = (none, j)
+```
+
+**Source:** [`Catalog.CoreDataProofs.iterator_fused`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** FiniteIterator is List A plus a Fin(length+1) cursor; next returns an Option payload and new immutable cursor. None occurs only at exhaustion and preserves the cursor; list and position equality match the graph profile.
+
+**Limits:** Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/FiniteIterator-cursor-range": "Interpreted premise: 0≤p≤|s| for every (s,p)∈Iter(A). FiniteIterator is List A plus a Fin(length+1) cursor; next returns an Option payload and new immutable cursor. None occurs only at exhaustion and preserves the cursor; list and position equality match the graph profile.",
+  "urn:csabs:axiom/FiniteIterator-next-equations": "Interpreted premise: p<|s| ⇒ next(s,p)=(Some(s[p]),(s,p+1)); p=|s| ⇒ next(s,p)=(None,(s,p)). FiniteIterator is List A plus a Fin(length+1) cursor; next returns an Option payload and new immutable cursor. None occurs only at exhaustion and preserves the cursor; list and position equality match the graph profile."
+}
+```
+
 ## Theorems
 
 <a id="node-urn-csabs-theorem-FiniteIterator-finite-consumption"></a>
@@ -297,7 +346,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "FusedIterator contract: all subsequent next results remain None after exhaustion; Stream', cons, get, head, tail, map and corec",
     "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "structure FiniteIterator (A : Type u) where\n  values : List A\n  position : Fin (values.length + 1)",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.FiniteIterator",
+    "formulationScope": "model",
+    "leanModelMapping": "Iter(A)={(s,p) | s∈Seq(A), 0≤p≤|s|}. State equality retains original s and p, even when remaining suffixes agree. Finite pure fused profile; generic effectful or resumable iterators require another model. None is exhaustion, not a payload.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "A cursor is (xs,p) with xs∈A*,0≤p≤|xs|. next(xs,p)=(some(xs[p]),(xs,p+1)) when p<|xs|, and (none,(xs,p)) otherwise. Equality retains both xs and p."
   },
   {
     "id": "urn:csabs:operation/FiniteIterator-start",
@@ -447,7 +503,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "FusedIterator contract: all subsequent next results remain None after exhaustion; Stream', cons, get, head, tail, map and corec",
     "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
-    "provenanceKind": "derived"
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type} (it j : Catalog.FiniteIterator A), it.next = (none, j) → j.next = (none, j)",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.CoreDataProofs.iterator_fused",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "FiniteIterator is List A plus a Fin(length+1) cursor; next returns an Option payload and new immutable cursor. None occurs only at exhaustion and preserves the cursor; list and position equality match the graph profile.",
+    "leanModelLimitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/FiniteIterator-cursor-range\": \"Interpreted premise: 0≤p≤|s| for every (s,p)∈Iter(A). FiniteIterator is List A plus a Fin(length+1) cursor; next returns an Option payload and new immutable cursor. None occurs only at exhaustion and preserves the cursor; list and position equality match the graph profile.\", \"urn:csabs:axiom/FiniteIterator-next-equations\": \"Interpreted premise: p<|s| ⇒ next(s,p)=(Some(s[p]),(s,p+1)); p=|s| ⇒ next(s,p)=(None,(s,p)). FiniteIterator is List A plus a Fin(length+1) cursor; next returns an Option payload and new immutable cursor. None occurs only at exhaustion and preserves the cursor; list and position equality match the graph profile.\"}"
   },
   {
     "id": "urn:csabs:theorem/FiniteIterator-finite-consumption",

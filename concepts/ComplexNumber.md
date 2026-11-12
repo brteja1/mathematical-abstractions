@@ -14,6 +14,26 @@ Pairs of exact real coordinates equipped with complex-field arithmetic.
 
 **Specializes:** [Field](Field.md)
 
+## Mathematical formulation
+
+ℂ=ℝ×ℝ with (a,b)+(c,d)=(a+c,b+d), (a,b)(c,d)=(ac−bd,ad+bc), and i=(0,1). Equality is equality of both real coordinates.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev ComplexNumber := Complex
+```
+
+**Source:** [`Catalog.ComplexNumber`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Complex with Real re/im, coordinate equality and the complex field instance. ℂ=ℝ×ℝ; (a,b)=a+bi. Equality is coordinate equality. No compatible linear ordered-field structure, floating-point rounding or branch convention for complex transcendental functions is assumed. Division requires nonzero pair.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** re(mk(a,b))=a ∧ im(mk(a,b))=b; z=w ⇔ re(z)=re(w) ∧ im(z)=im(w); mk(a,b)+mk(c,d)=mk(a+c,b+d); mk(a,b)·mk(c,d)=mk(ac-bd,ad+bc); 0=mk(0,0); 1=mk(1,0); i=mk(0,1)
@@ -254,6 +274,32 @@ Pairs of exact real coordinates equipped with complex-field arithmetic.
 
 **provenanceKind:** derived
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ (z : Catalog.ComplexNumber), Complex.mk z.re z.im = z
+```
+
+**Source:** [`Catalog.CoreDataProofs.complex_eta`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Complex is the structure with Real re/im fields. mk and projections are the catalog constructor and coordinates; coordinate equality is Lean structure equality.
+
+**Limits:** Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/ComplexNumber-coordinates": "Interpreted premise: re(mk(a,b))=a ∧ im(mk(a,b))=b; z=w ⇔ re(z)=re(w) ∧ im(z)=im(w). Complex is the structure with Real re/im fields. mk and projections are the catalog constructor and coordinates; coordinate equality is Lean structure equality."
+}
+```
+
 ## Theorems
 
 <a id="node-urn-csabs-theorem-ComplexNumber-imaginary-square"></a>
@@ -353,7 +399,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/Field"
     ],
-    "specializationNote": "Instantiate Field at pairs of reals with the displayed complex addition/multiplication and nonzero inverse. ProductType describes the carrier, not the multiplication."
+    "specializationNote": "Instantiate Field at pairs of reals with the displayed complex addition/multiplication and nonzero inverse. ProductType describes the carrier, not the multiplication.",
+    "leanFormulation": "abbrev ComplexNumber := Complex",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.ComplexNumber",
+    "formulationScope": "model",
+    "leanModelMapping": "Complex with Real re/im, coordinate equality and the complex field instance. ℂ=ℝ×ℝ; (a,b)=a+bi. Equality is coordinate equality. No compatible linear ordered-field structure, floating-point rounding or branch convention for complex transcendental functions is assumed. Division requires nonzero pair.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "ℂ=ℝ×ℝ with (a,b)+(c,d)=(a+c,b+d), (a,b)(c,d)=(ac−bd,ad+bc), and i=(0,1). Equality is equality of both real coordinates."
   },
   {
     "id": "urn:csabs:operation/ComplexNumber-construct",
@@ -529,7 +582,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Complex.re, Complex.im, Complex.eta, Complex.ext and field arithmetic",
     "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
-    "provenanceKind": "derived"
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ (z : Catalog.ComplexNumber), Complex.mk z.re z.im = z",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.CoreDataProofs.complex_eta",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Complex is the structure with Real re/im fields. mk and projections are the catalog constructor and coordinates; coordinate equality is Lean structure equality.",
+    "leanModelLimitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/ComplexNumber-coordinates\": \"Interpreted premise: re(mk(a,b))=a ∧ im(mk(a,b))=b; z=w ⇔ re(z)=re(w) ∧ im(z)=im(w). Complex is the structure with Real re/im fields. mk and projections are the catalog constructor and coordinates; coordinate equality is Lean structure equality.\"}"
   },
   {
     "id": "urn:csabs:theorem/ComplexNumber-imaginary-square",

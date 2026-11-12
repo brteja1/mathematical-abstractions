@@ -18,9 +18,33 @@ A total function between vector spaces over the same field that preserves vector
 
 ## Backlinks
 
+- [Linear block code over a finite field](LinearBlockCode.md) — `requiresConcept`
 - [Finite rectangular matrix over a field](Matrix.md) — `relatedConcept`
+- [Syndrome map of a linear block code](Syndrome.md) — `requiresConcept`
 - [Tensor of specified valence on a finite-dimensional vector space](Tensor.md) — `requiresConcept`
 - [Tensor product of vector spaces](TensorProduct.md) — `requiresConcept`
+
+## Mathematical formulation
+
+For F-vector spaces V,W, Hom\_F(V,W)={f:V→W | ∀u,v,f(u+v)=f(u)+f(v) ∧ ∀a,v,f(av)=a f(v)}. Equality is pointwise equality; zero preservation follows from these conditions.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev LinearMap (F : Type u) (V : Type v) (W : Type w)
+    [_root_.Field F] [AddCommGroup V] [AddCommGroup W]
+    [Module F V] [Module F W] := V →ₗ[F] W
+```
+
+**Source:** [`Catalog.LinearMap`](../lean/Catalog/Algebra.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib V ->ₗ[F] W over the same explicit field and module structures.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
 
 ## Interface and scope
 
@@ -259,7 +283,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationNote": "Forget the vector-space structures and linearity requirements, retaining the same total function.",
     "relatedConcept": [
       "urn:csabs:concept/Matrix"
-    ]
+    ],
+    "leanFormulation": "abbrev LinearMap (F : Type u) (V : Type v) (W : Type w)\n    [_root_.Field F] [AddCommGroup V] [AddCommGroup W]\n    [Module F V] [Module F W] := V →ₗ[F] W",
+    "formulationSource": "urn:csabs:source/local-lean-Algebra",
+    "formulationLocator": "Catalog.LinearMap",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib V ->ₗ[F] W over the same explicit field and module structures.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For F-vector spaces V,W, Hom_F(V,W)={f:V→W | ∀u,v,f(u+v)=f(u)+f(v) ∧ ∀a,v,f(av)=a f(v)}. Equality is pointwise equality; zero preservation follows from these conditions."
   },
   {
     "id": "urn:csabs:operation/LinearMap-apply",

@@ -23,6 +23,31 @@ A staged function-template deduction model that distinguishes immediate-context 
 - [Ordered template packs and structural expansion](TemplateParameterPack.md) — `relatedConcept`
 - [Class template partial-specialization selection](TemplateSpecialization.md) — `relatedConcept`
 
+## Mathematical formulation
+
+A supplied frontend maps (env,subst,syntax) to an ordered event list and optional artifact. scan([])=success; scan(continue::es)=scan(es); scan(immediateInvalid::es)=deductionFailure; scan(requiredHardError::es)=hardError. A success result requires an artifact. Lexical event generation and immediate-context classification are frontend obligations.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure TemplateSubstitution (Env : Type u) (Subst : Type v)
+    (Syntax : Type w) (Artifact : Type x) where
+  frontend : Env → Subst → Syntax → List SubstitutionEvent × Option Artifact
+  success_artifact : ∀ env subst term,
+    scanSubstitution (frontend env subst term).1 = .success →
+      (frontend env subst term).2.isSome
+```
+
+**Source:** [`Catalog.TMP.TemplateSubstitution`](../lean/Catalog/TemplateMetaprogramming.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Ordered Continue/ImmediateInvalid/RequiredHardError events with a stopping scan; a supplied frontend connects environment, substitution and syntax to events and a successful artifact.
+
+**Limits:** Actual syntactic substitution, lexical event generation, access checking and immediate-context/side-effect classification remain frontend obligations. IFNDR cases are excluded. No complete C++ deduction algorithm or SFINAE theorem is registered.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining rules: scan([])=Success; scan(Continue::es)=scan(es); scan(ImmediateInvalid::es)=DeductionFailure; scan(RequiredHardError::es)=HardError. Invalidity in the specified immediate context maps to ImmediateInvalid; an actually required diagnostic error in an instantiated side effect maps to RequiredHardError, not ImmediateInvalid.
@@ -291,7 +316,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "[temp.deduct] ¶7–9, lexical substitution order, immediate context and instantiation effects",
     "sourceNote": "Separates a supplied C++ substitution frontend from a small ordered event semantics. It is not a complete deduction algorithm, universal error-catching mechanism or inference of context from textual nesting.",
     "provenanceKind": "adapted",
-    "axiomBasis": "Selected defining rules: scan([])=Success; scan(Continue::es)=scan(es); scan(ImmediateInvalid::es)=DeductionFailure; scan(RequiredHardError::es)=HardError. Invalidity in the specified immediate context maps to ImmediateInvalid; an actually required diagnostic error in an instantiated side effect maps to RequiredHardError, not ImmediateInvalid."
+    "axiomBasis": "Selected defining rules: scan([])=Success; scan(Continue::es)=scan(es); scan(ImmediateInvalid::es)=DeductionFailure; scan(RequiredHardError::es)=HardError. Invalidity in the specified immediate context maps to ImmediateInvalid; an actually required diagnostic error in an instantiated side effect maps to RequiredHardError, not ImmediateInvalid.",
+    "leanFormulation": "structure TemplateSubstitution (Env : Type u) (Subst : Type v)\n    (Syntax : Type w) (Artifact : Type x) where\n  frontend : Env → Subst → Syntax → List SubstitutionEvent × Option Artifact\n  success_artifact : ∀ env subst term,\n    scanSubstitution (frontend env subst term).1 = .success →\n      (frontend env subst term).2.isSome",
+    "formulationSource": "urn:csabs:source/local-lean-TemplateMetaprogramming",
+    "formulationLocator": "Catalog.TMP.TemplateSubstitution",
+    "formulationScope": "partial",
+    "leanModelMapping": "Ordered Continue/ImmediateInvalid/RequiredHardError events with a stopping scan; a supplied frontend connects environment, substitution and syntax to events and a successful artifact.",
+    "leanModelLimitations": "Actual syntactic substitution, lexical event generation, access checking and immediate-context/side-effect classification remain frontend obligations. IFNDR cases are excluded. No complete C++ deduction algorithm or SFINAE theorem is registered.",
+    "mathematicalFormulation": "A supplied frontend maps (env,subst,syntax) to an ordered event list and optional artifact. scan([])=success; scan(continue::es)=scan(es); scan(immediateInvalid::es)=deductionFailure; scan(requiredHardError::es)=hardError. A success result requires an artifact. Lexical event generation and immediate-context classification are frontend obligations."
   },
   {
     "id": "urn:csabs:operation/TemplateSubstitution-attempt",

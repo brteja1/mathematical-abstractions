@@ -19,6 +19,30 @@ Selection from matching class-template partial specializations using deduction, 
 - [Normalized template constraints with atomic identity](TemplateConstraint.md) — `relatedConcept`
 - [Kinded partial template metafunction](TemplateMetafunction.md) — `relatedConcept`
 
+## Mathematical formulation
+
+For arguments a, matching specializations form finite M(a); moreSpecialized is irreflexive and transitive. winner(a,s) ⇔ s∈M(a)∧∀t∈M(a)∖{s},s≺t. Selection gives primary when M(a)=∅, the winner if one exists, and ambiguous otherwise.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure TemplateSpecialization (S : Type u) (Args : Type v) where
+  matchSet : Args → Finset S
+  moreSpecialized : S → S → Prop
+  irreflexive : ∀ s, ¬ moreSpecialized s s
+  transitive : ∀ a b c, moreSpecialized a b → moreSpecialized b c → moreSpecialized a c
+```
+
+**Source:** [`Catalog.TMP.TemplateSpecialization`](../lean/Catalog/TemplateMetaprogramming.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Finite matching set, explicit irreflexive/transitive more-specialized relation, winner predicate and Primary/Chosen/Ambiguous selection.
+
+**Limits:** Deduction, associated constraints, standard C++ partial ordering and visibility are supplied adapters, not inferred from match-set inclusion. No general compiler or chosen-body correctness theorem is registered.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining rules: M_Γ(a)={s∈S | deduces(s,a)∧satisfied(s,a)}; S is finite and ≻ is irreflexive and transitive. M=∅ ⇒ select=Primary; M≠∅ ∧ winner(M,s) ⇒ select=Chosen(s); M≠∅ ∧ no winner ⇒ select=Ambiguous. winner(M,s) ⇔ s∈M ∧ ∀t∈M, t≠s ⇒ s≻t.
@@ -317,7 +341,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "[temp.class.spec.match] ¶1–2; [temp.class.order] ¶1, rewrite to function-template ordering",
     "sourceNote": "Abstracts the standard selection decision after matching. Uses a supplied strict ordering rather than replacing C++ partial ordering with pattern-set inclusion.",
     "provenanceKind": "adapted",
-    "axiomBasis": "Selected defining rules: M_Γ(a)={s∈S | deduces(s,a)∧satisfied(s,a)}; S is finite and ≻ is irreflexive and transitive. M=∅ ⇒ select=Primary; M≠∅ ∧ winner(M,s) ⇒ select=Chosen(s); M≠∅ ∧ no winner ⇒ select=Ambiguous. winner(M,s) ⇔ s∈M ∧ ∀t∈M, t≠s ⇒ s≻t."
+    "axiomBasis": "Selected defining rules: M_Γ(a)={s∈S | deduces(s,a)∧satisfied(s,a)}; S is finite and ≻ is irreflexive and transitive. M=∅ ⇒ select=Primary; M≠∅ ∧ winner(M,s) ⇒ select=Chosen(s); M≠∅ ∧ no winner ⇒ select=Ambiguous. winner(M,s) ⇔ s∈M ∧ ∀t∈M, t≠s ⇒ s≻t.",
+    "leanFormulation": "structure TemplateSpecialization (S : Type u) (Args : Type v) where\n  matchSet : Args → Finset S\n  moreSpecialized : S → S → Prop\n  irreflexive : ∀ s, ¬ moreSpecialized s s\n  transitive : ∀ a b c, moreSpecialized a b → moreSpecialized b c → moreSpecialized a c",
+    "formulationSource": "urn:csabs:source/local-lean-TemplateMetaprogramming",
+    "formulationLocator": "Catalog.TMP.TemplateSpecialization",
+    "formulationScope": "model",
+    "leanModelMapping": "Finite matching set, explicit irreflexive/transitive more-specialized relation, winner predicate and Primary/Chosen/Ambiguous selection.",
+    "leanModelLimitations": "Deduction, associated constraints, standard C++ partial ordering and visibility are supplied adapters, not inferred from match-set inclusion. No general compiler or chosen-body correctness theorem is registered.",
+    "mathematicalFormulation": "For arguments a, matching specializations form finite M(a); moreSpecialized is irreflexive and transitive. winner(a,s) ⇔ s∈M(a)∧∀t∈M(a)∖{s},s≺t. Selection gives primary when M(a)=∅, the winner if one exists, and ambiguous otherwise."
   },
   {
     "id": "urn:csabs:operation/TemplateSpecialization-matches",

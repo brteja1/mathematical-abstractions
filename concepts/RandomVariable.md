@@ -18,6 +18,29 @@ A measurable function from a probability space to a specified measurable value s
 
 - [Bayesian network (finite discrete variables)](BayesianNetwork.md) — `requiresConcept`
 - [Markov chain (finite-state, discrete-time, time-homogeneous)](MarkovChain.md) — `requiresConcept`
+- [Shannon entropy (finite discrete profile)](ShannonEntropy.md) — `requiresConcept`
+
+## Mathematical formulation
+
+On (Ω,Σ,P), a B-valued random variable is a total measurable X:Ω→B. Its law is X\_\*P(U)=P(X⁻¹(U)) for measurable U. Equality here is pointwise equality, not equality almost surely or equality in distribution.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev RandomVariable {A : Type u} (B : Type v)
+    [_root_.MeasurableSpace A] [_root_.MeasurableSpace B] (_ : ProbabilitySpace A) :=
+  MeasurableFunction A B
+```
+
+**Source:** [`Catalog.RandomVariable`](../lean/Catalog/Probability.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Measurable function with explicit probability-space parameter; law uses Measure.map.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
 
 ## Interface and scope
 
@@ -179,7 +202,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/MeasurableFunction"
     ],
     "specializationNote": "Use source measurable space (Ω,𝓕); P is extra source data. Retain the same measurable map.",
-    "basisInstantiation": "Instantiate MeasurableFunction at source (Ω,𝓕) and target (E,𝓔), and equip the source with P as a ProbabilitySpace. In particular, verify all target-measurable preimages are in 𝓕."
+    "basisInstantiation": "Instantiate MeasurableFunction at source (Ω,𝓕) and target (E,𝓔), and equip the source with P as a ProbabilitySpace. In particular, verify all target-measurable preimages are in 𝓕.",
+    "leanFormulation": "abbrev RandomVariable {A : Type u} (B : Type v)\n    [_root_.MeasurableSpace A] [_root_.MeasurableSpace B] (_ : ProbabilitySpace A) :=\n  MeasurableFunction A B",
+    "formulationSource": "urn:csabs:source/local-lean-Probability",
+    "formulationLocator": "Catalog.RandomVariable",
+    "formulationScope": "model",
+    "leanModelMapping": "Measurable function with explicit probability-space parameter; law uses Measure.map.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "On (Ω,Σ,P), a B-valued random variable is a total measurable X:Ω→B. Its law is X_*P(U)=P(X⁻¹(U)) for measurable U. Equality here is pointwise equality, not equality almost surely or equality in distribution."
   },
   {
     "id": "urn:csabs:operation/RandomVariable-law",

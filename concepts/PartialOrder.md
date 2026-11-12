@@ -30,6 +30,26 @@ A reflexive, antisymmetric, transitive relation.
 - [Total Order](TotalOrder.md) — `requiresConcept`
 - [Total Order](TotalOrder.md) — `specializationOf`
 
+## Mathematical formulation
+
+A partial order is a preorder (A,≤) satisfying ∀a,b,a≤b∧b≤a⇒a=b. The empty carrier is permitted.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev PartialOrder (A : Type u) := _root_.PartialOrder A
+```
+
+**Source:** [`Catalog.PartialOrder`](../lean/Catalog/Order.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib PartialOrder; antisymmetry uses Lean equality.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A reflexive, antisymmetric, transitive relation. Governing rules: The order is reflexive. The order is transitive. Mutual ordering implies equality.
@@ -166,6 +186,34 @@ A reflexive, antisymmetric, transitive relation.
 
 **provenanceStatus:** legacy-source-missing
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} [Catalog.PartialOrder A] (x y : A), (∀ z, x ≤ z ↔ y ≤ z) → x = y
+```
+
+**Source:** [`Catalog.Proofs.order_extensionality`](../lean/Catalog/Witnesses.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Mathlib PartialOrder; antisymmetry uses Lean equality.
+
+**Limits:** Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/PartialOrder-antisymmetric": "Explicit interface premise: x≤y ∧ y≤x ⇒ x=y; interpreted by Catalog.PartialOrder. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/PartialOrder-reflexive": "Explicit interface premise: ∀x∈A:x≤x; interpreted by Catalog.PartialOrder. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/PartialOrder-transitive": "Explicit interface premise: x≤y ∧ y≤z ⇒ x≤z; interpreted by Catalog.PartialOrder. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+}
+```
+
 ## Concept provenance
 
 - [Mathlib partial-order definitions](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Order/Defs/PartialOrder.html); sourceRole: reference-for-selected-basis
@@ -220,7 +268,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/Preorder"
     ],
-    "specializationNote": "Keep the same carrier and relation; antisymmetry is the additional constraint."
+    "specializationNote": "Keep the same carrier and relation; antisymmetry is the additional constraint.",
+    "leanFormulation": "abbrev PartialOrder (A : Type u) := _root_.PartialOrder A",
+    "formulationSource": "urn:csabs:source/local-lean-Order",
+    "formulationLocator": "Catalog.PartialOrder",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib PartialOrder; antisymmetry uses Lean equality.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A partial order is a preorder (A,≤) satisfying ∀a,b,a≤b∧b≤a⇒a=b. The empty carrier is permitted."
   },
   {
     "id": "urn:csabs:operation/PartialOrder-basis-le",
@@ -270,7 +325,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "reviewStatus": "editorial-summary; not machine-proved",
     "notationLanguage": "informal mathematical Unicode",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "∀ {A : Type u} [Catalog.PartialOrder A] (x y : A), (∀ z, x ≤ z ↔ y ≤ z) → x = y",
+    "formulationSource": "urn:csabs:source/local-lean-Witnesses",
+    "formulationLocator": "Catalog.Proofs.order_extensionality",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Mathlib PartialOrder; antisymmetry uses Lean equality.",
+    "leanModelLimitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/PartialOrder-antisymmetric\": \"Explicit interface premise: x≤y ∧ y≤x ⇒ x=y; interpreted by Catalog.PartialOrder. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/PartialOrder-reflexive\": \"Explicit interface premise: ∀x∈A:x≤x; interpreted by Catalog.PartialOrder. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/PartialOrder-transitive\": \"Explicit interface premise: x≤y ∧ y≤z ⇒ x≤z; interpreted by Catalog.PartialOrder. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\"}"
   }
 ]
 ```

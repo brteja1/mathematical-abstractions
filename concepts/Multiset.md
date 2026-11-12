@@ -23,6 +23,26 @@ A finite collection represented by nonnegative multiplicities, with only finitel
 - [Ordered collection without duplicates](OrderedSet.md) — `relatedConcept`
 - [Priority Queue](PriorityQueue.md) — `requiresConcept`
 
+## Mathematical formulation
+
+Multiset(A)=List(A)/permutation; equivalently a finite-support multiplicity μ:A→ℕ. Equality is pointwise multiplicity equality; union adds multiplicities and the empty multiset has μ=0.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Multiset (A : Type u) := _root_.Multiset A
+```
+
+**Source:** [`Catalog.Multiset`](../lean/Catalog/DataStructures.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib Multiset A, quotient of lists by permutation, equivalent finite multiplicity representation.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A finite collection represented by nonnegative multiplicities, with only finitely many nonzero counts. Governing rules: A bag is a natural multiplicity function with finite support. Bags are equal exactly when multiplicities agree. Insertion, removal, and union are defined pointwise.
@@ -256,7 +276,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "relatedConcept": [
       "urn:csabs:concept/FiniteSet",
       "urn:csabs:concept/OrderedSet"
-    ]
+    ],
+    "leanFormulation": "abbrev Multiset (A : Type u) := _root_.Multiset A",
+    "formulationSource": "urn:csabs:source/local-lean-DataStructures",
+    "formulationLocator": "Catalog.Multiset",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib Multiset A, quotient of lists by permutation, equivalent finite multiplicity representation.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "Multiset(A)=List(A)/permutation; equivalently a finite-support multiplicity μ:A→ℕ. Equality is pointwise multiplicity equality; union adds multiplicities and the empty multiset has μ=0."
   },
   {
     "id": "urn:csabs:operation/Multiset-count",

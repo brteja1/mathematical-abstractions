@@ -14,6 +14,30 @@ A staged candidate-set model for dependent unqualified function calls, keeping o
 
 **Related concepts:** [Single-inheritance class table and dynamic dispatch](ClassTable.md), [Kinded partial template metafunction](TemplateMetafunction.md), [Ordered substitution with immediate-context failure](TemplateSubstitution.md)
 
+## Mathematical formulation
+
+For prevalidated finite candidate sets O\_def,ADL\_def,ADL\_inst, candidates=O\_def∪ADL\_def∪ADL\_inst if argument-dependent lookup is enabled, otherwise candidates=O\_def. The model combines already resolved candidates; it does not implement the language lookup frontend.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure DependentNameLookup (Decl : Type u) where
+  ordinaryDefinition : Finset Decl
+  adlDefinition : Finset Decl
+  adlInstantiation : Finset Decl
+  adlEnabled : Bool
+```
+
+**Source:** [`Catalog.TMP.DependentNameLookup`](../lean/Catalog/TemplateMetaprogramming.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Finite ordinary-definition, ADL-definition and ADL-instantiation candidate sets with an explicit ADL-enable guard; candidates uses the guarded union.
+
+**Limits:** Classification of dependent names, admissible ADL sets/guard and visibility are supplied frontend facts. Qualified/member lookup, modules, cross-TU consistency and overload ranking are excluded; no complete name resolver is claimed.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining rules: Nondependent bindings and the ordinary part of dependent unqualified-call lookup use ΓD, not an additional ordinary lookup in ΓI. candidates(O,D,I,true)=O∪D∪I; candidates(O,D,I,false)=O; D and I contain only declarations admitted by the standard ADL rules for the selected call.
@@ -260,7 +284,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "[temp.dep.candidate] ¶1, definition-context lookup and instantiation-context ADL; [temp.res], name dependency and resolution",
     "sourceNote": "Separates supplied lookup candidate sets and an ADL-enable guard. It does not claim that every later declaration is visible or that the union alone chooses a call target.",
     "provenanceKind": "adapted",
-    "axiomBasis": "Selected defining rules: Nondependent bindings and the ordinary part of dependent unqualified-call lookup use ΓD, not an additional ordinary lookup in ΓI. candidates(O,D,I,true)=O∪D∪I; candidates(O,D,I,false)=O; D and I contain only declarations admitted by the standard ADL rules for the selected call."
+    "axiomBasis": "Selected defining rules: Nondependent bindings and the ordinary part of dependent unqualified-call lookup use ΓD, not an additional ordinary lookup in ΓI. candidates(O,D,I,true)=O∪D∪I; candidates(O,D,I,false)=O; D and I contain only declarations admitted by the standard ADL rules for the selected call.",
+    "leanFormulation": "structure DependentNameLookup (Decl : Type u) where\n  ordinaryDefinition : Finset Decl\n  adlDefinition : Finset Decl\n  adlInstantiation : Finset Decl\n  adlEnabled : Bool",
+    "formulationSource": "urn:csabs:source/local-lean-TemplateMetaprogramming",
+    "formulationLocator": "Catalog.TMP.DependentNameLookup",
+    "formulationScope": "model",
+    "leanModelMapping": "Finite ordinary-definition, ADL-definition and ADL-instantiation candidate sets with an explicit ADL-enable guard; candidates uses the guarded union.",
+    "leanModelLimitations": "Classification of dependent names, admissible ADL sets/guard and visibility are supplied frontend facts. Qualified/member lookup, modules, cross-TU consistency and overload ranking are excluded; no complete name resolver is claimed.",
+    "mathematicalFormulation": "For prevalidated finite candidate sets O_def,ADL_def,ADL_inst, candidates=O_def∪ADL_def∪ADL_inst if argument-dependent lookup is enabled, otherwise candidates=O_def. The model combines already resolved candidates; it does not implement the language lookup frontend."
   },
   {
     "id": "urn:csabs:operation/DependentNameLookup-bind-nondependent",

@@ -14,6 +14,26 @@ A 16-bit IEEE binary interchange format with 11 binary significand digits for no
 
 **Specializes:** [Floating-point type](FloatingPointType.md)
 
+## Mathematical formulation
+
+The partial format instance has (width,radix,precision,e\_min,e\_max)=(16,2,11,−14,15), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−10}, 0<m<2^{11}, −14≤e≤15, and m≥2^{10} unless e=−14. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Binary16 := FloatingPointType binary16Format
+```
+
+**Source:** [`Catalog.Binary16`](../lean/Catalog/Numeric.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** FloatingPointType instance: 16 bits, radix 2, precision 11, exponents [-14,15], gradual underflow enabled.
+
+**Limits:** No correctly-rounded arithmetic or exception/NaN payload specification has been proved; run and round are unconstrained client parameters. Not a complete IEEE model.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** IEEE binary interchange instance: bits=16, radix=2, precision=11, normal exponent range [-14,15], gradual underflow, signed zeros, infinities and NaNs. Rounding and flags are explicit environment parameters.
@@ -262,7 +282,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/FloatingPointType"
     ],
-    "specializationNote": "Instantiate FloatingPointType at this entry’s radix, precision and exponent range as specified by basisInstantiation; rounding and exception environment remain explicit parameters."
+    "specializationNote": "Instantiate FloatingPointType at this entry’s radix, precision and exponent range as specified by basisInstantiation; rounding and exception environment remain explicit parameters.",
+    "leanFormulation": "abbrev Binary16 := FloatingPointType binary16Format",
+    "formulationSource": "urn:csabs:source/local-lean-Numeric",
+    "formulationLocator": "Catalog.Binary16",
+    "formulationScope": "partial",
+    "leanModelMapping": "FloatingPointType instance: 16 bits, radix 2, precision 11, exponents [-14,15], gradual underflow enabled.",
+    "leanModelLimitations": "No correctly-rounded arithmetic or exception/NaN payload specification has been proved; run and round are unconstrained client parameters. Not a complete IEEE model.",
+    "mathematicalFormulation": "The partial format instance has (width,radix,precision,e_min,e_max)=(16,2,11,−14,15), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−10}, 0<m<2^{11}, −14≤e≤15, and m≥2^{10} unless e=−14. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim."
   },
   {
     "id": "urn:csabs:operation/Binary16-add",

@@ -18,6 +18,27 @@ A type translation removing generic arguments, erasing type variables through th
 
 - [Java bounded parameterized types and nominal subtyping](JavaParameterizedType.md) — `relatedConcept`
 
+## Mathematical formulation
+
+The selected owner-free syntax has named C, C<args>, array(T), variable(X) and unbounded wildcard. With positive fuel, erase(C)=C; erase(C<args>)=C; erase(array(T))=array(erase(T)); erase(X)=erase(leftmostBound(X)). Recursive steps consume fuel, fuel 0 returns none and an unbounded wildcard returns none.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure JavaTypeErasure (Class Var : Type u) where
+  leftmostBound : Var → JavaErasureSyntax Class Var
+```
+
+**Source:** [`Catalog.Generics.JavaTypeErasure`](../lean/Catalog/GenericProgramming.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Named/parameterized/array/variable type core, plus an unbounded wildcard marker used only inside arguments; fuel-bounded erasure discards argument lists and follows the supplied leftmost variable bound.
+
+**Limits:** Nested-owner typing, reifiability and signature translation are not encoded; adequate fuel and terminating well-formed bound chains require justification. Fuel exhaustion does not establish invalidity. No JVM translation or erasure theorem witness.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining rules: |G<T>|=|G|; |T.C|=|T|.C; |T[]|=|T|[]; |X|=|leftmostBound(X)|; all other types erase to themselves. Reifiable(T) is governed by JLS §4.7, not by the equation T=|T| alone: e.g. G<?> can be reifiable while G<String> is not for an ordinary generic G; owner/array conditions remain applicable.
@@ -286,7 +307,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "JLS §§4.6 Type Erasure,4.7 Reifiable Types,4.8 Raw Types",
     "sourceNote": "Separates the erasure function and runtime type availability. Selected equations do not assert that all generic metadata disappears or that equal erasures imply equal source types.",
     "provenanceKind": "adapted",
-    "axiomBasis": "Selected defining rules: |G<T>|=|G|; |T.C|=|T|.C; |T[]|=|T|[]; |X|=|leftmostBound(X)|; all other types erase to themselves. Reifiable(T) is governed by JLS §4.7, not by the equation T=|T| alone: e.g. G<?> can be reifiable while G<String> is not for an ordinary generic G; owner/array conditions remain applicable."
+    "axiomBasis": "Selected defining rules: |G<T>|=|G|; |T.C|=|T|.C; |T[]|=|T|[]; |X|=|leftmostBound(X)|; all other types erase to themselves. Reifiable(T) is governed by JLS §4.7, not by the equation T=|T| alone: e.g. G<?> can be reifiable while G<String> is not for an ordinary generic G; owner/array conditions remain applicable.",
+    "leanFormulation": "structure JavaTypeErasure (Class Var : Type u) where\n  leftmostBound : Var → JavaErasureSyntax Class Var",
+    "formulationSource": "urn:csabs:source/local-lean-GenericProgramming",
+    "formulationLocator": "Catalog.Generics.JavaTypeErasure",
+    "formulationScope": "partial",
+    "leanModelMapping": "Named/parameterized/array/variable type core, plus an unbounded wildcard marker used only inside arguments; fuel-bounded erasure discards argument lists and follows the supplied leftmost variable bound.",
+    "leanModelLimitations": "Nested-owner typing, reifiability and signature translation are not encoded; adequate fuel and terminating well-formed bound chains require justification. Fuel exhaustion does not establish invalidity. No JVM translation or erasure theorem witness.",
+    "mathematicalFormulation": "The selected owner-free syntax has named C, C<args>, array(T), variable(X) and unbounded wildcard. With positive fuel, erase(C)=C; erase(C<args>)=C; erase(array(T))=array(erase(T)); erase(X)=erase(leftmostBound(X)). Recursive steps consume fuel, fuel 0 returns none and an unbounded wildcard returns none."
   },
   {
     "id": "urn:csabs:operation/JavaTypeErasure-erase",

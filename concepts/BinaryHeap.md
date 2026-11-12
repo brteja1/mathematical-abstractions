@@ -14,6 +14,29 @@ A finite level-order sequence with complete binary-tree shape and parent priorit
 
 **Related concepts:** [Finite ordered binary tree with node labels](BinaryTree.md)
 
+## Mathematical formulation
+
+A min-heap is a finite sequence xs with ∀i,0<i<|xs|⇒p(xs[⌊(i−1)/2⌋])≤p(xs[i]), where p:A→K and K is linearly ordered. Array indices impose complete binary shape; equal priorities are allowed.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure BinaryHeap (A : Type u) (K : Type v) [LinearOrder K] (priority : A → K) where
+  items : List A
+  ordered : ∀ (i : Fin items.length), 0 < i.val →
+    priority (items.get ⟨(i.val - 1) / 2, by have := i.isLt; omega⟩) ≤ priority (items.get i)
+```
+
+**Source:** [`Catalog.BinaryHeap`](../lean/Catalog/StructuredData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** H_p(A)={xs∈Seq(A) | ∀0<i<|xs|, p(xs[⌊(i-1)/2⌋])≤p(xs[i])}. Fixed p:A→K into a linear order. Empty allowed, duplicate values/priorities allowed, ties unspecified. Equality retains level-order sequence. No capacity/overflow bound, stable tie order, or algorithm complexity promised.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Nodes are indices 0,…,n-1; parent(i)=⌊(i-1)/2⌋ for 0<i<n; children 2i+1,2i+2 when <n; ∀i with 0<i<n, p(xs[parent(i)])≤p(xs[i]); minimum(xs)=None if n=0, else Some(xs[0]); (x,h′)∈pop(h) iff minimum(h)=Some(x) and bag(items(h))={x}+bag(items(h′)); h′∈insert(h,x) iff bag(items(h′))=bag(items(h))+{x}
@@ -350,7 +373,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "§10.1: complete-array shape, parent index, heap order and minimum root",
     "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "structure BinaryHeap (A : Type u) (K : Type v) [LinearOrder K] (priority : A → K) where\n  items : List A\n  ordered : ∀ (i : Fin items.length), 0 < i.val →\n    priority (items.get ⟨(i.val - 1) / 2, by have := i.isLt; omega⟩) ≤ priority (items.get i)",
+    "formulationSource": "urn:csabs:source/local-lean-StructuredData",
+    "formulationLocator": "Catalog.BinaryHeap",
+    "formulationScope": "model",
+    "leanModelMapping": "H_p(A)={xs∈Seq(A) | ∀0<i<|xs|, p(xs[⌊(i-1)/2⌋])≤p(xs[i])}. Fixed p:A→K into a linear order. Empty allowed, duplicate values/priorities allowed, ties unspecified. Equality retains level-order sequence. No capacity/overflow bound, stable tie order, or algorithm complexity promised.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "A min-heap is a finite sequence xs with ∀i,0<i<|xs|⇒p(xs[⌊(i−1)/2⌋])≤p(xs[i]), where p:A→K and K is linearly ordered. Array indices impose complete binary shape; equal priorities are allowed."
   },
   {
     "id": "urn:csabs:operation/BinaryHeap-items",

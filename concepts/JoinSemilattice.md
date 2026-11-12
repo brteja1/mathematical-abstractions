@@ -21,6 +21,26 @@ A partially ordered carrier with a least upper bound for each pair.
 - [Min-plus semiring (tropical semiring, min convention)](MinPlusSemiring.md) — `relatedConcept`
 - [State-based CRDT replication algebra](StateBasedCRDT.md) — `requiresConcept`
 
+## Mathematical formulation
+
+A join semilattice is a partial order with x⊔y the least upper bound of x,y: x≤x⊔y, y≤x⊔y, and x≤z∧y≤z⇒x⊔y≤z. No bottom is required by this carrier.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev JoinSemilattice (A : Type u) := SemilatticeSup A
+```
+
+**Source:** [`Catalog.JoinSemilattice`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** (S,≤,⊔). Binary joins only. A bottom element, meets, completeness or distributivity is additional structure. Equality is the carrier equality used by antisymmetry; empty carrier allowed.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** ≤ is reflexive, antisymmetric and transitive; x≤x⊔y ∧ y≤x⊔y; x≤z ∧ y≤z ⇒ x⊔y≤z
@@ -225,6 +245,36 @@ A partially ordered carrier with a least upper bound for each pair.
 
 **provenanceKind:** derived
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type} [Catalog.JoinSemilattice A] (x y : A), x ⊔ y = y ⊔ x
+```
+
+**Source:** [`Catalog.CoreDataProofs.join_commutative`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** SemilatticeSup extends PartialOrder with binary sup and le_sup_left/le_sup_right/sup_le. Sup is catalog join, ≤ and equality retain their carrier meanings. sup_comm uses those order/leastness fields.
+
+**Limits:** Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/JoinSemilattice-leastness": "Interpreted premise: x≤z ∧ y≤z ⇒ x⊔y≤z. SemilatticeSup extends PartialOrder with binary sup and le_sup_left/le_sup_right/sup_le. Sup is catalog join, ≤ and equality retain their carrier meanings. sup_comm uses those order/leastness fields.",
+  "urn:csabs:axiom/JoinSemilattice-upper-bounds": "Interpreted premise: x≤x⊔y ∧ y≤x⊔y. SemilatticeSup extends PartialOrder with binary sup and le_sup_left/le_sup_right/sup_le. Sup is catalog join, ≤ and equality retain their carrier meanings. sup_comm uses those order/leastness fields.",
+  "urn:csabs:axiom/PartialOrder-antisymmetric": "Interpreted premise: x≤y ∧ y≤x ⇒ x=y. SemilatticeSup extends PartialOrder with binary sup and le_sup_left/le_sup_right/sup_le. Sup is catalog join, ≤ and equality retain their carrier meanings. sup_comm uses those order/leastness fields.",
+  "urn:csabs:axiom/PartialOrder-reflexive": "Interpreted premise: ∀x∈A:x≤x. SemilatticeSup extends PartialOrder with binary sup and le_sup_left/le_sup_right/sup_le. Sup is catalog join, ≤ and equality retain their carrier meanings. sup_comm uses those order/leastness fields.",
+  "urn:csabs:axiom/PartialOrder-transitive": "Interpreted premise: x≤y ∧ y≤z ⇒ x≤z. SemilatticeSup extends PartialOrder with binary sup and le_sup_left/le_sup_right/sup_le. Sup is catalog join, ≤ and equality retain their carrier meanings. sup_comm uses those order/leastness fields."
+}
+```
+
 ## Theorems
 
 <a id="node-urn-csabs-theorem-JoinSemilattice-idempotence"></a>
@@ -252,6 +302,36 @@ A partially ordered carrier with a least upper bound for each pair.
 **sourceNote:** Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.
 
 **provenanceKind:** derived
+
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type} [Catalog.JoinSemilattice A] (x : A), x ⊔ x = x
+```
+
+**Source:** [`Catalog.CoreDataProofs.join_idempotent`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** SemilatticeSup supplies the explicitly reused partial-order rules and upper-bound/leastness fields; sup_idem derives idempotence. Join is ⊔.
+
+**Limits:** Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/JoinSemilattice-leastness": "Interpreted premise: x≤z ∧ y≤z ⇒ x⊔y≤z. SemilatticeSup supplies the explicitly reused partial-order rules and upper-bound/leastness fields; sup_idem derives idempotence. Join is ⊔.",
+  "urn:csabs:axiom/JoinSemilattice-upper-bounds": "Interpreted premise: x≤x⊔y ∧ y≤x⊔y. SemilatticeSup supplies the explicitly reused partial-order rules and upper-bound/leastness fields; sup_idem derives idempotence. Join is ⊔.",
+  "urn:csabs:axiom/PartialOrder-antisymmetric": "Interpreted premise: x≤y ∧ y≤x ⇒ x=y. SemilatticeSup supplies the explicitly reused partial-order rules and upper-bound/leastness fields; sup_idem derives idempotence. Join is ⊔.",
+  "urn:csabs:axiom/PartialOrder-reflexive": "Interpreted premise: ∀x∈A:x≤x. SemilatticeSup supplies the explicitly reused partial-order rules and upper-bound/leastness fields; sup_idem derives idempotence. Join is ⊔.",
+  "urn:csabs:axiom/PartialOrder-transitive": "Interpreted premise: x≤y ∧ y≤z ⇒ x≤z. SemilatticeSup supplies the explicitly reused partial-order rules and upper-bound/leastness fields; sup_idem derives idempotence. Join is ⊔."
+}
+```
 
 ## Concept provenance
 
@@ -321,7 +401,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/PartialOrder"
     ],
-    "specializationNote": "Keep the same carrier and ≤; forget ⊔ to obtain PartialOrder. Binary joins add explicit upper-bound and leastness requirements."
+    "specializationNote": "Keep the same carrier and ≤; forget ⊔ to obtain PartialOrder. Binary joins add explicit upper-bound and leastness requirements.",
+    "leanFormulation": "abbrev JoinSemilattice (A : Type u) := SemilatticeSup A",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.JoinSemilattice",
+    "formulationScope": "model",
+    "leanModelMapping": "(S,≤,⊔). Binary joins only. A bottom element, meets, completeness or distributivity is additional structure. Equality is the carrier equality used by antisymmetry; empty carrier allowed.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "A join semilattice is a partial order with x⊔y the least upper bound of x,y: x≤x⊔y, y≤x⊔y, and x≤z∧y≤z⇒x⊔y≤z. No bottom is required by this carrier."
   },
   {
     "id": "urn:csabs:operation/JoinSemilattice-order",
@@ -482,7 +569,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "SemilatticeSup: PartialOrder, le_sup_left, le_sup_right, sup_le",
     "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
-    "provenanceKind": "derived"
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type} [Catalog.JoinSemilattice A] (x y : A), x ⊔ y = y ⊔ x",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.CoreDataProofs.join_commutative",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "SemilatticeSup extends PartialOrder with binary sup and le_sup_left/le_sup_right/sup_le. Sup is catalog join, ≤ and equality retain their carrier meanings. sup_comm uses those order/leastness fields.",
+    "leanModelLimitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/JoinSemilattice-leastness\": \"Interpreted premise: x≤z ∧ y≤z ⇒ x⊔y≤z. SemilatticeSup extends PartialOrder with binary sup and le_sup_left/le_sup_right/sup_le. Sup is catalog join, ≤ and equality retain their carrier meanings. sup_comm uses those order/leastness fields.\", \"urn:csabs:axiom/JoinSemilattice-upper-bounds\": \"Interpreted premise: x≤x⊔y ∧ y≤x⊔y. SemilatticeSup extends PartialOrder with binary sup and le_sup_left/le_sup_right/sup_le. Sup is catalog join, ≤ and equality retain their carrier meanings. sup_comm uses those order/leastness fields.\", \"urn:csabs:axiom/PartialOrder-antisymmetric\": \"Interpreted premise: x≤y ∧ y≤x ⇒ x=y. SemilatticeSup extends PartialOrder with binary sup and le_sup_left/le_sup_right/sup_le. Sup is catalog join, ≤ and equality retain their carrier meanings. sup_comm uses those order/leastness fields.\", \"urn:csabs:axiom/PartialOrder-reflexive\": \"Interpreted premise: ∀x∈A:x≤x. SemilatticeSup extends PartialOrder with binary sup and le_sup_left/le_sup_right/sup_le. Sup is catalog join, ≤ and equality retain their carrier meanings. sup_comm uses those order/leastness fields.\", \"urn:csabs:axiom/PartialOrder-transitive\": \"Interpreted premise: x≤y ∧ y≤z ⇒ x≤z. SemilatticeSup extends PartialOrder with binary sup and le_sup_left/le_sup_right/sup_le. Sup is catalog join, ≤ and equality retain their carrier meanings. sup_comm uses those order/leastness fields.\"}"
   },
   {
     "id": "urn:csabs:theorem/JoinSemilattice-idempotence",
@@ -511,7 +605,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "SemilatticeSup: PartialOrder, le_sup_left, le_sup_right, sup_le",
     "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
-    "provenanceKind": "derived"
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type} [Catalog.JoinSemilattice A] (x : A), x ⊔ x = x",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.CoreDataProofs.join_idempotent",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "SemilatticeSup supplies the explicitly reused partial-order rules and upper-bound/leastness fields; sup_idem derives idempotence. Join is ⊔.",
+    "leanModelLimitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/JoinSemilattice-leastness\": \"Interpreted premise: x≤z ∧ y≤z ⇒ x⊔y≤z. SemilatticeSup supplies the explicitly reused partial-order rules and upper-bound/leastness fields; sup_idem derives idempotence. Join is ⊔.\", \"urn:csabs:axiom/JoinSemilattice-upper-bounds\": \"Interpreted premise: x≤x⊔y ∧ y≤x⊔y. SemilatticeSup supplies the explicitly reused partial-order rules and upper-bound/leastness fields; sup_idem derives idempotence. Join is ⊔.\", \"urn:csabs:axiom/PartialOrder-antisymmetric\": \"Interpreted premise: x≤y ∧ y≤x ⇒ x=y. SemilatticeSup supplies the explicitly reused partial-order rules and upper-bound/leastness fields; sup_idem derives idempotence. Join is ⊔.\", \"urn:csabs:axiom/PartialOrder-reflexive\": \"Interpreted premise: ∀x∈A:x≤x. SemilatticeSup supplies the explicitly reused partial-order rules and upper-bound/leastness fields; sup_idem derives idempotence. Join is ⊔.\", \"urn:csabs:axiom/PartialOrder-transitive\": \"Interpreted premise: x≤y ∧ y≤z ⇒ x≤z. SemilatticeSup supplies the explicitly reused partial-order rules and upper-bound/leastness fields; sup_idem derives idempotence. Join is ⊔.\"}"
   }
 ]
 ```

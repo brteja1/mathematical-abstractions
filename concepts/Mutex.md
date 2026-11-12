@@ -20,6 +20,26 @@ An exclusive lock whose state records either no owner or exactly one owning proc
 
 - [Lamport bakery lock protocol](LamportBakery.md) — `requiresConcept`
 
+## Mathematical formulation
+
+The selected non-reentrant mutex carrier is Option(P). Acquire(o,p,o′) ⇔ o=none∧o′=some(p); Release(o,p,o′) ⇔ o=some(p)∧o′=none. Only the owner may release; no scheduling policy is represented.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Mutex (P : Type u) := Option P
+```
+
+**Source:** [`Catalog.Mutex`](../lean/Catalog/Concurrency.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Option P with none unowned and some p owned. acquires/releases are guarded state relations; tryAcquire has exact non-spurious Boolean results. Equality is Option equality and process identity.
+
+**Limits:** No blocking-call histories, fairness, recursive acquisition, crash recovery or memory fences. No compiled witnesses for the new graph claims.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Optional-owner carrier; initial None; acquire from None; release by owner; immediate try-acquire.
@@ -360,7 +380,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/Lock"
     ],
-    "specializationNote": "Set M={exclusive} and C always false. Map None to the empty holder map and Some(p) to {p↦exclusive}; pairwise compatibility permits at most one holder. Acquire/release correspond under this bijection. Mutex rules are recorded directly, not inherited."
+    "specializationNote": "Set M={exclusive} and C always false. Map None to the empty holder map and Some(p) to {p↦exclusive}; pairwise compatibility permits at most one holder. Acquire/release correspond under this bijection. Mutex rules are recorded directly, not inherited.",
+    "leanFormulation": "abbrev Mutex (P : Type u) := Option P",
+    "formulationSource": "urn:csabs:source/local-lean-Concurrency",
+    "formulationLocator": "Catalog.Mutex",
+    "formulationScope": "model",
+    "leanModelMapping": "Option P with none unowned and some p owned. acquires/releases are guarded state relations; tryAcquire has exact non-spurious Boolean results. Equality is Option equality and process identity.",
+    "leanModelLimitations": "No blocking-call histories, fairness, recursive acquisition, crash recovery or memory fences. No compiled witnesses for the new graph claims.",
+    "mathematicalFormulation": "The selected non-reentrant mutex carrier is Option(P). Acquire(o,p,o′) ⇔ o=none∧o′=some(p); Release(o,p,o′) ⇔ o=some(p)∧o′=none. Only the owner may release; no scheduling policy is represented."
   },
   {
     "id": "urn:csabs:operation/Mutex-initial",

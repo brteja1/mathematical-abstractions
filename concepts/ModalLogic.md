@@ -20,6 +20,32 @@ Classical propositional formulas extended by modalities interpreted over an arbi
 - [Linear temporal logic on infinite discrete traces](LinearTemporalLogic.md) — `relatedConcept`
 - [Propositional Logic](PropositionalLogic.md) — `relatedConcept`
 
+## Mathematical formulation
+
+For accessibility R⊆W×W and valuation v:W×AP→Prop, w⊨□φ ⇔ ∀t,R(w,t)⇒t⊨φ; atoms use v and ⊥,¬,∧ use their classical clauses. No reflexivity, transitivity or seriality is imposed on R by this evaluator.
+
+**Lean formulation** (in its source module context):
+
+```lean
+def ModalLogic {AP : Type u} {W : Type v} (r : W → W → Prop)
+    (valuation : W → AP → Prop) : ModalFormula AP → W → Prop
+  | .atom p, s => valuation s p
+  | .bottom, _ => False
+  | .neg p, s => ¬ ModalLogic r valuation p s
+  | .conj p q, s => ModalLogic r valuation p s ∧ ModalLogic r valuation q s
+  | .box p, s => ∀ t, r s t → ModalLogic r valuation p t
+```
+
+**Source:** [`Catalog.ModalLogic`](../lean/Catalog/Logic.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Modal K formulas evaluated on arbitrary accessibility relations; box quantifies all successors, including vacuous dead ends.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining presentation: Atoms and connectives have classical truth conditions at each world. Box quantifies universally over accessible successors; diamond is its classical dual.
@@ -341,7 +367,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "reviewStatus": "editorial review of defining basis and selected laws, theorems and proof principles; no machine-checked proof",
     "verificationObligation": [
       "Frames have nonempty W, R⊆W×W, and V:Atoms→𝒫(W). Dead ends are permitted: □φ is vacuously true there and ◇φ false. Formula syntax equality is distinct from semantic equivalence."
-    ]
+    ],
+    "leanFormulation": "def ModalLogic {AP : Type u} {W : Type v} (r : W → W → Prop)\n    (valuation : W → AP → Prop) : ModalFormula AP → W → Prop\n  | .atom p, s => valuation s p\n  | .bottom, _ => False\n  | .neg p, s => ¬ ModalLogic r valuation p s\n  | .conj p q, s => ModalLogic r valuation p s ∧ ModalLogic r valuation q s\n  | .box p, s => ∀ t, r s t → ModalLogic r valuation p t",
+    "formulationSource": "urn:csabs:source/local-lean-Logic",
+    "formulationLocator": "Catalog.ModalLogic",
+    "formulationScope": "model",
+    "leanModelMapping": "Modal K formulas evaluated on arbitrary accessibility relations; box quantifies all successors, including vacuous dead ends.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For accessibility R⊆W×W and valuation v:W×AP→Prop, w⊨□φ ⇔ ∀t,R(w,t)⇒t⊨φ; atoms use v and ⊥,¬,∧ use their classical clauses. No reflexivity, transitivity or seriality is imposed on R by this evaluator."
   },
   {
     "id": "urn:csabs:operation/ModalLogic-satisfies",

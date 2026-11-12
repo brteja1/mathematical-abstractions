@@ -12,6 +12,9 @@ public import Catalog.Logic
 public import Catalog.LogicSyntax
 public import Catalog.Languages
 public import Catalog.Database
+public import Catalog.InformationTheory
+public import Catalog.InformationTheoryStatements
+public import Catalog.InformationTheoryExamples
 public import Catalog.Probability
 public import Catalog.Topology
 public import Catalog.Witnesses
@@ -27,3 +30,5 @@ public import Catalog.ObjectOrientation
 public import Catalog.TemplateMetaprogramming
 public import Catalog.GenericProgramming
 public import Catalog.Cryptography
+
+public import Catalog.GeometricLattices

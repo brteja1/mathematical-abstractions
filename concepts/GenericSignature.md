@@ -21,6 +21,29 @@ An ordered finite interface of distinctly named parameters, each carrying an arg
 - [Contextual parametric declaration instantiation](ParametricInstantiation.md) — `requiresConcept`
 - [VHDL generic interfaces and whole-formal association](VHDLGenericInterface.md) — `requiresConcept`
 
+## Mathematical formulation
+
+A signature is a list [(n₁,k₁),…,(n\_m,k\_m)] of distinct parameter names together with kindOf:Arg→Kind. kindCorrect(args) ⇔ |args|=m ∧ ∀i,kindOf(args\_i)=k\_i. Parameter order is observable.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure GenericSignature (Name : Type u) (Kind : Type v) (Arg : Type w) where
+  parameters : List (Name × Kind)
+  names_unique : (parameters.map Prod.fst).Nodup
+  kindOf : Arg → Kind
+```
+
+**Source:** [`Catalog.Generics.GenericSignature`](../lean/Catalog/GenericProgramming.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Finite ordered name/kind pairs with distinct names; kindOf supplies canonical argument tags. kindCorrect uses pointwise Forall₂, including exact length.
+
+**Limits:** Language-specific kind compatibility, bounds, defaults and pack flattening are separate; no universal generic type system or theorem witness.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining rules: Σ is a finite ordered list of (name,kind) pairs with pairwise distinct declaration-local names; argument equality is canonical carrier equality. kindCorrect(Σ,a) ⇔ |a|=|Σ| ∧ ∀i<|Σ|, kind(aᵢ)=kindOf(Σᵢ).
@@ -270,7 +293,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "JLS §4.5 parameterized declarations and argument arity; IEEE 1076-2019 §6.5.6; N4861 [temp.arg] ¶1",
     "sourceNote": "Extracts only finite named/kinded interfaces common to these mechanisms; language-specific well-formedness is intentionally retained by separate profiles.",
     "provenanceKind": "adapted",
-    "axiomBasis": "Selected defining rules: Σ is a finite ordered list of (name,kind) pairs with pairwise distinct declaration-local names; argument equality is canonical carrier equality. kindCorrect(Σ,a) ⇔ |a|=|Σ| ∧ ∀i<|Σ|, kind(aᵢ)=kindOf(Σᵢ)."
+    "axiomBasis": "Selected defining rules: Σ is a finite ordered list of (name,kind) pairs with pairwise distinct declaration-local names; argument equality is canonical carrier equality. kindCorrect(Σ,a) ⇔ |a|=|Σ| ∧ ∀i<|Σ|, kind(aᵢ)=kindOf(Σᵢ).",
+    "leanFormulation": "structure GenericSignature (Name : Type u) (Kind : Type v) (Arg : Type w) where\n  parameters : List (Name × Kind)\n  names_unique : (parameters.map Prod.fst).Nodup\n  kindOf : Arg → Kind",
+    "formulationSource": "urn:csabs:source/local-lean-GenericProgramming",
+    "formulationLocator": "Catalog.Generics.GenericSignature",
+    "formulationScope": "model",
+    "leanModelMapping": "Finite ordered name/kind pairs with distinct names; kindOf supplies canonical argument tags. kindCorrect uses pointwise Forall₂, including exact length.",
+    "leanModelLimitations": "Language-specific kind compatibility, bounds, defaults and pack flattening are separate; no universal generic type system or theorem witness.",
+    "mathematicalFormulation": "A signature is a list [(n₁,k₁),…,(n_m,k_m)] of distinct parameter names together with kindOf:Arg→Kind. kindCorrect(args) ⇔ |args|=m ∧ ∀i,kindOf(args_i)=k_i. Parameter order is observable."
   },
   {
     "id": "urn:csabs:operation/GenericSignature-arity",

@@ -16,9 +16,34 @@ A monoid in which every element has a two-sided inverse.
 
 ## Backlinks
 
+- [Diffie–Hellman key exchange (prime-order cyclic-group core)](DiffieHellman.md) — `requiresConcept`
+- [Elliptic curve cryptography group (prime-field short-Weierstrass profile)](ECC.md) — `requiresConcept`
+- [Elliptic curve cryptography group (prime-field short-Weierstrass profile)](ECC.md) — `specializationOf`
+- [Euclidean lattice (discrete integer-span lattice)](EuclideanLattice.md) — `requiresConcept`
+- [Euclidean lattice (discrete integer-span lattice)](EuclideanLattice.md) — `specializationOf`
 - [Finite field (Galois field)](FiniteField.md) — `relatedConcept`
 - [Vector space over a field](VectorSpace.md) — `requiresConcept`
 - [Vector space over a field](VectorSpace.md) — `specializationOf`
+
+## Mathematical formulation
+
+A group is (G,·,1,inv) with associative multiplication, two-sided identity and ∀g, inv(g)·g=1=g·inv(g). Commutativity is not assumed; inverses are total.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Group (A : Type u) := _root_.Group A
+```
+
+**Source:** [`Catalog.Group`](../lean/Catalog/Algebra.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib Group; chosen inverse, associativity and two-sided unit/inverse equations. Nonempty follows from one.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
 
 ## Interface and scope
 
@@ -194,6 +219,36 @@ A monoid in which every element has a two-sided inverse.
 
 **provenanceStatus:** legacy-source-missing
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} [Catalog.Group A] (a x y : A), (a * x = a * y → x = y) ∧ (x * a = y * a → x = y)
+```
+
+**Source:** [`Catalog.Proofs.group_cancellation`](../lean/Catalog/Witnesses.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Mathlib Group; chosen inverse, associativity and two-sided unit/inverse equations. Nonempty follows from one.
+
+**Limits:** Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Group-associative": "Explicit interface premise: (x·y)·z=x·(y·z); interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Group-closed-carrier": "Explicit interface premise: S≠∅; ·:S×S→S; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Group-identity": "Explicit interface premise: e∈S; e·x=x; x·e=x; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Group-inverse": "Explicit interface premise: inv:S→S; inv(x)·x=e; x·inv(x)=e; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/group-inverses": "Explicit interface premise: ∀x∈G ∃y∈G: x·y=y·x=e; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+}
+```
+
 ## Theorems
 
 <a id="node-urn-csabs-theorem-lagrange"></a>
@@ -237,6 +292,36 @@ A monoid in which every element has a two-sided inverse.
 **notationLanguage:** informal mathematical Unicode
 
 **provenanceStatus:** legacy-source-missing
+
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} [Catalog.Group A] (a b : A), (a * b)⁻¹ = b⁻¹ * a⁻¹
+```
+
+**Source:** [`Catalog.Proofs.group_inverse_product`](../lean/Catalog/Witnesses.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Mathlib Group; chosen inverse, associativity and two-sided unit/inverse equations. Nonempty follows from one.
+
+**Limits:** Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Group-associative": "Explicit interface premise: (x·y)·z=x·(y·z); interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Group-closed-carrier": "Explicit interface premise: S≠∅; ·:S×S→S; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Group-identity": "Explicit interface premise: e∈S; e·x=x; x·e=x; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Group-inverse": "Explicit interface premise: inv:S→S; inv(x)·x=e; x·inv(x)=e; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/group-inverses": "Explicit interface premise: ∀x∈G ∃y∈G: x·y=y·x=e; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+}
+```
 
 ## Concept provenance
 
@@ -307,7 +392,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceNote": "Selected algebraic interface; retain catalog conventions and stable identity.",
     "provenanceKind": "adapted",
     "convention": " Equality is equality of carrier elements; operations are exact. The empty carrier is excluded by the named constants.",
-    "specializationNote": "Forget the inverse operation and retain the same carrier, multiplication and identity to obtain a Monoid. The one-element group is permitted; commutativity is not required."
+    "specializationNote": "Forget the inverse operation and retain the same carrier, multiplication and identity to obtain a Monoid. The one-element group is permitted; commutativity is not required.",
+    "leanFormulation": "abbrev Group (A : Type u) := _root_.Group A",
+    "formulationSource": "urn:csabs:source/local-lean-Algebra",
+    "formulationLocator": "Catalog.Group",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib Group; chosen inverse, associativity and two-sided unit/inverse equations. Nonempty follows from one.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A group is (G,·,1,inv) with associative multiplication, two-sided identity and ∀g, inv(g)·g=1=g·inv(g). Commutativity is not assumed; inverses are total."
   },
   {
     "id": "urn:csabs:operation/group-product",
@@ -435,7 +527,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "assumptions": [
       "Use the explicit mathematical bases and typed carriers of the linked concepts."
     ],
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "∀ {A : Type u} [Catalog.Group A] (a x y : A), (a * x = a * y → x = y) ∧ (x * a = y * a → x = y)",
+    "formulationSource": "urn:csabs:source/local-lean-Witnesses",
+    "formulationLocator": "Catalog.Proofs.group_cancellation",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Mathlib Group; chosen inverse, associativity and two-sided unit/inverse equations. Nonempty follows from one.",
+    "leanModelLimitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Group-associative\": \"Explicit interface premise: (x·y)·z=x·(y·z); interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Group-closed-carrier\": \"Explicit interface premise: S≠∅; ·:S×S→S; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Group-identity\": \"Explicit interface premise: e∈S; e·x=x; x·e=x; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Group-inverse\": \"Explicit interface premise: inv:S→S; inv(x)·x=e; x·inv(x)=e; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/group-inverses\": \"Explicit interface premise: ∀x∈G ∃y∈G: x·y=y·x=e; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\"}"
   },
   {
     "id": "urn:csabs:theorem/lagrange",
@@ -482,7 +581,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "reviewStatus": "editorial-summary; not machine-proved",
     "notationLanguage": "informal mathematical Unicode",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "∀ {A : Type u} [Catalog.Group A] (a b : A), (a * b)⁻¹ = b⁻¹ * a⁻¹",
+    "formulationSource": "urn:csabs:source/local-lean-Witnesses",
+    "formulationLocator": "Catalog.Proofs.group_inverse_product",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Mathlib Group; chosen inverse, associativity and two-sided unit/inverse equations. Nonempty follows from one.",
+    "leanModelLimitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Group-associative\": \"Explicit interface premise: (x·y)·z=x·(y·z); interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Group-closed-carrier\": \"Explicit interface premise: S≠∅; ·:S×S→S; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Group-identity\": \"Explicit interface premise: e∈S; e·x=x; x·e=x; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Group-inverse\": \"Explicit interface premise: inv:S→S; inv(x)·x=e; x·inv(x)=e; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/group-inverses\": \"Explicit interface premise: ∀x∈G ∃y∈G: x·y=y·x=e; interpreted by Catalog.Group. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\"}"
   }
 ]
 ```

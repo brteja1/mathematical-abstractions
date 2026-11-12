@@ -19,6 +19,26 @@ Predicates over finite heap fragments with exact empty/singleton assertions and 
 - [Sequential object heap with reference identity](ObjectHeap.md) — `relatedConcept`
 - [Visible-state object invariant protocol](ObjectInvariant.md) — `relatedConcept`
 
+## Mathematical formulation
+
+Heap assertions are P:Heap→Prop. emp(h) ⇔ dom(h)=∅; (a↦v)(h) ⇔ h is exactly the singleton map a↦v; (P∗Q)(h) ⇔ ∃h₁,h₂,dom(h₁)∩dom(h₂)=∅ ∧ h=h₁⊎h₂ ∧ P(h₁)∧Q(h₂). Even equal values at overlapping addresses forbid merge.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev HeapSeparation (V : Type u) := Catalog.HeapStore V → Prop
+```
+
+**Source:** [`Catalog.OOP.HeapSeparation`](../lean/Catalog/ObjectOrientation.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Extensional HeapStore(V) predicates; disjoint domains, relational graph of partial merge, exact emp/singleton and existential star splitting. Model equality of predicates by pointwise logical equivalence.
+
+**Limits:** Selected mathematical interface, with merge given relationally. No general frame rule, local operational semantics, fractional permissions, concurrent rule or automatically proved separation laws is registered.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining rules: h₁⊥h₂ ⇔ dom(h₁)∩dom(h₂)=∅; merge is defined exactly then and has the union of their lookups. emp(h) ⇔ dom(h)=∅; (a↦v)(h) ⇔ dom(h)={a} ∧ h(a)=v. (P∗Q)(h) ⇔ ∃h₁,h₂, h₁⊥h₂ ∧ h=h₁⊎h₂ ∧ P(h₁) ∧ Q(h₂); predicate equality means pointwise logical equivalence.
@@ -394,7 +414,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "Hprop: Description of Memory States; Heap Predicates (hempty, hsingle, hstar); Fundamental Properties of Operators",
     "sourceNote": "Uses the existing HeapStore address convention and exact heap-fragment assertions. Ownership is logical permission to a cell, not absence of aliases or an automatic encapsulation guarantee.",
     "provenanceKind": "adapted",
-    "axiomBasis": "Selected defining rules: h₁⊥h₂ ⇔ dom(h₁)∩dom(h₂)=∅; merge is defined exactly then and has the union of their lookups. emp(h) ⇔ dom(h)=∅; (a↦v)(h) ⇔ dom(h)={a} ∧ h(a)=v. (P∗Q)(h) ⇔ ∃h₁,h₂, h₁⊥h₂ ∧ h=h₁⊎h₂ ∧ P(h₁) ∧ Q(h₂); predicate equality means pointwise logical equivalence."
+    "axiomBasis": "Selected defining rules: h₁⊥h₂ ⇔ dom(h₁)∩dom(h₂)=∅; merge is defined exactly then and has the union of their lookups. emp(h) ⇔ dom(h)=∅; (a↦v)(h) ⇔ dom(h)={a} ∧ h(a)=v. (P∗Q)(h) ⇔ ∃h₁,h₂, h₁⊥h₂ ∧ h=h₁⊎h₂ ∧ P(h₁) ∧ Q(h₂); predicate equality means pointwise logical equivalence.",
+    "leanFormulation": "abbrev HeapSeparation (V : Type u) := Catalog.HeapStore V → Prop",
+    "formulationSource": "urn:csabs:source/local-lean-ObjectOrientation",
+    "formulationLocator": "Catalog.OOP.HeapSeparation",
+    "formulationScope": "model",
+    "leanModelMapping": "Extensional HeapStore(V) predicates; disjoint domains, relational graph of partial merge, exact emp/singleton and existential star splitting. Model equality of predicates by pointwise logical equivalence.",
+    "leanModelLimitations": "Selected mathematical interface, with merge given relationally. No general frame rule, local operational semantics, fractional permissions, concurrent rule or automatically proved separation laws is registered.",
+    "mathematicalFormulation": "Heap assertions are P:Heap→Prop. emp(h) ⇔ dom(h)=∅; (a↦v)(h) ⇔ h is exactly the singleton map a↦v; (P∗Q)(h) ⇔ ∃h₁,h₂,dom(h₁)∩dom(h₂)=∅ ∧ h=h₁⊎h₂ ∧ P(h₁)∧Q(h₂). Even equal values at overlapping addresses forbid merge."
   },
   {
     "id": "urn:csabs:operation/HeapSeparation-disjoint",

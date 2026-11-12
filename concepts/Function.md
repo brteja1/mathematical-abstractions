@@ -17,6 +17,7 @@ A mapping assigning each element of a domain exactly one element of a codomain.
 ## Backlinks
 
 - [Finite ordered binary tree with node labels](BinaryTree.md) — `requiresConcept`
+- [Finite block code (Hamming profile)](BlockCode.md) — `requiresConcept`
 - [Deterministic finite automaton with total transition](DFA.md) — `requiresConcept`
 - [Finite directed multigraph with edge identities](DirectedMultigraph.md) — `requiresConcept`
 - [Empty type](EmptyType.md) — `requiresConcept`
@@ -35,7 +36,28 @@ A mapping assigning each element of a domain exactly one element of a codomain.
 - [Pigeonhole Principle](PigeonholePrinciple.md) — `requiresConcept`
 - [Named relational schema with attribute domains](RelationalSchema.md) — `requiresConcept`
 - [Infinite discrete stream](Stream.md) — `requiresConcept`
+- [Uniquely decodable binary source code](UniquelyDecodableCode.md) — `requiresConcept`
 - [Unit type](UnitType.md) — `requiresConcept`
+
+## Mathematical formulation
+
+Fun(A,B)=A→B with total evaluation. f=g ⇔ ∀a∈A, f(a)=g(a); (g∘f)(a)=g(f(a)); id\_A(a)=a. Empty domains and codomains follow the ordinary typed function conventions.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Function (A : Type u) (B : Type v) := A → B
+```
+
+**Source:** [`Catalog.Function`](../lean/Catalog/Foundations.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Total typed A -> B; function equality is Lean equality, with funext when needed.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
 
 ## Interface and scope
 
@@ -201,6 +223,36 @@ A mapping assigning each element of a domain exactly one element of a codomain.
 
 **provenanceStatus:** legacy-source-missing
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} {B : Type v} {C : Type w} {D : Type x} (f : A → B) (g : B → C) (h : C → D), (h ∘ (g ∘ f)) = ((h ∘ g) ∘ f)
+```
+
+**Source:** [`Catalog.Proofs.function_composition_associative`](../lean/Catalog/Witnesses.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Total typed A -> B; function equality is Lean equality, with funext when needed.
+
+**Limits:** Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Function-compose-definition": "Explicit interface premise: (g∘f)(a)=g(f(a)); interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Function-extensionality": "Explicit interface premise: f,g:A→B; f=g iff ∀a∈A: f(a)=g(a); interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Function-graph": "Explicit interface premise: graph(f)⊆A×B; ∀a∈A ∃!b∈B: (a,b)∈graph(f); interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/function-functionality": "Explicit interface premise: ∀a∈A,b₁,b₂∈B: f(a)=b₁ ∧ f(a)=b₂ ⇒ b₁=b₂; interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/function-totality": "Explicit interface premise: ∀a∈A ∃b∈B: f(a)=b; interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+}
+```
+
 <a id="node-urn-csabs-law-function-identity"></a>
 
 ### law/function-identity
@@ -267,6 +319,36 @@ A mapping assigning each element of a domain exactly one element of a codomain.
 
 **provenanceStatus:** legacy-source-missing
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} {B : Type v} {C : Type w} (f : A → B) (g : B → C), _root_.Function.Injective f → _root_.Function.Injective g → _root_.Function.Injective (g ∘ f)
+```
+
+**Source:** [`Catalog.Proofs.function_composition_injective`](../lean/Catalog/Witnesses.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Total typed A -> B; function equality is Lean equality, with funext when needed.
+
+**Limits:** Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Function-compose-definition": "Explicit interface premise: (g∘f)(a)=g(f(a)); interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Function-extensionality": "Explicit interface premise: f,g:A→B; f=g iff ∀a∈A: f(a)=g(a); interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Function-graph": "Explicit interface premise: graph(f)⊆A×B; ∀a∈A ∃!b∈B: (a,b)∈graph(f); interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/function-functionality": "Explicit interface premise: ∀a∈A,b₁,b₂∈B: f(a)=b₁ ∧ f(a)=b₂ ⇒ b₁=b₂; interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/function-totality": "Explicit interface premise: ∀a∈A ∃b∈B: f(a)=b; interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+}
+```
+
 ## Concept provenance
 
 Historical source gap retained; see `provenanceStatus` and the frozen baseline.
@@ -325,7 +407,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/PartialFunction"
     ],
-    "specializationNote": "Take the defined domain D=A; evaluation and extensional equality then agree with the total-function interface."
+    "specializationNote": "Take the defined domain D=A; evaluation and extensional equality then agree with the total-function interface.",
+    "leanFormulation": "abbrev Function (A : Type u) (B : Type v) := A → B",
+    "formulationSource": "urn:csabs:source/local-lean-Foundations",
+    "formulationLocator": "Catalog.Function",
+    "formulationScope": "model",
+    "leanModelMapping": "Total typed A -> B; function equality is Lean equality, with funext when needed.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "Fun(A,B)=A→B with total evaluation. f=g ⇔ ∀a∈A, f(a)=g(a); (g∘f)(a)=g(f(a)); id_A(a)=a. Empty domains and codomains follow the ordinary typed function conventions."
   },
   {
     "id": "urn:csabs:operation/function-identity",
@@ -449,7 +538,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:axiom/Function-extensionality",
       "urn:csabs:axiom/Function-compose-definition"
     ],
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "∀ {A : Type u} {B : Type v} {C : Type w} {D : Type x} (f : A → B) (g : B → C) (h : C → D), (h ∘ (g ∘ f)) = ((h ∘ g) ∘ f)",
+    "formulationSource": "urn:csabs:source/local-lean-Witnesses",
+    "formulationLocator": "Catalog.Proofs.function_composition_associative",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Total typed A -> B; function equality is Lean equality, with funext when needed.",
+    "leanModelLimitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Function-compose-definition\": \"Explicit interface premise: (g∘f)(a)=g(f(a)); interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Function-extensionality\": \"Explicit interface premise: f,g:A→B; f=g iff ∀a∈A: f(a)=g(a); interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Function-graph\": \"Explicit interface premise: graph(f)⊆A×B; ∀a∈A ∃!b∈B: (a,b)∈graph(f); interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/function-functionality\": \"Explicit interface premise: ∀a∈A,b₁,b₂∈B: f(a)=b₁ ∧ f(a)=b₂ ⇒ b₁=b₂; interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/function-totality\": \"Explicit interface premise: ∀a∈A ∃b∈B: f(a)=b; interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\"}"
   },
   {
     "id": "urn:csabs:law/function-identity",
@@ -518,7 +614,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "reviewStatus": "editorial-summary; not machine-proved",
     "notationLanguage": "informal mathematical Unicode",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "∀ {A : Type u} {B : Type v} {C : Type w} (f : A → B) (g : B → C), _root_.Function.Injective f → _root_.Function.Injective g → _root_.Function.Injective (g ∘ f)",
+    "formulationSource": "urn:csabs:source/local-lean-Witnesses",
+    "formulationLocator": "Catalog.Proofs.function_composition_injective",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Total typed A -> B; function equality is Lean equality, with funext when needed.",
+    "leanModelLimitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Function-compose-definition\": \"Explicit interface premise: (g∘f)(a)=g(f(a)); interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Function-extensionality\": \"Explicit interface premise: f,g:A→B; f=g iff ∀a∈A: f(a)=g(a); interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Function-graph\": \"Explicit interface premise: graph(f)⊆A×B; ∀a∈A ∃!b∈B: (a,b)∈graph(f); interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/function-functionality\": \"Explicit interface premise: ∀a∈A,b₁,b₂∈B: f(a)=b₁ ∧ f(a)=b₂ ⇒ b₁=b₂; interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/function-totality\": \"Explicit interface premise: ∀a∈A ∃b∈B: f(a)=b; interpreted by Catalog.Function. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\"}"
   }
 ]
 ```

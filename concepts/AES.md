@@ -18,6 +18,29 @@ The three standardized Rijndael permutations with 128-bit blocks and 128-, 192- 
 
 - [AES-GCM (96-bit nonce, 128-bit tag profile)](AESGCM.md) — `requiresConcept`
 
+## Mathematical formulation
+
+The partial interface is Σ\_{k∈ℕ, k∈{128,192,256}} BlockCipher({0,1}^k,128). It selects AES-shaped key/block carriers and a permutation family, without encoding AES round transformations or key expansion.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure AESInterface where
+  keyBits : Nat
+  supported : keyBits = 128 ∨ keyBits = 192 ∨ keyBits = 256
+  cipher : BlockCipher (CryptoBits keyBits) 128
+```
+
+**Source:** [`Catalog.AESInterface`](../lean/Catalog/Cryptography.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Supported key width 128/192/256 and a parameterized permutation on 128-bit blocks.
+
+**Limits:** No FIPS round computation, key expansion, field representation or correspondence proof; the supplied permutation is not asserted to be AES.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** FIPS 197 key expansion and forward/inverse round algorithms; fixed parameters and state encoding.
@@ -208,7 +231,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/BlockCipher"
     ],
-    "specializationNote": "For each ℓ set K={0,1}^ℓ and n=128; instantiate E and D with CIPHER and INVCIPHER using KEYEXPANSION. The AES defining rules are recorded directly."
+    "specializationNote": "For each ℓ set K={0,1}^ℓ and n=128; instantiate E and D with CIPHER and INVCIPHER using KEYEXPANSION. The AES defining rules are recorded directly.",
+    "leanFormulation": "structure AESInterface where\n  keyBits : Nat\n  supported : keyBits = 128 ∨ keyBits = 192 ∨ keyBits = 256\n  cipher : BlockCipher (CryptoBits keyBits) 128",
+    "formulationSource": "urn:csabs:source/local-lean-Cryptography",
+    "formulationLocator": "Catalog.AESInterface",
+    "formulationScope": "partial",
+    "leanModelMapping": "Supported key width 128/192/256 and a parameterized permutation on 128-bit blocks.",
+    "leanModelLimitations": "No FIPS round computation, key expansion, field representation or correspondence proof; the supplied permutation is not asserted to be AES.",
+    "mathematicalFormulation": "The partial interface is Σ_{k∈ℕ, k∈{128,192,256}} BlockCipher({0,1}^k,128). It selects AES-shaped key/block carriers and a permutation family, without encoding AES round transformations or key expansion."
   },
   {
     "id": "urn:csabs:operation/AES-encrypt",

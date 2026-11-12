@@ -22,6 +22,26 @@ A measure space whose entire sample space has measure one; measurable subsets ar
 - [Markov chain (finite-state, discrete-time, time-homogeneous)](MarkovChain.md) — `requiresConcept`
 - [Random variable (measurable random element)](RandomVariable.md) — `requiresConcept`
 
+## Mathematical formulation
+
+For a measurable Ω, a probability measure P satisfies P(Ω)=1 and the measure axioms. The Lean binding is the probability-measure carrier on the supplied measurable space; normalization excludes an empty Ω.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev ProbabilitySpace (A : Type u) [_root_.MeasurableSpace A] := ProbabilityMeasure A
+```
+
+**Source:** [`Catalog.ProbabilitySpace`](../lean/Catalog/Probability.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib ProbabilityMeasure, carrying a measure and normalization proof on the supplied measurable carrier.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Instantiate the MeasureSpace interface with μ=P and impose the single additional normalization P(Ω)=1.
@@ -210,7 +230,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/MeasureSpace"
     ],
     "specializationNote": "Use X=Ω, Σ=𝓕 and μ=P; normalization is the extra constraint.",
-    "basisInstantiation": "Instantiate MeasureSpace at X=Ω, Σ=𝓕, μ=P, retaining its nonnegative countably additive measure requirements. Add normalization P(Ω)=1."
+    "basisInstantiation": "Instantiate MeasureSpace at X=Ω, Σ=𝓕, μ=P, retaining its nonnegative countably additive measure requirements. Add normalization P(Ω)=1.",
+    "leanFormulation": "abbrev ProbabilitySpace (A : Type u) [_root_.MeasurableSpace A] := ProbabilityMeasure A",
+    "formulationSource": "urn:csabs:source/local-lean-Probability",
+    "formulationLocator": "Catalog.ProbabilitySpace",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib ProbabilityMeasure, carrying a measure and normalization proof on the supplied measurable carrier.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For a measurable Ω, a probability measure P satisfies P(Ω)=1 and the measure axioms. The Lean binding is the probability-measure carrier on the supplied measurable space; normalization excludes an empty Ω."
   },
   {
     "id": "urn:csabs:operation/ProbabilitySpace-probability",

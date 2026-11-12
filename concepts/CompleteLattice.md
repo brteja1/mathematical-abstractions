@@ -14,6 +14,26 @@ A partially ordered set in which every subset, including the empty subset, has a
 
 **Specializes:** [Lattice](Lattice.md)
 
+## Mathematical formulation
+
+A complete lattice has sup(S) and inf(S) for every S⊆A, with sup(S)≤x ⇔ ∀s∈S,s≤x and x≤inf(S) ⇔ ∀s∈S,x≤s. In particular sup(∅)=⊥ and inf(∅)=⊤.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev CompleteLattice (A : Type u) := _root_.CompleteLattice A
+```
+
+**Source:** [`Catalog.CompleteLattice`](../lean/Catalog/Order.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib CompleteLattice, including sup/inf of the empty subset.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A partially ordered set in which every subset, including the empty subset, has a supremum and an infimum. Governing rules: The underlying relation is a partial order. Every subset, including empty, has a least upper bound. Every subset, including empty, has a greatest lower bound.
@@ -216,7 +236,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/Lattice"
     ],
-    "specializationNote": "Instantiate meet and join as infimum and supremum of pairs on the same carrier. Bounds of the empty subset also supply top and bottom."
+    "specializationNote": "Instantiate meet and join as infimum and supremum of pairs on the same carrier. Bounds of the empty subset also supply top and bottom.",
+    "leanFormulation": "abbrev CompleteLattice (A : Type u) := _root_.CompleteLattice A",
+    "formulationSource": "urn:csabs:source/local-lean-Order",
+    "formulationLocator": "Catalog.CompleteLattice",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib CompleteLattice, including sup/inf of the empty subset.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A complete lattice has sup(S) and inf(S) for every S⊆A, with sup(S)≤x ⇔ ∀s∈S,s≤x and x≤inf(S) ⇔ ∀s∈S,x≤s. In particular sup(∅)=⊥ and inf(∅)=⊤."
   },
   {
     "id": "urn:csabs:operation/CompleteLattice-supremum",

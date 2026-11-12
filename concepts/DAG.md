@@ -19,6 +19,28 @@ A directed graph with no directed cycle.
 - [Bayesian network (finite discrete variables)](BayesianNetwork.md) — `requiresConcept`
 - [Bayesian network (finite discrete variables)](BayesianNetwork.md) — `specializationOf`
 
+## Mathematical formulation
+
+A DAG is (V,E) with E⊆V×V and ∀v,¬E⁺(v,v), where E⁺ is nonempty finite-path reachability. The declaration does not require finite V.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure DAG (V : Type u) where
+  edge : DirectedGraph V
+  acyclic : ∀ v, ¬ Relation.TransGen edge v v
+```
+
+**Source:** [`Catalog.DAG`](../lean/Catalog/Graphs.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Directed edge relation plus absence of positive TransGen cycles.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A directed graph with no directed cycle. Governing rules: The carrier and edge relation define a directed graph. There is no nonempty directed path from a vertex back to itself.
@@ -191,7 +213,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/DirectedGraph"
     ],
-    "specializationNote": "Keep the same directed vertex and edge sets; absence of directed cycles also excludes loops."
+    "specializationNote": "Keep the same directed vertex and edge sets; absence of directed cycles also excludes loops.",
+    "leanFormulation": "structure DAG (V : Type u) where\n  edge : DirectedGraph V\n  acyclic : ∀ v, ¬ Relation.TransGen edge v v",
+    "formulationSource": "urn:csabs:source/local-lean-Graphs",
+    "formulationLocator": "Catalog.DAG",
+    "formulationScope": "model",
+    "leanModelMapping": "Directed edge relation plus absence of positive TransGen cycles.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A DAG is (V,E) with E⊆V×V and ∀v,¬E⁺(v,v), where E⁺ is nonempty finite-path reachability. The declaration does not require finite V."
   },
   {
     "id": "urn:csabs:operation/DAG-basis-successors",

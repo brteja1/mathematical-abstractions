@@ -14,6 +14,31 @@ A shared-memory mutual-exclusion protocol in which each process announces ticket
 
 **Related concepts:** [Safety Property](SafetyProperty.md), [Liveness Property](LivenessProperty.md), [Sequential Consistency](SequentialConsistency.md)
 
+## Mathematical formulation
+
+The current raw state is (choosing:Fin(n)→Bool, number:Fin(n)→ℕ, pc:Fin(n)→ℕ, scanIndex:Fin(n)→ℕ, localReads:Fin(n)→Fin(n)→ℕ). This product carrier has no protocol transition relation or reachability/mutual-exclusion assertion.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure LamportBakeryState (n : Nat) where
+  choosing : Fin n → Bool
+  number : Fin n → Nat
+  pc : Fin n → Nat
+  scanIndex : Fin n → Nat
+  localReads : Fin n → Fin n → Nat
+```
+
+**Source:** [`Catalog.LamportBakeryState`](../lean/Catalog/Concurrency.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Raw state for Fin n processes: choosing flags, unbounded Nat tickets, and uninterpreted natural program counters, scan indices and per-process local read data.
+
+**Limits:** No legal control-state invariant, SC transition relation, reachability, protocol refinement, fairness, mutual-exclusion proof or failure/weak-memory model. This binding supplies raw state fields only.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Explicit doorway, ticket scan, publication, ordered wait loop, critical-section entry and ticket-zero exit; reachable executions from zero initialization.
@@ -357,7 +382,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "pp. 454–455: The Algorithm (L1–L3), Proof of Correctness Assertions 1–3, Further Remarks",
     "sourceNote": "Failure-free sequentially consistent atomic-register restriction of the source algorithm. Max scans read locations individually; this entry does not assert the original stronger overlapping-read or failure-recovery guarantee.",
     "provenanceKind": "adapted",
-    "basisInstantiation": "This protocol is related to the Mutex contract rather than a structural specialization of its Option(P) carrier. A complete implementation refinement must map doorway/wait steps to internal actions and define ownership between successful entry and release; critical-section exclusion alone is not a full linearizability or memory-visibility proof."
+    "basisInstantiation": "This protocol is related to the Mutex contract rather than a structural specialization of its Option(P) carrier. A complete implementation refinement must map doorway/wait steps to internal actions and define ownership between successful entry and release; critical-section exclusion alone is not a full linearizability or memory-visibility proof.",
+    "leanFormulation": "structure LamportBakeryState (n : Nat) where\n  choosing : Fin n → Bool\n  number : Fin n → Nat\n  pc : Fin n → Nat\n  scanIndex : Fin n → Nat\n  localReads : Fin n → Fin n → Nat",
+    "formulationSource": "urn:csabs:source/local-lean-Concurrency",
+    "formulationLocator": "Catalog.LamportBakeryState",
+    "formulationScope": "partial",
+    "leanModelMapping": "Raw state for Fin n processes: choosing flags, unbounded Nat tickets, and uninterpreted natural program counters, scan indices and per-process local read data.",
+    "leanModelLimitations": "No legal control-state invariant, SC transition relation, reachability, protocol refinement, fairness, mutual-exclusion proof or failure/weak-memory model. This binding supplies raw state fields only.",
+    "mathematicalFormulation": "The current raw state is (choosing:Fin(n)→Bool, number:Fin(n)→ℕ, pc:Fin(n)→ℕ, scanIndex:Fin(n)→ℕ, localReads:Fin(n)→Fin(n)→ℕ). This product carrier has no protocol transition relation or reachability/mutual-exclusion assertion."
   },
   {
     "id": "urn:csabs:operation/LamportBakery-doorway",

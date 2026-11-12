@@ -12,6 +12,28 @@ The Union Find (UnionFind, disjoint-set union, DSU) abstract data structure: a f
 
 **Prerequisites:** [Partition of a set](Partition.md), [Equivalence relation](EquivalenceRelation.md), [Finite carrier with exhaustive enumeration](FiniteType.md)
 
+## Mathematical formulation
+
+On Fin(n), a disjoint-set value is r:Fin(n)→Fin(n) satisfying r(r(x))=r(x). connected(x,y) ⇔ r(x)=r(y). A union replaces both affected classes' representatives by one of their two old representatives.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure DisjointSet (n : Nat) where
+  representative : Fin n → Fin n
+  idempotent : ∀ x, representative (representative x) = representative x
+```
+
+**Source:** [`Catalog.DisjointSet`](../lean/Catalog/StructuredData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** D_n={r:Fin(n)→Fin(n) | r(r(x))=r(x)}. Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** ∀x, r(r(x))=r(x); connected(r,x,y) ⇔ r(x)=r(y); r′∈union(r,a,b) ⇔ ∃c∈{r(a),r(b)}, ∀x, r′(x)=if r(x)∈{r(a),r(b)} then c else r(x)
@@ -226,6 +248,32 @@ The Union Find (UnionFind, disjoint-set union, DSU) abstract data structure: a f
 
 **provenanceKind:** derived
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {n : Nat} (d : Catalog.DisjointSet n) (x : Fin n), d.representative (d.representative x) = d.representative x
+```
+
+**Source:** [`Catalog.StructuredDataProofs.disjoint_set_find_idempotent`](../lean/Catalog/StructuredData.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Finite universe is Fin n; find is the representative function. Its idempotence is the structure invariant, with no assumed parent-pointer implementation.
+
+**Limits:** Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/DisjointSet-representative": "Interpreted premise: ∀x, r(r(x))=r(x). Finite universe is Fin n; find is the representative function. Its idempotence is the structure invariant, with no assumed parent-pointer implementation."
+}
+```
+
 ## Theorems
 
 <a id="node-urn-csabs-theorem-DisjointSet-connected-symmetric"></a>
@@ -253,6 +301,32 @@ The Union Find (UnionFind, disjoint-set union, DSU) abstract data structure: a f
 **sourceNote:** Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.
 
 **provenanceKind:** derived
+
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {n : Nat} (d : Catalog.DisjointSet n) (x y : Fin n), d.connected x y → d.connected y x
+```
+
+**Source:** [`Catalog.StructuredDataProofs.disjoint_set_connected_symmetric`](../lean/Catalog/StructuredData.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** connected means equality of representative outputs in Fin n. Symmetry follows from equality symmetry; no representative selection policy is needed.
+
+**Limits:** Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/DisjointSet-connectivity": "Interpreted premise: connected(r,x,y) ⇔ r(x)=r(y). connected means equality of representative outputs in Fin n. Symmetry follows from equality symmetry; no representative selection policy is needed."
+}
+```
 
 ## Concept provenance
 
@@ -320,7 +394,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Class contract: sites, components, representative, find, union and connected",
     "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation. Union Find and disjoint-sets synonymy reconfirmed from the UF class contract on 2026-11-08; stable ID and representative semantics are preserved.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "structure DisjointSet (n : Nat) where\n  representative : Fin n → Fin n\n  idempotent : ∀ x, representative (representative x) = representative x",
+    "formulationSource": "urn:csabs:source/local-lean-StructuredData",
+    "formulationLocator": "Catalog.DisjointSet",
+    "formulationScope": "model",
+    "leanModelMapping": "D_n={r:Fin(n)→Fin(n) | r(r(x))=r(x)}. Fixed universe {0,…,n-1}, including n=0. Representative identity observable; union may choose either previous root. No path compression/rank representation or complexity bound. Equality is equality of representative maps.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "On Fin(n), a disjoint-set value is r:Fin(n)→Fin(n) satisfying r(r(x))=r(x). connected(x,y) ⇔ r(x)=r(y). A union replaces both affected classes' representatives by one of their two old representatives."
   },
   {
     "id": "urn:csabs:operation/DisjointSet-initial",
@@ -479,7 +560,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Class contract: sites, components, representative, find, union and connected",
     "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
-    "provenanceKind": "derived"
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {n : Nat} (d : Catalog.DisjointSet n) (x : Fin n), d.representative (d.representative x) = d.representative x",
+    "formulationSource": "urn:csabs:source/local-lean-StructuredData",
+    "formulationLocator": "Catalog.StructuredDataProofs.disjoint_set_find_idempotent",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Finite universe is Fin n; find is the representative function. Its idempotence is the structure invariant, with no assumed parent-pointer implementation.",
+    "leanModelLimitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/DisjointSet-representative\": \"Interpreted premise: ∀x, r(r(x))=r(x). Finite universe is Fin n; find is the representative function. Its idempotence is the structure invariant, with no assumed parent-pointer implementation.\"}"
   },
   {
     "id": "urn:csabs:theorem/DisjointSet-connected-symmetric",
@@ -504,7 +592,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Class contract: sites, components, representative, find, union and connected",
     "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
-    "provenanceKind": "derived"
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {n : Nat} (d : Catalog.DisjointSet n) (x y : Fin n), d.connected x y → d.connected y x",
+    "formulationSource": "urn:csabs:source/local-lean-StructuredData",
+    "formulationLocator": "Catalog.StructuredDataProofs.disjoint_set_connected_symmetric",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "connected means equality of representative outputs in Fin n. Symmetry follows from equality symmetry; no representative selection policy is needed.",
+    "leanModelLimitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/DisjointSet-connectivity\": \"Interpreted premise: connected(r,x,y) ⇔ r(x)=r(y). connected means equality of representative outputs in Fin n. Symmetry follows from equality symmetry; no representative selection policy is needed.\"}"
   }
 ]
 ```

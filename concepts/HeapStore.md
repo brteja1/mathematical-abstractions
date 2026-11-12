@@ -18,6 +18,26 @@ A finite map from nonnull addresses to values, with partial allocated-cell acces
 - [Sequential object heap with reference identity](ObjectHeap.md) — `requiresConcept`
 - [Sequential object heap with reference identity](ObjectHeap.md) — `specializationOf`
 
+## Mathematical formulation
+
+A heap is a finite partial map h:ℕ\_{>0}⇀V. write/free require a∈dom(h); allocation chooses a∉dom(h) and produces h[a↦v]. Invalid accesses return none and allocation is relational.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev HeapStore (V : Type u) := Catalog.Map PNat V
+```
+
+**Source:** [`Catalog.HeapStore`](../lean/Catalog/StructuredData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Catalog.Map PNat V; write/free wrap absent cases in None, allocates is a relational fresh-address specification. Heap(V)=Addr⇀fin V; Addr=ℕ_{>0}. Pure mathematical snapshots. Unallocated read/write/free is undefined (None); stored values may themselves encode options. Allocation nondeterministically chooses any fresh positive address; address reuse after free allowed. No pointer arithmetic, GC, permissions, typing or concurrency assumed.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** dom(h) is a finite subset of positive addresses; heap equality is lookup equality; a∈dom(h) ⇒ write(h,a,v)(b)=Some(v) if b=a, else h(b); a∈dom(h) ⇒ free(h,a)(b)=None if b=a, else h(b); (a,h′)∈alloc(h,v) ⇔ a∉dom(h) ∧ h′=h[a↦v]
@@ -351,7 +371,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Description of Memory States: heaps as finite maps",
     "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "abbrev HeapStore (V : Type u) := Catalog.Map PNat V",
+    "formulationSource": "urn:csabs:source/local-lean-StructuredData",
+    "formulationLocator": "Catalog.HeapStore",
+    "formulationScope": "model",
+    "leanModelMapping": "Catalog.Map PNat V; write/free wrap absent cases in None, allocates is a relational fresh-address specification. Heap(V)=Addr⇀fin V; Addr=ℕ_{>0}. Pure mathematical snapshots. Unallocated read/write/free is undefined (None); stored values may themselves encode options. Allocation nondeterministically chooses any fresh positive address; address reuse after free allowed. No pointer arithmetic, GC, permissions, typing or concurrency assumed.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "A heap is a finite partial map h:ℕ_{>0}⇀V. write/free require a∈dom(h); allocation chooses a∉dom(h) and produces h[a↦v]. Invalid accesses return none and allocation is relational."
   },
   {
     "id": "urn:csabs:operation/HeapStore-read",

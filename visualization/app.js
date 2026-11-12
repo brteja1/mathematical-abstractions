@@ -659,6 +659,16 @@ function renderDetails(id, activeEdges) {
   });
   panel.append(html('span', all.get(n.kind)?.label || n.kind, 'badge'));
   panel.append(html('p', n.definition), html('h2', 'Mathematical definition'), html('div', n.notation, 'notation'));
+  if (n.mathematicalFormulation) {
+    panel.append(html('h2', 'Mathematical formulation'), html('div', n.mathematicalFormulation, 'notation'));
+  }
+  if (n.leanFormulation) {
+    const formal = html('details');
+    formal.append(html('summary', `Lean formulation · ${n.formulationScope}`), html('pre', n.leanFormulation, 'notation'),
+      html('p', n.leanModelMapping), html('p', n.leanModelLimitations, 'empty'),
+      html('p', 'Read in its source module context. Definitions and structure hypotheses are not proof witnesses. Consult a fresh Lean verification report for compiler and axiom-audit evidence.', 'empty'));
+    panel.append(formal);
+  }
   if (n.axiomBasis) {
     panel.append(html('h2', 'Mathematical basis'), html('p', n.axiomBasis));
     if (n.basisScope) panel.append(html('p', n.basisScope, 'empty'));
@@ -686,6 +696,10 @@ function renderDetails(id, activeEdges) {
       const summary = html('summary', item.name || item.statement);
       det.append(summary);
       if (item.signature || item.formalStatement) det.append(html('div', item.signature || item.formalStatement, 'notation'));
+      if (item.leanFormulation) {
+        det.append(html('h3', 'Lean proposition'), html('pre', item.leanFormulation, 'notation'),
+          html('p', item.leanModelMapping), html('p', item.leanModelLimitations, 'empty'));
+      }
       if (item.description) det.append(html('p', item.description));
       (item.assumptions || []).forEach(a => det.append(html('p', 'Assumption: ' + a)));
       if (item.precondition) det.append(html('p', 'Precondition: ' + item.precondition));

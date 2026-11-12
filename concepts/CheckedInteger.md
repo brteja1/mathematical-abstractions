@@ -12,6 +12,27 @@ An integer in a specified finite interval whose arithmetic explicitly returns an
 
 **Prerequisites:** [Mathematical integers](Integer.md), [Sum Type](SumType.md)
 
+## Mathematical formulation
+
+For integers L≤U, I={z∈ℤ | L≤z≤U}. checkedAdd(x,y)=some(x+y) when L≤x+y≤U, and none otherwise. Checks use exact integer arithmetic.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev CheckedInteger (lower upper : Int) (_ : lower ≤ upper) :=
+  {z : Int // lower ≤ z ∧ z ≤ upper}
+```
+
+**Source:** [`Catalog.CheckedInteger`](../lean/Catalog/Numeric.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Nonempty bounded Int interval subtype; checkRange and checkedAdd report none exactly when out of range.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: An integer in a specified finite interval whose arithmetic explicitly returns an overflow outcome if the exact result is outside it. Governing rules: The interval is finite and nonempty. A checked operation reports overflow exactly when the exact result does not fit.
@@ -198,7 +219,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "abbrev CheckedInteger (lower upper : Int) (_ : lower ≤ upper) :=\n  {z : Int // lower ≤ z ∧ z ≤ upper}",
+    "formulationSource": "urn:csabs:source/local-lean-Numeric",
+    "formulationLocator": "Catalog.CheckedInteger",
+    "formulationScope": "model",
+    "leanModelMapping": "Nonempty bounded Int interval subtype; checkRange and checkedAdd report none exactly when out of range.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For integers L≤U, I={z∈ℤ | L≤z≤U}. checkedAdd(x,y)=some(x+y) when L≤x+y≤U, and none otherwise. Checks use exact integer arithmetic."
   },
   {
     "id": "urn:csabs:operation/CheckedInteger-add",

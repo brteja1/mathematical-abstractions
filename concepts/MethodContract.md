@@ -20,6 +20,29 @@ A receiver-and-argument method specification separating a precondition, normal/e
 - [Exclusive finite-heap separation predicates](HeapSeparation.md) — `relatedConcept`
 - [Visible-state object invariant protocol](ObjectInvariant.md) — `relatedConcept`
 
+## Mathematical formulation
+
+A contract is (Pre,Post,Writable). For state s,input i and trace (s′,o,W), allows ⇔ Pre(s,i)∧Post(s,i,s′,o)∧W⊆Writable(s,i)∧∀l∉W,s′(l)=s(l). Execution satisfaction quantifies over all traces from Pre; a separate covered predicate requires some allowed trace for each admissible input.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure MethodContract (L : Type u) (V : Type v) (I : Type w) (O : Type x) where
+  pre : Store L V → I → Prop
+  post : Store L V → I → Store L V → O → Prop
+  writable : Store L V → I → Set L
+```
+
+**Source:** [`Catalog.OOP.MethodContract`](../lean/Catalog/ObjectOrientation.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Pre/post/writable predicates over fixed-domain total stores; trace after-state, outcome and all writes; allows, satisfies and covered match the selected relational profile. Instantiate Outcome with Sum Result Exception.
+
+**Limits:** Allocation, faults outside the outcome carrier, execution instrumentation correctness and termination are not modeled. Preconditions may be empty and coverage is separate.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining rules: allows(K,σ,i,(σ′,o,w)) ⇔ P(σ,i) ∧ Q(σ,i,σ′,o) ∧ w⊆W(σ,i) ∧ (∀l∉w, σ′(l)=σ(l)). satisfies(Exec,K) ⇔ ∀σ,i,τ, P(σ,i) ∧ τ∈Exec(σ,i) ⇒ allows(K,σ,i,τ). No terminating trace is required. covered(K) ⇔ ∀σ,i, P(σ,i) ⇒ ∃τ, allows(K,σ,i,τ). Preconditions and required input domains must be checked separately for nonvacuity.
@@ -320,7 +343,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "OpenJML Postconditions, requires/ensures and result; Specifying Exceptions, signals/signals_only; Frame Conditions, permitted writes and pre-state evaluation",
     "sourceNote": "A language-independent relational adaptation, not a JML parser or full semantics. Records write events so unchanged final values alone cannot discharge an assignable clause.",
     "provenanceKind": "adapted",
-    "axiomBasis": "Selected defining rules: allows(K,σ,i,(σ′,o,w)) ⇔ P(σ,i) ∧ Q(σ,i,σ′,o) ∧ w⊆W(σ,i) ∧ (∀l∉w, σ′(l)=σ(l)). satisfies(Exec,K) ⇔ ∀σ,i,τ, P(σ,i) ∧ τ∈Exec(σ,i) ⇒ allows(K,σ,i,τ). No terminating trace is required. covered(K) ⇔ ∀σ,i, P(σ,i) ⇒ ∃τ, allows(K,σ,i,τ). Preconditions and required input domains must be checked separately for nonvacuity."
+    "axiomBasis": "Selected defining rules: allows(K,σ,i,(σ′,o,w)) ⇔ P(σ,i) ∧ Q(σ,i,σ′,o) ∧ w⊆W(σ,i) ∧ (∀l∉w, σ′(l)=σ(l)). satisfies(Exec,K) ⇔ ∀σ,i,τ, P(σ,i) ∧ τ∈Exec(σ,i) ⇒ allows(K,σ,i,τ). No terminating trace is required. covered(K) ⇔ ∀σ,i, P(σ,i) ⇒ ∃τ, allows(K,σ,i,τ). Preconditions and required input domains must be checked separately for nonvacuity.",
+    "leanFormulation": "structure MethodContract (L : Type u) (V : Type v) (I : Type w) (O : Type x) where\n  pre : Store L V → I → Prop\n  post : Store L V → I → Store L V → O → Prop\n  writable : Store L V → I → Set L",
+    "formulationSource": "urn:csabs:source/local-lean-ObjectOrientation",
+    "formulationLocator": "Catalog.OOP.MethodContract",
+    "formulationScope": "model",
+    "leanModelMapping": "Pre/post/writable predicates over fixed-domain total stores; trace after-state, outcome and all writes; allows, satisfies and covered match the selected relational profile. Instantiate Outcome with Sum Result Exception.",
+    "leanModelLimitations": "Allocation, faults outside the outcome carrier, execution instrumentation correctness and termination are not modeled. Preconditions may be empty and coverage is separate.",
+    "mathematicalFormulation": "A contract is (Pre,Post,Writable). For state s,input i and trace (s′,o,W), allows ⇔ Pre(s,i)∧Post(s,i,s′,o)∧W⊆Writable(s,i)∧∀l∉W,s′(l)=s(l). Execution satisfaction quantifies over all traces from Pre; a separate covered predicate requires some allowed trace for each admissible input."
   },
   {
     "id": "urn:csabs:operation/MethodContract-allows",

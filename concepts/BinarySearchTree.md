@@ -18,6 +18,28 @@ A finite ordered binary tree whose inorder key sequence is strictly increasing u
 
 - [B-tree (balanced multiway search tree)](BTree.md) — `relatedConcept`
 
+## Mathematical formulation
+
+The selected carrier is {t∈BT(A) | inorder(t) is strictly increasing}, for a linear order A. Membership is x∈inorder(t); duplicate keys are excluded and the empty tree is permitted.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure BinarySearchTree (A : Type u) [LinearOrder A] where
+  tree : Catalog.BinaryTree A
+  ordered : (Catalog.BinaryTree.inorder tree).Pairwise (· < ·)
+```
+
+**Source:** [`Catalog.BinarySearchTree`](../lean/Catalog/StructuredData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** BST(A)={t∈BT(A) | inorder(t) strictly increasing}. Set-valued key profile: duplicates excluded, empty tree allowed. Equality retains tree shape; different trees with identical keys can differ. No balancing or logarithmic bound. Insert/delete are invariant-preserving specifications and may admit several shapes.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** inorder(t) is pairwise strictly increasing; member(t,x) ⇔ x∈keys(t) ⇔ x occurs in inorder(t); t′∈insert(t,x)⇔keys(t′)=keys(t)∪{x}; t′∈delete(t,x)⇔keys(t′)=keys(t)∖{x}, with all trees in BST(A)
@@ -332,7 +354,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/BinaryTree"
     ],
-    "specializationNote": "Forget the strictly-increasing inorder proof, retaining the same empty/node constructors, labels and child positions. No claim inheritance; the additional invariant requires a linear order."
+    "specializationNote": "Forget the strictly-increasing inorder proof, retaining the same empty/node constructors, labels and child positions. No claim inheritance; the additional invariant requires a linear order.",
+    "leanFormulation": "structure BinarySearchTree (A : Type u) [LinearOrder A] where\n  tree : Catalog.BinaryTree A\n  ordered : (Catalog.BinaryTree.inorder tree).Pairwise (· < ·)",
+    "formulationSource": "urn:csabs:source/local-lean-StructuredData",
+    "formulationLocator": "Catalog.BinarySearchTree",
+    "formulationScope": "model",
+    "leanModelMapping": "BST(A)={t∈BT(A) | inorder(t) strictly increasing}. Set-valued key profile: duplicates excluded, empty tree allowed. Equality retains tree shape; different trees with identical keys can differ. No balancing or logarithmic bound. Insert/delete are invariant-preserving specifications and may admit several shapes.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "The selected carrier is {t∈BT(A) | inorder(t) is strictly increasing}, for a linear order A. Membership is x∈inorder(t); duplicate keys are excluded and the empty tree is permitted."
   },
   {
     "id": "urn:csabs:operation/BinarySearchTree-member",

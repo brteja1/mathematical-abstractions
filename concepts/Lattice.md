@@ -20,6 +20,26 @@ A partially ordered set where every pair has a greatest lower bound and a least 
 - [Complete Lattice](CompleteLattice.md) — `requiresConcept`
 - [Complete Lattice](CompleteLattice.md) — `specializationOf`
 
+## Mathematical formulation
+
+In a partial order, a⊓b is the greatest lower bound and a⊔b the least upper bound of {a,b}: x≤a⊓b ⇔ x≤a∧x≤b; a⊔b≤x ⇔ a≤x∧b≤x.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Lattice (A : Type u) := _root_.Lattice A
+```
+
+**Source:** [`Catalog.Lattice`](../lean/Catalog/Order.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib Lattice, meet/join given by their ordered universal properties.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A partially ordered set where every pair has a greatest lower bound and a least upper bound. Governing rules: The underlying relation is a partial order. Meet is the greatest lower bound. Join is the least upper bound.
@@ -222,7 +242,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/PartialOrder",
       "urn:csabs:concept/JoinSemilattice"
     ],
-    "specializationNote": "Retain the underlying carrier and order; meet and join are the specified binary greatest lower and least upper bounds. Retain the same carrier, partial order and binary join, forgetting meet; lattice least-upper-bound requirements supply the join interface. No automatic inheritance of claims."
+    "specializationNote": "Retain the underlying carrier and order; meet and join are the specified binary greatest lower and least upper bounds. Retain the same carrier, partial order and binary join, forgetting meet; lattice least-upper-bound requirements supply the join interface. No automatic inheritance of claims.",
+    "leanFormulation": "abbrev Lattice (A : Type u) := _root_.Lattice A",
+    "formulationSource": "urn:csabs:source/local-lean-Order",
+    "formulationLocator": "Catalog.Lattice",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib Lattice, meet/join given by their ordered universal properties.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "In a partial order, a⊓b is the greatest lower bound and a⊔b the least upper bound of {a,b}: x≤a⊓b ⇔ x≤a∧x≤b; a⊔b≤x ⇔ a≤x∧b≤x."
   },
   {
     "id": "urn:csabs:operation/Lattice-meet",

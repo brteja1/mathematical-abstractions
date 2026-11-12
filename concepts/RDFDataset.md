@@ -12,6 +12,28 @@ One default RDF graph and a finite partial map from IRI-or-blank graph names to 
 
 **Prerequisites:** [Finite RDF 1.1 graph](RDFGraph.md), [Map](Map.md), [Option Type](OptionType.md)
 
+## Mathematical formulation
+
+A dataset is (G₀,N), G₀ an RDF graph and N a finite partial map (I+B)⇀Graph. A missing graph name differs from a present name mapped to the empty graph. Shared blank-node scope must be instantiated explicitly.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure RDFDataset (I : Type u) (B : Type v) (L : Type w) where
+  defaultGraph : RDFGraph I B L
+  namedGraphs : Catalog.Map (I ⊕ B) (RDFGraph I B L)
+```
+
+**Source:** [`Catalog.RDFDataset`](../lean/Catalog/InformationData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Default Finset triple graph plus Catalog.Map (I⊕B) RDFGraph; blank scopes and validated term carriers are caller obligations. Dataset=(G_default, N:(I⊎B)⇀fin RDFGraph). Graph names unique; no literal names. Blank identities share an explicit dataset scope and may occur in multiple graphs. Default graph is not assumed to be the union of named graphs. Absent graph differs from present empty graph. Dataset equality retains names and blank identities; no entailment or dataset-canonicalization claim.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Exactly one default graph; named graphs are a finite partial map with names in I⊎B and values RDFGraph; D=E ⇔ default(D)=default(E) ∧ ∀n,named(D,n)=named(E,n); default(putNamed(D,n,G))=default(D); named(putNamed(D,n,G),m)=Some(G) if m=n, else named(D,m)
@@ -295,7 +317,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "§§3–4: RDF triples, IRIs, literals, blank nodes, graph isomorphism and datasets",
     "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "structure RDFDataset (I : Type u) (B : Type v) (L : Type w) where\n  defaultGraph : RDFGraph I B L\n  namedGraphs : Catalog.Map (I ⊕ B) (RDFGraph I B L)",
+    "formulationSource": "urn:csabs:source/local-lean-InformationData",
+    "formulationLocator": "Catalog.RDFDataset",
+    "formulationScope": "model",
+    "leanModelMapping": "Default Finset triple graph plus Catalog.Map (I⊕B) RDFGraph; blank scopes and validated term carriers are caller obligations. Dataset=(G_default, N:(I⊎B)⇀fin RDFGraph). Graph names unique; no literal names. Blank identities share an explicit dataset scope and may occur in multiple graphs. Default graph is not assumed to be the union of named graphs. Absent graph differs from present empty graph. Dataset equality retains names and blank identities; no entailment or dataset-canonicalization claim.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "A dataset is (G₀,N), G₀ an RDF graph and N a finite partial map (I+B)⇀Graph. A missing graph name differs from a present name mapped to the empty graph. Shared blank-node scope must be instantiated explicitly."
   },
   {
     "id": "urn:csabs:operation/RDFDataset-default",

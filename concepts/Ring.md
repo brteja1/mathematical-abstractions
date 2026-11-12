@@ -18,6 +18,26 @@ A set whose addition is an abelian group and whose multiplication is associative
 - [Field](Field.md) — `specializationOf`
 - [Modular Integer](ModularInteger.md) — `requiresConcept`
 
+## Mathematical formulation
+
+A ring is (R,+,0,−,·,1): (R,+,0,−) is an abelian group, (R,·,1) is a monoid and multiplication distributes over addition. This selected unital convention permits 0=1 and noncommutative multiplication.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Ring (A : Type u) := _root_.Ring A
+```
+
+**Source:** [`Catalog.Ring`](../lean/Catalog/Algebra.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib unital Ring, allowing zero = one and noncommutative multiplication.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Unital ring: total addition and multiplication; additive abelian group; multiplicative monoid; both distributivities. Multiplication need not commute; 0=1 is permitted.
@@ -399,7 +419,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Ring: additive commutative group, multiplicative monoid and distributivity",
     "sourceNote": "Selected algebraic interface; retain catalog conventions and stable identity.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "abbrev Ring (A : Type u) := _root_.Ring A",
+    "formulationSource": "urn:csabs:source/local-lean-Algebra",
+    "formulationLocator": "Catalog.Ring",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib unital Ring, allowing zero = one and noncommutative multiplication.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A ring is (R,+,0,−,·,1): (R,+,0,−) is an abelian group, (R,·,1) is a monoid and multiplication distributes over addition. This selected unital convention permits 0=1 and noncommutative multiplication."
   },
   {
     "id": "urn:csabs:operation/ring-addition",

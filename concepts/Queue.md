@@ -10,6 +10,26 @@ A collection supporting first-in, first-out insertion and removal, with empty be
 
 **Kind:** Abstract data type
 
+## Mathematical formulation
+
+Queue(A)=A\*. empty=[]; enqueue(q,x)=q++[x]; dequeue(x::q)=some(q,x); dequeue([])=none. The head is the front and equality retains order and multiplicity.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Queue (A : Type u) := List A
+```
+
+**Source:** [`Catalog.Queue`](../lean/Catalog/DataStructures.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** List A with front at head; enqueue appends, dequeue removes head; empty returns none.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A collection supporting first-in, first-out insertion and removal, with empty behavior specified by the contract. Governing rules: A queue is a finite sequence ordered from front to back. Front and dequeue remove the earliest remaining item and are undefined on empty.
@@ -207,7 +227,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "axiomBasis": "Selected presentation: A collection supporting first-in, first-out insertion and removal, with empty behavior specified by the contract. Governing rules: A queue is a finite sequence ordered from front to back. Front and dequeue remove the earliest remaining item and are undefined on empty.",
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
-    "reviewStatus": "editorial basis review; no machine-checked mathematical proof"
+    "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
+    "leanFormulation": "abbrev Queue (A : Type u) := List A",
+    "formulationSource": "urn:csabs:source/local-lean-DataStructures",
+    "formulationLocator": "Catalog.Queue",
+    "formulationScope": "model",
+    "leanModelMapping": "List A with front at head; enqueue appends, dequeue removes head; empty returns none.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "Queue(A)=A*. empty=[]; enqueue(q,x)=q++[x]; dequeue(x::q)=some(q,x); dequeue([])=none. The head is the front and equality retains order and multiplicity."
   },
   {
     "id": "urn:csabs:operation/queue-enqueue",

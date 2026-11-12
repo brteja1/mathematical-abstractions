@@ -19,6 +19,26 @@ The characteristic-zero field of fractions of the integers.
 - [Finite JSON document value (interoperable profile)](DocumentValue.md) — `requiresConcept`
 - [Exact real number](RealNumber.md) — `requiresConcept`
 
+## Mathematical formulation
+
+ℚ={a/b | a∈ℤ,b∈ℤ∖{0}} modulo equality of fractions ad=bc for a/b and c/d. Arithmetic is exact; inverse/division interfaces require the stated nonzero guards.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev RationalNumber := Rat
+```
+
+**Source:** [`Catalog.RationalNumber`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Rat field instance; graph division corresponds to Lean / only under nonzero-divisor preconditions. ℚ={m/n | m∈ℤ, n∈ℕ, n>0}. Exact unbounded arithmetic. Canonical fractions have positive coprime denominator. Division is exposed only for nonzero divisor; Lean has a total inverse at zero, used only under this precondition. No rounding or finite resource bounds.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** m/n=p/q ⇔ m·q=p·n, for n,q>0; m/n+p/q=(mq+pn)/(nq) ∧ (m/n)(p/q)=mp/(nq); Every rational has a unique coprime presentation m/n with n>0; fraction(0,1)=0
@@ -235,6 +255,34 @@ The characteristic-zero field of fractions of the integers.
 
 **provenanceKind:** derived
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ (q : Catalog.RationalNumber), q + 0 = q
+```
+
+**Source:** [`Catalog.CoreDataProofs.rational_add_zero`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Rat is exact normalized integer fractions, with its existing field instance and canonical num/den. The proof uses the field additive identity; this realizes the catalog fraction derivation in the concrete library field.
+
+**Limits:** Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/RationalNumber-arithmetic": "Interpreted premise: m/n+p/q=(mq+pn)/(nq) ∧ (m/n)(p/q)=mp/(nq). Rat is exact normalized integer fractions, with its existing field instance and canonical num/den. The proof uses the field additive identity; this realizes the catalog fraction derivation in the concrete library field.",
+  "urn:csabs:axiom/RationalNumber-fraction-equality": "Interpreted premise: m/n=p/q ⇔ m·q=p·n, for n,q>0. Rat is exact normalized integer fractions, with its existing field instance and canonical num/den. The proof uses the field additive identity; this realizes the catalog fraction derivation in the concrete library field.",
+  "urn:csabs:axiom/RationalNumber-fraction-universal": "Interpreted premise: Every rational has a unique coprime presentation m/n with n>0; fraction(0,1)=0. Rat is exact normalized integer fractions, with its existing field instance and canonical num/den. The proof uses the field additive identity; this realizes the catalog fraction derivation in the concrete library field."
+}
+```
+
 ## Theorems
 
 <a id="node-urn-csabs-theorem-RationalNumber-commutative-addition"></a>
@@ -334,7 +382,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/Field"
     ],
-    "specializationNote": "Instantiate Field at ℚ with exact fraction addition/multiplication, 0/1 and 1/1; inverse and division restricted to nonzero inputs in this interface."
+    "specializationNote": "Instantiate Field at ℚ with exact fraction addition/multiplication, 0/1 and 1/1; inverse and division restricted to nonzero inputs in this interface.",
+    "leanFormulation": "abbrev RationalNumber := Rat",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.RationalNumber",
+    "formulationScope": "model",
+    "leanModelMapping": "Rat field instance; graph division corresponds to Lean / only under nonzero-divisor preconditions. ℚ={m/n | m∈ℤ, n∈ℕ, n>0}. Exact unbounded arithmetic. Canonical fractions have positive coprime denominator. Division is exposed only for nonzero divisor; Lean has a total inverse at zero, used only under this precondition. No rounding or finite resource bounds.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "ℚ={a/b | a∈ℤ,b∈ℤ∖{0}} modulo equality of fractions ad=bc for a/b and c/d. Arithmetic is exact; inverse/division interfaces require the stated nonzero guards."
   },
   {
     "id": "urn:csabs:operation/RationalNumber-fraction",
@@ -503,7 +558,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Rat.instField and Rat.num_div_den; imports Data.Rat.Defs; Rat normalized numerator/positive denominator; arithmetic definitions",
     "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
-    "provenanceKind": "derived"
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ (q : Catalog.RationalNumber), q + 0 = q",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.CoreDataProofs.rational_add_zero",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Rat is exact normalized integer fractions, with its existing field instance and canonical num/den. The proof uses the field additive identity; this realizes the catalog fraction derivation in the concrete library field.",
+    "leanModelLimitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/RationalNumber-arithmetic\": \"Interpreted premise: m/n+p/q=(mq+pn)/(nq) ∧ (m/n)(p/q)=mp/(nq). Rat is exact normalized integer fractions, with its existing field instance and canonical num/den. The proof uses the field additive identity; this realizes the catalog fraction derivation in the concrete library field.\", \"urn:csabs:axiom/RationalNumber-fraction-equality\": \"Interpreted premise: m/n=p/q ⇔ m·q=p·n, for n,q>0. Rat is exact normalized integer fractions, with its existing field instance and canonical num/den. The proof uses the field additive identity; this realizes the catalog fraction derivation in the concrete library field.\", \"urn:csabs:axiom/RationalNumber-fraction-universal\": \"Interpreted premise: Every rational has a unique coprime presentation m/n with n>0; fraction(0,1)=0. Rat is exact normalized integer fractions, with its existing field instance and canonical num/den. The proof uses the field additive identity; this realizes the catalog fraction derivation in the concrete library field.\"}"
   },
   {
     "id": "urn:csabs:theorem/RationalNumber-commutative-addition",

@@ -22,6 +22,26 @@ A finite-state recognizer with exactly one next state for every state and input 
 - [Regular language over a finite alphabet](RegularLanguage.md) — `requiresConcept`
 - [Deterministic one-tape Turing machine](TuringMachine.md) — `relatedConcept`
 
+## Mathematical formulation
+
+For finite alphabet A and finite states Q, a DFA is (δ,q₀,F) with δ:Q×A→Q total, q₀∈Q and F⊆Q. Extend δ\*(q,ε)=q and δ\*(q,wa)=δ(δ\*(q,w),a); L={w | δ\*(q₀,w)∈F}.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev DFA (A : Type u) (Q : Type v) [Fintype A] [Fintype Q] := _root_.DFA A Q
+```
+
+**Source:** [`Catalog.DFA`](../lean/Catalog/Languages.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib DFA with explicit finite alphabet/state types and total transition function.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining presentation: The transition function is total on a finite state set and alphabet. The extended transition consumes symbols successively.
@@ -332,7 +352,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/NFA"
     ],
-    "specializationNote": "Instantiate the NFA transition by singleton sets Δ(q,a)={δ(q,a)}. Singleton totality removes nondeterministic choices; start and acceptance data are unchanged. The underlying carriers are identified by this explicit encoding."
+    "specializationNote": "Instantiate the NFA transition by singleton sets Δ(q,a)={δ(q,a)}. Singleton totality removes nondeterministic choices; start and acceptance data are unchanged. The underlying carriers are identified by this explicit encoding.",
+    "leanFormulation": "abbrev DFA (A : Type u) (Q : Type v) [Fintype A] [Fintype Q] := _root_.DFA A Q",
+    "formulationSource": "urn:csabs:source/local-lean-Languages",
+    "formulationLocator": "Catalog.DFA",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib DFA with explicit finite alphabet/state types and total transition function.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For finite alphabet A and finite states Q, a DFA is (δ,q₀,F) with δ:Q×A→Q total, q₀∈Q and F⊆Q. Extend δ*(q,ε)=q and δ*(q,wa)=δ(δ*(q,w),a); L={w | δ*(q₀,w)∈F}."
   },
   {
     "id": "urn:csabs:operation/DFA-run",

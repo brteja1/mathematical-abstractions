@@ -16,6 +16,26 @@ An integer value with no fixed mathematical width; implementations may exhaust r
 
 - [Exact rational number](RationalNumber.md) — `requiresConcept`
 
+## Mathematical formulation
+
+The mathematical value carrier is ℤ, with exact unbounded +,−,×. Finite-memory exhaustion and implementation resource limits are outside this interpretation.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev ArbitraryPrecisionInteger := Int
+```
+
+**Source:** [`Catalog.ArbitraryPrecisionInteger`](../lean/Catalog/Numeric.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Lean Int for exact unbounded values; runtime resource failures are outside this value model.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: An integer value with no fixed mathematical width; implementations may exhaust resources even though the value semantics is unbounded. Governing rules: The abstract value carrier is unbounded integers, independently of resource limits.
@@ -180,7 +200,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "abbrev ArbitraryPrecisionInteger := Int",
+    "formulationSource": "urn:csabs:source/local-lean-Numeric",
+    "formulationLocator": "Catalog.ArbitraryPrecisionInteger",
+    "formulationScope": "model",
+    "leanModelMapping": "Lean Int for exact unbounded values; runtime resource failures are outside this value model.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "The mathematical value carrier is ℤ, with exact unbounded +,−,×. Finite-memory exhaustion and implementation resource limits are outside this interpretation."
   },
   {
     "id": "urn:csabs:operation/ArbitraryPrecisionInteger-add",

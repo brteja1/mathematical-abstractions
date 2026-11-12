@@ -22,6 +22,26 @@ A homogeneous relation that is reflexive, symmetric, and transitive.
 - [Strong finite partial-trace equivalence](TraceEquivalence.md) — `requiresConcept`
 - [Strong finite partial-trace equivalence](TraceEquivalence.md) — `specializationOf`
 
+## Mathematical formulation
+
+A setoid is (A,≈) with ∀a, a≈a; ∀a b, a≈b⇒b≈a; ∀a b c, a≈b∧b≈c⇒a≈c. Relation equivalence need not coincide with equality of representatives.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev EquivalenceRelation (A : Type u) := Setoid A
+```
+
+**Source:** [`Catalog.EquivalenceRelation`](../lean/Catalog/Foundations.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Setoid A: typed relation with reflexivity, symmetry and transitivity.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A homogeneous relation that is reflexive, symmetric, and transitive. Governing rules: Every element is related to itself. Related pairs remain related when reversed. Relatedness composes transitively. The class of an element comprises all elements equivalent to it.
@@ -235,7 +255,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/Preorder"
     ],
-    "specializationNote": "Keep the same homogeneous relation and carrier; reflexivity and transitivity give a preorder, with symmetry as an additional constraint."
+    "specializationNote": "Keep the same homogeneous relation and carrier; reflexivity and transitivity give a preorder, with symmetry as an additional constraint.",
+    "leanFormulation": "abbrev EquivalenceRelation (A : Type u) := Setoid A",
+    "formulationSource": "urn:csabs:source/local-lean-Foundations",
+    "formulationLocator": "Catalog.EquivalenceRelation",
+    "formulationScope": "model",
+    "leanModelMapping": "Setoid A: typed relation with reflexivity, symmetry and transitivity.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A setoid is (A,≈) with ∀a, a≈a; ∀a b, a≈b⇒b≈a; ∀a b c, a≈b∧b≈c⇒a≈c. Relation equivalence need not coincide with equality of representatives."
   },
   {
     "id": "urn:csabs:operation/EquivalenceRelation-basis-class",

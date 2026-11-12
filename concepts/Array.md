@@ -16,6 +16,26 @@ A finite indexed collection with one value per valid index; mutable variants are
 
 - [Finite rectangular matrix over a field](Matrix.md) — `relatedConcept`
 
+## Mathematical formulation
+
+For a type A and n∈ℕ, Array(A,n)=A^{Fin(n)}, Fin(n)={i∈ℕ | i<n}. read(a,i)=a(i); store(a,i,x)(j)=x if j=i, and a(j) otherwise. Equality is pointwise; n=0 is permitted.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Array (A : Type u) (n : Nat) := Fin n → A
+```
+
+**Source:** [`Catalog.Array`](../lean/Catalog/DataStructures.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Fin n -> A; fixed-length total lookup and Function.update store; n = 0 permitted.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A finite indexed collection with one value per valid index; mutable variants are modeled by state-changing update operations. Governing rules: Lookup and update are specified only for valid indices unless the ADT contract defines another behavior. An array of a fixed length is exactly a total map on that length's indices. Arrays of the same length and value carrier are equal when all indexed values agree. Store changes exactly one valid position and preserves the length.
@@ -160,6 +180,35 @@ A finite indexed collection with one value per valid index; mutable variants are
 
 **provenanceStatus:** legacy-source-missing
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} {n : Nat} (a : Catalog.Array A n) (i : Fin n) (x : A), Catalog.Array.store a i x i = x
+```
+
+**Source:** [`Catalog.Proofs.array_read_same`](../lean/Catalog/Witnesses.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Fin n -> A; fixed-length total lookup and Function.update store; n = 0 permitted.
+
+**Limits:** Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Array-carrier": "Explicit interface premise: Array(n,V)=V^Index(n); Index(n)={i∈ℕ:i<n}; interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Array-extensionality": "Explicit interface premise: A=B iff ∀i∈Index(n):select(A,i)=select(B,i); interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Array-store-definition": "Explicit interface premise: select(store(A,i,v),j)=if j=i then v else select(A,j); i,j∈Index(n); interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/array-valid-index": "Explicit interface premise: 0≤i<n; interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+}
+```
+
 <a id="node-urn-csabs-law-array-read-after-write-other"></a>
 
 ### law/array-read-after-write-other
@@ -179,6 +228,35 @@ A finite indexed collection with one value per valid index; mutable variants are
 **dependsOn:** [array-valid-index](Array.md#node-urn-csabs-axiom-array-valid-index); [carrier](Array.md#node-urn-csabs-axiom-Array-carrier); [extensionality](Array.md#node-urn-csabs-axiom-Array-extensionality); [store-definition](Array.md#node-urn-csabs-axiom-Array-store-definition)
 
 **provenanceStatus:** legacy-source-missing
+
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} {n : Nat} (a : Catalog.Array A n) (i j : Fin n) (x : A), i ≠ j → Catalog.Array.store a i x j = a j
+```
+
+**Source:** [`Catalog.Proofs.array_read_other`](../lean/Catalog/Witnesses.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Fin n -> A; fixed-length total lookup and Function.update store; n = 0 permitted.
+
+**Limits:** Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Array-carrier": "Explicit interface premise: Array(n,V)=V^Index(n); Index(n)={i∈ℕ:i<n}; interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Array-extensionality": "Explicit interface premise: A=B iff ∀i∈Index(n):select(A,i)=select(B,i); interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Array-store-definition": "Explicit interface premise: select(store(A,i,v),j)=if j=i then v else select(A,j); i,j∈Index(n); interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/array-valid-index": "Explicit interface premise: 0≤i<n; interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+}
+```
 
 ## Theorems
 
@@ -203,6 +281,35 @@ A finite indexed collection with one value per valid index; mutable variants are
 **notationLanguage:** informal mathematical Unicode
 
 **provenanceStatus:** legacy-source-missing
+
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} {n : Nat} (a : Catalog.Array A n) (i : Fin n) (x y : A), Catalog.Array.store (Catalog.Array.store a i x) i y = Catalog.Array.store a i y
+```
+
+**Source:** [`Catalog.Proofs.array_overwrite`](../lean/Catalog/Witnesses.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Fin n -> A; fixed-length total lookup and Function.update store; n = 0 permitted.
+
+**Limits:** Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Array-carrier": "Explicit interface premise: Array(n,V)=V^Index(n); Index(n)={i∈ℕ:i<n}; interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Array-extensionality": "Explicit interface premise: A=B iff ∀i∈Index(n):select(A,i)=select(B,i); interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Array-store-definition": "Explicit interface premise: select(store(A,i,v),j)=if j=i then v else select(A,j); i,j∈Index(n); interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/array-valid-index": "Explicit interface premise: 0≤i<n; interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+}
+```
 
 ## Concept provenance
 
@@ -257,7 +364,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "axiomBasis": "Selected presentation: A finite indexed collection with one value per valid index; mutable variants are modeled by state-changing update operations. Governing rules: Lookup and update are specified only for valid indices unless the ADT contract defines another behavior. An array of a fixed length is exactly a total map on that length's indices. Arrays of the same length and value carrier are equal when all indexed values agree. Store changes exactly one valid position and preserves the length.",
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
-    "reviewStatus": "editorial basis review; no machine-checked mathematical proof"
+    "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
+    "leanFormulation": "abbrev Array (A : Type u) (n : Nat) := Fin n → A",
+    "formulationSource": "urn:csabs:source/local-lean-DataStructures",
+    "formulationLocator": "Catalog.Array",
+    "formulationScope": "model",
+    "leanModelMapping": "Fin n -> A; fixed-length total lookup and Function.update store; n = 0 permitted.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For a type A and n∈ℕ, Array(A,n)=A^{Fin(n)}, Fin(n)={i∈ℕ | i<n}. read(a,i)=a(i); store(a,i,x)(j)=x if j=i, and a(j) otherwise. Equality is pointwise; n=0 is permitted."
   },
   {
     "id": "urn:csabs:operation/array-select",
@@ -364,7 +478,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:axiom/Array-extensionality",
       "urn:csabs:axiom/Array-store-definition"
     ],
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "∀ {A : Type u} {n : Nat} (a : Catalog.Array A n) (i : Fin n) (x : A), Catalog.Array.store a i x i = x",
+    "formulationSource": "urn:csabs:source/local-lean-Witnesses",
+    "formulationLocator": "Catalog.Proofs.array_read_same",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Fin n -> A; fixed-length total lookup and Function.update store; n = 0 permitted.",
+    "leanModelLimitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Array-carrier\": \"Explicit interface premise: Array(n,V)=V^Index(n); Index(n)={i∈ℕ:i<n}; interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Array-extensionality\": \"Explicit interface premise: A=B iff ∀i∈Index(n):select(A,i)=select(B,i); interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Array-store-definition\": \"Explicit interface premise: select(store(A,i,v),j)=if j=i then v else select(A,j); i,j∈Index(n); interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/array-valid-index\": \"Explicit interface premise: 0≤i<n; interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\"}"
   },
   {
     "id": "urn:csabs:law/array-read-after-write-other",
@@ -385,7 +506,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:axiom/Array-extensionality",
       "urn:csabs:axiom/Array-store-definition"
     ],
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "∀ {A : Type u} {n : Nat} (a : Catalog.Array A n) (i j : Fin n) (x : A), i ≠ j → Catalog.Array.store a i x j = a j",
+    "formulationSource": "urn:csabs:source/local-lean-Witnesses",
+    "formulationLocator": "Catalog.Proofs.array_read_other",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Fin n -> A; fixed-length total lookup and Function.update store; n = 0 permitted.",
+    "leanModelLimitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Array-carrier\": \"Explicit interface premise: Array(n,V)=V^Index(n); Index(n)={i∈ℕ:i<n}; interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Array-extensionality\": \"Explicit interface premise: A=B iff ∀i∈Index(n):select(A,i)=select(B,i); interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Array-store-definition\": \"Explicit interface premise: select(store(A,i,v),j)=if j=i then v else select(A,j); i,j∈Index(n); interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/array-valid-index\": \"Explicit interface premise: 0≤i<n; interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\"}"
   },
   {
     "id": "urn:csabs:theorem/Array-update-overwrite",
@@ -408,7 +536,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "reviewStatus": "editorial-summary; not machine-proved",
     "notationLanguage": "informal mathematical Unicode",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "∀ {A : Type u} {n : Nat} (a : Catalog.Array A n) (i : Fin n) (x y : A), Catalog.Array.store (Catalog.Array.store a i x) i y = Catalog.Array.store a i y",
+    "formulationSource": "urn:csabs:source/local-lean-Witnesses",
+    "formulationLocator": "Catalog.Proofs.array_overwrite",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Fin n -> A; fixed-length total lookup and Function.update store; n = 0 permitted.",
+    "leanModelLimitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Array-carrier\": \"Explicit interface premise: Array(n,V)=V^Index(n); Index(n)={i∈ℕ:i<n}; interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Array-extensionality\": \"Explicit interface premise: A=B iff ∀i∈Index(n):select(A,i)=select(B,i); interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Array-store-definition\": \"Explicit interface premise: select(store(A,i,v),j)=if j=i then v else select(A,j); i,j∈Index(n); interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/array-valid-index\": \"Explicit interface premise: 0≤i<n; interpreted by Catalog.Array. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\"}"
   }
 ]
 ```

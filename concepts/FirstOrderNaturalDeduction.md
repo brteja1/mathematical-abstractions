@@ -16,6 +16,42 @@ Classical natural deduction on first-order formulas with equality, adding quanti
 
 - [Predicate Logic](PredicateLogic.md) — `relatedConcept`
 
+## Mathematical formulation
+
+Γ⊢φ extends classical propositional derivability with equality reflexivity, guarded equality substitution, ∀ introduction and elimination. [Γ⊢φ ∧ x∉FV(Γ)]⇒Γ⊢∀x.φ; [Γ⊢∀x.φ ∧ FreeFor(t,x,φ)]⇒Γ⊢φ[t/x]. The full inductive rule set and equality guards are displayed in the Lean formulation.
+
+**Lean formulation** (in its source module context):
+
+```lean
+inductive FirstOrderDerivable {Fn : Nat → Type u} {Pred : Nat → Type v} :
+    Set (NamedFirstOrderFormula Fn Pred) → NamedFirstOrderFormula Fn Pred → Prop
+  | hyp {Γ p} : p ∈ Γ → FirstOrderDerivable Γ p
+  | weaken {Γ Δ p} : FirstOrderDerivable Γ p → Γ ⊆ Δ → FirstOrderDerivable Δ p
+  | conjI {Γ p q} : FirstOrderDerivable Γ p → FirstOrderDerivable Γ q → FirstOrderDerivable Γ (.conj p q)
+  | conjL {Γ p q} : FirstOrderDerivable Γ (.conj p q) → FirstOrderDerivable Γ p
+  | conjR {Γ p q} : FirstOrderDerivable Γ (.conj p q) → FirstOrderDerivable Γ q
+  | negI {Γ p} : FirstOrderDerivable (insert p Γ) .bottom → FirstOrderDerivable Γ (.neg p)
+  | negE {Γ p} : FirstOrderDerivable Γ p → FirstOrderDerivable Γ (.neg p) → FirstOrderDerivable Γ .bottom
+  | falseE {Γ p} : FirstOrderDerivable Γ .bottom → FirstOrderDerivable Γ p
+  | reductio {Γ p} : FirstOrderDerivable (insert (.neg p) Γ) .bottom → FirstOrderDerivable Γ p
+  | allI {Γ p x} : FirstOrderDerivable Γ p → (∀ q ∈ Γ, x ∉ q.freeVariables) → FirstOrderDerivable Γ (.all x p)
+  | allE {Γ p x t} : FirstOrderDerivable Γ (.all x p) → p.freeFor t x → FirstOrderDerivable Γ (p.rawSubstitute t x)
+  | eqI {Γ t} : FirstOrderDerivable Γ (.equal t t)
+  | eqE {Γ} {p : NamedFirstOrderFormula Fn Pred} {x s t} : FirstOrderDerivable Γ (.equal s t) →
+      FirstOrderDerivable Γ (p.rawSubstitute s x) → p.freeFor s x → p.freeFor t x →
+      FirstOrderDerivable Γ (p.rawSubstitute t x)
+```
+
+**Source:** [`Catalog.FirstOrderDerivable`](../lean/Catalog/LogicSyntax.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Inductive named-variable derivability on set contexts, with all explicit propositional rules, universal introduction guarded by context freshness, elimination guarded by freeFor, and equality reflexivity/substitution. Existentials and other connectives are macros. Restrict symbol families to the countable signature for the catalog metatheorems.
+
+**Limits:** Compiled carrier and selected interface only. No new graph law or metatheorem is registered as a proof witness. In particular substitution-support, semantic correspondence, soundness, completeness, compactness and normal-form existence are editorial claims here; grammar/rule declarations do not prove them.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Least finitary relation explicitly instantiating the classical propositional rules and adding ∀ introduction/elimination with freshness/free-for guards and equality reflexivity/substitution; ∃ is a macro with derived rules.
@@ -308,7 +344,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "§§7.1–7.4, 7.11–7.13; §§10.8–10.9",
     "sourceNote": "Selected presentation in catalog notation; finite raw syntax and the stated primitive basis are explicit choices. No executable proof is implied.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "inductive FirstOrderDerivable {Fn : Nat → Type u} {Pred : Nat → Type v} :\n    Set (NamedFirstOrderFormula Fn Pred) → NamedFirstOrderFormula Fn Pred → Prop\n  | hyp {Γ p} : p ∈ Γ → FirstOrderDerivable Γ p\n  | weaken {Γ Δ p} : FirstOrderDerivable Γ p → Γ ⊆ Δ → FirstOrderDerivable Δ p\n  | conjI {Γ p q} : FirstOrderDerivable Γ p → FirstOrderDerivable Γ q → FirstOrderDerivable Γ (.conj p q)\n  | conjL {Γ p q} : FirstOrderDerivable Γ (.conj p q) → FirstOrderDerivable Γ p\n  | conjR {Γ p q} : FirstOrderDerivable Γ (.conj p q) → FirstOrderDerivable Γ q\n  | negI {Γ p} : FirstOrderDerivable (insert p Γ) .bottom → FirstOrderDerivable Γ (.neg p)\n  | negE {Γ p} : FirstOrderDerivable Γ p → FirstOrderDerivable Γ (.neg p) → FirstOrderDerivable Γ .bottom\n  | falseE {Γ p} : FirstOrderDerivable Γ .bottom → FirstOrderDerivable Γ p\n  | reductio {Γ p} : FirstOrderDerivable (insert (.neg p) Γ) .bottom → FirstOrderDerivable Γ p\n  | allI {Γ p x} : FirstOrderDerivable Γ p → (∀ q ∈ Γ, x ∉ q.freeVariables) → FirstOrderDerivable Γ (.all x p)\n  | allE {Γ p x t} : FirstOrderDerivable Γ (.all x p) → p.freeFor t x → FirstOrderDerivable Γ (p.rawSubstitute t x)\n  | eqI {Γ t} : FirstOrderDerivable Γ (.equal t t)\n  | eqE {Γ} {p : NamedFirstOrderFormula Fn Pred} {x s t} : FirstOrderDerivable Γ (.equal s t) →\n      FirstOrderDerivable Γ (p.rawSubstitute s x) → p.freeFor s x → p.freeFor t x →\n      FirstOrderDerivable Γ (p.rawSubstitute t x)",
+    "formulationSource": "urn:csabs:source/local-lean-LogicSyntax",
+    "formulationLocator": "Catalog.FirstOrderDerivable",
+    "formulationScope": "model",
+    "leanModelMapping": "Inductive named-variable derivability on set contexts, with all explicit propositional rules, universal introduction guarded by context freshness, elimination guarded by freeFor, and equality reflexivity/substitution. Existentials and other connectives are macros. Restrict symbol families to the countable signature for the catalog metatheorems.",
+    "leanModelLimitations": "Compiled carrier and selected interface only. No new graph law or metatheorem is registered as a proof witness. In particular substitution-support, semantic correspondence, soundness, completeness, compactness and normal-form existence are editorial claims here; grammar/rule declarations do not prove them.",
+    "mathematicalFormulation": "Γ⊢φ extends classical propositional derivability with equality reflexivity, guarded equality substitution, ∀ introduction and elimination. [Γ⊢φ ∧ x∉FV(Γ)]⇒Γ⊢∀x.φ; [Γ⊢∀x.φ ∧ FreeFor(t,x,φ)]⇒Γ⊢φ[t/x]. The full inductive rule set and equality guards are displayed in the Lean formulation."
   },
   {
     "id": "urn:csabs:operation/FirstOrderNaturalDeduction-derivable",

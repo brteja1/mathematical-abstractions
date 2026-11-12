@@ -27,6 +27,7 @@ A finite ordered collection allowing repeated values, equivalently the inductive
 - [Formal language of finite words](FormalLanguage.md) — `requiresConcept`
 - [GHASH polynomial accumulator](GHASH.md) — `requiresConcept`
 - [Finite kinded generic parameter signature](GenericSignature.md) — `requiresConcept`
+- [Hamming space (finite fixed-length words)](HammingSpace.md) — `requiresConcept`
 - [Action-labelled transition system with initial states](LabelledTransitionSystem.md) — `requiresConcept`
 - [Ordered collection without duplicates](OrderedSet.md) — `requiresConcept`
 - [Finite labelled property graph (single-valued profile)](PropertyGraph.md) — `requiresConcept`
@@ -38,7 +39,28 @@ A finite ordered collection allowing repeated values, equivalently the inductive
 - [Ordered template packs and structural expansion](TemplateParameterPack.md) — `specializationOf`
 - [Ordered substitution with immediate-context failure](TemplateSubstitution.md) — `requiresConcept`
 - [Finite prefix dictionary](Trie.md) — `requiresConcept`
+- [Uniquely decodable binary source code](UniquelyDecodableCode.md) — `requiresConcept`
 - [VHDL generic elaboration and static structural generation](VHDLGenericElaboration.md) — `requiresConcept`
+
+## Mathematical formulation
+
+Seq(A)=∐\_{n∈ℕ} A^{Fin(n)}, equivalently the inductive carrier nil | cons(a,s). Equality preserves length, order and repeated values; concatenation is finite list append.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Sequence (A : Type u) := List A
+```
+
+**Source:** [`Catalog.Sequence`](../lean/Catalog/DataStructures.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** List A, finite ordered values with duplicates allowed; structural list equality.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
 
 ## Interface and scope
 
@@ -442,7 +464,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "§21.15: List, nil, cons; API: append, length, head/tail, foldr",
     "sourceNote": "The finite inductive List presentation extends the existing Sequence entry without creating a duplicate concept.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "abbrev Sequence (A : Type u) := List A",
+    "formulationSource": "urn:csabs:source/local-lean-DataStructures",
+    "formulationLocator": "Catalog.Sequence",
+    "formulationScope": "model",
+    "leanModelMapping": "List A, finite ordered values with duplicates allowed; structural list equality.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "Seq(A)=∐_{n∈ℕ} A^{Fin(n)}, equivalently the inductive carrier nil | cons(a,s). Equality preserves length, order and repeated values; concatenation is finite list append."
   },
   {
     "id": "urn:csabs:operation/sequence-concatenation",

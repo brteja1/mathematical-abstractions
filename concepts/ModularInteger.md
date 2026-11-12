@@ -15,6 +15,29 @@ An integer residue class modulo an explicit integer modulus n≥2.
 ## Backlinks
 
 - [Finite field (Galois field)](FiniteField.md) — `relatedConcept`
+- [Learning with errors (finite modular distribution profile)](LWE.md) — `requiresConcept`
+- [q-ary kernel lattice](QaryLattice.md) — `requiresConcept`
+- [RSA modular-exponentiation primitives (two-prime profile)](RSA.md) — `requiresConcept`
+
+## Mathematical formulation
+
+For m≥2, the carrier is ℤ/mℤ with [a]=[b] ⇔ m divides a−b; [a]+[b]=[a+b] and [a][b]=[ab]. This model chooses no ordering on residue classes.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev ModularInteger (modulus : Nat) (_ : 2 ≤ modulus) := ZMod modulus
+```
+
+**Source:** [`Catalog.ModularInteger`](../lean/Catalog/Numeric.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib ZMod modulus with explicit proof modulus >= 2.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
 
 ## Interface and scope
 
@@ -171,7 +194,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "abbrev ModularInteger (modulus : Nat) (_ : 2 ≤ modulus) := ZMod modulus",
+    "formulationSource": "urn:csabs:source/local-lean-Numeric",
+    "formulationLocator": "Catalog.ModularInteger",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib ZMod modulus with explicit proof modulus >= 2.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For m≥2, the carrier is ℤ/mℤ with [a]=[b] ⇔ m divides a−b; [a]+[b]=[a+b] and [a][b]=[ab]. This model chooses no ordering on residue classes."
   },
   {
     "id": "urn:csabs:operation/ModularInteger-add",

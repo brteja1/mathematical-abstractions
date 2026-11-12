@@ -17,6 +17,29 @@ A deterministic nonce-based interface that encrypts a plaintext while authentica
 - [Galois/Counter Mode (96-bit IV, 128-bit tag profile)](GCM.md) — `requiresConcept`
 - [Galois/Counter Mode (96-bit IV, 128-bit tag profile)](GCM.md) — `specializationOf`
 
+## Mathematical formulation
+
+Given carriers K,N,A,P,W, encrypt:K×N×A×P→W and decrypt:K×N×A×W→Option(P) satisfy decrypt(k,n,a,encrypt(k,n,a,p))=some(p). This is functional correctness under matching nonce and associated data; security and length/encoding constraints are outside this interface.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure AEADInterface (K N A P W : Type) where
+  encrypt : K → N → A → P → W
+  decrypt : K → N → A → W → Option P
+  correct : ∀ k n a p, decrypt k n a (encrypt k n a p) = some p
+```
+
+**Source:** [`Catalog.AEADInterface`](../lean/Catalog/Cryptography.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Abstract deterministic seal/open and functional correctness as a structure hypothesis. Option.none denotes FAIL; some empty plaintext remains distinct.
+
+**Limits:** Length domains, byte encoding, nonce histories, failure-release behavior and computational security are not encoded. No registered claim witness.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Algorithm-specific admissible domains; deterministic seal/open; correctness and all-or-failure output.
@@ -229,7 +252,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Sections 1.2, 2.1, 2.2, 3.1 and 4",
     "sourceNote": "Restricts the general RFC interface to deterministic nonce-based algorithms; W includes the authentication tag and its encoding is algorithm-specific.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "structure AEADInterface (K N A P W : Type) where\n  encrypt : K → N → A → P → W\n  decrypt : K → N → A → W → Option P\n  correct : ∀ k n a p, decrypt k n a (encrypt k n a p) = some p",
+    "formulationSource": "urn:csabs:source/local-lean-Cryptography",
+    "formulationLocator": "Catalog.AEADInterface",
+    "formulationScope": "partial",
+    "leanModelMapping": "Abstract deterministic seal/open and functional correctness as a structure hypothesis. Option.none denotes FAIL; some empty plaintext remains distinct.",
+    "leanModelLimitations": "Length domains, byte encoding, nonce histories, failure-release behavior and computational security are not encoded. No registered claim witness.",
+    "mathematicalFormulation": "Given carriers K,N,A,P,W, encrypt:K×N×A×P→W and decrypt:K×N×A×W→Option(P) satisfy decrypt(k,n,a,encrypt(k,n,a,p))=some(p). This is functional correctness under matching nonce and associated data; security and length/encoding constraints are outside this interface."
   },
   {
     "id": "urn:csabs:operation/AEAD-seal",

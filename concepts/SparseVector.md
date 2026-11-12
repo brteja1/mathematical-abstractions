@@ -18,6 +18,26 @@ A vector indexed by I whose coordinates in a field F vanish outside a finite set
 
 - [Finitely supported probability distribution](FiniteDistribution.md) — `requiresConcept`
 
+## Mathematical formulation
+
+Sparse\_F(I)={v:I→F | {i | v(i)≠0} is finite}, with pointwise addition and scalar multiplication. I may be infinite and the zero vector has empty support.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev SparseVector (F : Type u) (I : Type v) [_root_.Field F] := I →₀ F
+```
+
+**Source:** [`Catalog.SparseVector`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** I→₀F with [Field F], using Mathlib finitely supported pointwise module operations. F^{(I)}={v:I→F | supp(v) finite}. I may be infinite, F is a field. Zero is implicit outside support; stored explicit zeros have no distinct mathematical identity. Exact scalar operations; no numerical pruning tolerance.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** supp(v)={i | v(i)≠0} is finite; (v+w)(i)=v(i)+w(i); (a·v)(i)=a·v(i); v=w ⇔ ∀i:I,v(i)=w(i)
@@ -333,7 +353,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/VectorSpace"
     ],
-    "specializationNote": "Instantiate VectorSpace with carrier I→₀F and pointwise addition/scalar multiplication over F; finite supports are preserved by union containment."
+    "specializationNote": "Instantiate VectorSpace with carrier I→₀F and pointwise addition/scalar multiplication over F; finite supports are preserved by union containment.",
+    "leanFormulation": "abbrev SparseVector (F : Type u) (I : Type v) [_root_.Field F] := I →₀ F",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.SparseVector",
+    "formulationScope": "model",
+    "leanModelMapping": "I→₀F with [Field F], using Mathlib finitely supported pointwise module operations. F^{(I)}={v:I→F | supp(v) finite}. I may be infinite, F is a field. Zero is implicit outside support; stored explicit zeros have no distinct mathematical identity. Exact scalar operations; no numerical pruning tolerance.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "Sparse_F(I)={v:I→F | {i | v(i)≠0} is finite}, with pointwise addition and scalar multiplication. I may be infinite and the zero vector has empty support."
   },
   {
     "id": "urn:csabs:operation/SparseVector-coordinate",

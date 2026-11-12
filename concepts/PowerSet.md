@@ -20,6 +20,26 @@ The set containing exactly all subsets of a given set.
 - [Set](Set.md) — `relatedConcept`
 - [Topological space (topology on a carrier)](TopologicalSpace.md) — `requiresConcept`
 
+## Mathematical formulation
+
+℘(A)={S | S⊆A}, represented by predicates A→Prop. Membership is predicate evaluation; S=T ⇔ ∀a, a∈S↔a∈T. Union, intersection and complement are pointwise logical operations.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev PowerSet (A : Type u) := _root_.Set A
+```
+
+**Source:** [`Catalog.PowerSet`](../lean/Catalog/Foundations.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Set A, the type of predicates on a fixed ambient carrier A; membership is predicate application.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: The set containing exactly all subsets of a given set. Governing rules: There is a set containing exactly the subsets of every given set.
@@ -186,7 +206,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "provenanceStatus": "legacy-source-missing",
     "relatedConcept": [
       "urn:csabs:concept/Set"
-    ]
+    ],
+    "leanFormulation": "abbrev PowerSet (A : Type u) := _root_.Set A",
+    "formulationSource": "urn:csabs:source/local-lean-Foundations",
+    "formulationLocator": "Catalog.PowerSet",
+    "formulationScope": "model",
+    "leanModelMapping": "Set A, the type of predicates on a fixed ambient carrier A; membership is predicate application.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "℘(A)={S | S⊆A}, represented by predicates A→Prop. Membership is predicate evaluation; S=T ⇔ ∀a, a∈S↔a∈T. Union, intersection and complement are pointwise logical operations."
   },
   {
     "id": "urn:csabs:operation/powerset-membership",

@@ -14,6 +14,34 @@ A finite controller reads and writes an unbounded one-sided tape, moving its hea
 
 **Related concepts:** [Deterministic finite automaton with total transition](DFA.md)
 
+## Mathematical formulation
+
+The selected deterministic one-tape interface has finite Q,Γ, distinct accept/reject states, blank∈Γ and total δ:(Q∖{accept,reject})×Γ→Q×Γ×{left,right}. Configurations are (q,h,t) with h∈ℕ,t:ℕ→Γ. At h=0 a left move stays at 0; halting states have no next step. Eventual-blank and recognition semantics are not fully encoded.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure TuringMachine (Q Γ : Type) [Fintype Q] [Fintype Γ] where
+  start : Q
+  accept : Q
+  reject : Q
+  distinct_halts : accept ≠ reject
+  blank : Γ
+  inputAlphabet : Finset Γ
+  blank_not_input : blank ∉ inputAlphabet
+  transition : {q : Q // q ≠ accept ∧ q ≠ reject} → Γ → Q × Γ × TapeMove
+```
+
+**Source:** [`Catalog.TuringMachine`](../lean/Catalog/Languages.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Finite control/tape alphabet and total nonhalting transition table, one-sided tape, distinguished halting states, input initialization and deterministic step.
+
+**Limits:** Finite controller, input initialization and deterministic stay-at-zero left-boundary step are modeled. The configuration type currently admits arbitrary tapes; the eventual-blank invariant, halting outcome and recognition/decidability semantics remain to be formalized.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining presentation: The finite control and alphabets determine a total table on nonhalting states. The finite transition table gives a unique next configuration outside the two halting states. Recognition means eventual acceptance; a decider halts on every input. Input is written once at the left end and the remaining tape is blank.
@@ -393,7 +421,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "reviewStatus": "editorial review of defining basis and selected laws, theorems and proof principles; no machine-checked proof",
     "verificationObligation": [
       "Finite Q,Γ,Σ; Σ⊆Γ∖{blank}; qacc≠qrej and q₀,qacc,qrej∈Q. Tape cells indexed by ℕ are initially the input followed by blanks. Exact symbolic computation has no finite-memory overflow; runtime and tape use are unbounded. States and symbols use identity equality; machine identity differs from accepted-language equality."
-    ]
+    ],
+    "leanFormulation": "structure TuringMachine (Q Γ : Type) [Fintype Q] [Fintype Γ] where\n  start : Q\n  accept : Q\n  reject : Q\n  distinct_halts : accept ≠ reject\n  blank : Γ\n  inputAlphabet : Finset Γ\n  blank_not_input : blank ∉ inputAlphabet\n  transition : {q : Q // q ≠ accept ∧ q ≠ reject} → Γ → Q × Γ × TapeMove",
+    "formulationSource": "urn:csabs:source/local-lean-Languages",
+    "formulationLocator": "Catalog.TuringMachine",
+    "formulationScope": "partial",
+    "leanModelMapping": "Finite control/tape alphabet and total nonhalting transition table, one-sided tape, distinguished halting states, input initialization and deterministic step.",
+    "leanModelLimitations": "Finite controller, input initialization and deterministic stay-at-zero left-boundary step are modeled. The configuration type currently admits arbitrary tapes; the eventual-blank invariant, halting outcome and recognition/decidability semantics remain to be formalized.",
+    "mathematicalFormulation": "The selected deterministic one-tape interface has finite Q,Γ, distinct accept/reject states, blank∈Γ and total δ:(Q∖{accept,reject})×Γ→Q×Γ×{left,right}. Configurations are (q,h,t) with h∈ℕ,t:ℕ→Γ. At h=0 a left move stays at 0; halting states have no next step. Eventual-blank and recognition semantics are not fully encoded."
   },
   {
     "id": "urn:csabs:operation/TuringMachine-step",

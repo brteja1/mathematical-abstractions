@@ -12,6 +12,28 @@ A join-semilattice state space with bottom and inflationary local updates, merge
 
 **Prerequisites:** [Join semilattice](JoinSemilattice.md), [Partial Order](PartialOrder.md)
 
+## Mathematical formulation
+
+For a join semilattice S with bottom, merge(s,t)=s⊔t and each update u\_o:S→S satisfies s≤u\_o(s). The structure imposes no commutativity on updates and no network delivery or liveness condition.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure StateBasedCRDT (S : Type u) (Op : Type v) [SemilatticeSup S] [OrderBot S] where
+  update : Op → S → S
+  inflationary : ∀ op s, s ≤ update op s
+```
+
+**Source:** [`Catalog.StateBasedCRDT`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** (S,≤,⊔,⊥,update). Pure state-based algebra only. Updates need not commute or be order preserving beyond inflation. Eventual convergence requires delivery assumptions outside this record; no loss-free transport, liveness or Byzantine tolerance is asserted.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** (S,≤,⊔) is a join semilattice and ∀s,⊥≤s; ∀o,s, s≤update(o,s); merge(s,t)=s⊔t
@@ -202,6 +224,33 @@ A join-semilattice state space with bottom and inflationary local updates, merge
 
 **provenanceKind:** derived
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {S : Type} [SemilatticeSup S] (x : S), Catalog.StateBasedCRDT.merge x x = x
+```
+
+**Source:** [`Catalog.CoreDataProofs.crdt_merge_idempotent`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** merge is defined as ⊔. This proof uses only the join-semilattice part of the CRDT assumptions; bottom and inflationary updates are unnecessary for this state equality, and no network convergence is asserted.
+
+**Limits:** Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/StateBasedCRDT-merge-definition": "Interpreted premise: merge(s,t)=s⊔t. merge is defined as ⊔. This proof uses only the join-semilattice part of the CRDT assumptions; bottom and inflationary updates are unnecessary for this state equality, and no network convergence is asserted.",
+  "urn:csabs:axiom/StateBasedCRDT-state-order": "Interpreted premise: (S,≤,⊔) is a join semilattice and ∀s,⊥≤s. merge is defined as ⊔. This proof uses only the join-semilattice part of the CRDT assumptions; bottom and inflationary updates are unnecessary for this state equality, and no network convergence is asserted."
+}
+```
+
 ## Theorems
 
 <a id="node-urn-csabs-theorem-StateBasedCRDT-merge-commutative"></a>
@@ -296,7 +345,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Synchronization Model, pp. 6–7: state-based join semilattice, inflationary update and join merge; SemilatticeSup: PartialOrder, le_sup_left, le_sup_right, sup_le",
     "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "structure StateBasedCRDT (S : Type u) (Op : Type v) [SemilatticeSup S] [OrderBot S] where\n  update : Op → S → S\n  inflationary : ∀ op s, s ≤ update op s",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.StateBasedCRDT",
+    "formulationScope": "model",
+    "leanModelMapping": "(S,≤,⊔,⊥,update). Pure state-based algebra only. Updates need not commute or be order preserving beyond inflation. Eventual convergence requires delivery assumptions outside this record; no loss-free transport, liveness or Byzantine tolerance is asserted.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "For a join semilattice S with bottom, merge(s,t)=s⊔t and each update u_o:S→S satisfies s≤u_o(s). The structure imposes no commutativity on updates and no network delivery or liveness condition."
   },
   {
     "id": "urn:csabs:operation/StateBasedCRDT-initial",
@@ -446,7 +502,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Synchronization Model, pp. 6–7: state-based join semilattice, inflationary update and join merge; SemilatticeSup: PartialOrder, le_sup_left, le_sup_right, sup_le",
     "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
-    "provenanceKind": "derived"
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {S : Type} [SemilatticeSup S] (x : S), Catalog.StateBasedCRDT.merge x x = x",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.CoreDataProofs.crdt_merge_idempotent",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "merge is defined as ⊔. This proof uses only the join-semilattice part of the CRDT assumptions; bottom and inflationary updates are unnecessary for this state equality, and no network convergence is asserted.",
+    "leanModelLimitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/StateBasedCRDT-merge-definition\": \"Interpreted premise: merge(s,t)=s⊔t. merge is defined as ⊔. This proof uses only the join-semilattice part of the CRDT assumptions; bottom and inflationary updates are unnecessary for this state equality, and no network convergence is asserted.\", \"urn:csabs:axiom/StateBasedCRDT-state-order\": \"Interpreted premise: (S,≤,⊔) is a join semilattice and ∀s,⊥≤s. merge is defined as ⊔. This proof uses only the join-semilattice part of the CRDT assumptions; bottom and inflationary updates are unnecessary for this state equality, and no network convergence is asserted.\"}"
   },
   {
     "id": "urn:csabs:theorem/StateBasedCRDT-merge-commutative",

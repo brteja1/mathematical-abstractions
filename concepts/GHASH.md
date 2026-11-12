@@ -16,6 +16,28 @@ The keyed polynomial accumulation over 128-bit blocks used inside GCM, with a fi
 
 - [Galois/Counter Mode (96-bit IV, 128-bit tag profile)](GCM.md) — `requiresConcept`
 
+## Mathematical formulation
+
+The partial interface stores H∈{0,1}^{128} and a supplied multiply:B×B→B. For a nonempty block list X₁,…,X\_m, Y₀=0 and Y\_i=multiply(Y\_{i−1} XOR X\_i,H). Correspondence of multiply to the NIST binary-field product is not encoded.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure GHASHInterface where
+  subkey : CryptoBits 128
+  multiply : CryptoBits 128 → CryptoBits 128 → CryptoBits 128
+```
+
+**Source:** [`Catalog.GHASHInterface`](../lean/Catalog/Cryptography.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** 128-bit subkey, parameterized multiplication, and XOR Horner fold over an explicit head plus tail (nonempty sequence).
+
+**Limits:** Multiplication has no field-law or polynomial-encoding constraint. No verified NIST multiplication, polynomial theorem or security bound.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Explicit field multiplication encoding and Horner recurrence.
@@ -228,7 +250,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Sections 6.3–6.4, Algorithms 1–2",
     "sourceNote": "Separates GHASH from the complete GCM authentication encoding. GHASH itself is neither an unkeyed cryptographic hash nor a standalone authenticated-encryption scheme.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "structure GHASHInterface where\n  subkey : CryptoBits 128\n  multiply : CryptoBits 128 → CryptoBits 128 → CryptoBits 128",
+    "formulationSource": "urn:csabs:source/local-lean-Cryptography",
+    "formulationLocator": "Catalog.GHASHInterface",
+    "formulationScope": "partial",
+    "leanModelMapping": "128-bit subkey, parameterized multiplication, and XOR Horner fold over an explicit head plus tail (nonempty sequence).",
+    "leanModelLimitations": "Multiplication has no field-law or polynomial-encoding constraint. No verified NIST multiplication, polynomial theorem or security bound.",
+    "mathematicalFormulation": "The partial interface stores H∈{0,1}^{128} and a supplied multiply:B×B→B. For a nonempty block list X₁,…,X_m, Y₀=0 and Y_i=multiply(Y_{i−1} XOR X_i,H). Correspondence of multiply to the NIST binary-field product is not encoded."
   },
   {
     "id": "urn:csabs:operation/GHASH-multiply",

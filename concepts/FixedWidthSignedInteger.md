@@ -18,6 +18,27 @@ A bounded signed integer with two’s-complement value range, modeled here by ex
 - [Checked signed-integer constant-evaluation fragment](CompileTimeEvaluation.md) — `requiresConcept`
 - [Mathematical integers](Integer.md) — `relatedConcept`
 
+## Mathematical formulation
+
+For w>0, I\_w={z∈ℤ | −2^{w−1}≤z<2^{w−1}}. Addition returns some(x+y) exactly when x+y∈I\_w, otherwise none. Division uses truncation toward zero and is undefined for zero divisor or an unrepresentable quotient.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev FixedWidthSignedInteger (width : Nat) (_ : 0 < width) :=
+  {z : Int // -(2 ^ (width - 1) : Int) ≤ z ∧ z < (2 ^ (width - 1) : Int)}
+```
+
+**Source:** [`Catalog.FixedWidthSignedInteger`](../lean/Catalog/Numeric.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Positive-width twos-complement Int range; signedAdd and truncating signedDiv return Option, excluding zero divisor and overflow.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A bounded signed integer type with a specified value range and language-defined overflow, conversion, and representation semantics. Governing rules: The carrier range and overflow behavior are fixed by a width and a named arithmetic policy. The selected model has two's-complement range and exact arithmetic only when representable, leaving overflow undefined in the abstract partial operation. Signed division truncates toward zero when its exact integer quotient is in range.
@@ -229,7 +250,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "abbrev FixedWidthSignedInteger (width : Nat) (_ : 0 < width) :=\n  {z : Int // -(2 ^ (width - 1) : Int) ≤ z ∧ z < (2 ^ (width - 1) : Int)}",
+    "formulationSource": "urn:csabs:source/local-lean-Numeric",
+    "formulationLocator": "Catalog.FixedWidthSignedInteger",
+    "formulationScope": "model",
+    "leanModelMapping": "Positive-width twos-complement Int range; signedAdd and truncating signedDiv return Option, excluding zero divisor and overflow.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For w>0, I_w={z∈ℤ | −2^{w−1}≤z<2^{w−1}}. Addition returns some(x+y) exactly when x+y∈I_w, otherwise none. Division uses truncation toward zero and is undefined for zero divisor or an unrepresentable quotient."
   },
   {
     "id": "urn:csabs:operation/signed-add",

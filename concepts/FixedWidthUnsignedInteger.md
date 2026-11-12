@@ -17,6 +17,26 @@ A fixed-width unsigned integer with canonical values 0 through 2^w−1 and wrapp
 - [Fixed-width bit vector](BitVector.md) — `relatedConcept`
 - [Mathematical integers](Integer.md) — `relatedConcept`
 
+## Mathematical formulation
+
+For w>0, U\_w={0,…,2^w−1}. The selected BitVec interpretation uses (x+y) mod 2^w and (xy) mod 2^w. Equality is value equality at fixed width.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev FixedWidthUnsignedInteger (width : Nat) (_ : 0 < width) := BitVec width
+```
+
+**Source:** [`Catalog.FixedWidthUnsignedInteger`](../lean/Catalog/Numeric.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Lean BitVec width with explicit positive-width proof; modulo 2^width arithmetic and unsigned natural quotient/remainder. Zero-divisor behavior of totalized library operations is outside catalog definedness.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A w-bit unsigned numeric type whose values are residues represented by integers from zero through 2^w−1; arithmetic semantics must specify wrapping or another overflow policy. Governing rules: The carrier consists of exactly w-bit unsigned values with wrapping arithmetic modulo 2^w in this abstract model. This entry fixes wrapping semantics and canonical unsigned representatives. Unsigned quotient and remainder are natural division, not modular inverse.
@@ -246,7 +266,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "abbrev FixedWidthUnsignedInteger (width : Nat) (_ : 0 < width) := BitVec width",
+    "formulationSource": "urn:csabs:source/local-lean-Numeric",
+    "formulationLocator": "Catalog.FixedWidthUnsignedInteger",
+    "formulationScope": "model",
+    "leanModelMapping": "Lean BitVec width with explicit positive-width proof; modulo 2^width arithmetic and unsigned natural quotient/remainder. Zero-divisor behavior of totalized library operations is outside catalog definedness.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For w>0, U_w={0,…,2^w−1}. The selected BitVec interpretation uses (x+y) mod 2^w and (xy) mod 2^w. Equality is value equality at fixed width."
   },
   {
     "id": "urn:csabs:operation/unsigned-add",

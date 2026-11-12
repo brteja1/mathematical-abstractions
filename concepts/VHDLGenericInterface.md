@@ -20,6 +20,29 @@ Finite VHDL generic interfaces with constant/type/subprogram/package formals and
 - [Finite kinded generic parameter signature](GenericSignature.md) — `relatedConcept`
 - [VHDL generic elaboration and static structural generation](VHDLGenericElaboration.md) — `requiresConcept`
 
+## Mathematical formulation
+
+A VHDL generic interface is a distinct-name signature with kinds {constant,type,subprogram,package}, compatibility predicates and default permissions. Association normalization maps actuals to formal indices, rejects duplicates/unknown names/out-of-range positions, and forbids positional associations after a named association. Language conformance remains a supplied predicate.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure VHDLGenericInterface (Name Actual : Type u) where
+  signature : GenericSignature Name VHDLGenericKind Actual
+  compatible : Nat → Actual → Prop
+  allowedDefault : Nat → Prop
+```
+
+**Source:** [`Catalog.Generics.VHDLGenericInterface`](../lean/Catalog/GenericProgramming.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Constant/type/subprogram/package kinds; finite distinct signature, compatibility/default obligations and whole-formal positional-prefix/named association normalizer. Unknown/repeated targets and late positional associations are rejected.
+
+**Limits:** Selected whole-formal interface only. Subtype/type-category/profile/package matching, default expressions and anonymous generic type associations require language adapters; syntax normalization does not execute elaboration.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining rules: A generic interface is a finite list of constant, type, subprogram or package formals, with their language-specific declarations and compatibility requirements. A positional actual associates with the same-index formal; named actuals associate by formal identity in any order. Once a named association occurs, later positional associations are rejected; unknown/duplicate whole formals are rejected. Omission/open is resolved only by the applicable formal-kind default rules and environment. No missing mandatory actual is silently supplied; normalization precedes declaration-order elaboration.
@@ -290,7 +313,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "IEEE 1076-2019 §§6.5.2–6.5.7, especially6.5.6.1–2,6.5.7.1–2;14.3.3.1",
     "sourceNote": "Extracts whole-formal matching and kind-specific compatibility/default obligations, not the complete association grammar or all VHDL-2019 type-category rules.",
     "provenanceKind": "adapted",
-    "axiomBasis": "Selected defining rules: A generic interface is a finite list of constant, type, subprogram or package formals, with their language-specific declarations and compatibility requirements. A positional actual associates with the same-index formal; named actuals associate by formal identity in any order. Once a named association occurs, later positional associations are rejected; unknown/duplicate whole formals are rejected. Omission/open is resolved only by the applicable formal-kind default rules and environment. No missing mandatory actual is silently supplied; normalization precedes declaration-order elaboration."
+    "axiomBasis": "Selected defining rules: A generic interface is a finite list of constant, type, subprogram or package formals, with their language-specific declarations and compatibility requirements. A positional actual associates with the same-index formal; named actuals associate by formal identity in any order. Once a named association occurs, later positional associations are rejected; unknown/duplicate whole formals are rejected. Omission/open is resolved only by the applicable formal-kind default rules and environment. No missing mandatory actual is silently supplied; normalization precedes declaration-order elaboration.",
+    "leanFormulation": "structure VHDLGenericInterface (Name Actual : Type u) where\n  signature : GenericSignature Name VHDLGenericKind Actual\n  compatible : Nat → Actual → Prop\n  allowedDefault : Nat → Prop",
+    "formulationSource": "urn:csabs:source/local-lean-GenericProgramming",
+    "formulationLocator": "Catalog.Generics.VHDLGenericInterface",
+    "formulationScope": "model",
+    "leanModelMapping": "Constant/type/subprogram/package kinds; finite distinct signature, compatibility/default obligations and whole-formal positional-prefix/named association normalizer. Unknown/repeated targets and late positional associations are rejected.",
+    "leanModelLimitations": "Selected whole-formal interface only. Subtype/type-category/profile/package matching, default expressions and anonymous generic type associations require language adapters; syntax normalization does not execute elaboration.",
+    "mathematicalFormulation": "A VHDL generic interface is a distinct-name signature with kinds {constant,type,subprogram,package}, compatibility predicates and default permissions. Association normalization maps actuals to formal indices, rejects duplicates/unknown names/out-of-range positions, and forbids positional associations after a named association. Language conformance remains a supplied predicate."
   },
   {
     "id": "urn:csabs:operation/VHDLGenericInterface-normalize",

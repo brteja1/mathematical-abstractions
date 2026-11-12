@@ -14,6 +14,26 @@ A finite dictionary keyed by finite words, with an explicit whole-key prefix sel
 
 **Specializes:** [Map](Map.md)
 
+## Mathematical formulation
+
+The extensional dictionary carrier is a finite partial map A\*⇀V. prefixed(t,p) retains exactly keys k for which ∃s,k=p++s, preserving full keys and their values; no particular node representation is selected.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Trie (A : Type u) (V : Type v) := Catalog.Map (List A) V
+```
+
+**Source:** [`Catalog.Trie`](../lean/Catalog/StructuredData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Trie(A,V)=Map(Seq(A),V). Observable finite-map/prefix interface. Empty word can be a key, and a word can be both stored and a prefix of another. Equality compares key lookups, not radix-node shape or compression; prefix selection retains full keys.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** The carrier is a finite partial map on Seq(A), with extensional lookup equality; lookup(put(t,k,v),q)=Some(v) if q=k, else lookup(t,q); lookup(prefix(t,p),k)=lookup(t,k) if ∃s,k=p++s, else None
@@ -337,7 +357,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/Map"
     ],
     "specializationNote": "Instantiate Map at key carrier Seq(A) and value carrier V; finite-domain lookup/put are unchanged. Prefix is a derived query; no node-layout observation is added.",
-    "basisInstantiation": "Map rules apply explicitly at K=Seq(A), with put=set, and the same lookup. Its only added defining rule is prefix selection. Reused rules retain stable IDs and direct applicability links."
+    "basisInstantiation": "Map rules apply explicitly at K=Seq(A), with put=set, and the same lookup. Its only added defining rule is prefix selection. Reused rules retain stable IDs and direct applicability links.",
+    "leanFormulation": "abbrev Trie (A : Type u) (V : Type v) := Catalog.Map (List A) V",
+    "formulationSource": "urn:csabs:source/local-lean-StructuredData",
+    "formulationLocator": "Catalog.Trie",
+    "formulationScope": "model",
+    "leanModelMapping": "Trie(A,V)=Map(Seq(A),V). Observable finite-map/prefix interface. Empty word can be a key, and a word can be both stored and a prefix of another. Equality compares key lookups, not radix-node shape or compression; prefix selection retains full keys.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "The extensional dictionary carrier is a finite partial map A*⇀V. prefixed(t,p) retains exactly keys k for which ∃s,k=p++s, preserving full keys and their values; no particular node representation is selected."
   },
   {
     "id": "urn:csabs:operation/Trie-lookup",

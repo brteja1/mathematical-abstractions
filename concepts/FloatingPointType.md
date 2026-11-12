@@ -23,6 +23,30 @@ A finite numeric format with rounded operations and format-dependent exceptional
 - [IEEE 754 binary64](Binary64.md) — `requiresConcept`
 - [IEEE 754 binary64](Binary64.md) — `specializationOf`
 
+## Mathematical formulation
+
+For a supplied format f, the interface consists of rounding mode r, round:Mode×ℝ→Value(f)×Flags and run:Mode×Op×List(Value(f))→Value(f)×Flags. Value(f) distinguishes signed zeros, representable nonzero finite reals, signed infinities and NaN payloads. No correct-rounding or exception law constrains the supplied round/run functions yet.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure FloatingPointType (format : FloatFormat) where
+  rounding : RoundingMode
+  round : RoundingMode → ℝ → FloatValue format × FloatFlags
+  run : RoundingMode → FloatOperation → List (FloatValue format) →
+    FloatValue format × FloatFlags
+```
+
+**Source:** [`Catalog.FloatingPointType`](../lean/Catalog/Numeric.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Explicit format, representable finite values, signed zero, infinities, NaNs, rounding modes and result/flag execution interface.
+
+**Limits:** No correctly-rounded arithmetic or exception/NaN payload specification has been proved; run and round are unconstrained client parameters. Not a complete IEEE model. Goldberg error metrics, guarded evaluation, sticky-flag union rule and numerical results are catalog-only; this model supplies no witnesses for them or the square-root interface.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A finite numeric format with rounded operations and format-dependent exceptional values; it approximates real arithmetic and does not obey all real-number algebraic laws. Governing rules: The carrier and operations are determined by a specified radix, precision, exponent range, subnormal policy, rounding mode, and exceptional-value semantics. Numeric computation uses a specified format, rounding mode, operation, and exceptional-value/flag convention. For a finite exact result in the finite representable range, round returns a representable value according to the selected mode. IEEE-style operations classify invalid, divide-by-zero, overflow, underflow, and inexact; flags and result behavior are part of the environment. The radix grid and error-measure definitions below extend this presentation; the sticky-flags rule applies only to a default nontrapping environment.
@@ -928,7 +952,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
     "sourceLocator": "Floating-point Formats; Relative Error and Ulps; The IEEE Standard; Systems Aspects",
     "sourceNote": "Extends the existing format abstraction with explicit finite-value grids, error measures and conditional numerical results. The historical reprint does not document binary16 or binary128 parameters.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "structure FloatingPointType (format : FloatFormat) where\n  rounding : RoundingMode\n  round : RoundingMode → ℝ → FloatValue format × FloatFlags\n  run : RoundingMode → FloatOperation → List (FloatValue format) →\n    FloatValue format × FloatFlags",
+    "formulationSource": "urn:csabs:source/local-lean-Numeric",
+    "formulationLocator": "Catalog.FloatingPointType",
+    "formulationScope": "partial",
+    "leanModelMapping": "Explicit format, representable finite values, signed zero, infinities, NaNs, rounding modes and result/flag execution interface.",
+    "leanModelLimitations": "No correctly-rounded arithmetic or exception/NaN payload specification has been proved; run and round are unconstrained client parameters. Not a complete IEEE model. Goldberg error metrics, guarded evaluation, sticky-flag union rule and numerical results are catalog-only; this model supplies no witnesses for them or the square-root interface.",
+    "mathematicalFormulation": "For a supplied format f, the interface consists of rounding mode r, round:Mode×ℝ→Value(f)×Flags and run:Mode×Op×List(Value(f))→Value(f)×Flags. Value(f) distinguishes signed zeros, representable nonzero finite reals, signed infinities and NaN payloads. No correct-rounding or exception law constrains the supplied round/run functions yet."
   },
   {
     "id": "urn:csabs:operation/fp-add",

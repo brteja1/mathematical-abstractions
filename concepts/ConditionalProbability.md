@@ -15,7 +15,32 @@ Event probability conditioned on a measurable event B of strictly positive proba
 ## Backlinks
 
 - [Bayesian network (finite discrete variables)](BayesianNetwork.md) — `requiresConcept`
+- [Conditional entropy (finite discrete profile)](ConditionalEntropy.md) — `requiresConcept`
 - [Markov chain (finite-state, discrete-time, time-homogeneous)](MarkovChain.md) — `requiresConcept`
+
+## Mathematical formulation
+
+For measurable E,G with P(G)>0, P(E|G)=P(E∩G)/P(G). The Lean arguments carry measurability and positive-denominator proofs; conditioning on null events is outside this interface.
+
+**Lean formulation** (in its source module context):
+
+```lean
+noncomputable def ConditionalProbability {A : Type u} [_root_.MeasurableSpace A]
+    (P : ProbabilitySpace A) (event givenEvent : _root_.Set A)
+    (_ : MeasurableSet event) (_ : MeasurableSet givenEvent)
+    (_ : 0 < P.val givenEvent) : ℝ :=
+  (P.val (event ∩ givenEvent)).toReal / (P.val givenEvent).toReal
+```
+
+**Source:** [`Catalog.ConditionalProbability`](../lean/Catalog/Probability.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Real ratio of measurable intersection/event probabilities with explicit positive-denominator precondition.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
 
 ## Interface and scope
 
@@ -195,7 +220,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "§3.4 Conditional distributions; §3.6 Bayes’ rule (adapted to events)",
     "sourceNote": "Interface adapted to the catalog notation and explicitly restricted to the stated scope.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "noncomputable def ConditionalProbability {A : Type u} [_root_.MeasurableSpace A]\n    (P : ProbabilitySpace A) (event givenEvent : _root_.Set A)\n    (_ : MeasurableSet event) (_ : MeasurableSet givenEvent)\n    (_ : 0 < P.val givenEvent) : ℝ :=\n  (P.val (event ∩ givenEvent)).toReal / (P.val givenEvent).toReal",
+    "formulationSource": "urn:csabs:source/local-lean-Probability",
+    "formulationLocator": "Catalog.ConditionalProbability",
+    "formulationScope": "model",
+    "leanModelMapping": "Real ratio of measurable intersection/event probabilities with explicit positive-denominator precondition.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For measurable E,G with P(G)>0, P(E|G)=P(E∩G)/P(G). The Lean arguments carry measurability and positive-denominator proofs; conditioning on null events is outside this interface."
   },
   {
     "id": "urn:csabs:operation/ConditionalProbability-condition",

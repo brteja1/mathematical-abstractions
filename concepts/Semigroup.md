@@ -15,6 +15,27 @@ A set with a closed associative binary operation.
 - [Monoid](Monoid.md) — `requiresConcept`
 - [Monoid](Monoid.md) — `specializationOf`
 
+## Mathematical formulation
+
+A semigroup is (A,·) with A≠∅, ·:A×A→A, and ∀a,b,c∈A, (a·b)·c=a·(b·c). No identity or inverse operation is required.
+
+**Lean formulation** (in its source module context):
+
+```lean
+class Semigroup (A : Type u) extends _root_.Semigroup A where
+  carrier_nonempty : Nonempty A
+```
+
+**Source:** [`Catalog.Semigroup`](../lean/Catalog/Algebra.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib Semigroup plus explicit Nonempty A; multiplication total, associative and not necessarily commutative.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Nonempty carrier with closed binary multiplication; associativity. Multiplication need not commute.
@@ -151,6 +172,35 @@ No entries recorded. This does not assert absence of mathematical facts.
 
 **provenanceStatus:** legacy-source-missing
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} [Catalog.Semigroup A] (a b c d : A), ((a * b) * c) * d = (a * b) * (c * d) ∧ (a * b) * (c * d) = a * (b * (c * d))
+```
+
+**Source:** [`Catalog.Proofs.semigroup_four_factor`](../lean/Catalog/Witnesses.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Mathlib Semigroup plus explicit Nonempty A; multiplication total, associative and not necessarily commutative.
+
+**Limits:** Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Semigroup-associative": "Explicit interface premise: (x·y)·z=x·(y·z); interpreted by Catalog.Semigroup. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Semigroup-closed-carrier": "Explicit interface premise: S≠∅; ·:S×S→S; interpreted by Catalog.Semigroup. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/semigroup-associativity": "Explicit interface premise: ∀x,y,z∈S: (x·y)·z=x·(y·z); interpreted by Catalog.Semigroup. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/semigroup-closure": "Explicit interface premise: ∀x,y∈S: x·y∈S; interpreted by Catalog.Semigroup. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+}
+```
+
 ## Concept provenance
 
 - [Mathlib group definitions](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Group/Defs.html); sourceRole: reference-for-selected-basis
@@ -198,7 +248,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
     "source": [
       "urn:csabs:source/mathlib-group"
-    ]
+    ],
+    "leanFormulation": "class Semigroup (A : Type u) extends _root_.Semigroup A where\n  carrier_nonempty : Nonempty A",
+    "formulationSource": "urn:csabs:source/local-lean-Algebra",
+    "formulationLocator": "Catalog.Semigroup",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib Semigroup plus explicit Nonempty A; multiplication total, associative and not necessarily commutative.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A semigroup is (A,·) with A≠∅, ·:A×A→A, and ∀a,b,c∈A, (a·b)·c=a·(b·c). No identity or inverse operation is required."
   },
   {
     "id": "urn:csabs:operation/semigroup-product",
@@ -297,7 +354,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "reviewStatus": "editorial-summary; not machine-proved",
     "notationLanguage": "informal mathematical Unicode",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "∀ {A : Type u} [Catalog.Semigroup A] (a b c d : A), ((a * b) * c) * d = (a * b) * (c * d) ∧ (a * b) * (c * d) = a * (b * (c * d))",
+    "formulationSource": "urn:csabs:source/local-lean-Witnesses",
+    "formulationLocator": "Catalog.Proofs.semigroup_four_factor",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Mathlib Semigroup plus explicit Nonempty A; multiplication total, associative and not necessarily commutative.",
+    "leanModelLimitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Semigroup-associative\": \"Explicit interface premise: (x·y)·z=x·(y·z); interpreted by Catalog.Semigroup. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Semigroup-closed-carrier\": \"Explicit interface premise: S≠∅; ·:S×S→S; interpreted by Catalog.Semigroup. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/semigroup-associativity\": \"Explicit interface premise: ∀x,y,z∈S: (x·y)·z=x·(y·z); interpreted by Catalog.Semigroup. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/semigroup-closure\": \"Explicit interface premise: ∀x,y∈S: x·y∈S; interpreted by Catalog.Semigroup. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\"}"
   }
 ]
 ```

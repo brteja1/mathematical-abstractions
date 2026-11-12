@@ -28,6 +28,26 @@ An arbitrary set of finite words over a fixed finite alphabet. The set of words 
 - [Strong finite partial-trace equivalence](TraceEquivalence.md) — `relatedConcept`
 - [Deterministic one-tape Turing machine](TuringMachine.md) — `requiresConcept`
 
+## Mathematical formulation
+
+Over alphabet A, a formal language is L⊆A\*, where A\*=List(A) contains the empty word ε. Union, intersection and concatenation use ordinary word equality and list append.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev FormalLanguage (A : Type u) := Language A
+```
+
+**Source:** [`Catalog.FormalLanguage`](../lean/Catalog/Languages.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib Language A = Set (List A), finite words including empty word.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining presentation: Languages are subsets of finite words. Concatenation and star use word concatenation and include the zero-factor word. Language union has ordinary word membership semantics.
@@ -434,7 +454,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/Set"
     ],
-    "specializationNote": "Use Σ* as the parent element universe. Language union/intersection/difference and subset have set meanings; concatenation and star are additional operations on sets of words, not sequence concatenation on individual words."
+    "specializationNote": "Use Σ* as the parent element universe. Language union/intersection/difference and subset have set meanings; concatenation and star are additional operations on sets of words, not sequence concatenation on individual words.",
+    "leanFormulation": "abbrev FormalLanguage (A : Type u) := Language A",
+    "formulationSource": "urn:csabs:source/local-lean-Languages",
+    "formulationLocator": "Catalog.FormalLanguage",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib Language A = Set (List A), finite words including empty word.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "Over alphabet A, a formal language is L⊆A*, where A*=List(A) contains the empty word ε. Union, intersection and concatenation use ordinary word equality and list append."
   },
   {
     "id": "urn:csabs:operation/FormalLanguage-contains",

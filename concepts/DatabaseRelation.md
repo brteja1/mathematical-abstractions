@@ -21,6 +21,26 @@ A finite set of admissible named tuples over one schema; row order and duplicate
 - [Finite database relation under bag semantics](BagRelation.md) — `requiresConcept`
 - [Functional dependency on a relational schema](FunctionalDependency.md) — `requiresConcept`
 
+## Mathematical formulation
+
+For schema (Attr,D), Tuple=Π\_a D(a) and Relation=FinSet(Tuple). Tuple equality is pointwise; duplicate rows collapse and a relation may be empty.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev DatabaseRelation (s : RelationalSchema) := Finset (NamedTuple s)
+```
+
+**Source:** [`Catalog.DatabaseRelation`](../lean/Catalog/Database.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Finset of dependent named tuples, set semantics and extensional equality; projection/join algorithms remain to be exposed.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining presentation: Relations are finite tuple sets with extensional equality. Projection is the set image of tuple restriction. Union, selection and natural join are set operations on compatible tuple carriers.
@@ -429,7 +449,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/FiniteSet"
     ],
-    "specializationNote": "Instantiate the parent element carrier A as Tup(Σ); relation values are finite subsets of that carrier. Set operations act only on relations with the same schema; projection changes the schema to its restriction."
+    "specializationNote": "Instantiate the parent element carrier A as Tup(Σ); relation values are finite subsets of that carrier. Set operations act only on relations with the same schema; projection changes the schema to its restriction.",
+    "leanFormulation": "abbrev DatabaseRelation (s : RelationalSchema) := Finset (NamedTuple s)",
+    "formulationSource": "urn:csabs:source/local-lean-Database",
+    "formulationLocator": "Catalog.DatabaseRelation",
+    "formulationScope": "model",
+    "leanModelMapping": "Finset of dependent named tuples, set semantics and extensional equality; projection/join algorithms remain to be exposed.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For schema (Attr,D), Tuple=Π_a D(a) and Relation=FinSet(Tuple). Tuple equality is pointwise; duplicate rows collapse and a relation may be empty."
   },
   {
     "id": "urn:csabs:operation/DatabaseRelation-empty",

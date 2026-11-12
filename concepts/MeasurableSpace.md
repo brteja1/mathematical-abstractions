@@ -19,6 +19,26 @@ A carrier X equipped with a family Σ of measurable subsets closed under complem
 - [Measure space (nonnegative countably additive measure)](MeasureSpace.md) — `specializationOf`
 - [Topological space (topology on a carrier)](TopologicalSpace.md) — `relatedConcept`
 
+## Mathematical formulation
+
+A measurable space is (Ω,Σ), Σ⊆℘(Ω), with ∅∈Σ, A∈Σ⇒Ω∖A∈Σ, and (∀n,A\_n∈Σ)⇒⋃\_{n∈ℕ}A\_n∈Σ. No measure is included in this structure.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev MeasurableSpace (A : Type u) := _root_.MeasurableSpace A
+```
+
+**Source:** [`Catalog.MeasurableSpace`](../lean/Catalog/Probability.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib sigma-algebra on explicit carrier; empty/complement/countable-union closure.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** A sigma-algebra contains ∅, is closed under complement in X and under unions indexed by ℕ.
@@ -240,7 +260,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "§2B, Definitions 2.23 and 2.26; result 2.25",
     "sourceNote": "Interface adapted to the catalog notation and explicitly restricted to the stated scope.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "abbrev MeasurableSpace (A : Type u) := _root_.MeasurableSpace A",
+    "formulationSource": "urn:csabs:source/local-lean-Probability",
+    "formulationLocator": "Catalog.MeasurableSpace",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib sigma-algebra on explicit carrier; empty/complement/countable-union closure.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A measurable space is (Ω,Σ), Σ⊆℘(Ω), with ∅∈Σ, A∈Σ⇒Ω∖A∈Σ, and (∀n,A_n∈Σ)⇒⋃_{n∈ℕ}A_n∈Σ. No measure is included in this structure."
   },
   {
     "id": "urn:csabs:operation/MeasurableSpace-complement",

@@ -79,6 +79,7 @@ def render(nodes, index):
         lines += ['## Backlinks', '']
         lines += [f"- {link(n['id'], index)} — `{field}`" for n, field in sorted(incoming, key=lambda pair:(pair[0]['shortForm'],pair[1]))]
         lines += ['']
+    lines += formulation_lines(c, index)
     lines += ['## Interface and scope', '']
     for key in ['axiomBasis', 'basisKind', 'basisScope', 'basisInstantiation', 'convention', 'specializationNote', 'noPrimitiveOperationsReason', 'verificationObligation', 'reviewStatus', 'coverageStatus', 'provenanceStatus']:
         if key in c:
@@ -91,7 +92,9 @@ def render(nodes, index):
             n = index[ident]
             lines += [f'<a id="{anchor(ident)}"></a>', '', f"### {n.get('name', ident.rsplit(':',1)[-1])}", '', f"`{ident}`", '']
             for key, value in n.items():
-                if key in {'id', 'type', 'name', 'concept', 'appliesTo'}:
+                if key in {'id', 'type', 'name', 'concept', 'appliesTo', 'mathematicalFormulation',
+                           'leanFormulation', 'formulationSource', 'formulationLocator', 'formulationScope',
+                           'leanModelMapping', 'leanModelLimitations', 'leanPremiseMapping'}:
                     continue
                 if key == 'source':
                     text = '; '.join(source_text(index[x]) for x in value)
@@ -100,6 +103,7 @@ def render(nodes, index):
                 else:
                     text = value_text(value)
                 lines += [f'**{key}:** {text}', '']
+            lines += formulation_lines(n, index, heading='####')
     lines += ['## Concept provenance', '']
     for ident in c.get('source', []):
         lines += ['- ' + source_text(index[ident])]
@@ -112,6 +116,31 @@ def render(nodes, index):
               'Edit this JSON block to change graph facts, then run `make build`. The prose and links above are generated from it.', '',
               '<!-- graph-record:start -->', '```json', json.dumps(nodes, ensure_ascii=False, indent=2), '```', '<!-- graph-record:end -->', '']
     return '\n'.join(lines)
+
+
+def formulation_lines(node, index, heading='##'):
+    if not node.get('leanFormulation') and not node.get('mathematicalFormulation'):
+        return []
+    lines = [f'{heading} Mathematical formulation', '']
+    if node.get('mathematicalFormulation'):
+        # Preserve stars for word carriers and underscores for indexed names;
+        # these are mathematics, rather than Markdown emphasis delimiters.
+        lines += [re.sub(r'([*_])', r'\\\1', node['mathematicalFormulation']), '']
+    if node.get('leanFormulation'):
+        source = index[node['formulationSource']]
+        lines += ['**Lean formulation** (in its source module context):', '',
+                  '```lean', node['leanFormulation'], '```', '',
+                  f"**Source:** [`{node['formulationLocator']}`](../{source['path']}); consulted {source['accessedOn']}.", '',
+                  f"**Scope:** {node['formulationScope']}", '',
+                  f"**Interpretation:** {node['leanModelMapping']}", '',
+                  f"**Limits:** {node['leanModelLimitations']}", '',
+                  'Read with the linked module’s imports, namespaces, universes and section variables. '
+                  'Proof status requires a fresh Lean verification report; '
+                  'this formulation does not close historical bibliographic source gaps.', '']
+        if node.get('leanPremiseMapping'):
+            lines += ['**Direct premise mapping:**', '', '```json',
+                      json.dumps(json.loads(node['leanPremiseMapping']), ensure_ascii=False, indent=2), '```', '']
+    return lines
 
 
 def source_text(source):

@@ -18,9 +18,34 @@ A function from a finite row-index and column-index product to a specified field
 
 ## Backlinks
 
+- [Euclidean lattice (discrete integer-span lattice)](EuclideanLattice.md) — `requiresConcept`
+- [Generator matrix of a linear block code (row convention)](GeneratorMatrix.md) — `requiresConcept`
 - [Linear map](LinearMap.md) — `relatedConcept`
 - [Markov chain (finite-state, discrete-time, time-homogeneous)](MarkovChain.md) — `requiresConcept`
+- [Parity-check matrix of a linear block code (row convention)](ParityCheckMatrix.md) — `requiresConcept`
+- [Finite stochastic channel](StochasticChannel.md) — `requiresConcept`
 - [Tensor of specified valence on a finite-dimensional vector space](Tensor.md) — `relatedConcept`
+
+## Mathematical formulation
+
+Mat\_F(m,n)=Fin(m)→Fin(n)→F. Equality is entrywise; (AB)ᵢⱼ=Σ\_{k∈Fin(n)}AᵢₖBₖⱼ for conformable dimensions. Zero dimensions are allowed and an empty sum is 0.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Matrix (F : Type u) [_root_.Field F] (m n : Nat) :=
+  _root_.Matrix (Fin m) (Fin n) F
+```
+
+**Source:** [`Catalog.Matrix`](../lean/Catalog/Algebra.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib Matrix (Fin m) (Fin n) F over a field; zero dimensions permitted; extensional entry equality.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
 
 ## Interface and scope
 
@@ -367,7 +392,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/Array",
       "urn:csabs:concept/LinearMap",
       "urn:csabs:concept/Tensor"
-    ]
+    ],
+    "leanFormulation": "abbrev Matrix (F : Type u) [_root_.Field F] (m n : Nat) :=\n  _root_.Matrix (Fin m) (Fin n) F",
+    "formulationSource": "urn:csabs:source/local-lean-Algebra",
+    "formulationLocator": "Catalog.Matrix",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib Matrix (Fin m) (Fin n) F over a field; zero dimensions permitted; extensional entry equality.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "Mat_F(m,n)=Fin(m)→Fin(n)→F. Equality is entrywise; (AB)ᵢⱼ=Σ_{k∈Fin(n)}AᵢₖBₖⱼ for conformable dimensions. Zero dimensions are allowed and an empty sum is 0."
   },
   {
     "id": "urn:csabs:operation/Matrix-entry",

@@ -26,6 +26,35 @@ First-order formulas over a signature, interpreted in a nonempty domain with var
 - [Normalized template constraints with atomic identity](TemplateConstraint.md) — `relatedConcept`
 - [Free ranked term algebra with variables](TermAlgebra.md) — `relatedConcept`
 
+## Mathematical formulation
+
+For nonempty domain D, arity-indexed functions and predicates, and environment ρ:ℕ→D, ⟦var(i)⟧\_ρ=ρ(i), ⟦f(t₁,…,t\_n)⟧\_ρ=f\_D(⟦t₁⟧\_ρ,…). Equality uses D-equality; ρ⊨∀φ ⇔ ∀d∈D,extend(ρ,d)⊨φ. This semantic syntax uses de Bruijn binders; named syntax is a separate interface.
+
+**Lean formulation** (in its source module context):
+
+```lean
+def PredicateLogic {Fn : Nat → Type u} {Pred : Nat → Type v} {D : Type w} [Nonempty D]
+    (functions : ∀ n, Fn n → (Fin n → D) → D)
+    (predicates : ∀ n, Pred n → (Fin n → D) → Prop) :
+    FirstOrderFormula Fn Pred → (Nat → D) → Prop
+  | .atom n p args, env => predicates n p (fun i => evalTerm functions env (args i))
+  | .equal s t, env => evalTerm functions env s = evalTerm functions env t
+  | .bottom, _ => False
+  | .neg p, env => ¬ PredicateLogic functions predicates p env
+  | .conj p q, env => PredicateLogic functions predicates p env ∧ PredicateLogic functions predicates q env
+  | .all p, env => ∀ x, PredicateLogic functions predicates p (extendEnv env x)
+```
+
+**Source:** [`Catalog.PredicateLogic`](../lean/Catalog/Logic.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Arity-indexed first-order syntax, total function-symbol interpretation, nonempty domain, de Bruijn quantification and equality.
+
+**Limits:** Existing de Bruijn satisfaction model, distinct from the new raw named-variable syntax. No named/de Bruijn translation theorem or substitution correspondence is registered. Semantic queries and the new metatheorems have no compiled witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: First-order formulas over a signature, interpreted in a nonempty domain with variable assignments and quantifiers. Governing rules: A first-order interpretation has a nonempty domain and total interpretations of function symbols. Quantifier semantics ranges over all domain values and respects variable assignments. Logical connectives are interpreted classically at each structure and assignment.
@@ -438,7 +467,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "provenanceKind": "adapted",
     "relatedConcept": [
       "urn:csabs:concept/FirstOrderNaturalDeduction"
-    ]
+    ],
+    "leanFormulation": "def PredicateLogic {Fn : Nat → Type u} {Pred : Nat → Type v} {D : Type w} [Nonempty D]\n    (functions : ∀ n, Fn n → (Fin n → D) → D)\n    (predicates : ∀ n, Pred n → (Fin n → D) → Prop) :\n    FirstOrderFormula Fn Pred → (Nat → D) → Prop\n  | .atom n p args, env => predicates n p (fun i => evalTerm functions env (args i))\n  | .equal s t, env => evalTerm functions env s = evalTerm functions env t\n  | .bottom, _ => False\n  | .neg p, env => ¬ PredicateLogic functions predicates p env\n  | .conj p q, env => PredicateLogic functions predicates p env ∧ PredicateLogic functions predicates q env\n  | .all p, env => ∀ x, PredicateLogic functions predicates p (extendEnv env x)",
+    "formulationSource": "urn:csabs:source/local-lean-Logic",
+    "formulationLocator": "Catalog.PredicateLogic",
+    "formulationScope": "model",
+    "leanModelMapping": "Arity-indexed first-order syntax, total function-symbol interpretation, nonempty domain, de Bruijn quantification and equality.",
+    "leanModelLimitations": "Existing de Bruijn satisfaction model, distinct from the new raw named-variable syntax. No named/de Bruijn translation theorem or substitution correspondence is registered. Semantic queries and the new metatheorems have no compiled witnesses.",
+    "mathematicalFormulation": "For nonempty domain D, arity-indexed functions and predicates, and environment ρ:ℕ→D, ⟦var(i)⟧_ρ=ρ(i), ⟦f(t₁,…,t_n)⟧_ρ=f_D(⟦t₁⟧_ρ,…). Equality uses D-equality; ρ⊨∀φ ⇔ ∀d∈D,extend(ρ,d)⊨φ. This semantic syntax uses de Bruijn binders; named syntax is a separate interface."
   },
   {
     "id": "urn:csabs:operation/PredicateLogic-basis-satisfies",

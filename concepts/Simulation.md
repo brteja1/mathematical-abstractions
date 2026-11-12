@@ -21,6 +21,29 @@ A relation between transition systems matching each step of the first with a ste
 - [Bisimulation](Bisimulation.md) — `specializationOf`
 - [Action-labelled transition system with initial states](LabelledTransitionSystem.md) — `relatedConcept`
 
+## Mathematical formulation
+
+For two LTSs with common action carrier, R⊆S×T is a simulation iff ∀x,y,a,x′, R(x,y)∧x─a→x′ ⇒ ∃y′,y─a→y′∧R(x′,y′). This is a step relation; initial-state and observation matching are separate obligations.
+
+**Lean formulation** (in its source module context):
+
+```lean
+def Simulation {S : Type u} {T : Type v} {Act : Type w}
+    (s : LabelledTransitionSystem S Act) (t : LabelledTransitionSystem T Act)
+    (r : S → T → Prop) : Prop :=
+  ∀ x y, r x y → ∀ a x', s.step x a x' → ∃ y', t.step y a y' ∧ r x' y'
+```
+
+**Source:** [`Catalog.Simulation`](../lean/Catalog/Graphs.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Strong same-label forward step matching for an explicit relation; no silent actions or observation map.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A relation between transition systems matching each step of the first with a step of the second; this entry uses strong simulation. Governing rules: Strong labeled simulation matches each labeled source transition with one identically labeled target transition.
@@ -170,7 +193,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/Relation"
     ],
-    "specializationNote": "Use the state sets of the two transition systems as the carriers of the relation; strong step matching is the additional constraint."
+    "specializationNote": "Use the state sets of the two transition systems as the carriers of the relation; strong step matching is the additional constraint.",
+    "leanFormulation": "def Simulation {S : Type u} {T : Type v} {Act : Type w}\n    (s : LabelledTransitionSystem S Act) (t : LabelledTransitionSystem T Act)\n    (r : S → T → Prop) : Prop :=\n  ∀ x y, r x y → ∀ a x', s.step x a x' → ∃ y', t.step y a y' ∧ r x' y'",
+    "formulationSource": "urn:csabs:source/local-lean-Graphs",
+    "formulationLocator": "Catalog.Simulation",
+    "formulationScope": "model",
+    "leanModelMapping": "Strong same-label forward step matching for an explicit relation; no silent actions or observation map.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For two LTSs with common action carrier, R⊆S×T is a simulation iff ∀x,y,a,x′, R(x,y)∧x─a→x′ ⇒ ∃y′,y─a→y′∧R(x′,y′). This is a step relation; initial-state and observation matching are separate obligations."
   },
   {
     "id": "urn:csabs:operation/Simulation-basis-matches",

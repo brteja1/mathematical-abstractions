@@ -12,6 +12,28 @@ Two maps between partially ordered sets related by an adjunction inequality.
 
 **Prerequisites:** [Partial Order](PartialOrder.md), [Monotone Function](MonotoneFunction.md)
 
+## Mathematical formulation
+
+For partial orders A,B and maps l:A→B,r:B→A, GC(l,r) ⇔ ∀a∈A,b∈B, l(a)≤b ↔ a≤r(b). The order relation on each side is its own carrier's order.
+
+**Lean formulation** (in its source module context):
+
+```lean
+def GaloisConnection {A : Type u} {B : Type v}
+    [_root_.PartialOrder A] [_root_.PartialOrder B] (l : A → B) (r : B → A) : Prop :=
+  _root_.GaloisConnection l r
+```
+
+**Source:** [`Catalog.GaloisConnection`](../lean/Catalog/Order.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Adjunction equivalence l a <= b iff a <= r b on explicit partial orders.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: Two maps between partially ordered sets related by an adjunction inequality. Governing rules: The two total functions obey the adjunction equivalence on the specified partial orders.
@@ -166,7 +188,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "def GaloisConnection {A : Type u} {B : Type v}\n    [_root_.PartialOrder A] [_root_.PartialOrder B] (l : A → B) (r : B → A) : Prop :=\n  _root_.GaloisConnection l r",
+    "formulationSource": "urn:csabs:source/local-lean-Order",
+    "formulationLocator": "Catalog.GaloisConnection",
+    "formulationScope": "model",
+    "leanModelMapping": "Adjunction equivalence l a <= b iff a <= r b on explicit partial orders.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For partial orders A,B and maps l:A→B,r:B→A, GC(l,r) ⇔ ∀a∈A,b∈B, l(a)≤b ↔ a≤r(b). The order relation on each side is its own carrier's order."
   },
   {
     "id": "urn:csabs:operation/GaloisConnection-abstraction",

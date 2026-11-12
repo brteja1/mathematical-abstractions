@@ -16,6 +16,30 @@ A measure from states into a well-founded carrier that strictly decreases on eac
 
 - [Checked signed-integer constant-evaluation fragment](CompileTimeEvaluation.md) — `relatedConcept`
 
+## Mathematical formulation
+
+A variant is m:S→W with a well-founded relation ≺ on W such that ∀s,t,C(s,t)⇒m(t)≺m(s). The selected structure explicitly carries both well-foundedness and decrease hypotheses.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure TerminationVariant {S : Type u} {W : Type v} (C : Command S)
+    (r : W → W → Prop) where
+  measure : S → W
+  wellFounded : WellFounded r
+  decreasing : ∀ s t, C s t → r (measure t) (measure s)
+```
+
+**Source:** [`Catalog.TerminationVariant`](../lean/Catalog/Semantics.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Explicit well-founded target relation and measure strictly decreasing on body transitions.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A measure from states into a well-founded carrier that strictly decreases on each loop iteration or recursive call. Governing rules: The measure maps loop states to a specified well-founded strict relation. Each enabled iteration that finishes decreases the measure.
@@ -180,7 +204,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "structure TerminationVariant {S : Type u} {W : Type v} (C : Command S)\n    (r : W → W → Prop) where\n  measure : S → W\n  wellFounded : WellFounded r\n  decreasing : ∀ s t, C s t → r (measure t) (measure s)",
+    "formulationSource": "urn:csabs:source/local-lean-Semantics",
+    "formulationLocator": "Catalog.TerminationVariant",
+    "formulationScope": "model",
+    "leanModelMapping": "Explicit well-founded target relation and measure strictly decreasing on body transitions.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A variant is m:S→W with a well-founded relation ≺ on W such that ∀s,t,C(s,t)⇒m(t)≺m(s). The selected structure explicitly carries both well-foundedness and decrease hypotheses."
   },
   {
     "id": "urn:csabs:operation/TerminationVariant-basis-measure",

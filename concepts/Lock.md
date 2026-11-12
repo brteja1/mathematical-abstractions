@@ -19,6 +19,31 @@ A synchronization contract for one resource, represented by a finite partial map
 - [Mutex (non-reentrant mutual-exclusion lock)](Mutex.md) — `requiresConcept`
 - [Mutex (non-reentrant mutual-exclusion lock)](Mutex.md) — `specializationOf`
 
+## Mathematical formulation
+
+A lock state is finite-support h:P→Option(M), with symmetric compatibility C⊆M×M and ∀p≠q,h(p)=some(a)∧h(q)=some(b)⇒C(a,b). Acquire(p,m) requires h(p)=none and ∀q,a,h(q)=some(a)⇒C(m,a), then changes only h(p).
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure Lock (P : Type u) (M : Type v) (compatible : M → M → Prop) where
+  holders : P → Option M
+  finite_holders : {p | (holders p).isSome}.Finite
+  symmetric : ∀ a b, compatible a b → compatible b a
+  pairwise : ∀ p q a b, p ≠ q → holders p = some a →
+    holders q = some b → compatible a b
+```
+
+**Source:** [`Catalog.Lock`](../lean/Catalog/Concurrency.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Finite-support P→Option M holder map, symmetric compatibility C and pairwise compatibility proof. Identity equality of holder maps; at most one mode per process. canAcquire and guarded acquires/releases correspond to the recorded atomic state steps.
+
+**Limits:** No waiting queues, scheduling, Boolean decision wrappers, timeouts, memory visibility or implementation refinement. No compiled witnesses for the new graph claims.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Compatible-holder invariant, empty initialization, enabled acquisition, owner-only release and exact try-acquire outcomes.
@@ -358,7 +383,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "Lock: class description, lock, tryLock, unlock; ReadWriteLock: description and policy choices",
     "sourceNote": "Catalog abstraction of ownership and symmetric mode compatibility, with one holding per process. Java supplies interface examples; this is not the complete Java memory or exception contract.",
     "provenanceKind": "adapted",
-    "basisInstantiation": "Exclusive lock: M={exclusive}, C always false. Shared/exclusive lock: M={read,write}, C(a,b) iff a=b=read. These are parameter instantiations, not inherited axioms."
+    "basisInstantiation": "Exclusive lock: M={exclusive}, C always false. Shared/exclusive lock: M={read,write}, C(a,b) iff a=b=read. These are parameter instantiations, not inherited axioms.",
+    "leanFormulation": "structure Lock (P : Type u) (M : Type v) (compatible : M → M → Prop) where\n  holders : P → Option M\n  finite_holders : {p | (holders p).isSome}.Finite\n  symmetric : ∀ a b, compatible a b → compatible b a\n  pairwise : ∀ p q a b, p ≠ q → holders p = some a →\n    holders q = some b → compatible a b",
+    "formulationSource": "urn:csabs:source/local-lean-Concurrency",
+    "formulationLocator": "Catalog.Lock",
+    "formulationScope": "model",
+    "leanModelMapping": "Finite-support P→Option M holder map, symmetric compatibility C and pairwise compatibility proof. Identity equality of holder maps; at most one mode per process. canAcquire and guarded acquires/releases correspond to the recorded atomic state steps.",
+    "leanModelLimitations": "No waiting queues, scheduling, Boolean decision wrappers, timeouts, memory visibility or implementation refinement. No compiled witnesses for the new graph claims.",
+    "mathematicalFormulation": "A lock state is finite-support h:P→Option(M), with symmetric compatibility C⊆M×M and ∀p≠q,h(p)=some(a)∧h(q)=some(b)⇒C(a,b). Acquire(p,m) requires h(p)=none and ∀q,a,h(q)=some(a)⇒C(m,a), then changes only h(p)."
   },
   {
     "id": "urn:csabs:operation/Lock-initial",

@@ -21,6 +21,28 @@ A topological manifold equipped with a maximal atlas whose overlapping coordinat
 - [Topological manifold (fixed dimension, without boundary)](Manifold.md) — `relatedConcept`
 - [Tensor of specified valence on a finite-dimensional vector space](Tensor.md) — `relatedConcept`
 
+## Mathematical formulation
+
+A smooth n-manifold is the selected topological n-manifold with covering charts whose overlap maps φ\_j∘φ\_i⁻¹ are C^∞ on their domains. The wrapper records compatibility of a supplied atlas; it does not construct its maximal extension.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure SmoothManifold (n : Nat) (M : Type*) [_root_.TopologicalSpace M]
+    [ChartedSpace (EuclideanSpace ℝ (Fin n)) M] : Prop extends Manifold n M where
+  compatible : IsManifold (𝓡 n) ((⊤ : ENat) : WithTop ENat) M
+```
+
+**Source:** [`Catalog.SmoothManifold`](../lean/Catalog/Topology.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Boundaryless Euclidean charts with Mathlib IsManifold at smooth (not analytic) regularity, plus Hausdorff/second countability.
+
+**Limits:** Atlas smooth compatibility is formalized; the maximal compatible atlas is not explicitly constructed by the wrapper.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Use Manifold with a covering atlas of pairwise C∞-compatible charts; identify its smooth structure with the unique maximal compatible atlas.
@@ -211,7 +233,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "relatedConcept": [
       "urn:csabs:concept/Tensor"
     ],
-    "basisInstantiation": "Instantiate Manifold at (M,τ,n). Retain its topological requirements and choose the smooth structure through a covering pairwise C∞-compatible atlas and its maximal extension."
+    "basisInstantiation": "Instantiate Manifold at (M,τ,n). Retain its topological requirements and choose the smooth structure through a covering pairwise C∞-compatible atlas and its maximal extension.",
+    "leanFormulation": "structure SmoothManifold (n : Nat) (M : Type*) [_root_.TopologicalSpace M]\n    [ChartedSpace (EuclideanSpace ℝ (Fin n)) M] : Prop extends Manifold n M where\n  compatible : IsManifold (𝓡 n) ((⊤ : ENat) : WithTop ENat) M",
+    "formulationSource": "urn:csabs:source/local-lean-Topology",
+    "formulationLocator": "Catalog.SmoothManifold",
+    "formulationScope": "partial",
+    "leanModelMapping": "Boundaryless Euclidean charts with Mathlib IsManifold at smooth (not analytic) regularity, plus Hausdorff/second countability.",
+    "leanModelLimitations": "Atlas smooth compatibility is formalized; the maximal compatible atlas is not explicitly constructed by the wrapper.",
+    "mathematicalFormulation": "A smooth n-manifold is the selected topological n-manifold with covering charts whose overlap maps φ_j∘φ_i⁻¹ are C^∞ on their domains. The wrapper records compatibility of a supplied atlas; it does not construct its maximal extension."
   },
   {
     "id": "urn:csabs:operation/SmoothManifold-smooth-transition",

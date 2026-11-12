@@ -20,6 +20,26 @@ A reflexive and transitive relation on a carrier; distinct values may be mutuall
 - [Partial Order](PartialOrder.md) — `requiresConcept`
 - [Partial Order](PartialOrder.md) — `specializationOf`
 
+## Mathematical formulation
+
+A preorder is (A,≤) with ∀a,a≤a and ∀a,b,c,a≤b∧b≤c⇒a≤c. Antisymmetry is not imposed, so a≤b∧b≤a need not imply a=b.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Preorder (A : Type u) := _root_.Preorder A
+```
+
+**Source:** [`Catalog.Preorder`](../lean/Catalog/Order.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib Preorder with reflexivity and transitivity; no antisymmetry assumed.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A reflexive and transitive relation on a carrier; distinct values may be mutually related. Governing rules: The order is reflexive. The order is transitive.
@@ -189,7 +209,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/Relation"
     ],
-    "specializationNote": "Use A=B and the same relation; reflexivity and transitivity are additional constraints."
+    "specializationNote": "Use A=B and the same relation; reflexivity and transitivity are additional constraints.",
+    "leanFormulation": "abbrev Preorder (A : Type u) := _root_.Preorder A",
+    "formulationSource": "urn:csabs:source/local-lean-Order",
+    "formulationLocator": "Catalog.Preorder",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib Preorder with reflexivity and transitivity; no antisymmetry assumed.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A preorder is (A,≤) with ∀a,a≤a and ∀a,b,c,a≤b∧b≤c⇒a≤c. Antisymmetry is not imposed, so a≤b∧b≤a need not imply a=b."
   },
   {
     "id": "urn:csabs:operation/Preorder-basis-le",

@@ -19,6 +19,27 @@ Authenticated encryption combining counter-mode use of a 128-bit block cipher wi
 - [AES-GCM (96-bit nonce, 128-bit tag profile)](AESGCM.md) — `requiresConcept`
 - [AES-GCM (96-bit nonce, 128-bit tag profile)](AESGCM.md) — `specializationOf`
 
+## Mathematical formulation
+
+The current Lean component carrier is BlockCipher(K,128) packaged as GCMInterface(K). Counter increments, length encoding, nonce processing, authentication tags and decryption equations remain outside this partial model; consult the separately sourced catalog rules for the algorithm.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure GCMInterface (K : Type) where
+  cipher : BlockCipher K 128
+```
+
+**Source:** [`Catalog.GCMInterface`](../lean/Catalog/Cryptography.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Carrier for a parameterized 128-bit keyed block permutation.
+
+**Limits:** Counter transform, GHASH composition, nonce/tag lengths, length blocks, tag verification, uniqueness discipline and GCM claims remain unformalized.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** inc32 and GCTR; derivation of H and J₀; encoded GHASH input; tag calculation and authenticated decryption.
@@ -374,7 +395,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/AEAD"
     ],
-    "specializationNote": "Instantiate N with 12-byte IVs and W with encoded pairs (C,T), T of length 16 bytes; flattening the pair into bytes requires a specified bijective encoding. Set the AEAD plaintext/AAD domains to the stated bounds. GCM rules are explicit and not inherited."
+    "specializationNote": "Instantiate N with 12-byte IVs and W with encoded pairs (C,T), T of length 16 bytes; flattening the pair into bytes requires a specified bijective encoding. Set the AEAD plaintext/AAD domains to the stated bounds. GCM rules are explicit and not inherited.",
+    "leanFormulation": "structure GCMInterface (K : Type) where\n  cipher : BlockCipher K 128",
+    "formulationSource": "urn:csabs:source/local-lean-Cryptography",
+    "formulationLocator": "Catalog.GCMInterface",
+    "formulationScope": "partial",
+    "leanModelMapping": "Carrier for a parameterized 128-bit keyed block permutation.",
+    "leanModelLimitations": "Counter transform, GHASH composition, nonce/tag lengths, length blocks, tag verification, uniqueness discipline and GCM claims remain unformalized.",
+    "mathematicalFormulation": "The current Lean component carrier is BlockCipher(K,128) packaged as GCMInterface(K). Counter increments, length encoding, nonce processing, authentication tags and decryption equations remain outside this partial model; consult the separately sourced catalog rules for the algorithm."
   },
   {
     "id": "urn:csabs:operation/GCM-inc32",

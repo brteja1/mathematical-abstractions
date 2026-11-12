@@ -19,6 +19,26 @@ A complete Archimedean linearly ordered field extending the rational numbers.
 - [Exact complex number](ComplexNumber.md) — `requiresConcept`
 - [Finite real-weighted directed multigraph](WeightedDirectedGraph.md) — `requiresConcept`
 
+## Mathematical formulation
+
+ℝ is the exact complete ordered field interpretation. It has no floating-point rounding or finite-width overflow; field equality is exact real equality.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev RealNumber := Real
+```
+
+**Source:** [`Catalog.RealNumber`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Real and its conditionally complete linear ordered field; the graph sup operation corresponds to sSup only under nonempty/bounded hypotheses. ℝ. Classical exact real equality/order, generally noncomputable; no claim of a finite representation or decision algorithm. Supremum requires nonempty bounded-above set. Division requires nonzero divisor.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** ℝ is a field with linear order ≤; a≤b ⇒ a+c≤b+c; 0≤a ∧ 0≤b ⇒ 0≤a·b; 0<1; For nonempty bounded-above S, (∀s∈S,s≤sup(S)) ∧ (∀u,(∀s∈S,s≤u)⇒sup(S)≤u)
@@ -187,6 +207,32 @@ A complete Archimedean linearly ordered field extending the rational numbers.
 
 **provenanceKind:** derived
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ (x : Catalog.RealNumber), 0 ≤ x * x
+```
+
+**Source:** [`Catalog.CoreDataProofs.real_square_nonnegative`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Lean Real with its ordered-field operations and exact ≤; no floating-point instance. mul_self_nonneg derives the result from ordered-ring laws; completeness is not needed.
+
+**Limits:** Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/RealNumber-ordered-field": "Interpreted premise: ℝ is a field with linear order ≤; a≤b ⇒ a+c≤b+c; 0≤a ∧ 0≤b ⇒ 0≤a·b; 0<1. Lean Real with its ordered-field operations and exact ≤; no floating-point instance. mul_self_nonneg derives the result from ordered-ring laws; completeness is not needed."
+}
+```
+
 ## Theorems
 
 <a id="node-urn-csabs-theorem-RealNumber-supremum-unique"></a>
@@ -283,7 +329,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/Field"
     ],
-    "specializationNote": "Instantiate Field with the exact real carrier and its ordered-field operations. Completeness is additional structure, not inherited from Field."
+    "specializationNote": "Instantiate Field with the exact real carrier and its ordered-field operations. Completeness is additional structure, not inherited from Field.",
+    "leanFormulation": "abbrev RealNumber := Real",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.RealNumber",
+    "formulationScope": "model",
+    "leanModelMapping": "Real and its conditionally complete linear ordered field; the graph sup operation corresponds to sSup only under nonempty/bounded hypotheses. ℝ. Classical exact real equality/order, generally noncomputable; no claim of a finite representation or decision algorithm. Supremum requires nonempty bounded-above set. Division requires nonzero divisor.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "ℝ is the exact complete ordered field interpretation. It has no floating-point rounding or finite-width overflow; field equality is exact real equality."
   },
   {
     "id": "urn:csabs:operation/RealNumber-arithmetic",
@@ -403,7 +456,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Real.exists_isLUB, Real.isLUB_sSup, ConditionallyCompleteLinearOrder instance",
     "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
-    "provenanceKind": "derived"
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ (x : Catalog.RealNumber), 0 ≤ x * x",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.CoreDataProofs.real_square_nonnegative",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Lean Real with its ordered-field operations and exact ≤; no floating-point instance. mul_self_nonneg derives the result from ordered-ring laws; completeness is not needed.",
+    "leanModelLimitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/RealNumber-ordered-field\": \"Interpreted premise: ℝ is a field with linear order ≤; a≤b ⇒ a+c≤b+c; 0≤a ∧ 0≤b ⇒ 0≤a·b; 0<1. Lean Real with its ordered-field operations and exact ≤; no floating-point instance. mul_self_nonneg derives the result from ordered-ring laws; completeness is not needed.\"}"
   },
   {
     "id": "urn:csabs:theorem/RealNumber-supremum-unique",

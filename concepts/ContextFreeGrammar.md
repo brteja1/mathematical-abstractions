@@ -19,6 +19,28 @@ Finite productions replace one nonterminal by a finite word of terminals and non
 - [Formal language of finite words](FormalLanguage.md) — `relatedConcept`
 - [Regular language over a finite alphabet](RegularLanguage.md) — `relatedConcept`
 
+## Mathematical formulation
+
+A finite context-free grammar is (N,A,P,S), with finite nonterminals N, finite alphabet A, S∈N, and finite productions P⊆N×(N+A)\*. L(G)={w∈A\* | S⇒\*\_P w}; rewriting replaces one nonterminal by a production right-hand side.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure ContextFreeGrammar (A : Type) [Fintype A] where
+  grammar : _root_.ContextFreeGrammar A
+  finite_nonterminals : Finite grammar.NT
+```
+
+**Source:** [`Catalog.ContextFreeGrammar`](../lean/Catalog/Languages.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib ContextFreeGrammar with finite terminals and finite nonterminals; finite rewrite-rule set.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining presentation: Each rule has a single nonterminal left side and a finite string right side. Rules act inside any context; generation uses reflexive transitive closure.
@@ -321,7 +343,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "reviewStatus": "editorial review of defining basis and selected laws, theorems and proof principles; no machine-checked proof",
     "verificationObligation": [
       "V and Σ finite and disjoint; S∈V. Empty productions, ambiguity, left recursion and nonproductive grammars are allowed. No parsing strategy or unique derivation is assumed."
-    ]
+    ],
+    "leanFormulation": "structure ContextFreeGrammar (A : Type) [Fintype A] where\n  grammar : _root_.ContextFreeGrammar A\n  finite_nonterminals : Finite grammar.NT",
+    "formulationSource": "urn:csabs:source/local-lean-Languages",
+    "formulationLocator": "Catalog.ContextFreeGrammar",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib ContextFreeGrammar with finite terminals and finite nonterminals; finite rewrite-rule set.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A finite context-free grammar is (N,A,P,S), with finite nonterminals N, finite alphabet A, S∈N, and finite productions P⊆N×(N+A)*. L(G)={w∈A* | S⇒*_P w}; rewriting replaces one nonterminal by a production right-hand side."
   },
   {
     "id": "urn:csabs:operation/ContextFreeGrammar-deriveOne",

@@ -19,7 +19,32 @@ A field with finitely many elements, also called a Galois field.
 ## Backlinks
 
 - [Advanced Encryption Standard (AES)](AES.md) — `requiresConcept`
+- [Elliptic curve cryptography group (prime-field short-Weierstrass profile)](ECC.md) — `requiresConcept`
 - [GHASH polynomial accumulator](GHASH.md) — `requiresConcept`
+- [Linear block code over a finite field](LinearBlockCode.md) — `requiresConcept`
+- [Nonlinear finite-field block code](NonlinearBlockCode.md) — `requiresConcept`
+- [RSA modular-exponentiation primitives (two-prime profile)](RSA.md) — `relatedConcept`
+
+## Mathematical formulation
+
+A finite field is a field F with finite carrier: 0≠1, commutative ring operations and inverses for nonzero elements, together with |F|<∞. No concrete residue encoding is selected by this model.
+
+**Lean formulation** (in its source module context):
+
+```lean
+class FiniteField (A : Type u) extends _root_.Field A where
+  carrier_finite : Finite A
+```
+
+**Source:** [`Catalog.FiniteField`](../lean/Catalog/Algebra.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib Field A with an explicit Finite A witness, equality of elements, and unchanged exact operations. Catalog inverse/division restrict Mathlib total operations to nonzero inputs.
+
+**Limits:** No chosen size, polynomial basis or encoding. No proof witnesses for the new finite-field classification or Frobenius results.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
 
 ## Interface and scope
 
@@ -678,7 +703,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Section 1, Theorems 1.1 and 1.5; warning after Example 1.4",
     "sourceNote": "Finite field definition and distinction from composite-modulus residue rings.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "class FiniteField (A : Type u) extends _root_.Field A where\n  carrier_finite : Finite A",
+    "formulationSource": "urn:csabs:source/local-lean-Algebra",
+    "formulationLocator": "Catalog.FiniteField",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib Field A with an explicit Finite A witness, equality of elements, and unchanged exact operations. Catalog inverse/division restrict Mathlib total operations to nonzero inputs.",
+    "leanModelLimitations": "No chosen size, polynomial basis or encoding. No proof witnesses for the new finite-field classification or Frobenius results.",
+    "mathematicalFormulation": "A finite field is a field F with finite carrier: 0≠1, commutative ring operations and inverses for nonzero elements, together with |F|<∞. No concrete residue encoding is selected by this model."
   },
   {
     "id": "urn:csabs:operation/finite-field-addition",

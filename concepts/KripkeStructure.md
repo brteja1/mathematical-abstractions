@@ -22,6 +22,30 @@ A finite transition system whose states carry propositional valuations, with at 
 - [Classical propositional modal logic K](ModalLogic.md) — `relatedConcept`
 - [Transition System](TransitionSystem.md) — `relatedConcept`
 
+## Mathematical formulation
+
+A Kripke structure is (S,I,R,L) with finite S, I⊆S, serial R⊆S×S satisfying ∀s∃t,R(s,t), and L:S→℘(AP). I may be empty; the label records atomic propositions true at each state.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure KripkeStructure (S : Type u) (AP : Type v) [Fintype S] where
+  initial : _root_.Set S
+  next : S → S → Prop
+  serial : ∀ s, ∃ t, next s t
+  label : S → _root_.Set AP
+```
+
+**Source:** [`Catalog.KripkeStructure`](../lean/Catalog/Graphs.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Finite state type, initial set, serial transition relation and propositional labels.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining presentation: A finite state model has propositional labels and a total next-state relation in the serial sense. Executions start in an initial state and follow the relation indefinitely.
@@ -332,7 +356,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/TransitionSystem"
     ],
-    "specializationNote": "Keep the parent states S, initials I and next-state relation R. Add finite-state and seriality restrictions and a state labelling L. Labels describe states rather than actions; do not identify this with an action-labelled LTS without a specified conversion."
+    "specializationNote": "Keep the parent states S, initials I and next-state relation R. Add finite-state and seriality restrictions and a state labelling L. Labels describe states rather than actions; do not identify this with an action-labelled LTS without a specified conversion.",
+    "leanFormulation": "structure KripkeStructure (S : Type u) (AP : Type v) [Fintype S] where\n  initial : _root_.Set S\n  next : S → S → Prop\n  serial : ∀ s, ∃ t, next s t\n  label : S → _root_.Set AP",
+    "formulationSource": "urn:csabs:source/local-lean-Graphs",
+    "formulationLocator": "Catalog.KripkeStructure",
+    "formulationScope": "model",
+    "leanModelMapping": "Finite state type, initial set, serial transition relation and propositional labels.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A Kripke structure is (S,I,R,L) with finite S, I⊆S, serial R⊆S×S satisfying ∀s∃t,R(s,t), and L:S→℘(AP). I may be empty; the label records atomic propositions true at each state."
   },
   {
     "id": "urn:csabs:operation/KripkeStructure-successors",

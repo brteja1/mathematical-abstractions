@@ -12,6 +12,28 @@ Mapping more elements into fewer finite slots forces two distinct elements to sh
 
 **Prerequisites:** [Total function](Function.md), [Set](Set.md)
 
+## Mathematical formulation
+
+For finite types A,B, |B|<|A| ⇒ ∀f:A→B, ∃x,y∈A, x≠y ∧ f(x)=f(y). This defines the proposition to establish; it does not assume it as a global axiom.
+
+**Lean formulation** (in its source module context):
+
+```lean
+def PigeonholePrinciple (A B : Type u) [Fintype A] [Fintype B] : Prop :=
+  ∀ f : A → B, Fintype.card B < Fintype.card A →
+    ∃ x y, x ≠ y ∧ f x = f y
+```
+
+**Source:** [`Catalog.PigeonholePrinciple`](../lean/Catalog/Foundations.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Explicit finite-cardinality proposition over any function A -> B, not an assumed theorem.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: Mapping more elements into fewer finite slots forces two distinct elements to share a slot. Governing rules: The principle is a theorem schema in finite set theory, rather than a new foundational postulate.
@@ -151,7 +173,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
     "noPrimitiveOperationsReason": "This entry is a theorem/proof schema over its stated carriers and constructor signature. It introduces no new value-level operation; the quantified functions or constructors belong to its prerequisites.",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "def PigeonholePrinciple (A B : Type u) [Fintype A] [Fintype B] : Prop :=\n  ∀ f : A → B, Fintype.card B < Fintype.card A →\n    ∃ x y, x ≠ y ∧ f x = f y",
+    "formulationSource": "urn:csabs:source/local-lean-Foundations",
+    "formulationLocator": "Catalog.PigeonholePrinciple",
+    "formulationScope": "model",
+    "leanModelMapping": "Explicit finite-cardinality proposition over any function A -> B, not an assumed theorem.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For finite types A,B, |B|<|A| ⇒ ∀f:A→B, ∃x,y∈A, x≠y ∧ f(x)=f(y). This defines the proposition to establish; it does not assume it as a global axiom."
   },
   {
     "id": "urn:csabs:axiom/PigeonholePrinciple-finite-counting-context",

@@ -19,6 +19,27 @@ A function between ordered sets that preserves their order.
 - [Closure Operator](ClosureOperator.md) — `specializationOf`
 - [Galois Connection](GaloisConnection.md) — `requiresConcept`
 
+## Mathematical formulation
+
+For preorders A,B, Mon(A,B)={f:A→B | ∀a,a′,a≤a′⇒f(a)≤f(a′)}. Equality of these maps is pointwise carrier equality.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev MonotoneFunction (A : Type u) (B : Type v)
+    [_root_.Preorder A] [_root_.Preorder B] := A →o B
+```
+
+**Source:** [`Catalog.MonotoneFunction`](../lean/Catalog/Order.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib OrderHom A B, packaging a total map and monotonicity.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A function between ordered sets that preserves their order. Governing rules: A total function preserves the specified orders on its source and target.
@@ -168,7 +189,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/Function"
     ],
-    "specializationNote": "Forget the order-preservation requirement and retain the same total function, domain and codomain."
+    "specializationNote": "Forget the order-preservation requirement and retain the same total function, domain and codomain.",
+    "leanFormulation": "abbrev MonotoneFunction (A : Type u) (B : Type v)\n    [_root_.Preorder A] [_root_.Preorder B] := A →o B",
+    "formulationSource": "urn:csabs:source/local-lean-Order",
+    "formulationLocator": "Catalog.MonotoneFunction",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib OrderHom A B, packaging a total map and monotonicity.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For preorders A,B, Mon(A,B)={f:A→B | ∀a,a′,a≤a′⇒f(a)≤f(a′)}. Equality of these maps is pointwise carrier equality."
   },
   {
     "id": "urn:csabs:operation/MonotoneFunction-application",

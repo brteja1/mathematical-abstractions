@@ -27,6 +27,29 @@ An environment-indexed partial function from finite, kind-correct template argum
 - [Ordered substitution with immediate-context failure](TemplateSubstitution.md) — `relatedConcept`
 - [VHDL generic interfaces and whole-formal association](VHDLGenericInterface.md) — `relatedConcept`
 
+## Mathematical formulation
+
+A selected environment supplies kinded:Arg\*→Prop and apply:Arg\*→Option(Result), with apply(args)=some(r)⇒kinded(args). Composition is Option bind. This partial semantic observation does not decide all C++ instantiations or distinguish every cause of undefinedness.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure TemplateMetafunction (Arg : Type u) (Result : Type v) where
+  wellKinded : List Arg → Prop
+  apply : List Arg → Option Result
+  domain_kinded : ∀ args, (apply args).isSome → wellKinded args
+```
+
+**Source:** [`Catalog.TMP.TemplateMetafunction`](../lean/Catalog/TemplateMetaprogramming.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Kind-correct List Arg to Option Result in a fixed environment; TemplateArgument supplies disjoint type/value/template tags; partial composition is explicit. Instantiate carriers with canonical argument identities and result observations.
+
+**Limits:** The function is a mathematical interpretation, not a decision procedure for compilation, equivalence, instantiation termination or compiler limits. Apply only after target-environment and canonical-argument mapping.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining rules: a∈dom(F_Γ) ⇒ wellKinded(Γ,params(F),a); each a∈dom(F_Γ) has exactly one observed result. If a and b represent the same canonical template arguments in fixed Γ, then a∈dom(F_Γ) ⇔ b∈dom(F_Γ), and their defined observed results agree. dom(G∘F)={a∈dom(F) | F(a)∈dom(G)}; (G∘F)(a)=G(F(a)) there; F=G iff their domains and all defined observations agree.
@@ -335,7 +358,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/PartialFunction"
     ],
     "specializationNote": "Instantiate ambient A with canonical finite template argument lists and B with the tagged type/value observation carrier. Definedness includes successful required instantiation in fixed Γ. Retain partial application and extensional partial composition; no total dependent-function or runtime-function interpretation is implied.",
-    "axiomBasis": "Selected defining rules: a∈dom(F_Γ) ⇒ wellKinded(Γ,params(F),a); each a∈dom(F_Γ) has exactly one observed result. If a and b represent the same canonical template arguments in fixed Γ, then a∈dom(F_Γ) ⇔ b∈dom(F_Γ), and their defined observed results agree. dom(G∘F)={a∈dom(F) | F(a)∈dom(G)}; (G∘F)(a)=G(F(a)) there; F=G iff their domains and all defined observations agree."
+    "axiomBasis": "Selected defining rules: a∈dom(F_Γ) ⇒ wellKinded(Γ,params(F),a); each a∈dom(F_Γ) has exactly one observed result. If a and b represent the same canonical template arguments in fixed Γ, then a∈dom(F_Γ) ⇔ b∈dom(F_Γ), and their defined observed results agree. dom(G∘F)={a∈dom(F) | F(a)∈dom(G)}; (G∘F)(a)=G(F(a)) there; F=G iff their domains and all defined observations agree.",
+    "leanFormulation": "structure TemplateMetafunction (Arg : Type u) (Result : Type v) where\n  wellKinded : List Arg → Prop\n  apply : List Arg → Option Result\n  domain_kinded : ∀ args, (apply args).isSome → wellKinded args",
+    "formulationSource": "urn:csabs:source/local-lean-TemplateMetaprogramming",
+    "formulationLocator": "Catalog.TMP.TemplateMetafunction",
+    "formulationScope": "model",
+    "leanModelMapping": "Kind-correct List Arg to Option Result in a fixed environment; TemplateArgument supplies disjoint type/value/template tags; partial composition is explicit. Instantiate carriers with canonical argument identities and result observations.",
+    "leanModelLimitations": "The function is a mathematical interpretation, not a decision procedure for compilation, equivalence, instantiation termination or compiler limits. Apply only after target-environment and canonical-argument mapping.",
+    "mathematicalFormulation": "A selected environment supplies kinded:Arg*→Prop and apply:Arg*→Option(Result), with apply(args)=some(r)⇒kinded(args). Composition is Option bind. This partial semantic observation does not decide all C++ instantiations or distinguish every cause of undefinedness."
   },
   {
     "id": "urn:csabs:operation/TemplateMetafunction-well-kinded",

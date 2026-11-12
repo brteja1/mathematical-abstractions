@@ -23,6 +23,30 @@ Classical two-valued formulas built from atomic propositions and Boolean connect
 - [Finite propositional formula syntax](PropositionalFormula.md) — `relatedConcept`
 - [Classical propositional natural deduction](PropositionalNaturalDeduction.md) — `requiresConcept`
 
+## Mathematical formulation
+
+For v:AP→Bool, ⟦atom(p)⟧\_v=v(p), ⟦⊥⟧\_v=false, ⟦¬φ⟧\_v=not(⟦φ⟧\_v), and ⟦φ∧ψ⟧\_v=⟦φ⟧\_v∧⟦ψ⟧\_v. The semantics is classical two-valued evaluation of the selected syntax.
+
+**Lean formulation** (in its source module context):
+
+```lean
+def PropositionalLogic {AP : Type u} (valuation : AP → Bool) : PropFormula AP → Bool
+  | .atom p => valuation p
+  | .bottom => false
+  | .neg p => !(PropositionalLogic valuation p)
+  | .conj p q => PropositionalLogic valuation p && PropositionalLogic valuation q
+```
+
+**Source:** [`Catalog.PropositionalLogic`](../lean/Catalog/Logic.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Finite formulas interpreted by Bool valuations and classical Boolean truth functions.
+
+**Limits:** Selected Bool evaluation on primitive atom/bottom/neg/conj syntax; other connectives expand as graph macros. Semantic-query predicates and normal-form/truth-table algorithms have no wrapper or registered proof witness.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: Classical two-valued formulas built from atomic propositions and Boolean connectives, interpreted under valuations. Governing rules: Boolean valuations interpret connectives by classical truth functions. Semantic consequence quantifies over all valuations.
@@ -364,7 +388,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "§§1.1–1.6: syntax, valuations and semantic notions",
     "sourceNote": "Verified against the cited definitions. Existing stable ID and classical semantics retained; derived results follow from the explicitly linked premises.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "def PropositionalLogic {AP : Type u} (valuation : AP → Bool) : PropFormula AP → Bool\n  | .atom p => valuation p\n  | .bottom => false\n  | .neg p => !(PropositionalLogic valuation p)\n  | .conj p q => PropositionalLogic valuation p && PropositionalLogic valuation q",
+    "formulationSource": "urn:csabs:source/local-lean-Logic",
+    "formulationLocator": "Catalog.PropositionalLogic",
+    "formulationScope": "model",
+    "leanModelMapping": "Finite formulas interpreted by Bool valuations and classical Boolean truth functions.",
+    "leanModelLimitations": "Selected Bool evaluation on primitive atom/bottom/neg/conj syntax; other connectives expand as graph macros. Semantic-query predicates and normal-form/truth-table algorithms have no wrapper or registered proof witness.",
+    "mathematicalFormulation": "For v:AP→Bool, ⟦atom(p)⟧_v=v(p), ⟦⊥⟧_v=false, ⟦¬φ⟧_v=not(⟦φ⟧_v), and ⟦φ∧ψ⟧_v=⟦φ⟧_v∧⟦ψ⟧_v. The semantics is classical two-valued evaluation of the selected syntax."
   },
   {
     "id": "urn:csabs:operation/PropositionalLogic-basis-evaluate",

@@ -16,6 +16,29 @@ The transitive closure of per-process event order and message send-before-receiv
 
 - [Lock with compatible access modes](Lock.md) — `relatedConcept`
 
+## Mathematical formulation
+
+Let R=processOrder∪sendReceive on events E. The selected happens-before relation is R⁺, with ∀e,¬R⁺(e,e) required explicitly. This is strict causal order, not reflexive closure or wall-clock order.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure HappensBefore (E : Type u) where
+  processOrder : E → E → Prop
+  sendReceive : E → E → Prop
+  acyclic : ∀ e, ¬ Relation.TransGen (fun a b => processOrder a b ∨ sendReceive a b) e e
+```
+
+**Source:** [`Catalog.HappensBefore`](../lean/Catalog/Semantics.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Positive transitive closure of process/send-receive edges, with explicit no-causal-cycle condition.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: The transitive closure of per-process event order and message send-before-receive edges in the distributed execution model. Governing rules: Happens-before is the least transitive relation containing process and send-receive precedence. The selected execution model has no causal cycles.
@@ -180,7 +203,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "axiomBasis": "Selected presentation: The transitive closure of per-process event order and message send-before-receive edges in the distributed execution model. Governing rules: Happens-before is the least transitive relation containing process and send-receive precedence. The selected execution model has no causal cycles.",
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
-    "reviewStatus": "editorial basis review; no machine-checked mathematical proof"
+    "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
+    "leanFormulation": "structure HappensBefore (E : Type u) where\n  processOrder : E → E → Prop\n  sendReceive : E → E → Prop\n  acyclic : ∀ e, ¬ Relation.TransGen (fun a b => processOrder a b ∨ sendReceive a b) e e",
+    "formulationSource": "urn:csabs:source/local-lean-Semantics",
+    "formulationLocator": "Catalog.HappensBefore",
+    "formulationScope": "model",
+    "leanModelMapping": "Positive transitive closure of process/send-receive edges, with explicit no-causal-cycle condition.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "Let R=processOrder∪sendReceive on events E. The selected happens-before relation is R⁺, with ∀e,¬R⁺(e,e) required explicitly. This is strict causal order, not reflexive closure or wall-clock order."
   },
   {
     "id": "urn:csabs:operation/HappensBefore-basis-precedes",

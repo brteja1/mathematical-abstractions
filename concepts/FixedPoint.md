@@ -12,6 +12,26 @@ An input left unchanged by a self-map; existence is an additional property of th
 
 **Prerequisites:** [Total function](Function.md)
 
+## Mathematical formulation
+
+For f:A→A, Fix(f)={x∈A | f(x)=x}. The definition does not assert existence or uniqueness of a fixed point.
+
+**Lean formulation** (in its source module context):
+
+```lean
+def FixedPoint {A : Type u} (f : A → A) (x : A) : Prop := f x = x
+```
+
+**Source:** [`Catalog.FixedPoint`](../lean/Catalog/Order.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Predicate f x = x for a total self-map; no existence claim.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: An input left unchanged by a self-map; existence is an additional property of the map and carrier. Governing rules: Being fixed means equality to the image under a total self-map.
@@ -154,7 +174,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "def FixedPoint {A : Type u} (f : A → A) (x : A) : Prop := f x = x",
+    "formulationSource": "urn:csabs:source/local-lean-Order",
+    "formulationLocator": "Catalog.FixedPoint",
+    "formulationScope": "model",
+    "leanModelMapping": "Predicate f x = x for a total self-map; no existence claim.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For f:A→A, Fix(f)={x∈A | f(x)=x}. The definition does not assert existence or uniqueness of a fixed point."
   },
   {
     "id": "urn:csabs:operation/FixedPoint-basis-fixed",

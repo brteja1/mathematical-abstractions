@@ -12,6 +12,32 @@ A finite recursive tagged value: null, Boolean, exact finite decimal, Unicode sc
 
 **Prerequisites:** [Two-valued Boolean type](BooleanType.md), [Exact rational number](RationalNumber.md), [Finite sequence (List datatype)](Sequence.md), [Map](Map.md), [Structural Induction](StructuralInduction.md)
 
+## Mathematical formulation
+
+The selected finite JSON value syntax is V=Null+Bool+Decimal+String+List(V)+FiniteMap(String,V), where Decimal={m·10^e∈ℚ | m,e∈ℤ}. Arrays retain order; objects have unique keys and extensional member equality. Numeric spelling, whitespace and object member order are not observations.
+
+**Lean formulation** (in its source module context):
+
+```lean
+inductive DocumentValue where
+  | null : DocumentValue
+  | boolean : Bool → DocumentValue
+  | number : DecimalRational → DocumentValue
+  | string : String → DocumentValue
+  | array : List DocumentValue → DocumentValue
+  | object (keys : Finset String) : ({k // k ∈ keys} → DocumentValue) → DocumentValue
+```
+
+**Source:** [`Catalog.DocumentValue`](../lean/Catalog/InformationData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Finite inductive value tree; DecimalRational={q:Rat | ∃m e:Int,q=m*10^e}; String uses Lean Unicode scalars. Objects use finite key sets and dependent child functions, extensionally equivalent to finite String-key maps. D=μX.(1+Bool+Dec+String+Seq(X)+Map(String,X)); Dec={m·10^e | m,e∈ℤ}. Chosen semantic profile, stricter than accepting every RFC syntax: object keys unique; strings scalar Unicode sequences; numbers exact finite decimal rationals, numeric spellings and negative zero identified by value. Objects unordered, arrays ordered. No duplicate-key policy, unpaired surrogates, reference cycles, NaN, infinity or parser/serializer claim.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Distinct constructor tags are unequal; each constructor is injective in its semantic payload; every D has exactly one outer tag; case(h₀,h_b,h_n,h_s,h_a,h_o,constructor_i(x))=h_i(x), using unit payload for null; To prove P for all D, prove scalar/null cases and array/object cases assuming P for every immediate child value; member(object(o),k)=o(k) when bound; index(array(xs),i)=xs[i] for i<|xs|; other cases undefined
@@ -250,6 +276,32 @@ A finite recursive tagged value: null, Boolean, exact finite decimal, Unicode sc
 
 **provenanceKind:** derived
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ (a b : Bool), Catalog.DocumentValue.boolean a = Catalog.DocumentValue.boolean b ↔ a = b
+```
+
+**Source:** [`Catalog.InformationDataProofs.document_boolean_injective`](../lean/Catalog/InformationData.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** The compiled inductive DocumentValue has six disjoint constructors. boolean carries Bool, so constructor equality is exactly payload equality. No parser equivalence or duplicate-key behavior is proved.
+
+**Limits:** Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/DocumentValue-tagged-constructors": "Interpreted premise: Distinct constructor tags are unequal; each constructor is injective in its semantic payload; every D has exactly one outer tag. The compiled inductive DocumentValue has six disjoint constructors. boolean carries Bool, so constructor equality is exactly payload equality. No parser equivalence or duplicate-key behavior is proved."
+}
+```
+
 ## Theorems
 
 <a id="node-urn-csabs-theorem-DocumentValue-null-not-false"></a>
@@ -349,7 +401,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "§§3–8.2: values, objects, arrays, numbers and Unicode interoperability; §§7.1, 7.5–7.6, 7.9: enumeration, recursive/nested inductives, constructors and recursors",
     "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "inductive DocumentValue where\n  | null : DocumentValue\n  | boolean : Bool → DocumentValue\n  | number : DecimalRational → DocumentValue\n  | string : String → DocumentValue\n  | array : List DocumentValue → DocumentValue\n  | object (keys : Finset String) : ({k // k ∈ keys} → DocumentValue) → DocumentValue",
+    "formulationSource": "urn:csabs:source/local-lean-InformationData",
+    "formulationLocator": "Catalog.DocumentValue",
+    "formulationScope": "model",
+    "leanModelMapping": "Finite inductive value tree; DecimalRational={q:Rat | ∃m e:Int,q=m*10^e}; String uses Lean Unicode scalars. Objects use finite key sets and dependent child functions, extensionally equivalent to finite String-key maps. D=μX.(1+Bool+Dec+String+Seq(X)+Map(String,X)); Dec={m·10^e | m,e∈ℤ}. Chosen semantic profile, stricter than accepting every RFC syntax: object keys unique; strings scalar Unicode sequences; numbers exact finite decimal rationals, numeric spellings and negative zero identified by value. Objects unordered, arrays ordered. No duplicate-key policy, unpaired surrogates, reference cycles, NaN, infinity or parser/serializer claim.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "The selected finite JSON value syntax is V=Null+Bool+Decimal+String+List(V)+FiniteMap(String,V), where Decimal={m·10^e∈ℚ | m,e∈ℤ}. Arrays retain order; objects have unique keys and extensional member equality. Numeric spelling, whitespace and object member order are not observations."
   },
   {
     "id": "urn:csabs:operation/DocumentValue-construct",
@@ -539,7 +598,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "§§3–8.2: values, objects, arrays, numbers and Unicode interoperability; §§7.1, 7.5–7.6, 7.9: enumeration, recursive/nested inductives, constructors and recursors",
     "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
-    "provenanceKind": "derived"
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ (a b : Bool), Catalog.DocumentValue.boolean a = Catalog.DocumentValue.boolean b ↔ a = b",
+    "formulationSource": "urn:csabs:source/local-lean-InformationData",
+    "formulationLocator": "Catalog.InformationDataProofs.document_boolean_injective",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "The compiled inductive DocumentValue has six disjoint constructors. boolean carries Bool, so constructor equality is exactly payload equality. No parser equivalence or duplicate-key behavior is proved.",
+    "leanModelLimitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/DocumentValue-tagged-constructors\": \"Interpreted premise: Distinct constructor tags are unequal; each constructor is injective in its semantic payload; every D has exactly one outer tag. The compiled inductive DocumentValue has six disjoint constructors. boolean carries Bool, so constructor equality is exactly payload equality. No parser equivalence or duplicate-key behavior is proved.\"}"
   },
   {
     "id": "urn:csabs:theorem/DocumentValue-null-not-false",

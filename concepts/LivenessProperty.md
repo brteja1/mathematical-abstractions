@@ -18,6 +18,27 @@ A trace property for which every finite prefix has at least one infinite extensi
 - [Linear temporal logic on infinite discrete traces](LinearTemporalLogic.md) — `relatedConcept`
 - [Mutex (non-reentrant mutual-exclusion lock)](Mutex.md) — `relatedConcept`
 
+## Mathematical formulation
+
+For P⊆A^ℕ, Liveness(P) ⇔ ∀w∈A\*,∃α∈P,∀i<|w|,α(i)=w\_i. Every finite word has a satisfying infinite extension; no scheduler or fairness assumption is built into P.
+
+**Lean formulation** (in its source module context):
+
+```lean
+def LivenessProperty {A : Type u} (P : (Nat → A) → Prop) : Prop :=
+  ∀ word : List A, ∃ trace, extendsPrefix word trace ∧ P trace
+```
+
+**Source:** [`Catalog.LivenessProperty`](../lean/Catalog/Semantics.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Each finite List prefix admits a satisfying infinite trace; empty-alphabet cases stay explicit in types.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A trace property for which every finite prefix has at least one infinite extension satisfying the property. Governing rules: A liveness property allows some satisfying extension of every finite word over the stated alphabet.
@@ -160,7 +181,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "def LivenessProperty {A : Type u} (P : (Nat → A) → Prop) : Prop :=\n  ∀ word : List A, ∃ trace, extendsPrefix word trace ∧ P trace",
+    "formulationSource": "urn:csabs:source/local-lean-Semantics",
+    "formulationLocator": "Catalog.LivenessProperty",
+    "formulationScope": "model",
+    "leanModelMapping": "Each finite List prefix admits a satisfying infinite trace; empty-alphabet cases stay explicit in types.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For P⊆A^ℕ, Liveness(P) ⇔ ∀w∈A*,∃α∈P,∀i<|w|,α(i)=w_i. Every finite word has a satisfying infinite extension; no scheduler or fairness assumption is built into P."
   },
   {
     "id": "urn:csabs:operation/LivenessProperty-basis-extendible",

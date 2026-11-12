@@ -19,6 +19,29 @@ A relation that matches transitions in both directions, with observations preser
 - [Action-labelled transition system with initial states](LabelledTransitionSystem.md) — `relatedConcept`
 - [Strong finite partial-trace equivalence](TraceEquivalence.md) — `relatedConcept`
 
+## Mathematical formulation
+
+R⊆S×T is a strong bisimulation iff Simulation(S,T,R) ∧ Simulation(T,S,R⁻¹), with identical visible action labels on matched steps. No silent-step quotient is implicit.
+
+**Lean formulation** (in its source module context):
+
+```lean
+def Bisimulation {S : Type u} {T : Type v} {Act : Type w}
+    (s : LabelledTransitionSystem S Act) (t : LabelledTransitionSystem T Act)
+    (r : S → T → Prop) : Prop :=
+  Simulation s t r ∧ Simulation t s (fun y x => r x y)
+```
+
+**Source:** [`Catalog.Bisimulation`](../lean/Catalog/Graphs.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Strong forward and reverse simulations; use labelled observations if observation preservation is needed.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A relation that matches transitions in both directions, with observations preserved where present; this entry uses strong bisimulation. Governing rules: Strong labeled bisimulation matches transitions in both directions.
@@ -168,7 +191,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/Simulation"
     ],
-    "specializationNote": "Keep the same relation and source-to-target orientation; require both it and its converse to match strong steps, retaining any observation constraints."
+    "specializationNote": "Keep the same relation and source-to-target orientation; require both it and its converse to match strong steps, retaining any observation constraints.",
+    "leanFormulation": "def Bisimulation {S : Type u} {T : Type v} {Act : Type w}\n    (s : LabelledTransitionSystem S Act) (t : LabelledTransitionSystem T Act)\n    (r : S → T → Prop) : Prop :=\n  Simulation s t r ∧ Simulation t s (fun y x => r x y)",
+    "formulationSource": "urn:csabs:source/local-lean-Graphs",
+    "formulationLocator": "Catalog.Bisimulation",
+    "formulationScope": "model",
+    "leanModelMapping": "Strong forward and reverse simulations; use labelled observations if observation preservation is needed.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "R⊆S×T is a strong bisimulation iff Simulation(S,T,R) ∧ Simulation(T,S,R⁻¹), with identical visible action labels on matched steps. No silent-step quotient is implicit."
   },
   {
     "id": "urn:csabs:operation/Bisimulation-basis-matchesBoth",

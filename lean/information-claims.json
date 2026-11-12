@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "interpretation": "Navigation registry of compiled propositions. Formulated-only is not proved; witness-registered requires fresh scripts/lean.py verification evidence. bindings.json remains authoritative for witness audit.",
+  "claims": {
+    "urn:csabs:theorem/ShannonEntropy-entropy-bounds": {
+      "target": "Catalog.Information.Targets.entropyBounds",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "formulated-only"
+    },
+    "urn:csabs:theorem/ShannonEntropy-source-coding": {
+      "target": "Catalog.Information.Targets.sourceCoding",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "formulated-only"
+    },
+    "urn:csabs:law/ConditionalEntropy-chain-rule": {
+      "target": "Catalog.Information.Targets.chainRule",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "witness-registered",
+      "witness": "Catalog.Information.Verified.chainRule"
+    },
+    "urn:csabs:theorem/ConditionalEntropy-conditioning-reduces": {
+      "target": "Catalog.Information.Targets.conditioningReduces",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "formulated-only"
+    },
+    "urn:csabs:theorem/ConditionalEntropy-fano": {
+      "target": "Catalog.Information.Targets.fano",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "formulated-only"
+    },
+    "urn:csabs:theorem/RelativeEntropy-gibbs": {
+      "target": "Catalog.Information.Targets.gibbs",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "formulated-only"
+    },
+    "urn:csabs:theorem/MutualInformation-entropy-identity": {
+      "target": "Catalog.Information.Targets.informationIdentity",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "formulated-only"
+    },
+    "urn:csabs:theorem/MutualInformation-data-processing": {
+      "target": "Catalog.Information.Targets.dataProcessing",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "formulated-only"
+    },
+    "urn:csabs:law/StochasticChannel-output-normalized": {
+      "target": "Catalog.Information.Targets.outputNormalized",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "witness-registered",
+      "witness": "Catalog.Information.Verified.outputNormalized"
+    },
+    "urn:csabs:law/DiscreteMemorylessChannel-product-normalized": {
+      "target": "Catalog.Information.Targets.productNormalized",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "witness-registered",
+      "witness": "Catalog.Information.Verified.productNormalized"
+    },
+    "urn:csabs:theorem/ChannelCapacity-shannon": {
+      "target": "Catalog.Information.Targets.channelCoding",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "formulated-only"
+    },
+    "urn:csabs:theorem/PrefixFreeCode-unique-decoding": {
+      "target": "Catalog.Information.Targets.prefixUnique",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "witness-registered",
+      "witness": "Catalog.Information.Verified.prefixUnique"
+    },
+    "urn:csabs:theorem/UniquelyDecodableCode-kraft-mcmillan": {
+      "target": "Catalog.Information.Targets.kraftMcMillan",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "formulated-only",
+      "partialEvidence": "Catalog.Information.kraft_necessity proves necessity only; constructive converse remains unproved, so no full-claim witness is registered."
+    },
+    "urn:csabs:theorem/PrefixFreeCode-source-length": {
+      "target": "Catalog.Information.Targets.sourceLength",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "formulated-only"
+    },
+    "urn:csabs:law/DistortionMeasure-expected-block": {
+      "target": "Catalog.Information.Targets.expectedBlock",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "witness-registered",
+      "witness": "Catalog.Information.Verified.expectedBlock"
+    },
+    "urn:csabs:theorem/RateDistortion-monotone-convex": {
+      "target": "Catalog.Information.Targets.rateDistortionConvex",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "formulated-only"
+    },
+    "urn:csabs:theorem/RateDistortion-shannon-lossy": {
+      "target": "Catalog.Information.Targets.lossyCoding",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "formulated-only"
+    },
+    "urn:csabs:law/HammingSpace-metric": {
+      "target": "Catalog.Information.Targets.hammingMetric",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "witness-registered",
+      "witness": "Catalog.Information.Verified.hammingMetric"
+    },
+    "urn:csabs:theorem/HammingSpace-ball-volume": {
+      "target": "Catalog.Information.Targets.hammingVolume",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "formulated-only"
+    },
+    "urn:csabs:theorem/BlockCode-unique-radius": {
+      "target": "Catalog.Information.Targets.uniqueRadius",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "formulated-only"
+    },
+    "urn:csabs:theorem/BlockCode-hamming-bound": {
+      "target": "Catalog.Information.Targets.hammingBound",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "formulated-only"
+    },
+    "urn:csabs:theorem/BlockCode-singleton": {
+      "target": "Catalog.Information.Targets.singletonBound",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "formulated-only"
+    },
+    "urn:csabs:theorem/LinearBlockCode-cardinality": {
+      "target": "Catalog.Information.Targets.linearCardinality",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "witness-registered",
+      "witness": "Catalog.Information.Verified.linearCardinality"
+    },
+    "urn:csabs:theorem/LinearBlockCode-distance-weight": {
+      "target": "Catalog.Information.Targets.distanceWeight",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "witness-registered",
+      "witness": "Catalog.Information.Verified.distanceWeight"
+    },
+    "urn:csabs:theorem/NonlinearBlockCode-witness-exists": {
+      "target": "Catalog.Information.Targets.nonlinearWitness",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "witness-registered",
+      "witness": "Catalog.Information.Verified.nonlinearWitness"
+    },
+    "urn:csabs:theorem/GeneratorMatrix-encoding-isomorphism": {
+      "target": "Catalog.Information.Targets.generatorIsomorphism",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "witness-registered",
+      "witness": "Catalog.Information.Verified.generatorIsomorphism"
+    },
+    "urn:csabs:theorem/ParityCheckMatrix-orthogonality": {
+      "target": "Catalog.Information.Targets.checkOrthogonality",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "witness-registered",
+      "witness": "Catalog.Information.Verified.checkOrthogonality"
+    },
+    "urn:csabs:theorem/Syndrome-coset-invariance": {
+      "target": "Catalog.Information.Targets.syndromeCoset",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "witness-registered",
+      "witness": "Catalog.Information.Verified.syndromeCoset"
+    },
+    "urn:csabs:theorem/DualCode-dimension-involution": {
+      "target": "Catalog.Information.Targets.dualDimension",
+      "module": "Catalog.InformationTheoryStatements",
+      "status": "witness-registered",
+      "witness": "Catalog.Information.Verified.dualDimension"
+    }
+  }
+}

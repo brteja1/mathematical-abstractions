@@ -12,6 +12,36 @@ Finite typed entity sets and positive-arity relationship sets with named roles a
 
 **Prerequisites:** [Finite set collection](FiniteSet.md), [Dependent function (Pi type)](DependentFunction.md), [Named relational schema with attribute domains](RelationalSchema.md)
 
+## Mathematical formulation
+
+For finite entity/relationship kinds, entities E\_k are finite sets of global IDs. A relationship of kind r is a tuple t:Fin(arity(r))→ID with arity(r)>0 and ∀i,t\_i∈E\_{role(r,i)}. Entity and relationship attributes are total functions into their declared dependent value domains. Additional cardinality/weak-entity constraints require extra predicates.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure EntityRelationshipModel (EK RK ID : Type u) [Fintype EK] [Fintype RK]
+    (arity : RK → Nat) (role : (r : RK) → Fin (arity r) → EK)
+    (Attr : EK → Type u) (Val : (k : EK) → Attr k → Type v)
+    (RAttr : RK → Type u) (RVal : (r : RK) → RAttr r → Type v)
+    [∀ k, Fintype (Attr k)] [∀ r, Fintype (RAttr r)] where
+  positive_arity : ∀ r, 0 < arity r
+  entities : EK → Finset ID
+  attributes : (k : EK) → {e // e ∈ entities k} → (a : Attr k) → Val k a
+  relationships : (r : RK) → Finset (Fin (arity r) → ID)
+  integrity : ∀ r, ∀ row ∈ relationships r, ∀ i, row i ∈ entities (role r i)
+  relationshipAttributes : (r : RK) → {row // row ∈ relationships r} → (a : RAttr r) → RVal r a
+```
+
+**Source:** [`Catalog.EntityRelationshipModel`](../lean/Catalog/InformationData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Finite kind/attribute families, positive relationship arities, entity Finsets over a global ID carrier, role-indexed tuples, integrity proof and typed total entity/relationship attribute functions. E_k⊆fin ID; R_r⊆fin Πi:Fin(arity(r)). E_role(r,i). Fixed finite schema of entity/relationship kinds and attribute names. Entity sets may overlap in global ID. Relations are sets of role tuples, so no duplicate relationship occurrence identity. Attributes total with declared domains; optionality must use an Option domain. No weak entities, inheritance or extra participation/cardinality constraints assumed.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Kinds, attribute-name families, entity sets and relationship sets are finite; arity(r)>0; row∈R_r ⇒ ∀i:Fin(arity(r)), row(i)∈E_role(r,i); For each existing entity or relationship and declared attribute, exactly one value in its declared domain is assigned
@@ -320,7 +350,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "ACM TODS 1(1), 1976, pp. 9–36; §§2.2.1–2.2.4: entity sets, typed roles, relations and attributes",
     "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "structure EntityRelationshipModel (EK RK ID : Type u) [Fintype EK] [Fintype RK]\n    (arity : RK → Nat) (role : (r : RK) → Fin (arity r) → EK)\n    (Attr : EK → Type u) (Val : (k : EK) → Attr k → Type v)\n    (RAttr : RK → Type u) (RVal : (r : RK) → RAttr r → Type v)\n    [∀ k, Fintype (Attr k)] [∀ r, Fintype (RAttr r)] where\n  positive_arity : ∀ r, 0 < arity r\n  entities : EK → Finset ID\n  attributes : (k : EK) → {e // e ∈ entities k} → (a : Attr k) → Val k a\n  relationships : (r : RK) → Finset (Fin (arity r) → ID)\n  integrity : ∀ r, ∀ row ∈ relationships r, ∀ i, row i ∈ entities (role r i)\n  relationshipAttributes : (r : RK) → {row // row ∈ relationships r} → (a : RAttr r) → RVal r a",
+    "formulationSource": "urn:csabs:source/local-lean-InformationData",
+    "formulationLocator": "Catalog.EntityRelationshipModel",
+    "formulationScope": "model",
+    "leanModelMapping": "Finite kind/attribute families, positive relationship arities, entity Finsets over a global ID carrier, role-indexed tuples, integrity proof and typed total entity/relationship attribute functions. E_k⊆fin ID; R_r⊆fin Πi:Fin(arity(r)). E_role(r,i). Fixed finite schema of entity/relationship kinds and attribute names. Entity sets may overlap in global ID. Relations are sets of role tuples, so no duplicate relationship occurrence identity. Attributes total with declared domains; optionality must use an Option domain. No weak entities, inheritance or extra participation/cardinality constraints assumed.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "For finite entity/relationship kinds, entities E_k are finite sets of global IDs. A relationship of kind r is a tuple t:Fin(arity(r))→ID with arity(r)>0 and ∀i,t_i∈E_{role(r,i)}. Entity and relationship attributes are total functions into their declared dependent value domains. Additional cardinality/weak-entity constraints require extra predicates."
   },
   {
     "id": "urn:csabs:operation/EntityRelationshipModel-entities",

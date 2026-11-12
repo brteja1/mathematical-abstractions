@@ -21,6 +21,29 @@ A staged relation connecting a parameterized declaration and valid argument bind
 - [Java generic inference constraints and resolution obligations](JavaTypeInference.md) — `relatedConcept`
 - [VHDL generic elaboration and static structural generation](VHDLGenericElaboration.md) — `requiresConcept`
 
+## Mathematical formulation
+
+Inst(env,decl,args,value) ⇔ kindCorrect(signature(decl),args)∧admissible(env,decl,args)∧realizes(env,decl,zip(parameterNames,args),value). realizes is a supplied relation; determinism, hygienic substitution and language-specific phase semantics are not implicit.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure ParametricInstantiation (Env Decl Name Kind Arg Instance : Type u) where
+  signature : Decl → GenericSignature Name Kind Arg
+  admissible : Env → Decl → List Arg → Prop
+  realizes : Env → Decl → List (Name × Arg) → Instance → Prop
+```
+
+**Source:** [`Catalog.Generics.ParametricInstantiation`](../lean/Catalog/GenericProgramming.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Explicit signature, admissibility and realization relation with simultaneous name/argument zip. Instantiation remains a relation, allowing fresh/generative instance identities.
+
+**Limits:** Actual syntax substitution, binder hygiene, language body semantics and realization/instance identity are supplied. A complete shared substitution calculus is not implemented.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining rules: Instantiate(Γ,D,a,I) ⇔ kindCorrect(sig(D),a) ∧ admissible(Γ,D,a) ∧ realizes(Γ,bindNames(D,a),D,I). bindNames(D,a) maps each declared parameter identity pᵢ to aᵢ simultaneously; substitution respects the selected language binding/scoping rules, not textual name coincidence.
@@ -271,7 +294,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "JLS §§4.5,4.5.2,4.10.2; IEEE 1076-2019 §§6.5.7,14.3,14.4.2.10; N4861 [temp.arg]",
     "sourceNote": "Defines a common staging relation with explicit language adapters. It does not identify Java parameterization, C++ observation and VHDL elaboration with the same instance representation.",
     "provenanceKind": "adapted",
-    "axiomBasis": "Selected defining rules: Instantiate(Γ,D,a,I) ⇔ kindCorrect(sig(D),a) ∧ admissible(Γ,D,a) ∧ realizes(Γ,bindNames(D,a),D,I). bindNames(D,a) maps each declared parameter identity pᵢ to aᵢ simultaneously; substitution respects the selected language binding/scoping rules, not textual name coincidence."
+    "axiomBasis": "Selected defining rules: Instantiate(Γ,D,a,I) ⇔ kindCorrect(sig(D),a) ∧ admissible(Γ,D,a) ∧ realizes(Γ,bindNames(D,a),D,I). bindNames(D,a) maps each declared parameter identity pᵢ to aᵢ simultaneously; substitution respects the selected language binding/scoping rules, not textual name coincidence.",
+    "leanFormulation": "structure ParametricInstantiation (Env Decl Name Kind Arg Instance : Type u) where\n  signature : Decl → GenericSignature Name Kind Arg\n  admissible : Env → Decl → List Arg → Prop\n  realizes : Env → Decl → List (Name × Arg) → Instance → Prop",
+    "formulationSource": "urn:csabs:source/local-lean-GenericProgramming",
+    "formulationLocator": "Catalog.Generics.ParametricInstantiation",
+    "formulationScope": "partial",
+    "leanModelMapping": "Explicit signature, admissibility and realization relation with simultaneous name/argument zip. Instantiation remains a relation, allowing fresh/generative instance identities.",
+    "leanModelLimitations": "Actual syntax substitution, binder hygiene, language body semantics and realization/instance identity are supplied. A complete shared substitution calculus is not implemented.",
+    "mathematicalFormulation": "Inst(env,decl,args,value) ⇔ kindCorrect(signature(decl),args)∧admissible(env,decl,args)∧realizes(env,decl,zip(parameterNames,args),value). realizes is a supplied relation; determinism, hygienic substitution and language-specific phase semantics are not implicit."
   },
   {
     "id": "urn:csabs:operation/ParametricInstantiation-substitute",

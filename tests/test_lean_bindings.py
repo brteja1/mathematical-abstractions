@@ -33,6 +33,28 @@ class LeanBindingTests(unittest.TestCase):
         self.index[self.target]['formalStatement'] += ' changed'
         self.assertTrue(any('premises changed' in e for e in self.errors()))
 
+    def test_formulation_cannot_drift_from_lean_source(self):
+        self.index['urn:csabs:concept/Stack']['leanFormulation'] = 'abbrev Stack := Nat'
+        self.assertTrue(any('Lean formulation is stale' in e for e in self.errors()))
+
+    def test_formulation_cannot_hide_partial_scope(self):
+        self.index['urn:csabs:concept/BTree']['formulationScope'] = 'model'
+        self.assertTrue(any('formulation scope differs' in e for e in self.errors()))
+
+    def test_formulation_requires_its_actual_source(self):
+        self.index['urn:csabs:concept/Stack']['formulationSource'] = 'urn:csabs:source/local-lean-Algebra'
+        self.assertTrue(any('source/locator differs' in e for e in self.errors()))
+
+    def test_displayed_premises_cannot_diverge_from_witness_mapping(self):
+        self.index[self.target]['leanPremiseMapping'] = '{}'
+        self.assertTrue(any('formulation premise mapping differs' in e for e in self.errors()))
+
+    def test_every_concept_has_a_readable_and_typed_formulation(self):
+        for node in self.index.values():
+            if node['type'] == 'Concept':
+                self.assertTrue(node.get('mathematicalFormulation'), node['id'])
+                self.assertTrue(node.get('leanFormulation'), node['id'])
+
     def test_changed_axiom_invalidates_its_witness(self):
         premise = self.index[self.target]['dependsOn'][0]
         self.index[premise]['formalStatement'] = 'False'

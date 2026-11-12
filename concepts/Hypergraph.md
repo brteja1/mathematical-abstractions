@@ -16,6 +16,28 @@ A finite set of vertices and a set of undirected hyperedges, each a vertex subse
 
 - [Graph](Graph.md) — `specializationOf`
 
+## Mathematical formulation
+
+The selected finite simple hypergraph is (V,H) with H⊆℘(V) finite and ∀e∈H,|e|≥2. Repeated hyperedges, empty edges and singleton edges are excluded.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure Hypergraph (V : Type u) [Fintype V] where
+  edges : Finset (Finset V)
+  arity : ∀ e ∈ edges, 2 ≤ e.card
+```
+
+**Source:** [`Catalog.Hypergraph`](../lean/Catalog/GraphData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** (V,H), H⊆𝒫(V), ∀e∈H, |e|≥2. Selected NIST convention excludes empty and singleton edges. V and H may be empty. No parallel hyperedges, orientation, repeated incidence or edge identities beyond vertex subsets. Equality is literal finite-set equality.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** V,H finite; every e∈H is a subset of V with |e|≥2; incident(v,e) ⇔ v∈e; degree(v)=|{e∈H | v∈e}|
@@ -206,6 +228,32 @@ A finite set of vertices and a set of undirected hyperedges, each a vertex subse
 
 **provenanceKind:** derived
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {V : Type} [Fintype V] (g : Catalog.Hypergraph V) (e : Finset V), e ∈ g.edges → e.Nonempty
+```
+
+**Source:** [`Catalog.GraphDataProofs.hyperedge_nonempty`](../lean/Catalog/GraphData.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Each hyperedge is a Finset V with cardinality≥2. Finset.Nonempty is equivalent to e≠∅ in the catalog; the proof derives positive cardinality from the arity invariant.
+
+**Limits:** Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Hypergraph-hyperedges": "Interpreted premise: V,H finite; every e∈H is a subset of V with |e|≥2. Each hyperedge is a Finset V with cardinality≥2. Finset.Nonempty is equivalent to e≠∅ in the catalog; the proof derives positive cardinality from the arity invariant."
+}
+```
+
 ## Theorems
 
 <a id="node-urn-csabs-theorem-Hypergraph-handshake-incidence"></a>
@@ -298,7 +346,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Definition and Formal Definition: undirected hyperedges containing at least two vertices",
     "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "structure Hypergraph (V : Type u) [Fintype V] where\n  edges : Finset (Finset V)\n  arity : ∀ e ∈ edges, 2 ≤ e.card",
+    "formulationSource": "urn:csabs:source/local-lean-GraphData",
+    "formulationLocator": "Catalog.Hypergraph",
+    "formulationScope": "model",
+    "leanModelMapping": "(V,H), H⊆𝒫(V), ∀e∈H, |e|≥2. Selected NIST convention excludes empty and singleton edges. V and H may be empty. No parallel hyperedges, orientation, repeated incidence or edge identities beyond vertex subsets. Equality is literal finite-set equality.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "The selected finite simple hypergraph is (V,H) with H⊆℘(V) finite and ∀e∈H,|e|≥2. Repeated hyperedges, empty edges and singleton edges are excluded."
   },
   {
     "id": "urn:csabs:operation/Hypergraph-edges",
@@ -440,7 +495,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Definition and Formal Definition: undirected hyperedges containing at least two vertices",
     "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
-    "provenanceKind": "derived"
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {V : Type} [Fintype V] (g : Catalog.Hypergraph V) (e : Finset V), e ∈ g.edges → e.Nonempty",
+    "formulationSource": "urn:csabs:source/local-lean-GraphData",
+    "formulationLocator": "Catalog.GraphDataProofs.hyperedge_nonempty",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Each hyperedge is a Finset V with cardinality≥2. Finset.Nonempty is equivalent to e≠∅ in the catalog; the proof derives positive cardinality from the arity invariant.",
+    "leanModelLimitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Hypergraph-hyperedges\": \"Interpreted premise: V,H finite; every e∈H is a subset of V with |e|≥2. Each hyperedge is a Finset V with cardinality≥2. Finset.Nonempty is equivalent to e≠∅ in the catalog; the proof derives positive cardinality from the arity invariant.\"}"
   },
   {
     "id": "urn:csabs:theorem/Hypergraph-handshake-incidence",

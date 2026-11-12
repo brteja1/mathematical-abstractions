@@ -17,6 +17,26 @@ A sequence of exactly w bits, with bitwise operations and optional signed or uns
 - [Keyed block cipher](BlockCipher.md) — `requiresConcept`
 - [GHASH polynomial accumulator](GHASH.md) — `requiresConcept`
 
+## Mathematical formulation
+
+BV(w)={0,1}^{Fin(w)}, identified with {0,…,2^w−1}. Modular arithmetic reduces modulo 2^w; w=0 is allowed and has one bit-vector value.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev BitVector (width : Nat) := BitVec width
+```
+
+**Source:** [`Catalog.BitVector`](../lean/Catalog/Numeric.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Lean BitVec width; exactly width bits; zero width allowed.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A sequence of exactly w bits, with bitwise operations and optional signed or unsigned interpretations for arithmetic and comparison. Governing rules: Every value contains exactly w bits. Bit vectors are fixed-length maps into two bit values. Bitwise Boolean operations are defined independently at every index. Logical shifts use zero fill and return zero for counts at least the width; this convention is not a programming-language shift rule.
@@ -248,7 +268,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "abbrev BitVector (width : Nat) := BitVec width",
+    "formulationSource": "urn:csabs:source/local-lean-Numeric",
+    "formulationLocator": "Catalog.BitVector",
+    "formulationScope": "model",
+    "leanModelMapping": "Lean BitVec width; exactly width bits; zero width allowed.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "BV(w)={0,1}^{Fin(w)}, identified with {0,…,2^w−1}. Modular arithmetic reduces modulo 2^w; w=0 is allowed and has one bit-vector value."
   },
   {
     "id": "urn:csabs:operation/bitvector-and",

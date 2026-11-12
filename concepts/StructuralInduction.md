@@ -21,6 +21,29 @@ A proof principle for inductively generated finite values: prove the property fo
 - [Finite ordered rose tree](RoseTree.md) — `requiresConcept`
 - [Free ranked term algebra with variables](TermAlgebra.md) — `requiresConcept`
 
+## Mathematical formulation
+
+For the representative datatype T(A)=leaf(A)+branch(T(A)×T(A)): [(∀a,P(leaf(a))) ∧ (∀s,t,P(s)∧P(t)⇒P(branch(s,t)))] ⇒ ∀t∈T(A),P(t). Other constructor signatures require their own recursors.
+
+**Lean formulation** (in its source module context):
+
+```lean
+def StructuralInduction (A : Type u) : Prop :=
+  ∀ P : InductiveTree A → Prop,
+    (∀ a, P (.leaf a)) →
+    (∀ s t, P s → P t → P (.branch s t)) → ∀ t, P t
+```
+
+**Source:** [`Catalog.StructuralInduction`](../lean/Catalog/Foundations.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Induction proposition for a representative binary inductive tree; use each datatype own recursor for general constructor signatures. BinaryTree separately instantiates this schema with empty and labelled binary-node constructors; the existing representative InductiveTree declaration is unchanged.
+
+**Limits:** Representative binary-tree signature only; generic arbitrary finitary signatures and their semantic bridge are not implemented.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A proof principle for inductively generated finite values: prove the property for every constructor assuming it for its recursive arguments. Governing rules: Values form the least set closed under the given finitary constructors. A constructor-closed predicate contains every generated value.
@@ -183,7 +206,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "relatedConcept": [
       "urn:csabs:concept/BinaryTree"
     ],
-    "basisInstantiation": "For BinaryTree(A), instantiate the constructor schema with E and N:A×BT(A)×BT(A)→BT(A), using induction hypotheses for the ordered left and right recursive arguments. This is an instance of the principle, not an inheritance of claims through concept links."
+    "basisInstantiation": "For BinaryTree(A), instantiate the constructor schema with E and N:A×BT(A)×BT(A)→BT(A), using induction hypotheses for the ordered left and right recursive arguments. This is an instance of the principle, not an inheritance of claims through concept links.",
+    "leanFormulation": "def StructuralInduction (A : Type u) : Prop :=\n  ∀ P : InductiveTree A → Prop,\n    (∀ a, P (.leaf a)) →\n    (∀ s t, P s → P t → P (.branch s t)) → ∀ t, P t",
+    "formulationSource": "urn:csabs:source/local-lean-Foundations",
+    "formulationLocator": "Catalog.StructuralInduction",
+    "formulationScope": "partial",
+    "leanModelMapping": "Induction proposition for a representative binary inductive tree; use each datatype own recursor for general constructor signatures. BinaryTree separately instantiates this schema with empty and labelled binary-node constructors; the existing representative InductiveTree declaration is unchanged.",
+    "leanModelLimitations": "Representative binary-tree signature only; generic arbitrary finitary signatures and their semantic bridge are not implemented.",
+    "mathematicalFormulation": "For the representative datatype T(A)=leaf(A)+branch(T(A)×T(A)): [(∀a,P(leaf(a))) ∧ (∀s,t,P(s)∧P(t)⇒P(branch(s,t)))] ⇒ ∀t∈T(A),P(t). Other constructor signatures require their own recursors."
   },
   {
     "id": "urn:csabs:axiom/StructuralInduction-least-carrier",

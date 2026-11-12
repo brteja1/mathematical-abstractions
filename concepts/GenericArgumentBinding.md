@@ -20,6 +20,29 @@ Completion of resolved parameter slots from supplied actual arguments or permitt
 - [Contextual parametric declaration instantiation](ParametricInstantiation.md) — `requiresConcept`
 - [VHDL generic interfaces and whole-formal association](VHDLGenericInterface.md) — `requiresConcept`
 
+## Mathematical formulation
+
+Binding proceeds in declaration order. At slot i, choose actual(i) when present, otherwise default(i,prefix); fail if neither exists or its kind differs from k\_i, otherwise append it to prefix. The result is Option(List(Arg)), preserving the signature's parameter order.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure GenericArgumentBinding (Name Kind Arg : Type u) where
+  signature : GenericSignature Name Kind Arg
+  actual : Nat → Option Arg
+  default : Nat → List Arg → Option Arg
+```
+
+**Source:** [`Catalog.Generics.GenericArgumentBinding`](../lean/Catalog/GenericProgramming.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Resolved actual slots and prefix-dependent defaults; bind traverses declaration slots, gives explicit actuals precedence, checks kinds and appends one result per slot. Decidable kind equality is an implementation convention.
+
+**Limits:** Association syntax, duplicate/unknown-name rejection, inference and full simultaneous bounds are preceding/following language adapters. Selected ordered-default profile only.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining rules: Starting with prefix=[], for each slot i choose actual(i) when present, otherwise default(i,prefix); fail if absent or wrong kind, else append the selected argument. Return the complete list after all slots. complete(Σ,A,D) ⇔ ∃a, bindΣ(A,D)=Some(a); preprocessing rejects unknown/duplicate formal associations before applying this interface.
@@ -268,7 +291,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "JLS §4.5 well-formed parameterizations; IEEE 1076-2019 §§6.5.7,14.3.3; N4861 [temp.arg]",
     "sourceNote": "Introduces a deterministic completion interface after language association has resolved slots. Prefix-dependent defaults are an explicit common subprofile, not the full generic association semantics of every language.",
     "provenanceKind": "adapted",
-    "axiomBasis": "Selected defining rules: Starting with prefix=[], for each slot i choose actual(i) when present, otherwise default(i,prefix); fail if absent or wrong kind, else append the selected argument. Return the complete list after all slots. complete(Σ,A,D) ⇔ ∃a, bindΣ(A,D)=Some(a); preprocessing rejects unknown/duplicate formal associations before applying this interface."
+    "axiomBasis": "Selected defining rules: Starting with prefix=[], for each slot i choose actual(i) when present, otherwise default(i,prefix); fail if absent or wrong kind, else append the selected argument. Return the complete list after all slots. complete(Σ,A,D) ⇔ ∃a, bindΣ(A,D)=Some(a); preprocessing rejects unknown/duplicate formal associations before applying this interface.",
+    "leanFormulation": "structure GenericArgumentBinding (Name Kind Arg : Type u) where\n  signature : GenericSignature Name Kind Arg\n  actual : Nat → Option Arg\n  default : Nat → List Arg → Option Arg",
+    "formulationSource": "urn:csabs:source/local-lean-GenericProgramming",
+    "formulationLocator": "Catalog.Generics.GenericArgumentBinding",
+    "formulationScope": "model",
+    "leanModelMapping": "Resolved actual slots and prefix-dependent defaults; bind traverses declaration slots, gives explicit actuals precedence, checks kinds and appends one result per slot. Decidable kind equality is an implementation convention.",
+    "leanModelLimitations": "Association syntax, duplicate/unknown-name rejection, inference and full simultaneous bounds are preceding/following language adapters. Selected ordered-default profile only.",
+    "mathematicalFormulation": "Binding proceeds in declaration order. At slot i, choose actual(i) when present, otherwise default(i,prefix); fail if neither exists or its kind differs from k_i, otherwise append it to prefix. The result is Option(List(Arg)), preserving the signature's parameter order."
   },
   {
     "id": "urn:csabs:operation/GenericArgumentBinding-bind",

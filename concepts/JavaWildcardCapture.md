@@ -20,6 +20,32 @@ A nonrecursive conversion of wildcard arguments in one parameterized type to fre
 - [Java type erasure and selected reifiability rules](JavaTypeErasure.md) — `relatedConcept`
 - [Java generic inference constraints and resolution obligations](JavaTypeInference.md) — `requiresConcept`
 
+## Mathematical formulation
+
+For each argument position, an exact T stays T. A wildcard creates a fresh variable X with lower/upper bounds: ? gives (Null,B), ? extends T gives (Null,glb(T,B)), and ? super T gives (T,B). Bounds use simultaneous captured arguments; freshness is pairwise and relative to the environment, and glb validity is a supplied guard.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure JavaWildcardCapture (Ty Var : Type u) where
+  nullType : Ty
+  variableType : Var → Ty
+  declaredBound : List Ty → Nat → Ty
+  glb : Ty → Ty → Ty
+  glbValid : Ty → Ty → Prop
+  inEnvironment : Var → Prop
+```
+
+**Source:** [`Catalog.Generics.JavaWildcardCapture`](../lean/Catalog/GenericProgramming.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Exact/unbounded/upper/lower argument constructors; per-slot capture bounds, simultaneous declared-bound adapter, fresh distinct variables and nonrecursive outer-argument processing.
+
+**Limits:** Resolved nominal identities, intersection validity, well-formed input bounds and Java scoping remain frontend obligations. Capture is relational, not a unique runtime conversion.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining rules: For θ=[A:=S], capture of ? has lower nullType and upper θ(U); ? extends B has lower nullType and upper glb(B,θ(U)); ? super B has lower B and upper θ(U); exact T yields S=T. Each captured wildcard gets a distinct fresh type variable; capture applies to the arguments at this parameterized-type level only and introduces no runtime action.
@@ -265,7 +291,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "JLS §5.1.10 capture clauses, nonrecursive application and absence of runtime action; §§4.4–4.5 for bounds",
     "sourceNote": "Treats capture as a fresh-name relation with explicit upper/lower bounds; preserves the distinction between upper-bound knowledge and exact element type.",
     "provenanceKind": "adapted",
-    "axiomBasis": "Selected defining rules: For θ=[A:=S], capture of ? has lower nullType and upper θ(U); ? extends B has lower nullType and upper glb(B,θ(U)); ? super B has lower B and upper θ(U); exact T yields S=T. Each captured wildcard gets a distinct fresh type variable; capture applies to the arguments at this parameterized-type level only and introduces no runtime action."
+    "axiomBasis": "Selected defining rules: For θ=[A:=S], capture of ? has lower nullType and upper θ(U); ? extends B has lower nullType and upper glb(B,θ(U)); ? super B has lower B and upper θ(U); exact T yields S=T. Each captured wildcard gets a distinct fresh type variable; capture applies to the arguments at this parameterized-type level only and introduces no runtime action.",
+    "leanFormulation": "structure JavaWildcardCapture (Ty Var : Type u) where\n  nullType : Ty\n  variableType : Var → Ty\n  declaredBound : List Ty → Nat → Ty\n  glb : Ty → Ty → Ty\n  glbValid : Ty → Ty → Prop\n  inEnvironment : Var → Prop",
+    "formulationSource": "urn:csabs:source/local-lean-GenericProgramming",
+    "formulationLocator": "Catalog.Generics.JavaWildcardCapture",
+    "formulationScope": "partial",
+    "leanModelMapping": "Exact/unbounded/upper/lower argument constructors; per-slot capture bounds, simultaneous declared-bound adapter, fresh distinct variables and nonrecursive outer-argument processing.",
+    "leanModelLimitations": "Resolved nominal identities, intersection validity, well-formed input bounds and Java scoping remain frontend obligations. Capture is relational, not a unique runtime conversion.",
+    "mathematicalFormulation": "For each argument position, an exact T stays T. A wildcard creates a fresh variable X with lower/upper bounds: ? gives (Null,B), ? extends T gives (Null,glb(T,B)), and ? super T gives (T,B). Bounds use simultaneous captured arguments; freshness is pairwise and relative to the environment, and glb validity is a supplied guard."
   },
   {
     "id": "urn:csabs:operation/JavaWildcardCapture-capture",

@@ -16,6 +16,30 @@ A concurrent operation history can be completed by appending responses to some p
 
 - [Lock with compatible access modes](Lock.md) — `relatedConcept`
 
+## Mathematical formulation
+
+Lin(h) ⇔ wellFormed(h)∧∃h′,s,permissibleCompletion(h,h′)∧completed(h′)∧legal(s)∧equivalent(h′,s)∧processOrderPreserved(h′,s)∧realTimePreserved(h,s). Event-level meanings are supplied by the history model.
+
+**Lean formulation** (in its source module context):
+
+```lean
+def Linearizability {H S : Type u} (m : HistoryModel H S) (h : H) : Prop :=
+  m.wellFormed h ∧ ∃ completed s,
+    m.permissibleCompletion h completed ∧ m.completed completed ∧
+    m.legal s ∧ m.equivalent completed s ∧ m.processOrderPreserved completed s ∧
+    m.realTimePreserved h s
+```
+
+**Source:** [`Catalog.Linearizability`](../lean/Catalog/Semantics.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Permissible completion admitting a legal sequential witness preserving process and real-time order.
+
+**Limits:** Well-formed histories, matching, projections and permissible completions are abstract client predicates; event-level consistency conditions remain to be instantiated.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A concurrent operation history can be completed by appending responses to some pending calls and discarding others so that it is equivalent to a legal sequential history preserving real-time precedence. Governing rules: Histories are well-formed per process, with invocation/response matching and a legal sequential object specification. A history is linearizable exactly when a permissible completion admits a legal real-time-preserving sequential ordering.
@@ -180,7 +204,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
     "source": [
       "urn:csabs:source/herlihy-wing"
-    ]
+    ],
+    "leanFormulation": "def Linearizability {H S : Type u} (m : HistoryModel H S) (h : H) : Prop :=\n  m.wellFormed h ∧ ∃ completed s,\n    m.permissibleCompletion h completed ∧ m.completed completed ∧\n    m.legal s ∧ m.equivalent completed s ∧ m.processOrderPreserved completed s ∧\n    m.realTimePreserved h s",
+    "formulationSource": "urn:csabs:source/local-lean-Semantics",
+    "formulationLocator": "Catalog.Linearizability",
+    "formulationScope": "partial",
+    "leanModelMapping": "Permissible completion admitting a legal sequential witness preserving process and real-time order.",
+    "leanModelLimitations": "Well-formed histories, matching, projections and permissible completions are abstract client predicates; event-level consistency conditions remain to be instantiated.",
+    "mathematicalFormulation": "Lin(h) ⇔ wellFormed(h)∧∃h′,s,permissibleCompletion(h,h′)∧completed(h′)∧legal(s)∧equivalent(h′,s)∧processOrderPreserved(h′,s)∧realTimePreserved(h,s). Event-level meanings are supplied by the history model."
   },
   {
     "id": "urn:csabs:operation/Linearizability-basis-isLinearizable",

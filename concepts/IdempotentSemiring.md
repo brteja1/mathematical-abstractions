@@ -21,6 +21,27 @@ A unital semiring whose addition is idempotent. Its canonical order is defined b
 - [Min-plus semiring (tropical semiring, min convention)](MinPlusSemiring.md) — `requiresConcept`
 - [Min-plus semiring (tropical semiring, min convention)](MinPlusSemiring.md) — `specializationOf`
 
+## Mathematical formulation
+
+An idempotent semiring is a semiring S with ∀a∈S,a+a=a. Its canonical relation is a≼b ⇔ a+b=b. The selected unital convention allows 0=1.
+
+**Lean formulation** (in its source module context):
+
+```lean
+class IdempotentSemiring (A : Type u) extends _root_.Semiring A where
+  add_idem (a : A) : a + a = a
+```
+
+**Source:** [`Catalog.IdempotentSemiring`](../lean/Catalog/Algebra.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Catalog.IdempotentSemiring A extends Mathlib Semiring A with the structural law ∀ a, a+a=a. Same carrier equality and total operations; zero=one allowed. canonicalSemiringOrder a b is a+b=b.
+
+**Limits:** Carrier and interface binding only. No registered witness for the new canonical-order theorems; the graph statements and source correspondence remain editorial.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Explicit unital semiring basis plus additive idempotence.
@@ -378,7 +399,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "§2, printed p. 3; §5, printed p. 6",
     "sourceNote": "Additive idempotence and canonical order, adapted to the existing unital semiring convention.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "class IdempotentSemiring (A : Type u) extends _root_.Semiring A where\n  add_idem (a : A) : a + a = a",
+    "formulationSource": "urn:csabs:source/local-lean-Algebra",
+    "formulationLocator": "Catalog.IdempotentSemiring",
+    "formulationScope": "model",
+    "leanModelMapping": "Catalog.IdempotentSemiring A extends Mathlib Semiring A with the structural law ∀ a, a+a=a. Same carrier equality and total operations; zero=one allowed. canonicalSemiringOrder a b is a+b=b.",
+    "leanModelLimitations": "Carrier and interface binding only. No registered witness for the new canonical-order theorems; the graph statements and source correspondence remain editorial.",
+    "mathematicalFormulation": "An idempotent semiring is a semiring S with ∀a∈S,a+a=a. Its canonical relation is a≼b ⇔ a+b=b. The selected unital convention allows 0=1."
   },
   {
     "id": "urn:csabs:operation/IdempotentSemiring-addition",

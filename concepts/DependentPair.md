@@ -17,6 +17,26 @@ A pair whose second component lies in a carrier selected by its first component.
 - [Product Type](ProductType.md) — `specializationOf`
 - [Free ranked term algebra with variables](TermAlgebra.md) — `requiresConcept`
 
+## Mathematical formulation
+
+Σ\_{a:A}B(a) consists of pairs (a,b) with b:B(a). fst(a,b)=a; snd(a,b)=b:B(a); every p equals (fst(p),snd(p)). Equality uses transport between dependent fibers.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev DependentPair (A : Type u) (B : A → Type v) := Sigma B
+```
+
+**Source:** [`Catalog.DependentPair`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Sigma B, with dependent second projection and equality transport. Σa:A. B(a). B:A→Type is a family of set-like carriers. Equality of second components across equal indices uses transport. A and fibers may be empty; no decidable equality assumed.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** fst(pair(a,b))=a ∧ snd(pair(a,b))=b; elim_k(pair(a,b))=k(a,b); p=q ⇔ ∃h:fst(p)=fst(q), transport_B(h,snd(p))=snd(q)
@@ -231,6 +251,33 @@ A pair whose second component lies in a carrier selected by its first component.
 
 **provenanceKind:** derived
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type} {B : A → Type} (p : Catalog.DependentPair A B), Sigma.mk p.1 p.2 = p
+```
+
+**Source:** [`Catalog.CoreDataProofs.sigma_eta`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Sigma is the dependent-pair carrier, Sigma.mk the constructor and projections .1/.2. Dependent equality uses Lean transport; constructor elimination proves eta.
+
+**Limits:** Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/DependentPair-extensionality": "Interpreted premise: p=q ⇔ ∃h:fst(p)=fst(q), transport_B(h,snd(p))=snd(q). Sigma is the dependent-pair carrier, Sigma.mk the constructor and projections .1/.2. Dependent equality uses Lean transport; constructor elimination proves eta.",
+  "urn:csabs:axiom/DependentPair-projections": "Interpreted premise: fst(pair(a,b))=a ∧ snd(pair(a,b))=b. Sigma is the dependent-pair carrier, Sigma.mk the constructor and projections .1/.2. Dependent equality uses Lean transport; constructor elimination proves eta."
+}
+```
+
 ## Theorems
 
 <a id="node-urn-csabs-theorem-DependentPair-constant-family"></a>
@@ -325,7 +372,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "§§2.3, 2.8: abstraction, application, Pi and Sigma types; Sigma.mk.inj_iff, Sigma.eta, Sigma.eq",
     "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "abbrev DependentPair (A : Type u) (B : A → Type v) := Sigma B",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.DependentPair",
+    "formulationScope": "model",
+    "leanModelMapping": "Sigma B, with dependent second projection and equality transport. Σa:A. B(a). B:A→Type is a family of set-like carriers. Equality of second components across equal indices uses transport. A and fibers may be empty; no decidable equality assumed.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "Σ_{a:A}B(a) consists of pairs (a,b) with b:B(a). fst(a,b)=a; snd(a,b)=b:B(a); every p equals (fst(p),snd(p)). Equality uses transport between dependent fibers."
   },
   {
     "id": "urn:csabs:operation/DependentPair-pair",
@@ -493,7 +547,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "§§2.3, 2.8: abstraction, application, Pi and Sigma types; Sigma.mk.inj_iff, Sigma.eta, Sigma.eq",
     "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
-    "provenanceKind": "derived"
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type} {B : A → Type} (p : Catalog.DependentPair A B), Sigma.mk p.1 p.2 = p",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.CoreDataProofs.sigma_eta",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Sigma is the dependent-pair carrier, Sigma.mk the constructor and projections .1/.2. Dependent equality uses Lean transport; constructor elimination proves eta.",
+    "leanModelLimitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/DependentPair-extensionality\": \"Interpreted premise: p=q ⇔ ∃h:fst(p)=fst(q), transport_B(h,snd(p))=snd(q). Sigma is the dependent-pair carrier, Sigma.mk the constructor and projections .1/.2. Dependent equality uses Lean transport; constructor elimination proves eta.\", \"urn:csabs:axiom/DependentPair-projections\": \"Interpreted premise: fst(pair(a,b))=a ∧ snd(pair(a,b))=b. Sigma is the dependent-pair carrier, Sigma.mk the constructor and projections .1/.2. Dependent equality uses Lean transport; constructor elimination proves eta.\"}"
   },
   {
     "id": "urn:csabs:theorem/DependentPair-constant-family",

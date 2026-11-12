@@ -14,6 +14,26 @@ A 128-bit IEEE binary interchange format with 113 binary significand digits for 
 
 **Specializes:** [Floating-point type](FloatingPointType.md)
 
+## Mathematical formulation
+
+The partial format instance has (width,radix,precision,e\_min,e\_max)=(128,2,113,−16382,16383), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−112}, 0<m<2^{113}, −16382≤e≤16383, and m≥2^{112} unless e=−16382. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Binary128 := FloatingPointType binary128Format
+```
+
+**Source:** [`Catalog.Binary128`](../lean/Catalog/Numeric.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** FloatingPointType instance: 128 bits, radix 2, precision 113, exponents [-16382,16383], gradual underflow enabled.
+
+**Limits:** No correctly-rounded arithmetic or exception/NaN payload specification has been proved; run and round are unconstrained client parameters. Not a complete IEEE model.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** IEEE binary interchange instance: bits=128, radix=2, precision=113, normal exponent range [-16382,16383], gradual underflow, signed zeros, infinities and NaNs. Rounding and flags are explicit environment parameters.
@@ -262,7 +282,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/FloatingPointType"
     ],
-    "specializationNote": "Instantiate FloatingPointType at this entry’s radix, precision and exponent range as specified by basisInstantiation; rounding and exception environment remain explicit parameters."
+    "specializationNote": "Instantiate FloatingPointType at this entry’s radix, precision and exponent range as specified by basisInstantiation; rounding and exception environment remain explicit parameters.",
+    "leanFormulation": "abbrev Binary128 := FloatingPointType binary128Format",
+    "formulationSource": "urn:csabs:source/local-lean-Numeric",
+    "formulationLocator": "Catalog.Binary128",
+    "formulationScope": "partial",
+    "leanModelMapping": "FloatingPointType instance: 128 bits, radix 2, precision 113, exponents [-16382,16383], gradual underflow enabled.",
+    "leanModelLimitations": "No correctly-rounded arithmetic or exception/NaN payload specification has been proved; run and round are unconstrained client parameters. Not a complete IEEE model.",
+    "mathematicalFormulation": "The partial format instance has (width,radix,precision,e_min,e_max)=(128,2,113,−16382,16383), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−112}, 0<m<2^{113}, −16382≤e≤16383, and m≥2^{112} unless e=−16382. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim."
   },
   {
     "id": "urn:csabs:operation/Binary128-add",

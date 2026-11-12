@@ -12,6 +12,26 @@ A finite relation of key/value pairs with a set of associated values at each key
 
 **Prerequisites:** [Finite set collection](FiniteSet.md), [Map](Map.md), [Binary relation](Relation.md)
 
+## Mathematical formulation
+
+The selected carrier is FinSet(K×V). values(M,k)={v | (k,v)∈M}. Duplicate key/value pairs collapse, while distinct values for one key are retained; equality is set equality.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Multimap (K : Type u) (V : Type v) := Finset (K × V)
+```
+
+**Source:** [`Catalog.Multimap`](../lean/Catalog/StructuredData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** M⊆fin K×V; values_M(k)={v | (k,v)∈M}. No duplicate pair or ordering. Missing key yields empty set, not None; there are no explicit stored empty buckets. List-valued or bag-valued multimaps are different variants. Equality is pair-set equality.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** v∈values(M,k) ⇔ (k,v)∈M; (x,y)∈insert(M,k,v) ⇔ (x,y)=(k,v) ∨ (x,y)∈M; (x,y)∈remove(M,k,v) ⇔ (x,y)∈M ∧ (x,y)≠(k,v)
@@ -295,7 +315,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Interface contract; get, put, remove, equals; no duplicate key/value pairs",
     "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "abbrev Multimap (K : Type u) (V : Type v) := Finset (K × V)",
+    "formulationSource": "urn:csabs:source/local-lean-StructuredData",
+    "formulationLocator": "Catalog.Multimap",
+    "formulationScope": "model",
+    "leanModelMapping": "M⊆fin K×V; values_M(k)={v | (k,v)∈M}. No duplicate pair or ordering. Missing key yields empty set, not None; there are no explicit stored empty buckets. List-valued or bag-valued multimaps are different variants. Equality is pair-set equality.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "The selected carrier is FinSet(K×V). values(M,k)={v | (k,v)∈M}. Duplicate key/value pairs collapse, while distinct values for one key are retained; equality is set equality."
   },
   {
     "id": "urn:csabs:operation/Multimap-values",

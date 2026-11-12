@@ -19,6 +19,26 @@ A measurable space with a nonnegative extended-real measure defined on its measu
 - [Probability space (normalized measure)](ProbabilitySpace.md) — `requiresConcept`
 - [Probability space (normalized measure)](ProbabilitySpace.md) — `specializationOf`
 
+## Mathematical formulation
+
+A measure space is (Ω,Σ,μ), where μ:Σ→[0,+∞], μ(∅)=0, and μ(⋃\_n A\_n)=Σ\_n μ(A\_n) for pairwise disjoint measurable A\_n. Lean represents μ on all sets with measure-theoretic extension conventions.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev MeasureSpace (A : Type u) := MeasureTheory.MeasureSpace A
+```
+
+**Source:** [`Catalog.MeasureSpace`](../lean/Catalog/Probability.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib MeasureSpace bundles sigma-algebra and nonnegative extended-real countably additive measure.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Specify (X,Σ) as a MeasurableSpace, μ(∅)=0, and countable additivity on disjoint measurable families.
@@ -233,7 +253,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/MeasurableSpace"
     ],
     "specializationNote": "Forget μ and retain exactly the same X and Σ.",
-    "basisInstantiation": "Instantiate MeasurableSpace at (X,Σ); its sigma-algebra closure requirements remain obligations. Add μ with the empty-set and disjoint-countable-additivity rules listed here."
+    "basisInstantiation": "Instantiate MeasurableSpace at (X,Σ); its sigma-algebra closure requirements remain obligations. Add μ with the empty-set and disjoint-countable-additivity rules listed here.",
+    "leanFormulation": "abbrev MeasureSpace (A : Type u) := MeasureTheory.MeasureSpace A",
+    "formulationSource": "urn:csabs:source/local-lean-Probability",
+    "formulationLocator": "Catalog.MeasureSpace",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib MeasureSpace bundles sigma-algebra and nonnegative extended-real countably additive measure.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A measure space is (Ω,Σ,μ), where μ:Σ→[0,+∞], μ(∅)=0, and μ(⋃_n A_n)=Σ_n μ(A_n) for pairwise disjoint measurable A_n. Lean represents μ on all sets with measure-theoretic extension conventions."
   },
   {
     "id": "urn:csabs:operation/MeasureSpace-measure",

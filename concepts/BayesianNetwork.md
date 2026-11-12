@@ -14,6 +14,29 @@ A finite directed acyclic graph equipped with a nonempty finite value set per no
 
 **Specializes:** [Directed acyclic graph](DAG.md)
 
+## Mathematical formulation
+
+For a finite DAG (V,E), finite nonempty value carriers X\_v and normalized conditional tables p\_v(x\_v|x\_pa(v)), the joint weight is p(x)=∏\_{v∈V}p\_v(x\_v|x\_pa(v)). The Lean interface stores the DAG and tables; joint normalization is not supplied as a registered proof witness.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure BayesianNetwork (V : Type) [Fintype V] (Value : V → Type)
+    [∀ v, Fintype (Value v)] [∀ v, Nonempty (Value v)] where
+  dag : DAG V
+  localLaw : ∀ v, ((p : {p // dag.edge p v}) → Value p.val) → PMF (Value v)
+```
+
+**Source:** [`Catalog.BayesianNetwork`](../lean/Catalog/Probability.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Finite DAG and nonempty finite variable carriers with normalized PMF conditional tables; joint defined by finite factorization.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Finite DAG, nonempty finite variable carriers, and nonnegative normalized local tables; joint factorization is a definition.
@@ -235,7 +258,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/DAG"
     ],
-    "specializationNote": "Forget variable value sets and conditional tables; retain the same finite vertex set and directed acyclic edge relation."
+    "specializationNote": "Forget variable value sets and conditional tables; retain the same finite vertex set and directed acyclic edge relation.",
+    "leanFormulation": "structure BayesianNetwork (V : Type) [Fintype V] (Value : V → Type)\n    [∀ v, Fintype (Value v)] [∀ v, Nonempty (Value v)] where\n  dag : DAG V\n  localLaw : ∀ v, ((p : {p // dag.edge p v}) → Value p.val) → PMF (Value v)",
+    "formulationSource": "urn:csabs:source/local-lean-Probability",
+    "formulationLocator": "Catalog.BayesianNetwork",
+    "formulationScope": "model",
+    "leanModelMapping": "Finite DAG and nonempty finite variable carriers with normalized PMF conditional tables; joint defined by finite factorization.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For a finite DAG (V,E), finite nonempty value carriers X_v and normalized conditional tables p_v(x_v|x_pa(v)), the joint weight is p(x)=∏_{v∈V}p_v(x_v|x_pa(v)). The Lean interface stores the DAG and tables; joint normalization is not supplied as a registered proof witness."
   },
   {
     "id": "urn:csabs:operation/BayesianNetwork-joint",

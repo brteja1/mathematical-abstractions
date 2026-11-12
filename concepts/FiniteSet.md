@@ -20,6 +20,7 @@ An unordered finite subset of a fixed carrier, with extensional equality and no 
 
 - [B-tree (balanced multiway search tree)](BTree.md) — `requiresConcept`
 - [Strict binary search tree](BinarySearchTree.md) — `requiresConcept`
+- [Finite block code (Hamming profile)](BlockCode.md) — `requiresConcept`
 - [Finite database relation under set semantics](DatabaseRelation.md) — `requiresConcept`
 - [Finite database relation under set semantics](DatabaseRelation.md) — `specializationOf`
 - [Definition/instantiation lookup for dependent calls](DependentNameLookup.md) — `requiresConcept`
@@ -27,6 +28,7 @@ An unordered finite subset of a fixed carrier, with extensional equality and no 
 - [Finitely supported probability distribution](FiniteDistribution.md) — `requiresConcept`
 - [Finite carrier with exhaustive enumeration](FiniteType.md) — `requiresConcept`
 - [Finite kinded generic parameter signature](GenericSignature.md) — `requiresConcept`
+- [Hamming space (finite fixed-length words)](HammingSpace.md) — `requiresConcept`
 - [Finite simple undirected hypergraph](Hypergraph.md) — `requiresConcept`
 - [Finite set-valued multimap](Multimap.md) — `requiresConcept`
 - [Multiset](Multiset.md) — `relatedConcept`
@@ -35,6 +37,26 @@ An unordered finite subset of a fixed carrier, with extensional equality and no 
 - [Set](Set.md) — `relatedConcept`
 - [Finitely supported vector](SparseVector.md) — `requiresConcept`
 - [Class template partial-specialization selection](TemplateSpecialization.md) — `requiresConcept`
+
+## Mathematical formulation
+
+FinSet(A)={S⊆A | S is finite}; S=T ⇔ ∀x, x∈S↔x∈T. insert(S,x)=S∪{x}; erase(S,x)=S∖{x}. The empty set is included; repeated insertion has no multiplicity.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev FiniteSet (A : Type u) := Finset A
+```
+
+**Source:** [`Catalog.FiniteSet`](../lean/Catalog/DataStructures.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Finset A, quotient-based finite sets with extensional equality.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
 
 ## Interface and scope
 
@@ -364,7 +386,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/Set"
     ],
-    "specializationNote": "Restrict the parent powerset carrier 𝒫(A) to its finite members. Membership, empty, union, intersection, difference and subset retain their set meanings and preserve this restriction. No complement in an infinite ambient carrier is included."
+    "specializationNote": "Restrict the parent powerset carrier 𝒫(A) to its finite members. Membership, empty, union, intersection, difference and subset retain their set meanings and preserve this restriction. No complement in an infinite ambient carrier is included.",
+    "leanFormulation": "abbrev FiniteSet (A : Type u) := Finset A",
+    "formulationSource": "urn:csabs:source/local-lean-DataStructures",
+    "formulationLocator": "Catalog.FiniteSet",
+    "formulationScope": "model",
+    "leanModelMapping": "Finset A, quotient-based finite sets with extensional equality.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "FinSet(A)={S⊆A | S is finite}; S=T ⇔ ∀x, x∈S↔x∈T. insert(S,x)=S∪{x}; erase(S,x)=S∖{x}. The empty set is included; repeated insertion has no multiplicity."
   },
   {
     "id": "urn:csabs:operation/FiniteSet-empty",

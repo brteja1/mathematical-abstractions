@@ -20,6 +20,29 @@ Normalized conjunction/disjunction trees whose satisfaction short-circuits and w
 - [Class template partial-specialization selection](TemplateSpecialization.md) — `relatedConcept`
 - [Ordered substitution with immediate-context failure](TemplateSubstitution.md) — `relatedConcept`
 
+## Mathematical formulation
+
+Normalized constraints are identity-bearing syntax C ::= atom(a) | C∧C | C∨C. Satisfaction is ordered short-circuit evaluation into {satisfied,unsatisfied,illFormed}. p subsumes q iff every clause L of DNF(p) and R of CNF(q) share an identical atom: ∀L∈DNF(p),R∈CNF(q),∃a∈L,b∈R,a=b.
+
+**Lean formulation** (in its source module context):
+
+```lean
+inductive TemplateConstraint (Atom : Type u) where
+  | atom : Atom → TemplateConstraint Atom
+  | conj : TemplateConstraint Atom → TemplateConstraint Atom → TemplateConstraint Atom
+  | disj : TemplateConstraint Atom → TemplateConstraint Atom → TemplateConstraint Atom
+```
+
+**Source:** [`Catalog.TMP.TemplateConstraint`](../lean/Catalog/TemplateMetaprogramming.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Atom/conjunction/disjunction trees, three-way short-circuit satisfaction, DNF/CNF clauses and identity-based subsumption. Atom equality must encode resolved source-expression origin and parameter mappings.
+
+**Limits:** Actual C++ normalization, argument substitution, atomic equivalence and constant-expression checking remain adapters. Invalid normalization/IFNDR and later-standard fold-expanded subsumption are outside the profile.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining rules: Identical atoms have the same source-expression appearance and equivalent parameter mappings; satisfaction substitutes arguments and requires a bool constant-expression result. Different expressions with equal values need not be identical atoms. sat(And(P,Q),a)=Unsatisfied if sat(P,a)=Unsatisfied, else sat(Q,a) if sat(P,a)=Satisfied; sat(Or(P,Q),a)=Satisfied if sat(P,a)=Satisfied, else sat(Q,a) if sat(P,a)=Unsatisfied; encountered IllFormed propagates. dnf(Atom a)=[[a]]; dnf(P∨Q)=dnf(P)++dnf(Q); dnf(P∧Q)=[p++q | p∈dnf(P),q∈dnf(Q)]; cnf uses the dual equations, swapping ∧ and ∨. P⊒Q ⇔ ∀p∈dnf(P),q∈cnf(Q), ∃a∈p,b∈q, identical(a,b).
@@ -349,7 +372,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "[temp.constr.atomic] ¶1–3; [temp.constr.normal] ¶1; [temp.constr.order] ¶1; [temp.constr.op] ¶2–3",
     "sourceNote": "Models only already normalized atom/and/or trees and their identity-based subsumption. Atom identity and evaluation are adapters to the source rules; Boolean equivalence does not erase source identity.",
     "provenanceKind": "adapted",
-    "axiomBasis": "Selected defining rules: Identical atoms have the same source-expression appearance and equivalent parameter mappings; satisfaction substitutes arguments and requires a bool constant-expression result. Different expressions with equal values need not be identical atoms. sat(And(P,Q),a)=Unsatisfied if sat(P,a)=Unsatisfied, else sat(Q,a) if sat(P,a)=Satisfied; sat(Or(P,Q),a)=Satisfied if sat(P,a)=Satisfied, else sat(Q,a) if sat(P,a)=Unsatisfied; encountered IllFormed propagates. dnf(Atom a)=[[a]]; dnf(P∨Q)=dnf(P)++dnf(Q); dnf(P∧Q)=[p++q | p∈dnf(P),q∈dnf(Q)]; cnf uses the dual equations, swapping ∧ and ∨. P⊒Q ⇔ ∀p∈dnf(P),q∈cnf(Q), ∃a∈p,b∈q, identical(a,b)."
+    "axiomBasis": "Selected defining rules: Identical atoms have the same source-expression appearance and equivalent parameter mappings; satisfaction substitutes arguments and requires a bool constant-expression result. Different expressions with equal values need not be identical atoms. sat(And(P,Q),a)=Unsatisfied if sat(P,a)=Unsatisfied, else sat(Q,a) if sat(P,a)=Satisfied; sat(Or(P,Q),a)=Satisfied if sat(P,a)=Satisfied, else sat(Q,a) if sat(P,a)=Unsatisfied; encountered IllFormed propagates. dnf(Atom a)=[[a]]; dnf(P∨Q)=dnf(P)++dnf(Q); dnf(P∧Q)=[p++q | p∈dnf(P),q∈dnf(Q)]; cnf uses the dual equations, swapping ∧ and ∨. P⊒Q ⇔ ∀p∈dnf(P),q∈cnf(Q), ∃a∈p,b∈q, identical(a,b).",
+    "leanFormulation": "inductive TemplateConstraint (Atom : Type u) where\n  | atom : Atom → TemplateConstraint Atom\n  | conj : TemplateConstraint Atom → TemplateConstraint Atom → TemplateConstraint Atom\n  | disj : TemplateConstraint Atom → TemplateConstraint Atom → TemplateConstraint Atom",
+    "formulationSource": "urn:csabs:source/local-lean-TemplateMetaprogramming",
+    "formulationLocator": "Catalog.TMP.TemplateConstraint",
+    "formulationScope": "partial",
+    "leanModelMapping": "Atom/conjunction/disjunction trees, three-way short-circuit satisfaction, DNF/CNF clauses and identity-based subsumption. Atom equality must encode resolved source-expression origin and parameter mappings.",
+    "leanModelLimitations": "Actual C++ normalization, argument substitution, atomic equivalence and constant-expression checking remain adapters. Invalid normalization/IFNDR and later-standard fold-expanded subsumption are outside the profile.",
+    "mathematicalFormulation": "Normalized constraints are identity-bearing syntax C ::= atom(a) | C∧C | C∨C. Satisfaction is ordered short-circuit evaluation into {satisfied,unsatisfied,illFormed}. p subsumes q iff every clause L of DNF(p) and R of CNF(q) share an identical atom: ∀L∈DNF(p),R∈CNF(q),∃a∈L,b∈R,a=b."
   },
   {
     "id": "urn:csabs:operation/TemplateConstraint-satisfy",

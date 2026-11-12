@@ -22,6 +22,29 @@ A nonempty finite connected acyclic simple undirected graph.
 - [Finite rooted undirected tree](RootedTree.md) — `requiresConcept`
 - [Finite rooted undirected tree](RootedTree.md) — `specializationOf`
 
+## Mathematical formulation
+
+A tree is a simple undirected graph on finite nonempty V with connected, acyclic adjacency. This graph-theoretic carrier is distinct from the inductive binary-tree datatype.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure Tree (V : Type u) [Fintype V] where
+  graph : SimpleGraph V
+  nonempty : Nonempty V
+  isTree : graph.IsTree
+```
+
+**Source:** [`Catalog.Tree`](../lean/Catalog/Graphs.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Finite nonempty SimpleGraph with Mathlib IsTree (connected and acyclic). Nonempty BinaryTree values are related by their parent-child occurrence graphs after forgetting labels, root and child order; no direct specialization or axiom inheritance is asserted.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A nonempty connected acyclic simple undirected graph. Governing rules: This tree variant has a nonempty finite simple undirected underlying graph. Every pair of vertices is joined by a finite path. There is no simple undirected cycle.
@@ -221,7 +244,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "relatedConcept": [
       "urn:csabs:concept/BinaryTree"
     ],
-    "basisInstantiation": "A nonempty BinaryTree value yields this Tree carrier by taking node occurrences as vertices, adding parent-child edges and forgetting labels, the root and left/right order. E is excluded; equal labels do not merge vertices. BinaryTree as a whole is therefore a related construction, not a specialization of this nonempty graph carrier."
+    "basisInstantiation": "A nonempty BinaryTree value yields this Tree carrier by taking node occurrences as vertices, adding parent-child edges and forgetting labels, the root and left/right order. E is excluded; equal labels do not merge vertices. BinaryTree as a whole is therefore a related construction, not a specialization of this nonempty graph carrier.",
+    "leanFormulation": "structure Tree (V : Type u) [Fintype V] where\n  graph : SimpleGraph V\n  nonempty : Nonempty V\n  isTree : graph.IsTree",
+    "formulationSource": "urn:csabs:source/local-lean-Graphs",
+    "formulationLocator": "Catalog.Tree",
+    "formulationScope": "model",
+    "leanModelMapping": "Finite nonempty SimpleGraph with Mathlib IsTree (connected and acyclic). Nonempty BinaryTree values are related by their parent-child occurrence graphs after forgetting labels, root and child order; no direct specialization or axiom inheritance is asserted.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A tree is a simple undirected graph on finite nonempty V with connected, acyclic adjacency. This graph-theoretic carrier is distinct from the inductive binary-tree datatype."
   },
   {
     "id": "urn:csabs:operation/Tree-basis-neighbors",

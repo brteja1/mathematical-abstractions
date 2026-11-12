@@ -21,6 +21,29 @@ A Hausdorff, second-countable topological space locally homeomorphic to open sub
 - [Smooth manifold (C∞, without boundary)](SmoothManifold.md) — `requiresConcept`
 - [Smooth manifold (C∞, without boundary)](SmoothManifold.md) — `specializationOf`
 
+## Mathematical formulation
+
+The selected boundaryless real n-manifold has Hausdorff, second-countable M and a covering family of charts φ:U≅V, with U open in M and V open in ℝ^n. Its charted-space and topological structures are supplied Lean parameters.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure Manifold (n : Nat) (M : Type*) [_root_.TopologicalSpace M]
+    [ChartedSpace (EuclideanSpace ℝ (Fin n)) M] : Prop where
+  hausdorff : T2Space M
+  secondCountable : SecondCountableTopology M
+```
+
+**Source:** [`Catalog.Manifold`](../lean/Catalog/Topology.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Boundaryless Euclidean ChartedSpace with Hausdorff and second-countable hypotheses explicit, fixed natural dimension.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Underlying TopologicalSpace; Hausdorff separation; a countable basis; and a covering atlas of homeomorphisms into open subsets of ℝⁿ.
@@ -302,7 +325,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "relatedConcept": [
       "urn:csabs:concept/SmoothManifold"
     ],
-    "basisInstantiation": "Instantiate TopologicalSpace at (M,τ). Add the stated Hausdorff, countable-basis and chart-cover requirements at the declared n."
+    "basisInstantiation": "Instantiate TopologicalSpace at (M,τ). Add the stated Hausdorff, countable-basis and chart-cover requirements at the declared n.",
+    "leanFormulation": "structure Manifold (n : Nat) (M : Type*) [_root_.TopologicalSpace M]\n    [ChartedSpace (EuclideanSpace ℝ (Fin n)) M] : Prop where\n  hausdorff : T2Space M\n  secondCountable : SecondCountableTopology M",
+    "formulationSource": "urn:csabs:source/local-lean-Topology",
+    "formulationLocator": "Catalog.Manifold",
+    "formulationScope": "model",
+    "leanModelMapping": "Boundaryless Euclidean ChartedSpace with Hausdorff and second-countable hypotheses explicit, fixed natural dimension.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "The selected boundaryless real n-manifold has Hausdorff, second-countable M and a covering family of charts φ:U≅V, with U open in M and V open in ℝ^n. Its charted-space and topological structures are supplied Lean parameters."
   },
   {
     "id": "urn:csabs:operation/Manifold-coordinate",

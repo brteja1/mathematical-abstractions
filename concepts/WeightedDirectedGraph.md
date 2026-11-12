@@ -14,6 +14,28 @@ A directed multigraph assigning an exact real weight to each edge identity.
 
 **Specializes:** [Finite directed multigraph with edge identities](DirectedMultigraph.md)
 
+## Mathematical formulation
+
+A weighted finite directed multigraph adds w:E→ℝ to (V,E,s,t). The weight of an edge list [e₁,…,e\_k] is Σ\_i w(e\_i), including 0 for the empty list. Path composability is a separate predicate.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure WeightedDirectedGraph (V : Type u) (E : Type v) [Fintype V] [Fintype E]
+    extends DirectedMultigraph V E where
+  weight : E → Real
+```
+
+**Source:** [`Catalog.WeightedDirectedGraph`](../lean/Catalog/GraphData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** (V,E,s,t,w:E→ℝ). Negative, zero and positive weights allowed; parallel edges may have different weights. Weight of any finite edge list is defined even if not a walk. No shortest-path existence, nonnegative-weight or Dijkstra assumption.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** (V,E,s,t) is a finite directed multigraph; w:E→ℝ is total; pathWeight([])=0; pathWeight(e::p)=w(e)+pathWeight(p)
@@ -182,6 +204,32 @@ A directed multigraph assigning an exact real weight to each edge identity.
 
 **provenanceKind:** derived
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {V E : Type} [Fintype V] [Fintype E] (g : Catalog.WeightedDirectedGraph V E) (p q : List E), g.pathWeight (p ++ q) = g.pathWeight p + g.pathWeight q
+```
+
+**Source:** [`Catalog.GraphDataProofs.path_weight_append`](../lean/Catalog/GraphData.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Real weights are exact; pathWeight is the List sum after mapping weight. List append is sequence concatenation. The identity holds for all edge lists, without requiring walk validity or nonnegative weights.
+
+**Limits:** Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/WeightedDirectedGraph-sum-equations": "Interpreted premise: pathWeight([])=0; pathWeight(e::p)=w(e)+pathWeight(p). Real weights are exact; pathWeight is the List sum after mapping weight. List append is sequence concatenation. The identity holds for all edge lists, without requiring walk validity or nonnegative weights."
+}
+```
+
 ## Theorems
 
 <a id="node-urn-csabs-theorem-WeightedDirectedGraph-negative-loop-unbounded"></a>
@@ -281,7 +329,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/DirectedMultigraph"
     ],
-    "specializationNote": "Keep V,E,s,t and forget the weight function. Weights are attached to edge identities, including separate parallel edges."
+    "specializationNote": "Keep V,E,s,t and forget the weight function. Weights are attached to edge identities, including separate parallel edges.",
+    "leanFormulation": "structure WeightedDirectedGraph (V : Type u) (E : Type v) [Fintype V] [Fintype E]\n    extends DirectedMultigraph V E where\n  weight : E → Real",
+    "formulationSource": "urn:csabs:source/local-lean-GraphData",
+    "formulationLocator": "Catalog.WeightedDirectedGraph",
+    "formulationScope": "model",
+    "leanModelMapping": "(V,E,s,t,w:E→ℝ). Negative, zero and positive weights allowed; parallel edges may have different weights. Weight of any finite edge list is defined even if not a walk. No shortest-path existence, nonnegative-weight or Dijkstra assumption.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "A weighted finite directed multigraph adds w:E→ℝ to (V,E,s,t). The weight of an edge list [e₁,…,e_k] is Σ_i w(e_i), including 0 for the empty list. Path composability is a separate predicate."
   },
   {
     "id": "urn:csabs:operation/WeightedDirectedGraph-weight",
@@ -413,7 +468,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Quiver: typed arrows for each ordered vertex pair; distinct arrows may have the same endpoints; Chapter 12: directed edges and paths; adapted to distinct edge identities and weights; Real.exists_isLUB, Real.isLUB_sSup, ConditionallyCompleteLinearOrder instance",
     "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
-    "provenanceKind": "derived"
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {V E : Type} [Fintype V] [Fintype E] (g : Catalog.WeightedDirectedGraph V E) (p q : List E), g.pathWeight (p ++ q) = g.pathWeight p + g.pathWeight q",
+    "formulationSource": "urn:csabs:source/local-lean-GraphData",
+    "formulationLocator": "Catalog.GraphDataProofs.path_weight_append",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Real weights are exact; pathWeight is the List sum after mapping weight. List append is sequence concatenation. The identity holds for all edge lists, without requiring walk validity or nonnegative weights.",
+    "leanModelLimitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/WeightedDirectedGraph-sum-equations\": \"Interpreted premise: pathWeight([])=0; pathWeight(e::p)=w(e)+pathWeight(p). Real weights are exact; pathWeight is the List sum after mapping weight. List append is sequence concatenation. The identity holds for all edge lists, without requiring walk validity or nonnegative weights.\"}"
   },
   {
     "id": "urn:csabs:theorem/WeightedDirectedGraph-negative-loop-unbounded",

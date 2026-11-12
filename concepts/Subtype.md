@@ -17,6 +17,26 @@ Values of a carrier A satisfying a fixed predicate P, with evidence irrelevant t
 - [Behavioral subtyping with explicit history constraints](BehavioralSubtyping.md) — `relatedConcept`
 - [Java wildcard capture with fresh bounded variables](JavaWildcardCapture.md) — `relatedConcept`
 
+## Mathematical formulation
+
+{a:A | P(a)} consists of pairs (a,h) with h:P(a). Equality is determined by the underlying a, with proof components irrelevant; the carrier may be empty.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Subtype (A : Type u) (P : A → Prop) := {a : A // P a}
+```
+
+**Source:** [`Catalog.Subtype`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Lean Subtype P, with proof-irrelevant P: A→Prop. {a:A | P(a)}. P:A→Prop is a mathematical predicate; construction requires evidence of P, not a promise of a runtime decision procedure. The carrier may be empty.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** value(pack(a,h))=a; ∀x:Subtype(A,P), P(value(x)); x=y ⇔ value(x)=value(y)
@@ -207,6 +227,32 @@ Values of a carrier A satisfying a fixed predicate P, with evidence irrelevant t
 
 **provenanceKind:** derived
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type} {P : A → Prop} (x y : Catalog.Subtype A P), x.val = y.val → x = y
+```
+
+**Source:** [`Catalog.CoreDataProofs.subtype_value_injective`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Subtype P uses proof-irrelevant predicate evidence; value is .val. Subtype.ext identifies values with equal underlying carriers, independently of proof witnesses.
+
+**Limits:** Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Subtype-value-equality": "Interpreted premise: x=y ⇔ value(x)=value(y). Subtype P uses proof-irrelevant predicate evidence; value is .val. Subtype.ext identifies values with equal underlying carriers, independently of proof witnesses."
+}
+```
+
 ## Theorems
 
 <a id="node-urn-csabs-theorem-Subtype-empty-subtype"></a>
@@ -299,7 +345,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Subtype carrier/property and value coercion; Subtype.heq_iff_coe_eq",
     "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "abbrev Subtype (A : Type u) (P : A → Prop) := {a : A // P a}",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.Subtype",
+    "formulationScope": "model",
+    "leanModelMapping": "Lean Subtype P, with proof-irrelevant P: A→Prop. {a:A | P(a)}. P:A→Prop is a mathematical predicate; construction requires evidence of P, not a promise of a runtime decision procedure. The carrier may be empty.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "{a:A | P(a)} consists of pairs (a,h) with h:P(a). Equality is determined by the underlying a, with proof components irrelevant; the carrier may be empty."
   },
   {
     "id": "urn:csabs:operation/Subtype-pack",
@@ -441,7 +494,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Subtype carrier/property and value coercion; Subtype.heq_iff_coe_eq",
     "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
-    "provenanceKind": "derived"
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type} {P : A → Prop} (x y : Catalog.Subtype A P), x.val = y.val → x = y",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.CoreDataProofs.subtype_value_injective",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Subtype P uses proof-irrelevant predicate evidence; value is .val. Subtype.ext identifies values with equal underlying carriers, independently of proof witnesses.",
+    "leanModelLimitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Subtype-value-equality\": \"Interpreted premise: x=y ⇔ value(x)=value(y). Subtype P uses proof-irrelevant predicate evidence; value is .val. Subtype.ext identifies values with equal underlying carriers, independently of proof witnesses.\"}"
   },
   {
     "id": "urn:csabs:theorem/Subtype-empty-subtype",

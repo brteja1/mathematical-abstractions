@@ -19,6 +19,26 @@ A set X with a family τ of open subsets containing X and closed under arbitrary
 - [Topological manifold (fixed dimension, without boundary)](Manifold.md) — `requiresConcept`
 - [Topological manifold (fixed dimension, without boundary)](Manifold.md) — `specializationOf`
 
+## Mathematical formulation
+
+A topology τ⊆℘(M) contains ∅ and M, is closed under arbitrary unions and finite intersections. Equality compares the collections of open sets; no separation or countability axiom is implicit.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev TopologicalSpace (M : Type*) := _root_.TopologicalSpace M
+```
+
+**Source:** [`Catalog.TopologicalSpace`](../lean/Catalog/Topology.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib TopologicalSpace with arbitrary-union and finite-intersection open-set axioms.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** The whole carrier is open, arbitrary unions of opens are open, and binary intersections of opens are open.
@@ -271,7 +291,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "relatedConcept": [
       "urn:csabs:concept/MeasurableSpace",
       "urn:csabs:concept/ClosureOperator"
-    ]
+    ],
+    "leanFormulation": "abbrev TopologicalSpace (M : Type*) := _root_.TopologicalSpace M",
+    "formulationSource": "urn:csabs:source/local-lean-Topology",
+    "formulationLocator": "Catalog.TopologicalSpace",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib TopologicalSpace with arbitrary-union and finite-intersection open-set axioms.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A topology τ⊆℘(M) contains ∅ and M, is closed under arbitrary unions and finite intersections. Equality compares the collections of open sets; no separation or countability axiom is implicit."
   },
   {
     "id": "urn:csabs:operation/TopologicalSpace-interior",

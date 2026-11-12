@@ -64,3 +64,62 @@ partial. AES rounds, NIST field multiplication, GCM counter/tag equations,
 wire encodings and security bounds are not compiled formalizations. AEAD
 correctness is a structure hypothesis. There are no new registered proof
 witnesses, admitted target results or global cryptographic axioms.
+
+## Public-key abstractions
+
+The public-key subject adds four records, consulted against
+[RFC 2631](https://www.rfc-editor.org/rfc/rfc2631.txt),
+[RFC 8017](https://www.rfc-editor.org/rfc/rfc8017.txt) and
+[RFC 6090](https://www.rfc-editor.org/rfc/rfc6090.txt) on 2026-11-11.
+Every new concept and claim carries direct source links and locators;
+derived results also name their premises and give editorial proof sketches.
+
+| Record | Selected scope |
+| --- | --- |
+| [DiffieHellman](../concepts/DiffieHellman.md) | Prime-order cyclic-group agreement core; finite-field instantiation described explicitly |
+| [RSA](../concepts/RSA.md) | Two-prime modular exponent maps on every representative, including zero and nonunits |
+| [ECC](../concepts/ECC.md) | Nonsingular short-Weierstrass group over a prime field with p > 3, plus a chosen prime-order subgroup |
+| [ECDH](../concepts/ECDH.md) | DH specialized to that subgroup, strict public-point validation and full-point output |
+
+ECC specializes Group by point addition, identity O and point negation.
+FiniteField supplies coordinate arithmetic; it is a prerequisite. ECDH
+specializes DiffieHellman by interpreting exponentiation as scalar
+multiplication. The whole point group need not be cyclic; its selected
+subgroup is cyclic. Relations do not implicitly transfer axioms.
+
+DH/ECDH agreement establishes equality of shared group elements. A protocol
+must additionally specify entropy, encodings, KDF/context binding,
+authentication and key confirmation as required by its threat model.
+The bare exchange permits active impersonation. ECDH rejects O and requires
+membership in the selected subgroup; curve membership alone does not suffice.
+Replacing subgroup membership with `[q]Q = O` requires an argument that the
+q-torsion is exactly the chosen subgroup. Scalar zero remains valid for group
+arithmetic but is excluded from these private-key domains. The ECDH profile
+does not implement compact/x-only variants, cofactor processing or X25519.
+
+RSA round trips cover all representatives, with the nonunit case handled
+modulo each prime before CRT. The raw public/private maps are deterministic
+primitives, not complete encryption or signature schemes. OAEP/PSS, their
+randomness and encodings, and multi-prime/CRT implementations require further
+records. The signature primitive recovers an encoded representative; it does
+not by itself decide whether an arbitrary message signature is valid.
+
+These records select mathematical profiles, not current deployment parameter
+recommendations or certification. Historical source parameter sizes and the
+RFC 2631 SHA-1 KDF are not adopted. Correctness does not prove a hardness
+assumption, confidentiality, unforgeability or side-channel resistance.
+
+All four new Lean bindings are explicitly partial. DH uses a supplied group;
+ECC/ECDH use a supplied additive commutative group with a base point, leaving
+coordinates, nonsingularity and subgroup checks unmodeled. RSA computes exact
+natural powers modulo a supplied modulus, but does not enforce key validity
+or representative-range errors. There are no new registered claim witnesses.
+
+## Lattice-based foundations
+
+[Euclidean lattices, q-ary kernels, SVP, CVP, SIS and LWE](GEOMETRIC_LATTICES.md)
+add geometric foundations under the lattice-based cryptography subject. They
+state norms, parameter domains, solution relations and sampling conventions.
+They do not introduce a concrete cryptographic scheme or establish hardness
+or security for arbitrary parameters. Geometric lattices are distinct from
+the order-theoretic lattice records.

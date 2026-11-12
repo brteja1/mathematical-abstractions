@@ -22,6 +22,28 @@ An element of a mixed tensor power of a finite-dimensional vector space V and it
 - [Smooth manifold (C∞, without boundary)](SmoothManifold.md) — `relatedConcept`
 - [Tensor product of vector spaces](TensorProduct.md) — `relatedConcept`
 
+## Mathematical formulation
+
+The selected (p,q)-tensor carrier is V^{⊗p}⊗\_F(V\*)^{⊗q}, where V\*=Hom\_F(V,F), and p,q∈ℕ. A zero-fold tensor power is canonically isomorphic to F; this is not definitional equality with F in Lean.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Tensor (F V : Type u) [_root_.Field F] [AddCommGroup V] [Module F V]
+    (p q : Nat) := _root_.TensorProduct F (TensorPower F V p)
+      (TensorPower F (Module.Dual F V) q)
+```
+
+**Source:** [`Catalog.Tensor`](../lean/Catalog/Algebra.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Finite indexed tensor powers of V then Dual F V; empty powers interpreted up to canonical linear equivalence with F.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Use iterated TensorProduct with p copies of V and q copies of its dual, in that order; the empty tensor power is F.
@@ -254,7 +276,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/Matrix",
       "urn:csabs:concept/SmoothManifold"
     ],
-    "basisInstantiation": "Form the ordered iterated TensorProduct of the specified V and V*=Hom_F(V,F) factors, retaining the common field and vector-space interfaces. Use F for zero factors."
+    "basisInstantiation": "Form the ordered iterated TensorProduct of the specified V and V*=Hom_F(V,F) factors, retaining the common field and vector-space interfaces. Use F for zero factors.",
+    "leanFormulation": "abbrev Tensor (F V : Type u) [_root_.Field F] [AddCommGroup V] [Module F V]\n    (p q : Nat) := _root_.TensorProduct F (TensorPower F V p)\n      (TensorPower F (Module.Dual F V) q)",
+    "formulationSource": "urn:csabs:source/local-lean-Algebra",
+    "formulationLocator": "Catalog.Tensor",
+    "formulationScope": "model",
+    "leanModelMapping": "Finite indexed tensor powers of V then Dual F V; empty powers interpreted up to canonical linear equivalence with F.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "The selected (p,q)-tensor carrier is V^{⊗p}⊗_F(V*)^{⊗q}, where V*=Hom_F(V,F), and p,q∈ℕ. A zero-fold tensor power is canonically isomorphic to F; this is not definitional equality with F in Lean."
   },
   {
     "id": "urn:csabs:operation/Tensor-add",

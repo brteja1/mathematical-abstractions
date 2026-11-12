@@ -16,11 +16,33 @@ The unbounded integers with exact arithmetic and the usual order.
 
 - [Arbitrary Precision Integer](ArbitraryPrecisionInteger.md) — `requiresConcept`
 - [Checked Integer](CheckedInteger.md) — `requiresConcept`
+- [Euclidean lattice (discrete integer-span lattice)](EuclideanLattice.md) — `requiresConcept`
 - [Fixed-width signed integer](FixedWidthSignedInteger.md) — `relatedConcept`
 - [Fixed-width unsigned integer](FixedWidthUnsignedInteger.md) — `relatedConcept`
 - [Floating-point type](FloatingPointType.md) — `relatedConcept`
 - [Natural Number](NaturalNumber.md) — `requiresConcept`
+- [RSA modular-exponentiation primitives (two-prime profile)](RSA.md) — `requiresConcept`
 - [Saturating Integer](SaturatingInteger.md) — `requiresConcept`
+
+## Mathematical formulation
+
+ℤ is the exact unbounded integer carrier with ordinary addition, multiplication and order. There is no machine overflow; equality is integer value equality. Its Lean declaration is named Catalog.Integer.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Integer := Int
+```
+
+**Source:** [`Catalog.Integer`](../lean/Catalog/Numeric.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Lean Int, exact unbounded mathematical value semantics; no resource-exhaustion claims.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
 
 ## Interface and scope
 
@@ -283,7 +305,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "derived-construction",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "abbrev Integer := Int",
+    "formulationSource": "urn:csabs:source/local-lean-Numeric",
+    "formulationLocator": "Catalog.Integer",
+    "formulationScope": "model",
+    "leanModelMapping": "Lean Int, exact unbounded mathematical value semantics; no resource-exhaustion claims.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "ℤ is the exact unbounded integer carrier with ordinary addition, multiplication and order. There is no machine overflow; equality is integer value equality. Its Lean declaration is named Catalog.Integer."
   },
   {
     "id": "urn:csabs:operation/integer-add",

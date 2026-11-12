@@ -16,6 +16,26 @@ A finite bag of items with ordered priorities, returning an item of minimal prio
 
 - [Finite complete binary min-heap](BinaryHeap.md) — `requiresConcept`
 
+## Mathematical formulation
+
+PQ(A)=Multiset(A). Given priority p:A→K into a linear order, extractMin(q,q′,x) ⇔ q={x}⊎q′ ∧ ∀y∈q, p(x)≤p(y). Ties are relationally nondeterministic; an empty q has no extraction.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev PriorityQueue (A : Type u) := _root_.Multiset A
+```
+
+**Source:** [`Catalog.PriorityQueue`](../lean/Catalog/DataStructures.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Multiset A with supplied LinearOrder on priorities; extractMin is a relation removing one minimal occurrence, allowing all ties.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A finite bag of items with ordered priorities, returning an item of minimal priority; tie choice is unspecified. Governing rules: Queue state is a finite bag of items with a total order on their keys. Insertion adds exactly one occurrence. Extraction is a relation if ties are unspecified, defined on all nonempty bags.
@@ -223,7 +243,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "abbrev PriorityQueue (A : Type u) := _root_.Multiset A",
+    "formulationSource": "urn:csabs:source/local-lean-DataStructures",
+    "formulationLocator": "Catalog.PriorityQueue",
+    "formulationScope": "model",
+    "leanModelMapping": "Multiset A with supplied LinearOrder on priorities; extractMin is a relation removing one minimal occurrence, allowing all ties.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "PQ(A)=Multiset(A). Given priority p:A→K into a linear order, extractMin(q,q′,x) ⇔ q={x}⊎q′ ∧ ∀y∈q, p(x)≤p(y). Ties are relationally nondeterministic; an empty q has no extraction."
   },
   {
     "id": "urn:csabs:operation/PriorityQueue-insert",

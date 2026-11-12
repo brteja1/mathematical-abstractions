@@ -16,6 +16,26 @@ Finite kind-indexed argument sequences with pointwise pack expansion, equal-leng
 
 **Related concepts:** [Kinded partial template metafunction](TemplateMetafunction.md), [Ordered substitution with immediate-context failure](TemplateSubstitution.md)
 
+## Mathematical formulation
+
+Pack(A)=List(A). expand(f,[a₁,…,a\_n])=[f(a₁),…,f(a\_n)]; zipExpand(f,xs,ys) is defined exactly when |xs|=|ys| and then pairs corresponding positions. Fold expressions retain the specified left/right parenthesization.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev TemplateParameterPack (A : Type u) := List A
+```
+
+**Source:** [`Catalog.TMP.TemplateParameterPack`](../lean/Catalog/TemplateMetaprogramming.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** List of canonical same-kind arguments; map expansion, length-checked zip expansion and explicit left/right binary fold trees.
+
+**Limits:** Kind compatibility and actual pattern validity must be established before using the pure pattern functions. Unary empty-fold typing and language grammar are stated in the catalog but not separate Lean wrappers; no evaluation-order or universal compiler equivalence claim.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining rules: expand(f,[])=[]; expand(f,x::xs)=f(x)::expand(f,xs); packs are equal iff lengths and corresponding canonical arguments agree. zipExpand(g,p,q) is defined iff |p|=|q|; its i-th element is g(pᵢ,qᵢ), and its length is |p|. foldL(op,z,[])=z; foldL(op,z,x::xs)=foldL(op,Node(op,z,x),xs); foldR(op,z,[])=z; foldR(op,z,x::xs)=Node(op,x,foldR(op,z,xs)). Empty unary folds are limited to the specified &&, || and comma cases.
@@ -317,7 +337,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/Sequence"
     ],
     "specializationNote": "Fix a parameter kind K and instantiate Sequence element carrier with canonical arguments Arg_K. Retain sequence order, length, equality and empty case; add the expansion/fold-shape operations. This is a mathematical representation profile, not a runtime C++ container.",
-    "axiomBasis": "Selected defining rules: expand(f,[])=[]; expand(f,x::xs)=f(x)::expand(f,xs); packs are equal iff lengths and corresponding canonical arguments agree. zipExpand(g,p,q) is defined iff |p|=|q|; its i-th element is g(pᵢ,qᵢ), and its length is |p|. foldL(op,z,[])=z; foldL(op,z,x::xs)=foldL(op,Node(op,z,x),xs); foldR(op,z,[])=z; foldR(op,z,x::xs)=Node(op,x,foldR(op,z,xs)). Empty unary folds are limited to the specified &&, || and comma cases."
+    "axiomBasis": "Selected defining rules: expand(f,[])=[]; expand(f,x::xs)=f(x)::expand(f,xs); packs are equal iff lengths and corresponding canonical arguments agree. zipExpand(g,p,q) is defined iff |p|=|q|; its i-th element is g(pᵢ,qᵢ), and its length is |p|. foldL(op,z,[])=z; foldL(op,z,x::xs)=foldL(op,Node(op,z,x),xs); foldR(op,z,[])=z; foldR(op,z,x::xs)=Node(op,x,foldR(op,z,xs)). Empty unary folds are limited to the specified &&, || and comma cases.",
+    "leanFormulation": "abbrev TemplateParameterPack (A : Type u) := List A",
+    "formulationSource": "urn:csabs:source/local-lean-TemplateMetaprogramming",
+    "formulationLocator": "Catalog.TMP.TemplateParameterPack",
+    "formulationScope": "model",
+    "leanModelMapping": "List of canonical same-kind arguments; map expansion, length-checked zip expansion and explicit left/right binary fold trees.",
+    "leanModelLimitations": "Kind compatibility and actual pattern validity must be established before using the pure pattern functions. Unary empty-fold typing and language grammar are stated in the catalog but not separate Lean wrappers; no evaluation-order or universal compiler equivalence claim.",
+    "mathematicalFormulation": "Pack(A)=List(A). expand(f,[a₁,…,a_n])=[f(a₁),…,f(a_n)]; zipExpand(f,xs,ys) is defined exactly when |xs|=|ys| and then pairs corresponding positions. Fold expressions retain the specified left/right parenthesization."
   },
   {
     "id": "urn:csabs:operation/TemplateParameterPack-expand",

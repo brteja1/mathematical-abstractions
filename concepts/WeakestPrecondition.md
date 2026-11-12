@@ -12,6 +12,27 @@ For a command and postcondition, the weakest predicate ensuring termination and 
 
 **Prerequisites:** [Hoare Triple](HoareTriple.md)
 
+## Mathematical formulation
+
+For a supplied total-command interface C and postcondition Q, wp(C,Q)(s) ⇔ allTerminateNormally\_C(s) ∧ ∀t,normal\_C(s,t)⇒Q(t). The interface also requires allTerminateNormally\_C(s)⇒∃t,normal\_C(s,t); correspondence to actual executions is an instantiation obligation.
+
+**Lean formulation** (in its source module context):
+
+```lean
+def WeakestPrecondition {S : Type u} (C : TotalCommand S) (Q : S → Prop) (s : S) : Prop :=
+  C.allTerminateNormally s ∧ ∀ t, C.normal s t → Q t
+```
+
+**Source:** [`Catalog.WeakestPrecondition`](../lean/Catalog/Semantics.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** All-normal-termination predicate plus universal postcondition over normal outcomes; execution/scheduler semantics must substantiate the supplied predicate.
+
+**Limits:** Operational all-executions termination/no-fault semantics is supplied by clients, not derived from a concrete command language.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: For a command and postcondition, the weakest predicate ensuring termination and the postcondition for every allowed execution. Governing rules: The weakest precondition requires termination without faults and Q for every execution, not just the terminating ones.
@@ -154,7 +175,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "def WeakestPrecondition {S : Type u} (C : TotalCommand S) (Q : S → Prop) (s : S) : Prop :=\n  C.allTerminateNormally s ∧ ∀ t, C.normal s t → Q t",
+    "formulationSource": "urn:csabs:source/local-lean-Semantics",
+    "formulationLocator": "Catalog.WeakestPrecondition",
+    "formulationScope": "partial",
+    "leanModelMapping": "All-normal-termination predicate plus universal postcondition over normal outcomes; execution/scheduler semantics must substantiate the supplied predicate.",
+    "leanModelLimitations": "Operational all-executions termination/no-fault semantics is supplied by clients, not derived from a concrete command language.",
+    "mathematicalFormulation": "For a supplied total-command interface C and postcondition Q, wp(C,Q)(s) ⇔ allTerminateNormally_C(s) ∧ ∀t,normal_C(s,t)⇒Q(t). The interface also requires allTerminateNormally_C(s)⇒∃t,normal_C(s,t); correspondence to actual executions is an instantiation obligation."
   },
   {
     "id": "urn:csabs:operation/WeakestPrecondition-wp",

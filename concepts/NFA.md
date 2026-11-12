@@ -23,6 +23,28 @@ A finite-state word recognizer that may choose any of a set of successors for ea
 - [Action-labelled transition system with initial states](LabelledTransitionSystem.md) — `relatedConcept`
 - [Regular language over a finite alphabet](RegularLanguage.md) — `relatedConcept`
 
+## Mathematical formulation
+
+For finite A,Q, an NFA has δ:Q×A→℘(Q), one initial q₀ and accepting F⊆Q. A word is accepted iff some δ-path from q₀ ends in F. This selected transition type has no ε-moves.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure NFA (A : Type u) (Q : Type v) [Fintype A] [Fintype Q]
+    extends _root_.NFA A Q where
+  single_initial : ∃ q, start = {q}
+```
+
+**Source:** [`Catalog.NFA`](../lean/Catalog/Languages.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib NFA restricted to a singleton start set; finite alphabet and states, no epsilon transitions.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining presentation: States and alphabet are finite and each step returns an arbitrary subset of states. Runs propagate all choices; acceptance needs at least one accepting endpoint.
@@ -334,7 +356,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/LabelledTransitionSystem"
     ],
-    "specializationNote": "Set S=Q, Act=Σ, I={q₀} and q —a→ r iff r∈Δ(q,a). F is extra acceptance data; the LTS trace set alone does not encode the accepted language."
+    "specializationNote": "Set S=Q, Act=Σ, I={q₀} and q —a→ r iff r∈Δ(q,a). F is extra acceptance data; the LTS trace set alone does not encode the accepted language.",
+    "leanFormulation": "structure NFA (A : Type u) (Q : Type v) [Fintype A] [Fintype Q]\n    extends _root_.NFA A Q where\n  single_initial : ∃ q, start = {q}",
+    "formulationSource": "urn:csabs:source/local-lean-Languages",
+    "formulationLocator": "Catalog.NFA",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib NFA restricted to a singleton start set; finite alphabet and states, no epsilon transitions.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For finite A,Q, an NFA has δ:Q×A→℘(Q), one initial q₀ and accepting F⊆Q. A word is accepted iff some δ-path from q₀ ends in F. This selected transition type has no ε-moves."
   },
   {
     "id": "urn:csabs:operation/NFA-runSet",

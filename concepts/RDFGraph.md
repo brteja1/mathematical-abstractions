@@ -18,6 +18,26 @@ A finite set of RDF triples with disjoint IRI, blank-node and literal sorts and 
 
 - [Finite RDF 1.1 dataset](RDFDataset.md) — `requiresConcept`
 
+## Mathematical formulation
+
+For validated IRI carrier I, scoped blank nodes B and literal carrier L, Triple=(I+B)×I×(I+B+L) and Graph=FinSet(Triple). Predicates are IRIs; duplicate triples collapse; equality retains chosen blank-node identities.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev RDFGraph (I : Type u) (B : Type v) (L : Type w) := Finset (RDFTriple I B L)
+```
+
+**Source:** [`Catalog.RDFGraph`](../lean/Catalog/InformationData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Finite typed triples over caller-supplied IRI/blank/literal carriers; no parser validates I or L. G⊆fin (I⊎B)×I×(I⊎B⊎L). IRIs are validated absolute IRIs compared by exact string; blank identities have explicit scope. Literals retain lexical form, datatype IRI and language tag where required by RDF 1.1. Term equality, not datatype-value equality. Literal subjects and blank predicates excluded. Graph equality is literal triple-set equality; isomorphism under blank-node renaming is a separate relation. No entailment or IRI normalization. Finite submodel of the standard.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** I,B,L are pairwise disjoint tagged sorts; subject∈I⊎B, predicate∈I, object∈I⊎B⊎L; G is a finite set of position-correct triples; equality is triple-set equality; u∈insert(G,t) ⇔ u=t ∨ u∈G; G≅H iff a bijection on their occurring blank nodes, fixing I and L, maps exactly G onto H
@@ -284,6 +304,32 @@ A finite set of RDF triples with disjoint IRI, blank-node and literal sorts and 
 
 **provenanceKind:** derived
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {I B L : Type} (i : I) (b : B), (Catalog.RDFTerm.iri i : Catalog.RDFTerm I B L) ≠ Catalog.RDFTerm.blank b
+```
+
+**Source:** [`Catalog.InformationDataProofs.rdf_iri_not_blank`](../lean/Catalog/InformationData.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** RDFTerm is a tagged sum with separate iri/blank/literal constructors. I and L must be instantiated by validated IRI/literal carriers and B by scoped blank identities. Disjointness is independent of parsing and entailment.
+
+**Limits:** Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/RDFGraph-term-sorts": "Interpreted premise: I,B,L are pairwise disjoint tagged sorts; subject∈I⊎B, predicate∈I, object∈I⊎B⊎L. RDFTerm is a tagged sum with separate iri/blank/literal constructors. I and L must be instantiated by validated IRI/literal carriers and B by scoped blank identities. Disjointness is independent of parsing and entailment."
+}
+```
+
 ## Concept provenance
 
 - [W3C RDF 1.1 Concepts and Abstract Syntax](https://www.w3.org/TR/rdf11-concepts/); accessedOn: 2026-11-07; sourceRole: consulted-definition-and-interface-reference
@@ -353,7 +399,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "§§3–4: RDF triples, IRIs, literals, blank nodes, graph isomorphism and datasets",
     "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "abbrev RDFGraph (I : Type u) (B : Type v) (L : Type w) := Finset (RDFTriple I B L)",
+    "formulationSource": "urn:csabs:source/local-lean-InformationData",
+    "formulationLocator": "Catalog.RDFGraph",
+    "formulationScope": "model",
+    "leanModelMapping": "Finite typed triples over caller-supplied IRI/blank/literal carriers; no parser validates I or L. G⊆fin (I⊎B)×I×(I⊎B⊎L). IRIs are validated absolute IRIs compared by exact string; blank identities have explicit scope. Literals retain lexical form, datatype IRI and language tag where required by RDF 1.1. Term equality, not datatype-value equality. Literal subjects and blank predicates excluded. Graph equality is literal triple-set equality; isomorphism under blank-node renaming is a separate relation. No entailment or IRI normalization. Finite submodel of the standard.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "For validated IRI carrier I, scoped blank nodes B and literal carrier L, Triple=(I+B)×I×(I+B+L) and Graph=FinSet(Triple). Predicates are IRIs; duplicate triples collapse; equality retains chosen blank-node identities."
   },
   {
     "id": "urn:csabs:operation/RDFGraph-triple",
@@ -560,7 +613,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "§§3–4: RDF triples, IRIs, literals, blank nodes, graph isomorphism and datasets",
     "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
-    "provenanceKind": "derived"
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {I B L : Type} (i : I) (b : B), (Catalog.RDFTerm.iri i : Catalog.RDFTerm I B L) ≠ Catalog.RDFTerm.blank b",
+    "formulationSource": "urn:csabs:source/local-lean-InformationData",
+    "formulationLocator": "Catalog.InformationDataProofs.rdf_iri_not_blank",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "RDFTerm is a tagged sum with separate iri/blank/literal constructors. I and L must be instantiated by validated IRI/literal carriers and B by scoped blank identities. Disjointness is independent of parsing and entailment.",
+    "leanModelLimitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/RDFGraph-term-sorts\": \"Interpreted premise: I,B,L are pairwise disjoint tagged sorts; subject∈I⊎B, predicate∈I, object∈I⊎B⊎L. RDFTerm is a tagged sum with separate iri/blank/literal constructors. I and L must be instantiated by validated IRI/literal carriers and B by scoped blank identities. Disjointness is independent of parsing and entailment.\"}"
   }
 ]
 ```

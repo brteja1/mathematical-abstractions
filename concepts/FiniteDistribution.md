@@ -12,6 +12,37 @@ An exactly normalized nonnegative mass function with finite support on a value c
 
 **Prerequisites:** [Probability space (normalized measure)](ProbabilitySpace.md), [Finitely supported vector](SparseVector.md), [Finite set collection](FiniteSet.md)
 
+## Backlinks
+
+- [Finite single-letter distortion measure](DistortionMeasure.md) — `requiresConcept`
+- [Learning with errors (finite modular distribution profile)](LWE.md) — `requiresConcept`
+- [Relative entropy (finite Kullback–Leibler divergence)](RelativeEntropy.md) — `requiresConcept`
+- [Short integer solution problem (Euclidean norm profile)](SIS.md) — `requiresConcept`
+- [Shannon entropy (finite discrete profile)](ShannonEntropy.md) — `requiresConcept`
+- [Finite stochastic channel](StochasticChannel.md) — `requiresConcept`
+
+## Mathematical formulation
+
+A finite law on A is p:A→ℝ≥0 with finite support and Σ\_{a∈supp(p)}p(a)=1. The ambient A need not be finite, but normalization excludes empty support.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure FiniteDistribution (A : Type u) where
+  mass : A →₀ NNReal
+  normalized : mass.sum (fun _ p => p) = 1
+```
+
+**Source:** [`Catalog.FiniteDistribution`](../lean/Catalog/CoreData.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** A→₀NNReal plus an exact normalization proof. NNReal is the nonnegative real carrier, not the field parameter of SparseVector. Dist_fin(A)={p:A→ℝ≥0 | supp(p) finite, Σa p(a)=1}. Ambient A may be infinite. No distribution exists on empty A. Exact real probabilities; no random generator, floating-point error or independent sampling assumption. Equality is pointwise mass equality.
+
+**Limits:** Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** supp(p)={a | p(a)≠0} is finite; p(a)≥0; Σa∈supp(p) p(a)=1; dirac(a)(x)=1 if x=a, else 0; push(f,p)(b)=Σ{a∈supp(p) | f(a)=b}p(a); equality is pointwise
@@ -297,7 +328,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "PMF, PMF.ext, hasSum_coe_one and support_nonempty; restricted here to finite support; Finsupp finite support carrier and extensional evaluation",
     "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "structure FiniteDistribution (A : Type u) where\n  mass : A →₀ NNReal\n  normalized : mass.sum (fun _ p => p) = 1",
+    "formulationSource": "urn:csabs:source/local-lean-CoreData",
+    "formulationLocator": "Catalog.FiniteDistribution",
+    "formulationScope": "model",
+    "leanModelMapping": "A→₀NNReal plus an exact normalization proof. NNReal is the nonnegative real carrier, not the field parameter of SparseVector. Dist_fin(A)={p:A→ℝ≥0 | supp(p) finite, Σa p(a)=1}. Ambient A may be infinite. No distribution exists on empty A. Exact real probabilities; no random generator, floating-point error or independent sampling assumption. Equality is pointwise mass equality.",
+    "leanModelLimitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
+    "mathematicalFormulation": "A finite law on A is p:A→ℝ≥0 with finite support and Σ_{a∈supp(p)}p(a)=1. The ambient A need not be finite, but normalization excludes empty support."
   },
   {
     "id": "urn:csabs:operation/FiniteDistribution-mass",

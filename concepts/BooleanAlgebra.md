@@ -19,6 +19,26 @@ A bounded distributive complemented lattice, equivalently an algebra satisfying 
 - [Two-valued Boolean type](BooleanType.md) — `specializationOf`
 - [Propositional Logic](PropositionalLogic.md) — `requiresConcept`
 
+## Mathematical formulation
+
+A Boolean algebra is a bounded distributive lattice with complement ¬a satisfying a⊓¬a=⊥ and a⊔¬a=⊤. The selected library structure permits the trivial carrier ⊥=⊤.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev BooleanAlgebra (A : Type u) := _root_.BooleanAlgebra A
+```
+
+**Source:** [`Catalog.BooleanAlgebra`](../lean/Catalog/Order.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Mathlib BooleanAlgebra; trivial carrier permitted.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Equational Boolean algebra on a nonempty carrier with join, meet, complement, bottom, and top. Includes lattice laws, bounds, distributivity, and complements; the trivial algebra is allowed.
@@ -337,7 +357,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/Lattice"
     ],
-    "specializationNote": "Use the same meet and join and the induced order x≤y iff x∧y=x; boundedness, distributivity and complement are additional structure."
+    "specializationNote": "Use the same meet and join and the induced order x≤y iff x∧y=x; boundedness, distributivity and complement are additional structure.",
+    "leanFormulation": "abbrev BooleanAlgebra (A : Type u) := _root_.BooleanAlgebra A",
+    "formulationSource": "urn:csabs:source/local-lean-Order",
+    "formulationLocator": "Catalog.BooleanAlgebra",
+    "formulationScope": "model",
+    "leanModelMapping": "Mathlib BooleanAlgebra; trivial carrier permitted.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A Boolean algebra is a bounded distributive lattice with complement ¬a satisfying a⊓¬a=⊥ and a⊔¬a=⊤. The selected library structure permits the trivial carrier ⊥=⊤."
   },
   {
     "id": "urn:csabs:operation/boolean-join",

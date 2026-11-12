@@ -16,6 +16,26 @@ A finite ordered multiway search tree with distinct keys, bounded node occupancy
 
 **Related concepts:** [Strict binary search tree](BinarySearchTree.md)
 
+## Mathematical formulation
+
+The current partial Lean carrier is BTreeShape(A)=RoseTree(List(A)). It stores ordered children and a finite key list per node. No occupancy, search-order or equal-leaf-depth predicate is encoded in this carrier.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev BTreeShape (A : Type u) := RoseTree (List A)
+```
+
+**Source:** [`Catalog.BTreeShape`](../lean/Catalog/StructuredData.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Raw RoseTree (List A): each node carries a finite key list and an ordered finite child list. Empty B-tree shape is RoseTree.node [] []. Structural equality preserves keys and child order.
+
+**Limits:** Partial raw-shape interpretation only. Minimum degree, occupancy, arity, key ordering, balance, membership, height and updates are not formalized; no B-tree proof witnesses.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Finite rose-tree carrier with key-list labels; root-aware occupancy, child arity, strict inorder ordering, equal leaf depth; key-set observers and invariant-preserving updates.
@@ -485,7 +505,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "§14.2 definition; §§14.2.1–14.2.3 search, addition, removal",
     "sourceNote": "Minimum degree t is the source parameter B. Finite key-set profile; update outcomes specify allowed valid shapes, not an algorithm.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "abbrev BTreeShape (A : Type u) := RoseTree (List A)",
+    "formulationSource": "urn:csabs:source/local-lean-StructuredData",
+    "formulationLocator": "Catalog.BTreeShape",
+    "formulationScope": "partial",
+    "leanModelMapping": "Raw RoseTree (List A): each node carries a finite key list and an ordered finite child list. Empty B-tree shape is RoseTree.node [] []. Structural equality preserves keys and child order.",
+    "leanModelLimitations": "Partial raw-shape interpretation only. Minimum degree, occupancy, arity, key ordering, balance, membership, height and updates are not formalized; no B-tree proof witnesses.",
+    "mathematicalFormulation": "The current partial Lean carrier is BTreeShape(A)=RoseTree(List(A)). It stores ordered children and a finite key list per node. No occupancy, search-order or equal-leaf-depth predicate is encoded in this carrier."
   },
   {
     "id": "urn:csabs:operation/BTree-empty",

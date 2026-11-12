@@ -16,6 +16,29 @@ A predicate true before a loop and preserved whenever its body executes; termina
 
 - [Visible-state object invariant protocol](ObjectInvariant.md) — `relatedConcept`
 
+## Mathematical formulation
+
+For precondition P, guard g and body relation C⊆S×S, I is an invariant when ∀s,P(s)⇒I(s) and ∀s,t,I(s)∧g(s)∧C(s,t)⇒I(t). Termination is a separate obligation.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure LoopInvariant {S : Type u} (P guard : S → Prop) (C : Command S)
+    (I : S → Prop) : Prop where
+  initial : ∀ s, P s → I s
+  preserved : ∀ s t, I s → guard s → C s t → I t
+```
+
+**Source:** [`Catalog.LoopInvariant`](../lean/Catalog/Semantics.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Initial implication and preservation by every enabled normally terminating body execution.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A predicate true before a loop and preserved whenever its body executes; termination requires a separate argument. Governing rules: The proposed invariant holds before entering the loop. Each normally terminating enabled body execution preserves the invariant.
@@ -179,7 +202,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
     "source": [
       "urn:csabs:source/sf-hoare"
-    ]
+    ],
+    "leanFormulation": "structure LoopInvariant {S : Type u} (P guard : S → Prop) (C : Command S)\n    (I : S → Prop) : Prop where\n  initial : ∀ s, P s → I s\n  preserved : ∀ s t, I s → guard s → C s t → I t",
+    "formulationSource": "urn:csabs:source/local-lean-Semantics",
+    "formulationLocator": "Catalog.LoopInvariant",
+    "formulationScope": "model",
+    "leanModelMapping": "Initial implication and preservation by every enabled normally terminating body execution.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For precondition P, guard g and body relation C⊆S×S, I is an invariant when ∀s,P(s)⇒I(s) and ∀s,t,I(s)∧g(s)∧C(s,t)⇒I(t). Termination is a separate obligation."
   },
   {
     "id": "urn:csabs:operation/LoopInvariant-basis-preserves",

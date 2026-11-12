@@ -21,6 +21,26 @@ A type whose values contain one value from each component type.
 - [Finite RDF 1.1 graph](RDFGraph.md) — `requiresConcept`
 - [Named relational schema with attribute domains](RelationalSchema.md) — `relatedConcept`
 
+## Mathematical formulation
+
+A×B has constructor pair:A→B→A×B and projections π₁,π₂. π₁(pair(a,b))=a; π₂(pair(a,b))=b; pair(π₁(p),π₂(p))=p.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev ProductType (A : Type u) (B : Type v) := A × B
+```
+
+**Source:** [`Catalog.ProductType`](../lean/Catalog/Foundations.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Lean Prod A B with constructor, projections, beta and eta.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Extensional total set-like types: constructor/eliminator beta and eta equations; operation-definition equations where specified. Equality of functions is pointwise; no divergence, effects, or bottom values.
@@ -303,7 +323,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/DependentPair"
     ],
-    "specializationNote": " Use the constant family B(a)=B. Pair/fst/snd become the ordinary product constructor/projections; transported equality becomes component equality. No automatic inheritance of claims."
+    "specializationNote": " Use the constant family B(a)=B. Pair/fst/snd become the ordinary product constructor/projections; transported equality becomes component equality. No automatic inheritance of claims.",
+    "leanFormulation": "abbrev ProductType (A : Type u) (B : Type v) := A × B",
+    "formulationSource": "urn:csabs:source/local-lean-Foundations",
+    "formulationLocator": "Catalog.ProductType",
+    "formulationScope": "model",
+    "leanModelMapping": "Lean Prod A B with constructor, projections, beta and eta.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A×B has constructor pair:A→B→A×B and projections π₁,π₂. π₁(pair(a,b))=a; π₂(pair(a,b))=b; pair(π₁(p),π₂(p))=p."
   },
   {
     "id": "urn:csabs:operation/ProductType-first",

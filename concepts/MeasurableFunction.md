@@ -19,6 +19,28 @@ A total function between measurable spaces whose inverse images of measurable ta
 - [Random variable (measurable random element)](RandomVariable.md) — `requiresConcept`
 - [Random variable (measurable random element)](RandomVariable.md) — `specializationOf`
 
+## Mathematical formulation
+
+For measurable spaces (A,Σ\_A),(B,Σ\_B), f:A→B is measurable iff ∀U∈Σ\_B,f⁻¹(U)∈Σ\_A. Equality is pointwise equality of underlying total functions.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev MeasurableFunction (A : Type u) (B : Type v)
+    [_root_.MeasurableSpace A] [_root_.MeasurableSpace B] :=
+  {f : A → B // Measurable f}
+```
+
+**Source:** [`Catalog.MeasurableFunction`](../lean/Catalog/Probability.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Total function subtype satisfying Mathlib Measurable on specified source/target sigma-algebras.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Total function with specified measurable source and target spaces and preservation of measurability under inverse image.
@@ -192,7 +214,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/Function"
     ],
-    "specializationNote": "Forget source and target sigma-algebras, retaining the same total function."
+    "specializationNote": "Forget source and target sigma-algebras, retaining the same total function.",
+    "leanFormulation": "abbrev MeasurableFunction (A : Type u) (B : Type v)\n    [_root_.MeasurableSpace A] [_root_.MeasurableSpace B] :=\n  {f : A → B // Measurable f}",
+    "formulationSource": "urn:csabs:source/local-lean-Probability",
+    "formulationLocator": "Catalog.MeasurableFunction",
+    "formulationScope": "model",
+    "leanModelMapping": "Total function subtype satisfying Mathlib Measurable on specified source/target sigma-algebras.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "For measurable spaces (A,Σ_A),(B,Σ_B), f:A→B is measurable iff ∀U∈Σ_B,f⁻¹(U)∈Σ_A. Equality is pointwise equality of underlying total functions."
   },
   {
     "id": "urn:csabs:operation/MeasurableFunction-preimage",

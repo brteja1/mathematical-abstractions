@@ -28,6 +28,26 @@ A function defined on a specified subset of an ambient input set, with no value 
 - [Kinded partial template metafunction](TemplateMetafunction.md) — `specializationOf`
 - [Deterministic one-tape Turing machine](TuringMachine.md) — `requiresConcept`
 
+## Mathematical formulation
+
+A⇀B is represented by A→Option(B). dom(f)={a | ∃b, f(a)=some(b)}. Composition returns none if either stage is undefined; otherwise (g∘f)(a)=some(c) when f(a)=some(b) and g(b)=some(c).
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev PartialFunction (A : Type u) (B : Type v) := A → Option B
+```
+
+**Source:** [`Catalog.PartialFunction`](../lean/Catalog/Foundations.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** A -> Option B; none means undefined, some b means the unique defined value; totalized representation of a partial map.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A function defined on a specified subset of an ambient input set, with no value specified outside that subset. Governing rules: Every input in the defined domain has exactly one output; inputs outside it have no specified output. A partial function is a single-valued relation whose defined domain is part of its meaning. Partial maps are equal exactly when their domains and values agree. A partial composition is defined only where both stages are defined.
@@ -235,7 +255,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/Relation"
     ],
-    "specializationNote": "Use the graph R⊆A×B of the partial function, retaining ambient domain and codomain; single-valuedness is the additional constraint."
+    "specializationNote": "Use the graph R⊆A×B of the partial function, retaining ambient domain and codomain; single-valuedness is the additional constraint.",
+    "leanFormulation": "abbrev PartialFunction (A : Type u) (B : Type v) := A → Option B",
+    "formulationSource": "urn:csabs:source/local-lean-Foundations",
+    "formulationLocator": "Catalog.PartialFunction",
+    "formulationScope": "model",
+    "leanModelMapping": "A -> Option B; none means undefined, some b means the unique defined value; totalized representation of a partial map.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A⇀B is represented by A→Option(B). dom(f)={a | ∃b, f(a)=some(b)}. Composition returns none if either stage is undefined; otherwise (g∘f)(a)=some(c) when f(a)=some(b) and g(b)=some(c)."
   },
   {
     "id": "urn:csabs:operation/partial-function-application",

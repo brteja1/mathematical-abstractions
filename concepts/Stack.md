@@ -10,6 +10,26 @@ A collection supporting last-in, first-out insertion and removal, with empty beh
 
 **Kind:** Abstract data type
 
+## Mathematical formulation
+
+Stack(A)=A\*. empty=[]; push(s,x)=x::s; top(x::s)=some(x); pop(x::s)=some(s,x); top([])=pop([])=none. Option totalizes the catalog's partial observers; sequence equality is structural.
+
+**Lean formulation** (in its source module context):
+
+```lean
+abbrev Stack (A : Type u) := List A
+```
+
+**Source:** [`Catalog.Stack`](../lean/Catalog/DataStructures.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** List A with head as top; pop/top return Option and are none exactly on empty.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A collection supporting last-in, first-out insertion and removal, with empty behavior specified by the contract. Governing rules: Stack values are finite sequences with the head as the top. Top and pop are defined exactly on nonempty stacks.
@@ -134,6 +154,33 @@ A collection supporting last-in, first-out insertion and removal, with empty beh
 
 **provenanceStatus:** legacy-source-missing
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} (s : Catalog.Stack A) (x : A), Catalog.Stack.top (Catalog.Stack.push s x) = some x
+```
+
+**Source:** [`Catalog.Proofs.stack_push_top`](../lean/Catalog/Witnesses.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** List A with head as top; pop/top return Option and are none exactly on empty.
+
+**Limits:** Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Stack-observers": "Explicit interface premise: top(cons(x,s))=x; pop(cons(x,s))=(s,x); dom(top)=dom(pop)=Stack(V)−{empty}; interpreted by Catalog.Stack. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Stack-sequence-model": "Explicit interface premise: Stack(V)=Seq(V); empty=nil; push(s,x)=cons(x,s); interpreted by Catalog.Stack. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+}
+```
+
 <a id="node-urn-csabs-law-stack-push-pop"></a>
 
 ### law/stack-push-pop
@@ -153,6 +200,33 @@ A collection supporting last-in, first-out insertion and removal, with empty beh
 **assumptions:** Use the explicit mathematical bases and typed carriers of the linked concepts.
 
 **provenanceStatus:** legacy-source-missing
+
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} (s : Catalog.Stack A) (x : A), Catalog.Stack.pop (Catalog.Stack.push s x) = some (s, x)
+```
+
+**Source:** [`Catalog.Proofs.stack_push_pop`](../lean/Catalog/Witnesses.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** List A with head as top; pop/top return Option and are none exactly on empty.
+
+**Limits:** Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Stack-observers": "Explicit interface premise: top(cons(x,s))=x; pop(cons(x,s))=(s,x); dom(top)=dom(pop)=Stack(V)−{empty}; interpreted by Catalog.Stack. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Stack-sequence-model": "Explicit interface premise: Stack(V)=Seq(V); empty=nil; push(s,x)=cons(x,s); interpreted by Catalog.Stack. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+}
+```
 
 ## Theorems
 
@@ -177,6 +251,33 @@ A collection supporting last-in, first-out insertion and removal, with empty beh
 **notationLanguage:** informal mathematical Unicode
 
 **provenanceStatus:** legacy-source-missing
+
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} (s t : Catalog.Stack A) (x y : A), Catalog.Stack.push s x = Catalog.Stack.push t y → s = t ∧ x = y
+```
+
+**Source:** [`Catalog.Proofs.stack_push_injective`](../lean/Catalog/Witnesses.lean); consulted 2026-11-12.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** List A with head as top; pop/top return Option and are none exactly on empty.
+
+**Limits:** Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Stack-observers": "Explicit interface premise: top(cons(x,s))=x; pop(cons(x,s))=(s,x); dom(top)=dom(pop)=Stack(V)−{empty}; interpreted by Catalog.Stack. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.",
+  "urn:csabs:axiom/Stack-sequence-model": "Explicit interface premise: Stack(V)=Seq(V); empty=nil; push(s,x)=cons(x,s); interpreted by Catalog.Stack. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations."
+}
+```
 
 ## Concept provenance
 
@@ -228,7 +329,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "axiomBasis": "Selected presentation: A collection supporting last-in, first-out insertion and removal, with empty behavior specified by the contract. Governing rules: Stack values are finite sequences with the head as the top. Top and pop are defined exactly on nonempty stacks.",
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
-    "reviewStatus": "editorial basis review; no machine-checked mathematical proof"
+    "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
+    "leanFormulation": "abbrev Stack (A : Type u) := List A",
+    "formulationSource": "urn:csabs:source/local-lean-DataStructures",
+    "formulationLocator": "Catalog.Stack",
+    "formulationScope": "model",
+    "leanModelMapping": "List A with head as top; pop/top return Option and are none exactly on empty.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "Stack(A)=A*. empty=[]; push(s,x)=x::s; top(x::s)=some(x); pop(x::s)=some(s,x); top([])=pop([])=none. Option totalizes the catalog's partial observers; sequence equality is structural."
   },
   {
     "id": "urn:csabs:operation/stack-push",
@@ -315,7 +423,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "assumptions": [
       "Use the explicit mathematical bases and typed carriers of the linked concepts."
     ],
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "∀ {A : Type u} (s : Catalog.Stack A) (x : A), Catalog.Stack.top (Catalog.Stack.push s x) = some x",
+    "formulationSource": "urn:csabs:source/local-lean-Witnesses",
+    "formulationLocator": "Catalog.Proofs.stack_push_top",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "List A with head as top; pop/top return Option and are none exactly on empty.",
+    "leanModelLimitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Stack-observers\": \"Explicit interface premise: top(cons(x,s))=x; pop(cons(x,s))=(s,x); dom(top)=dom(pop)=Stack(V)−{empty}; interpreted by Catalog.Stack. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Stack-sequence-model\": \"Explicit interface premise: Stack(V)=Seq(V); empty=nil; push(s,x)=cons(x,s); interpreted by Catalog.Stack. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\"}"
   },
   {
     "id": "urn:csabs:law/stack-push-pop",
@@ -334,7 +449,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "assumptions": [
       "Use the explicit mathematical bases and typed carriers of the linked concepts."
     ],
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "∀ {A : Type u} (s : Catalog.Stack A) (x : A), Catalog.Stack.pop (Catalog.Stack.push s x) = some (s, x)",
+    "formulationSource": "urn:csabs:source/local-lean-Witnesses",
+    "formulationLocator": "Catalog.Proofs.stack_push_pop",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "List A with head as top; pop/top return Option and are none exactly on empty.",
+    "leanModelLimitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Stack-observers\": \"Explicit interface premise: top(cons(x,s))=x; pop(cons(x,s))=(s,x); dom(top)=dom(pop)=Stack(V)−{empty}; interpreted by Catalog.Stack. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Stack-sequence-model\": \"Explicit interface premise: Stack(V)=Seq(V); empty=nil; push(s,x)=cons(x,s); interpreted by Catalog.Stack. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\"}"
   },
   {
     "id": "urn:csabs:theorem/Stack-push-injective",
@@ -355,7 +477,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "reviewStatus": "editorial-summary; not machine-proved",
     "notationLanguage": "informal mathematical Unicode",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "∀ {A : Type u} (s t : Catalog.Stack A) (x y : A), Catalog.Stack.push s x = Catalog.Stack.push t y → s = t ∧ x = y",
+    "formulationSource": "urn:csabs:source/local-lean-Witnesses",
+    "formulationLocator": "Catalog.Proofs.stack_push_injective",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "List A with head as top; pop/top return Option and are none exactly on empty.",
+    "leanModelLimitations": "Witness proves the explicit expectedType under its binders. Correspondence to the informal statement is reviewed metadata, not mechanically proved. Original citation gaps remain disclosed in the catalog.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Stack-observers\": \"Explicit interface premise: top(cons(x,s))=x; pop(cons(x,s))=(s,x); dom(top)=dom(pop)=Stack(V)−{empty}; interpreted by Catalog.Stack. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\", \"urn:csabs:axiom/Stack-sequence-model\": \"Explicit interface premise: Stack(V)=Seq(V); empty=nil; push(s,x)=cons(x,s); interpreted by Catalog.Stack. See the carrier/operation mapping; closure is enforced by typed operations and axioms are hypotheses carried by these structures, not new Lean axiom declarations.\"}"
   }
 ]
 ```

@@ -29,6 +29,28 @@ States, initial states, and a transition relation describe allowed executions.
 - [Deterministic one-tape Turing machine](TuringMachine.md) — `requiresConcept`
 - [VHDL generic elaboration and static structural generation](VHDLGenericElaboration.md) — `relatedConcept`
 
+## Mathematical formulation
+
+A transition system is (S,I,→) with I⊆S and →⊆S×S. reachable(s) ⇔ ∃i∈I,i→\*s, where →\* is reflexive-transitive closure. Initial states and transition successors may be absent.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure TransitionSystem (S : Type u) where
+  initial : _root_.Set S
+  next : S → S → Prop
+```
+
+**Source:** [`Catalog.TransitionSystem`](../lean/Catalog/Graphs.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Initial-state set and arbitrary binary next relation; reachable via ReflTransGen from an initial state.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: States, initial states, and a transition relation describe allowed executions. Governing rules: A transition system has initial states and an arbitrary next-state relation; determinism and totality are additional properties. Reachable states are the least set containing the initial states and closed under Next.
@@ -197,7 +219,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "relatedConcept": [
       "urn:csabs:concept/LabelledTransitionSystem",
       "urn:csabs:concept/KripkeStructure"
-    ]
+    ],
+    "leanFormulation": "structure TransitionSystem (S : Type u) where\n  initial : _root_.Set S\n  next : S → S → Prop",
+    "formulationSource": "urn:csabs:source/local-lean-Graphs",
+    "formulationLocator": "Catalog.TransitionSystem",
+    "formulationScope": "model",
+    "leanModelMapping": "Initial-state set and arbitrary binary next relation; reachable via ReflTransGen from an initial state.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A transition system is (S,I,→) with I⊆S and →⊆S×S. reachable(s) ⇔ ∃i∈I,i→*s, where →* is reflexive-transitive closure. Initial states and transition successors may be absent."
   },
   {
     "id": "urn:csabs:operation/TransitionSystem-post",

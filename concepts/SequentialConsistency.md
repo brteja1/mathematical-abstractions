@@ -16,6 +16,28 @@ A completed well-formed concurrent history is sequentially consistent when a leg
 
 - [Lamport bakery lock protocol](LamportBakery.md) — `relatedConcept`
 
+## Mathematical formulation
+
+For an instantiated history model, SC(h) ⇔ wellFormed(h)∧completed(h)∧∃s,legal(s)∧equivalent(h,s)∧processOrderPreserved(h,s). Legality, projection equality and process order are supplied predicates.
+
+**Lean formulation** (in its source module context):
+
+```lean
+def SequentialConsistency {H S : Type u} (m : HistoryModel H S) (h : H) : Prop :=
+  m.wellFormed h ∧ m.completed h ∧ ∃ s,
+    m.legal s ∧ m.equivalent h s ∧ m.processOrderPreserved h s
+```
+
+**Source:** [`Catalog.SequentialConsistency`](../lean/Catalog/Semantics.lean); consulted 2026-11-12.
+
+**Scope:** partial
+
+**Interpretation:** Completed well-formed history admitting a legal sequential witness with equivalent process projections.
+
+**Limits:** Process projection and legality predicates are abstract client parameters, not an event-level history construction.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected presentation: A concurrent history is equivalent to a legal sequential history preserving each process's program order. Governing rules: This entry concerns completed well-formed histories and requires a legal sequential witness preserving process projections.
@@ -158,7 +180,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "def SequentialConsistency {H S : Type u} (m : HistoryModel H S) (h : H) : Prop :=\n  m.wellFormed h ∧ m.completed h ∧ ∃ s,\n    m.legal s ∧ m.equivalent h s ∧ m.processOrderPreserved h s",
+    "formulationSource": "urn:csabs:source/local-lean-Semantics",
+    "formulationLocator": "Catalog.SequentialConsistency",
+    "formulationScope": "partial",
+    "leanModelMapping": "Completed well-formed history admitting a legal sequential witness with equivalent process projections.",
+    "leanModelLimitations": "Process projection and legality predicates are abstract client parameters, not an event-level history construction.",
+    "mathematicalFormulation": "For an instantiated history model, SC(h) ⇔ wellFormed(h)∧completed(h)∧∃s,legal(s)∧equivalent(h,s)∧processOrderPreserved(h,s). Legality, projection equality and process order are supplied predicates."
   },
   {
     "id": "urn:csabs:operation/SequentialConsistency-basis-isSequentiallyConsistent",

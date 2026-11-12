@@ -25,6 +25,28 @@ States evolve through an arbitrary relation labelled by actions; a chosen initia
 - [Strong finite partial-trace equivalence](TraceEquivalence.md) — `requiresConcept`
 - [Transition System](TransitionSystem.md) — `relatedConcept`
 
+## Mathematical formulation
+
+An LTS is (S,Act,I,→) with I⊆S and →⊆S×Act×S. Finite traces from s are words a₁…a\_n labeling a path from s; the empty word is admitted by the reflexive path.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure LabelledTransitionSystem (S : Type u) (Act : Type v) where
+  initial : _root_.Set S
+  step : S → Act → S → Prop
+```
+
+**Source:** [`Catalog.LabelledTransitionSystem`](../lean/Catalog/Graphs.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Initial states and S -> Act -> S -> Prop; finite paths include empty path.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining presentation: The labelled next-state relation may have zero, one, or many outcomes. Finite traces are the labels of finite paths, including the zero-step path.
@@ -339,7 +361,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "specializationOf": [
       "urn:csabs:concept/TransitionSystem"
     ],
-    "specializationNote": "Forget action labels to obtain parent Next(s,t) iff ∃a∈Act:s —a→ t, with the same S and I. Parent post is the union of action-indexed post operations. No parent law is transferred implicitly."
+    "specializationNote": "Forget action labels to obtain parent Next(s,t) iff ∃a∈Act:s —a→ t, with the same S and I. Parent post is the union of action-indexed post operations. No parent law is transferred implicitly.",
+    "leanFormulation": "structure LabelledTransitionSystem (S : Type u) (Act : Type v) where\n  initial : _root_.Set S\n  step : S → Act → S → Prop",
+    "formulationSource": "urn:csabs:source/local-lean-Graphs",
+    "formulationLocator": "Catalog.LabelledTransitionSystem",
+    "formulationScope": "model",
+    "leanModelMapping": "Initial states and S -> Act -> S -> Prop; finite paths include empty path.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "An LTS is (S,Act,I,→) with I⊆S and →⊆S×Act×S. Finite traces from s are words a₁…a_n labeling a path from s; the empty word is admitted by the reflexive path."
   },
   {
     "id": "urn:csabs:operation/LabelledTransitionSystem-postAction",

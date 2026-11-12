@@ -17,6 +17,28 @@ A countable collection of function and relation symbols, each with a specified f
 - [First-order formula syntax with named variables](FirstOrderFormula.md) — `requiresConcept`
 - [Free ranked term algebra with variables](TermAlgebra.md) — `relatedConcept`
 
+## Mathematical formulation
+
+The selected countable signature is (Fn\_n,Pred\_n)\_{n∈ℕ}, with Fn\_n⊆ℕ and Pred\_n⊆ℕ identifying symbols of arity n. Tags distinguish symbol sorts and arities even when their numerical names coincide.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure FirstOrderSignature where
+  functions : Nat → Set Nat
+  relations : Nat → Set Nat
+```
+
+**Source:** [`Catalog.FirstOrderSignature`](../lean/Catalog/LogicSyntax.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Countable tagged symbol families: functions n and relations n are subsets of Nat, with n the arity. Instantiate Fn n and Pred n as their subtypes. Nullary symbols are allowed; sorts remain distinct.
+
+**Limits:** Compiled carrier and selected interface only. No new graph law or metatheorem is registered as a proof witness. In particular substitution-support, semantic correspondence, soundness, completeness, compactness and normal-form existence are editorial claims here; grammar/rule declarations do not prove them.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Disjoint countable function/relation symbol families indexed by finite arity; constants are nullary functions and equality is a separate logical symbol.
@@ -195,7 +217,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "§2.2 First-order languages; §2.3 Definition 2.4 and discussion of nullary functions",
     "sourceNote": "Selected presentation in catalog notation; finite raw syntax and the stated primitive basis are explicit choices. No executable proof is implied.",
-    "provenanceKind": "adapted"
+    "provenanceKind": "adapted",
+    "leanFormulation": "structure FirstOrderSignature where\n  functions : Nat → Set Nat\n  relations : Nat → Set Nat",
+    "formulationSource": "urn:csabs:source/local-lean-LogicSyntax",
+    "formulationLocator": "Catalog.FirstOrderSignature",
+    "formulationScope": "model",
+    "leanModelMapping": "Countable tagged symbol families: functions n and relations n are subsets of Nat, with n the arity. Instantiate Fn n and Pred n as their subtypes. Nullary symbols are allowed; sorts remain distinct.",
+    "leanModelLimitations": "Compiled carrier and selected interface only. No new graph law or metatheorem is registered as a proof witness. In particular substitution-support, semantic correspondence, soundness, completeness, compactness and normal-form existence are editorial claims here; grammar/rule declarations do not prove them.",
+    "mathematicalFormulation": "The selected countable signature is (Fn_n,Pred_n)_{n∈ℕ}, with Fn_n⊆ℕ and Pred_n⊆ℕ identifying symbols of arity n. Tags distinguish symbol sorts and arities even when their numerical names coincide."
   },
   {
     "id": "urn:csabs:operation/FirstOrderSignature-arity",

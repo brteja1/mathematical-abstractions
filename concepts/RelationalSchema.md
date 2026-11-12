@@ -22,6 +22,29 @@ A relation name, a finite set of attribute names, and a domain for each attribut
 - [Finite typed entity-relationship instance](EntityRelationshipModel.md) — `requiresConcept`
 - [Map](Map.md) — `relatedConcept`
 
+## Mathematical formulation
+
+A schema is (Attr,D) with finite attribute carrier Attr and domains D:Attr→Type. A tuple is a dependent function t:Π\_{a∈Attr}D(a); the empty schema is permitted.
+
+**Lean formulation** (in its source module context):
+
+```lean
+structure RelationalSchema where
+  Attribute : Type u
+  finiteAttributes : Fintype Attribute
+  Domain : Attribute → Type v
+```
+
+**Source:** [`Catalog.RelationalSchema`](../lean/Catalog/Database.lean); consulted 2026-11-12.
+
+**Scope:** model
+
+**Interpretation:** Finite named attribute type and dependent domain family; tuples assign every attribute.
+
+**Limits:** Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
 ## Interface and scope
 
 **axiomBasis:** Selected defining presentation: A schema determines total assignments with exactly its attributes. Named tuple equality is pointwise equality. A type-correct field update changes exactly its selected field.
@@ -373,7 +396,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "reviewStatus": "editorial review of defining basis and selected laws, theorems and proof principles; no machine-checked proof",
     "verificationObligation": [
       "U is finite, possibly empty; every D(a) is nonempty. Values use identity equality, with no NULL, missing field, or SQL type coercion. Tuple equality is componentwise."
-    ]
+    ],
+    "leanFormulation": "structure RelationalSchema where\n  Attribute : Type u\n  finiteAttributes : Fintype Attribute\n  Domain : Attribute → Type v",
+    "formulationSource": "urn:csabs:source/local-lean-Database",
+    "formulationLocator": "Catalog.RelationalSchema",
+    "formulationScope": "model",
+    "leanModelMapping": "Finite named attribute type and dependent domain family; tuples assign every attribute.",
+    "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
+    "mathematicalFormulation": "A schema is (Attr,D) with finite attribute carrier Attr and domains D:Attr→Type. A tuple is a dependent function t:Π_{a∈Attr}D(a); the empty schema is permitted."
   },
   {
     "id": "urn:csabs:operation/RelationalSchema-arity",
