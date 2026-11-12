@@ -24,18 +24,31 @@ Use the same `--directory` for subsequent queries. Neither the helper nor the sk
 
 ## Commands
 
-All commands produce JSON and accept `--limit`, `--offset`, and `--max-chars` after the subcommand. Defaults are 6 records, offset 0, and 12,000 Unicode characters including JSON formatting. Limits are 1–32 records and 2,048–40,000 characters. Character limits approximate context use; they are not tokenizer measurements.
+Start with compact search results, then the selected concept and relevant operations. Fetch an axiom/law only for the current obligation; fetch a theorem only when its result or proof is needed. Premises, sources and prerequisite definitions are fetched to resolve a specific missing condition or justification, not as a routine closure. Full dossiers and whole concept pages are not the default context.
+
+All commands produce JSON and accept `--limit`, `--offset`, `--max-chars` and `--view` after the subcommand. Defaults are 6 records, offset 0, 12,000 Unicode characters and the `focused` field view. Limits are 1–32 records and 2,048–40,000 characters. Character limits approximate context use; they are not tokenizer measurements.
+
+| View | When to request it |
+| --- | --- |
+| `focused` (default) | Readable mathematics, complete retained conditions/assumptions, applicability, source-gap metadata and partial-model limits. Omits unselected interface-link lists, Lean excerpts/mappings and proof sketches. |
+| `lean` | A selected record's typed formulation, mapping and direct premise mapping when formal translation or witness reuse requires them. Still omits unrelated interface links and proof sketches. |
+| `full` | The complete authoritative record for an explicit audit or a needed proof sketch. This does not recursively fetch linked claims. |
+
+Search always returns compact candidate summaries regardless of view. View selection controls fields, while section/kind/ID selection controls which records are fetched. No view clips retained equations, preconditions or assumptions to fit a budget.
 
 | Command | Purpose |
 | --- | --- |
-| `search TERM --category CATEGORY` | Compact concept candidates by substring of name, definition, notation, basis, or linked operation name/description/signature; category is optional. Try semantic synonyms as separate searches. Use `search '' --category data-structures` for a bounded category listing. |
-| `interface CONCEPT --sections operations axioms` | The concept record and only explicitly linked records in the selected sections; root appears first. `laws` and `theorems` are optional sections. |
+| `search TERM --category CATEGORY` | Compact concept candidates by substring of name, definition, notation, basis, readable mathematical formulation, or linked operation name/description/signature; category is optional. Try semantic synonyms as separate searches. Use `search '' --category data-structures` for a bounded category listing. |
+| `interface CONCEPT --sections operations` | The concept and explicitly linked operations; root appears first. Operations are the only default section. Request `axioms`, `laws` or `theorems` only for a current obligation. Prefer a known operation ID via `node` over the whole operation list when possible. |
 | `claims CONCEPT --kind law` | Only explicitly linked axioms, laws or theorems of the chosen kind. |
-| `node ID` | One complete canonical JSON record, including assumptions, applicability, provenance and dependency IDs where recorded. Short forms resolve concepts; other record types need stable IDs. |
+| `node ID` | One record in the selected view, preserving assumptions, applicability, provenance and dependency IDs where recorded. Short forms resolve concepts; other record types need stable IDs. `--view full` retrieves the complete canonical record. |
 | `premises CLAIM --depth 1` | Claim/operation plus explicit `dependsOn` premises up to that depth; no inheritance or unrelated prerequisite closure. Depth range 0–6. |
-| `sources ID` | Direct Source records only. A concept citation does not become a direct citation for its laws. |
+| `sources ID --kind citation` | Direct mathematical citations through `source` only; this is the default. A concept citation does not become a direct citation for its laws. |
+| `sources ID --kind formulation` | Direct local Lean sources through `formulationSource` only. These describe a formal interpretation, independently of citation gaps or proof status. |
 
-Pagination is stable while the projection inputs stay unchanged. `projectionInputSha256` identifies that snapshot. Start again if it changes while composing a rationale.
+Read [formulations.md](formulations.md) only when field interpretation, typed correspondence or witness evidence is needed. `--view lean` exposes Lean declarations and JSON-encoded premise mappings; `scripts/lean.py get ID` checks the selected binding and evidence. A registered proposition is not proof evidence just because retrieval succeeded. The dependency-free `catalog.py get` and `agent_query.py node` commands also default to `focused` and accept `--view lean|full`.
+
+Pagination is stable while the projection inputs and selection/view options stay unchanged. `projectionInputSha256` identifies that snapshot. Start again if it changes while composing a rationale. The response's `view` identifies a focused/Lean/full field selection or a search summary; omitted fields do not mean missing catalog facts.
 
 - `total` is the number of records selected by this command within its stated sections/depth, not all mathematical consequences.
 - `returned` counts complete records actually included. Large records may reduce it below `limit`.
@@ -45,4 +58,4 @@ Pagination is stable while the projection inputs stay unchanged. `projectionInpu
 - `needsLargerBudget: true` and exit code 2 mean the next atomic record cannot fit. `blockedRecord` and `requiredChars` identify the obstruction. No statement or assumption was shortened; raise `--max-chars` rather than looping unchanged.
 - Exit code 1 reports unavailable dependencies, unknown IDs, unsafe bounds, or stale/modified projection errors.
 
-ONTFS selects records using fixed SELECT queries with safely encoded literals. Returned records come from the matching authoritative Markdown JSON, preserving arrays and datatypes rather than flattening RDF into ambiguous strings. No embeddings, hosted service or graph mutation is needed.
+ONTFS selects records using fixed SELECT queries with safely encoded literals. Returned fields come from the matching authoritative Markdown JSON, preserving arrays and datatypes rather than flattening RDF into ambiguous strings. `--view full` is lossless for the entire selected record; focused views omit known optional field groups while retaining semantic conditions. No embeddings, hosted service or graph mutation is needed.

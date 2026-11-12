@@ -26,6 +26,16 @@
 | --- | --- | --- |
 | | | |
 
+## Formulation correspondence and proof evidence
+
+Retain the readable equation and its carrier/equality/operation differences from the normative clauses and concrete API. A `partial` scope needs explicit omitted obligations. Include a Lean interpretation or witness row only when the task relies on it; leave this optional evidence section out otherwise. Do not retrieve theorem lists just to fill the template.
+
+| Stable ID | Formulation source/symbol and scope | Interpretation differences and omitted behavior | Relied-on witness type/premises and current evidence |
+| --- | --- | --- | --- |
+| | | | |
+
+When relying on a witness, record its expected type, each direct premise mapping, toolchain/library pins, catalog fingerprint and actual fresh witness evidence or its absence. Keep local formulation sources separate from mathematical citations; neither the mapping nor a compiled abstract theorem proves target-code refinement.
+
 ## API obligations
 
 Include constructors and observers, not only update methods. Each row needs a stable local obligation ID and specification clause locator. A catalog claim is applicable evidence, not automatically a product requirement.

@@ -4,6 +4,7 @@ import argparse
 import json
 from collections import deque
 from markdown_graph import load_graph, SECTIONS, RELATIONS
+from retrieval_views import VIEWS, record_view
 
 
 def resolve(index, query):
@@ -80,12 +81,15 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='command', required=True)
     node = sub.add_parser('node'); node.add_argument('id')
+    node.add_argument('--view', choices=VIEWS, default='focused')
     neighbors = sub.add_parser('neighbors'); neighbors.add_argument('id')
+    neighbors.add_argument('--view', choices=VIEWS, default='focused')
     neighbors.add_argument('--depth', type=int, default=1)
     neighbors.add_argument('--limit', type=int, default=40)
     neighbors.add_argument('--incoming', action='store_true')
     neighbors.add_argument('--relations', nargs='+', choices=list(RELATIONS)+['dependsOn', 'source', 'formulationSource']+list(SECTIONS), default=list(RELATIONS))
     task = sub.add_parser('dossier'); task.add_argument('id')
+    task.add_argument('--view', choices=VIEWS, default='focused')
     task.add_argument('--purpose', choices=['proof', 'tests'], required=True)
     task.add_argument('--limit', type=int, default=80)
     args = parser.parse_args()
@@ -94,13 +98,16 @@ def main():
         index = {n['id']: n for n in doc['@graph']}
         seed = resolve(index, args.id)
         if args.command == 'node':
-            result = index[seed]
+            result = record_view(index[seed], args.view)
         elif args.command == 'neighbors':
             result = traverse(index, seed, args.relations, args.depth, args.limit, args.incoming)
         else:
             if index[seed]['type'] != 'Concept':
                 raise ValueError('A dossier requires a Concept ID or shortForm')
             result = dossier(index, seed, args.purpose, args.limit)
+        if args.command != 'node':
+            result['nodes'] = [record_view(n, args.view) for n in result['nodes']]
+            result['view'] = args.view
     except (ValueError, KeyError) as exc:
         parser.error(str(exc))
     print(json.dumps(result, ensure_ascii=False, indent=2))

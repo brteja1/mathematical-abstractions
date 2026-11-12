@@ -17,15 +17,14 @@ Resolve this skill's actual directory and use absolute paths when working in ano
 
 ```sh
 python3 <skill>/scripts/query.py search queue --limit 4 --max-chars 4000
-python3 <skill>/scripts/query.py interface Queue --sections operations axioms --limit 6 --max-chars 8000
-python3 <skill>/scripts/query.py claims Queue --kind law --limit 3 --max-chars 6000
-python3 <skill>/scripts/query.py node urn:csabs:law/queue-fifo --max-chars 6000
-python3 <skill>/scripts/query.py premises urn:csabs:law/queue-fifo --depth 1 --limit 6 --max-chars 8000
+python3 <skill>/scripts/query.py interface Queue --sections operations --limit 6 --max-chars 8000
 ```
 
-Search returns candidate names and IDs, not a test specification. Retrieve the chosen interface and only the claims relevant to the behavior under test. Prefer a selected `node` over a broad dossier. Follow `requiresConcept` when its definitions are needed and `dependsOn` for the selected claim's premises. Concept specializations never silently transfer axioms. Retrieve direct source records with `sources ID` when evidence quality matters.
+Search returns candidate names and IDs, not a test specification. Start with the selected concept and relevant operations. Fetch a selected axiom/law only when it supplies a test property or resolves applicability; fetch a theorem only when the test rationale needs that result. For example, use `node urn:csabs:law/queue-fifo` for a FIFO obligation, then `premises ... --depth 1` only when its derivation or assumptions need checking. A scoped `claims` query can discover a needed property; do not load every claim by default. Follow prerequisites only for missing definitions and sources only when checking provenance. Concept specializations never silently transfer axioms.
 
-The wrapper uses ONTFS/SPARQL for selection and typed links, checks the generated projection against current Markdown, and returns lossless source records. Python may load the catalog internally; the agent receives only the bounded response. Do not dump runtime Turtle, every concept page or an unrestricted SPARQL result into context. A stale/modified projection is an error, not permission to query it or overwrite local experiments.
+The default focused view keeps readable formulations, preconditions, assumptions and partial-model limits, while omitting unselected claim links, Lean excerpts and proof sketches. Use it for ordinary test design. Retrieve `--view lean` and the relevant part of the [formulation guide](references/formulations.md) only when typed interpretation or witness reuse affects the task; request `--view full` only for a complete-record audit. A local Lean source does not close a citation gap or establish the software's behavior.
+
+The wrapper uses ONTFS/SPARQL for selection and typed links, checks the generated projection against current Markdown, and returns the requested field view without shortening retained mathematical conditions. Python may load the catalog internally; the agent receives only the bounded response. Do not dump runtime Turtle, every concept page or an unrestricted SPARQL result into context. A stale/modified projection is an error, not permission to query it or overwrite local experiments.
 
 Read `truncated`, `nextOffset`, `depthBoundary` and `needsLargerBudget`. Fetch another page only when its omitted records are needed. Follow a relevant missing premise by ID, or deepen that premise query. A response with `needsLargerBudget: true` made no progress: increase the character budget for that node rather than repeating its offset. Never treat a clipped page, unresolved premise, empty section or absent citation as mathematical completeness.
 

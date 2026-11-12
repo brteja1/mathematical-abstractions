@@ -2,16 +2,22 @@
 
 Use the graph as a retrieved specification and dependency map. Keep assumptions and source quality visible in the resulting work.
 
+## Mathematical formulations and evidence
+
+Concept records now expose readable `mathematicalFormulation`, selected `leanFormulation`, `formulationScope`, `leanModelMapping`/`leanModelLimitations`, and local `formulationSource`/`formulationLocator`. Registered witnesses expose their expected proposition and JSON-encoded `leanPremiseMapping`. The four AI skills use the shared [formulation and Lean-evidence guide](../ai/skills/mathematical-tests/references/formulations.md) for these fields, source retrieval, module context and domain-specific omissions. Start with focused concept/operation records and match carriers, equality, guards and observations to the normative contract. Fetch axioms/laws for the current obligation and theorems only when their result or proof is needed; do not preload proof material or all linked claims.
+
+The bounded helper's `sources ID` keeps mathematical citations as its default; `sources ID --kind formulation` retrieves the separate local Lean sources. Interfaces default to operations only; `node` and `interface` default to focused fields. Use `--view lean` for a needed typed interpretation, or `--view full` for a complete-record audit. Retained assumptions and partial-model limits are not shortened. Search includes readable mathematical formulations. Check budget and pagination flags when the additional formulas make records larger. A stated proposition or a model binding is distinct from a verified witness; inspect current `scripts/lean.py get ID` output before relying on compiled evidence. Local sources and compiled proofs do not repair independent citation gaps.
+
 ## Proof construction with Lean or Coq
 
 For a group identity, first retrieve the exact group interface:
 
 ```sh
-python3 scripts/catalog.py get Group --sections operations axioms laws theorems
-python3 scripts/agent_query.py dossier Group --purpose proof --limit 100
+python3 scripts/catalog.py get Group --sections operations
+python3 scripts/agent_query.py node urn:csabs:theorem/Group-inverse-product --view lean
 ```
 
-Read the target theorem's `formalStatement`, `assumptions`, `appliesTo`, `dependsOn`, `reviewStatus`, and provenance. Follow each needed premise by ID with `agent_query.py node ID`. If a dossier reports `truncated: true`, retrieve missing premises separately or increase the limit (maximum 1000).
+Read the target theorem's `formalStatement`, `assumptions`, `appliesTo`, `dependsOn`, `reviewStatus`, and provenance. Follow each needed premise by ID with `agent_query.py node ID`. Use a dossier only when the task needs that broader dependency package; it expands linked claims beyond the focused defaults. If it reports `truncated: true`, retrieve needed missing premises separately rather than increasing context without a reason.
 
 Before translating into an assistant, write an explicit mapping:
 
@@ -26,7 +32,7 @@ Before translating into an assistant, write an explicit mapping:
 
 Pin the assistant version and library revision in the formalization project. Run Lean or Coq on the resulting file and retain compiler output. State any extra assumptions such as classical logic, choice or function extensionality; the extensional set-like catalog convention does not automatically justify these inside an intensional type theory. Do not use an unproved placeholder as evidence of completion.
 
-The implemented Lean project is [`lean/`](../lean/README.md). Its separate `lean/bindings.json` manifest is keyed by stable concept/claim IDs and records pinned versions, declarations/modules, carrier/operation/assumption and premise mappings, expected types, scope, limitations and catalog fingerprints. Use `python3 scripts/lean.py get ID` to retrieve a binding, `make check-lean` for metadata checks, and `make test-lean` for actual compilation, axiom auditing and negative compiler tests. Only fresh `lean/verification.json` evidence supports a verified witness; a model or registered binding alone does not. Hash mismatches require review before updating fingerprints. Partial models have explicit remaining obligations in the Lean manifest and guide. Add bindings to the JSON-LD context only through a reviewed schema change; keep informal mathematics usable independently of Lean.
+The implemented Lean project is [`lean/`](../lean/README.md). Its `lean/bindings.json` manifest is keyed by stable concept/claim IDs and records pinned versions, declarations/modules, carrier/operation/assumption and premise mappings, expected types, scope, limitations and catalog fingerprints. The Markdown formulation fields expose the selected declarations/propositions and mappings; metadata checks reject drift from the Lean sources and bindings. Use `python3 scripts/lean.py get ID` to retrieve a binding, `make check-lean` for metadata checks, and `make test-lean` for actual compilation, axiom auditing and negative compiler tests. Only fresh `lean/verification.json` evidence supports a verified witness; a model or registered binding alone does not. Hash mismatches require review before updating fingerprints. Partial models have explicit remaining obligations in the Lean manifest and guide. Keep readable mathematics usable independently of Lean and preserve its bibliographic provenance.
 
 ## Software test design
 
@@ -36,15 +42,16 @@ Use the repository-local [`mathematical-tests` skill](../ai/skills/mathematical-
 
 ```sh
 .venv/bin/python ai/skills/mathematical-tests/scripts/query.py search stack --limit 4 --max-chars 4000
-.venv/bin/python ai/skills/mathematical-tests/scripts/query.py interface Stack --sections operations axioms --limit 6 --max-chars 8000
-.venv/bin/python ai/skills/mathematical-tests/scripts/query.py claims Stack --kind law --limit 3 --max-chars 6000
+.venv/bin/python ai/skills/mathematical-tests/scripts/query.py interface Stack --sections operations --limit 6 --max-chars 8000
 ```
+
+For a push/pop test property, retrieve `node urn:csabs:law/stack-push-pop` after selecting that obligation. Fetch a theorem only when the rationale needs its result; a scoped claim search is for discovery of a needed property, not a routine preload. Fetch Lean evidence only when relying on a formal interpretation or proof.
 
 The projection must match current Markdown and have no local edits. Respect `nextOffset`, `needsLargerBudget` and `depthBoundary`; only fetch omitted records needed for the selected property. See the skill's retrieval reference for setup and scratch projections. The original standard-library CLI remains useful when ONTFS is unavailable, but it is a different retrieval backend and should be disclosed as such:
 
 ```sh
-python3 scripts/catalog.py get Stack --sections operations axioms laws theorems dependencies
-python3 scripts/agent_query.py dossier Stack --purpose tests --limit 100
+python3 scripts/catalog.py get Stack --sections operations
+python3 scripts/agent_query.py node urn:csabs:law/stack-push-pop
 ```
 
 Map the catalog carrier and operations to the real API. Check whether the interface is mutable, persistent, bounded, concurrent or exception-raising. An equation about an abstract stack needs an observation function when the software stores additional internal state.

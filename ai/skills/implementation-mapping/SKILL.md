@@ -19,13 +19,14 @@ Resolve `<catalog>` to the checkout containing this skill, independently of the 
 
 ```sh
 python3 <catalog>/scripts/catalog.py list --search stack
-python3 <catalog>/scripts/catalog.py get Stack --sections operations axioms laws dependencies sources
-python3 <catalog>/scripts/agent_query.py node urn:csabs:law/stack-push-pop
+python3 <catalog>/scripts/catalog.py get Stack --sections operations
 ```
 
-Search by behavior and synonyms. Retrieve only applicable operations/claims and their needed `dependsOn` premises and sources. For bounded ONTFS retrieval, use the existing [retrieval helper and guide](../mathematical-tests/references/retrieval.md). Disclose the backend used. Respect pagination, truncation and depth boundaries; retrieve necessary omitted premises. Do not overwrite modified projections. Prerequisites and specialization links do not transfer axioms.
+Search by behavior and synonyms. Start with the selected concept and relevant operations. Retrieve an axiom or law only to resolve a current interface obligation; fetch a theorem only when a required result or proof needs it. Follow premises only to check applicability or a derivation, and sources when checking provenance. Do not prefetch all claims or a prerequisite closure. For bounded ONTFS retrieval, use the existing [retrieval helper and guide](../mathematical-tests/references/retrieval.md). Disclose the backend used. Respect pagination, truncation and depth boundaries; retrieve necessary omitted premises. Do not overwrite modified projections. Prerequisites and specialization links do not transfer axioms.
 
 Record selected stable IDs and source-file hashes or a catalog revision plus relevant dirty-file hashes. Preserve source locators, citation gaps and review status. A graph edge, Unicode equation or Lean binding is not evidence that the software conforms.
+
+Use the focused `mathematicalFormulation`, scope and limitations to map the contract. Load `--view lean` and the relevant part of the [formulation guide](../mathematical-tests/references/formulations.md) only when a typed interpretation or witness is needed; `--view full` is for a required complete-record audit. Record only relied-on equations and evidence. A partial interface leaves explicit obligations; it does not authorize narrowing the product contract.
 
 ## Define the concrete interpretation
 

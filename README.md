@@ -71,16 +71,13 @@ Python 3 and the standard library are sufficient; no service, credentials, embed
 ```sh
 python3 scripts/catalog.py list --search group
 python3 scripts/catalog.py list --category probability
-python3 scripts/catalog.py get Group --sections operations axioms laws theorems sources
-python3 scripts/agent_query.py neighbors Group --incoming --depth 1 --limit 40
-python3 scripts/agent_query.py dossier Group --purpose proof --limit 80
-python3 scripts/agent_query.py dossier Stack --purpose tests --limit 80
+python3 scripts/catalog.py get Group --sections operations
 python3 scripts/agent_query.py node urn:csabs:concept/Group
 ```
 
 Category queries include all descendant subjects and accept a suffix or full category ID; for example, `--category synchronization` includes Lock, Mutex and LamportBakery.
 
-Commands emit JSON. Retrieval reads current Markdown records directly. `get` expands only requested sections; `node` fetches any stable concept/claim/operation/source ID. `neighbors` supports chosen edge types and incoming edges. A `dossier` traverses interfaces, prerequisites, sources and derivation premises within an explicit node limit, reports truncation, and includes task instructions. Retrieve omitted premises before relying on a truncated result.
+Commands emit JSON and read current Markdown records directly. `get` expands only requested sections; `node` fetches a selected stable concept/claim/operation/source ID. Focused fields are the default, with `--view lean` for needed typed material and `--view full` for complete records. Fetch a theorem by ID or request `--sections theorems` only when its result or proof is required. `neighbors` supports chosen edge types and incoming edges. Use a `dossier` only when the task needs its broader interface/prerequisite/claim closure; its node limit is not a relevance filter. Retrieve only needed omitted premises before relying on a truncated result.
 
 The graph helps agents select definitions, assemble proof obligations, follow premises and derive test properties. Catalog statements and proof sketches are informal specifications; selected claims have separate compiled Lean witnesses. Applying either to software requires mapping the mathematical carriers, operations, equality and assumptions to the target API.
 
@@ -105,6 +102,8 @@ Checks cover unique IDs and short forms, typed references, operation ownership, 
 Validation checks structure and citation metadata. Mathematical correctness, source entailment and informal-to-formal correspondence require separate review; compiled proof evidence is checked through the Lean workflow.
 
 ## AI skill for specification consistency
+
+All four AI skills retrieve context progressively: start with compact candidates and focused concept/operation records, fetch axioms/laws for the current obligation, and fetch theorems only when their results or proofs are needed. Lean excerpts and full records are opt-in through `--view lean` and `--view full`; operation-only interfaces are the default. Their shared [formulation guide](ai/skills/mathematical-tests/references/formulations.md) is consulted when typed correspondence or witness evidence is needed. Retained assumptions and partial-model limits remain explicit. Mathematical citations stay separate from local Lean sources queried with `sources ID --kind formulation`.
 
 The [specification-consistency skill](ai/skills/specification-consistency/SKILL.md) guides agents in finding conflicting requirements and impossible operation contracts. It maps specification clauses to catalog definitions and explicit assumptions, then helps agents construct and execute suitable checks. It covers joint satisfiability, required input coverage, vacuous preconditions, and stateful or temporal obligations.
 

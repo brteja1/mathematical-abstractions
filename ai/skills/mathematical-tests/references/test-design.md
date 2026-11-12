@@ -10,6 +10,7 @@ A test rationale should make these links reviewable, using the target repository
 | --- | --- |
 | Scope | Target file/symbol and public contract being exercised |
 | Mathematical basis | Stable concept, operation and selected claim IDs; source/provenance gaps |
+| Formulation and scope | Relevant readable equation and partial-model omissions; typed interpretation, module/symbol and witness type/premises only if relied on |
 | Carrier and representation | Valid software values, mathematical observation/model and equality |
 | API correspondence | Constructors, operations and observers used in the claim; mutation, return order and exceptions |
 | Applicability | Each claim assumption, definedness condition, numeric policy and concurrency assumption |
@@ -17,6 +18,8 @@ A test rationale should make these links reviewable, using the target repository
 | Evidence | Framework command, result, seed/counterexample and deferred obligations |
 
 For example, a mutable `push` returning `None` can refine a mathematical state-returning push only through a before/after observation. A pop result may use a different tuple order. Copying the equation without those mappings tests the wrong interface.
+
+Fetch claims only for properties actually selected; a theorem is unnecessary when a definition or operation contract already determines the oracle. If typed interpretation or proof reuse is needed, use the relevant section of [formulations.md](formulations.md) to distinguish a definition, a structure hypothesis, a stated proposition and a currently compiled witness. `leanPremiseMapping` is JSON-encoded data, not an instruction to assume all its premises hold in the software. Map each premise actually used to the target contract and assertion. A partial-model omission stays deferred unless an independent contract/model supplies it.
 
 ## Collections and stateful APIs
 
@@ -39,6 +42,10 @@ Do not assert exact associativity on floating-point addition by borrowing a real
 For priority queues with equal keys, test that extraction selects an allowed minimal item and preserves the correct residual multiset. Do not require a tie order unless the software promises it. For other nondeterministic APIs, test membership in allowed outcomes and invariants across outcomes rather than one arbitrary exact sequence.
 
 Concurrency tests need an explicit history/event model, completion treatment, object specification and scheduler assumptions. Distinguish program-order preservation from real-time preservation; the Linearizability and SequentialConsistency catalog entries are not interchangeable. A finite stress run does not establish liveness, fairness, termination, or linearizability for every execution. Use an installed history checker or bounded state exploration when its model fits, and state the explored bound. Synchronize relevant interleavings rather than relying only on sleeps.
+
+## Information, coding and cryptographic interfaces
+
+For information/coding APIs, preserve probability normalization, logarithm base, zero-mass and infinity conventions, word length and decoder domains. For cryptography and lattice APIs, map algorithm/encoding/validation requirements independently of abstract permutations, exponent maps, norm relations or normalized error laws. Functional examples can test the promised operations, but do not establish cryptographic security, hardness, a sampling experiment or a coding theorem. Retrieve only the relevant domain records and the shared formulation guide's domain distinctions.
 
 ## Compositions, predicates and metamorphic tests
 

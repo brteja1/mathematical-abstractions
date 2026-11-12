@@ -24,6 +24,8 @@ snapshot observation: tuple(reverse(A(L))) = tuple(L)
 
 `snapshot()` is a product observer used to compare abstract states; it is not claimed to be a primitive catalog Stack operation. S4 supplies behavior outside the catalog's nonempty domain for `pop`. Python's concrete `pop()` returns only the value; its mutated receiver supplies the resulting state in the catalog pair `(S, x)`.
 
+The concept's readable formulation makes this correspondence explicit: `push(s,x)=x::s`, `pop(x::s)=some(s,x)`, and `pop([])=none` in the selected Lean interpretation. The catalog partial operation is defined exactly on nonempty stacks; Lean's Option encoding gives it a total representation. Python's successful result is the pair of observed post-state and returned value, while `IndexError` is the independently specified S4 extension. The witness proposition for `urn:csabs:law/stack-push-pop` quantifies over `s` and `x` and concludes `Catalog.Stack.pop (Catalog.Stack.push s x) = some (s,x)`; its source is `Catalog.Proofs.stack_push_pop` in `Catalog/Witnesses.lean`. Inspect current evidence with `scripts/lean.py get` when relying on it as a compiled proof. This correspondence is still an implementation obligation.
+
 | Obligation | Clause | Catalog record | Concrete obligation |
 | --- | --- | --- | --- |
 | O1 | S1 | Stack carrier/sequence model | Construction establishes the representation invariant. |

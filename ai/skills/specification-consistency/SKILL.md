@@ -21,18 +21,18 @@ Resolve `<catalog>` to the checkout containing this skill, independently of the 
 
 ```sh
 python3 <catalog>/scripts/catalog.py list --search propositional
-python3 <catalog>/scripts/catalog.py get PropositionalLogic --sections operations axioms theorems
-python3 <catalog>/scripts/agent_query.py node urn:csabs:theorem/PropositionalLogic-finite-truth-table
-python3 <catalog>/scripts/agent_query.py neighbors PropositionalLogic --relations requiresConcept --depth 1 --limit 12
+python3 <catalog>/scripts/catalog.py get PropositionalLogic --sections operations
 ```
 
-Search by mathematical meaning and synonyms. Retrieve only the relevant interface, selected claims, their `dependsOn` premises, and direct sources. Use a bounded `dossier CONCEPT --purpose proof --limit 80` only when that larger context is needed; check `truncated` and retrieve omitted premises explicitly. Preserve source gaps and distinguish informal statements from compiled witnesses. Neither `requiresConcept` nor `specializationOf` transfers axioms.
+Search by mathematical meaning and synonyms. Start with the selected concept and operations. Fetch axioms/laws for constraints actually used in the encoding, and a theorem only when the check needs its result or proof. Fetch premises to justify those uses and sources when checking provenance; do not preload them for every candidate. Use a bounded `dossier CONCEPT --purpose proof --limit 80` only when that larger context is needed; check `truncated` and retrieve omitted premises explicitly. Preserve source gaps and distinguish informal statements from compiled witnesses. Neither `requiresConcept` nor `specializationOf` transfers axioms.
+
+Use focused readable formulations, scope and limitations to identify carriers, guards and quantifiers. Retrieve `--view lean` and the relevant part of the [formulation guide](../mathematical-tests/references/formulations.md) only when constructing or reusing a formal encoding/proof. A `def ... : Prop` states a target and structure fields impose hypotheses; neither shows satisfiability. Check inhabited inputs and nonvacuity separately. Omitted partial-model behavior remains unchecked.
 
 For ONTFS/SPARQL retrieval, reuse the existing bounded helper rather than creating another graph export:
 
 ```sh
 <catalog>/.venv/bin/python <catalog>/ai/skills/mathematical-tests/scripts/query.py search hoare --limit 4 --max-chars 4000
-<catalog>/.venv/bin/python <catalog>/ai/skills/mathematical-tests/scripts/query.py interface HoareTriple --sections operations axioms --limit 6 --max-chars 8000
+<catalog>/.venv/bin/python <catalog>/ai/skills/mathematical-tests/scripts/query.py interface HoareTriple --sections operations --limit 6 --max-chars 8000
 ```
 
 Read [the shared retrieval reference](../mathematical-tests/references/retrieval.md) for setup, source/premise queries and scratch projections. Respect `nextOffset`, `depthBoundary` and `needsLargerBudget`; projection and source hashes must match. Preserve modified runtime graphs. If using the dependency-free commands instead, disclose that backend choice. A query returning no matching claim is not evidence of consistency.

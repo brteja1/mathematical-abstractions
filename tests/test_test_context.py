@@ -77,6 +77,13 @@ class OntfsTestContextTests(unittest.TestCase):
         result = self.context.search('dequeue', limit=8)
         self.assertIn('Queue', [n['shortForm'] for n in result['records']])
 
+    def test_search_finds_readable_formulation_semantics(self):
+        # This phrase describes an order convention in the readable formulation,
+        # rather than a concept/operation name. Search still returns compact IDs.
+        result = self.context.search('reverse numerical order', limit=8)
+        self.assertIn('MinPlusSemiring', [n['shortForm'] for n in result['records']])
+        self.assertTrue(all('leanFormulation' not in n for n in result['records']))
+
     def test_sparql_text_is_literal_not_query_injection(self):
         result = self.context.search('queue") } UNION { ?id a ca:Concept } #')
         self.assertEqual(result['total'], 0)
@@ -103,7 +110,7 @@ class OntfsTestContextTests(unittest.TestCase):
 
     def test_node_preserves_all_authoritative_conditions_and_provenance(self):
         ident = 'urn:csabs:theorem/Group-inverse-product'
-        result = self.context.node(ident)
+        result = self.context.node(ident, view='full')
         self.assertEqual(result['records'], [self.context.index[ident]])
         self.assertEqual(result['records'][0]['provenanceStatus'], 'legacy-source-missing')
         self.assertTrue(result['records'][0]['assumptions'])
@@ -112,6 +119,58 @@ class OntfsTestContextTests(unittest.TestCase):
         self.assertGreater(self.context.sources('Group')['total'], 0)
         result = self.context.sources('urn:csabs:theorem/Group-inverse-product')
         self.assertEqual(result['total'], 0)
+
+    def test_local_formulation_source_does_not_close_a_citation_gap(self):
+        ident = 'urn:csabs:theorem/Group-inverse-product'
+        result = self.context.sources(ident, kind='formulation', max_chars=4000)
+        self.assertEqual(result['kind'], 'formulation')
+        self.assertEqual([n['path'] for n in result['records']], ['lean/Catalog/Witnesses.lean'])
+        self.assertEqual(self.context.sources(ident)['total'], 0)
+        self.assertEqual(self.context.node(ident)['records'][0]['provenanceStatus'], 'legacy-source-missing')
+        # The concept's separate Algebra source must not be inherited by its claim.
+        concept = self.context.sources('Group', kind='formulation')
+        self.assertEqual([n['path'] for n in concept['records']], ['lean/Catalog/Algebra.lean'])
+
+    def test_partial_scope_and_witness_premises_survive_atomic_retrieval(self):
+        model = self.context.node('BTree', view='full')['records'][0]
+        self.assertEqual(model['formulationScope'], 'partial')
+        self.assertTrue(model['leanModelLimitations'])
+        self.assertEqual(model, self.context.index[model['id']])
+        claim = self.context.node('urn:csabs:law/stack-push-pop', view='lean')['records'][0]
+        self.assertEqual(set(json.loads(claim['leanPremiseMapping'])), set(claim['dependsOn']))
+        self.assertIn('some', claim['leanFormulation'])
+
+    def test_default_interface_loads_only_operations_without_proof_payload(self):
+        result = self.context.interface('Group', limit=32, max_chars=40000)
+        self.assertEqual(result['view'], 'focused')
+        self.assertEqual(result['sections'], ['operations'])
+        self.assertEqual({n['type'] for n in result['records']}, {'Concept', 'Operation'})
+        for record in result['records']:
+            for field in ('hasAxiom', 'hasLaw', 'hasTheorem', 'leanFormulation', 'leanPremiseMapping', 'proofSketch'):
+                self.assertNotIn(field, record)
+        root = result['records'][0]
+        self.assertTrue(root['mathematicalFormulation'])
+        self.assertTrue(root['leanModelLimitations'])
+
+    def test_theorems_are_retrieved_only_when_selected(self):
+        result = self.context.interface('Group', sections=['theorems'], limit=32, max_chars=40000)
+        expected = set(self.context.index['urn:csabs:concept/Group']['hasTheorem'])
+        self.assertEqual({n['id'] for n in result['records'][1:]}, expected)
+        self.assertNotIn('hasAxiom', result['records'][0])
+        self.assertNotIn('hasLaw', result['records'][0])
+        for record in result['records'][1:]:
+            self.assertNotIn('leanFormulation', record)
+            self.assertTrue(record['assumptions'])
+
+    def test_focused_claim_keeps_conditions_and_omits_lean_and_proof_text(self):
+        ident = 'urn:csabs:law/stack-push-pop'
+        record = self.context.node(ident)['records'][0]
+        original = self.context.index[ident]
+        for field in ('formalStatement', 'assumptions', 'appliesTo', 'dependsOn', 'provenanceStatus'):
+            self.assertEqual(record[field], original[field])
+        self.assertNotIn('leanFormulation', record)
+        self.assertNotIn('leanPremiseMapping', record)
+        self.assertNotIn('proofSketch', record)
 
     def test_zero_depth_discloses_unexpanded_premises(self):
         ident = 'urn:csabs:theorem/Group-inverse-product'
@@ -168,6 +227,8 @@ class OntfsTestContextTests(unittest.TestCase):
         self.assertEqual(hashlib.sha256(target.read_bytes()).hexdigest(), before)
 
     def test_unsafe_bounds_and_unknown_ids_fail(self):
+        with self.assertRaisesRegex(ValueError, 'Source kind'):
+            self.context.sources('Group', kind='formulation } UNION { ?id ?p ?o }')
         with self.assertRaisesRegex(ValueError, 'limit 1..32'):
             self.context.search('queue', limit=10000)
         with self.assertRaisesRegex(ValueError, 'depth'):
@@ -188,13 +249,23 @@ class OntfsTestContextTests(unittest.TestCase):
     def test_cli_signals_atomic_record_budget_failure(self):
         entrypoint = ROOT / 'ai/skills/mathematical-tests/scripts/query.py'
         result = subprocess.run([sys.executable, '-B', str(entrypoint), '--directory', str(self.directory),
-                                 'node', 'SumType', '--max-chars', '2048'],
+                                 'node', 'SumType', '--view', 'full', '--max-chars', '2048'],
                                 cwd=self.directory, text=True, capture_output=True)
         self.assertEqual(result.returncode, 2, result.stderr)
         response = json.loads(result.stdout)
         self.assertTrue(response['needsLargerBudget'])
         self.assertEqual(response['records'], [])
         self.assertLessEqual(len(result.stdout), 2048)
+
+    def test_cli_retrieves_formulation_sources_from_another_directory(self):
+        entrypoint = ROOT / 'ai/skills/mathematical-tests/scripts/query.py'
+        result = subprocess.run([sys.executable, '-B', str(entrypoint), '--directory', str(self.directory),
+                                 'sources', 'Stack', '--kind', 'formulation', '--max-chars', '4000'],
+                                cwd=self.directory, text=True, capture_output=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        response = json.loads(result.stdout)
+        self.assertEqual(response['kind'], 'formulation')
+        self.assertEqual([n['path'] for n in response['records']], ['lean/Catalog/DataStructures.lean'])
 
 
 if __name__ == '__main__':

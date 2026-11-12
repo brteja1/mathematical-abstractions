@@ -8,11 +8,13 @@ import sys
 
 from markdown_graph import ROOT, load_graph
 from ontology import CA, backend, input_digest
+from retrieval_views import VIEWS, record_view
 
 PREFIX = 'PREFIX ca: <' + CA + '>\n'
 SECTIONS = {'operations': 'hasOperation', 'axioms': 'hasAxiom',
             'laws': 'hasLaw', 'theorems': 'hasTheorem'}
 KINDS = {'axiom': 'Axiom', 'law': 'Law', 'theorem': 'Theorem'}
+SOURCE_KINDS = {'citation': 'source', 'formulation': 'formulationSource'}
 INTERPRETATION = ('Recorded mathematics, not a software contract or proof. Map carriers, '
                   'operations, equality, applicability and preconditions to the target API. '
                   'Prerequisites and specializations do not transfer axioms.')
@@ -51,7 +53,7 @@ def bounded_page(records, total, offset, limit, max_chars, metadata):
 
 
 class TestContext:
-    """Query IDs/typed edges through ONTFS, return lossless Markdown JSON records.
+    """Query ONTFS IDs/edges and return task-sized views of Markdown records.
 
     The source graph is loaded internally for freshness and lossless arrays/types;
     it is never dumped into an agent's context. No inference or runtime mutation.
@@ -112,7 +114,9 @@ class TestContext:
         return str(rows[0][0])
 
     def page(self, command, body, *, offset=0, limit=6, max_chars=12000,
-             seed=None, compact=False, extra=None):
+             seed=None, compact=False, extra=None, view='focused', selected_links=()):
+        if view not in VIEWS:
+            raise ValueError('Record view must be focused, lean or full')
         if not 0 <= offset <= 10000 or not 1 <= limit <= 32 or not 2048 <= max_chars <= 40000:
             raise ValueError('Require offset 0..10000, limit 1..32, max-chars 2048..40000')
         total = int(self.query('SELECT (COUNT(DISTINCT ?id) AS ?n) WHERE { ' + body + ' }')[0][0])
@@ -127,8 +131,11 @@ class TestContext:
             record = self.index[ident]
             if compact:
                 record = {key: record[key] for key in ('id', 'type', 'shortForm', 'fullName', 'category') if key in record}
+            else:
+                record = record_view(record, view, selected_links)
             records.append(record)
-        metadata = {'command': command, **(extra or {}), 'projectionInputSha256': self.input_hash,
+        metadata = {'command': command, 'view': 'summary' if compact else view,
+                    **(extra or {}), 'projectionInputSha256': self.input_hash,
                     'selectionBackend': 'ONTFS/SPARQL', 'interpretation': INTERPRETATION}
         return bounded_page(records, total, offset, limit, max_chars, metadata)
 
@@ -139,7 +146,7 @@ class TestContext:
             raise ValueError('Supply a nonempty search term or --category')
         body = '?id a ca:Concept . '
         if term:
-            body += ('{ { ?id ?field ?text . VALUES ?field { ca:shortForm ca:fullName ca:definition ca:notation ca:axiomBasis } } '
+            body += ('{ { ?id ?field ?text . VALUES ?field { ca:shortForm ca:fullName ca:definition ca:notation ca:axiomBasis ca:mathematicalFormulation } } '
                      'UNION { ?id ca:hasOperation ?operation . ?operation ?field ?text . '
                      'VALUES ?field { ca:name ca:description ca:signature } } } '
                      'FILTER(CONTAINS(LCASE(STR(?text)), LCASE(' + self.literal(term) + '))) ')
@@ -152,7 +159,7 @@ class TestContext:
         ident = self.resolve(value)
         return self.page('node', 'VALUES ?id { ' + self.iri(ident) + ' }', seed=ident, **bounds)
 
-    def interface(self, value, sections=('operations', 'axioms'), **bounds):
+    def interface(self, value, sections=('operations',), **bounds):
         ident = self.resolve(value, concept=True)
         if not sections or any(s not in SECTIONS for s in sections):
             raise ValueError('Select operations, axioms, laws or theorems')
@@ -161,7 +168,8 @@ class TestContext:
         body = ('{ BIND(' + root + ' AS ?id) } UNION { ' + root + ' ?relation ?id . '
                 'VALUES ?relation { ' + relations + ' } }')
         return self.page('interface', body, seed=ident,
-                         extra={'concept': ident, 'sections': list(sections)}, **bounds)
+                         extra={'concept': ident, 'sections': list(sections)},
+                         selected_links=[SECTIONS[s] for s in sections], **bounds)
 
     def claims(self, value, kind='law', **bounds):
         ident = self.resolve(value, concept=True)
@@ -192,10 +200,13 @@ class TestContext:
                          extra={'claim': ident, 'depth': depth,
                                 'depthBoundary': {'count': count, 'sample': sample}}, **bounds)
 
-    def sources(self, value, **bounds):
+    def sources(self, value, kind='citation', **bounds):
         ident = self.resolve(value)
-        body = self.iri(ident) + ' ca:source ?id . ?id a ca:Source .'
-        return self.page('sources', body, extra={'subject': ident, 'scope': 'direct citations only'}, **bounds)
+        if kind not in SOURCE_KINDS:
+            raise ValueError('Source kind must be citation or formulation')
+        body = self.iri(ident) + ' ca:' + SOURCE_KINDS[kind] + ' ?id . ?id a ca:Source .'
+        scope = 'direct citations only' if kind == 'citation' else 'direct local formulation sources only'
+        return self.page('sources', body, extra={'subject': ident, 'kind': kind, 'scope': scope}, **bounds)
 
 
 def main(argv=None):
@@ -205,21 +216,25 @@ def main(argv=None):
     common.add_argument('--limit', type=int, default=6)
     common.add_argument('--offset', type=int, default=0)
     common.add_argument('--max-chars', type=int, default=12000)
+    common.add_argument('--view', choices=VIEWS, default='focused',
+                        help='Focused mathematics by default; Lean excerpts or full records are opt-in')
     sub = parser.add_subparsers(dest='command', required=True)
     search = sub.add_parser('search', parents=[common]); search.add_argument('term')
     search.add_argument('--category')
     for name in ('node', 'interface', 'claims', 'premises', 'sources'):
         command = sub.add_parser(name, parents=[common]); command.add_argument('id')
         if name == 'interface':
-            command.add_argument('--sections', nargs='+', choices=list(SECTIONS), default=['operations', 'axioms'])
+            command.add_argument('--sections', nargs='+', choices=list(SECTIONS), default=['operations'])
         elif name == 'claims':
             command.add_argument('--kind', choices=list(KINDS), default='law')
         elif name == 'premises':
             command.add_argument('--depth', type=int, default=1)
+        elif name == 'sources':
+            command.add_argument('--kind', choices=list(SOURCE_KINDS), default='citation')
     args = parser.parse_args(argv)
     try:
         store = TestContext(args.directory)
-        bounds = {'limit': args.limit, 'offset': args.offset, 'max_chars': args.max_chars}
+        bounds = {'limit': args.limit, 'offset': args.offset, 'max_chars': args.max_chars, 'view': args.view}
         if args.command == 'search':
             result = store.search(args.term, args.category, **bounds)
         else:

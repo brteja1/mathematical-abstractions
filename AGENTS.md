@@ -64,6 +64,10 @@ Keep imported stable IDs and context despite the broader repository name. `data/
 
 ## AI test-design skill
 
+All four AI skills share `ai/skills/mathematical-tests/references/formulations.md` for readable/Lean formulations, source separation, partial interfaces and witness evidence. The bounded helper searches readable formulations; `sources ID --kind formulation` follows local Lean sources, while default citation queries keep their existing mathematical-provenance meaning.
+
+Retrieve context progressively: focused concept/operation records first; axioms/laws for the current obligation; theorems only when their results or proofs are needed. Interfaces default to operations only. `--view lean` opts into typed excerpts and `--view full` into complete records; ordinary retrieval keeps semantic conditions and partial-model limits without preloading claim lists or proof text. Read only relevant skill-reference sections, and expand premises, sources or prerequisites only to resolve a task need.
+
 For software tests derived from this catalog, use `ai/skills/mathematical-tests/SKILL.md`. Its `scripts/query.py` entrypoint wraps `scripts/test_context.py`: bounded ONTFS/SPARQL search, interfaces, claims, premises and direct sources with record/character budgets and explicit pagination/depth boundaries. It requires a fresh, unmodified generated projection and the pinned backend; it never overwrites runtime graphs or inherits axioms. Keep API/carrier/equality/precondition mappings and source gaps explicit. Run `make test-ai` with ONTFS dependencies installed after changing the retrieval tooling or skill. Normal catalog queries remain dependency-free.
 
 ## AI specification-consistency skill

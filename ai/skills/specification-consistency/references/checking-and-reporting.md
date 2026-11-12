@@ -15,6 +15,8 @@ Use only the portions relevant to the chosen model. These are workflow instructi
 
 Determine whether an abstraction preserves the conclusion being drawn. Restricting an infinite carrier to a small finite one may make a satisfiable specification look UNSAT. Failure to find a model within that restriction is not a general inconsistency result. Conversely, check that a reported model or counterexample actually represents permitted original behavior. Do not silently identify undefined operations with arbitrary total functions.
 
+When using embedded formulations, retain `formulationSource`/`formulationLocator`, scope and limitations beside the clause encoding. Read [the shared formulation guide](../../mathematical-tests/references/formulations.md) for local source queries and fresh witness evidence. A Lean structure can assume a desired property, and a `def ... : Prop` can state an unproved target. In either case the compiler accepting the declaration is not evidence that the specification has an inhabited model or that the target has been proved. Establish required inputs, initial states and output coverage independently.
+
 For a finite operation contract, enumerate each required input, enumerate its permitted outputs, and retain an input with no output as evidence of a coverage failure. If a precondition is imposed by the specification, check its nonemptiness and compatibility with required inputs before using it. If the contract permits explicit failure, include that failure outcome; do not assume success is required.
 
 For SMT, track original clause IDs independently of solver-generated symbols. Document integer/rational/real versus bit-vector semantics, signedness, overflow, rounding, quantifier ranges, and any finite unrolling. Recheck an extracted core together with the fixed background. A core names constraints used in the encoded conflict; it need not be minimal or identify the only conflict.
@@ -30,6 +32,8 @@ Scope: specification paths/revisions/hashes; clauses checked and omitted
 Interpretation: carriers, equality, inputs/outputs, quantifiers, behavior conventions
 Background: environment assumptions and whether they are satisfiable
 Mapping: clause ID + source locator -> encoded constraint -> catalog IDs/premises
+Formulation: local source/symbol, scope, interpretation differences and omissions
+Proof reuse: relied-on expected types/premise mappings and actual fresh evidence
 Method: tool/version, encoding path/hash, command, domain/trace bounds
 
 Finding:

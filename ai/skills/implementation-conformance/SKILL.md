@@ -16,11 +16,12 @@ If no mapping exists, construct the minimum explicit interpretation needed using
 Resolve `<catalog>` to the checkout containing this skill. Retrieve only disputed or needed records through absolute paths:
 
 ```sh
-python3 <catalog>/scripts/catalog.py get Stack --sections operations axioms laws sources
-python3 <catalog>/scripts/agent_query.py node urn:csabs:law/stack-push-pop
+python3 <catalog>/scripts/catalog.py get Stack --sections operations
 ```
 
 These commands use authoritative Markdown and Python's standard library. For ONTFS queries use the existing [bounded retrieval guide](../mathematical-tests/references/retrieval.md); report the backend, follow needed premises, and respect truncation and source freshness. Never transfer axioms through prerequisites or specialization links. Preserve legacy provenance gaps and distinguish editorial claims from fresh compiled witnesses.
+
+Start with focused concept/operation records for the disputed obligations. Load a selected law or axiom when checking that obligation, and a theorem only when a needed result or relied-on proof requires it. Use `--view lean` and the relevant part of the [formulation guide](../mathematical-tests/references/formulations.md) only for typed correspondence or witness evidence. Do not prefetch theorem lists, proof sketches, all sources or complete dossiers. Preserve assumptions and partial-model limits; resolve discrepancies against normative clauses before treating a formula as an oracle.
 
 ## Inspect every selected obligation
 
