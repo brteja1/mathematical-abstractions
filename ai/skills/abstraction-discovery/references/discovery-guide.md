@@ -57,6 +57,6 @@ Examine the public and internal methods of the target component to classify its 
 When presenting an abstraction discovery report:
 1. **Identify the Carrier:** What is the underlying domain type? What values are admissible?
 2. **Define Observability & Equality:** How is equality determined (reference, structural, or semantic equivalence modulo irrelevant state)?
-3. **Query Catalog Axioms:** Fetch the exact axioms governing the candidate concept using `scripts/catalog.py get ID --sections axioms laws`.
+3. **Query Catalog Axioms:** Fetch the exact axioms governing the candidate concept using `<skill_dir>/../../../scripts/catalog.py get ID --sections axioms laws`.
 4. **Demonstrate Counterexamples:** If an algebraic law fails, provide concrete, reproducible inputs triggering the violation.
 5. **Formulate the Remedy:** Provide clean, idiomatic refactoring recommendations that restore mathematical soundness without degrading performance.

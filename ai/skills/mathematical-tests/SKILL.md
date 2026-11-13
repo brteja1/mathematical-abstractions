@@ -13,11 +13,19 @@ Read the target repository's instructions, relevant code, public contract and ne
 
 ## Retrieve small slices through ONTFS
 
-Resolve this skill's actual directory and use absolute paths when working in another software repository. `<catalog>` is the checkout containing this skill; `<skill>` is this directory. Prefer `<catalog>/.venv/bin/python` when installed, otherwise a Python with the catalog's ONTFS dependencies. Setup and query details are in [references/retrieval.md](references/retrieval.md); read it if the backend is unavailable or pagination needs explanation.
+The catalog dependency is located relative to this skill file's directory: starting from `<skill_dir>` (the directory containing this `SKILL.md`), the catalog root is three levels up at `<skill_dir>/../../..`. This relative structure works from git checkouts or unzipped source archives alike.
+
+Verify catalog availability before querying:
 
 ```sh
-python3 <skill>/scripts/query.py search queue --limit 4 --max-chars 4000
-python3 <skill>/scripts/query.py interface Queue --sections operations --limit 6 --max-chars 8000
+python3 <skill_dir>/../../../scripts/catalog.py check
+```
+
+Prefer `<skill_dir>/../../../.venv/bin/python` when installed, otherwise a Python with the catalog's ONTFS dependencies. Setup and query details are in [references/retrieval.md](references/retrieval.md); read it if the backend is unavailable or pagination needs explanation.
+
+```sh
+python3 <skill_dir>/scripts/query.py search queue --limit 4 --max-chars 4000
+python3 <skill_dir>/scripts/query.py interface Queue --sections operations --limit 6 --max-chars 8000
 ```
 
 Search returns candidate names and IDs, not a test specification. Start with the selected concept and relevant operations. Fetch a selected axiom/law only when it supplies a test property or resolves applicability; fetch a theorem only when the test rationale needs that result. For example, use `node urn:csabs:law/queue-fifo` for a FIFO obligation, then `premises ... --depth 1` only when its derivation or assumptions need checking. A scoped `claims` query can discover a needed property; do not load every claim by default. Follow prerequisites only for missing definitions and sources only when checking provenance. Concept specializations never silently transfer axioms.
@@ -46,6 +54,6 @@ Run the relevant tests and required target checks. Report the actual commands/re
 
 ## Keep evidence explicit
 
-Preserve source locators and `provenanceStatus` for claims used in a test rationale. Legacy citation gaps are not repaired by a passing test. A Lean witness, when relevant, can support the mapped mathematical proposition: inspect it with `<catalog>/scripts/lean.py get ID` and require fresh verification evidence before calling it compiled. It does not prove that the target implementation refines that model.
+Preserve source locators and `provenanceStatus` for claims used in a test rationale. Legacy citation gaps are not repaired by a passing test. A Lean witness, when relevant, can support the mapped mathematical proposition: inspect it with `<skill_dir>/../../../scripts/lean.py get ID` and require fresh verification evidence before calling it compiled. It does not prove that the target implementation refines that model.
 
 Deliver the test files, chosen concept/claim IDs and API mapping, tested preconditions/edge cases, execution evidence and any deferred properties. Tests provide finite evidence; do not report universal mathematical or implementation proofs. Catalog edits, proof promotion and ONTFS proposals are separate work from generating tests.

@@ -15,8 +15,8 @@ Both variables have the exact carrier `{false,true}` and ordinary Boolean equali
 Retrieve these existing records before using the example as a catalog-guided check:
 
 ```sh
-python3 scripts/agent_query.py node urn:csabs:operation/PropositionalLogic-basis-evaluate
-python3 scripts/agent_query.py node urn:csabs:theorem/PropositionalLogic-finite-truth-table
+python3 <skill_dir>/../../../scripts/agent_query.py node urn:csabs:operation/PropositionalLogic-basis-evaluate
+python3 <skill_dir>/../../../scripts/agent_query.py node urn:csabs:theorem/PropositionalLogic-finite-truth-table
 ```
 
 The first maps to `all(rule(v) ...)` below; the second maps to enumerating all four total Boolean valuations. Follow the theorem's `dependsOn` links if relying on its derivation. The code uses classical implication `(not p) or q`; it does not evaluate informal catalog notation as executable syntax.

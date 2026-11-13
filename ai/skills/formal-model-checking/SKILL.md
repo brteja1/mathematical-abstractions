@@ -20,11 +20,19 @@ Do not assume sequential consistency or atomic execution across multi-statement 
 
 ## Retrieve applicable catalog abstractions
 
-Resolve `<catalog>` to the checkout containing this skill. Read its `AGENTS.md` and retrieve candidate concepts using standard-library commands or the bounded ONTFS helper:
+The catalog dependency is located relative to this skill file's directory: starting from `<skill_dir>` (the directory containing this `SKILL.md`), the catalog root is three levels up at `<skill_dir>/../../..`. This relative structure is preserved whether cloned or extracted from an archive or zip without requiring git.
+
+First verify catalog availability with Python's standard library:
 
 ```sh
-python3 <catalog>/scripts/catalog.py list --search transition
-python3 <catalog>/scripts/catalog.py get LabelledTransitionSystem --sections operations axioms laws
+python3 <skill_dir>/../../../scripts/catalog.py check
+```
+
+Retrieve candidate concepts using standard-library commands:
+
+```sh
+python3 <skill_dir>/../../../scripts/catalog.py list --search transition
+python3 <skill_dir>/../../../scripts/catalog.py get LabelledTransitionSystem --sections operations axioms laws
 ```
 
 Select concepts based on the system's operational model:

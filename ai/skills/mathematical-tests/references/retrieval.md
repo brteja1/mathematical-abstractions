@@ -1,6 +1,6 @@
 # Bounded catalog retrieval
 
-The checkout containing this skill is the catalog root. The helper locates it relative to its own resolved path, so invocation from another repository or through a symlink works. Keep the skill linked to this checkout rather than copying only `SKILL.md`; the helper depends on the pinned backend and `scripts/` here. The skill is stored at the user-requested `ai/skills/` location; agents can read it explicitly. Automatic discovery depends on the host agent's skill configuration, not on this folder name alone.
+The catalog root is three levels up from this skill's directory (`<skill_dir>/../../..`). The helper locates it relative to its own resolved path, so invocation from another repository, zip extraction, or symlink works. Keep the skill linked to this directory structure rather than copying only `SKILL.md`; the helper depends on the pinned backend and `scripts/` here. The skill is stored at the user-requested `ai/skills/` location; agents can read it explicitly. Automatic discovery depends on the host agent's skill configuration, not on this folder name alone.
 
 ## Setup
 
@@ -46,7 +46,7 @@ Search always returns compact candidate summaries regardless of view. View selec
 | `sources ID --kind citation` | Direct mathematical citations through `source` only; this is the default. A concept citation does not become a direct citation for its laws. |
 | `sources ID --kind formulation` | Direct local Lean sources through `formulationSource` only. These describe a formal interpretation, independently of citation gaps or proof status. |
 
-Read [formulations.md](formulations.md) only when field interpretation, typed correspondence or witness evidence is needed. `--view lean` exposes Lean declarations and JSON-encoded premise mappings; `scripts/lean.py get ID` checks the selected binding and evidence. A registered proposition is not proof evidence just because retrieval succeeded. The dependency-free `catalog.py get` and `agent_query.py node` commands also default to `focused` and accept `--view lean|full`.
+Read [formulations.md](formulations.md) only when field interpretation, typed correspondence or witness evidence is needed. `--view lean` exposes Lean declarations and JSON-encoded premise mappings; `<skill_dir>/../../../scripts/lean.py get ID` checks the selected binding and evidence. A registered proposition is not proof evidence just because retrieval succeeded. The dependency-free `<skill_dir>/../../../scripts/catalog.py get` and `<skill_dir>/../../../scripts/agent_query.py node` commands also default to `focused` and accept `--view lean|full`.
 
 Pagination is stable while the projection inputs and selection/view options stay unchanged. `projectionInputSha256` identifies that snapshot. Start again if it changes while composing a rationale. The response's `view` identifies a focused/Lean/full field selection or a search summary; omitted fields do not mean missing catalog facts.
 

@@ -13,10 +13,18 @@ Read the target project's instructions, specification, mapping, relevant impleme
 
 If no mapping exists, construct the minimum explicit interpretation needed using [implementation-mapping](../implementation-mapping/SKILL.md) and its [template](../implementation-mapping/assets/implementation-map.md). Keep provisional assumptions visible. Compare the mapping itself against the normative clauses before using it as an oracle; an incorrect mapping can make incorrect code appear conformant. Do not assume an earlier consistency review occurred or passed.
 
-Resolve `<catalog>` to the checkout containing this skill. Retrieve only disputed or needed records through absolute paths:
+The catalog dependency is located relative to this skill file's directory: starting from `<skill_dir>` (the directory containing this `SKILL.md`), the catalog root is three levels up at `<skill_dir>/../../..`. This relative layout works directly from git checkouts or extracted zip archives without requiring git.
+
+Verify catalog availability with Python's standard library:
 
 ```sh
-python3 <catalog>/scripts/catalog.py get Stack --sections operations
+python3 <skill_dir>/../../../scripts/catalog.py check
+```
+
+Retrieve only disputed or needed records:
+
+```sh
+python3 <skill_dir>/../../../scripts/catalog.py get Stack --sections operations
 ```
 
 These commands use authoritative Markdown and Python's standard library. For ONTFS queries use the existing [bounded retrieval guide](../mathematical-tests/references/retrieval.md); report the backend, follow needed premises, and respect truncation and source freshness. Never transfer axioms through prerequisites or specialization links. Preserve legacy provenance gaps and distinguish editorial claims from fresh compiled witnesses.

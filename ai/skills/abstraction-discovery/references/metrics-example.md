@@ -31,8 +31,8 @@ The method `merge(self, other) -> MetricsReport` is a closed binary operation `(
 ### Step B: Catalog Retrieval
 Query candidate concepts for binary combinations:
 ```sh
-python3 scripts/catalog.py list --search monoid
-python3 scripts/catalog.py get Monoid --sections operations axioms laws
+python3 <skill_dir>/../../../scripts/catalog.py list --search monoid
+python3 <skill_dir>/../../../scripts/catalog.py get Monoid --sections operations axioms laws
 ```
 Candidate: **`urn:csabs:concept/Monoid`**
 * Carrier: `MetricsReport`

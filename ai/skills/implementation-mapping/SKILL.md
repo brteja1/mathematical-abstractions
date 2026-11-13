@@ -15,11 +15,19 @@ If a mapping already exists, update it rather than creating a competing interpre
 
 ## Retrieve the selected semantics
 
-Resolve `<catalog>` to the checkout containing this skill, independently of the target working directory. Read its `AGENTS.md`. Use absolute paths from other repositories; these commands need Python's standard library only:
+The catalog dependency is located relative to this skill file's directory: starting from `<skill_dir>` (the directory containing this `SKILL.md`), the catalog root is three levels up at `<skill_dir>/../../..`. This relative structure is preserved whether cloned or extracted from an archive or zip without requiring git.
+
+First verify catalog availability with Python's standard library:
 
 ```sh
-python3 <catalog>/scripts/catalog.py list --search stack
-python3 <catalog>/scripts/catalog.py get Stack --sections operations
+python3 <skill_dir>/../../../scripts/catalog.py check
+```
+
+Then query concepts and operations using standard-library commands:
+
+```sh
+python3 <skill_dir>/../../../scripts/catalog.py list --search stack
+python3 <skill_dir>/../../../scripts/catalog.py get Stack --sections operations
 ```
 
 Search by behavior and synonyms. Start with the selected concept and relevant operations. Retrieve an axiom or law only to resolve a current interface obligation; fetch a theorem only when a required result or proof needs it. Follow premises only to check applicability or a derivation, and sources when checking provenance. Do not prefetch all claims or a prerequisite closure. For bounded ONTFS retrieval, use the existing [retrieval helper and guide](../mathematical-tests/references/retrieval.md). Disclose the backend used. Respect pagination, truncation and depth boundaries; retrieve necessary omitted premises. Do not overwrite modified projections. Prerequisites and specialization links do not transfer axioms.
