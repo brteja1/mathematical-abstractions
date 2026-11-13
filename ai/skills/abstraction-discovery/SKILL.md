@@ -18,6 +18,31 @@ Read the target implementation, type definitions, method signatures, error paths
 
 Do not assume a method named `combine` is associative or that a `compare` function forms a total order. Unannotated code often implements an incomplete or subtly broken abstraction.
 
+## Identify structural duplication before reaching for algebraic labels
+
+Most of the value in abstraction discovery is **structural**, not algebraic. Before querying the catalog for laws, determine whether the code is primarily a *refactoring candidate* rather than a hidden algebraic structure. Forcing an algebraic name onto a duplication problem produces an over-engineered solution.
+
+**Scan for structural duplication first:**
+
+| Signal | What to look for | Likely remedy |
+| --- | --- | --- |
+| Copy-paste logic | Near-identical blocks differing only in a type, field name, or constant | Extract a shared helper or parameterize |
+| Parallel argument lists | Multiple functions that always receive the same cluster of arguments | Introduce a value object or record type |
+| Repeated conditional branching | The same `if/switch` structure reproduced across unrelated call sites | Consolidate into a single dispatch point or strategy |
+| Mirrored data transformations | Two or more pipelines that apply the same sequence of steps to different types | Extract a common pipeline or adapter |
+| Redundant state copies | Mutable fields that are always kept in sync manually | Derive one from the other, or unify into a single source of truth |
+
+**Decision rule — stop here if the dominant pattern is duplication:**
+
+> If three or more of the signals above are present, the highest-value action is a refactoring recommendation (extract, parameterize, unify). Do **not** proceed to algebraic classification until the structural cleanup is at least outlined, because labeling duplicated code as a `Monoid` does not eliminate the duplication.
+
+**Move to algebraic analysis only when:**
+
+- The code already has a stable, non-duplicated shape (or after sketching the structural refactoring above), **and**
+- At least one binary operation `(A, A) → A`, comparison `(A, A) → Bool/Int`, or structure-preserving mapping `F[A] → F[B]` is present across the deduplicated surface.
+
+Record the structural findings explicitly in the discovery report even when they do not lead to an algebraic label.
+
 ## Retrieve candidate abstractions dynamically
 
 The catalog dependency is located relative to this skill file's directory: starting from `<skill_dir>` (the directory containing this `SKILL.md`), the catalog root is three levels up at `<skill_dir>/../../..`. This relative structure is preserved whether cloned or extracted from an archive or zip without requiring git.
@@ -94,11 +119,12 @@ Read [references/discovery-guide.md](references/discovery-guide.md) for detailed
 Produce a structured report detailing:
 
 - **Target Component**: File, class, function, or API locator.
-- **Discovered Abstraction**: Matching catalog concepts with stable IDs (`urn:csabs:concept/...`).
+- **Structural Duplication Assessment**: List of duplication signals found (copy-paste logic, parallel argument lists, mirrored pipelines, etc.) with concrete locations. If this is the dominant finding, state it clearly and prioritize the structural refactoring recommendation over any algebraic label.
+- **Discovered Abstraction**: Matching catalog concepts with stable IDs (`urn:csabs:concept/...`), or `none — refactoring candidate` when structural duplication dominates.
 - **Carrier & Operation Mapping**: Concrete types and methods mapped to catalog carriers and signatures.
 - **Law Assessment**: Table of checked laws (associativity, identity, commutativity, etc.), marked as satisfied, conditionally satisfied, or violated.
 - **Counterexamples**: Explicit inputs that trigger law violations or unexpected edge behavior.
-- **Refactoring Recommendations**: Specific architectural changes to align the software with the sound abstraction (e.g., introducing an explicit identity element, adjusting floating-point aggregation, or making merge operations idempotent).
+- **Refactoring Recommendations**: Specific architectural changes — structural cleanup first (extract, parameterize, unify), then algebraic alignment (e.g., introducing an explicit identity element, adjusting floating-point aggregation, or making merge operations idempotent).
 
 Connect the discovery findings to downstream skills:
 - Use [implementation-mapping](../implementation-mapping/SKILL.md) to formalize the updated API contract.
