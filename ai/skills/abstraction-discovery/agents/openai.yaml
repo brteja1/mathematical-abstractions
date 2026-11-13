@@ -1,0 +1,4 @@
+interface:
+  display_name: "Abstraction Discovery"
+  short_description: "Discover candidate mathematical abstractions and broken laws in code"
+  default_prompt: "Use $abstraction-discovery to inspect this codebase/API, identify matching mathematical abstractions from the catalog, report violated algebraic laws or missing invariants, and suggest refactoring."

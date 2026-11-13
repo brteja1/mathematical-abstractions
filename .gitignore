@@ -10,3 +10,4 @@ lean/verification.json
 .ontfs*.lock
 .ontfs.proposals.json
 .ontfs.vectors/
+.vscode/

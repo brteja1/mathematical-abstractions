@@ -78,6 +78,14 @@ For conflicts within or between specifications, use `ai/skills/specification-con
 
 For translating catalog-based specifications into software, use `ai/skills/implementation-mapping/SKILL.md`; retain a versioned clause/catalog-to-API mapping beside the target software, including representation, equality, definedness and unresolved semantic choices. For code review against that contract, use `ai/skills/implementation-conformance/SKILL.md`. Check the mapping against normative clauses as well as code against obligations; distinguish defects, ambiguities and unchecked behavior. Reuse existing retrieval, consistency and test-design workflows. Keep implementation artifacts outside authoritative graph records and distinguish test evidence from refinement proofs.
 
+## AI abstraction-discovery skill
+
+For analyzing unannotated code, data structures or APIs, use `ai/skills/abstraction-discovery/SKILL.md`. Map concrete operations and signatures to candidate catalog concepts (e.g., reducers to `Monoid`, comparisons to `TotalOrder`, state merges to `JoinSemilattice`); test whether governing algebraic laws (associativity, identity, transitivity, commutativity) hold; construct reproducible counterexamples for broken laws; and formulate principled refactoring recommendations.
+
+## AI formal-model-checking skill
+
+For formal verification of concurrent protocols, state machines and distributed algorithms, use `ai/skills/formal-model-checking/SKILL.md`. Map system state and transitions to catalog concepts like `Lock`, `Mutex`, `LabelledTransitionSystem` and `LinearTemporalLogic`; encode states, atomic actions, safety invariants and liveness obligations under fairness into TLA+, Alloy or Z3; and diagnose counterexample traces to isolate concurrency bugs before implementation.
+
 ## Lean models and proof witnesses
 
 Maintain each concept's readable `mathematicalFormulation` and selected `leanFormulation` in its Markdown record, with `formulationSource`, `formulationLocator`, scope, mapping and limitations. Registered witnesses also expose their expected proposition and direct premise mapping. `make check-lean` rejects drift between these excerpts and the current Lean sources/bindings; local formulation sources do not replace independent mathematical provenance.

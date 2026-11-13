@@ -131,6 +131,26 @@ make test-ai
 
 The helper works from other repositories via its absolute path. See the skill's [retrieval guide](ai/skills/mathematical-tests/references/retrieval.md) for setup, source freshness, pagination and exact limits. No full graph dump or embedding service is needed.
 
+## AI skill for abstraction discovery
+
+[`ai/skills/abstraction-discovery/SKILL.md`](ai/skills/abstraction-discovery/SKILL.md) guides agents in inspecting unannotated code, data structures, and APIs to uncover candidate mathematical abstractions. It maps operational signatures to catalog concepts (e.g., binary combination to `Monoid`, state reconciliation to `JoinSemilattice`, sorting/comparison to `TotalOrder`), evaluates governing algebraic laws (associativity, identity, transitivity, commutativity), produces counterexamples for violated laws, and recommends principled refactorings.
+
+For example, ask an agent:
+
+> Read `ai/skills/abstraction-discovery/SKILL.md` and inspect `path/to/code.py`. Discover candidate mathematical abstractions, report broken algebraic laws or missing invariants with reproducible counterexamples, and propose an algebraic refactoring.
+
+The [discovery guide](ai/skills/abstraction-discovery/references/discovery-guide.md) catalogs common code anti-patterns and their mathematical causes; the [metrics aggregator example](ai/skills/abstraction-discovery/references/metrics-example.md) demonstrates diagnosing broken associativity and refactoring into a sound Monoid.
+
+## AI skill for formal model checking
+
+[`ai/skills/formal-model-checking/SKILL.md`](ai/skills/formal-model-checking/SKILL.md) guides agents in formulating and verifying concurrent protocols, state machines, and distributed algorithms using formal model checkers (TLA+, Alloy, Z3). Grounded in catalog concepts such as `Lock`, `Mutex`, `LabelledTransitionSystem`, and `LinearTemporalLogic`, it structures state variables, atomic transition relations (`Init` and `Next`), safety invariants (such as mutual exclusion), and liveness properties under explicit fairness constraints.
+
+For example, ask an agent:
+
+> Read `ai/skills/formal-model-checking/SKILL.md` and model `path/to/protocol.md` with TLA+ or Alloy. Verify mutual exclusion and deadlock freedom against catalog concept `Lock`, and report any counterexample traces.
+
+The [backend selection guide](ai/skills/formal-model-checking/references/backend-selection.md) compares verification engines and state-space mitigation techniques; the [mutex TLA+ example](ai/skills/formal-model-checking/references/mutex-tla-example.md) includes a complete Ticket Lock specification and an executable Python state-space explorer demonstrating invariant checking and error-trace generation.
+
 ### Acknowledgment
 
 I would like to thank my colleague, Mr. Devendra Bhave, for introducing me to the technique of using mathematical abstractions to guide software test design.

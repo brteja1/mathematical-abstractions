@@ -76,6 +76,22 @@ For code generated from a catalog-based specification, use [implementation-mappi
 
 Use [implementation-conformance](../ai/skills/implementation-conformance/SKILL.md) to review the mapping against normative clauses and code against the mapped obligations. Preserve obligation IDs across implementation, tests and findings. Distinguish mapping defects, implementation defects, ambiguities and unchecked obligations; retain commands, results, versions and counterexample traces. Use specification-consistency for requirement conflicts and mathematical-tests for derived tests. The [stack example](../ai/skills/implementation-mapping/references/stack-example.md) illustrates the complete connection without an ONTFS runtime requirement.
 
+## Abstraction discovery
+
+Use the repository-local [abstraction-discovery skill](../ai/skills/abstraction-discovery/SKILL.md) to analyze unannotated code, data structures, or APIs and discover their underlying mathematical abstractions. It guides signature classification (e.g., binary reducers to `Monoid`, comparisons to `TotalOrder`, state reconciliations to `JoinSemilattice`), candidate catalog queries, and algebraic law evaluation.
+
+Invoke it by asking: "Use `ai/skills/abstraction-discovery/SKILL.md` to inspect `path/to/code.py`; discover candidate mathematical abstractions, report broken algebraic laws or missing identity/invariants, and propose principled refactorings."
+
+The [discovery guide](../ai/skills/abstraction-discovery/references/discovery-guide.md) outlines common code anti-patterns (such as non-associative parallel reductions, missing neutral elements, and non-transitive comparators). The [metrics aggregator example](../ai/skills/abstraction-discovery/references/metrics-example.md) demonstrates how testing monoid laws reveals subtle aggregation bugs and guides refactoring to a sound algebraic structure.
+
+## Formal model checking
+
+Use the repository-local [formal-model-checking skill](../ai/skills/formal-model-checking/SKILL.md) to model and verify concurrent protocols, state machines, and distributed algorithms against catalog concepts such as `Lock`, `Mutex`, `LabelledTransitionSystem`, and `LinearTemporalLogic`. It guides the formulation of state variables, atomic transition relations (`Init` and `Next`), safety invariants (e.g., mutual exclusion, type invariants), and liveness obligations (e.g., starvation freedom under weak/strong fairness).
+
+Invoke it by asking: "Use `ai/skills/formal-model-checking/SKILL.md` to model `path/to/protocol.md` with TLA+ or Alloy; verify mutual exclusion and deadlock freedom against catalog concept `Lock`, and report any counterexample traces."
+
+The [backend selection guide](../ai/skills/formal-model-checking/references/backend-selection.md) compares TLA+, Alloy, and Z3, and explains state-space reduction techniques (such as symmetry sets and data abstraction). The [mutex TLA+ example](../ai/skills/formal-model-checking/references/mutex-tla-example.md) includes a complete Ticket Lock specification and an executable Python state-space explorer demonstrating invariant checking and counterexample generation.
+
 ## Other uses
 
 Use `neighbors` for educational prerequisite navigation and impact analysis. Incoming edges identify explicit dependents; they are not evidence that every possible dependent has been recorded. Use the catalog CLI or ONTFS projection for cross-disciplinary queries; external RDF tools can read the generated ONTFS Turtle projection. Edit concept Markdown records rather than the projection. `specializationOf` means an explicitly described interface specialization, while `requiresConcept` is a retrieval prerequisite and `dependsOn` connects a claim to derivation premises.

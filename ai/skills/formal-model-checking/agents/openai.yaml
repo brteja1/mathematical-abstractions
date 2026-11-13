@@ -1,0 +1,4 @@
+interface:
+  display_name: "Formal Model Checking"
+  short_description: "Model and verify stateful and concurrent protocols with TLA+, Alloy, or Z3"
+  default_prompt: "Use $formal-model-checking to model this protocol or concurrent abstraction, specify safety and liveness properties using the catalog, and run model checking to find counterexamples or verify behavior."
