@@ -18,7 +18,7 @@ Read the target implementation, type definitions, method signatures, error paths
 
 Do not assume a method named `combine` is associative or that a `compare` function forms a total order. Unannotated code often implements an incomplete or subtly broken abstraction.
 
-## Retrieve candidate abstractions progressively
+## Retrieve candidate abstractions dynamically
 
 The catalog dependency is located relative to this skill file's directory: starting from `<skill_dir>` (the directory containing this `SKILL.md`), the catalog root is three levels up at `<skill_dir>/../../..`. This relative structure is preserved whether cloned or extracted from an archive or zip without requiring git.
 
@@ -28,35 +28,62 @@ First verify catalog availability with Python's standard library:
 python3 <skill_dir>/../../../scripts/catalog.py check
 ```
 
-Retrieve candidate concepts using standard-library commands:
+Instead of hardcoding axiom assumptions in the skill, query candidate concepts dynamically from the catalog. The skill focuses on the following core list of candidate concepts that commonly govern software patterns:
+
+- **Reducers / Combination**: `Monoid`, `Semigroup`
+- **Comparisons / Sorting**: `Preorder`, `TotalOrder` (Total Preorder without antisymmetry)
+- **Bounds / Reconciliation / CRDTs**: `Lattice`, `JoinSemilattice`
+- **Mapping / Transformations**: Functor (archetype for structure-preserving mapping)*
+
+Query the authoritative operations, axioms, and laws for the candidate concept dynamically:
 
 ```sh
-python3 <skill_dir>/../../../scripts/catalog.py list --search monoid
-python3 <skill_dir>/../../../scripts/catalog.py get Monoid --sections operations axioms laws
+# Query a specific candidate concept dynamically:
+python3 <skill_dir>/../../../scripts/catalog.py get <Concept> --sections operations axioms laws
+
+# Or batch-query the commonly helpful discovery set:
+for concept in Monoid Semigroup Preorder TotalOrder Lattice JoinSemilattice; do
+  python3 <skill_dir>/../../../scripts/catalog.py get "$concept" --sections operations axioms laws
+done
 ```
 
 Search by operational behavior and mathematical role:
 
-| Operational Pattern | Candidate Catalog Concepts | Key Governing Laws to Check |
+| Operational Pattern | Candidate Catalog Concepts | Key Verification Focus from Retrieved Axioms |
 | --- | --- | --- |
-| Binary reduction / folding `(A, A) -> A` | `Semigroup`, `Monoid`, `Group` | Associativity (`Monoid-associative`), identity (`monoid-identity`), invertibility |
-| State reconciliation / CRDT merge | `JoinSemilattice`, `StateBasedCRDT` | Idempotence, commutativity, associativity, monotonicity |
-| Comparison / Sorting / Priority | `Preorder`, `PartialOrder`, `TotalOrder` | Reflexivity, transitivity, antisymmetry, totality |
-| State transitions / Protocols | `LabelledTransitionSystem`, `KripkeStructure` | Determinism, reachability, enabled actions, deadlocks |
+| Binary reduction / folding `(A, A) -> A` | `Semigroup`, `Monoid` | Check associativity (`Semigroup-associative`, `Monoid-associative`), identity (`monoid-identity`), identity uniqueness |
+| Comparison / Sorting / Priority `(A, A) -> Int` | `Preorder`, `TotalOrder` (Total Preorder) | Check reflexivity (`Preorder-reflexive`), transitivity (`Preorder-transitive`), totality (`TotalOrder-comparable`), equivalence kernel (`Preorder-core`) |
+| Bounds / Least-upper / Greatest-lower / Merge | `Lattice`, `JoinSemilattice` | Check meet GLB bound (`Lattice-meet-bound`), join LUB bound (`Lattice-join-bound`), absorption (`Lattice-core`), idempotence, commutativity |
+| Structure-preserving mapping `(A -> B) -> F[B]` | Functor (mapping archetype)* | Check identity preservation (`map(id) == id`), composition preservation (`map(f ∘ g) == map(f) ∘ map(g)`) |
+| State transitions / Protocols `(S, E) -> S` | `LabelledTransitionSystem`, `KripkeStructure` | Determinism, reachability, enabled actions, deadlocks |
 | Set / Map / Collection indexing | `Set`, `Multiset`, `Sequence`, `Multimap` | Extensionality, membership, duplicate handling, ordering |
 | Resource / Access management | `Lock`, `Mutex` | Mutual exclusion, compatible holders, release ownership |
+
+*\*Note: `Functor` is the standard mathematical archetype for structure-preserving container transformations (`map`/`fmap`). When analyzing mapping APIs, verify its governing identity and composition laws directly against the retrieved container concept.*
 
 Start with focused concept and operation records. Retrieve axioms and laws only for candidate invariants under test. Do not preload complete claim closures or full dossiers.
 
 ## Test algebraic laws and detect violations
 
-Evaluate candidate laws against the code's actual semantics. Use static analysis, symbolic evaluation, or lightweight property tests to probe for broken assumptions:
+Evaluate the dynamically retrieved axioms and governing laws against the code's actual semantics:
 
-1. **Associativity `(x · y) · z == x · (y · z)`**: Check whether batching, parallel reduction, or tree folding alters outcomes. Common violations include floating-point arithmetic, list concatenation with order-dependent deduplication, and stateful side-effects during combination.
-2. **Identity `e · x == x · e == x`**: Test whether an empty input or default value acts as a true two-sided identity. Common violations include methods that crash on empty collections, allocate distinct sentinel wrappers, or mutate state on identity combinations.
-3. **Commutativity `x · y == y · x`**: Check whether evaluation order affects concurrent merges or stream aggregations.
-4. **Idempotence `x · x == x`**: Test retry loops, caching, and state-synchronization methods.
-5. **Transitivity and Comparators**: Verify that ordering functions satisfy transitivity. Inconsistent comparator implementations (e.g., subtracting integers prone to overflow, or incomplete tie-breaking) frequently cause sort or heap corruption.
+1. **Monoid & Semigroup Laws (Associativity & Identity)**:
+   - Verify associativity `(x · y) · z == x · (y · z)` under batching, parallel reduction, or stream chunking.
+   - Verify identity `e · x == x · e == x` on empty collections, neutral defaults, or singleton cases.
+2. **Total Preorder Laws (Comparators & Sorting)**:
+   - Verify reflexivity `compare(x, x) == 0`.
+   - Verify transitivity `compare(a, b) <= 0 ∧ compare(b, c) <= 0 ⇒ compare(a, c) <= 0`.
+   - Verify totality: every valid input pair produces a deterministic comparison.
+   - Distinct elements with equivalent keys may tie (`compare(a, b) == 0` without `a == b`).
+3. **Lattice & Semilattice Laws (Bounds, Absorption & Merge)**:
+   - Verify meet (greatest lower bound) and join (least upper bound).
+   - Verify absorption `x ∧ (x ∨ y) == x` and `x ∨ (x ∧ y) == x`.
+   - Verify idempotence `x ⊔ x == x` and commutativity `x ⊔ y == y ⊔ x` for CRDTs and state reconciliation.
+4. **Functor Mapping Laws**:
+   - Verify identity preservation: `map(id) == id`.
+   - Verify composition preservation: `map(f ∘ g) == map(f) ∘ map(g)`.
+   - Ensure `map` does not mutate external state or conditionally drop/reorder elements.
+5. **Idempotence & Transition Invariants**: Test retry loops, caching, and state transitions (`(State, Event) -> State`) for reachability and invariant preservation.
 
 When a law is violated, construct a minimal concrete counterexample showing the inputs, the expected mathematical outcome, and the actual software behavior.
 
