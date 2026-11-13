@@ -9,7 +9,76 @@ Inspect existing software components, algorithms, and data structures to uncover
 
 ## Inspect code before querying the catalog
 
-Read the target implementation, type definitions, method signatures, error paths, and nearby tests. Analyze concrete behavior rather than relying on class or variable names:
+For large codebases, **do not read files at random**. Use grep to count first, then read a bounded representative sample. This keeps agent context bounded and results comparable across runs.
+
+### Step 1 — Discover what source extensions the project uses
+
+Before grepping for patterns, find the project's actual source file types so you grep the right files:
+
+```sh
+# List source extensions by frequency — use this to build your --include flags
+find <target_dir> -type f -not -path '*/.git/*' \
+  | sed 's/.*\.//' | sort | uniq -c | sort -rn | head -20
+```
+
+Pick the top source-code extensions from that output (ignore build artifacts, data files, lockfiles). Common ones include `.c .cpp .cc .cxx .h .hpp .java .kt .py .go .rs .ts .js .cs .swift .rb .scala .ml` — but always confirm against the project's actual output rather than assuming.
+
+### Step 2 — Count before reading
+
+Run grep over the target scope using the extensions you discovered. Build the `--include` flags from Step 1:
+
+```sh
+# Example with discovered extensions (adapt the list):
+EXTS=(c cpp cc cxx h hpp java kt py go rs ts js cs swift rb scala)
+INCLUDES=$(printf -- '--include="*.%s" ' "${EXTS[@]}")
+
+# Binary combination operations — fold/reduce/merge/combine/append signatures
+grep -rn $INCLUDES \
+  -E '\b(combine|merge|fold|reduce|append|concat|accumulate)\b' \
+  <target_dir> | wc -l
+
+# Comparison / ordering functions
+grep -rn $INCLUDES \
+  -E '\b(compare|compareTo|cmp|lt|lte|gt|gte|lessThan|greaterThan)\b' \
+  <target_dir> | wc -l
+
+# Map / transform / projection operations
+grep -rn $INCLUDES \
+  -E '\b(map|fmap|transform|project|select|convert)\b' \
+  <target_dir> | wc -l
+
+# Identity / neutral / zero / empty initialization
+grep -rn $INCLUDES \
+  -E '\b(empty|zero|identity|neutral|initial|default)\b' \
+  <target_dir> | wc -l
+```
+
+Record the raw counts. **Do not read any file yet.** Counts determine which pattern to investigate and how many files to sample.
+
+### Step 3 — Read a representative sample, not everything
+
+Apply this sampling rule based on the grep hit count for the dominant pattern:
+
+| Hit count | Files to read |
+| --- | --- |
+| 1 – 10 | Read all matching files |
+| 11 – 50 | Read the 5 files with the highest hit density (`grep -c` per file, sort descending) |
+| 51 – 200 | Read the 3 highest-density files + 1 file chosen at random from the bottom half |
+| > 200 | Read the 3 highest-density files only; note that the sample is bounded and state findings as provisional |
+
+Get per-file hit density for sorting:
+
+```sh
+grep -rn $INCLUDES -E '<pattern>' <target_dir> \
+  | cut -d: -f1 | sort | uniq -c | sort -rn | head -10
+```
+
+> [!IMPORTANT]
+> Never read the full codebase to form a conclusion. State explicitly in the report how many files matched, how many were read, and that findings are based on that sample.
+
+### Step 4 — Identify behavioral patterns from the sample
+
+From the files read, analyze concrete behavior:
 
 - **Signatures and Arity**: Identify binary combination operations `(A, A) -> A`, binary relations `(A, A) -> Bool`, state transitions `(State, Event) -> State`, partial projections, and observers.
 - **Identity Elements and Defaults**: Check how empty, zero, or initial cases are initialized and whether an explicit neutral value exists.
