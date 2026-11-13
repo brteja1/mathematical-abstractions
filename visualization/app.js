@@ -321,7 +321,9 @@ function refreshLabels() {
       });
     }
     nodeEls.forEach((group, id) => {
-      if (shown.has(id)) candidate(group.querySelector('text'), all.get(id).shortForm, 180, id, 200);
+      // Concept names must stay on their node's ray/row. Collision offsets can
+      // move a name past its neighbour, and wrapped radial names span rays.
+      if (shown.has(id)) candidate(group.querySelector('text'), all.get(id).shortForm, view === 'subject' ? Infinity : 180, id, 200, true);
     });
     sectorGroup.querySelectorAll('.sector').forEach(group => {
       const text = group.querySelector('text');

@@ -28,12 +28,26 @@ function verifyLabels(where){
   assertLabel(group.style.display!=='none'&&text.style.visibility==='visible',where+': every name is visible');
   assertLabel(text.textContent===all.get(id).shortForm,where+': concept name is complete and untruncated');
   assertLabel(Number.isFinite(r.left)&&Number.isFinite(r.top),where+': label has finite geometry');
+  const matrix=labelTransformMatrix(text);
+  const anchor=new DOMPoint(Number(text.getAttribute('x')),Number(text.getAttribute('y'))).matrixTransform(matrix);
+  const circle=group.querySelector('circle');
+  const x=Number(circle.getAttribute('cx')),y=Number(circle.getAttribute('cy'));
+  if(view==='subject'){
+   const a=positions.get(id).a;
+   assertLabel(Math.abs(anchor.x-x-12*Math.cos(a))<.01&&Math.abs(anchor.y-y-12*Math.sin(a))<.01,where+': concept label stays on its own node ray');
+   assertLabel(text.querySelectorAll('tspan').length===1,where+': radial name occupies one ray');
+  }else{
+   assertLabel(Math.abs(anchor.x-x-12)<.01&&Math.abs(anchor.y-y)<.01,where+': concept label stays on its own node row');
+  }
  }
 }
 function nodeCoordinates(){return JSON.stringify([...nodeEls].map(([id,g])=>[id,g.querySelector('circle').getAttribute('cx'),g.querySelector('circle').getAttribute('cy')]));}
 function runLabelChecks(){
  const id=name=>'urn:csabs:concept/'+name;
  settleLabels();const before=nodeCoordinates();
+ verifyLabels('overview');
+ showCategory('urn:csabs:category/order');settleLabels();verifyLabels('order and fixed points');
+ clear();settleLabels();
  assertLabel(window.viewerErrors.length===0,'page initializes');
  assertLabel(!$('show-labels'),'name toggle has been removed');
  assertLabel(!$('categories'),'redundant subject list has been removed');
