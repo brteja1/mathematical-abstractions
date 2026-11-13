@@ -18,6 +18,49 @@ Read the target implementation, type definitions, method signatures, error paths
 
 Do not assume a method named `combine` is associative or that a `compare` function forms a total order. Unannotated code often implements an incomplete or subtly broken abstraction.
 
+## Inventory existing abstractions and count their uses
+
+Before identifying duplication or querying the catalog, establish what the codebase already provides. Without this step, **missing abstractions** (the pattern exists only as hand-written copies) and **unused abstractions** (an abstraction exists but is bypassed in favour of copies) are easy to confuse — they look identical from the outside but require opposite remedies.
+
+**Step 1 — List existing abstractions in the codebase:**
+
+Search for interfaces, base classes, type aliases, utility modules, and helper functions that are already intended to capture a reusable pattern. For each, record:
+
+| Field | What to record |
+| --- | --- |
+| Name / locator | File path, class/interface/function name |
+| Intended role | What the abstraction is supposed to do (from name, doc, or type signature) |
+| Formal interface | Key signatures, type parameters, constraints |
+| Test coverage | Whether there are dedicated unit or property tests for the abstraction itself |
+
+**Step 2 — Count uses vs hand-written copies:**
+
+For each abstraction found, count:
+- **Uses**: call-sites that go through the abstraction (import + invoke the shared helper/interface).
+- **Hand-written copies**: sites that re-implement the same pattern inline without using the abstraction.
+
+Produce a simple tally:
+
+```
+Abstraction          | Uses | Copies | Verdict
+---------------------|------|--------|-----------------------------------
+EventReducer<S,E>    |   2  |   7    | UNDERUSED — 7 copies bypass it
+MergeStrategy        |   0  |   4    | UNUSED — never adopted, 4 copies
+SortComparator<T>    |   9  |   0    | WELL-USED — no action needed
+```
+
+**Interpret the tally before proceeding:**
+
+| Pattern | Diagnosis | Action |
+| --- | --- | --- |
+| Many copies, abstraction missing | Missing abstraction | Recommend introducing the abstraction |
+| Abstraction exists, many copies bypass it | Underused abstraction | Recommend migrating copies to the existing abstraction; investigate why it was bypassed (API friction, discoverability, missing features) |
+| Abstraction exists, zero uses | Unused abstraction | Recommend removing or redesigning it; do not add more copies |
+| Abstraction exists, well used, few/no copies | Healthy | No structural action; proceed to algebraic analysis if relevant |
+
+> [!IMPORTANT]
+> Do not recommend creating a new abstraction when an underused one already covers the pattern. Fix adoption, not the absence.
+
 ## Identify structural duplication before reaching for algebraic labels
 
 Most of the value in abstraction discovery is **structural**, not algebraic. Before querying the catalog for laws, determine whether the code is primarily a *refactoring candidate* rather than a hidden algebraic structure. Forcing an algebraic name onto a duplication problem produces an over-engineered solution.
@@ -119,6 +162,7 @@ Read [references/discovery-guide.md](references/discovery-guide.md) for detailed
 Produce a structured report detailing:
 
 - **Target Component**: File, class, function, or API locator.
+- **Abstraction Inventory**: Table of existing abstractions with use counts and copy counts. Classify each as well-used, underused, unused, or missing.
 - **Structural Duplication Assessment**: List of duplication signals found (copy-paste logic, parallel argument lists, mirrored pipelines, etc.) with concrete locations. If this is the dominant finding, state it clearly and prioritize the structural refactoring recommendation over any algebraic label.
 - **Discovered Abstraction**: Matching catalog concepts with stable IDs (`urn:csabs:concept/...`), or `none — refactoring candidate` when structural duplication dominates.
 - **Carrier & Operation Mapping**: Concrete types and methods mapped to catalog carriers and signatures.
