@@ -55,26 +55,44 @@ grep -rn $INCLUDES \
 
 Record the raw counts. **Do not read any file yet.** Counts determine which pattern to investigate and how many files to sample.
 
-### Step 3 — Read a representative sample, not everything
+### Step 3 — Read stratified across the full density range
 
-Apply this sampling rule based on the grep hit count for the dominant pattern:
+Rank all matching files by hit density, then split them into three tiers — high, mid, and low — and read from each tier. Reading only the densest files misses the edges of a pattern: low-density files often contain new call-sites, edge-case usage, or partial implementations that change the diagnosis.
 
-| Hit count | Files to read |
-| --- | --- |
-| 1 – 10 | Read all matching files |
-| 11 – 50 | Read the 5 files with the highest hit density (`grep -c` per file, sort descending) |
-| 51 – 200 | Read the 3 highest-density files + 1 file chosen at random from the bottom half |
-| > 200 | Read the 3 highest-density files only; note that the sample is bounded and state findings as provisional |
-
-Get per-file hit density for sorting:
+Get the full per-file ranked list first:
 
 ```sh
 grep -rn $INCLUDES -E '<pattern>' <target_dir> \
-  | cut -d: -f1 | sort | uniq -c | sort -rn | head -10
+  | cut -d: -f1 | sort | uniq -c | sort -rn \
+  > /tmp/density_ranked.txt
+cat /tmp/density_ranked.txt    # inspect the full list before deciding sample size
+wc -l /tmp/density_ranked.txt  # total matching files
 ```
 
-> [!IMPORTANT]
-> Never read the full codebase to form a conclusion. State explicitly in the report how many files matched, how many were read, and that findings are based on that sample.
+Then apply stratified sampling based on total matching file count:
+
+| Matching files | High-density tier | Mid-density tier | Low-density tier | Total files read |
+| --- | --- | --- | --- | --- |
+| 1 – 20 | all | — | — | all |
+| 21 – 60 | top 10 | middle 5 | bottom 5 | 20 |
+| 61 – 150 | top 15 | middle 10 | bottom 5 | 30 |
+| 151 – 400 | top 20 | middle 15 | bottom 10 | 45 |
+| > 400 | top 25 | middle 20 | bottom 15 | 60 |
+
+Compute tier boundaries from the ranked list:
+
+```sh
+TOTAL=$(wc -l < /tmp/density_ranked.txt)
+# High tier: lines 1..H  (top of ranked list)
+# Mid tier:  lines around TOTAL/2 ± window
+# Low tier:  last L lines (bottom of ranked list)
+head -<H> /tmp/density_ranked.txt          # high-density files
+sed -n "$((TOTAL/2 - W)),$((TOTAL/2 + W))p" /tmp/density_ranked.txt  # mid
+tail -<L> /tmp/density_ranked.txt          # low-density files
+```
+
+> [!NOTE]
+> The goal is to read as many files as agent context allows; these numbers are **minimums per tier**, not caps. If context permits, extend the high and mid tiers further before stopping. State in the report: total matching files, tier counts read, and any tiers where reading was cut short.
 
 ### Step 4 — Identify behavioral patterns from the sample
 
