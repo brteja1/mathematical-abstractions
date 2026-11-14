@@ -18,6 +18,10 @@ States evolve through an arbitrary relation labelled by actions; a chosen initia
 
 ## Backlinks
 
+- [Asymmetric coroutine with explicit resume/yield lifecycle](AsymmetricCoroutine.md) — `requiresConcept`
+- [Asymmetric coroutine with explicit resume/yield lifecycle](AsymmetricCoroutine.md) — `specializationOf`
+- [Single-thread cooperative scheduler with explicit waiting](CooperativeScheduler.md) — `requiresConcept`
+- [Single-thread cooperative scheduler with explicit waiting](CooperativeScheduler.md) — `specializationOf`
 - [Lamport bakery lock protocol](LamportBakery.md) — `requiresConcept`
 - [Lock with compatible access modes](Lock.md) — `requiresConcept`
 - [Nondeterministic finite automaton without epsilon moves](NFA.md) — `requiresConcept`

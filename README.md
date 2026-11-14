@@ -6,6 +6,8 @@ Start with the [concept index](CONCEPTS.md), explore the [interactive atlas](htt
 
 Key subject areas include logic and foundations, algebra and linear algebra, probability and statistics, geometry, data structures, programming semantics, concurrency, cryptography and information theory. See the concept index for current coverage and individual concept pages for definitions, assumptions and sources.
 
+Programming-semantics coverage includes [coroutines and cooperative execution](docs/COROUTINES.md), with explicit resume/yield lifecycles, waiting and scheduler handoff.
+
 ## What each concept records
 
 - A definition, notation, carrier, equality convention and chosen mathematical basis.

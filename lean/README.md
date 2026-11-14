@@ -53,6 +53,8 @@ Concept records expose `mathematicalFormulation` (readable mathematics), `leanFo
 | `Catalog/Numeric.lean` | Naturals, integers, bit vectors, bounded arithmetic and floating-point interfaces |
 | `Catalog/Graphs.lean` | Graphs, trees, transition systems, simulation, bisimulation and traces |
 | `Catalog/Concurrency.lean` | Compatible-mode locks, non-reentrant mutex owners and a partial bakery-protocol state carrier |
+| `Catalog/Coroutines.lean` | Asymmetric coroutine lifecycles, finite resume outcomes and a fixed-pool cooperative scheduler with explicit waiting/wakeup; see [scope](../docs/COROUTINES.md) |
+| `Catalog/CoroutineProofs.lean` | Three registered witnesses: yield between resumes, reachable owner/waiting invariants, and a constructive infinite starvation execution; see [proof mappings](../docs/COROUTINES.md#sources-and-lean-evidence) |
 | `Catalog/Semantics.lean` | Hoare logic, invariants, termination, safety/liveness and history interfaces |
 | `Catalog/Logic.lean` | Propositional, first-order, modal and temporal syntax and satisfaction |
 | `Catalog/LogicSyntax.lean` | Countable signatures, named binders, guarded substitution and classical natural deduction; see [logic coverage](../docs/LOGIC.md) |

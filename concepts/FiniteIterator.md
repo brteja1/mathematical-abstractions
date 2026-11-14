@@ -12,6 +12,10 @@ An immutable finite sequence cursor retaining its original sequence and a positi
 
 **Prerequisites:** [Finite sequence (List datatype)](Sequence.md), [Option Type](OptionType.md), [Natural Number](NaturalNumber.md)
 
+## Backlinks
+
+- [Asymmetric coroutine with explicit resume/yield lifecycle](AsymmetricCoroutine.md) — `relatedConcept`
+
 ## Mathematical formulation
 
 A cursor is (xs,p) with xs∈A\*,0≤p≤|xs|. next(xs,p)=(some(xs[p]),(xs,p+1)) when p<|xs|, and (none,(xs,p)) otherwise. Equality retains both xs and p.

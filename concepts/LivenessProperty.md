@@ -14,6 +14,7 @@ A trace property for which every finite prefix has at least one infinite extensi
 
 ## Backlinks
 
+- [Single-thread cooperative scheduler with explicit waiting](CooperativeScheduler.md) — `relatedConcept`
 - [Lamport bakery lock protocol](LamportBakery.md) — `relatedConcept`
 - [Linear temporal logic on infinite discrete traces](LinearTemporalLogic.md) — `relatedConcept`
 - [Mutex (non-reentrant mutual-exclusion lock)](Mutex.md) — `relatedConcept`

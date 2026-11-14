@@ -18,6 +18,7 @@ A function defined on a specified subset of an ambient input set, with no value 
 
 - [Arithmetic mean of a finite real sample](ArithmeticMean.md) — `requiresConcept`
 - [Arithmetic mean of a finite real sample](ArithmeticMean.md) — `specializationOf`
+- [Asymmetric coroutine with explicit resume/yield lifecycle](AsymmetricCoroutine.md) — `requiresConcept`
 - [Single-inheritance class table and dynamic dispatch](ClassTable.md) — `requiresConcept`
 - [Checked signed-integer constant-evaluation fragment](CompileTimeEvaluation.md) — `requiresConcept`
 - [Total function](Function.md) — `relatedConcept`

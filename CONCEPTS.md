@@ -48,6 +48,8 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Transition System](concepts/TransitionSystem.md)
 - **Concurrency and distributed systems**
   - **Behavioral models**
+    - [Asymmetric coroutine with explicit resume/yield lifecycle](concepts/AsymmetricCoroutine.md)
+    - [Single-thread cooperative scheduler with explicit waiting](concepts/CooperativeScheduler.md)
     - [Action-labelled transition system with initial states](concepts/LabelledTransitionSystem.md)
     - [Strong finite partial-trace equivalence](concepts/TraceEquivalence.md)
   - **Correctness properties**
@@ -243,6 +245,9 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Transition System](concepts/TransitionSystem.md)
   - [Deterministic one-tape Turing machine](concepts/TuringMachine.md)
   - [Weakest Precondition](concepts/WeakestPrecondition.md)
+  - **Coroutines and cooperative execution**
+    - [Asymmetric coroutine with explicit resume/yield lifecycle](concepts/AsymmetricCoroutine.md)
+    - [Single-thread cooperative scheduler with explicit waiting](concepts/CooperativeScheduler.md)
   - **Generic programming**
     - [Resolved generic argument binding with ordered defaults](concepts/GenericArgumentBinding.md)
     - [Finite kinded generic parameter signature](concepts/GenericSignature.md)
@@ -327,6 +332,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Arbitrary Precision Integer](concepts/ArbitraryPrecisionInteger.md) | Numeric computation |
 | [Arithmetic mean of a finite real sample](concepts/ArithmeticMean.md) | Statistics → Descriptive statistics |
 | [Fixed-length array](concepts/Array.md) | Data structures → Sequential collections |
+| [Asymmetric coroutine with explicit resume/yield lifecycle](concepts/AsymmetricCoroutine.md) | Programming-language semantics → Coroutines and cooperative execution, Concurrency and distributed systems → Behavioral models |
 | [B-tree (balanced multiway search tree)](concepts/BTree.md) | Data structures → Tree structures |
 | [Finite database relation under bag semantics](concepts/BagRelation.md) | Relational data modelling |
 | [Bayesian network (finite discrete variables)](concepts/BayesianNetwork.md) | Probability and stochastic models, Graph theory |
@@ -360,6 +366,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Conditional entropy (finite discrete profile)](concepts/ConditionalEntropy.md) | Information theory |
 | [Conditional probability given a positive-probability event](concepts/ConditionalProbability.md) | Probability and stochastic models |
 | [Context-free grammar of finite words](concepts/ContextFreeGrammar.md) | Languages and computation |
+| [Single-thread cooperative scheduler with explicit waiting](concepts/CooperativeScheduler.md) | Programming-language semantics → Coroutines and cooperative execution, Concurrency and distributed systems → Behavioral models |
 | [Directed acyclic graph](concepts/DAG.md) | Graph theory |
 | [Deterministic finite automaton with total transition](concepts/DFA.md) | Languages and computation, Behavior and transition systems |
 | [Finite database relation under set semantics](concepts/DatabaseRelation.md) | Relational data modelling, Data structures → Sets and mappings |

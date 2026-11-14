@@ -3316,6 +3316,83 @@
         "Classical.choice"
       ],
       "catalogHash": "d489c45e48f6df9b12d589dc711e977e719d23ab40e919736cdfb111d9994b67"
+    },
+    "urn:csabs:concept/AsymmetricCoroutine": {
+      "kind": "model",
+      "symbol": "Catalog.AsymmetricCoroutine",
+      "module": "Catalog.Coroutines",
+      "scope": "model",
+      "mapping": "K,I,O,R,E are Lean types; CoroutineState is the tagged lifecycle carrier. entry selects the created state, accept injects resume input, and internal/yields/returns/raises are body relations. coroutineStep gives exactly the six lifecycle rules; coroutineLTS exposes the singleton initial state; coroutineOutcomes observes a resume, finite internal closure and one boundary event. Equality is Lean structural equality.",
+      "limitations": "Body semantics and retained heap/stack contents must be supplied by the instantiation. No language frontend, nested caller stack, shared-memory interference, cancellation, throw/close, fairness, divergence classification or complete runtime conformance is encoded. Only the separately registered successive-resumes-require-yield theorem has a compiled claim witness when verification evidence is fresh. Other graph claims and runtime correspondence remain separate obligations.",
+      "catalogHash": "1bf0234eeaab7e8bc9de710cddb80e36ac021b0f6b549c0a98e8fb16dba7cf66"
+    },
+    "urn:csabs:concept/CooperativeScheduler": {
+      "kind": "model",
+      "symbol": "Catalog.CooperativeScheduler",
+      "module": "Catalog.Coroutines",
+      "scope": "model",
+      "mapping": "Finite Lean task type T indexes a fixed family of coroutine models. CooperativeState stores a total task-state map, optional active owner and waiting Set. cooperativeInitial, cooperativeRunnable and cooperativeStep implement initialization, eligibility and all seven action rules; cooperativeLTS exposes the labelled system. Function.update changes only the selected task; cooperativeValid states the owner and waiting invariant. Structural equality is used throughout.",
+      "limitations": "Typed fixed-pool operational model only; event identities, event readiness, real IO, fairness, wake delivery, cancellation, dynamic tasks and shared-memory interference require explicit extensions. Waiting is an explicit scheduler request, not every coroutine yield or syntactic await. Only the separately registered reachable-owner-invariant and cooperation-does-not-imply-progress theorems have compiled claim witnesses when verification evidence is fresh. Other claims and runtime correspondence remain separate obligations.",
+      "catalogHash": "f405f03e1e31e75a92994aa84d07f5bfabea8808621c22db78230c2de5da03de"
+    },
+    "urn:csabs:theorem/AsymmetricCoroutine-successive-resumes-require-yield": {
+      "kind": "witness",
+      "symbol": "Catalog.CoroutineProofs.successive_resumes_require_yield",
+      "module": "Catalog.CoroutineProofs",
+      "expectedType": "∀ {K I O R E : Type u} (m : Catalog.AsymmetricCoroutine K I O R E) (leading middle trailing : List (Catalog.CoroutineAction I O R E)) (i j : I) (last : Catalog.CoroutineState K R E), Catalog.LabelledPath (Catalog.coroutineLTS m) (.created m.entry) (leading ++ (.resume i :: (middle ++ (.resume j :: trailing)))) last → ∃ o, Catalog.CoroutineAction.yieldValue o ∈ middle",
+      "mapping": "Lean tagged states/actions preserve continuation and input/output carriers. The independently reviewed expected type quantifies over a complete finite path and two Resume positions. It proves a yield exists in the intervening word, even without requiring these positions to be consecutive resumes. Equality and list membership are structural.",
+      "premiseMapping": {
+        "urn:csabs:axiom/AsymmetricCoroutine-resume-entry": "coroutineStep permits Resume only from Created or Suspended and targets Running(accept k i); coroutineLTS starts in Created(entry).",
+        "urn:csabs:axiom/AsymmetricCoroutine-body-handoff": "coroutineStep enumerates all internal and boundary transitions. Unresumable and step_without_yield show that a no-yield segment cannot enable another Resume.",
+        "urn:csabs:axiom/LabelledTransitionSystem-finite-paths": "LabelledPath represents every finite labelled path including nil. path_split separates leading, middle and trailing subpaths without an extra trace axiom."
+      },
+      "limitations": "Proves the stated finite-trace property of coroutineStep, not language-runtime correspondence, infinite progress, cancellation, nested transfer or hidden-action equivalence.",
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "2fdfb0072f2f967f462237b92b24863f67040c2f37f741ed7d0afba6d99cbf7a"
+    },
+    "urn:csabs:theorem/CooperativeScheduler-reachable-owner-invariant": {
+      "kind": "witness",
+      "symbol": "Catalog.CoroutineProofs.reachable_owner_invariant",
+      "module": "Catalog.CoroutineProofs",
+      "expectedType": "∀ {T K I O R E : Type u} [Fintype T] [DecidableEq T] (m : Catalog.CooperativeScheduler T K I O R E) (s : Catalog.CooperativeState T K R E), Relation.ReflTransGen (fun a b => ∃ label, Catalog.cooperativeStep m a label b) (Catalog.cooperativeInitial m) s → Catalog.cooperativeValid s",
+      "mapping": "Finite T indexes the fixed pool. cooperativeValid expands to: a task has Running state iff active=some task, and every waiting task is Suspended. ReflTransGen of existentially labelled cooperativeStep is exactly finite scheduler reachability from cooperativeInitial; every transition case is proved, not assumed.",
+      "premiseMapping": {
+        "urn:csabs:axiom/CooperativeScheduler-initial-pool": "cooperativeInitial constructs the singleton starting configuration; initial_valid proves the owner/waiting invariant directly.",
+        "urn:csabs:axiom/CooperativeScheduler-dispatch": "The dispatch branch of cooperativeStep requires no owner and a nonwaiting local Resume step; replace_valid proves its task-map update preserves validity.",
+        "urn:csabs:axiom/CooperativeScheduler-owner-advancement": "step_preserves_valid covers Internal, Yield, Wait, Return and Raise separately. Only the owner changes; Wait inserts its now-suspended task in waiting.",
+        "urn:csabs:axiom/CooperativeScheduler-external-wakeup": "The Wake branch only removes waiting membership and preserves the task map and active owner.",
+        "urn:csabs:axiom/AsymmetricCoroutine-resume-entry": "resume_target derives the Running target from coroutineStep; no global axiom assumes it.",
+        "urn:csabs:axiom/AsymmetricCoroutine-body-handoff": "running_step_target derives each target phase from the local operational rules. Induction over ReflTransGen lifts preservation to all finitely reachable states."
+      },
+      "limitations": "Proves a safety invariant of the supplied abstract rules. No scheduler implementation refinement, fairness, termination, real IO, shared-memory or dynamic-task claim follows.",
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "0722e94aa921a164b4c94595741ce948b37cbee64a721a387455a8dd05aebb49"
+    },
+    "urn:csabs:theorem/CooperativeScheduler-cooperation-does-not-imply-progress": {
+      "kind": "witness",
+      "symbol": "Catalog.CoroutineProofs.cooperation_does_not_imply_progress",
+      "module": "Catalog.CoroutineProofs",
+      "expectedType": "∀ {T K I O R E : Type u} [Fintype T] [DecidableEq T] (m : Catalog.CooperativeScheduler T K I O R E) (s : Catalog.CooperativeState T K R E) (j h : T) (k : K), Relation.ReflTransGen (fun a b => ∃ label, Catalog.cooperativeStep m a label b) (Catalog.cooperativeInitial m) s → Catalog.cooperativeValid s → j ≠ h → s.active = some j → h ∈ Catalog.cooperativeRunnable s → s.tasks j = .running k → (m.machine j).internal k k → ∃ run : Nat → Catalog.CooperativeState T K R E, run 0 = s ∧ ∀ n, run n = s ∧ Catalog.cooperativeStep m (run n) .internal (run (n + 1)) ∧ (run n).active = some j ∧ h ∈ Catalog.cooperativeRunnable (run n) ∧ ¬ (∃ k', (run n).tasks h = .running k')",
+      "mapping": "The expected type explicitly assumes a reachable valid state, distinct active/ready tasks and an internal self-loop. It constructs a constant Nat-indexed path with a valid Internal transition at every index; the other task stays runnable and never Running. No fairness restriction is added. A concrete Bool-task example separately demonstrates the hypotheses are realizable.",
+      "premiseMapping": {
+        "urn:csabs:axiom/CooperativeScheduler-owner-advancement": "The Internal branch lifts the supplied local self-loop to a global self-loop; cooperativeUpdate is proved equal to the original state. A Nat-indexed constant run witnesses the infinite execution.",
+        "urn:csabs:axiom/AsymmetricCoroutine-body-handoff": "coroutineStep on Running k with Internal reduces exactly to the hypothesized body relation internal k k. Reachability, validity, distinct tasks, ownership, readiness and the self-loop are explicit theorem hypotheses, as in the graph claim."
+      },
+      "limitations": "Conditional existence of one starving execution; it does not assert that every scheduler or coroutine starves, or that the model satisfies any fairness policy. The assumptions are not global axioms.",
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "980a8b59cf9b006936eb9c28ec3cbce4b1c0542579fd89cabf2c0136b75e2c9c"
     }
   }
 }

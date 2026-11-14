@@ -1821,6 +1821,52 @@
       "type": "Category",
       "label": "Descriptive statistics",
       "parentCategory": "urn:csabs:category/statistics"
+    },
+    {
+      "id": "urn:csabs:source/lua54-coroutines",
+      "type": "Source",
+      "label": "Lua 5.4 Reference Manual: coroutines",
+      "url": "https://www.lua.org/manual/5.4/manual.html#2.6",
+      "accessedOn": "2026-11-14",
+      "sourceRole": "consulted primary language/runtime reference; explicit abstract adaptation"
+    },
+    {
+      "id": "urn:csabs:source/python313-generators",
+      "type": "Source",
+      "label": "Python 3.13 language reference: yield expressions and generator-iterator methods",
+      "url": "https://docs.python.org/3.13/reference/expressions.html#yield-expressions",
+      "accessedOn": "2026-11-14",
+      "sourceRole": "consulted primary language/runtime reference; explicit abstract adaptation"
+    },
+    {
+      "id": "urn:csabs:source/python313-cooperative-tasks",
+      "type": "Source",
+      "label": "Python 3.13 asyncio documentation: Task object and cooperative scheduling",
+      "url": "https://docs.python.org/3.13/library/asyncio-task.html#task-object",
+      "accessedOn": "2026-11-14",
+      "sourceRole": "consulted primary language/runtime reference; explicit abstract adaptation"
+    },
+    {
+      "id": "urn:csabs:source/local-lean-Coroutines",
+      "type": "Source",
+      "label": "Local Lean coroutine and cooperative scheduler models",
+      "path": "lean/Catalog/Coroutines.lean",
+      "accessedOn": "2026-11-14",
+      "sourceRole": "local formulation source; separate from mathematical provenance"
+    },
+    {
+      "id": "urn:csabs:category/cooperative-execution",
+      "type": "Category",
+      "label": "Coroutines and cooperative execution",
+      "parentCategory": "urn:csabs:category/programming-semantics"
+    },
+    {
+      "id": "urn:csabs:source/local-lean-CoroutineProofs",
+      "type": "Source",
+      "label": "Local Lean coroutine theorem witnesses and constructive scheduler proofs",
+      "path": "lean/Catalog/CoroutineProofs.lean",
+      "accessedOn": "2026-11-14",
+      "sourceRole": "local proof/formulation source; independent mathematical provenance remains separately linked"
     }
   ]
 }

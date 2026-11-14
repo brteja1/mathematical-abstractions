@@ -10,6 +10,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | ArbitraryPrecisionInteger | 3 | 1 | 1 | 1 | defined-structure |
 | ArithmeticMean | 1 | 1 | 2 | 1 | defined-function |
 | Array | 2 | 4 | 2 | 1 | defined-structure |
+| AsymmetricCoroutine | 3 | 3 | 2 | 1 | defined-operational-semantics |
 | BTree | 6 | 6 | 2 | 1 | extensional-structural-definition |
 | BagRelation | 4 | 5 | 1 | 1 | extensional-structural-definition |
 | BayesianNetwork | 3 | 2 | 0 | 1 | defined-structure |
@@ -43,6 +44,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | ConditionalEntropy | 1 | 1 | 1 | 2 | extensional-structural-definition |
 | ConditionalProbability | 1 | 1 | 0 | 2 | defined-structure |
 | ContextFreeGrammar | 2 | 2 | 1 | 3 | defined-structure |
+| CooperativeScheduler | 3 | 4 | 2 | 2 | defined-operational-semantics |
 | DAG | 1 | 2 | 0 | 2 | defined-structure |
 | DFA | 2 | 2 | 1 | 3 | defined-structure |
 | DatabaseRelation | 6 | 3 | 2 | 2 | defined-structure |
@@ -225,6 +227,6 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | WeightedDirectedGraph | 3 | 2 | 1 | 1 | extensional-structural-definition |
 | WellFoundedRelation | 1 | 1 | 1 | 1 | defined-structure |
 
-220 of 220 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
+222 of 222 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
 
 Use `ruleRole` to distinguish foundational axioms, structure constraints, and defining equations. Use `basisScope` for interface boundaries. Alternate language policies, intensional equality, IEEE payload/trap details, and formal proof artifacts require further formalization.
