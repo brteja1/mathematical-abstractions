@@ -3393,6 +3393,42 @@
         "Classical.choice"
       ],
       "catalogHash": "980a8b59cf9b006936eb9c28ec3cbce4b1c0542579fd89cabf2c0136b75e2c9c"
+    },
+    "urn:csabs:concept/FuzzySet": {
+      "kind": "model",
+      "symbol": "Catalog.FuzzySet",
+      "module": "Catalog.FuzzyLogic",
+      "scope": "model",
+      "mapping": "X→{r:ℝ // 0≤r ∧ r≤1}; function equality is extensional. The module supplies constants, min/max, complement and weak alphaCut. Empty X is allowed.",
+      "limitations": "Exact carrier and selected operations only; no claim in this entry is registered as a compiled proof witness. No approximate membership or probabilistic interpretation.",
+      "catalogHash": "052ebb40e754bbb884c300fcd4ac11d0c7a45831a58f0f1fb608137a18f800f8"
+    },
+    "urn:csabs:concept/TNorm": {
+      "kind": "model",
+      "symbol": "Catalog.TNorm",
+      "module": "Catalog.FuzzyLogic",
+      "scope": "model",
+      "mapping": "Structure on the bounded real subtype with combine and the four explicit structure laws. Equality is subtype equality, equivalent to real equality.",
+      "limitations": "No instance construction or general t-norm theorem witnesses are registered; min/product/Łukasiewicz are documented examples, not separately proved Lean instances.",
+      "catalogHash": "236eed441421fdb07efa872281b85af73c154d2d051393181637bd3bfba6c476"
+    },
+    "urn:csabs:concept/TConorm": {
+      "kind": "model",
+      "symbol": "Catalog.TConorm",
+      "module": "Catalog.FuzzyLogic",
+      "scope": "partial",
+      "mapping": "Structure on FuzzyDegree with combine and the four explicit conorm laws; 0 is the identity.",
+      "limitations": "Partial interface: combine and defining laws only; the dual construction and sample conorms are not implemented in Lean. No registered witnesses.",
+      "catalogHash": "95ee57e57c2614fb81423345d6123be7b9c518c37188dacd1a8d56ed9c2bbe3c"
+    },
+    "urn:csabs:concept/ResiduatedFuzzyLogic": {
+      "kind": "model",
+      "symbol": "Catalog.ResiduatedFuzzyLogic",
+      "module": "Catalog.FuzzyLogic",
+      "scope": "partial",
+      "mapping": "Extends TNorm with residuum and explicit adjunction on bounded real degrees. Adjunction restricts combine to residuated t-norms; no independent arbitrary implication is admitted.",
+      "limitations": "Partial interface: adjunction models the left-continuous profile, but its equivalence to the displayed sequential continuity condition, derived negation, min/max and designated-truth semantics are not separately formalized. No formula syntax, proof system or registered witnesses.",
+      "catalogHash": "236eed441421fdb07efa872281b85af73c154d2d051393181637bd3bfba6c476"
     }
   }
 }

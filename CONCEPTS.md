@@ -182,6 +182,11 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Finite propositional formula syntax](concepts/PropositionalFormula.md)
   - [Propositional Logic](concepts/PropositionalLogic.md)
   - [Classical propositional natural deduction](concepts/PropositionalNaturalDeduction.md)
+  - **Fuzzy logic**
+    - [Fuzzy set (unit-interval membership, min/max profile)](concepts/FuzzySet.md)
+    - [Residuated fuzzy truth-value algebra (left-continuous t-norm profile)](concepts/ResiduatedFuzzyLogic.md)
+    - [Triangular conorm (t-conorm)](concepts/TConorm.md)
+    - [Triangular norm (t-norm)](concepts/TNorm.md)
 - **Measure theory**
   - [Measurable function](concepts/MeasurableFunction.md)
   - [Measurable space (sigma-algebra on a carrier)](concepts/MeasurableSpace.md)
@@ -406,6 +411,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Total function](concepts/Function.md) | Set theory and foundations |
 | [Function type](concepts/FunctionType.md) | Types and semantics |
 | [Functional dependency on a relational schema](concepts/FunctionalDependency.md) | Relational data modelling, Logic and proof |
+| [Fuzzy set (unit-interval membership, min/max profile)](concepts/FuzzySet.md) | Logic and proof → Fuzzy logic |
 | [Galois/Counter Mode (96-bit IV, 128-bit tag profile)](concepts/GCM.md) | Cryptography → Symmetric cryptography |
 | [GHASH polynomial accumulator](concepts/GHASH.md) | Cryptography → Symmetric cryptography |
 | [Galois Connection](concepts/GaloisConnection.md) | Order and fixed points |
@@ -499,6 +505,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Binary relation](concepts/Relation.md) | Set theory and foundations |
 | [Named relational schema with attribute domains](concepts/RelationalSchema.md) | Relational data modelling, Types and semantics |
 | [Relative entropy (finite Kullback–Leibler divergence)](concepts/RelativeEntropy.md) | Information theory |
+| [Residuated fuzzy truth-value algebra (left-continuous t-norm profile)](concepts/ResiduatedFuzzyLogic.md) | Logic and proof → Fuzzy logic |
 | [Unital ring (convention stated)](concepts/Ring.md) | Algebra |
 | [Finite rooted undirected tree](concepts/RootedTree.md) | Graph theory |
 | [Finite ordered rose tree](concepts/RoseTree.md) | Data structures → Tree structures |
@@ -524,6 +531,8 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Predicate-restricted subtype](concepts/Subtype.md) | Types and semantics |
 | [Sum Type](concepts/SumType.md) | Types and semantics |
 | [Syndrome map of a linear block code](concepts/Syndrome.md) | Information theory → Coding theory → Channel coding |
+| [Triangular conorm (t-conorm)](concepts/TConorm.md) | Logic and proof → Fuzzy logic |
+| [Triangular norm (t-norm)](concepts/TNorm.md) | Logic and proof → Fuzzy logic |
 | [Normalized template constraints with atomic identity](concepts/TemplateConstraint.md) | Programming-language semantics → Generic programming → Template metaprogramming |
 | [Kinded partial template metafunction](concepts/TemplateMetafunction.md) | Programming-language semantics → Generic programming → Template metaprogramming |
 | [Ordered template packs and structural expansion](concepts/TemplateParameterPack.md) | Programming-language semantics → Generic programming → Template metaprogramming |

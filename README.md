@@ -4,7 +4,7 @@ A knowledge graph of mathematical abstractions for modeling software, developing
 
 Start with the [concept index](CONCEPTS.md), explore the [interactive atlas](https://brteja1.github.io/mathematical-abstractions/), or query selected records with Python.
 
-Key subject areas include logic and foundations, algebra and linear algebra, probability and statistics, geometry, data structures, programming semantics, concurrency, cryptography and information theory. See the concept index for current coverage and individual concept pages for definitions, assumptions and sources.
+Key subject areas include logic and foundations (including [fuzzy sets and fuzzy logic](docs/FUZZY_LOGIC.md)), algebra and linear algebra, probability and statistics, geometry, data structures, programming semantics, concurrency, cryptography and information theory. See the concept index for current coverage and individual concept pages for definitions, assumptions and sources.
 
 Programming-semantics coverage includes [coroutines and cooperative execution](docs/COROUTINES.md), with explicit resume/yield lifecycles, waiting and scheduler handoff.
 

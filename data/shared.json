@@ -1867,6 +1867,46 @@
       "path": "lean/Catalog/CoroutineProofs.lean",
       "accessedOn": "2026-11-14",
       "sourceRole": "local proof/formulation source; independent mathematical provenance remains separately linked"
+    },
+    {
+      "id": "urn:csabs:category/fuzzy-logic",
+      "type": "Category",
+      "label": "Fuzzy logic",
+      "parentCategory": "urn:csabs:category/logic"
+    },
+    {
+      "id": "urn:csabs:source/zadeh-1965-fuzzy-sets",
+      "type": "Source",
+      "label": "L. A. Zadeh, Fuzzy Sets (1965)",
+      "url": "https://people.eecs.berkeley.edu/~pister/publications/FamousPapers/Zadeh65FuzzySets.pdf",
+      "citation": "Information and Control 8 (1965), 338–353. DOI: 10.1016/S0019-9958(65)90241-X.",
+      "accessedOn": "2026-11-15",
+      "sourceRole": "Consulted original paper: membership, pointwise operations, lattice identities and level sets."
+    },
+    {
+      "id": "urn:csabs:source/klement-mesiar-pap-2004-tnorms-i",
+      "type": "Source",
+      "label": "Klement, Mesiar and Pap, Triangular norms. Position paper I (2004)",
+      "url": "https://www.flll.jku.at/sites/default/files/44_2004_KMesPap_TNormsPosPaperI_FSSPrintedVersion.pdf",
+      "citation": "Fuzzy Sets and Systems 143 (2004), 5–26. DOI: 10.1016/j.fss.2003.06.007.",
+      "accessedOn": "2026-11-15",
+      "sourceRole": "Consulted research paper: triangular norms, conorms, duality and examples."
+    },
+    {
+      "id": "urn:csabs:source/vetterlein-regular-left-continuous-tnorms",
+      "type": "Source",
+      "label": "Thomas Vetterlein, Regular left-continuous t-norms",
+      "url": "https://www.flll.jku.at/sites/default/files/u24/LstetigeTnormen.pdf",
+      "accessedOn": "2026-11-15",
+      "sourceRole": "Consulted author manuscript, sections 1–2: left-continuity, residua and real-unit-interval algebras."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-FuzzyLogic",
+      "type": "Source",
+      "label": "Catalog Lean module FuzzyLogic",
+      "path": "lean/Catalog/FuzzyLogic.lean",
+      "accessedOn": "2026-11-15",
+      "sourceRole": "Repository-local exact membership and truth-value models; separate from mathematical provenance."
     }
   ]
 }

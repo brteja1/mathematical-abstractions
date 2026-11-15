@@ -22,6 +22,7 @@ Classical two-valued formulas built from atomic propositions and Boolean connect
 - [Predicate Logic](PredicateLogic.md) — `requiresConcept`
 - [Finite propositional formula syntax](PropositionalFormula.md) — `relatedConcept`
 - [Classical propositional natural deduction](PropositionalNaturalDeduction.md) — `requiresConcept`
+- [Residuated fuzzy truth-value algebra (left-continuous t-norm profile)](ResiduatedFuzzyLogic.md) — `relatedConcept`
 
 ## Mathematical formulation
 

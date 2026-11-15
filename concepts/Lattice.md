@@ -19,6 +19,8 @@ A partially ordered set where every pair has a greatest lower bound and a least 
 - [Boolean algebra](BooleanAlgebra.md) — `specializationOf`
 - [Complete Lattice](CompleteLattice.md) — `requiresConcept`
 - [Complete Lattice](CompleteLattice.md) — `specializationOf`
+- [Fuzzy set (unit-interval membership, min/max profile)](FuzzySet.md) — `specializationOf`
+- [Residuated fuzzy truth-value algebra (left-continuous t-norm profile)](ResiduatedFuzzyLogic.md) — `relatedConcept`
 
 ## Mathematical formulation
 

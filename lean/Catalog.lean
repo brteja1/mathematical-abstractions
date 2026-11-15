@@ -36,3 +36,5 @@ public import Catalog.Cryptography
 public import Catalog.GeometricLattices
 public import Catalog.MatrixDecompositions
 public import Catalog.DescriptiveStatistics
+
+public import Catalog.FuzzyLogic

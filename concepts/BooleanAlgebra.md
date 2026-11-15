@@ -17,6 +17,7 @@ A bounded distributive complemented lattice, equivalently an algebra satisfying 
 ## Backlinks
 
 - [Two-valued Boolean type](BooleanType.md) — `specializationOf`
+- [Fuzzy set (unit-interval membership, min/max profile)](FuzzySet.md) — `relatedConcept`
 - [Propositional Logic](PropositionalLogic.md) — `requiresConcept`
 
 ## Mathematical formulation

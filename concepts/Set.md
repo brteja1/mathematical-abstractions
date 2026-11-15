@@ -19,6 +19,7 @@ A collection of distinct elements, characterized by which elements belong to it.
 - [Finite set collection](FiniteSet.md) — `specializationOf`
 - [Formal language of finite words](FormalLanguage.md) — `requiresConcept`
 - [Formal language of finite words](FormalLanguage.md) — `specializationOf`
+- [Fuzzy set (unit-interval membership, min/max profile)](FuzzySet.md) — `relatedConcept`
 - [Graph](Graph.md) — `requiresConcept`
 - [Measurable space (sigma-algebra on a carrier)](MeasurableSpace.md) — `requiresConcept`
 - [Multiset](Multiset.md) — `requiresConcept`

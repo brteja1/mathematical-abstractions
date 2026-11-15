@@ -24,6 +24,7 @@ A mapping assigning each element of a domain exactly one element of a codomain.
 - [Fixed Point](FixedPoint.md) — `requiresConcept`
 - [Function type](FunctionType.md) — `requiresConcept`
 - [Functional dependency on a relational schema](FunctionalDependency.md) — `relatedConcept`
+- [Fuzzy set (unit-interval membership, min/max profile)](FuzzySet.md) — `requiresConcept`
 - [Linear map](LinearMap.md) — `requiresConcept`
 - [Linear map](LinearMap.md) — `specializationOf`
 - [Finite rectangular matrix over a field](Matrix.md) — `requiresConcept`

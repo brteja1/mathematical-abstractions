@@ -20,6 +20,8 @@ A semigroup with a two-sided identity element.
 - [Group](Group.md) — `requiresConcept`
 - [Group](Group.md) — `specializationOf`
 - [Exclusive finite-heap separation predicates](HeapSeparation.md) — `relatedConcept`
+- [Triangular conorm (t-conorm)](TConorm.md) — `specializationOf`
+- [Triangular norm (t-norm)](TNorm.md) — `specializationOf`
 
 ## Mathematical formulation
 

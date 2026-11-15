@@ -23,6 +23,9 @@ A partial order in which every two elements are comparable.
 - [Lamport bakery lock protocol](LamportBakery.md) — `requiresConcept`
 - [Priority Queue](PriorityQueue.md) — `requiresConcept`
 - [Exact real number](RealNumber.md) — `requiresConcept`
+- [Residuated fuzzy truth-value algebra (left-continuous t-norm profile)](ResiduatedFuzzyLogic.md) — `requiresConcept`
+- [Triangular conorm (t-conorm)](TConorm.md) — `requiresConcept`
+- [Triangular norm (t-norm)](TNorm.md) — `requiresConcept`
 
 ## Mathematical formulation
 

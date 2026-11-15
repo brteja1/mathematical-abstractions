@@ -19,9 +19,13 @@ A complete Archimedean linearly ordered field extending the rational numbers.
 - [Arithmetic mean of a finite real sample](ArithmeticMean.md) — `requiresConcept`
 - [Cholesky decomposition (Hermitian positive definite, lower profile)](CholeskyDecomposition.md) — `requiresConcept`
 - [Exact complex number](ComplexNumber.md) — `requiresConcept`
+- [Fuzzy set (unit-interval membership, min/max profile)](FuzzySet.md) — `requiresConcept`
 - [Numeric sample median (midpoint convention)](Median.md) — `requiresConcept`
 - [Full QR decomposition (real or complex, rectangular)](QRDecomposition.md) — `requiresConcept`
+- [Residuated fuzzy truth-value algebra (left-continuous t-norm profile)](ResiduatedFuzzyLogic.md) — `requiresConcept`
 - [Full singular value decomposition (rectangular real or complex SVD)](SVD.md) — `requiresConcept`
+- [Triangular conorm (t-conorm)](TConorm.md) — `requiresConcept`
+- [Triangular norm (t-norm)](TNorm.md) — `requiresConcept`
 - [Finite real-weighted directed multigraph](WeightedDirectedGraph.md) — `requiresConcept`
 
 ## Mathematical formulation
