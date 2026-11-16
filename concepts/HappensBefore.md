@@ -14,6 +14,7 @@ The transitive closure of per-process event order and message send-before-receiv
 
 ## Backlinks
 
+- [Scoped atomic execution graph and memory ordering](AtomicMemoryModel.md) — `requiresConcept`
 - [Lock with compatible access modes](Lock.md) — `relatedConcept`
 
 ## Mathematical formulation

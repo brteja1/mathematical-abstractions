@@ -6,7 +6,7 @@ Start with the [concept index](CONCEPTS.md), explore the [interactive atlas](htt
 
 Key subject areas include logic and foundations (including [fuzzy sets and fuzzy logic](docs/FUZZY_LOGIC.md)), algebra and linear algebra, probability and statistics, geometry, data structures, programming semantics, concurrency, cryptography and information theory. See the concept index for current coverage and individual concept pages for definitions, assumptions and sources.
 
-Programming-semantics coverage includes [coroutines and cooperative execution](docs/COROUTINES.md), with explicit resume/yield lifecycles, waiting and scheduler handoff.
+Programming-semantics coverage includes [coroutines and cooperative execution](docs/COROUTINES.md), with explicit resume/yield lifecycles, waiting and scheduler handoff, and [compiler transformation obligations for LLVM and MLIR](docs/COMPILER_TRANSFORMS.md), including memory, numeric, control-flow, concurrency and runtime profiles. The [LLVM 21.1.8 pass inventory](docs/LLVM_PASS_COVERAGE.md) maps core IR pass registrations to these obligations.
 
 ## What each concept records
 

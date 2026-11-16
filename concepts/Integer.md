@@ -16,13 +16,16 @@ The unbounded integers with exact arithmetic and the usual order.
 
 - [Arbitrary Precision Integer](ArbitraryPrecisionInteger.md) — `requiresConcept`
 - [Checked Integer](CheckedInteger.md) — `requiresConcept`
+- [Target-indexed storage and ABI layout](DataLayout.md) — `requiresConcept`
 - [Euclidean lattice (discrete integer-span lattice)](EuclideanLattice.md) — `requiresConcept`
 - [Fixed-width signed integer](FixedWidthSignedInteger.md) — `relatedConcept`
 - [Fixed-width unsigned integer](FixedWidthUnsignedInteger.md) — `relatedConcept`
 - [Floating-point type](FloatingPointType.md) — `relatedConcept`
+- [Integer quasi-affine index map](IntegerAffineMap.md) — `requiresConcept`
 - [Natural Number](NaturalNumber.md) — `requiresConcept`
 - [RSA modular-exponentiation primitives (two-prime profile)](RSA.md) — `requiresConcept`
 - [Saturating Integer](SaturatingInteger.md) — `requiresConcept`
+- [Scoped induction recurrence and trip-count facts](ScalarRecurrence.md) — `requiresConcept`
 
 ## Mathematical formulation
 

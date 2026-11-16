@@ -2,7 +2,7 @@
 
 This Lake project gives every current catalog concept a named Lean interpretation, grouped by subject in `Catalog/`. It uses **Lean 4.35.0** and **Mathlib commit `56a005855ea17e0b0958f73ec801ae140b0a1679`** (release `v4.35.0`). `lake-manifest.json` locks transitive dependencies. Normal catalog retrieval and the viewer still require only Python.
 
-There are currently **226 concept bindings**: 173 carrier/interface models and 53 explicitly partial interpretations. There are **80 registered proof witnesses** for existing laws/theorems, including all 11 recorded binary-tree laws/theorems, 13 information-theory/coding claims, six matrix-decomposition identities and six descriptive-statistics laws. This does **not** mean every recorded operation or all catalog laws/theorems have been translated or proved. An alias to a library structure is a model binding, not a proof of all catalog claims. The [broad-core expansion](../docs/FOUNDATIONAL_DATA_MODELS.md) adds 35 carrier models and 24 individually mapped witnesses. Its remaining operation specifications and derived results are not blanket formalizations.
+There are currently **258 concept bindings**: 173 carrier/interface models and 85 explicitly partial interpretations. There are **80 registered proof witnesses** for existing laws/theorems, including all 11 recorded binary-tree laws/theorems, 13 information-theory/coding claims, six matrix-decomposition identities and six descriptive-statistics laws. This does **not** mean every recorded operation or all catalog laws/theorems have been translated or proved. An alias to a library structure is a model binding, not a proof of all catalog claims. The [broad-core expansion](../docs/FOUNDATIONAL_DATA_MODELS.md) adds 35 carrier models and 24 individually mapped witnesses. Its remaining operation specifications and derived results are not blanket formalizations.
 
 ## Build and verify
 
@@ -56,6 +56,8 @@ Concept records expose `mathematicalFormulation` (readable mathematics), `leanFo
 | `Catalog/Concurrency.lean` | Compatible-mode locks, non-reentrant mutex owners and a partial bakery-protocol state carrier |
 | `Catalog/Coroutines.lean` | Asymmetric coroutine lifecycles, finite resume outcomes and a fixed-pool cooperative scheduler with explicit waiting/wakeup; see [scope](../docs/COROUTINES.md) |
 | `Catalog/CoroutineProofs.lean` | Three registered witnesses: yield between resumes, reachable owner/waiting invariants, and a constructive infinite starvation execution; see [proof mappings](../docs/COROUTINES.md#sources-and-lean-evidence) |
+| `Catalog/LLVMTransforms.lean` | Partial LLVM interfaces for memory/provenance/layout, alias/MemorySSA, CFG/loop correspondence, numeric/vector semantics, atomics, calls/EH/convergence, representations, linkage, attributes and instrumentation; see [scope](../docs/COMPILER_TRANSFORMS.md) |
+| `Catalog/CompilerTransforms.lean` | Partial compiler interfaces for refinement, rewrites, SSA/dominance, effects/speculation, LLVM deferred UB, conversion/validation, abstract transfer, integer index maps, loop dependence and analysis preservation; see [scope](../docs/COMPILER_TRANSFORMS.md) |
 | `Catalog/Semantics.lean` | Hoare logic, invariants, termination, safety/liveness and history interfaces |
 | `Catalog/Logic.lean` | Propositional, first-order, modal and temporal syntax and satisfaction |
 | `Catalog/LogicSyntax.lean` | Countable signatures, named binders, guarded substitution and classical natural deduction; see [logic coverage](../docs/LOGIC.md) |
@@ -153,3 +155,5 @@ Other models also have declared instantiation conventions: semigroups are nonemp
 - `DiffieHellman`, `RSA`, `ECC`, `ECDH`: partial group/action or exponent interfaces; see [cryptography scope](../docs/CRYPTOGRAPHY.md). No new proof witnesses or security proofs.
 
 - `EuclideanLattice`, `QaryLattice`, `SVP`, `CVP`, `SIS`, `LWE`: partial geometric-lattice and relation models; see [lattice scope](../docs/GEOMETRIC_LATTICES.md). No new registered witnesses or hardness proofs.
+
+- Compiler transformation concepts have partial interfaces only; see [compiler scope](../docs/COMPILER_TRANSFORMS.md). No concrete LLVM/MLIR pass proofs or new registered witnesses.

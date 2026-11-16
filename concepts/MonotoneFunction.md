@@ -16,6 +16,7 @@ A function between ordered sets that preserves their order.
 
 ## Backlinks
 
+- [Sound abstract transfer and inductive dataflow facts](AbstractInterpretation.md) — `requiresConcept`
 - [Closure Operator](ClosureOperator.md) — `specializationOf`
 - [Galois Connection](GaloisConnection.md) — `requiresConcept`
 

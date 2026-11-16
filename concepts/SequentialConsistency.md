@@ -14,6 +14,7 @@ A completed well-formed concurrent history is sequentially consistent when a leg
 
 ## Backlinks
 
+- [Scoped atomic execution graph and memory ordering](AtomicMemoryModel.md) — `relatedConcept`
 - [Lamport bakery lock protocol](LamportBakery.md) — `relatedConcept`
 
 ## Mathematical formulation

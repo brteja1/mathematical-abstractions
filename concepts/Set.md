@@ -14,7 +14,10 @@ A collection of distinct elements, characterized by which elements belong to it.
 
 ## Backlinks
 
+- [Sound abstract transfer and inductive dataflow facts](AbstractInterpretation.md) — `requiresConcept`
+- [Observable behavior refinement](BehaviorRefinement.md) — `requiresConcept`
 - [Boolean algebra](BooleanAlgebra.md) — `relatedConcept`
+- [Conservative resource effect summary](EffectSummary.md) — `requiresConcept`
 - [Finite set collection](FiniteSet.md) — `requiresConcept`
 - [Finite set collection](FiniteSet.md) — `specializationOf`
 - [Formal language of finite words](FormalLanguage.md) — `requiresConcept`

@@ -20,6 +20,7 @@ A function from a finite row-index and column-index product to a specified field
 
 - [Euclidean lattice (discrete integer-span lattice)](EuclideanLattice.md) — `requiresConcept`
 - [Generator matrix of a linear block code (row convention)](GeneratorMatrix.md) — `requiresConcept`
+- [Integer quasi-affine index map](IntegerAffineMap.md) — `relatedConcept`
 - [Linear map](LinearMap.md) — `relatedConcept`
 - [Markov chain (finite-state, discrete-time, time-homogeneous)](MarkovChain.md) — `requiresConcept`
 - [Exact structured matrix decomposition witness](MatrixDecomposition.md) — `requiresConcept`

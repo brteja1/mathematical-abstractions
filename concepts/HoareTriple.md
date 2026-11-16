@@ -14,8 +14,10 @@ A partial-correctness contract: starting in a state satisfying P, every terminat
 
 ## Backlinks
 
+- [Scoped LLVM attribute, flag and metadata contract](LLVMAttributeContract.md) — `requiresConcept`
 - [Loop Invariant](LoopInvariant.md) — `requiresConcept`
 - [Relational method contract with write effects](MethodContract.md) — `requiresConcept`
+- [Defined terminating silent speculation](SpeculationSafety.md) — `relatedConcept`
 - [Weakest Precondition](WeakestPrecondition.md) — `requiresConcept`
 
 ## Mathematical formulation

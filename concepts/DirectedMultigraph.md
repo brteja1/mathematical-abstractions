@@ -18,6 +18,7 @@ Finite vertex and edge carriers with source and target functions; different edge
 
 - [Finite labelled property graph (single-valued profile)](PropertyGraph.md) — `requiresConcept`
 - [Finite labelled property graph (single-valued profile)](PropertyGraph.md) — `specializationOf`
+- [Typed static single assignment with scoped uses](SSAForm.md) — `relatedConcept`
 - [Finite real-weighted directed multigraph](WeightedDirectedGraph.md) — `requiresConcept`
 - [Finite real-weighted directed multigraph](WeightedDirectedGraph.md) — `specializationOf`
 

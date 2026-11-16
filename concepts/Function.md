@@ -16,6 +16,7 @@ A mapping assigning each element of a domain exactly one element of a codomain.
 
 ## Backlinks
 
+- [Analysis validity across IR mutation](AnalysisPreservation.md) — `requiresConcept`
 - [Finite ordered binary tree with node labels](BinaryTree.md) — `requiresConcept`
 - [Finite block code (Hamming profile)](BlockCode.md) — `requiresConcept`
 - [Deterministic finite automaton with total transition](DFA.md) — `requiresConcept`
@@ -25,6 +26,8 @@ A mapping assigning each element of a domain exactly one element of a codomain.
 - [Function type](FunctionType.md) — `requiresConcept`
 - [Functional dependency on a relational schema](FunctionalDependency.md) — `relatedConcept`
 - [Fuzzy set (unit-interval membership, min/max profile)](FuzzySet.md) — `requiresConcept`
+- [Integer quasi-affine index map](IntegerAffineMap.md) — `requiresConcept`
+- [Integer quasi-affine index map](IntegerAffineMap.md) — `specializationOf`
 - [Linear map](LinearMap.md) — `requiresConcept`
 - [Linear map](LinearMap.md) — `specializationOf`
 - [Finite rectangular matrix over a field](Matrix.md) — `requiresConcept`
@@ -38,6 +41,7 @@ A mapping assigning each element of a domain exactly one element of a codomain.
 - [Partial function](PartialFunction.md) — `requiresConcept`
 - [Pigeonhole Principle](PigeonholePrinciple.md) — `requiresConcept`
 - [Named relational schema with attribute domains](RelationalSchema.md) — `requiresConcept`
+- [Typed static single assignment with scoped uses](SSAForm.md) — `requiresConcept`
 - [Infinite discrete stream](Stream.md) — `requiresConcept`
 - [Uniquely decodable binary source code](UniquelyDecodableCode.md) — `requiresConcept`
 - [Unit type](UnitType.md) — `requiresConcept`

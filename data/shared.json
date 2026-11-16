@@ -1907,6 +1907,294 @@
       "path": "lean/Catalog/FuzzyLogic.lean",
       "accessedOn": "2026-11-15",
       "sourceRole": "Repository-local exact membership and truth-value models; separate from mathematical provenance."
+    },
+    {
+      "id": "urn:csabs:source/compiler-llvm",
+      "type": "Source",
+      "label": "LLVM Language Reference (LLVM 21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/llvm/docs/LangRef.rst",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/llvm/docs/LangRef.rst",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-specification"
+    },
+    {
+      "id": "urn:csabs:source/compiler-ub",
+      "type": "Source",
+      "label": "LLVM IR Undefined Behavior Manual (LLVM 21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/llvm/docs/UndefinedBehavior.rst",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/llvm/docs/UndefinedBehavior.rst",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-specification"
+    },
+    {
+      "id": "urn:csabs:source/compiler-mlir",
+      "type": "Source",
+      "label": "MLIR Language Reference (LLVM 21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/mlir/docs/LangRef.md",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/mlir/docs/LangRef.md",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-specification"
+    },
+    {
+      "id": "urn:csabs:source/compiler-patterns",
+      "type": "Source",
+      "label": "MLIR Pattern Rewriting (LLVM 21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/mlir/docs/PatternRewriter.md",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/mlir/docs/PatternRewriter.md",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-specification"
+    },
+    {
+      "id": "urn:csabs:source/compiler-effects",
+      "type": "Source",
+      "label": "MLIR Side Effects and Speculation rationale (LLVM 21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/mlir/docs/Rationale/SideEffectsAndSpeculation.md",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/mlir/docs/Rationale/SideEffectsAndSpeculation.md",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-specification"
+    },
+    {
+      "id": "urn:csabs:source/compiler-conversion",
+      "type": "Source",
+      "label": "MLIR Dialect Conversion (LLVM 21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/mlir/docs/DialectConversion.md",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/mlir/docs/DialectConversion.md",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-specification"
+    },
+    {
+      "id": "urn:csabs:source/compiler-dataflow",
+      "type": "Source",
+      "label": "MLIR Data Flow Analysis tutorial (LLVM 21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/mlir/docs/Tutorials/DataFlowAnalysis.md",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/mlir/docs/Tutorials/DataFlowAnalysis.md",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-specification"
+    },
+    {
+      "id": "urn:csabs:source/compiler-affine",
+      "type": "Source",
+      "label": "MLIR Affine dialect (LLVM 21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/mlir/docs/Dialects/Affine.md",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/mlir/docs/Dialects/Affine.md",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-specification"
+    },
+    {
+      "id": "urn:csabs:source/compiler-dependence",
+      "type": "Source",
+      "label": "MLIR Affine dependence analysis interface (LLVM 21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/mlir/include/mlir/Dialect/Affine/Analysis/AffineAnalysis.h",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/mlir/include/mlir/Dialect/Affine/Analysis/AffineAnalysis.h",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-specification"
+    },
+    {
+      "id": "urn:csabs:source/compiler-passes",
+      "type": "Source",
+      "label": "LLVM New Pass Manager (LLVM 21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/llvm/docs/NewPassManager.rst",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/llvm/docs/NewPassManager.rst",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-specification"
+    },
+    {
+      "id": "urn:csabs:source/compiler-alive",
+      "type": "Source",
+      "label": "Alive2 official README",
+      "url": "https://github.com/AliveToolkit/alive2/blob/master/README.md",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-tool-documentation"
+    },
+    {
+      "id": "urn:csabs:source/compiler-alive-paper-abstract",
+      "type": "Source",
+      "label": "Lopes et al., Alive2: Bounded Translation Validation for LLVM (author abstract)",
+      "url": "https://web.ist.utl.pt/nuno.lopes/pubs.php?id=alive2-pldi21",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-author-abstract",
+      "provenanceNote": "Consulted the author abstract, not the full paper. Supports boundedness and missed-bug limitation only."
+    },
+    {
+      "id": "urn:csabs:source/compiler-lean",
+      "type": "Source",
+      "label": "Catalog compiler transformation Lean interfaces",
+      "path": "lean/Catalog/CompilerTransforms.lean",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "local-formalization"
+    },
+    {
+      "id": "urn:csabs:category/compiler-transformations",
+      "type": "Category",
+      "label": "Compiler transformations",
+      "parentCategory": "urn:csabs:category/programming-semantics"
+    },
+    {
+      "id": "urn:csabs:source/compiler-alias",
+      "type": "Source",
+      "label": "LLVM Alias Analysis (21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/llvm/docs/AliasAnalysis.rst",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/llvm/docs/AliasAnalysis.rst",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-interface",
+      "sourceNote": "Only specifically cited sections support each claim; registry registrations and implementation introductions do not prove pass correctness."
+    },
+    {
+      "id": "urn:csabs:source/compiler-memoryssa",
+      "type": "Source",
+      "label": "LLVM MemorySSA (21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/llvm/docs/MemorySSA.rst",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/llvm/docs/MemorySSA.rst",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-interface",
+      "sourceNote": "Only specifically cited sections support each claim; registry registrations and implementation introductions do not prove pass correctness."
+    },
+    {
+      "id": "urn:csabs:source/compiler-loops",
+      "type": "Source",
+      "label": "LLVM Loop Terminology (21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/llvm/docs/LoopTerminology.rst",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/llvm/docs/LoopTerminology.rst",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-interface",
+      "sourceNote": "Only specifically cited sections support each claim; registry registrations and implementation introductions do not prove pass correctness."
+    },
+    {
+      "id": "urn:csabs:source/compiler-scev",
+      "type": "Source",
+      "label": "LLVM ScalarEvolution interfaces (21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/llvm/include/llvm/Analysis/ScalarEvolution.h",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/llvm/include/llvm/Analysis/ScalarEvolution.h",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-interface",
+      "sourceNote": "Only specifically cited sections support each claim; registry registrations and implementation introductions do not prove pass correctness."
+    },
+    {
+      "id": "urn:csabs:source/compiler-vectors",
+      "type": "Source",
+      "label": "LLVM Auto-Vectorization (21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/llvm/docs/Vectorizers.rst",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/llvm/docs/Vectorizers.rst",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-interface",
+      "sourceNote": "Only specifically cited sections support each claim; registry registrations and implementation introductions do not prove pass correctness."
+    },
+    {
+      "id": "urn:csabs:source/compiler-atomics",
+      "type": "Source",
+      "label": "LLVM Atomic Instructions and Concurrency Guide (21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/llvm/docs/Atomics.rst",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/llvm/docs/Atomics.rst",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-interface",
+      "sourceNote": "Only specifically cited sections support each claim; registry registrations and implementation introductions do not prove pass correctness."
+    },
+    {
+      "id": "urn:csabs:source/compiler-eh",
+      "type": "Source",
+      "label": "LLVM Exception Handling (21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/llvm/docs/ExceptionHandling.rst",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/llvm/docs/ExceptionHandling.rst",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-interface",
+      "sourceNote": "Only specifically cited sections support each claim; registry registrations and implementation introductions do not prove pass correctness."
+    },
+    {
+      "id": "urn:csabs:source/compiler-convergence",
+      "type": "Source",
+      "label": "LLVM Convergent Operation Semantics (21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/llvm/docs/ConvergentOperations.rst",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/llvm/docs/ConvergentOperations.rst",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-interface",
+      "sourceNote": "Only specifically cited sections support each claim; registry registrations and implementation introductions do not prove pass correctness."
+    },
+    {
+      "id": "urn:csabs:source/compiler-gep",
+      "type": "Source",
+      "label": "LLVM getelementptr FAQ (21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/llvm/docs/GetElementPtr.rst",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/llvm/docs/GetElementPtr.rst",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-interface",
+      "sourceNote": "Only specifically cited sections support each claim; registry registrations and implementation introductions do not prove pass correctness."
+    },
+    {
+      "id": "urn:csabs:source/compiler-pass-reference",
+      "type": "Source",
+      "label": "LLVM Pass Reference (21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/llvm/docs/Passes.rst",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/llvm/docs/Passes.rst",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-interface",
+      "sourceNote": "Only specifically cited sections support each claim; registry registrations and implementation introductions do not prove pass correctness."
+    },
+    {
+      "id": "urn:csabs:source/compiler-registry",
+      "type": "Source",
+      "label": "LLVM core textual pass registry (21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/llvm/lib/Passes/PassRegistry.def",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/llvm/lib/Passes/PassRegistry.def",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-interface",
+      "sourceNote": "Only specifically cited sections support each claim; registry registrations and implementation introductions do not prove pass correctness."
+    },
+    {
+      "id": "urn:csabs:source/compiler-asan",
+      "type": "Source",
+      "label": "LLVM AddressSanitizer instrumentation implementation (21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/llvm/lib/Transforms/Instrumentation/AddressSanitizer.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/llvm/lib/Transforms/Instrumentation/AddressSanitizer.cpp",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-interface",
+      "sourceNote": "Only specifically cited sections support each claim; registry registrations and implementation introductions do not prove pass correctness."
+    },
+    {
+      "id": "urn:csabs:source/compiler-instrprof",
+      "type": "Source",
+      "label": "LLVM instrumentation-profile lowering implementation (21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/llvm/lib/Transforms/Instrumentation/InstrProfiling.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/llvm/lib/Transforms/Instrumentation/InstrProfiling.cpp",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-interface",
+      "sourceNote": "Only specifically cited sections support each claim; registry registrations and implementation introductions do not prove pass correctness."
+    },
+    {
+      "id": "urn:csabs:source/compiler-statepoints",
+      "type": "Source",
+      "label": "LLVM GC Statepoints (21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/llvm/docs/Statepoints.rst",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/llvm/docs/Statepoints.rst",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-interface",
+      "sourceNote": "Only specifically cited sections support each claim; registry registrations and implementation introductions do not prove pass correctness."
+    },
+    {
+      "id": "urn:csabs:source/compiler-coroutines",
+      "type": "Source",
+      "label": "LLVM Coroutines (21.1.8)",
+      "path": "/linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8/llvm/docs/Coroutines.rst",
+      "url": "https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/llvm/docs/Coroutines.rst",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-versioned-interface",
+      "sourceNote": "Only specifically cited sections support each claim; registry registrations and implementation introductions do not prove pass correctness."
+    },
+    {
+      "id": "urn:csabs:source/compiler-llvm-lean",
+      "type": "Source",
+      "label": "Catalog LLVM transformation partial Lean models",
+      "path": "lean/Catalog/LLVMTransforms.lean",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "local-formalization"
+    },
+    {
+      "id": "urn:csabs:source/compiler-compcert-smallstep",
+      "type": "Source",
+      "label": "CompCert Smallstep: backward simulation and well-founded stuttering",
+      "url": "https://compcert.org/doc/html/compcert.common.Smallstep.html",
+      "accessedOn": "2026-11-16",
+      "sourceRole": "consulted-primary-formal-semantics",
+      "sourceNote": "Consulted star, bsim_properties and bsim_simulation definitions and alternate diagram. Used as a proof-interface reference, not as an LLVM semantics or a local Coq dependency."
     }
   ]
 }

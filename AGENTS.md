@@ -62,6 +62,10 @@ Before using a claim in Lean/Coq, map equality, carriers, assumptions and librar
 
 Keep imported stable IDs and context despite the broader repository name. `data/import_manifest.json` records original node hashes, context, and the initial provenance baseline; do not alter it to conceal import loss or bypass provenance. `python3 scripts/audit_import.py` reports differences. Importing citation metadata does not mean sources were consulted again.
 
+## Compiler transformation profiles
+
+For LLVM/MLIR transform work, see docs/COMPILER_TRANSFORMS.md and the generated docs/LLVM_PASS_COVERAGE.md. The versioned mapping in data/llvm/pass_obligations_21.1.8.json covers literal core IR pass registrations, not machine-code passes or all parameter expansions. Run `python3 scripts/llvm_transform_coverage.py --check --llvm-root PATH` against the reference checkout to detect source drift; `make check-llvm-transforms` checks the recorded mapping offline. Keep obligation coverage, partial Lean interfaces, runtime/target contracts and concrete pass proofs distinct. Update the manifest deliberately rather than silently assigning new registrations a generic fallback.
+
 ## AI test-design skill
 
 All four AI skills share `ai/skills/mathematical-tests/references/formulations.md` for readable/Lean formulations, source separation, partial interfaces and witness evidence. The bounded helper searches readable formulations; `sources ID --kind formulation` follows local Lean sources, while default citation queries keep their existing mathematical-provenance meaning.

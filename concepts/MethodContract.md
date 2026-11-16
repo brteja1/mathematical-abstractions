@@ -17,6 +17,8 @@ A receiver-and-argument method specification separating a precondition, normal/e
 ## Backlinks
 
 - [Behavioral subtyping with explicit history constraints](BehavioralSubtyping.md) — `requiresConcept`
+- [Call-boundary behavior and effect contract](CallEffectContract.md) — `requiresConcept`
+- [Conservative resource effect summary](EffectSummary.md) — `relatedConcept`
 - [Exclusive finite-heap separation predicates](HeapSeparation.md) — `relatedConcept`
 - [Visible-state object invariant protocol](ObjectInvariant.md) — `relatedConcept`
 

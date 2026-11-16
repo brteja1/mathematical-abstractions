@@ -15,6 +15,7 @@ The tagged disjoint union of A and B: each value is exactly a left-tagged A valu
 ## Backlinks
 
 - [Checked Integer](CheckedInteger.md) — `requiresConcept`
+- [Normal, exceptional and nonlocal control outcomes](ExceptionalControlFlow.md) — `requiresConcept`
 - [Option Type](OptionType.md) — `requiresConcept`
 - [Option Type](OptionType.md) — `specializationOf`
 - [Finite RDF 1.1 graph](RDFGraph.md) — `requiresConcept`

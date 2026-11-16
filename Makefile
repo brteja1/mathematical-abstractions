@@ -7,12 +7,14 @@ build: coverage-report
 markdown:
 	$(PYTHON) scripts/markdown_graph.py
 	$(PYTHON) scripts/build_visualization.py
+	$(PYTHON) scripts/llvm_transform_coverage.py --write
 visualization: markdown
 coverage-report: ontology
 	$(PYTHON) scripts/coverage_report.py
 check: deps-ontology
 	$(PYTHON) scripts/markdown_graph.py --check
 	$(PYTHON) scripts/catalog.py check
+	$(PYTHON) scripts/llvm_transform_coverage.py --check
 	$(PYTHON) scripts/ontology.py check
 	$(PYTHON) scripts/coverage_report.py --check
 test: check
@@ -50,6 +52,10 @@ update-lean-bindings:
 test-ai:
 	$(PYTHON) -B -c "import sys; sys.path.insert(0, 'scripts'); from ontology import backend; backend()"
 	$(PYTHON) -B -m unittest discover -s tests -p 'test_test_context.py' -v
+
+.PHONY: check-llvm-transforms
+check-llvm-transforms:
+	$(PYTHON) scripts/llvm_transform_coverage.py --check
 
 check-lean:
 	$(PYTHON) scripts/lean.py check

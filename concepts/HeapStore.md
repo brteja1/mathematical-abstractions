@@ -14,6 +14,8 @@ A finite map from nonnull addresses to values, with partial allocated-cell acces
 
 ## Backlinks
 
+- [Byte-addressed memory with typed access obligations](ByteMemory.md) — `relatedConcept`
+- [Conservative resource effect summary](EffectSummary.md) — `relatedConcept`
 - [Exclusive finite-heap separation predicates](HeapSeparation.md) — `requiresConcept`
 - [Sequential object heap with reference identity](ObjectHeap.md) — `requiresConcept`
 - [Sequential object heap with reference identity](ObjectHeap.md) — `specializationOf`

@@ -14,9 +14,16 @@ A relation from A to B is a set of ordered pairs with first component in A and s
 
 ## Backlinks
 
+- [Analysis validity across IR mutation](AnalysisPreservation.md) — `requiresConcept`
+- [Scoped atomic execution graph and memory ordering](AtomicMemoryModel.md) — `requiresConcept`
+- [Observable behavior refinement](BehaviorRefinement.md) — `requiresConcept`
+- [Observable behavior refinement](BehaviorRefinement.md) — `specializationOf`
+- [Control-sensitive communicating thread instances](ConvergentExecution.md) — `requiresConcept`
 - [Finite database relation under set semantics](DatabaseRelation.md) — `relatedConcept`
 - [Definition/instantiation lookup for dependent calls](DependentNameLookup.md) — `requiresConcept`
 - [Directed Graph](DirectedGraph.md) — `requiresConcept`
+- [Reachability-qualified control-flow dominance](Dominance.md) — `requiresConcept`
+- [Reachability-qualified control-flow dominance](Dominance.md) — `specializationOf`
 - [Equivalence relation](EquivalenceRelation.md) — `relatedConcept`
 - [Hoare Triple](HoareTriple.md) — `requiresConcept`
 - [Java generic inference constraints and resolution obligations](JavaTypeInference.md) — `requiresConcept`
@@ -24,17 +31,23 @@ A relation from A to B is a set of ordered pairs with first component in A and s
 - [Action-labelled transition system with initial states](LabelledTransitionSystem.md) — `requiresConcept`
 - [Linearizability](Linearizability.md) — `requiresConcept`
 - [Lock with compatible access modes](Lock.md) — `requiresConcept`
+- [Memory dependence and legal loop rescheduling](LoopDependence.md) — `requiresConcept`
+- [Memory dependence and legal loop rescheduling](LoopDependence.md) — `specializationOf`
 - [Relational method contract with write effects](MethodContract.md) — `requiresConcept`
 - [Classical propositional modal logic K](ModalLogic.md) — `requiresConcept`
 - [Finite set-valued multimap](Multimap.md) — `requiresConcept`
 - [Contextual parametric declaration instantiation](ParametricInstantiation.md) — `requiresConcept`
 - [Partial function](PartialFunction.md) — `requiresConcept`
 - [Partial function](PartialFunction.md) — `specializationOf`
+- [Allocation-associated pointer provenance and lifetime](PointerProvenance.md) — `requiresConcept`
 - [Preorder](Preorder.md) — `requiresConcept`
 - [Preorder](Preorder.md) — `specializationOf`
 - [Sequential Consistency](SequentialConsistency.md) — `requiresConcept`
 - [Set](Set.md) — `relatedConcept`
 - [Simulation](Simulation.md) — `specializationOf`
+- [Observable state representation relation](StateRepresentation.md) — `requiresConcept`
+- [Observable state representation relation](StateRepresentation.md) — `specializationOf`
+- [Environment-indexed symbol resolution and reachability](SymbolLinkage.md) — `requiresConcept`
 - [Transition System](TransitionSystem.md) — `requiresConcept`
 - [Well Founded Relation](WellFoundedRelation.md) — `requiresConcept`
 - [Well Founded Relation](WellFoundedRelation.md) — `specializationOf`

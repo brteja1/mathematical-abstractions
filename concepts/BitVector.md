@@ -15,7 +15,10 @@ A sequence of exactly w bits, with bitwise operations and optional signed or uns
 ## Backlinks
 
 - [Keyed block cipher](BlockCipher.md) — `requiresConcept`
+- [Target-indexed storage and ABI layout](DataLayout.md) — `requiresConcept`
 - [GHASH polynomial accumulator](GHASH.md) — `requiresConcept`
+- [LLVM fixed-width integer operations and flags](LLVMIntegerSemantics.md) — `requiresConcept`
+- [LLVM scalar deferred undefinedness and freeze](LLVMPoisonSemantics.md) — `requiresConcept`
 
 ## Mathematical formulation
 

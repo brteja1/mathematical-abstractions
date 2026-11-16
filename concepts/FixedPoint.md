@@ -12,6 +12,10 @@ An input left unchanged by a self-map; existence is an additional property of th
 
 **Prerequisites:** [Total function](Function.md)
 
+## Backlinks
+
+- [Sound abstract transfer and inductive dataflow facts](AbstractInterpretation.md) — `relatedConcept`
+
 ## Mathematical formulation
 
 For f:A→A, Fix(f)={x∈A | f(x)=x}. The definition does not assert existence or uniqueness of a fixed point.

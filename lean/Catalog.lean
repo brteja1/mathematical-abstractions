@@ -38,3 +38,7 @@ public import Catalog.MatrixDecompositions
 public import Catalog.DescriptiveStatistics
 
 public import Catalog.FuzzyLogic
+
+public import Catalog.CompilerTransforms
+
+public import Catalog.LLVMTransforms

@@ -22,6 +22,8 @@ A finite numeric format with rounded operations and format-dependent exceptional
 - [IEEE 754 binary32](Binary32.md) — `specializationOf`
 - [IEEE 754 binary64](Binary64.md) — `requiresConcept`
 - [IEEE 754 binary64](Binary64.md) — `specializationOf`
+- [LLVM floating-point environment and rewrite permissions](LLVMFloatingPointSemantics.md) — `requiresConcept`
+- [LLVM scalar deferred undefinedness and freeze](LLVMPoisonSemantics.md) — `relatedConcept`
 
 ## Mathematical formulation
 

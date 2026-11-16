@@ -16,10 +16,13 @@ A relation between transition systems matching each step of the first with a ste
 
 ## Backlinks
 
+- [Observable behavior refinement](BehaviorRefinement.md) — `relatedConcept`
 - [Behavioral subtyping with explicit history constraints](BehavioralSubtyping.md) — `relatedConcept`
 - [Bisimulation](Bisimulation.md) — `requiresConcept`
 - [Bisimulation](Bisimulation.md) — `specializationOf`
+- [CFG refinement with path correspondence and progress](ControlFlowRefinement.md) — `requiresConcept`
 - [Action-labelled transition system with initial states](LabelledTransitionSystem.md) — `relatedConcept`
+- [Observable state representation relation](StateRepresentation.md) — `relatedConcept`
 
 ## Mathematical formulation
 

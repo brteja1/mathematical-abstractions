@@ -14,6 +14,10 @@ A partially ordered set in which every subset, including the empty subset, has a
 
 **Specializes:** [Lattice](Lattice.md)
 
+## Backlinks
+
+- [Sound abstract transfer and inductive dataflow facts](AbstractInterpretation.md) — `relatedConcept`
+
 ## Mathematical formulation
 
 A complete lattice has sup(S) and inf(S) for every S⊆A, with sup(S)≤x ⇔ ∀s∈S,s≤x and x≤inf(S) ⇔ ∀s∈S,x≤s. In particular sup(∅)=⊥ and inf(∅)=⊤.

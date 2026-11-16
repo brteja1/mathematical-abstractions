@@ -3429,6 +3429,294 @@
       "mapping": "Extends TNorm with residuum and explicit adjunction on bounded real degrees. Adjunction restricts combine to residuated t-norms; no independent arbitrary implication is admitted.",
       "limitations": "Partial interface: adjunction models the left-continuous profile, but its equivalence to the displayed sequential continuity condition, derived negation, min/max and designated-truth semantics are not separately formalized. No formula syntax, proof system or registered witnesses.",
       "catalogHash": "236eed441421fdb07efa872281b85af73c154d2d051393181637bd3bfba6c476"
+    },
+    "urn:csabs:concept/BehaviorRefinement": {
+      "kind": "model",
+      "symbol": "Catalog.Transforms.BehaviorRefinement",
+      "module": "Catalog.CompilerTransforms",
+      "scope": "partial",
+      "mapping": "Relation on P given by pointwise inclusion of supplied P → I → Set O; source first.",
+      "limitations": "No executable IR semantics, memory model, contextual theorem or termination adequacy proof. The inclusion definition is exact only for the supplied behavior interpretation.",
+      "catalogHash": "81f3537f265ccb6153f1d7ad48760a20ba1c62a23cec08103d0468d6aea01260"
+    },
+    "urn:csabs:concept/GuardedRewrite": {
+      "kind": "model",
+      "symbol": "Catalog.Transforms.GuardedRewrite",
+      "module": "Catalog.CompilerTransforms",
+      "scope": "partial",
+      "mapping": "Raw guard/rewrite/wellFormed predicates on fragments; contextual semantics must be supplied separately.",
+      "limitations": "Lean carrier does not enforce contextual soundness or match transactions. No matching algorithm, capture avoidance, termination or confluence proof.",
+      "catalogHash": "ca09707143547ae35ceeb6546e172b831c5507e24c0c1f5e16b7a78ea7b4ca33"
+    },
+    "urn:csabs:concept/Dominance": {
+      "kind": "model",
+      "symbol": "Catalog.Transforms.Dominance",
+      "module": "Catalog.CompilerTransforms",
+      "scope": "partial",
+      "mapping": "Relation on vertices using a supplied finite-path oracle; endpoints included and existence required.",
+      "limitations": "Path oracle adequacy to the CFG is a client obligation; no dominator algorithm, instruction-order model, postdominance or hierarchical-region implementation.",
+      "catalogHash": "bc97eddf8df398db9493acac8e6782def5e5c2d770ce5babfa1fa70bb4d2d0ad"
+    },
+    "urn:csabs:concept/SSAForm": {
+      "kind": "model",
+      "symbol": "Catalog.Transforms.SSAForm",
+      "module": "Catalog.CompilerTransforms",
+      "scope": "partial",
+      "mapping": "Definition function and operand/type/availability functions with explicit typed-use and availability structure laws.",
+      "limitations": "No parser, CFG path construction, edge-argument semantics or hierarchical visibility implementation. Structural validity does not prove a value replacement semantically sound.",
+      "catalogHash": "19e3088b454d5f42adbaa8e7d39b8ce13d00c4e2ec62eb910aa537ca6abd049a"
+    },
+    "urn:csabs:concept/EffectSummary": {
+      "kind": "model",
+      "symbol": "Catalog.Transforms.EffectSummary",
+      "module": "Catalog.CompilerTransforms",
+      "scope": "partial",
+      "mapping": "Supplied actual and summary sets over a resource/event carrier with an inclusion law.",
+      "limitations": "Lean omits event stages, alias algorithm and conflict calculus. Disjoint summaries alone do not prove arbitrary concurrent commutation or speculation.",
+      "catalogHash": "d5fc2d4b055bbb659712c986d55266d2d0e0f915b908a9332eec6d416cf19250"
+    },
+    "urn:csabs:concept/SpeculationSafety": {
+      "kind": "model",
+      "symbol": "Catalog.Transforms.SpeculationSafety",
+      "module": "Catalog.CompilerTransforms",
+      "scope": "partial",
+      "mapping": "Predicate on supplied newly-executed states and defined/terminates/silent predicates.",
+      "limitations": "Does not implement MLIR speculatability queries or prove code motion; reachability, operand availability and denotational adequacy remain external.",
+      "catalogHash": "c0efcf75550a3608deaab134e90cea47e6833cc691197d343bee660d2319ee6e"
+    },
+    "urn:csabs:concept/LLVMPoisonSemantics": {
+      "kind": "model",
+      "symbol": "Catalog.Transforms.LLVMPoisonSemantics",
+      "module": "Catalog.CompilerTransforms",
+      "scope": "partial",
+      "mapping": "Concrete/undef/poison tagged scalar carrier; freezeResult relation is supplied in the same module.",
+      "limitations": "No immediate-UB evaluator, instruction semantics, branch implementation, choice store, vectors, pointers or LLVM memory model. The raw carrier alone is not a complete poison semantics.",
+      "catalogHash": "b9071bd331e3d705af760072ccfe9983fa6dcf0d197b4ee8b146eb6e41fe5cfb"
+    },
+    "urn:csabs:concept/DialectConversion": {
+      "kind": "model",
+      "symbol": "Catalog.Transforms.DialectConversion",
+      "module": "Catalog.CompilerTransforms",
+      "scope": "partial",
+      "mapping": "Raw convert/legality/typeConvert/represents relations, with one-to-many type lists.",
+      "limitations": "No conversion driver, materialization implementation, ABI model or proof connecting legality to semantics; full/partial/analysis policies remain client predicates.",
+      "catalogHash": "7c48641ed33ea0216a5283ccfca830274592d689d027214054fd64d03560043b"
+    },
+    "urn:csabs:concept/TranslationValidation": {
+      "kind": "model",
+      "symbol": "Catalog.Transforms.TranslationValidation",
+      "module": "Catalog.CompilerTransforms",
+      "scope": "partial",
+      "mapping": "Three-way verdict and acceptedSound law for a supplied obligation; bounds are part of that obligation.",
+      "limitations": "No SMT encoder, solver integration or validation of a concrete pass. Counterexample replay and scope metadata are external. A supplied soundness hypothesis is not proof that Alive2 implements this interface.",
+      "catalogHash": "955ef729dc7133918901a2526aec5e17f278a59cd2f271b6ac37df3c075c7758"
+    },
+    "urn:csabs:concept/AbstractInterpretation": {
+      "kind": "model",
+      "symbol": "Catalog.Transforms.AbstractInterpretation",
+      "module": "Catalog.CompilerTransforms",
+      "scope": "partial",
+      "mapping": "Concretization, concrete step and abstract transfer with a one-step soundness field.",
+      "limitations": "Partial sound-transfer interface: no abstract order, join, fixpoint solver, widening or reachability induction implementation. Does not certify an LLVM/MLIR analysis implementation.",
+      "catalogHash": "99a5fc530e4a47eed382320c980ff534271b24664cc725e5b9de06e4d5b1185c"
+    },
+    "urn:csabs:concept/IntegerAffineMap": {
+      "kind": "model",
+      "symbol": "Catalog.Transforms.IntegerAffineMap",
+      "module": "Catalog.CompilerTransforms",
+      "scope": "partial",
+      "mapping": "Finite tuple of positive-divisor expression syntax over Fin(dimensions+symbols); function interpretation needs an evaluator.",
+      "limitations": "Lean encodes syntax and divisor positivity only; evaluation/composition, symbol validity, Presburger solving and index-to-machine arithmetic correspondence are not implemented.",
+      "catalogHash": "a4ed6c9b8461e34fcdb03b595c4a52aa87b8b0fdd31ee7a392452f2236d11af8"
+    },
+    "urn:csabs:concept/LoopDependence": {
+      "kind": "model",
+      "symbol": "Catalog.Transforms.LoopDependence",
+      "module": "Catalog.CompilerTransforms",
+      "scope": "partial",
+      "mapping": "Access-event carrier with location, write, active and source-order functions; preservesDependence supplies timestamp-order obligation.",
+      "limitations": "No affine dependence solver, byte-range alias implementation or theorem proving full loop transformation correctness. The memory-order condition alone omits scalar/control effects.",
+      "catalogHash": "e05c0049bd4eabf22b0248121d126ff0dd68f67ccd897c94e9c171c218decd4b"
+    },
+    "urn:csabs:concept/AnalysisPreservation": {
+      "kind": "model",
+      "symbol": "Catalog.Transforms.AnalysisPreservation",
+      "module": "Catalog.CompilerTransforms",
+      "scope": "partial",
+      "mapping": "IR-indexed validity relation, transform and update functions with an explicit preservation law.",
+      "limitations": "No LLVM pass-manager/cache implementation or automatic invalidation proof. The preservation field is a client hypothesis, not verification of a pass declaration.",
+      "catalogHash": "da7865dc4f6b1b5a6a2b967b9d28795800e87b9f7b14466edb60ae56e0badad9"
+    },
+    "urn:csabs:concept/DataLayout": {
+      "kind": "model",
+      "symbol": "Catalog.LLVM.DataLayout",
+      "module": "Catalog.LLVMTransforms",
+      "scope": "partial",
+      "mapping": "Sized-type predicate and store/allocation/alignment/pointer-width query functions; littleEndian is explicit.",
+      "limitations": "No full layout parser, field-offset evaluator, scalable-size algebra, GEP flag checker or ABI implementation. The store/allocation constraint is an editorial obligation, not enforced by this raw Lean interface.",
+      "catalogHash": "ac3458b199868199ab1dfbc1ac82f37228e62d0b8f4ff6aa5fb12427a43bbd8d"
+    },
+    "urn:csabs:concept/PointerProvenance": {
+      "kind": "model",
+      "symbol": "Catalog.LLVM.PointerProvenance",
+      "module": "Catalog.LLVMTransforms",
+      "scope": "partial",
+      "mapping": "Pointer-to-object association sets and basedOn relation with an explicit association-preservation law.",
+      "limitations": "No complete LLVM pointer model, capture analysis, allocation/lifetime transition system or non-integral external-state semantics; offset/address equality are not modeled in Lean.",
+      "catalogHash": "f0754c443d61751745252544f58f1353f3bf01ad885f9ad7bc2b9181a33ca1fb"
+    },
+    "urn:csabs:concept/ByteMemory": {
+      "kind": "model",
+      "symbol": "Catalog.LLVM.ByteMemory",
+      "module": "Catalog.LLVMTransforms",
+      "scope": "partial",
+      "mapping": "Allocation/lifetime sets, cell contents and list-address reads, with readLaw identifying reads with mapped contents.",
+      "limitations": "Lean exposes only the read interface; typed encoding, store/frame, pointer external state, poison bytes, allocation transitions, atomics and volatile semantics remain obligations.",
+      "catalogHash": "5bdf6af9b1a61d81aa868b32c743f51bece81062bdefefeab487a4ad49b4c2ee"
+    },
+    "urn:csabs:concept/AliasAnalysis": {
+      "kind": "model",
+      "symbol": "Catalog.LLVM.AliasAnalysis",
+      "module": "Catalog.LLVMTransforms",
+      "scope": "partial",
+      "mapping": "Four-way alias verdict and a supplied possible-conflict relation with a NoAlias soundness field.",
+      "limitations": "No BasicAA/TBAA/scoped-noalias implementation, size geometry, positive-result laws or Mod/Ref evaluator in Lean; query context must be encoded by the client.",
+      "catalogHash": "3377f51aa654264f02e8e1df8137749df91e43d41fc73525141fe7d243f08acc"
+    },
+    "urn:csabs:concept/MemorySSA": {
+      "kind": "model",
+      "symbol": "Catalog.LLVM.MemorySSA",
+      "module": "Catalog.LLVMTransforms",
+      "scope": "partial",
+      "mapping": "Access-kind tag and actual/candidate clobber relations with conservative inclusion.",
+      "limitations": "No graph construction, dominance/PHI verifier, walker, updater, alias integration or concrete loaded-value equality proof.",
+      "catalogHash": "a272bec28964045f4841ddf78739908384bfc99f4116a68e0508e9aa254e66a4"
+    },
+    "urn:csabs:concept/ControlFlowRefinement": {
+      "kind": "model",
+      "symbol": "Catalog.LLVM.ControlFlowRefinement",
+      "module": "Catalog.LLVMTransforms",
+      "scope": "partial",
+      "mapping": "Related source/target states and target-step matching on source-safe states by reflexive-transitive source steps.",
+      "limitations": "Lean contains only the safe-source step diagram; no initial/final/trace correspondence, target-progress or well-founded stuttering rank is encoded, so it proves no full CFG refinement theorem.",
+      "catalogHash": "0469a63dab98ce7110cb703801d41e63ca192e26fdf8bb7ccbf1f3be4588afcd"
+    },
+    "urn:csabs:concept/LoopIterationMapping": {
+      "kind": "model",
+      "symbol": "Catalog.LLVM.LoopIterationMapping",
+      "module": "Catalog.LLVMTransforms",
+      "scope": "partial",
+      "mapping": "Active source/target sets, original-event map and explicit active/injective/covering laws.",
+      "limitations": "No schedule, loop exit, scalar-value, recurrence, runtime-dispatch or dependence proof. Bijection is not presented as a complete characterization of loop correctness.",
+      "catalogHash": "602787f72098b71075871c0faa7e8aaed6253c746c3de8faf0f915f717ed84c2"
+    },
+    "urn:csabs:concept/ScalarRecurrence": {
+      "kind": "model",
+      "symbol": "Catalog.LLVM.ScalarRecurrence",
+      "module": "Catalog.LLVMTransforms",
+      "scope": "partial",
+      "mapping": "Exact Int start/stride record and recurrenceValue definition; no fixed-width lifting is implicit.",
+      "limitations": "No SCEV DAG, higher-order recurrence, exit solver, range/nowrap analysis, count sentinel adapter or correspondence to LLVM instructions.",
+      "catalogHash": "460d822c675769a2c0d7c120915db0d8edbfd56c690b4a618792d4150b2e118a"
+    },
+    "urn:csabs:concept/LLVMIntegerSemantics": {
+      "kind": "model",
+      "symbol": "Catalog.LLVM.LLVMIntegerSemantics",
+      "module": "Catalog.LLVMTransforms",
+      "scope": "partial",
+      "mapping": "Positive width and client-supplied opcode evaluation to sets of tagged concrete/undef/poison or immediate-UB outcomes.",
+      "limitations": "Lean supplies the typed outcome interface only; it does not implement opcodes, flags, casts, comparisons, undef choices or their arithmetic laws.",
+      "catalogHash": "4cead12e59e447a52ad1908b49ca2fc29b8024b42c49b8566723e6ccabd35ea9"
+    },
+    "urn:csabs:concept/LLVMFloatingPointSemantics": {
+      "kind": "model",
+      "symbol": "Catalog.LLVM.LLVMFloatingPointSemantics",
+      "module": "Catalog.LLVMTransforms",
+      "scope": "partial",
+      "mapping": "Abstract value/environment carriers, NaN/infinity predicates, outcome relation and a permittedRewrite relation.",
+      "limitations": "No implemented IEEE arithmetic, bit encodings, NaN payload propagation, constrained-FP engine or complete fast-math semantics; value/exception/permission predicates are client supplied.",
+      "catalogHash": "6d21c0d61100ad3283a5690ab3eb992c230007775058125c8acbeb7b3cad3576"
+    },
+    "urn:csabs:concept/PredicatedVectorSemantics": {
+      "kind": "model",
+      "symbol": "Catalog.LLVM.PredicatedVectorSemantics",
+      "module": "Catalog.LLVMTransforms",
+      "scope": "partial",
+      "mapping": "Runtime width parameter, bounded EVL, Boolean mask and explicit inactive-result sets; activeLane gives the bounded mask condition.",
+      "limitations": "No scalable vector runtime, poison-mask semantics, lane evaluator, shuffle/reduction implementation or memory-access proof. Boolean masks represent only the well-defined-mask subprofile.",
+      "catalogHash": "64fb0bc17927e62153c7b0a7ac94a72aebed92470e3968e8cb379b1389640c6a"
+    },
+    "urn:csabs:concept/AtomicMemoryModel": {
+      "kind": "model",
+      "symbol": "Catalog.LLVM.AtomicMemoryModel",
+      "module": "Catalog.LLVMTransforms",
+      "scope": "partial",
+      "mapping": "Raw execution-edge relations and allowed proposition; atomicHappensBefore computes the stated transitive closure.",
+      "limitations": "No complete LLVM/C++ weak-memory axiomatization, read-value constraints, release sequences, scopes, fences, cmpxchg or race/UB model. Raw edges alone do not certify atomic transformations.",
+      "catalogHash": "cfd8e8ae04e48754e0be31dad1c35980b48965bc8afc32208f666e449f54235d"
+    },
+    "urn:csabs:concept/CallEffectContract": {
+      "kind": "model",
+      "symbol": "Catalog.LLVM.CallEffectContract",
+      "module": "Catalog.LLVMTransforms",
+      "scope": "partial",
+      "mapping": "Precondition, full outcome relation and allowed-effect relation with effectSound.",
+      "limitations": "No evaluator, ABI, stack, determinism, termination, exception, bundle or external-library model. Outcome types must explicitly include all relevant behaviors.",
+      "catalogHash": "359bf5e04bcbd128231aeb46ba13dd95a2817a9b1bfd7c4086334916b4504f8b"
+    },
+    "urn:csabs:concept/ExceptionalControlFlow": {
+      "kind": "model",
+      "symbol": "Catalog.LLVM.ExceptionalControlFlow",
+      "module": "Catalog.LLVMTransforms",
+      "scope": "partial",
+      "mapping": "Tagged returned/unwound/diverged/immediateUB outcome carrier.",
+      "limitations": "No personality evaluator, landingpad/funclet machine, cleanup stack, setjmp/longjmp or deoptimization implementation; only the outcome distinction is encoded.",
+      "catalogHash": "d274ed9045846dcae8a66ffb9c42c1e897490214ffa6dc2c7a6f2e9860ac5289"
+    },
+    "urn:csabs:concept/ConvergentExecution": {
+      "kind": "model",
+      "symbol": "Catalog.LLVM.ConvergentExecution",
+      "module": "Catalog.LLVMTransforms",
+      "scope": "partial",
+      "mapping": "Instance-indexed participant sets and allowedResult/sameCommunication predicates.",
+      "limitations": "No dynamic instance/token semantics, thread-group construction, uniformity analysis or proof of LLVM convergence restrictions; raw client predicates are partial interfaces.",
+      "catalogHash": "53f04118c8547c3ec47a2729faa5b92140a5eae846093c3e1b591823924a8d5b"
+    },
+    "urn:csabs:concept/StateRepresentation": {
+      "kind": "model",
+      "symbol": "Catalog.LLVM.StateRepresentation",
+      "module": "Catalog.LLVMTransforms",
+      "scope": "partial",
+      "mapping": "Cross-carrier relation and source/target observation functions with observationAgreement.",
+      "limitations": "No representation invariant implementation, memory promotion/SROA algorithm, operation simulation, GC relocation or coroutine frame proof. Observation agreement alone supplies no full refinement theorem.",
+      "catalogHash": "426846f561258ba3d04bb3ac10550ecfa267abd1f6143bd07c1140dadd0eaf29"
+    },
+    "urn:csabs:concept/SymbolLinkage": {
+      "kind": "model",
+      "symbol": "Catalog.LLVM.SymbolLinkage",
+      "module": "Catalog.LLVMTransforms",
+      "scope": "partial",
+      "mapping": "Environment-admissibility predicate, set-valued resolution and exposed-symbol relation.",
+      "limitations": "No linker, COMDAT/ODR/interposition algorithm, root closure or whole-program callgraph proof. The environment must model platform ABI and runtime uses explicitly.",
+      "catalogHash": "5382f5a5741185aca3a60ad5f456a001d0432324ae6adf5debf3b9a329d9c0aa"
+    },
+    "urn:csabs:concept/LLVMAttributeContract": {
+      "kind": "model",
+      "symbol": "Catalog.LLVM.LLVMAttributeContract",
+      "module": "Catalog.LLVMTransforms",
+      "scope": "partial",
+      "mapping": "Admitted-input and guarantee predicates with a justified entailment field.",
+      "limitations": "No parser/classification of actual LLVM attributes, flags or metadata, no inference engine, and no ABI/bundle implementation. Client entailment is a hypothesis, not an Attributor proof.",
+      "catalogHash": "e63c3357866a4d973f84bec446c4054e98b7d08eda0e4ca069e801e5c7e7f59b"
+    },
+    "urn:csabs:concept/RuntimeInstrumentation": {
+      "kind": "model",
+      "symbol": "Catalog.LLVM.RuntimeInstrumentation",
+      "module": "Catalog.LLVMTransforms",
+      "scope": "partial",
+      "mapping": "Per-event finite-list erasure and accepted-execution predicate; eraseInstrumentation is list flatMap.",
+      "limitations": "No sanitizer/profiler/GC implementation, invalid-input detection proof, helper-runtime safety proof or infinite-trace projection. Semantic transparency requires extra runtime assumptions.",
+      "catalogHash": "72a7f7e436a99305504e71c0bbbf62ea4a736936eed204941d6b3f31b1e1e653"
     }
   }
 }

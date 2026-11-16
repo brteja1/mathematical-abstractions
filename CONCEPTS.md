@@ -250,6 +250,39 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Transition System](concepts/TransitionSystem.md)
   - [Deterministic one-tape Turing machine](concepts/TuringMachine.md)
   - [Weakest Precondition](concepts/WeakestPrecondition.md)
+  - **Compiler transformations**
+    - [Sound abstract transfer and inductive dataflow facts](concepts/AbstractInterpretation.md)
+    - [Conservative alias and Mod/Ref query contract](concepts/AliasAnalysis.md)
+    - [Analysis validity across IR mutation](concepts/AnalysisPreservation.md)
+    - [Scoped atomic execution graph and memory ordering](concepts/AtomicMemoryModel.md)
+    - [Observable behavior refinement](concepts/BehaviorRefinement.md)
+    - [Byte-addressed memory with typed access obligations](concepts/ByteMemory.md)
+    - [Call-boundary behavior and effect contract](concepts/CallEffectContract.md)
+    - [CFG refinement with path correspondence and progress](concepts/ControlFlowRefinement.md)
+    - [Control-sensitive communicating thread instances](concepts/ConvergentExecution.md)
+    - [Target-indexed storage and ABI layout](concepts/DataLayout.md)
+    - [Typed IR legalization with representation relation](concepts/DialectConversion.md)
+    - [Reachability-qualified control-flow dominance](concepts/Dominance.md)
+    - [Conservative resource effect summary](concepts/EffectSummary.md)
+    - [Normal, exceptional and nonlocal control outcomes](concepts/ExceptionalControlFlow.md)
+    - [Guarded contextual program rewrite](concepts/GuardedRewrite.md)
+    - [Integer quasi-affine index map](concepts/IntegerAffineMap.md)
+    - [Scoped LLVM attribute, flag and metadata contract](concepts/LLVMAttributeContract.md)
+    - [LLVM floating-point environment and rewrite permissions](concepts/LLVMFloatingPointSemantics.md)
+    - [LLVM fixed-width integer operations and flags](concepts/LLVMIntegerSemantics.md)
+    - [LLVM scalar deferred undefinedness and freeze](concepts/LLVMPoisonSemantics.md)
+    - [Memory dependence and legal loop rescheduling](concepts/LoopDependence.md)
+    - [Guarded loop event-domain correspondence](concepts/LoopIterationMapping.md)
+    - [Conservative SSA indexing of memory versions](concepts/MemorySSA.md)
+    - [Allocation-associated pointer provenance and lifetime](concepts/PointerProvenance.md)
+    - [Lane-indexed vector execution and inactive-lane policy](concepts/PredicatedVectorSemantics.md)
+    - [Instrumented trace projection and runtime contract](concepts/RuntimeInstrumentation.md)
+    - [Typed static single assignment with scoped uses](concepts/SSAForm.md)
+    - [Scoped induction recurrence and trip-count facts](concepts/ScalarRecurrence.md)
+    - [Defined terminating silent speculation](concepts/SpeculationSafety.md)
+    - [Observable state representation relation](concepts/StateRepresentation.md)
+    - [Environment-indexed symbol resolution and reachability](concepts/SymbolLinkage.md)
+    - [Per-instance transformation validation](concepts/TranslationValidation.md)
   - **Coroutines and cooperative execution**
     - [Asymmetric coroutine with explicit resume/yield lifecycle](concepts/AsymmetricCoroutine.md)
     - [Single-thread cooperative scheduler with explicit waiting](concepts/CooperativeScheduler.md)
@@ -334,13 +367,18 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Nonce-based authenticated encryption with associated data](concepts/AEAD.md) | Cryptography → Symmetric cryptography |
 | [Advanced Encryption Standard (AES)](concepts/AES.md) | Cryptography → Symmetric cryptography |
 | [AES-GCM (96-bit nonce, 128-bit tag profile)](concepts/AESGCM.md) | Cryptography → Symmetric cryptography |
+| [Sound abstract transfer and inductive dataflow facts](concepts/AbstractInterpretation.md) | Programming-language semantics → Compiler transformations |
+| [Conservative alias and Mod/Ref query contract](concepts/AliasAnalysis.md) | Programming-language semantics → Compiler transformations |
+| [Analysis validity across IR mutation](concepts/AnalysisPreservation.md) | Programming-language semantics → Compiler transformations |
 | [Arbitrary Precision Integer](concepts/ArbitraryPrecisionInteger.md) | Numeric computation |
 | [Arithmetic mean of a finite real sample](concepts/ArithmeticMean.md) | Statistics → Descriptive statistics |
 | [Fixed-length array](concepts/Array.md) | Data structures → Sequential collections |
 | [Asymmetric coroutine with explicit resume/yield lifecycle](concepts/AsymmetricCoroutine.md) | Programming-language semantics → Coroutines and cooperative execution, Concurrency and distributed systems → Behavioral models |
+| [Scoped atomic execution graph and memory ordering](concepts/AtomicMemoryModel.md) | Programming-language semantics → Compiler transformations |
 | [B-tree (balanced multiway search tree)](concepts/BTree.md) | Data structures → Tree structures |
 | [Finite database relation under bag semantics](concepts/BagRelation.md) | Relational data modelling |
 | [Bayesian network (finite discrete variables)](concepts/BayesianNetwork.md) | Probability and stochastic models, Graph theory |
+| [Observable behavior refinement](concepts/BehaviorRefinement.md) | Programming-language semantics → Compiler transformations |
 | [Behavioral subtyping with explicit history constraints](concepts/BehavioralSubtyping.md) | Programming-language semantics → Object-oriented semantics |
 | [IEEE 754 binary128](concepts/Binary128.md) | Numeric computation |
 | [IEEE 754 binary16](concepts/Binary16.md) | Numeric computation |
@@ -356,7 +394,9 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Finite block code (Hamming profile)](concepts/BlockCode.md) | Information theory → Coding theory → Channel coding |
 | [Boolean algebra](concepts/BooleanAlgebra.md) | Logic and proof, Algebra |
 | [Two-valued Boolean type](concepts/BooleanType.md) | Types and semantics |
+| [Byte-addressed memory with typed access obligations](concepts/ByteMemory.md) | Programming-language semantics → Compiler transformations |
 | [Closest vector problem (Euclidean search relation)](concepts/CVP.md) | Cryptography → Public-key cryptography → Lattice-based cryptography |
+| [Call-boundary behavior and effect contract](concepts/CallEffectContract.md) | Programming-language semantics → Compiler transformations |
 | [Candidate key relative to functional dependencies](concepts/CandidateKey.md) | Relational data modelling |
 | [Cartesian product](concepts/CartesianProduct.md) | Set theory and foundations |
 | [Channel capacity (finite DMC, vanishing error)](concepts/ChannelCapacity.md) | Information theory |
@@ -371,14 +411,18 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Conditional entropy (finite discrete profile)](concepts/ConditionalEntropy.md) | Information theory |
 | [Conditional probability given a positive-probability event](concepts/ConditionalProbability.md) | Probability and stochastic models |
 | [Context-free grammar of finite words](concepts/ContextFreeGrammar.md) | Languages and computation |
+| [CFG refinement with path correspondence and progress](concepts/ControlFlowRefinement.md) | Programming-language semantics → Compiler transformations |
+| [Control-sensitive communicating thread instances](concepts/ConvergentExecution.md) | Programming-language semantics → Compiler transformations |
 | [Single-thread cooperative scheduler with explicit waiting](concepts/CooperativeScheduler.md) | Programming-language semantics → Coroutines and cooperative execution, Concurrency and distributed systems → Behavioral models |
 | [Directed acyclic graph](concepts/DAG.md) | Graph theory |
 | [Deterministic finite automaton with total transition](concepts/DFA.md) | Languages and computation, Behavior and transition systems |
+| [Target-indexed storage and ABI layout](concepts/DataLayout.md) | Programming-language semantics → Compiler transformations |
 | [Finite database relation under set semantics](concepts/DatabaseRelation.md) | Relational data modelling, Data structures → Sets and mappings |
 | [Dependent function (Pi type)](concepts/DependentFunction.md) | Types and semantics |
 | [Definition/instantiation lookup for dependent calls](concepts/DependentNameLookup.md) | Programming-language semantics → Generic programming → Template metaprogramming |
 | [Dependent pair (Sigma type)](concepts/DependentPair.md) | Types and semantics |
 | [Deque](concepts/Deque.md) | Data structures → Sequential collections |
+| [Typed IR legalization with representation relation](concepts/DialectConversion.md) | Programming-language semantics → Compiler transformations |
 | [Diffie–Hellman key exchange (prime-order cyclic-group core)](concepts/DiffieHellman.md) | Cryptography → Public-key cryptography |
 | [Directed Graph](concepts/DirectedGraph.md) | Graph theory |
 | [Finite directed multigraph with edge identities](concepts/DirectedMultigraph.md) | Graph theory |
@@ -386,14 +430,17 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Union Find (disjoint-set union with representatives)](concepts/DisjointSet.md) | Data structures → Connectivity structures |
 | [Finite single-letter distortion measure](concepts/DistortionMeasure.md) | Information theory → Coding theory → Source coding |
 | [Finite JSON document value (interoperable profile)](concepts/DocumentValue.md) | Relational data modelling |
+| [Reachability-qualified control-flow dominance](concepts/Dominance.md) | Programming-language semantics → Compiler transformations |
 | [Euclidean dual of a finite-field linear code](concepts/DualCode.md) | Information theory → Coding theory → Channel coding |
 | [Elliptic curve cryptography group (prime-field short-Weierstrass profile)](concepts/ECC.md) | Cryptography → Public-key cryptography |
 | [Elliptic curve Diffie–Hellman (validated full-point profile)](concepts/ECDH.md) | Cryptography → Public-key cryptography |
+| [Conservative resource effect summary](concepts/EffectSummary.md) | Programming-language semantics → Compiler transformations |
 | [Eigendecomposition by a complete eigenbasis (diagonalization)](concepts/EigenDecomposition.md) | Algebra → Linear and multilinear algebra → Matrix decompositions |
 | [Empty type](concepts/EmptyType.md) | Types and semantics |
 | [Finite typed entity-relationship instance](concepts/EntityRelationshipModel.md) | Relational data modelling |
 | [Equivalence relation](concepts/EquivalenceRelation.md) | Set theory and foundations |
 | [Euclidean lattice (discrete integer-span lattice)](concepts/EuclideanLattice.md) | Geometry and manifolds, Algebra → Linear and multilinear algebra, Cryptography → Public-key cryptography → Lattice-based cryptography |
+| [Normal, exceptional and nonlocal control outcomes](concepts/ExceptionalControlFlow.md) | Programming-language semantics → Compiler transformations |
 | [Field](concepts/Field.md) | Algebra, Numeric computation |
 | [Finitely supported probability distribution](concepts/FiniteDistribution.md) | Probability and stochastic models |
 | [Finite field (Galois field)](concepts/FiniteField.md) | Algebra, Numeric computation |
@@ -420,6 +467,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Finite kinded generic parameter signature](concepts/GenericSignature.md) | Programming-language semantics → Generic programming |
 | [Graph](concepts/Graph.md) | Graph theory |
 | [Group](concepts/Group.md) | Algebra |
+| [Guarded contextual program rewrite](concepts/GuardedRewrite.md) | Programming-language semantics → Compiler transformations |
 | [Hamming space (finite fixed-length words)](concepts/HammingSpace.md) | Information theory → Coding theory → Channel coding |
 | [Happens Before](concepts/HappensBefore.md) | Concurrency and distributed systems → Ordering and consistency |
 | [Exclusive finite-heap separation predicates](concepts/HeapSeparation.md) | Programming-language semantics → Object-oriented semantics |
@@ -428,12 +476,17 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Finite simple undirected hypergraph](concepts/Hypergraph.md) | Graph theory |
 | [Idempotent semiring (additively idempotent, unital)](concepts/IdempotentSemiring.md) | Algebra, Order and fixed points |
 | [Mathematical integers](concepts/Integer.md) | Numeric computation, Algebra |
+| [Integer quasi-affine index map](concepts/IntegerAffineMap.md) | Programming-language semantics → Compiler transformations |
 | [Java bounded parameterized types and nominal subtyping](concepts/JavaParameterizedType.md) | Programming-language semantics → Generic programming → Java generics |
 | [Java type erasure and selected reifiability rules](concepts/JavaTypeErasure.md) | Programming-language semantics → Generic programming → Java generics |
 | [Java generic inference constraints and resolution obligations](concepts/JavaTypeInference.md) | Programming-language semantics → Generic programming → Java generics |
 | [Java wildcard capture with fresh bounded variables](concepts/JavaWildcardCapture.md) | Programming-language semantics → Generic programming → Java generics |
 | [Join semilattice](concepts/JoinSemilattice.md) | Order and fixed points |
 | [Finite serial Kripke structure for model checking](concepts/KripkeStructure.md) | Behavior and transition systems, Logic and proof |
+| [Scoped LLVM attribute, flag and metadata contract](concepts/LLVMAttributeContract.md) | Programming-language semantics → Compiler transformations |
+| [LLVM floating-point environment and rewrite permissions](concepts/LLVMFloatingPointSemantics.md) | Programming-language semantics → Compiler transformations |
+| [LLVM fixed-width integer operations and flags](concepts/LLVMIntegerSemantics.md) | Programming-language semantics → Compiler transformations |
+| [LLVM scalar deferred undefinedness and freeze](concepts/LLVMPoisonSemantics.md) | Programming-language semantics → Compiler transformations |
 | [Row-pivoted LU decomposition (square PA=LU profile)](concepts/LUDecomposition.md) | Algebra → Linear and multilinear algebra → Matrix decompositions |
 | [Learning with errors (finite modular distribution profile)](concepts/LWE.md) | Cryptography → Public-key cryptography → Lattice-based cryptography |
 | [Action-labelled transition system with initial states](concepts/LabelledTransitionSystem.md) | Behavior and transition systems, Programming-language semantics, Concurrency and distributed systems → Behavioral models |
@@ -445,7 +498,9 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Linearizability](concepts/Linearizability.md) | Concurrency and distributed systems → Ordering and consistency |
 | [Liveness Property](concepts/LivenessProperty.md) | Concurrency and distributed systems → Correctness properties |
 | [Lock with compatible access modes](concepts/Lock.md) | Concurrency and distributed systems → Synchronization → Locks |
+| [Memory dependence and legal loop rescheduling](concepts/LoopDependence.md) | Programming-language semantics → Compiler transformations |
 | [Loop Invariant](concepts/LoopInvariant.md) | Programming-language semantics |
+| [Guarded loop event-domain correspondence](concepts/LoopIterationMapping.md) | Programming-language semantics → Compiler transformations |
 | [Topological manifold (fixed dimension, without boundary)](concepts/Manifold.md) | Geometry and manifolds, Topology |
 | [Map](concepts/Map.md) | Data structures → Sets and mappings |
 | [Markov chain (finite-state, discrete-time, time-homogeneous)](concepts/MarkovChain.md) | Probability and stochastic models, Algebra → Linear and multilinear algebra |
@@ -455,6 +510,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Measurable space (sigma-algebra on a carrier)](concepts/MeasurableSpace.md) | Measure theory |
 | [Measure space (nonnegative countably additive measure)](concepts/MeasureSpace.md) | Measure theory |
 | [Numeric sample median (midpoint convention)](concepts/Median.md) | Statistics → Descriptive statistics |
+| [Conservative SSA indexing of memory versions](concepts/MemorySSA.md) | Programming-language semantics → Compiler transformations |
 | [Relational method contract with write effects](concepts/MethodContract.md) | Programming-language semantics → Object-oriented semantics |
 | [Min-plus semiring (tropical semiring, min convention)](concepts/MinPlusSemiring.md) | Algebra, Order and fixed points |
 | [Classical propositional modal logic K](concepts/ModalLogic.md) | Logic and proof, Behavior and transition systems |
@@ -479,8 +535,10 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Partial Order](concepts/PartialOrder.md) | Order and fixed points |
 | [Partition of a set](concepts/Partition.md) | Set theory and foundations |
 | [Pigeonhole Principle](concepts/PigeonholePrinciple.md) | Counting and induction |
+| [Allocation-associated pointer provenance and lifetime](concepts/PointerProvenance.md) | Programming-language semantics → Compiler transformations |
 | [Power set](concepts/PowerSet.md) | Set theory and foundations |
 | [Predicate Logic](concepts/PredicateLogic.md) | Logic and proof |
+| [Lane-indexed vector execution and inactive-lane policy](concepts/PredicatedVectorSemantics.md) | Programming-language semantics → Compiler transformations |
 | [Prefix-free binary source code](concepts/PrefixFreeCode.md) | Information theory → Coding theory → Source coding |
 | [Preorder](concepts/Preorder.md) | Order and fixed points |
 | [Priority Queue](concepts/PriorityQueue.md) | Data structures → Priority collections |
@@ -509,11 +567,14 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Unital ring (convention stated)](concepts/Ring.md) | Algebra |
 | [Finite rooted undirected tree](concepts/RootedTree.md) | Graph theory |
 | [Finite ordered rose tree](concepts/RoseTree.md) | Data structures → Tree structures |
+| [Instrumented trace projection and runtime contract](concepts/RuntimeInstrumentation.md) | Programming-language semantics → Compiler transformations |
 | [Short integer solution problem (Euclidean norm profile)](concepts/SIS.md) | Cryptography → Public-key cryptography → Lattice-based cryptography |
+| [Typed static single assignment with scoped uses](concepts/SSAForm.md) | Programming-language semantics → Compiler transformations |
 | [Full singular value decomposition (rectangular real or complex SVD)](concepts/SVD.md) | Algebra → Linear and multilinear algebra → Matrix decompositions |
 | [Shortest vector problem (Euclidean search relation)](concepts/SVP.md) | Cryptography → Public-key cryptography → Lattice-based cryptography |
 | [Safety Property](concepts/SafetyProperty.md) | Concurrency and distributed systems → Correctness properties |
 | [Saturating Integer](concepts/SaturatingInteger.md) | Numeric computation |
+| [Scoped induction recurrence and trip-count facts](concepts/ScalarRecurrence.md) | Programming-language semantics → Compiler transformations |
 | [Semigroup](concepts/Semigroup.md) | Algebra |
 | [Semiring](concepts/Semiring.md) | Algebra |
 | [Finite sequence (List datatype)](concepts/Sequence.md) | Data structures → Sequential collections |
@@ -523,13 +584,16 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Simulation](concepts/Simulation.md) | Programming-language semantics, Behavior and transition systems |
 | [Smooth manifold (C∞, without boundary)](concepts/SmoothManifold.md) | Geometry and manifolds, Topology |
 | [Finitely supported vector](concepts/SparseVector.md) | Algebra → Linear and multilinear algebra |
+| [Defined terminating silent speculation](concepts/SpeculationSafety.md) | Programming-language semantics → Compiler transformations |
 | [Stack abstract data type](concepts/Stack.md) | Data structures → Sequential collections |
 | [State-based CRDT replication algebra](concepts/StateBasedCRDT.md) | Concurrency and distributed systems → Replication |
+| [Observable state representation relation](concepts/StateRepresentation.md) | Programming-language semantics → Compiler transformations |
 | [Finite stochastic channel](concepts/StochasticChannel.md) | Information theory |
 | [Infinite discrete stream](concepts/Stream.md) | Data structures → Sequential collections |
 | [Structural Induction](concepts/StructuralInduction.md) | Counting and induction |
 | [Predicate-restricted subtype](concepts/Subtype.md) | Types and semantics |
 | [Sum Type](concepts/SumType.md) | Types and semantics |
+| [Environment-indexed symbol resolution and reachability](concepts/SymbolLinkage.md) | Programming-language semantics → Compiler transformations |
 | [Syndrome map of a linear block code](concepts/Syndrome.md) | Information theory → Coding theory → Channel coding |
 | [Triangular conorm (t-conorm)](concepts/TConorm.md) | Logic and proof → Fuzzy logic |
 | [Triangular norm (t-norm)](concepts/TNorm.md) | Logic and proof → Fuzzy logic |
@@ -546,6 +610,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Total Order](concepts/TotalOrder.md) | Order and fixed points |
 | [Strong finite partial-trace equivalence](concepts/TraceEquivalence.md) | Behavior and transition systems, Concurrency and distributed systems → Behavioral models |
 | [Transition System](concepts/TransitionSystem.md) | Programming-language semantics, Behavior and transition systems |
+| [Per-instance transformation validation](concepts/TranslationValidation.md) | Programming-language semantics → Compiler transformations |
 | [Tree](concepts/Tree.md) | Graph theory |
 | [Finite prefix dictionary](concepts/Trie.md) | Data structures → Tree structures, Data structures → Sets and mappings |
 | [Deterministic one-tape Turing machine](concepts/TuringMachine.md) | Languages and computation, Programming-language semantics |

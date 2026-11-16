@@ -15,6 +15,7 @@ An integer residue class modulo an explicit integer modulus n≥2.
 ## Backlinks
 
 - [Finite field (Galois field)](FiniteField.md) — `relatedConcept`
+- [Integer quasi-affine index map](IntegerAffineMap.md) — `relatedConcept`
 - [Learning with errors (finite modular distribution profile)](LWE.md) — `requiresConcept`
 - [q-ary kernel lattice](QaryLattice.md) — `requiresConcept`
 - [RSA modular-exponentiation primitives (two-prime profile)](RSA.md) — `requiresConcept`

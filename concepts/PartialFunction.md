@@ -21,8 +21,10 @@ A function defined on a specified subset of an ambient input set, with no value 
 - [Asymmetric coroutine with explicit resume/yield lifecycle](AsymmetricCoroutine.md) — `requiresConcept`
 - [Single-inheritance class table and dynamic dispatch](ClassTable.md) — `requiresConcept`
 - [Checked signed-integer constant-evaluation fragment](CompileTimeEvaluation.md) — `requiresConcept`
+- [Typed IR legalization with representation relation](DialectConversion.md) — `relatedConcept`
 - [Total function](Function.md) — `relatedConcept`
 - [Total function](Function.md) — `specializationOf`
+- [Guarded contextual program rewrite](GuardedRewrite.md) — `requiresConcept`
 - [Java type erasure and selected reifiability rules](JavaTypeErasure.md) — `requiresConcept`
 - [Topological manifold (fixed dimension, without boundary)](Manifold.md) — `requiresConcept`
 - [Map](Map.md) — `requiresConcept`
