@@ -15,7 +15,7 @@ A collection of distinct elements, characterized by which elements belong to it.
 ## Backlinks
 
 - [Sound abstract transfer and inductive dataflow facts](AbstractInterpretation.md) — `requiresConcept`
-- [Observable behavior refinement](BehaviorRefinement.md) — `requiresConcept`
+- [Observable behavior refinement (ObservationalRefinement)](BehaviorRefinement.md) — `requiresConcept`
 - [Boolean algebra](BooleanAlgebra.md) — `relatedConcept`
 - [Conservative resource effect summary](EffectSummary.md) — `requiresConcept`
 - [Finite set collection](FiniteSet.md) — `requiresConcept`
@@ -24,6 +24,7 @@ A collection of distinct elements, characterized by which elements belong to it.
 - [Formal language of finite words](FormalLanguage.md) — `specializationOf`
 - [Fuzzy set (unit-interval membership, min/max profile)](FuzzySet.md) — `relatedConcept`
 - [Graph](Graph.md) — `requiresConcept`
+- [Integer interval abstract domain (empty and unbounded intervals)](IntervalDomain.md) — `requiresConcept`
 - [Measurable space (sigma-algebra on a carrier)](MeasurableSpace.md) — `requiresConcept`
 - [Multiset](Multiset.md) — `requiresConcept`
 - [Pigeonhole Principle](PigeonholePrinciple.md) — `requiresConcept`

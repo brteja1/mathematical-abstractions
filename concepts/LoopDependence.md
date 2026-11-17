@@ -14,7 +14,7 @@ A relation on dynamic access events with equal modeled locations, at least one w
 
 **Specializes:** [Binary relation](Relation.md)
 
-**Related concepts:** [Observable behavior refinement](BehaviorRefinement.md), [Directed Graph](DirectedGraph.md), [Guarded loop event-domain correspondence](LoopIterationMapping.md), [Scoped induction recurrence and trip-count facts](ScalarRecurrence.md), [Conservative alias and Mod/Ref query contract](AliasAnalysis.md), [Lane-indexed vector execution and inactive-lane policy](PredicatedVectorSemantics.md)
+**Related concepts:** [Observable behavior refinement (ObservationalRefinement)](BehaviorRefinement.md), [Directed Graph](DirectedGraph.md), [Guarded loop event-domain correspondence](LoopIterationMapping.md), [Scoped induction recurrence and trip-count facts](ScalarRecurrence.md), [Conservative alias and Mod/Ref query contract](AliasAnalysis.md), [Lane-indexed vector execution and inactive-lane policy](PredicatedVectorSemantics.md)
 
 ## Backlinks
 

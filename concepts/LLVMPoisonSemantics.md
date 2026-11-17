@@ -10,13 +10,13 @@ A versioned scalar value profile distinguishing concrete values, per-use undef c
 
 **Kind:** Numeric data type
 
-**Prerequisites:** [Fixed-width bit vector](BitVector.md), [Observable behavior refinement](BehaviorRefinement.md)
+**Prerequisites:** [Fixed-width bit vector](BitVector.md), [Observable behavior refinement (ObservationalRefinement)](BehaviorRefinement.md)
 
 **Related concepts:** [Floating-point type](FloatingPointType.md), [Typed static single assignment with scoped uses](SSAForm.md), [Defined terminating silent speculation](SpeculationSafety.md), [LLVM fixed-width integer operations and flags](LLVMIntegerSemantics.md), [LLVM floating-point environment and rewrite permissions](LLVMFloatingPointSemantics.md), [Lane-indexed vector execution and inactive-lane policy](PredicatedVectorSemantics.md), [Allocation-associated pointer provenance and lifetime](PointerProvenance.md)
 
 ## Backlinks
 
-- [Observable behavior refinement](BehaviorRefinement.md) — `relatedConcept`
+- [Observable behavior refinement (ObservationalRefinement)](BehaviorRefinement.md) — `relatedConcept`
 - [LLVM floating-point environment and rewrite permissions](LLVMFloatingPointSemantics.md) — `requiresConcept`
 - [LLVM fixed-width integer operations and flags](LLVMIntegerSemantics.md) — `requiresConcept`
 - [Allocation-associated pointer provenance and lifetime](PointerProvenance.md) — `relatedConcept`

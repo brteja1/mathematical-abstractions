@@ -10,7 +10,7 @@ An instance checker for a concrete source/target pair against a stated refinemen
 
 **Kind:** semantic-model
 
-**Prerequisites:** [Observable behavior refinement](BehaviorRefinement.md)
+**Prerequisites:** [Observable behavior refinement (ObservationalRefinement)](BehaviorRefinement.md)
 
 **Related concepts:** [Typed IR legalization with representation relation](DialectConversion.md), [Guarded contextual program rewrite](GuardedRewrite.md)
 

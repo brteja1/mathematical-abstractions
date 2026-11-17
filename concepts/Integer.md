@@ -22,6 +22,7 @@ The unbounded integers with exact arithmetic and the usual order.
 - [Fixed-width unsigned integer](FixedWidthUnsignedInteger.md) — `relatedConcept`
 - [Floating-point type](FloatingPointType.md) — `relatedConcept`
 - [Integer quasi-affine index map](IntegerAffineMap.md) — `requiresConcept`
+- [Integer interval abstract domain (empty and unbounded intervals)](IntervalDomain.md) — `requiresConcept`
 - [Natural Number](NaturalNumber.md) — `requiresConcept`
 - [RSA modular-exponentiation primitives (two-prime profile)](RSA.md) — `requiresConcept`
 - [Saturating Integer](SaturatingInteger.md) — `requiresConcept`

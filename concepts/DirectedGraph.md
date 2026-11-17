@@ -14,6 +14,8 @@ A graph whose edges are ordered vertex pairs; loops are allowed unless excluded 
 
 ## Backlinks
 
+- [Control-flow graph (single entry, single exit)](ControlFlowGraph.md) — `requiresConcept`
+- [Control-flow graph (single entry, single exit)](ControlFlowGraph.md) — `specializationOf`
 - [Directed acyclic graph](DAG.md) — `requiresConcept`
 - [Directed acyclic graph](DAG.md) — `specializationOf`
 - [Finite directed multigraph with edge identities](DirectedMultigraph.md) — `relatedConcept`

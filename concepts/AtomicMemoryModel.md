@@ -12,7 +12,7 @@ An execution-graph interface retaining program order, reads-from, per-location m
 
 **Prerequisites:** [Happens Before](HappensBefore.md), [Binary relation](Relation.md)
 
-**Related concepts:** [Sequential Consistency](SequentialConsistency.md), [Byte-addressed memory with typed access obligations](ByteMemory.md), [Observable behavior refinement](BehaviorRefinement.md)
+**Related concepts:** [Sequential Consistency](SequentialConsistency.md), [Byte-addressed memory with typed access obligations](ByteMemory.md), [Observable behavior refinement (ObservationalRefinement)](BehaviorRefinement.md)
 
 ## Backlinks
 

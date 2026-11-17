@@ -14,9 +14,12 @@ A finite nonempty simple undirected connected acyclic graph with a distinguished
 
 **Specializes:** [Tree](Tree.md)
 
+**Related concepts:** [Finite single-parent rooted forest](SingleParentForest.md)
+
 ## Backlinks
 
 - [Finite ordered rose tree](RoseTree.md) — `relatedConcept`
+- [Finite single-parent rooted forest](SingleParentForest.md) — `relatedConcept`
 
 ## Mathematical formulation
 
@@ -292,7 +295,9 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "requiresConcept": [
       "urn:csabs:concept/Tree"
     ],
-    "relatedConcept": [],
+    "relatedConcept": [
+      "urn:csabs:concept/SingleParentForest"
+    ],
     "hasOperation": [
       "urn:csabs:operation/RootedTree-root",
       "urn:csabs:operation/RootedTree-parent",

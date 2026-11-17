@@ -16,8 +16,8 @@ A relation from A to B is a set of ordered pairs with first component in A and s
 
 - [Analysis validity across IR mutation](AnalysisPreservation.md) — `requiresConcept`
 - [Scoped atomic execution graph and memory ordering](AtomicMemoryModel.md) — `requiresConcept`
-- [Observable behavior refinement](BehaviorRefinement.md) — `requiresConcept`
-- [Observable behavior refinement](BehaviorRefinement.md) — `specializationOf`
+- [Observable behavior refinement (ObservationalRefinement)](BehaviorRefinement.md) — `requiresConcept`
+- [Observable behavior refinement (ObservationalRefinement)](BehaviorRefinement.md) — `specializationOf`
 - [Control-sensitive communicating thread instances](ConvergentExecution.md) — `requiresConcept`
 - [Finite database relation under set semantics](DatabaseRelation.md) — `relatedConcept`
 - [Definition/instantiation lookup for dependent calls](DependentNameLookup.md) — `requiresConcept`
@@ -42,6 +42,8 @@ A relation from A to B is a set of ordered pairs with first component in A and s
 - [Allocation-associated pointer provenance and lifetime](PointerProvenance.md) — `requiresConcept`
 - [Preorder](Preorder.md) — `requiresConcept`
 - [Preorder](Preorder.md) — `specializationOf`
+- [Abstract rewrite system](RewriteSystem.md) — `requiresConcept`
+- [Abstract rewrite system](RewriteSystem.md) — `specializationOf`
 - [Sequential Consistency](SequentialConsistency.md) — `requiresConcept`
 - [Set](Set.md) — `relatedConcept`
 - [Simulation](Simulation.md) — `specializationOf`

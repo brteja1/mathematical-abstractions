@@ -12,7 +12,7 @@ A finite rooted acyclic nominal class hierarchy with finite local method declara
 
 **Prerequisites:** [Map](Map.md), [Partial function](PartialFunction.md)
 
-**Related concepts:** [Sequential object heap with reference identity](ObjectHeap.md), [Partial Order](PartialOrder.md), [Behavioral subtyping with explicit history constraints](BehavioralSubtyping.md)
+**Related concepts:** [Sequential object heap with reference identity](ObjectHeap.md), [Partial Order](PartialOrder.md), [Behavioral subtyping with explicit history constraints](BehavioralSubtyping.md), [Finite single-parent rooted forest](SingleParentForest.md)
 
 ## Backlinks
 
@@ -20,6 +20,7 @@ A finite rooted acyclic nominal class hierarchy with finite local method declara
 - [Definition/instantiation lookup for dependent calls](DependentNameLookup.md) — `relatedConcept`
 - [Java type erasure and selected reifiability rules](JavaTypeErasure.md) — `relatedConcept`
 - [Sequential object heap with reference identity](ObjectHeap.md) — `relatedConcept`
+- [Finite single-parent rooted forest](SingleParentForest.md) — `relatedConcept`
 
 ## Mathematical formulation
 
@@ -363,7 +364,8 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "relatedConcept": [
       "urn:csabs:concept/ObjectHeap",
       "urn:csabs:concept/PartialOrder",
-      "urn:csabs:concept/BehavioralSubtyping"
+      "urn:csabs:concept/BehavioralSubtyping",
+      "urn:csabs:concept/SingleParentForest"
     ],
     "hasOperation": [
       "urn:csabs:operation/ClassTable-ancestors",

@@ -14,11 +14,12 @@ A node d dominates a reachable node n when every finite entry-to-n path contains
 
 **Specializes:** [Binary relation](Relation.md)
 
-**Related concepts:** [Typed static single assignment with scoped uses](SSAForm.md)
+**Related concepts:** [Typed static single assignment with scoped uses](SSAForm.md), [Control-flow graph (single entry, single exit)](ControlFlowGraph.md)
 
 ## Backlinks
 
 - [Analysis validity across IR mutation](AnalysisPreservation.md) — `relatedConcept`
+- [Control-flow graph (single entry, single exit)](ControlFlowGraph.md) — `relatedConcept`
 - [CFG refinement with path correspondence and progress](ControlFlowRefinement.md) — `relatedConcept`
 - [Conservative SSA indexing of memory versions](MemorySSA.md) — `relatedConcept`
 - [Typed static single assignment with scoped uses](SSAForm.md) — `requiresConcept`
@@ -212,7 +213,8 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/Relation"
     ],
     "relatedConcept": [
-      "urn:csabs:concept/SSAForm"
+      "urn:csabs:concept/SSAForm",
+      "urn:csabs:concept/ControlFlowGraph"
     ],
     "hasOperation": [
       "urn:csabs:operation/Dominance-dominates",

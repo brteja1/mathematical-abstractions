@@ -10,7 +10,7 @@ A contract relating an instrumented/lowered program to source behavior by projec
 
 **Kind:** semantic-model
 
-**Prerequisites:** [Observable behavior refinement](BehaviorRefinement.md), [Observable state representation relation](StateRepresentation.md), [Call-boundary behavior and effect contract](CallEffectContract.md)
+**Prerequisites:** [Observable behavior refinement (ObservationalRefinement)](BehaviorRefinement.md), [Observable state representation relation](StateRepresentation.md), [Call-boundary behavior and effect contract](CallEffectContract.md)
 
 **Related concepts:** [Normal, exceptional and nonlocal control outcomes](ExceptionalControlFlow.md), [Scoped atomic execution graph and memory ordering](AtomicMemoryModel.md)
 

@@ -12,7 +12,7 @@ A module interpretation parameterized by admissible link/runtime environments, r
 
 **Prerequisites:** [Binary relation](Relation.md), [Call-boundary behavior and effect contract](CallEffectContract.md)
 
-**Related concepts:** [Observable state representation relation](StateRepresentation.md), [Observable behavior refinement](BehaviorRefinement.md)
+**Related concepts:** [Observable state representation relation](StateRepresentation.md), [Observable behavior refinement (ObservationalRefinement)](BehaviorRefinement.md)
 
 ## Backlinks
 

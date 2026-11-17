@@ -18,7 +18,7 @@ Two states of one fixed labelled transition system are equivalent when their set
 
 ## Backlinks
 
-- [Observable behavior refinement](BehaviorRefinement.md) — `relatedConcept`
+- [Observable behavior refinement (ObservationalRefinement)](BehaviorRefinement.md) — `relatedConcept`
 - [Action-labelled transition system with initial states](LabelledTransitionSystem.md) — `relatedConcept`
 
 ## Mathematical formulation

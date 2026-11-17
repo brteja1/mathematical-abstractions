@@ -10,7 +10,7 @@ A partial relation between source and target IRs, with explicit target legality,
 
 **Kind:** semantic-model
 
-**Prerequisites:** [Typed static single assignment with scoped uses](SSAForm.md), [Observable behavior refinement](BehaviorRefinement.md)
+**Prerequisites:** [Typed static single assignment with scoped uses](SSAForm.md), [Observable behavior refinement (ObservationalRefinement)](BehaviorRefinement.md)
 
 **Related concepts:** [Guarded contextual program rewrite](GuardedRewrite.md), [Partial function](PartialFunction.md), [Target-indexed storage and ABI layout](DataLayout.md), [Observable state representation relation](StateRepresentation.md), [Call-boundary behavior and effect contract](CallEffectContract.md), [Scoped LLVM attribute, flag and metadata contract](LLVMAttributeContract.md)
 

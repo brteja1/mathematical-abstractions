@@ -18,6 +18,7 @@ A relational contract for calls including argument/state preconditions, possible
 
 - [Control-sensitive communicating thread instances](ConvergentExecution.md) — `relatedConcept`
 - [Typed IR legalization with representation relation](DialectConversion.md) — `relatedConcept`
+- [Program side-effect algebra (total sequential effect-quantale profile)](EffectAlgebra.md) — `relatedConcept`
 - [Conservative resource effect summary](EffectSummary.md) — `relatedConcept`
 - [Normal, exceptional and nonlocal control outcomes](ExceptionalControlFlow.md) — `relatedConcept`
 - [Scoped LLVM attribute, flag and metadata contract](LLVMAttributeContract.md) — `requiresConcept`

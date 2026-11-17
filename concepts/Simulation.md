@@ -16,7 +16,7 @@ A relation between transition systems matching each step of the first with a ste
 
 ## Backlinks
 
-- [Observable behavior refinement](BehaviorRefinement.md) — `relatedConcept`
+- [Observable behavior refinement (ObservationalRefinement)](BehaviorRefinement.md) — `relatedConcept`
 - [Behavioral subtyping with explicit history constraints](BehavioralSubtyping.md) — `relatedConcept`
 - [Bisimulation](Bisimulation.md) — `requiresConcept`
 - [Bisimulation](Bisimulation.md) — `specializationOf`

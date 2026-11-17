@@ -19,6 +19,7 @@ A function between ordered sets that preserves their order.
 - [Sound abstract transfer and inductive dataflow facts](AbstractInterpretation.md) — `requiresConcept`
 - [Closure Operator](ClosureOperator.md) — `specializationOf`
 - [Galois Connection](GaloisConnection.md) — `requiresConcept`
+- [Monotone dataflow framework (forward join profile)](MonotoneDataflow.md) — `requiresConcept`
 
 ## Mathematical formulation
 

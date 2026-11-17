@@ -8,6 +8,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 
 - **Algebra**
   - [Boolean algebra](concepts/BooleanAlgebra.md)
+  - [Program side-effect algebra (total sequential effect-quantale profile)](concepts/EffectAlgebra.md)
   - [Field](concepts/Field.md)
   - [Finite field (Galois field)](concepts/FiniteField.md)
   - [Group](concepts/Group.md)
@@ -95,6 +96,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
     - [Union Find (disjoint-set union with representatives)](concepts/DisjointSet.md)
   - **Intervals**
     - [Nonempty bounded closed interval](concepts/ClosedInterval.md)
+    - [Integer interval abstract domain (empty and unbounded intervals)](concepts/IntervalDomain.md)
   - **Priority collections**
     - [Finite complete binary min-heap](concepts/BinaryHeap.md)
     - [Priority Queue](concepts/PriorityQueue.md)
@@ -121,6 +123,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
     - [Strict binary search tree](concepts/BinarySearchTree.md)
     - [Finite ordered binary tree with node labels](concepts/BinaryTree.md)
     - [Finite ordered rose tree](concepts/RoseTree.md)
+    - [Finite single-parent rooted forest](concepts/SingleParentForest.md)
     - [Finite prefix dictionary](concepts/Trie.md)
 - **Geometry and manifolds**
   - [Euclidean lattice (discrete integer-span lattice)](concepts/EuclideanLattice.md)
@@ -131,12 +134,14 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Bayesian network (finite discrete variables)](concepts/BayesianNetwork.md)
   - [Finite ordered binary tree with node labels](concepts/BinaryTree.md)
   - [Finite simple graph with chosen bipartition](concepts/BipartiteGraph.md)
+  - [Control-flow graph (single entry, single exit)](concepts/ControlFlowGraph.md)
   - [Directed acyclic graph](concepts/DAG.md)
   - [Directed Graph](concepts/DirectedGraph.md)
   - [Finite directed multigraph with edge identities](concepts/DirectedMultigraph.md)
   - [Graph](concepts/Graph.md)
   - [Finite simple undirected hypergraph](concepts/Hypergraph.md)
   - [Finite rooted undirected tree](concepts/RootedTree.md)
+  - [Finite single-parent rooted forest](concepts/SingleParentForest.md)
   - [Tree](concepts/Tree.md)
   - [Finite real-weighted directed multigraph](concepts/WeightedDirectedGraph.md)
 - **Information theory**
@@ -182,6 +187,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Finite propositional formula syntax](concepts/PropositionalFormula.md)
   - [Propositional Logic](concepts/PropositionalLogic.md)
   - [Classical propositional natural deduction](concepts/PropositionalNaturalDeduction.md)
+  - [Abstract rewrite system](concepts/RewriteSystem.md)
   - **Fuzzy logic**
     - [Fuzzy set (unit-interval membership, min/max profile)](concepts/FuzzySet.md)
     - [Residuated fuzzy truth-value algebra (left-continuous t-norm profile)](concepts/ResiduatedFuzzyLogic.md)
@@ -216,12 +222,15 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 - **Order and fixed points**
   - [Closure Operator](concepts/ClosureOperator.md)
   - [Complete Lattice](concepts/CompleteLattice.md)
+  - [Program side-effect algebra (total sequential effect-quantale profile)](concepts/EffectAlgebra.md)
   - [Fixed Point](concepts/FixedPoint.md)
   - [Galois Connection](concepts/GaloisConnection.md)
   - [Idempotent semiring (additively idempotent, unital)](concepts/IdempotentSemiring.md)
+  - [Integer interval abstract domain (empty and unbounded intervals)](concepts/IntervalDomain.md)
   - [Join semilattice](concepts/JoinSemilattice.md)
   - [Lattice](concepts/Lattice.md)
   - [Min-plus semiring (tropical semiring, min convention)](concepts/MinPlusSemiring.md)
+  - [Monotone dataflow framework (forward join profile)](concepts/MonotoneDataflow.md)
   - [Monotone Function](concepts/MonotoneFunction.md)
   - [Partial Order](concepts/PartialOrder.md)
   - [Preorder](concepts/Preorder.md)
@@ -237,6 +246,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 - **Programming-language semantics**
   - [Bisimulation](concepts/Bisimulation.md)
   - [Fixed-width bit vector](concepts/BitVector.md)
+  - [Program side-effect algebra (total sequential effect-quantale profile)](concepts/EffectAlgebra.md)
   - [Fixed-width signed integer](concepts/FixedWidthSignedInteger.md)
   - [Fixed-width unsigned integer](concepts/FixedWidthUnsignedInteger.md)
   - [Floating-point type](concepts/FloatingPointType.md)
@@ -245,6 +255,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Action-labelled transition system with initial states](concepts/LabelledTransitionSystem.md)
   - [Loop Invariant](concepts/LoopInvariant.md)
   - [Partial function](concepts/PartialFunction.md)
+  - [Abstract rewrite system](concepts/RewriteSystem.md)
   - [Simulation](concepts/Simulation.md)
   - [Termination Variant](concepts/TerminationVariant.md)
   - [Transition System](concepts/TransitionSystem.md)
@@ -255,9 +266,10 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
     - [Conservative alias and Mod/Ref query contract](concepts/AliasAnalysis.md)
     - [Analysis validity across IR mutation](concepts/AnalysisPreservation.md)
     - [Scoped atomic execution graph and memory ordering](concepts/AtomicMemoryModel.md)
-    - [Observable behavior refinement](concepts/BehaviorRefinement.md)
+    - [Observable behavior refinement (ObservationalRefinement)](concepts/BehaviorRefinement.md)
     - [Byte-addressed memory with typed access obligations](concepts/ByteMemory.md)
     - [Call-boundary behavior and effect contract](concepts/CallEffectContract.md)
+    - [Control-flow graph (single entry, single exit)](concepts/ControlFlowGraph.md)
     - [CFG refinement with path correspondence and progress](concepts/ControlFlowRefinement.md)
     - [Control-sensitive communicating thread instances](concepts/ConvergentExecution.md)
     - [Target-indexed storage and ABI layout](concepts/DataLayout.md)
@@ -267,6 +279,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
     - [Normal, exceptional and nonlocal control outcomes](concepts/ExceptionalControlFlow.md)
     - [Guarded contextual program rewrite](concepts/GuardedRewrite.md)
     - [Integer quasi-affine index map](concepts/IntegerAffineMap.md)
+    - [Integer interval abstract domain (empty and unbounded intervals)](concepts/IntervalDomain.md)
     - [Scoped LLVM attribute, flag and metadata contract](concepts/LLVMAttributeContract.md)
     - [LLVM floating-point environment and rewrite permissions](concepts/LLVMFloatingPointSemantics.md)
     - [LLVM fixed-width integer operations and flags](concepts/LLVMIntegerSemantics.md)
@@ -274,6 +287,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
     - [Memory dependence and legal loop rescheduling](concepts/LoopDependence.md)
     - [Guarded loop event-domain correspondence](concepts/LoopIterationMapping.md)
     - [Conservative SSA indexing of memory versions](concepts/MemorySSA.md)
+    - [Monotone dataflow framework (forward join profile)](concepts/MonotoneDataflow.md)
     - [Allocation-associated pointer provenance and lifetime](concepts/PointerProvenance.md)
     - [Lane-indexed vector execution and inactive-lane policy](concepts/PredicatedVectorSemantics.md)
     - [Instrumented trace projection and runtime contract](concepts/RuntimeInstrumentation.md)
@@ -378,7 +392,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [B-tree (balanced multiway search tree)](concepts/BTree.md) | Data structures → Tree structures |
 | [Finite database relation under bag semantics](concepts/BagRelation.md) | Relational data modelling |
 | [Bayesian network (finite discrete variables)](concepts/BayesianNetwork.md) | Probability and stochastic models, Graph theory |
-| [Observable behavior refinement](concepts/BehaviorRefinement.md) | Programming-language semantics → Compiler transformations |
+| [Observable behavior refinement (ObservationalRefinement)](concepts/BehaviorRefinement.md) | Programming-language semantics → Compiler transformations |
 | [Behavioral subtyping with explicit history constraints](concepts/BehavioralSubtyping.md) | Programming-language semantics → Object-oriented semantics |
 | [IEEE 754 binary128](concepts/Binary128.md) | Numeric computation |
 | [IEEE 754 binary16](concepts/Binary16.md) | Numeric computation |
@@ -411,6 +425,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Conditional entropy (finite discrete profile)](concepts/ConditionalEntropy.md) | Information theory |
 | [Conditional probability given a positive-probability event](concepts/ConditionalProbability.md) | Probability and stochastic models |
 | [Context-free grammar of finite words](concepts/ContextFreeGrammar.md) | Languages and computation |
+| [Control-flow graph (single entry, single exit)](concepts/ControlFlowGraph.md) | Graph theory, Programming-language semantics → Compiler transformations |
 | [CFG refinement with path correspondence and progress](concepts/ControlFlowRefinement.md) | Programming-language semantics → Compiler transformations |
 | [Control-sensitive communicating thread instances](concepts/ConvergentExecution.md) | Programming-language semantics → Compiler transformations |
 | [Single-thread cooperative scheduler with explicit waiting](concepts/CooperativeScheduler.md) | Programming-language semantics → Coroutines and cooperative execution, Concurrency and distributed systems → Behavioral models |
@@ -434,6 +449,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Euclidean dual of a finite-field linear code](concepts/DualCode.md) | Information theory → Coding theory → Channel coding |
 | [Elliptic curve cryptography group (prime-field short-Weierstrass profile)](concepts/ECC.md) | Cryptography → Public-key cryptography |
 | [Elliptic curve Diffie–Hellman (validated full-point profile)](concepts/ECDH.md) | Cryptography → Public-key cryptography |
+| [Program side-effect algebra (total sequential effect-quantale profile)](concepts/EffectAlgebra.md) | Programming-language semantics, Algebra, Order and fixed points |
 | [Conservative resource effect summary](concepts/EffectSummary.md) | Programming-language semantics → Compiler transformations |
 | [Eigendecomposition by a complete eigenbasis (diagonalization)](concepts/EigenDecomposition.md) | Algebra → Linear and multilinear algebra → Matrix decompositions |
 | [Empty type](concepts/EmptyType.md) | Types and semantics |
@@ -477,6 +493,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Idempotent semiring (additively idempotent, unital)](concepts/IdempotentSemiring.md) | Algebra, Order and fixed points |
 | [Mathematical integers](concepts/Integer.md) | Numeric computation, Algebra |
 | [Integer quasi-affine index map](concepts/IntegerAffineMap.md) | Programming-language semantics → Compiler transformations |
+| [Integer interval abstract domain (empty and unbounded intervals)](concepts/IntervalDomain.md) | Data structures → Intervals, Order and fixed points, Programming-language semantics → Compiler transformations |
 | [Java bounded parameterized types and nominal subtyping](concepts/JavaParameterizedType.md) | Programming-language semantics → Generic programming → Java generics |
 | [Java type erasure and selected reifiability rules](concepts/JavaTypeErasure.md) | Programming-language semantics → Generic programming → Java generics |
 | [Java generic inference constraints and resolution obligations](concepts/JavaTypeInference.md) | Programming-language semantics → Generic programming → Java generics |
@@ -517,6 +534,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Empirical mode set (all observed frequency maximizers)](concepts/Mode.md) | Statistics → Descriptive statistics |
 | [Modular Integer](concepts/ModularInteger.md) | Numeric computation |
 | [Monoid](concepts/Monoid.md) | Algebra |
+| [Monotone dataflow framework (forward join profile)](concepts/MonotoneDataflow.md) | Programming-language semantics → Compiler transformations, Order and fixed points |
 | [Monotone Function](concepts/MonotoneFunction.md) | Order and fixed points |
 | [Finite set-valued multimap](concepts/Multimap.md) | Data structures → Sets and mappings |
 | [Multiset](concepts/Multiset.md) | Data structures → Sets and mappings |
@@ -564,6 +582,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Named relational schema with attribute domains](concepts/RelationalSchema.md) | Relational data modelling, Types and semantics |
 | [Relative entropy (finite Kullback–Leibler divergence)](concepts/RelativeEntropy.md) | Information theory |
 | [Residuated fuzzy truth-value algebra (left-continuous t-norm profile)](concepts/ResiduatedFuzzyLogic.md) | Logic and proof → Fuzzy logic |
+| [Abstract rewrite system](concepts/RewriteSystem.md) | Programming-language semantics, Logic and proof |
 | [Unital ring (convention stated)](concepts/Ring.md) | Algebra |
 | [Finite rooted undirected tree](concepts/RootedTree.md) | Graph theory |
 | [Finite ordered rose tree](concepts/RoseTree.md) | Data structures → Tree structures |
@@ -582,6 +601,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Set](concepts/Set.md) | Set theory and foundations |
 | [Shannon entropy (finite discrete profile)](concepts/ShannonEntropy.md) | Information theory |
 | [Simulation](concepts/Simulation.md) | Programming-language semantics, Behavior and transition systems |
+| [Finite single-parent rooted forest](concepts/SingleParentForest.md) | Graph theory, Data structures → Tree structures |
 | [Smooth manifold (C∞, without boundary)](concepts/SmoothManifold.md) | Geometry and manifolds, Topology |
 | [Finitely supported vector](concepts/SparseVector.md) | Algebra → Linear and multilinear algebra |
 | [Defined terminating silent speculation](concepts/SpeculationSafety.md) | Programming-language semantics → Compiler transformations |

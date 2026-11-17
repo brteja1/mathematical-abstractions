@@ -17,6 +17,7 @@ An outcome algebra separating return, unwind, divergence and UB, with handlers/c
 ## Backlinks
 
 - [Call-boundary behavior and effect contract](CallEffectContract.md) — `relatedConcept`
+- [Control-flow graph (single entry, single exit)](ControlFlowGraph.md) — `relatedConcept`
 - [CFG refinement with path correspondence and progress](ControlFlowRefinement.md) — `relatedConcept`
 - [Instrumented trace projection and runtime contract](RuntimeInstrumentation.md) — `relatedConcept`
 

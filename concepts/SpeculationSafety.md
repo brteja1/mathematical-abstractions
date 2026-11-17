@@ -10,7 +10,7 @@ A sufficient semantic condition for introducing execution on formerly unexecuted
 
 **Kind:** semantic-model
 
-**Prerequisites:** [Conservative resource effect summary](EffectSummary.md), [Observable behavior refinement](BehaviorRefinement.md)
+**Prerequisites:** [Conservative resource effect summary](EffectSummary.md), [Observable behavior refinement (ObservationalRefinement)](BehaviorRefinement.md)
 
 **Related concepts:** [Hoare Triple](HoareTriple.md), [Termination Variant](TerminationVariant.md), [LLVM scalar deferred undefinedness and freeze](LLVMPoisonSemantics.md)
 

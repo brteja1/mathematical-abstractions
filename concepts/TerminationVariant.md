@@ -16,6 +16,7 @@ A measure from states into a well-founded carrier that strictly decreases on eac
 
 - [Checked signed-integer constant-evaluation fragment](CompileTimeEvaluation.md) — `relatedConcept`
 - [Guarded contextual program rewrite](GuardedRewrite.md) — `relatedConcept`
+- [Abstract rewrite system](RewriteSystem.md) — `relatedConcept`
 - [Defined terminating silent speculation](SpeculationSafety.md) — `relatedConcept`
 
 ## Mathematical formulation

@@ -2195,6 +2195,46 @@
       "accessedOn": "2026-11-16",
       "sourceRole": "consulted-primary-formal-semantics",
       "sourceNote": "Consulted star, bsim_properties and bsim_simulation definitions and alternate diagram. Used as a proof-interface reference, not as an LLVM semantics or a local Coq dependency."
+    },
+    {
+      "id": "urn:csabs:source/moller-schwartzbach-spa-2026",
+      "type": "Source",
+      "label": "Anders Møller and Michael I. Schwartzbach: Static Program Analysis (15 October 2026)",
+      "url": "https://cs.au.dk/~amoeller/spa/spa.pdf",
+      "accessedOn": "2026-11-17",
+      "sourceRole": "consulted-author-textbook"
+    },
+    {
+      "id": "urn:csabs:source/sf-smallstep-2026",
+      "type": "Source",
+      "label": "Software Foundations, Programming Language Foundations: Smallstep",
+      "url": "https://softwarefoundations.cis.upenn.edu/plf-current/Smallstep.html",
+      "accessedOn": "2026-11-17",
+      "sourceRole": "consulted-author-formalization"
+    },
+    {
+      "id": "urn:csabs:source/opendsa-general-trees-2024",
+      "type": "Source",
+      "label": "OpenDSA: General Trees, Fall 2024",
+      "url": "https://opendsa-server.cs.vt.edu/ODSA/Books/pubbook/odsa-all-0013bb43-a12f-4ab3-9b86-73b317f1e37e/fall-2024/Public_OpenDSA_F24/html/GenTreeIntro.html",
+      "accessedOn": "2026-11-17",
+      "sourceRole": "consulted-author-textbook"
+    },
+    {
+      "id": "urn:csabs:source/wilshaw-hutton-explicit-naming",
+      "type": "Source",
+      "label": "Sky Wilshaw and Graham Hutton: A Compositional Semantics for Explicit Naming (Functional Pearl)",
+      "url": "https://people.cs.nott.ac.uk/pszgmh/explicit-naming.pdf",
+      "accessedOn": "2026-11-17",
+      "sourceRole": "consulted-primary-research"
+    },
+    {
+      "id": "urn:csabs:source/local-lean-ProgramStructures",
+      "type": "Source",
+      "label": "Local Lean models for program structures and analyses",
+      "path": "lean/Catalog/ProgramStructures.lean",
+      "accessedOn": "2026-11-17",
+      "sourceRole": "local-formalization"
     }
   ]
 }

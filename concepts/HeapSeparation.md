@@ -17,6 +17,7 @@ Predicates over finite heap fragments with exact empty/singleton assertions and 
 ## Backlinks
 
 - [Byte-addressed memory with typed access obligations](ByteMemory.md) — `relatedConcept`
+- [Program side-effect algebra (total sequential effect-quantale profile)](EffectAlgebra.md) — `relatedConcept`
 - [Sequential object heap with reference identity](ObjectHeap.md) — `relatedConcept`
 - [Visible-state object invariant protocol](ObjectInvariant.md) — `relatedConcept`
 

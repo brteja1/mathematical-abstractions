@@ -16,6 +16,8 @@ A semigroup with a two-sided identity element.
 
 ## Backlinks
 
+- [Program side-effect algebra (total sequential effect-quantale profile)](EffectAlgebra.md) — `requiresConcept`
+- [Program side-effect algebra (total sequential effect-quantale profile)](EffectAlgebra.md) — `specializationOf`
 - [Formal language of finite words](FormalLanguage.md) — `relatedConcept`
 - [Group](Group.md) — `requiresConcept`
 - [Group](Group.md) — `specializationOf`

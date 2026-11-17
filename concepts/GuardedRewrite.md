@@ -10,15 +10,16 @@ A conditional rewrite relation with a match guard, well-formedness obligations a
 
 **Kind:** semantic-model
 
-**Prerequisites:** [Observable behavior refinement](BehaviorRefinement.md), [Partial function](PartialFunction.md)
+**Prerequisites:** [Observable behavior refinement (ObservationalRefinement)](BehaviorRefinement.md), [Partial function](PartialFunction.md)
 
-**Related concepts:** [Free ranked term algebra with variables](TermAlgebra.md), [Termination Variant](TerminationVariant.md), [Typed static single assignment with scoped uses](SSAForm.md), [Conservative resource effect summary](EffectSummary.md), [CFG refinement with path correspondence and progress](ControlFlowRefinement.md), [Scoped LLVM attribute, flag and metadata contract](LLVMAttributeContract.md)
+**Related concepts:** [Free ranked term algebra with variables](TermAlgebra.md), [Termination Variant](TerminationVariant.md), [Typed static single assignment with scoped uses](SSAForm.md), [Conservative resource effect summary](EffectSummary.md), [CFG refinement with path correspondence and progress](ControlFlowRefinement.md), [Scoped LLVM attribute, flag and metadata contract](LLVMAttributeContract.md), [Abstract rewrite system](RewriteSystem.md)
 
 ## Backlinks
 
 - [Typed IR legalization with representation relation](DialectConversion.md) — `relatedConcept`
 - [LLVM floating-point environment and rewrite permissions](LLVMFloatingPointSemantics.md) — `relatedConcept`
 - [LLVM fixed-width integer operations and flags](LLVMIntegerSemantics.md) — `relatedConcept`
+- [Abstract rewrite system](RewriteSystem.md) — `relatedConcept`
 - [Per-instance transformation validation](TranslationValidation.md) — `relatedConcept`
 
 ## Mathematical formulation
@@ -241,7 +242,8 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/SSAForm",
       "urn:csabs:concept/EffectSummary",
       "urn:csabs:concept/ControlFlowRefinement",
-      "urn:csabs:concept/LLVMAttributeContract"
+      "urn:csabs:concept/LLVMAttributeContract",
+      "urn:csabs:concept/RewriteSystem"
     ],
     "hasOperation": [
       "urn:csabs:operation/GuardedRewrite-match",

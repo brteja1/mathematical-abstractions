@@ -12,12 +12,13 @@ An overapproximation of resources and actions an operation may affect, with unkn
 
 **Prerequisites:** [Set](Set.md)
 
-**Related concepts:** [Relational method contract with write effects](MethodContract.md), [Finite allocated heap store](HeapStore.md), [Defined terminating silent speculation](SpeculationSafety.md), [Memory dependence and legal loop rescheduling](LoopDependence.md), [Conservative alias and Mod/Ref query contract](AliasAnalysis.md), [Conservative SSA indexing of memory versions](MemorySSA.md), [Scoped atomic execution graph and memory ordering](AtomicMemoryModel.md), [Call-boundary behavior and effect contract](CallEffectContract.md), [Control-sensitive communicating thread instances](ConvergentExecution.md)
+**Related concepts:** [Relational method contract with write effects](MethodContract.md), [Finite allocated heap store](HeapStore.md), [Defined terminating silent speculation](SpeculationSafety.md), [Memory dependence and legal loop rescheduling](LoopDependence.md), [Conservative alias and Mod/Ref query contract](AliasAnalysis.md), [Conservative SSA indexing of memory versions](MemorySSA.md), [Scoped atomic execution graph and memory ordering](AtomicMemoryModel.md), [Call-boundary behavior and effect contract](CallEffectContract.md), [Control-sensitive communicating thread instances](ConvergentExecution.md), [Program side-effect algebra (total sequential effect-quantale profile)](EffectAlgebra.md)
 
 ## Backlinks
 
 - [Conservative alias and Mod/Ref query contract](AliasAnalysis.md) — `relatedConcept`
 - [Call-boundary behavior and effect contract](CallEffectContract.md) — `requiresConcept`
+- [Program side-effect algebra (total sequential effect-quantale profile)](EffectAlgebra.md) — `relatedConcept`
 - [Guarded contextual program rewrite](GuardedRewrite.md) — `relatedConcept`
 - [Memory dependence and legal loop rescheduling](LoopDependence.md) — `requiresConcept`
 - [Defined terminating silent speculation](SpeculationSafety.md) — `requiresConcept`
@@ -243,7 +244,8 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/MemorySSA",
       "urn:csabs:concept/AtomicMemoryModel",
       "urn:csabs:concept/CallEffectContract",
-      "urn:csabs:concept/ConvergentExecution"
+      "urn:csabs:concept/ConvergentExecution",
+      "urn:csabs:concept/EffectAlgebra"
     ],
     "hasOperation": [
       "urn:csabs:operation/EffectSummary-summarize",

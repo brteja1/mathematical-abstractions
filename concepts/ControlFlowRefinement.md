@@ -10,12 +10,13 @@ A proof interface for CFG rewrites allowing finite source paths to match target 
 
 **Kind:** semantic-model
 
-**Prerequisites:** [Observable behavior refinement](BehaviorRefinement.md), [Simulation](Simulation.md), [Typed static single assignment with scoped uses](SSAForm.md)
+**Prerequisites:** [Observable behavior refinement (ObservationalRefinement)](BehaviorRefinement.md), [Simulation](Simulation.md), [Typed static single assignment with scoped uses](SSAForm.md)
 
-**Related concepts:** [Reachability-qualified control-flow dominance](Dominance.md), [Normal, exceptional and nonlocal control outcomes](ExceptionalControlFlow.md), [Control-sensitive communicating thread instances](ConvergentExecution.md)
+**Related concepts:** [Reachability-qualified control-flow dominance](Dominance.md), [Normal, exceptional and nonlocal control outcomes](ExceptionalControlFlow.md), [Control-sensitive communicating thread instances](ConvergentExecution.md), [Control-flow graph (single entry, single exit)](ControlFlowGraph.md)
 
 ## Backlinks
 
+- [Control-flow graph (single entry, single exit)](ControlFlowGraph.md) — `relatedConcept`
 - [Control-sensitive communicating thread instances](ConvergentExecution.md) — `requiresConcept`
 - [Normal, exceptional and nonlocal control outcomes](ExceptionalControlFlow.md) — `requiresConcept`
 - [Guarded contextual program rewrite](GuardedRewrite.md) — `relatedConcept`
@@ -244,7 +245,8 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "relatedConcept": [
       "urn:csabs:concept/Dominance",
       "urn:csabs:concept/ExceptionalControlFlow",
-      "urn:csabs:concept/ConvergentExecution"
+      "urn:csabs:concept/ConvergentExecution",
+      "urn:csabs:concept/ControlFlowGraph"
     ],
     "hasOperation": [
       "urn:csabs:operation/ControlFlowRefinement-relate",

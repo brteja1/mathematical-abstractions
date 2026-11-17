@@ -1559,7 +1559,7 @@
       "scope": "model",
       "mapping": "[l,u], l≤u. A has a linear order. Singleton intervals allowed. No empty, open, unbounded or NaN endpoints in the carrier. Intersection returns Option to represent disjointness. Equality is endpoint equality.",
       "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
-      "catalogHash": "92d358d7272763cc2e5e7d77afd7851e9494289c92b176f5166af44ce175a44e"
+      "catalogHash": "b33279dca58f49ce74d5e648beead5b873ca89c70119bfbff1fbf91267672c97"
     },
     "urn:csabs:concept/FiniteDistribution": {
       "kind": "model",
@@ -1658,7 +1658,7 @@
       "scope": "model",
       "mapping": "(V,E,r), r∈V; (V,E) a Tree. Vertex identities retained; child order and labels not built in. Single-vertex tree valid. Parent of root undefined. No empty rooted tree, binary branching constraint or pointer representation.",
       "limitations": "Compiled carrier and selected interface interpretation. Some catalog operations are specified mathematically rather than wrapped as Lean declarations; no blanket proof of claims, algorithms, parsing, liveness or complexity. See individual witnesses.",
-      "catalogHash": "e8b7cfd202d6629c6cfff6a12328c6b33a28cde9019da47956f41f4406969729"
+      "catalogHash": "8999c2684bbccad353f7900c9134c6c6332f0d3d05f3c087cde823560d691efc"
     },
     "urn:csabs:concept/DirectedMultigraph": {
       "kind": "model",
@@ -1908,7 +1908,7 @@
         "Quot.sound",
         "Classical.choice"
       ],
-      "catalogHash": "a6612b48311e9b099728c1b6f78757bd968437c0dfd0466cbd44c04baabd7990"
+      "catalogHash": "d91fe5b11ad999a996eec7f64d58da25c3eb9cda7c442bdc77f45aa395084ae5"
     },
     "urn:csabs:law/JoinSemilattice-commutativity": {
       "kind": "witness",
@@ -2284,7 +2284,7 @@
       "scope": "partial",
       "mapping": "Classes are Fin(n+1); parent/root, finite local declarations and a decreasing auxiliary rank certify the single-inheritance profile. Ancestor/lookup traversal uses n+1 fuel; dispatch reads the heap class tag. Erase rank evidence for extensional table equality.",
       "limitations": "Lookup and ancestors are implemented, but the general proof that n+1 fuel suffices and correspondence with the recursive graph equations is not registered. Bodies are opaque; type safety and behavioral compatibility are absent.",
-      "catalogHash": "b6a80d1d54ecb9164c9ee8586ed63884804b69321a496a8afaa747ae454c2a6c"
+      "catalogHash": "debfeddf2c46e536afc603acd0528a75a00e8c1b2b87896d043ba1f99207d118"
     },
     "urn:csabs:concept/MethodContract": {
       "kind": "model",
@@ -3437,7 +3437,7 @@
       "scope": "partial",
       "mapping": "Relation on P given by pointwise inclusion of supplied P → I → Set O; source first.",
       "limitations": "No executable IR semantics, memory model, contextual theorem or termination adequacy proof. The inclusion definition is exact only for the supplied behavior interpretation.",
-      "catalogHash": "81f3537f265ccb6153f1d7ad48760a20ba1c62a23cec08103d0468d6aea01260"
+      "catalogHash": "4534a5e7e569de46fd78ff828f82810eadf3e3db594fc5b1fcddc088b999d760"
     },
     "urn:csabs:concept/GuardedRewrite": {
       "kind": "model",
@@ -3446,7 +3446,7 @@
       "scope": "partial",
       "mapping": "Raw guard/rewrite/wellFormed predicates on fragments; contextual semantics must be supplied separately.",
       "limitations": "Lean carrier does not enforce contextual soundness or match transactions. No matching algorithm, capture avoidance, termination or confluence proof.",
-      "catalogHash": "ca09707143547ae35ceeb6546e172b831c5507e24c0c1f5e16b7a78ea7b4ca33"
+      "catalogHash": "6d8a4aa3654b70b32fe6ab15a27a4384f07fc9c04067bebb0082476117947eec"
     },
     "urn:csabs:concept/Dominance": {
       "kind": "model",
@@ -3455,7 +3455,7 @@
       "scope": "partial",
       "mapping": "Relation on vertices using a supplied finite-path oracle; endpoints included and existence required.",
       "limitations": "Path oracle adequacy to the CFG is a client obligation; no dominator algorithm, instruction-order model, postdominance or hierarchical-region implementation.",
-      "catalogHash": "bc97eddf8df398db9493acac8e6782def5e5c2d770ce5babfa1fa70bb4d2d0ad"
+      "catalogHash": "06918d2c71075beda5e57364462fc970cd4d30a8a9b5f813ec6b8ce4af8ce31d"
     },
     "urn:csabs:concept/SSAForm": {
       "kind": "model",
@@ -3473,7 +3473,7 @@
       "scope": "partial",
       "mapping": "Supplied actual and summary sets over a resource/event carrier with an inclusion law.",
       "limitations": "Lean omits event stages, alias algorithm and conflict calculus. Disjoint summaries alone do not prove arbitrary concurrent commutation or speculation.",
-      "catalogHash": "d5fc2d4b055bbb659712c986d55266d2d0e0f915b908a9332eec6d416cf19250"
+      "catalogHash": "fef0b124c87097e06999955745b89c723dc6a694ce11b7a98444ee5d3ffddb5d"
     },
     "urn:csabs:concept/SpeculationSafety": {
       "kind": "model",
@@ -3518,7 +3518,7 @@
       "scope": "partial",
       "mapping": "Concretization, concrete step and abstract transfer with a one-step soundness field.",
       "limitations": "Partial sound-transfer interface: no abstract order, join, fixpoint solver, widening or reachability induction implementation. Does not certify an LLVM/MLIR analysis implementation.",
-      "catalogHash": "99a5fc530e4a47eed382320c980ff534271b24664cc725e5b9de06e4d5b1185c"
+      "catalogHash": "34e215a91fc989c115693db290b7cea650a74ce8d4a4c750af2b7af9c5c1116b"
     },
     "urn:csabs:concept/IntegerAffineMap": {
       "kind": "model",
@@ -3599,7 +3599,7 @@
       "scope": "partial",
       "mapping": "Related source/target states and target-step matching on source-safe states by reflexive-transitive source steps.",
       "limitations": "Lean contains only the safe-source step diagram; no initial/final/trace correspondence, target-progress or well-founded stuttering rank is encoded, so it proves no full CFG refinement theorem.",
-      "catalogHash": "0469a63dab98ce7110cb703801d41e63ca192e26fdf8bb7ccbf1f3be4588afcd"
+      "catalogHash": "ab90d1e1d86391dcd613f97d07a9a1cdb33a37f2f638e1f57c53a9e3c4028efb"
     },
     "urn:csabs:concept/LoopIterationMapping": {
       "kind": "model",
@@ -3717,6 +3717,60 @@
       "mapping": "Per-event finite-list erasure and accepted-execution predicate; eraseInstrumentation is list flatMap.",
       "limitations": "No sanitizer/profiler/GC implementation, invalid-input detection proof, helper-runtime safety proof or infinite-trace projection. Semantic transparency requires extra runtime assumptions.",
       "catalogHash": "72a7f7e436a99305504e71c0bbbf62ea4a736936eed204941d6b3f31b1e1e653"
+    },
+    "urn:csabs:concept/ControlFlowGraph": {
+      "kind": "model",
+      "symbol": "Catalog.Programs.ControlFlowGraph",
+      "module": "Catalog.ProgramStructures",
+      "scope": "model",
+      "mapping": "Finite vertex carrier; directed relation, distinct entry/exit and explicit unique-source/sink conditions.",
+      "limitations": "No normalization algorithm, path enumeration, or proof of the recorded maximal-path law; boundary structure does not imply termination.",
+      "catalogHash": "93b8c7fce0b3d949fcb04aeaba0ea1a612d1549a7a592c1596080cf8e452cdfb"
+    },
+    "urn:csabs:concept/MonotoneDataflow": {
+      "kind": "model",
+      "symbol": "Catalog.Programs.MonotoneDataflow",
+      "module": "Catalog.ProgramStructures",
+      "scope": "partial",
+      "mapping": "Finite graph, complete lattice, boundary facts and edge-qualified monotone transfers. The step declaration uses suprema for the forward join equations.",
+      "limitations": "No concretization soundness proof, solver, convergence proof or registered least-solution witness.",
+      "catalogHash": "d6bc2eabd99aa981e3c1d1cde358c12502060f5820a1f6be68cc8e0fb0bc18c8"
+    },
+    "urn:csabs:concept/IntervalDomain": {
+      "kind": "model",
+      "symbol": "Catalog.Programs.IntervalDomain",
+      "module": "Catalog.ProgramStructures",
+      "scope": "partial",
+      "mapping": "Subtype of Set Int satisfying integer order-convexity; equality is extensional set equality. Empty, singleton and unbounded sets are representable.",
+      "limitations": "No Lean lattice instance, hull, abstract arithmetic or widening implementation; carrier model only. No proof witnesses registered.",
+      "catalogHash": "d3d7cce81acf28c9aebe94a8f6f81624d1e44f76aef139d3211878388bd386b2"
+    },
+    "urn:csabs:concept/RewriteSystem": {
+      "kind": "model",
+      "symbol": "Catalog.Programs.RewriteSystem",
+      "module": "Catalog.ProgramStructures",
+      "scope": "partial",
+      "mapping": "Arbitrary step relation on A; reduces is Relation.ReflTransGen and normalForm excludes step successors.",
+      "limitations": "No matching engine, term substitution/context closure, strategy, termination, confluence or refinement proof.",
+      "catalogHash": "05401d37c602bda365446df355feafabd93464159b09338f09fe0a3b58a631f9"
+    },
+    "urn:csabs:concept/EffectAlgebra": {
+      "kind": "model",
+      "symbol": "Catalog.Programs.EffectAlgebra",
+      "module": "Catalog.ProgramStructures",
+      "scope": "model",
+      "mapping": "Total join and sequence on E, sequential identity and explicit semilattice/monoid/distributivity fields; subeffect is join-induced ordering.",
+      "limitations": "No interpretation of concrete program executions, effect-inference soundness, atomic effects, iteration, concurrency, or quantum-logical effects. No registered theorem witnesses.",
+      "catalogHash": "d388957641c07a751536bbbdbd2b8dd7a693425776c569b7f279159617773988"
+    },
+    "urn:csabs:concept/SingleParentForest": {
+      "kind": "model",
+      "symbol": "Catalog.Programs.SingleParentForest",
+      "module": "Catalog.ProgramStructures",
+      "scope": "partial",
+      "mapping": "Finite V, Option-valued parent and explicit absence of positive child-to-parent cycles. Equality is vertex equality.",
+      "limitations": "No root-following implementation, unique-root proof or update algorithm; no dangling references by typing. No witnesses registered.",
+      "catalogHash": "49e2a6b93585f6241a5d86f592fc965face7c4c7ea83b377602baaf97cc10265"
     }
   }
 }

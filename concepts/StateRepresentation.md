@@ -10,7 +10,7 @@ A relation between different state carriers that retains relevant observations a
 
 **Kind:** Relation
 
-**Prerequisites:** [Binary relation](Relation.md), [Observable behavior refinement](BehaviorRefinement.md)
+**Prerequisites:** [Binary relation](Relation.md), [Observable behavior refinement (ObservationalRefinement)](BehaviorRefinement.md)
 
 **Specializes:** [Binary relation](Relation.md)
 

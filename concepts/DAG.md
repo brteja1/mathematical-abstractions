@@ -18,6 +18,8 @@ A directed graph with no directed cycle.
 
 - [Bayesian network (finite discrete variables)](BayesianNetwork.md) — `requiresConcept`
 - [Bayesian network (finite discrete variables)](BayesianNetwork.md) — `specializationOf`
+- [Finite single-parent rooted forest](SingleParentForest.md) — `requiresConcept`
+- [Finite single-parent rooted forest](SingleParentForest.md) — `specializationOf`
 
 ## Mathematical formulation
 

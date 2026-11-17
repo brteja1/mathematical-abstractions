@@ -12,6 +12,12 @@ An ordered endpoint pair representing the closed interval between its endpoints 
 
 **Prerequisites:** [Total Order](TotalOrder.md), [Option Type](OptionType.md)
 
+**Related concepts:** [Integer interval abstract domain (empty and unbounded intervals)](IntervalDomain.md)
+
+## Backlinks
+
+- [Integer interval abstract domain (empty and unbounded intervals)](IntervalDomain.md) — `relatedConcept`
+
 ## Mathematical formulation
 
 For a linear order A, interval values are pairs (l,u) with l≤u; x∈[l,u] ⇔ l≤x≤u. Intersection returns [max(l,l′),min(u,u′)] if these endpoints are ordered, and none otherwise.
@@ -312,7 +318,9 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/TotalOrder",
       "urn:csabs:concept/OptionType"
     ],
-    "relatedConcept": [],
+    "relatedConcept": [
+      "urn:csabs:concept/IntervalDomain"
+    ],
     "hasOperation": [
       "urn:csabs:operation/ClosedInterval-construct",
       "urn:csabs:operation/ClosedInterval-contains",

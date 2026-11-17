@@ -18,6 +18,7 @@ A finite nonempty node-labelled rooted tree with an ordered finite list of child
 
 - [B-tree (balanced multiway search tree)](BTree.md) — `requiresConcept`
 - [B-tree (balanced multiway search tree)](BTree.md) — `specializationOf`
+- [Finite single-parent rooted forest](SingleParentForest.md) — `relatedConcept`
 - [Free ranked term algebra with variables](TermAlgebra.md) — `relatedConcept`
 
 ## Mathematical formulation

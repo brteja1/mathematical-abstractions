@@ -17,6 +17,8 @@ A partially ordered set in which every subset, including the empty subset, has a
 ## Backlinks
 
 - [Sound abstract transfer and inductive dataflow facts](AbstractInterpretation.md) — `relatedConcept`
+- [Integer interval abstract domain (empty and unbounded intervals)](IntervalDomain.md) — `specializationOf`
+- [Monotone dataflow framework (forward join profile)](MonotoneDataflow.md) — `requiresConcept`
 
 ## Mathematical formulation
 

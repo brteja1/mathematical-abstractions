@@ -51,6 +51,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | ConditionalEntropy | 1 | 1 | 1 | 2 | extensional-structural-definition |
 | ConditionalProbability | 1 | 1 | 0 | 2 | defined-structure |
 | ContextFreeGrammar | 2 | 2 | 1 | 3 | defined-structure |
+| ControlFlowGraph | 3 | 2 | 1 | 0 | extensional-structural-definition |
 | ControlFlowRefinement | 2 | 2 | 1 | 0 | relational-structural-definition |
 | ConvergentExecution | 2 | 2 | 1 | 0 | relational-structural-definition |
 | CooperativeScheduler | 3 | 4 | 2 | 2 | defined-operational-semantics |
@@ -74,6 +75,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | DualCode | 1 | 1 | 0 | 1 | extensional-structural-definition |
 | ECC | 3 | 4 | 0 | 1 | defined-structure |
 | ECDH | 3 | 1 | 0 | 1 | defined-structure |
+| EffectAlgebra | 4 | 3 | 1 | 0 | extensional-structural-definition |
 | EffectSummary | 2 | 2 | 1 | 0 | relational-structural-definition |
 | EigenDecomposition | 2 | 2 | 1 | 1 | defined-structure |
 | EmptyType | 1 | 1 | 0 | 2 | extensional-type-theory |
@@ -117,6 +119,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | IdempotentSemiring | 5 | 5 | 0 | 1 | axiomatic-structure |
 | Integer | 4 | 3 | 3 | 1 | derived-construction |
 | IntegerAffineMap | 2 | 2 | 1 | 0 | relational-structural-definition |
+| IntervalDomain | 5 | 4 | 2 | 0 | extensional-structural-definition |
 | JavaParameterizedType | 3 | 3 | 2 | 0 | extensional-structural-definition |
 | JavaTypeErasure | 3 | 2 | 2 | 0 | extensional-structural-definition |
 | JavaTypeInference | 3 | 3 | 2 | 0 | extensional-structural-definition |
@@ -157,6 +160,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | Mode | 2 | 1 | 2 | 1 | defined-function |
 | ModularInteger | 2 | 1 | 0 | 2 | defined-structure |
 | Monoid | 1 | 4 | 1 | 1 | axiomatic-structure |
+| MonotoneDataflow | 3 | 3 | 1 | 0 | extensional-structural-definition |
 | MonotoneFunction | 1 | 1 | 1 | 1 | defined-structure |
 | Multimap | 3 | 3 | 1 | 1 | extensional-structural-definition |
 | Multiset | 5 | 3 | 1 | 1 | defined-structure |
@@ -204,6 +208,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | RelationalSchema | 3 | 3 | 3 | 1 | defined-structure |
 | RelativeEntropy | 1 | 1 | 0 | 1 | extensional-structural-definition |
 | ResiduatedFuzzyLogic | 3 | 6 | 1 | 1 | defined-structure |
+| RewriteSystem | 3 | 2 | 1 | 0 | extensional-structural-definition |
 | Ring | 3 | 11 | 0 | 1 | axiomatic-structure |
 | RootedTree | 3 | 3 | 1 | 1 | extensional-structural-definition |
 | RoseTree | 4 | 4 | 1 | 1 | extensional-structural-definition |
@@ -222,6 +227,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | Set | 6 | 9 | 2 | 2 | foundational-theory |
 | ShannonEntropy | 1 | 1 | 0 | 2 | extensional-structural-definition |
 | Simulation | 1 | 1 | 1 | 1 | defined-structure |
+| SingleParentForest | 4 | 2 | 1 | 0 | extensional-structural-definition |
 | SmoothManifold | 1 | 2 | 0 | 1 | defined-structure |
 | SparseVector | 4 | 3 | 1 | 1 | extensional-structural-definition |
 | SpeculationSafety | 1 | 2 | 1 | 0 | relational-structural-definition |
@@ -263,6 +269,6 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | WeightedDirectedGraph | 3 | 2 | 1 | 1 | extensional-structural-definition |
 | WellFoundedRelation | 1 | 1 | 1 | 1 | defined-structure |
 
-258 of 258 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
+264 of 264 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
 
 Use `ruleRole` to distinguish foundational axioms, structure constraints, and defining equations. Use `basisScope` for interface boundaries. Alternate language policies, intensional equality, IEEE payload/trap details, and formal proof artifacts require further formalization.

@@ -12,13 +12,15 @@ A concrete-to-abstract analysis interface whose abstract transfer overapproximat
 
 **Prerequisites:** [Set](Set.md), [Join semilattice](JoinSemilattice.md), [Monotone Function](MonotoneFunction.md)
 
-**Related concepts:** [Complete Lattice](CompleteLattice.md), [Fixed Point](FixedPoint.md), [Analysis validity across IR mutation](AnalysisPreservation.md)
+**Related concepts:** [Complete Lattice](CompleteLattice.md), [Fixed Point](FixedPoint.md), [Analysis validity across IR mutation](AnalysisPreservation.md), [Monotone dataflow framework (forward join profile)](MonotoneDataflow.md), [Integer interval abstract domain (empty and unbounded intervals)](IntervalDomain.md)
 
 ## Backlinks
 
 - [Conservative alias and Mod/Ref query contract](AliasAnalysis.md) — `requiresConcept`
 - [Analysis validity across IR mutation](AnalysisPreservation.md) — `relatedConcept`
+- [Integer interval abstract domain (empty and unbounded intervals)](IntervalDomain.md) — `relatedConcept`
 - [Scoped LLVM attribute, flag and metadata contract](LLVMAttributeContract.md) — `relatedConcept`
+- [Monotone dataflow framework (forward join profile)](MonotoneDataflow.md) — `relatedConcept`
 - [Scoped induction recurrence and trip-count facts](ScalarRecurrence.md) — `relatedConcept`
 
 ## Mathematical formulation
@@ -263,7 +265,9 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "relatedConcept": [
       "urn:csabs:concept/CompleteLattice",
       "urn:csabs:concept/FixedPoint",
-      "urn:csabs:concept/AnalysisPreservation"
+      "urn:csabs:concept/AnalysisPreservation",
+      "urn:csabs:concept/MonotoneDataflow",
+      "urn:csabs:concept/IntervalDomain"
     ],
     "hasOperation": [
       "urn:csabs:operation/AbstractInterpretation-transfer",

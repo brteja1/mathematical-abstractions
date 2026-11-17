@@ -1,6 +1,6 @@
-# Observable behavior refinement
+# Observable behavior refinement (ObservationalRefinement)
 
-A relation in which every target whole-program behavior is permitted by the source under the same admissible input and observation convention; nondeterminism may be reduced.
+A relation in which every target whole-program behavior is permitted by the source under the same admissible input and observation convention; nondeterminism may be reduced. Also called observational refinement (ObservationalRefinement); the existing stable ID is retained for this same behavior-inclusion relation.
 
 **Notation:** S ⊒ T ⇔ ∀i∈I, Beh(T,i) ⊆ Beh(S,i)
 
@@ -14,7 +14,7 @@ A relation in which every target whole-program behavior is permitted by the sour
 
 **Specializes:** [Binary relation](Relation.md)
 
-**Related concepts:** [Simulation](Simulation.md), [Bisimulation](Bisimulation.md), [Strong finite partial-trace equivalence](TraceEquivalence.md), [LLVM scalar deferred undefinedness and freeze](LLVMPoisonSemantics.md)
+**Related concepts:** [Simulation](Simulation.md), [Bisimulation](Bisimulation.md), [Strong finite partial-trace equivalence](TraceEquivalence.md), [LLVM scalar deferred undefinedness and freeze](LLVMPoisonSemantics.md), [Program side-effect algebra (total sequential effect-quantale profile)](EffectAlgebra.md), [Abstract rewrite system](RewriteSystem.md)
 
 ## Backlinks
 
@@ -264,8 +264,8 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "id": "urn:csabs:concept/BehaviorRefinement",
     "type": "Concept",
     "shortForm": "BehaviorRefinement",
-    "fullName": "Observable behavior refinement",
-    "definition": "A relation in which every target whole-program behavior is permitted by the source under the same admissible input and observation convention; nondeterminism may be reduced.",
+    "fullName": "Observable behavior refinement (ObservationalRefinement)",
+    "definition": "A relation in which every target whole-program behavior is permitted by the source under the same admissible input and observation convention; nondeterminism may be reduced. Also called observational refinement (ObservationalRefinement); the existing stable ID is retained for this same behavior-inclusion relation.",
     "notation": "S ⊒ T ⇔ ∀i∈I, Beh(T,i) ⊆ Beh(S,i)",
     "category": [
       "urn:csabs:category/compiler-transformations"
@@ -279,7 +279,9 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/Simulation",
       "urn:csabs:concept/Bisimulation",
       "urn:csabs:concept/TraceEquivalence",
-      "urn:csabs:concept/LLVMPoisonSemantics"
+      "urn:csabs:concept/LLVMPoisonSemantics",
+      "urn:csabs:concept/EffectAlgebra",
+      "urn:csabs:concept/RewriteSystem"
     ],
     "hasOperation": [
       "urn:csabs:operation/BehaviorRefinement-refines",

@@ -58,6 +58,7 @@ Concept records expose `mathematicalFormulation` (readable mathematics), `leanFo
 | `Catalog/CoroutineProofs.lean` | Three registered witnesses: yield between resumes, reachable owner/waiting invariants, and a constructive infinite starvation execution; see [proof mappings](../docs/COROUTINES.md#sources-and-lean-evidence) |
 | `Catalog/LLVMTransforms.lean` | Partial LLVM interfaces for memory/provenance/layout, alias/MemorySSA, CFG/loop correspondence, numeric/vector semantics, atomics, calls/EH/convergence, representations, linkage, attributes and instrumentation; see [scope](../docs/COMPILER_TRANSFORMS.md) |
 | `Catalog/CompilerTransforms.lean` | Partial compiler interfaces for refinement, rewrites, SSA/dominance, effects/speculation, LLVM deferred UB, conversion/validation, abstract transfer, integer index maps, loop dependence and analysis preservation; see [scope](../docs/COMPILER_TRANSFORMS.md) |
+| `Catalog/ProgramStructures.lean` | Single-entry/single-exit CFGs, monotone dataflow equations, integer interval carriers, abstract rewriting, program side-effect algebras and single-parent forests; see [scope](../docs/PROGRAM_STRUCTURES.md) |
 | `Catalog/Semantics.lean` | Hoare logic, invariants, termination, safety/liveness and history interfaces |
 | `Catalog/Logic.lean` | Propositional, first-order, modal and temporal syntax and satisfaction |
 | `Catalog/LogicSyntax.lean` | Countable signatures, named binders, guarded substitution and classical natural deduction; see [logic coverage](../docs/LOGIC.md) |
