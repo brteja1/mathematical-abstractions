@@ -1,3 +1,0 @@
-The current reducer can return the wrong mean for unequal batch sizes, and regrouping can change the result even when worker order is preserved. The proposed reducer stores the exact sum and count, appends diagnostics in order, and uses `(0, 0, ())` as its identity. This makes order-preserving regrouping valid. Arbitrary worker reordering can still change the diagnostics.
-
-The review is in [answer.md](/tmp/math-skills-pilot-20261118-01/with-skills/answer.md). Running `python3 checks.py` passed the original counterexamples and the replacement checks in [checks.py](/tmp/math-skills-pilot-20261118-01/with-skills/checks.py). Git status was unavailable because Git did not recognize the workspace as a repository.
