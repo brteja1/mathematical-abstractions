@@ -7,6 +7,12 @@ description: Inspect unannotated software, data structures, and APIs to discover
 
 Inspect existing software components, algorithms, and data structures to uncover their underlying mathematical abstractions. Identify implicit invariants, detect violated algebraic laws, and recommend principled refactorings grounded in the catalog.
 
+## Fill a required mathematical gap
+
+If the selected task needs an abstraction, operation or proof absent from the catalog, use [abstraction-acquisition](../abstraction-acquisition/SKILL.md). Search for reusable entries first, acquire or construct only the missing mathematics, and compile/audit the required Lean model and claims. After verification, offer catalog promotion (default) or task-local retention and wait for the user's choice unless already specified. Then resume this workflow with the explicit semantic mapping. Unverified assumptions require an explicit user choice for conditional continuation.
+
+A missing software helper or duplication pattern alone does not require a new mathematical concept.
+
 ## Inspect code before querying the catalog
 
 For large codebases, **do not read files at random**. Use grep to count first, then read a bounded representative sample. This keeps agent context bounded and results comparable across runs.

@@ -31,6 +31,10 @@ These commands use authoritative Markdown and Python's standard library. For ONT
 
 Start with focused concept/operation records for the disputed obligations. Load a selected law or axiom when checking that obligation, and a theorem only when a needed result or relied-on proof requires it. Use `--view lean` and the relevant part of the [formulation guide](../mathematical-tests/references/formulations.md) only for typed correspondence or witness evidence. Do not prefetch theorem lists, proof sketches, all sources or complete dossiers. Preserve assumptions and partial-model limits; resolve discrepancies against normative clauses before treating a formula as an oracle.
 
+## Fill a required mathematical gap
+
+If the selected task needs an abstraction, operation or proof absent from the catalog, use [abstraction-acquisition](../abstraction-acquisition/SKILL.md). Search for reusable entries first, acquire or construct only the missing mathematics, and compile/audit the required Lean model and claims. After verification, offer catalog promotion (default) or task-local retention and wait for the user's choice unless already specified. Then resume this workflow with the explicit semantic mapping. Unverified assumptions require an explicit user choice for conditional continuation.
+
 ## Inspect every selected obligation
 
 Build an obligation-to-evidence table using the mapping's stable local IDs. Mark each as supported within stated scope, violated, blocked by ambiguity, or unchecked. A missing implementation or test is not automatically a semantic contradiction.
@@ -55,4 +59,4 @@ For each finding give severity based on actual consequence, specification clause
 
 Summarize covered and unchecked obligations without equating a count to completeness. Report citation gaps separately from behavioral findings. Do not call an entire implementation verified based on selected passing tests or abstract Lean witnesses.
 
-When repair is requested, fix behavior consistent with the normative contract, update the mapping when representation changes, and rerun affected checks. Do not weaken requirements or alter tests to accept the defect. Keep review artifacts in the target project or requested scratch location; catalog edits and proof promotion are separate tasks. Skills in `ai/skills/` require explicit reading or host registration for discovery.
+When repair is requested, fix behavior consistent with the normative contract, update the mapping when representation changes, and rerun affected checks. Do not weaken requirements or alter tests to accept the defect. Keep review artifacts in the target project or requested scratch location; use the acquisition workflow for catalog edits and proof promotion when a required mathematical gap is found. Skills in `ai/skills/` require explicit reading or host registration for discovery.

@@ -1,0 +1,11 @@
+This is an isolated evaluation task. Work only in this workspace.
+Read TASK.md and complete it, writing the requested outputs here. The catalog
+at catalog/ is available as mathematical reference in both evaluation arms.
+Use python3 catalog/scripts/catalog.py for focused queries. The pinned Lean
+project is catalog/lean/; available installed runtimes are linked into the
+snapshot. Do not change shared runtime directories or the source repository.
+Do not read outside this workspace, use past-session memory, inspect evaluator
+answer keys, or consult another run. Report tool blockers honestly. Follow the
+task's contract and preserve its requested scope. Do not invoke other agents.
+
+Complete TASK.md without repository skill instructions.

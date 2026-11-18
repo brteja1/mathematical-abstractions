@@ -1,0 +1,7 @@
+case,arm,contract_checks_passed,contract_checks_total,seeded_assertion_confirmed_faults,seeded_faults_total,correct_implementations_accepted,supplementary_capacity_fault_detected,specification_quality_0_4,code_maintainability_0_4,test_maintainability_0_4,editorial_readability_0_4,human_comprehension_accuracy,human_comprehension_time,elapsed_seconds,input_tokens,output_tokens,completed_shell_commands,scoring_note
+10,without-skills,18,18,,,,,3,4,4,3,,,161.1,150659,5972,7,Author unblinded; editorial ratings; capacity probe post-hoc; human study not performed
+10,with-skills,18,18,,,,,3,4,4,3,,,184.28,310703,7665,11,Author unblinded; editorial ratings; capacity probe post-hoc; human study not performed
+11,without-skills,,,10,10,2,no,,,3,3,,,133.53,92902,5634,5,Author unblinded; editorial ratings; capacity probe post-hoc; human study not performed
+11,with-skills,,,10,10,2,yes,,,3,3,,,159.83,199012,6213,8,Author unblinded; editorial ratings; capacity probe post-hoc; human study not performed
+12,without-skills,,,,,,,4,,3,3,,,269.94,159624,9858,7,Author unblinded; editorial ratings; capacity probe post-hoc; human study not performed
+12,with-skills,,,,,,,4,,3,3,,,274.39,276241,12332,13,Author unblinded; editorial ratings; capacity probe post-hoc; human study not performed

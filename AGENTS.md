@@ -66,9 +66,15 @@ Keep imported stable IDs and context despite the broader repository name. `data/
 
 For LLVM/MLIR transform work, see docs/COMPILER_TRANSFORMS.md and the generated docs/LLVM_PASS_COVERAGE.md. The versioned mapping in data/llvm/pass_obligations_21.1.8.json covers literal core IR pass registrations, not machine-code passes or all parameter expansions. Run `python3 scripts/llvm_transform_coverage.py --check --llvm-root PATH` against the reference checkout to detect source drift; `make check-llvm-transforms` checks the recorded mapping offline. Keep obligation coverage, partial Lean interfaces, runtime/target contracts and concrete pass proofs distinct. Update the manifest deliberately rather than silently assigning new registrations a generic fallback.
 
+## AI abstraction-acquisition skill
+
+Use `ai/evaluations/README.md` for paired skill efficacy prompts and evaluator-only criteria. Run evaluated sessions outside this repository's instruction context; keep common task/catalog inputs equal, skill instructions exclusive to the treatment, and answer keys out of both sessions. Fixture validation is not evidence of skill efficacy.
+
+When a problem requires missing mathematical abstractions, operations or proof evidence, use `ai/skills/abstraction-acquisition/SKILL.md`. Reuse existing concepts first; prefer the pinned Lean/Mathlib and consulted primary sources, or construct a sourced model. Prove satisfaction of the selected axiom basis and task-required claims; assumed law fields alone are not model evidence. After verification, offer catalog promotion (default) or task-local retention and wait for the user's choice unless already specified. Register model-satisfaction results as separate Theorems, not proofs bound to Axiom IDs. Preserve provenance and dependency pins, run required checks on promotion, and resume the original task with an explicit semantic mapping. Conditional continuation with unverified assumptions requires the user's explicit choice. See the skill for local compiler/audit evidence and blockers.
+
 ## AI test-design skill
 
-All four AI skills share `ai/skills/mathematical-tests/references/formulations.md` for readable/Lean formulations, source separation, partial interfaces and witness evidence. The bounded helper searches readable formulations; `sources ID --kind formulation` follows local Lean sources, while default citation queries keep their existing mathematical-provenance meaning.
+The AI skills share `ai/skills/mathematical-tests/references/formulations.md` for readable/Lean formulations, source separation, partial interfaces and witness evidence. The bounded helper searches readable formulations; `sources ID --kind formulation` follows local Lean sources, while default citation queries keep their existing mathematical-provenance meaning.
 
 Retrieve context progressively: focused concept/operation records first; axioms/laws for the current obligation; theorems only when their results or proofs are needed. Interfaces default to operations only. `--view lean` opts into typed excerpts and `--view full` into complete records; ordinary retrieval keeps semantic conditions and partial-model limits without preloading claim lists or proof text. Read only relevant skill-reference sections, and expand premises, sources or prerequisites only to resolve a task need.
 

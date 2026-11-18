@@ -1,0 +1,3 @@
+command: python3 checks.py
+exit_code: 0
+Original counterexamples and replacement checks passed.

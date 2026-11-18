@@ -1,0 +1,73 @@
+{
+  "run": {
+    "case": "10",
+    "arm": "without-skills",
+    "command": [
+      "codex",
+      "exec",
+      "--ignore-user-config",
+      "--ephemeral",
+      "--skip-git-repo-check",
+      "--sandbox",
+      "workspace-write",
+      "--json",
+      "--color",
+      "never",
+      "--model",
+      "gpt-6.1-sol",
+      "-c",
+      "model_reasoning_effort=\"medium\"",
+      "--output-last-message",
+      "final-message.md",
+      "-"
+    ],
+    "elapsedSeconds": 161.1,
+    "exitCode": 0,
+    "timedOut": false
+  },
+  "usage": {
+    "input_tokens": 150659,
+    "cached_input_tokens": 139136,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 5972,
+    "reasoning_output_tokens": 236
+  },
+  "changedCommonInputs": [],
+  "changedSkillInputs": [],
+  "completedCommands": 7,
+  "skillReadCommands": [],
+  "independentContract": {
+    "exitCode": 0,
+    "tests": 18,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "output": "test_clip (_contract_checks.CalendarContract.test_clip) ... ok\ntest_compatible_merge (_contract_checks.CalendarContract.test_compatible_merge) ... ok\ntest_conflict_persistence (_contract_checks.CalendarContract.test_conflict_persistence) ... ok\ntest_duplicate_interval_distinct_ids (_contract_checks.CalendarContract.test_duplicate_interval_distinct_ids) ... ok\ntest_empty (_contract_checks.CalendarContract.test_empty) ... ok\ntest_gaps (_contract_checks.CalendarContract.test_gaps) ... ok\ntest_huge_signed (_contract_checks.CalendarContract.test_huge_signed) ... ok\ntest_invalid_interval (_contract_checks.CalendarContract.test_invalid_interval) ... ok\ntest_merge_conflict (_contract_checks.CalendarContract.test_merge_conflict) ... ok\ntest_merge_laws_on_compatible_inputs (_contract_checks.CalendarContract.test_merge_laws_on_compatible_inputs) ... ok\ntest_merge_replay (_contract_checks.CalendarContract.test_merge_replay) ... ok\ntest_peak_adjacency (_contract_checks.CalendarContract.test_peak_adjacency) ... ok\ntest_peak_nested (_contract_checks.CalendarContract.test_peak_nested) ... ok\ntest_persistence (_contract_checks.CalendarContract.test_persistence) ... ok\ntest_replay (_contract_checks.CalendarContract.test_replay) ... ok\ntest_seeded_small_histories_independent_point_oracle (_contract_checks.CalendarContract.test_seeded_small_histories_independent_point_oracle) ... ok\ntest_sorted_rows (_contract_checks.CalendarContract.test_sorted_rows) ... ok\ntest_window_edges (_contract_checks.CalendarContract.test_window_edges) ... ok\n\n----------------------------------------------------------------------\nRan 18 tests in 0.004s\n\nOK\n"
+  },
+  "generatedChecksRerun": {
+    "command": [
+      "/opt/anaconda3/bin/python3",
+      "-B",
+      "-m",
+      "unittest",
+      "-v",
+      "test_calendar"
+    ],
+    "exitCode": 0,
+    "output": "test_clipping_adjacency_containment_and_gaps (test_calendar.CalendarTests.test_clipping_adjacency_containment_and_gaps) ... ok\ntest_empty_and_query_ordering (test_calendar.CalendarTests.test_empty_and_query_ordering) ... ok\ntest_exhaustive_small_merge_oracle (test_calendar.CalendarTests.test_exhaustive_small_merge_oracle) ... ok\ntest_exhaustive_small_observer_oracle (test_calendar.CalendarTests.test_exhaustive_small_observer_oracle) ... ok\ntest_huge_signed_endpoints_and_larger_collection (test_calendar.CalendarTests.test_huge_signed_endpoints_and_larger_collection) ... ok\ntest_merge_conflict_after_compatible_rows_preserves_both (test_calendar.CalendarTests.test_merge_conflict_after_compatible_rows_preserves_both) ... ok\ntest_merge_laws (test_calendar.CalendarTests.test_merge_laws) ... ok\ntest_peak_half_open_ties_and_distinct_ids (test_calendar.CalendarTests.test_peak_half_open_ties_and_distinct_ids) ... ok\ntest_persistent_branches_and_retained_outputs (test_calendar.CalendarTests.test_persistent_branches_and_retained_outputs) ... ok\ntest_reserve_sort_replay_and_errors (test_calendar.CalendarTests.test_reserve_sort_replay_and_errors) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.038s\n\nOK\n"
+  },
+  "artifactHashes": {
+    "AGENTS.md": "9be50968665e9327c35d24f316f42f989511148682254934d290a61d11b611d8",
+    "TASK.md": "3f75e1326e06b5e9e3698648d54196e0f3ca7be1189e87ee35b928238fb46448",
+    "answer.md": "580d49c56339c2c55db64f39efca0c6217828bab00710157faa9cef9c8c5eb85",
+    "calendar_api.py": "da27b59c5e0b65347f96cc25b40967ca5ed7e4dd186f186c297f88ea4b35056e",
+    "events.jsonl": "0810be9cccdf530d6a607e3545e3769fda608e5ae8e454022ea78895172f6035",
+    "final-message.md": "e0b10a4c7e6d3887fdc41719dfdbb5f55c9c9969a46630c3a1cd1b3dc76fc447",
+    "mapping.md": "1e168b11d15de8c830cd72ee4f625f94dcfcc113ec7ed6d03a4e73b1d88b0506",
+    "prompt.txt": "86697db8ff1af24145d3729b123c343a257c1186c8bb8221ea705ab9bf43c388",
+    "run.json": "14b24bddcbc03d5e46bf693d166cc1fff24222edb34f1090287d2fb20194ed59",
+    "spec.md": "f7a2f046cd188cf272cebf837c1ceda292a86ac2130e767612d6d2fcfee8fd65",
+    "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "test_calendar.py": "8cb0aff20eb182f8411da2aba559b6b04612f83e88c871a0d68187aa39f3f7c4"
+  }
+}

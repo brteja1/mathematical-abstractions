@@ -38,6 +38,50 @@ class LeanProofRejectionTests(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertIn('Type mismatch', result.stdout)
 
+    def acquisition_source(self):
+        return (ROOT / 'ai/skills/abstraction-acquisition/references/watermark.lean').read_text()
+
+    def compile_acquisition(self, source):
+        # Keep the example outside the catalog library and authoritative graph.
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.lean', dir=LEAN / '.lake') as stream:
+            stream.write(source)
+            stream.flush()
+            return subprocess.run(['lake', 'env', 'lean', '-DwarningAsError=true', stream.name],
+                                  cwd=LEAN, text=True, stdout=subprocess.PIPE,
+                                  stderr=subprocess.STDOUT)
+
+    def test_acquisition_constructs_and_audits_model_and_downstream_claim(self):
+        result = self.compile_acquisition(self.acquisition_source())
+        self.assertEqual(result.returncode, 0, result.stdout)
+        for name in ('natural_model_satisfies', 'merge_three_covers'):
+            self.assertIn('CATALOG_WITNESS AcquisitionExample.' + name + ' |', result.stdout)
+
+    def test_acquisition_rejects_inapplicable_merge(self):
+        # A minimum operation cannot satisfy the same upper-bound obligations.
+        source = self.acquisition_source().replace(':= max a b', ':= min a b')
+        result = self.compile_acquisition(source)
+        self.assertNotEqual(result.returncode, 0, result.stdout)
+        self.assertIn('Type mismatch', result.stdout)
+
+    def test_acquisition_rejects_admitted_model_satisfaction(self):
+        source = self.acquisition_source()
+        start = source.index('  exact ⟨Nat.le_refl')
+        end = source.index('\n\n-- Additional task obligation', start)
+        result = self.compile_acquisition(source[:start] + '  sorry' + source[end:])
+        self.assertNotEqual(result.returncode, 0, result.stdout)
+        self.assertIn('sorryAx', result.stdout)
+
+    def test_acquisition_rejects_fabricated_model_satisfaction(self):
+        source = self.acquisition_source()
+        declaration = 'theorem natural_model_satisfies : JoinBasis Nat (· ≤ ·) merge := by'
+        source = source.replace(declaration,
+                                'axiom fabricated_basis : JoinBasis Nat (· ≤ ·) merge\n\n' + declaration)
+        start = source.index('  exact ⟨Nat.le_refl')
+        end = source.index('\n\n-- Additional task obligation', start)
+        result = self.compile_acquisition(source[:start] + '  exact fabricated_basis' + source[end:])
+        self.assertNotEqual(result.returncode, 0, result.stdout)
+        self.assertIn('Unapproved axiom', result.stdout)
+
 
 if __name__ == '__main__':
     unittest.main()

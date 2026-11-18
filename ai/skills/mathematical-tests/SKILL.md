@@ -36,6 +36,10 @@ The wrapper uses ONTFS/SPARQL for selection and typed links, checks the generate
 
 Read `truncated`, `nextOffset`, `depthBoundary` and `needsLargerBudget`. Fetch another page only when its omitted records are needed. Follow a relevant missing premise by ID, or deepen that premise query. A response with `needsLargerBudget: true` made no progress: increase the character budget for that node rather than repeating its offset. Never treat a clipped page, unresolved premise, empty section or absent citation as mathematical completeness.
 
+## Fill a required mathematical gap
+
+If the selected task needs an abstraction, operation or proof absent from the catalog, use [abstraction-acquisition](../abstraction-acquisition/SKILL.md). Search for reusable entries first, acquire or construct only the missing mathematics, and compile/audit the required Lean model and claims. After verification, offer catalog promotion (default) or task-local retention and wait for the user's choice unless already specified. Then resume this workflow with the explicit semantic mapping. Unverified assumptions require an explicit user choice for conditional continuation.
+
 ## Translate claims into test obligations
 
 For each selected axiom/law/theorem, record the stable ID, its assumptions and definedness, the code operations implementing it, the observation/equality used, and any representation or semantic differences. Map **every operation used in the property**, including constructors, observers and partial results. If multiple methods mutate the same object, model before/after states explicitly.
@@ -56,4 +60,4 @@ Run the relevant tests and required target checks. Report the actual commands/re
 
 Preserve source locators and `provenanceStatus` for claims used in a test rationale. Legacy citation gaps are not repaired by a passing test. A Lean witness, when relevant, can support the mapped mathematical proposition: inspect it with `<skill_dir>/../../../scripts/lean.py get ID` and require fresh verification evidence before calling it compiled. It does not prove that the target implementation refines that model.
 
-Deliver the test files, chosen concept/claim IDs and API mapping, tested preconditions/edge cases, execution evidence and any deferred properties. Tests provide finite evidence; do not report universal mathematical or implementation proofs. Catalog edits, proof promotion and ONTFS proposals are separate work from generating tests.
+Deliver the test files, chosen concept/claim IDs and API mapping, tested preconditions/edge cases, execution evidence and any deferred properties. Tests provide finite evidence; do not report universal mathematical or implementation proofs. Keep test artifacts outside authoritative graph records. For a required mathematical gap, the acquisition workflow handles optional catalog promotion before test design resumes.

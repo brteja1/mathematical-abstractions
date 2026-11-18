@@ -89,9 +89,19 @@ Checks cover unique IDs and short forms, typed references, operation ownership, 
 
 Validation checks structure and citation metadata. Mathematical correctness, source entailment and informal-to-formal correspondence require separate review; compiled proof evidence is checked through the Lean workflow.
 
+## Acquiring missing mathematical abstractions
+
+The [abstraction-acquisition skill](ai/skills/abstraction-acquisition/SKILL.md) lets the AI workflows fill required gaps before returning to a problem. It reuses existing entries, prefers the pinned Lean/Mathlib and consulted primary sources, or constructs a sourced model. Lean checks establish satisfaction of the selected axiom basis and the additional claims needed by the task; they do not establish software refinement or absolute consistency.
+
+After preparing definitions, mappings and compiled proofs, the agent offers **Promote to catalog (default)** or **Keep with this task**, waits for the choice, and resumes the original workflow. Unsupported assumptions require an explicit choice to continue conditionally. See the [runnable Lean example](ai/skills/abstraction-acquisition/references/watermark-example.md) and [agent workflow](docs/AGENT_WORKFLOWS.md#missing-abstractions-and-proofs).
+
+## Evaluating the AI skills
+
+The [paired evaluation suite](ai/evaluations/README.md) provides twelve user prompts covering all seven skills, evaluator-only scoring criteria and matching workspaces with and without skill instructions. Harder cases assess code, specifications, test defect detection and readability through separate quality criteria and human comprehension questions. Both arms receive the same catalog and task inputs. Actual model runs and their limitations belong in the suite's results directory; fixture checks alone do not establish efficacy.
+
 ## AI skill for specification consistency
 
-All four AI skills retrieve context progressively: start with compact candidates and focused concept/operation records, fetch axioms/laws for the current obligation, and fetch theorems only when their results or proofs are needed. Lean excerpts and full records are opt-in through `--view lean` and `--view full`; operation-only interfaces are the default. Their shared [formulation guide](ai/skills/mathematical-tests/references/formulations.md) is consulted when typed correspondence or witness evidence is needed. Retained assumptions and partial-model limits remain explicit. Mathematical citations stay separate from local Lean sources queried with `sources ID --kind formulation`.
+The AI skills retrieve context progressively: start with compact candidates and focused concept/operation records, fetch axioms/laws for the current obligation, and fetch theorems only when their results or proofs are needed. Lean excerpts and full records are opt-in through `--view lean` and `--view full`; operation-only interfaces are the default. Their shared [formulation guide](ai/skills/mathematical-tests/references/formulations.md) is consulted when typed correspondence or witness evidence is needed. Retained assumptions and partial-model limits remain explicit. Mathematical citations stay separate from local Lean sources queried with `sources ID --kind formulation`.
 
 The [specification-consistency skill](ai/skills/specification-consistency/SKILL.md) guides agents in finding conflicting requirements and impossible operation contracts. It maps specification clauses to catalog definitions and explicit assumptions, then helps agents construct and execute suitable checks. It covers joint satisfiability, required input coverage, vacuous preconditions, and stateful or temporal obligations.
 

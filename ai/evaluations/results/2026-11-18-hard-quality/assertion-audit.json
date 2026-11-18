@@ -1,0 +1,150 @@
+{
+  "reason": "Frozen automatic flag required errors==0 and excluded real assertion failures followed by cascading errors. Raw results and frozen evaluator remain preserved.",
+  "method": "Require passing suites on both correct implementations and inspect a contract-relevant unittest FAIL block containing AssertionError for each seeded single-fault variant.",
+  "arms": {
+    "without-skills": {
+      "expiry_boundary": {
+        "assertionConfirmed": true,
+        "frozenCleanRunFlag": false,
+        "failures": 237,
+        "errors": 143,
+        "witness": "FAIL: test_arbitrary_integer_magnitudes (test_scheduler.SchedulerTests.test_arbitrary_integer_magnitudes)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/scheduler-grading-7m9wca0l/test_scheduler.py\", line 155, in test_arbitrary_integer_magnitudes\n    self.assertEqual(api.snapshot(state, huge + 1), ())\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: (('boundary', 0, 1000000000000000000000000[74 chars]01),) != ()\n\nFirst tuple contains 1 additional elements.\nFirst extra element 0:\n('boundary', 0, 10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001)\n\n+ ()\n- (('boundary',\n-   0,\n-   10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001),)\n\n"
+      },
+      "maximum_priority": {
+        "assertionConfirmed": true,
+        "frozenCleanRunFlag": false,
+        "failures": 157,
+        "errors": 379,
+        "witness": "FAIL: test_arbitrary_integer_magnitudes (test_scheduler.SchedulerTests.test_arbitrary_integer_magnitudes)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/scheduler-grading-ov2x5xqp/test_scheduler.py\", line 153, in test_arbitrary_integer_magnitudes\n    self.assertEqual(api.take(state, huge), row)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: ('high', 1000000000000000000000000000000000[166 chars]0003) != ('low', -1000000000000000000000000000000000[166 chars]0001)\n\nFirst differing element 0:\n'high'\n'low'\n\nDiff is 664 characters long. Set self.maxDiff to None to see it.\n\n"
+      },
+      "ignore_live_replacement": {
+        "assertionConfirmed": true,
+        "frozenCleanRunFlag": false,
+        "failures": 416,
+        "errors": 258,
+        "witness": "FAIL: test_clone_jobs_clocks_and_bidirectional_independence (test_scheduler.SchedulerTests.test_clone_jobs_clocks_and_bidirectional_independence)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/scheduler-grading-3ul99ke0/test_scheduler.py\", line 168, in test_clone_jobs_clocks_and_bidirectional_independence\n    self.assertEqual(api.snapshot(copy, 5),\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^\n                     ((\"copy\", 2, 100), (\"long\", -5, 90), (\"soon\", -1, 8)))\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: (('copy', 2, 100), ('long', 1, 100), ('soon', -1, 8)) != (('copy', 2, 100), ('long', -5, 90), ('soon', -1, 8))\n\nFirst differing element 1:\n('long', 1, 100)\n('long', -5, 90)\n\n- (('copy', 2, 100), ('long', 1, 100), ('soon', -1, 8))\n?                             ^  ^^\n\n+ (('copy', 2, 100), ('long', -5, 90), ('soon', -1, 8))\n?                             ^^  ^\n\n\n"
+      },
+      "ignore_expired_replacement": {
+        "assertionConfirmed": true,
+        "frozenCleanRunFlag": false,
+        "failures": 483,
+        "errors": 273,
+        "witness": "FAIL: test_expired_put_deletes_existing_id (test_scheduler.SchedulerTests.test_expired_put_deletes_existing_id) (expiration=-10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/scheduler-grading-lyjtm0pj/test_scheduler.py\", line 65, in test_expired_put_deletes_existing_id\n    self.assertEqual(api.snapshot(state, 5), ((\"keep\", 2, 100),))\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: (('keep', 2, 100), ('x', -9, 100)) != (('keep', 2, 100),)\n\nFirst tuple contains 1 additional elements.\nFirst extra element 1:\n('x', -9, 100)\n\n- (('keep', 2, 100), ('x', -9, 100))\n+ (('keep', 2, 100),)\n\n"
+      },
+      "allow_backwards": {
+        "assertionConfirmed": true,
+        "frozenCleanRunFlag": false,
+        "failures": 965,
+        "errors": 6,
+        "witness": "FAIL: test_arbitrary_integer_magnitudes (test_scheduler.SchedulerTests.test_arbitrary_integer_magnitudes)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/scheduler-grading-yjhb7b2v/test_scheduler.py\", line 156, in test_arbitrary_integer_magnitudes\n    self.assert_rejects_all(state, huge)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^\n  File \"/tmp/scheduler-grading-yjhb7b2v/test_scheduler.py\", line 99, in assert_rejects_all\n    with self.assertRaises(ValueError):\n         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\nAssertionError: ValueError not raised\n\n"
+      },
+      "mutate_on_rejection": {
+        "assertionConfirmed": true,
+        "frozenCleanRunFlag": false,
+        "failures": 645,
+        "errors": 287,
+        "witness": "FAIL: test_backward_calls_are_atomic (test_scheduler.SchedulerTests.test_backward_calls_are_atomic) (kind='replace')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/scheduler-grading-znd7luyq/test_scheduler.py\", line 126, in test_backward_calls_are_atomic\n    self.assertEqual(api.snapshot(state, 10), rows)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: () != (('x', -2, 11), ('y', 4, 100))\n\nSecond tuple contains 2 additional elements.\nFirst extra element 0:\n('x', -2, 11)\n\n- ()\n+ (('x', -2, 11), ('y', 4, 100))\n\n"
+      },
+      "clone_clock_reset": {
+        "assertionConfirmed": true,
+        "frozenCleanRunFlag": true,
+        "failures": 149,
+        "errors": 0,
+        "witness": "FAIL: test_clone_empty_clock_and_clone_of_clone (test_scheduler.SchedulerTests.test_clone_empty_clock_and_clone_of_clone)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/scheduler-grading-hgmjutjn/test_scheduler.py\", line 182, in test_clone_empty_clock_and_clone_of_clone\n    self.assert_rejects_all(state, 19)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^\n  File \"/tmp/scheduler-grading-hgmjutjn/test_scheduler.py\", line 99, in assert_rejects_all\n    with self.assertRaises(ValueError):\n         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\nAssertionError: ValueError not raised\n\n"
+      },
+      "clone_alias": {
+        "assertionConfirmed": true,
+        "frozenCleanRunFlag": false,
+        "failures": 34,
+        "errors": 901,
+        "witness": "FAIL: test_clone_jobs_clocks_and_bidirectional_independence (test_scheduler.SchedulerTests.test_clone_jobs_clocks_and_bidirectional_independence)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/scheduler-grading-i0e_20mm/test_scheduler.py\", line 166, in test_clone_jobs_clocks_and_bidirectional_independence\n    self.assertEqual(api.take(source, 5), (\"soon\", -1, 8))\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: ('long', -5, 90) != ('soon', -1, 8)\n\nFirst differing element 0:\n'long'\n'soon'\n\n- ('long', -5, 90)\n+ ('soon', -1, 8)\n\n"
+      },
+      "unsorted_snapshot": {
+        "assertionConfirmed": true,
+        "frozenCleanRunFlag": false,
+        "failures": 547,
+        "errors": 127,
+        "witness": "FAIL: test_clone_jobs_clocks_and_bidirectional_independence (test_scheduler.SchedulerTests.test_clone_jobs_clocks_and_bidirectional_independence)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/scheduler-grading-zxzhjy9n/test_scheduler.py\", line 168, in test_clone_jobs_clocks_and_bidirectional_independence\n    self.assertEqual(api.snapshot(copy, 5),\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^\n                     ((\"copy\", 2, 100), (\"long\", -5, 90), (\"soon\", -1, 8)))\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: (('soon', -1, 8), ('long', -5, 90), ('copy', 2, 100)) != (('copy', 2, 100), ('long', -5, 90), ('soon', -1, 8))\n\nFirst differing element 0:\n('soon', -1, 8)\n('copy', 2, 100)\n\n- (('soon', -1, 8), ('long', -5, 90), ('copy', 2, 100))\n+ (('copy', 2, 100), ('long', -5, 90), ('soon', -1, 8))\n\n"
+      },
+      "drop_on_equal_time": {
+        "assertionConfirmed": true,
+        "frozenCleanRunFlag": false,
+        "failures": 651,
+        "errors": 296,
+        "witness": "FAIL: test_backward_calls_are_atomic (test_scheduler.SchedulerTests.test_backward_calls_are_atomic) (kind='replace')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/scheduler-grading-d2wp5nrk/test_scheduler.py\", line 126, in test_backward_calls_are_atomic\n    self.assertEqual(api.snapshot(state, 10), rows)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: () != (('x', -2, 11), ('y', 4, 100))\n\nSecond tuple contains 2 additional elements.\nFirst extra element 0:\n('x', -2, 11)\n\n- ()\n+ (('x', -2, 11), ('y', 4, 100))\n\n"
+      }
+    },
+    "with-skills": {
+      "expiry_boundary": {
+        "assertionConfirmed": true,
+        "frozenCleanRunFlag": false,
+        "failures": 221,
+        "errors": 90,
+        "witness": "FAIL: test_backwards_operations_are_atomic_and_initial_clock_is_zero (test_scheduler.SchedulerTests.test_backwards_operations_are_atomic_and_initial_clock_is_zero) (operation='put', populated=True)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/scheduler-grading-gxn_s_t8/test_scheduler.py\", line 121, in test_backwards_operations_are_atomic_and_initial_clock_is_zero\n    self.assertEqual(api.snapshot(s, 12),\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n                     (('other', 1, 30),) if populated else ())\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: (('keep', 2, 12), ('other', 1, 30)) != (('other', 1, 30),)\n\nFirst differing element 0:\n('keep', 2, 12)\n('other', 1, 30)\n\nFirst tuple contains 1 additional elements.\nFirst extra element 1:\n('other', 1, 30)\n\n- (('keep', 2, 12), ('other', 1, 30))\n+ (('other', 1, 30),)\n\n"
+      },
+      "maximum_priority": {
+        "assertionConfirmed": true,
+        "frozenCleanRunFlag": false,
+        "failures": 386,
+        "errors": 410,
+        "witness": "FAIL: test_arbitrary_integers_and_nonempty_string_ids (test_scheduler.SchedulerTests.test_arbitrary_integers_and_nonempty_string_ids)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/scheduler-grading-n0120cya/test_scheduler.py\", line 84, in test_arbitrary_integers_and_nonempty_string_ids\n    self.assertEqual(api.take(s, huge), row)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: ('10', 100000000000000000000000000000000000[164 chars]0009) != ('2', -100000000000000000000000000000000000[164 chars]0008)\n\nFirst differing element 0:\n'10'\n'2'\n\nDiff is 660 characters long. Set self.maxDiff to None to see it.\n\n"
+      },
+      "ignore_live_replacement": {
+        "assertionConfirmed": true,
+        "frozenCleanRunFlag": false,
+        "failures": 399,
+        "errors": 207,
+        "witness": "FAIL: test_clone_preserves_clock_and_is_independent_in_both_directions (test_scheduler.SchedulerTests.test_clone_preserves_clock_and_is_independent_in_both_directions)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/scheduler-grading-2okfl_2u/test_scheduler.py\", line 165, in test_clone_preserves_clock_and_is_independent_in_both_directions\n    self.assertEqual(api.snapshot(s, 20), (('a', -2, 50), ('b', 2, 40)))\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: (('b', 2, 40),) != (('a', -2, 50), ('b', 2, 40))\n\nFirst differing element 0:\n('b', 2, 40)\n('a', -2, 50)\n\nSecond tuple contains 1 additional elements.\nFirst extra element 1:\n('b', 2, 40)\n\n- (('b', 2, 40),)\n+ (('a', -2, 50), ('b', 2, 40))\n\n"
+      },
+      "ignore_expired_replacement": {
+        "assertionConfirmed": true,
+        "frozenCleanRunFlag": false,
+        "failures": 312,
+        "errors": 69,
+        "witness": "FAIL: test_replacement_updates_all_fields_and_expired_put_deletes (test_scheduler.SchedulerTests.test_replacement_updates_all_fields_and_expired_put_deletes)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/scheduler-grading-zajava51/test_scheduler.py\", line 32, in test_replacement_updates_all_fields_and_expired_put_deletes\n    self.assertEqual(api.snapshot(s, 1), ())\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: (('same', 3, 50),) != ()\n\nFirst tuple contains 1 additional elements.\nFirst extra element 0:\n('same', 3, 50)\n\n- (('same', 3, 50),)\n+ ()\n\n"
+      },
+      "allow_backwards": {
+        "assertionConfirmed": true,
+        "frozenCleanRunFlag": false,
+        "failures": 1800,
+        "errors": 165,
+        "witness": "FAIL: test_backwards_operations_are_atomic_and_initial_clock_is_zero (test_scheduler.SchedulerTests.test_backwards_operations_are_atomic_and_initial_clock_is_zero) (operation='put', populated=False)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/scheduler-grading-ot7s25br/test_scheduler.py\", line 108, in test_backwards_operations_are_atomic_and_initial_clock_is_zero\n    with self.assertRaises(ValueError):\n         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\nAssertionError: ValueError not raised\n\n"
+      },
+      "mutate_on_rejection": {
+        "assertionConfirmed": true,
+        "frozenCleanRunFlag": false,
+        "failures": 920,
+        "errors": 1072,
+        "witness": "FAIL: test_backwards_operations_are_atomic_and_initial_clock_is_zero (test_scheduler.SchedulerTests.test_backwards_operations_are_atomic_and_initial_clock_is_zero) (operation='put', populated=True)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/scheduler-grading-f2jktf0x/test_scheduler.py\", line 120, in test_backwards_operations_are_atomic_and_initial_clock_is_zero\n    self.assertEqual(api.snapshot(s, 10), before)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: () != (('keep', 2, 12), ('other', 1, 30))\n\nSecond tuple contains 2 additional elements.\nFirst extra element 0:\n('keep', 2, 12)\n\n- ()\n+ (('keep', 2, 12), ('other', 1, 30))\n\n"
+      },
+      "clone_clock_reset": {
+        "assertionConfirmed": true,
+        "frozenCleanRunFlag": false,
+        "failures": 1,
+        "errors": 4,
+        "witness": "FAIL: test_clone_preserves_clock_and_is_independent_in_both_directions (test_scheduler.SchedulerTests.test_clone_preserves_clock_and_is_independent_in_both_directions)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/scheduler-grading-1bh6zhbs/test_scheduler.py\", line 159, in test_clone_preserves_clock_and_is_independent_in_both_directions\n    with self.assertRaises(ValueError):\n         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\nAssertionError: ValueError not raised\n\n----------------------------------------------------------------------\n"
+      },
+      "clone_alias": {
+        "assertionConfirmed": true,
+        "frozenCleanRunFlag": false,
+        "failures": 48,
+        "errors": 2301,
+        "witness": "FAIL: test_clone_preserves_clock_and_is_independent_in_both_directions (test_scheduler.SchedulerTests.test_clone_preserves_clock_and_is_independent_in_both_directions)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/scheduler-grading-ycn8lys8/test_scheduler.py\", line 163, in test_clone_preserves_clock_and_is_independent_in_both_directions\n    self.assertEqual(api.take(c, 7), ('a', 1, 20))\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: ('a', -2, 50) != ('a', 1, 20)\n\nFirst differing element 1:\n-2\n1\n\n- ('a', -2, 50)\n+ ('a', 1, 20)\n\n"
+      },
+      "unsorted_snapshot": {
+        "assertionConfirmed": true,
+        "frozenCleanRunFlag": false,
+        "failures": 643,
+        "errors": 31,
+        "witness": "FAIL: test_arbitrary_integers_and_nonempty_string_ids (test_scheduler.SchedulerTests.test_arbitrary_integers_and_nonempty_string_ids)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/scheduler-grading-vwl1rtff/test_scheduler.py\", line 82, in test_arbitrary_integers_and_nonempty_string_ids\n    self.assertEqual(api.snapshot(s, huge), tuple(sorted(rows)))\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: (('10', 100000000000000000000000000000000000[708 chars]006)) != (('\\x00', -999999999999999999999999999999999[708 chars]008))\n\nFirst differing element 0:\n('10', 100000000000000000000000000000000000[164 chars]0009)\n('\\x00', -999999999999999999999999999999999[166 chars]0006)\n\nDiff is 1498 characters long. Set self.maxDiff to None to see it.\n\n"
+      },
+      "drop_on_equal_time": {
+        "assertionConfirmed": true,
+        "frozenCleanRunFlag": false,
+        "failures": 892,
+        "errors": 1356,
+        "witness": "FAIL: test_arbitrary_integers_and_nonempty_string_ids (test_scheduler.SchedulerTests.test_arbitrary_integers_and_nonempty_string_ids)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/scheduler-grading-mwzadifr/test_scheduler.py\", line 82, in test_arbitrary_integers_and_nonempty_string_ids\n    self.assertEqual(api.snapshot(s, huge), tuple(sorted(rows)))\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: () != (('\\x00', -9999999999999999999999999999999[710 chars]008))\n\nSecond tuple contains 4 additional elements.\nFirst extra element 0:\n('\\x00', -9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999, 10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006)\n\nDiff is 806 characters long. Set self.maxDiff to None to see it.\n\n"
+      }
+    }
+  }
+}

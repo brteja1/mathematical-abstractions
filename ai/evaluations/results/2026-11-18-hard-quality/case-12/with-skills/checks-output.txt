@@ -1,0 +1,13 @@
+Backend: dependency-free Python explicit-state enumeration
+Python: 3.13.9
+SHA256 TASK.md: 39c9846774f7d355bbc66d84881d49597d45461390b9cad28733870a4c6cb10d
+SHA256 spec.md: f85c1b4219577c5fc47da989118478c74703b5d18a33761e5ba33a9d4ca9e03b
+SHA256 checks.py: f08c1b9b3f13af8f0db939fde88d5975b781faf99ac2fe59323a88f4149c58b2
+F-CAP: partition empty A/B -> A accepts x:10 -> B accepts y:10 -> outstanding=20>10. 55/100 forced-success amount pairs violate R1.
+F-TIME: A has x, B empty; heal at 0 ms; B still empty at 100 ms; update delivered at 101 ms. Eventual delivery holds; deadline fails.
+F-GC: t=0 accept x:10; t=1 release x; t=3601 erase x; t=3602 original reserve arrives -> x active again (R4 violation).
+F-ORDER: unordered last-arrival overwrite RELEASED -> stale ACTIVE resurrects x; proposed prefix replay is checked separately.
+Targeted API/order checks PASS: fresh 1..10, invalid inputs, 11, cross-ingress retry/conflict, terminal release/rejection, out-of-order and duplicate replay, unknown release, conflict orders.
+Finite BFS PASS: 313 distinct/reachable states; 3504 edges; 2848 self-loops; 313 quiescent drain paths checked.
+Bounds: 2 replicas, 2 IDs, reserve amounts {6,10}, log <=4; no depth cutoff. No universal fair-liveness/deadlock check claimed.
+All expected counterexamples reproduced and proposed finite checks passed.

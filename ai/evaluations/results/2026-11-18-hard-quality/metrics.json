@@ -1,0 +1,627 @@
+{
+  "10/without-skills": {
+    "run": {
+      "case": "10",
+      "arm": "without-skills",
+      "command": [
+        "codex",
+        "exec",
+        "--ignore-user-config",
+        "--ephemeral",
+        "--skip-git-repo-check",
+        "--sandbox",
+        "workspace-write",
+        "--json",
+        "--color",
+        "never",
+        "--model",
+        "gpt-6.1-sol",
+        "-c",
+        "model_reasoning_effort=\"medium\"",
+        "--output-last-message",
+        "final-message.md",
+        "-"
+      ],
+      "elapsedSeconds": 161.1,
+      "exitCode": 0,
+      "timedOut": false
+    },
+    "usage": {
+      "input_tokens": 150659,
+      "cached_input_tokens": 139136,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 5972,
+      "reasoning_output_tokens": 236
+    },
+    "changedCommonInputs": [],
+    "changedSkillInputs": [],
+    "completedCommands": 7,
+    "skillReadCommands": [],
+    "independentContract": {
+      "exitCode": 0,
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "output": "test_clip (_contract_checks.CalendarContract.test_clip) ... ok\ntest_compatible_merge (_contract_checks.CalendarContract.test_compatible_merge) ... ok\ntest_conflict_persistence (_contract_checks.CalendarContract.test_conflict_persistence) ... ok\ntest_duplicate_interval_distinct_ids (_contract_checks.CalendarContract.test_duplicate_interval_distinct_ids) ... ok\ntest_empty (_contract_checks.CalendarContract.test_empty) ... ok\ntest_gaps (_contract_checks.CalendarContract.test_gaps) ... ok\ntest_huge_signed (_contract_checks.CalendarContract.test_huge_signed) ... ok\ntest_invalid_interval (_contract_checks.CalendarContract.test_invalid_interval) ... ok\ntest_merge_conflict (_contract_checks.CalendarContract.test_merge_conflict) ... ok\ntest_merge_laws_on_compatible_inputs (_contract_checks.CalendarContract.test_merge_laws_on_compatible_inputs) ... ok\ntest_merge_replay (_contract_checks.CalendarContract.test_merge_replay) ... ok\ntest_peak_adjacency (_contract_checks.CalendarContract.test_peak_adjacency) ... ok\ntest_peak_nested (_contract_checks.CalendarContract.test_peak_nested) ... ok\ntest_persistence (_contract_checks.CalendarContract.test_persistence) ... ok\ntest_replay (_contract_checks.CalendarContract.test_replay) ... ok\ntest_seeded_small_histories_independent_point_oracle (_contract_checks.CalendarContract.test_seeded_small_histories_independent_point_oracle) ... ok\ntest_sorted_rows (_contract_checks.CalendarContract.test_sorted_rows) ... ok\ntest_window_edges (_contract_checks.CalendarContract.test_window_edges) ... ok\n\n----------------------------------------------------------------------\nRan 18 tests in 0.004s\n\nOK\n"
+    },
+    "generatedChecksRerun": {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_calendar"
+      ],
+      "exitCode": 0,
+      "output": "test_clipping_adjacency_containment_and_gaps (test_calendar.CalendarTests.test_clipping_adjacency_containment_and_gaps) ... ok\ntest_empty_and_query_ordering (test_calendar.CalendarTests.test_empty_and_query_ordering) ... ok\ntest_exhaustive_small_merge_oracle (test_calendar.CalendarTests.test_exhaustive_small_merge_oracle) ... ok\ntest_exhaustive_small_observer_oracle (test_calendar.CalendarTests.test_exhaustive_small_observer_oracle) ... ok\ntest_huge_signed_endpoints_and_larger_collection (test_calendar.CalendarTests.test_huge_signed_endpoints_and_larger_collection) ... ok\ntest_merge_conflict_after_compatible_rows_preserves_both (test_calendar.CalendarTests.test_merge_conflict_after_compatible_rows_preserves_both) ... ok\ntest_merge_laws (test_calendar.CalendarTests.test_merge_laws) ... ok\ntest_peak_half_open_ties_and_distinct_ids (test_calendar.CalendarTests.test_peak_half_open_ties_and_distinct_ids) ... ok\ntest_persistent_branches_and_retained_outputs (test_calendar.CalendarTests.test_persistent_branches_and_retained_outputs) ... ok\ntest_reserve_sort_replay_and_errors (test_calendar.CalendarTests.test_reserve_sort_replay_and_errors) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.038s\n\nOK\n"
+    },
+    "artifactHashes": {
+      "AGENTS.md": "9be50968665e9327c35d24f316f42f989511148682254934d290a61d11b611d8",
+      "TASK.md": "3f75e1326e06b5e9e3698648d54196e0f3ca7be1189e87ee35b928238fb46448",
+      "answer.md": "580d49c56339c2c55db64f39efca0c6217828bab00710157faa9cef9c8c5eb85",
+      "calendar_api.py": "da27b59c5e0b65347f96cc25b40967ca5ed7e4dd186f186c297f88ea4b35056e",
+      "events.jsonl": "0810be9cccdf530d6a607e3545e3769fda608e5ae8e454022ea78895172f6035",
+      "final-message.md": "e0b10a4c7e6d3887fdc41719dfdbb5f55c9c9969a46630c3a1cd1b3dc76fc447",
+      "mapping.md": "1e168b11d15de8c830cd72ee4f625f94dcfcc113ec7ed6d03a4e73b1d88b0506",
+      "prompt.txt": "86697db8ff1af24145d3729b123c343a257c1186c8bb8221ea705ab9bf43c388",
+      "run.json": "14b24bddcbc03d5e46bf693d166cc1fff24222edb34f1090287d2fb20194ed59",
+      "spec.md": "f7a2f046cd188cf272cebf837c1ceda292a86ac2130e767612d6d2fcfee8fd65",
+      "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "test_calendar.py": "8cb0aff20eb182f8411da2aba559b6b04612f83e88c871a0d68187aa39f3f7c4"
+    }
+  },
+  "10/with-skills": {
+    "run": {
+      "case": "10",
+      "arm": "with-skills",
+      "command": [
+        "codex",
+        "exec",
+        "--ignore-user-config",
+        "--ephemeral",
+        "--skip-git-repo-check",
+        "--sandbox",
+        "workspace-write",
+        "--json",
+        "--color",
+        "never",
+        "--model",
+        "gpt-6.1-sol",
+        "-c",
+        "model_reasoning_effort=\"medium\"",
+        "--output-last-message",
+        "final-message.md",
+        "-"
+      ],
+      "elapsedSeconds": 184.28,
+      "exitCode": 0,
+      "timedOut": false
+    },
+    "usage": {
+      "input_tokens": 310703,
+      "cached_input_tokens": 283776,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 7665,
+      "reasoning_output_tokens": 297
+    },
+    "changedCommonInputs": [],
+    "changedSkillInputs": [],
+    "completedCommands": 11,
+    "skillReadCommands": [
+      "/bin/bash -lc 'cat TASK.md catalog/ai/skills/implementation-mapping/SKILL.md catalog/ai/skills/mathematical-tests/SKILL.md catalog/ai/skills/implementation-conformance/SKILL.md'",
+      "/bin/bash -lc 'cat AGENTS.md catalog/ai/skills/implementation-mapping/assets/implementation-map.md catalog/ai/skills/mathematical-tests/references/test-design.md && python3 catalog/scripts/catalog.py check && python3 catalog/scripts/catalog.py list --search interval && python3 catalog/scripts/catalog.py list --search map'",
+      "/bin/bash -lc 'cat catalog/ai/skills/mathematical-tests/references/retrieval.md && cat catalog/ai/skills/implementation-mapping/references/stack-example.md'"
+    ],
+    "independentContract": {
+      "exitCode": 0,
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "output": "test_clip (_contract_checks.CalendarContract.test_clip) ... ok\ntest_compatible_merge (_contract_checks.CalendarContract.test_compatible_merge) ... ok\ntest_conflict_persistence (_contract_checks.CalendarContract.test_conflict_persistence) ... ok\ntest_duplicate_interval_distinct_ids (_contract_checks.CalendarContract.test_duplicate_interval_distinct_ids) ... ok\ntest_empty (_contract_checks.CalendarContract.test_empty) ... ok\ntest_gaps (_contract_checks.CalendarContract.test_gaps) ... ok\ntest_huge_signed (_contract_checks.CalendarContract.test_huge_signed) ... ok\ntest_invalid_interval (_contract_checks.CalendarContract.test_invalid_interval) ... ok\ntest_merge_conflict (_contract_checks.CalendarContract.test_merge_conflict) ... ok\ntest_merge_laws_on_compatible_inputs (_contract_checks.CalendarContract.test_merge_laws_on_compatible_inputs) ... ok\ntest_merge_replay (_contract_checks.CalendarContract.test_merge_replay) ... ok\ntest_peak_adjacency (_contract_checks.CalendarContract.test_peak_adjacency) ... ok\ntest_peak_nested (_contract_checks.CalendarContract.test_peak_nested) ... ok\ntest_persistence (_contract_checks.CalendarContract.test_persistence) ... ok\ntest_replay (_contract_checks.CalendarContract.test_replay) ... ok\ntest_seeded_small_histories_independent_point_oracle (_contract_checks.CalendarContract.test_seeded_small_histories_independent_point_oracle) ... ok\ntest_sorted_rows (_contract_checks.CalendarContract.test_sorted_rows) ... ok\ntest_window_edges (_contract_checks.CalendarContract.test_window_edges) ... ok\n\n----------------------------------------------------------------------\nRan 18 tests in 0.006s\n\nOK\n"
+    },
+    "generatedChecksRerun": {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_calendar"
+      ],
+      "exitCode": 0,
+      "output": "test_arbitrary_integers_and_no_small_capacity (test_calendar.CalendarTests.test_arbitrary_integers_and_no_small_capacity) ... ok\ntest_clipping_nesting_adjacency_and_gaps (test_calendar.CalendarTests.test_clipping_nesting_adjacency_and_gaps) ... ok\ntest_empty_and_ordering (test_calendar.CalendarTests.test_empty_and_ordering) ... ok\ntest_errors_preserve_all_observations (test_calendar.CalendarTests.test_errors_preserve_all_observations) ... ok\ntest_exhaustive_small_calendars_and_windows (test_calendar.CalendarTests.test_exhaustive_small_calendars_and_windows) ... ok\ntest_merge_laws_on_jointly_compatible_states (test_calendar.CalendarTests.test_merge_laws_on_jointly_compatible_states) ... ok\ntest_peak_half_open_ties (test_calendar.CalendarTests.test_peak_half_open_ties) ... ok\ntest_replay_and_distinct_ids (test_calendar.CalendarTests.test_replay_and_distinct_ids) ... ok\ntest_seeded_persistent_branching_histories (test_calendar.CalendarTests.test_seeded_persistent_branching_histories) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.323s\n\nOK\n"
+    },
+    "artifactHashes": {
+      "AGENTS.md": "9be50968665e9327c35d24f316f42f989511148682254934d290a61d11b611d8",
+      "TASK.md": "3f75e1326e06b5e9e3698648d54196e0f3ca7be1189e87ee35b928238fb46448",
+      "answer.md": "226b8f1690c52ba8a83c06f7bc6e9fb6e5b3a5a738cde41aa408e399f876e7f6",
+      "calendar_api.py": "b012fddc6af5aaa4fd62e373be89f62624f34d106867cef3fc7ba9b554baa5db",
+      "events.jsonl": "db9fdf1efb2764e2a4d0a8d4e03d1b4b93638293b10a1b9245caa2f8cdbaaa08",
+      "evidence.json": "337e3d1464b3b6d38b368dda64d3a5b7f6c654f459fcaabb182b088827e89da0",
+      "final-message.md": "1b14199e3205cecc345f4e483fe5e123a43f819b71504d78d8dfbbf1a61d83f8",
+      "mapping.md": "93e5b60dd101c46583fabbfd9780b5219358451072c445fd035bbfb89f0ab2f3",
+      "prompt.txt": "b2c014a6990ba5e45d47dd16ab4a1b520643e4edd05b8497ad2e21d7cf10cd9e",
+      "run.json": "377c4fdaf776603c8385a1524668c3db44853685224a18fc8310646ba21f5f8f",
+      "spec.md": "faba62c8feeed5bb6149403c658e5673357b4d2984ed48aa628d141eee908fe8",
+      "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "test-results.txt": "6dc9fc732f13dda729c645b2708f0b692acc94f6b1610bb2f17a637fa4208f0e",
+      "test_calendar.py": "d1063b521b46026cde7b1a035ffffff6efcfd6d0b227c95979277d6b65669d08"
+    }
+  },
+  "11/without-skills": {
+    "run": {
+      "case": "11",
+      "arm": "without-skills",
+      "command": [
+        "codex",
+        "exec",
+        "--ignore-user-config",
+        "--ephemeral",
+        "--skip-git-repo-check",
+        "--sandbox",
+        "workspace-write",
+        "--json",
+        "--color",
+        "never",
+        "--model",
+        "gpt-6.1-sol",
+        "-c",
+        "model_reasoning_effort=\"medium\"",
+        "--output-last-message",
+        "final-message.md",
+        "-"
+      ],
+      "elapsedSeconds": 133.53,
+      "exitCode": 0,
+      "timedOut": false
+    },
+    "usage": {
+      "input_tokens": 92902,
+      "cached_input_tokens": 83072,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 5634,
+      "reasoning_output_tokens": 682
+    },
+    "changedCommonInputs": [],
+    "changedSkillInputs": [],
+    "completedCommands": 5,
+    "skillReadCommands": [],
+    "mutationEvaluation": {
+      "correct_dictionary": {
+        "exitCode": 0,
+        "tests": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/without-skills/mutation-logs/correct_dictionary.txt.gz"
+      },
+      "correct_opaque_reverse_ties": {
+        "exitCode": 0,
+        "tests": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/without-skills/mutation-logs/correct_opaque_reverse_ties.txt.gz"
+      },
+      "expiry_boundary": {
+        "exitCode": 1,
+        "tests": 12,
+        "failures": 237,
+        "errors": 143,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/without-skills/mutation-logs/expiry_boundary.txt.gz",
+        "assertionConfirmedKill": true
+      },
+      "maximum_priority": {
+        "exitCode": 1,
+        "tests": 12,
+        "failures": 157,
+        "errors": 379,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/without-skills/mutation-logs/maximum_priority.txt.gz",
+        "assertionConfirmedKill": true
+      },
+      "ignore_live_replacement": {
+        "exitCode": 1,
+        "tests": 12,
+        "failures": 416,
+        "errors": 258,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/without-skills/mutation-logs/ignore_live_replacement.txt.gz",
+        "assertionConfirmedKill": true
+      },
+      "ignore_expired_replacement": {
+        "exitCode": 1,
+        "tests": 12,
+        "failures": 483,
+        "errors": 273,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/without-skills/mutation-logs/ignore_expired_replacement.txt.gz",
+        "assertionConfirmedKill": true
+      },
+      "allow_backwards": {
+        "exitCode": 1,
+        "tests": 12,
+        "failures": 965,
+        "errors": 6,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/without-skills/mutation-logs/allow_backwards.txt.gz",
+        "assertionConfirmedKill": true
+      },
+      "mutate_on_rejection": {
+        "exitCode": 1,
+        "tests": 12,
+        "failures": 645,
+        "errors": 287,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/without-skills/mutation-logs/mutate_on_rejection.txt.gz",
+        "assertionConfirmedKill": true
+      },
+      "clone_clock_reset": {
+        "exitCode": 1,
+        "tests": 12,
+        "failures": 149,
+        "errors": 0,
+        "skipped": 0,
+        "behavioralKill": true,
+        "outputGzip": "case-11/without-skills/mutation-logs/clone_clock_reset.txt.gz",
+        "assertionConfirmedKill": true
+      },
+      "clone_alias": {
+        "exitCode": 1,
+        "tests": 12,
+        "failures": 34,
+        "errors": 901,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/without-skills/mutation-logs/clone_alias.txt.gz",
+        "assertionConfirmedKill": true
+      },
+      "unsorted_snapshot": {
+        "exitCode": 1,
+        "tests": 12,
+        "failures": 547,
+        "errors": 127,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/without-skills/mutation-logs/unsorted_snapshot.txt.gz",
+        "assertionConfirmedKill": true
+      },
+      "drop_on_equal_time": {
+        "exitCode": 1,
+        "tests": 12,
+        "failures": 651,
+        "errors": 296,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/without-skills/mutation-logs/drop_on_equal_time.txt.gz",
+        "assertionConfirmedKill": true
+      }
+    },
+    "artifactHashes": {
+      "AGENTS.md": "9be50968665e9327c35d24f316f42f989511148682254934d290a61d11b611d8",
+      "TASK.md": "3835ab2fce616b3f25648227f10619fb0164451885f4890312c9aa95fff1d01d",
+      "answer.md": "21f396befaef537c9bf4c1b706de522be683d5e4f16343affab36f430f2cd424",
+      "events.jsonl": "92516ac0fa31a1d7ecc139acfb86829c2f68c0178d2ebad4621e536b120418c3",
+      "final-message.md": "6b81505abd3ecffb5bd05c5ab9dfcafd4b53321fa9e12157e0e65f26c8c6ec45",
+      "prompt.txt": "86697db8ff1af24145d3729b123c343a257c1186c8bb8221ea705ab9bf43c388",
+      "run.json": "d2ba2efdd5aadd0ae82f5c68c6f5548749e118a0d046fcc28fdae79325e6c107",
+      "scheduler_api.py": "9b636e36f6fdbe6869f8efb790f806aacf4eaf73dd1eaa066622f84014d73014",
+      "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "test-plan.md": "e9413dd3b2a68f37ca54be2acf000f3383aafef665871c1995e570e4c5746e8d",
+      "test_scheduler.py": "36326a9cf101eae7c2bc71629aea1d60a9e372be12c6e9ee9563740bbd8a86b9"
+    }
+  },
+  "11/with-skills": {
+    "run": {
+      "case": "11",
+      "arm": "with-skills",
+      "command": [
+        "codex",
+        "exec",
+        "--ignore-user-config",
+        "--ephemeral",
+        "--skip-git-repo-check",
+        "--sandbox",
+        "workspace-write",
+        "--json",
+        "--color",
+        "never",
+        "--model",
+        "gpt-6.1-sol",
+        "-c",
+        "model_reasoning_effort=\"medium\"",
+        "--output-last-message",
+        "final-message.md",
+        "-"
+      ],
+      "elapsedSeconds": 159.83,
+      "exitCode": 0,
+      "timedOut": false
+    },
+    "usage": {
+      "input_tokens": 199012,
+      "cached_input_tokens": 185344,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 6213,
+      "reasoning_output_tokens": 557
+    },
+    "changedCommonInputs": [],
+    "changedSkillInputs": [],
+    "completedCommands": 8,
+    "skillReadCommands": [
+      "/bin/bash -lc 'cat TASK.md catalog/ai/skills/mathematical-tests/SKILL.md'",
+      "/bin/bash -lc 'ls -a; cat scheduler_api.py; cat catalog/ai/skills/mathematical-tests/references/test-design.md; python3 catalog/scripts/catalog.py check'",
+      "/bin/bash -lc 'python3 catalog/scripts/catalog.py list --help; python3 catalog/scripts/catalog.py get --help; cat catalog/ai/skills/mathematical-tests/references/retrieval.md'",
+      "/bin/bash -lc \"cat > test-plan.md <<'MD'\n# Scheduler test plan\n\nThe oracle is the public contract in \"'`TASK.md`. Tests import only `scheduler_api`'\"'s five public functions and never inspect scheduler state. Equality is exact Python tuple/string/integer equality; snapshots must be tuples ordered by Python string job ID. Tests have no external dependencies.\n\n## Groups and oracles\n\n| Tests | Purpose and oracle |\n| --- | --- |\n| \"'`new_and_independent_instances` | Empty construction, singleton removal, empty `KeyError`, independent fresh schedulers, and `put` returning `None`; direct expected rows. |\n| `replacement_updates_all_fields_and_expired_put_deletes` | Replacement changes priority and expiration without duplicate IDs, stale old expiration cannot remove a replacement, expired replacement deletes the existing ID, and expired absent insertion is a no-op on jobs. Exact snapshots and removals. |\n| `expiration_boundary_for_every_timed_operation` | Each timed operation purges all expired rows, including nonselected jobs; expiration equal to now is dead and expiration one step later is live. Exact before/after rows at successive times. |\n| `snapshot_order_persistence_and_detached_result` | ID sorting differs from priority and insertion order; repeated observations preserve live jobs and previously returned tuples keep their value after mutations and expiration. |\n| `arbitrary_integers_and_nonempty_string_ids` | Signed priorities and times/expirations beyond fixed-width ranges, negative expiration, numeric-looking strings, whitespace, Unicode and NUL IDs; exact integer ordering and rows. No assumptions about normalization or machine word size. |\n| `ties_allow_any_minimum_and_preserve_exact_remainder` | Return must belong to the set of currently minimal rows, with exactly that row removed. Drain all jobs and check empty behavior. No tie order is required. |\n| `backwards_operations_are_atomic_and_initial_clock_is_zero` | All timed operations reject negative initial time and later backwards time, on empty and populated states. Compare jobs at the last accepted time; a second rejected observation just below that clock detects rollback. An attempted expired replacement must not delete a live job. Later expiration verifies retained fields. |\n| `empty_take_and_expired_put_still_advance_time` | Empty/expiration-induced failing takes, expired puts and empty snapshots commit their accepted time. Earlier puts fail and insert nothing; clones inherit the committed clock, including after `KeyError`. |\n| `clone_preserves_clock_and_is_independent_in_both_directions` | Clone and clone-of-clone inherit jobs/time. Replacements, removals, expiration and time advances on each branch cannot affect others. Branches may keep different accepted clocks. |\n| `many_jobs_without_capacity_limit` | Insert 513 distinct jobs with tied priorities, compare the full snapshot, then check membership/minimality and exact-once removal through exhaustion. Finite capacity stress, not proof of unbounded storage. |\n| `seeded_branching_histories` | Eight fixed seeds \u00d7 300 steps, up to eight retained branches. A separate list-of-rows model checks mixed replacement, expiration, valid/invalid/equal time, snapshots, takes, and cloning. Rejected calls preserve model jobs/time; accepted empty takes advance model time. Only after validating a take against all allowed minima does the model remove its actual returned row. Every retained branch is observed after each timed step to detect cross-branch mutation. Failure subtests identify seed, step, branch and operation; the prefix is reproduced by rerunning that seed. |\n\n## Catalog mapping and applicability\n\nFocused retrieval commands:\n\n```sh\npython3 catalog/scripts/catalog.py check\npython3 catalog/scripts/catalog.py list --search PriorityQueue\npython3 catalog/scripts/catalog.py get PriorityQueue --sections operations axioms laws\n```\n\nSelected concept: `urn:csabs:concept/PriorityQueue`. Selected claims:\n\n- `urn:csabs:axiom/PriorityQueue-bag-model`: a finite bag with totally ordered keys.\n- `urn:csabs:axiom/PriorityQueue-insert`: insertion adds exactly one occurrence, applied only to a fresh ID with live expiration after time advancement.\n- `urn:csabs:axiom/PriorityQueue-minimum-removal`: for a nonempty bag, return any minimal item and remove exactly its occurrence.\n\nAll three claims and the concept report `provenanceStatus: legacy-source-missing`; the claims report editorial summaries, not machine proofs. These are mathematical design guidance, with the task contract independently establishing the software obligations. No theorem or Lean witness is used, and no proof or repaired citation is claimed.\n\nThe finite bag consists of live `(job_id, priority, expires_at)` rows with unique IDs, with key `row[1]` in the total order of arbitrary Python integers. `PriorityQueue-basis-empty` maps to `api.new()` observed by `api.snapshot(state, 0)`. `PriorityQueue-insert` maps to a live, fresh-ID `api.put` through its before/after observations; its mathematical result is a state, whereas the mutable API returns `None`. `PriorityQueue-extractMin` maps to `api.take`, returning the row and mutating the observed remainder. `api.snapshot` is the contract-specific observer: exact ID-sorted tuple equality represents bag equality because IDs are unique.\n\nFor extraction, first apply the contract'\"'s accepted time advance and expiration filter, then apply minimum-removal only when the live bag is nonempty. Empty extraction is mathematically undefined; its \"'`KeyError` and clock effects come exclusively from the task contract. Ties are relational: compare the returned row against all minima, then compare the remainder after deleting that specific row. Constructors, mutations, observations and partial results used by these properties are all covered by this mapping.\n\nReplacement, deletion by expired put, time monotonicity, atomic rejection, sorted observation and `api.clone` are additional contract-defined transitions, not consequences of a plain priority queue. Clone copies the oracle list and clock; independence is judged by later public observations. No general bag-insertion law is applied to replacement or expired insertion. Sequential execution and exact integers are assumed; stability, FIFO tie order, concurrency, performance guarantees and invalid input types are outside scope. No additional mathematical abstraction is needed for the explicit task-defined transition model.\n\n## Retrieval limitation\n\nThe prescribed ONTFS wrapper attempt was:\n\n```sh\npython3 catalog/ai/skills/mathematical-tests/scripts/query.py search priority --limit 4 --max-chars 5000\n```\n\nIt exited 1: `Test context error: ONTFS projection is missing. Run scripts/ontology.py build with the same --directory.` The catalog integrity check succeeded (264 concepts, 2,484 nodes, no errors). Focused dependency-free `catalog.py` retrieval succeeded. The catalog was left unchanged as required; no ONTFS query success is claimed.\n\nThese finite examples and histories provide regression evidence, not universal correctness or a refinement proof.\nMD\ncat > answer.md <<'\"'MD'\n# Result\n\nCreated \"'`test_scheduler.py` and `test-plan.md`. The suite uses only the public API, standard-library `unittest`, and seeded standard-library generation. Production code and catalog records were not changed.\n\nRun from this workspace:\n\n```sh\npython3 -m unittest -v test_scheduler\n```\n\nActual result:\n\n```text\nRan 11 tests in 0.058s\n\nOK\n```\n\nThe run includes 2,400 reproducible mixed-history steps (seeds 0, 1, 7, 23, 101, 2026, 65537, 99991), cloned branches, explicit expiration and error boundaries, allowed nondeterministic tie choices, and a 513-job insertion/drain case. See `test-plan.md` for each group'\"'s oracle and the catalog-to-API mapping.\n\nCatalog verification: \"'`python3 catalog/scripts/catalog.py check` reported 264 concepts, 2,484 nodes, and no errors. The ONTFS skill query was blocked by a missing projection (exit 1); focused retrieval through `catalog.py` succeeded. No catalog rebuild, shared-runtime edit, Lean compilation, or formal correctness proof is claimed.\nMD\npython3 -m unittest -v test_scheduler'"
+    ],
+    "mutationEvaluation": {
+      "correct_dictionary": {
+        "exitCode": 0,
+        "tests": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/with-skills/mutation-logs/correct_dictionary.txt.gz"
+      },
+      "correct_opaque_reverse_ties": {
+        "exitCode": 0,
+        "tests": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/with-skills/mutation-logs/correct_opaque_reverse_ties.txt.gz"
+      },
+      "expiry_boundary": {
+        "exitCode": 1,
+        "tests": 11,
+        "failures": 221,
+        "errors": 90,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/with-skills/mutation-logs/expiry_boundary.txt.gz",
+        "assertionConfirmedKill": true
+      },
+      "maximum_priority": {
+        "exitCode": 1,
+        "tests": 11,
+        "failures": 386,
+        "errors": 410,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/with-skills/mutation-logs/maximum_priority.txt.gz",
+        "assertionConfirmedKill": true
+      },
+      "ignore_live_replacement": {
+        "exitCode": 1,
+        "tests": 11,
+        "failures": 399,
+        "errors": 207,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/with-skills/mutation-logs/ignore_live_replacement.txt.gz",
+        "assertionConfirmedKill": true
+      },
+      "ignore_expired_replacement": {
+        "exitCode": 1,
+        "tests": 11,
+        "failures": 312,
+        "errors": 69,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/with-skills/mutation-logs/ignore_expired_replacement.txt.gz",
+        "assertionConfirmedKill": true
+      },
+      "allow_backwards": {
+        "exitCode": 1,
+        "tests": 11,
+        "failures": 1800,
+        "errors": 165,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/with-skills/mutation-logs/allow_backwards.txt.gz",
+        "assertionConfirmedKill": true
+      },
+      "mutate_on_rejection": {
+        "exitCode": 1,
+        "tests": 11,
+        "failures": 920,
+        "errors": 1072,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/with-skills/mutation-logs/mutate_on_rejection.txt.gz",
+        "assertionConfirmedKill": true
+      },
+      "clone_clock_reset": {
+        "exitCode": 1,
+        "tests": 11,
+        "failures": 1,
+        "errors": 4,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/with-skills/mutation-logs/clone_clock_reset.txt.gz",
+        "assertionConfirmedKill": true
+      },
+      "clone_alias": {
+        "exitCode": 1,
+        "tests": 11,
+        "failures": 48,
+        "errors": 2301,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/with-skills/mutation-logs/clone_alias.txt.gz",
+        "assertionConfirmedKill": true
+      },
+      "unsorted_snapshot": {
+        "exitCode": 1,
+        "tests": 11,
+        "failures": 643,
+        "errors": 31,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/with-skills/mutation-logs/unsorted_snapshot.txt.gz",
+        "assertionConfirmedKill": true
+      },
+      "drop_on_equal_time": {
+        "exitCode": 1,
+        "tests": 11,
+        "failures": 892,
+        "errors": 1356,
+        "skipped": 0,
+        "behavioralKill": false,
+        "outputGzip": "case-11/with-skills/mutation-logs/drop_on_equal_time.txt.gz",
+        "assertionConfirmedKill": true
+      }
+    },
+    "artifactHashes": {
+      "AGENTS.md": "9be50968665e9327c35d24f316f42f989511148682254934d290a61d11b611d8",
+      "TASK.md": "3835ab2fce616b3f25648227f10619fb0164451885f4890312c9aa95fff1d01d",
+      "answer.md": "b8cb29893cd26933a6edaa8e983b19625384bdff450482bf8095d405e5707907",
+      "events.jsonl": "8a953743f4e0e1633a8d721b5385cb94c370d8a7a15ca289b321fb946ff09bda",
+      "final-message.md": "8ac594caba8f08fce83c3b95c6b5f699c884a16d66dab2093109a9a924b3cb92",
+      "prompt.txt": "c7f4669e3ee3b774e253de8984b6f7faa2e0a12805097b5ece36b1323fe65d78",
+      "run.json": "e15aece42af5aef68d91e1001feae3dcb5a8872bc25b3a9bf6fb93e609fc49aa",
+      "scheduler_api.py": "9b636e36f6fdbe6869f8efb790f806aacf4eaf73dd1eaa066622f84014d73014",
+      "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "test-plan.md": "1eba9dbf950f80051c521349e1349af129a29757deadf8de068d2a2c6996310d",
+      "test_scheduler.py": "64d6bd6294e93170af15005a92e5f692b91ea3071d138a17e955439859f0a49a"
+    }
+  },
+  "12/without-skills": {
+    "run": {
+      "case": "12",
+      "arm": "without-skills",
+      "command": [
+        "codex",
+        "exec",
+        "--ignore-user-config",
+        "--ephemeral",
+        "--skip-git-repo-check",
+        "--sandbox",
+        "workspace-write",
+        "--json",
+        "--color",
+        "never",
+        "--model",
+        "gpt-6.1-sol",
+        "-c",
+        "model_reasoning_effort=\"medium\"",
+        "--output-last-message",
+        "final-message.md",
+        "-"
+      ],
+      "elapsedSeconds": 269.94,
+      "exitCode": 0,
+      "timedOut": false
+    },
+    "usage": {
+      "input_tokens": 159624,
+      "cached_input_tokens": 137600,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 9858,
+      "reasoning_output_tokens": 897
+    },
+    "changedCommonInputs": [],
+    "changedSkillInputs": [],
+    "completedCommands": 7,
+    "skillReadCommands": [],
+    "generatedChecksRerun": {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "-B",
+        "checks.py"
+      ],
+      "exitCode": 0,
+      "output": "X-01: partition -> A accepts x=10 -> B accepts y=10 -> total 20 > 10\nX-02: same ID=3 delivered at both homes -> naive ledgers debit 6\nX-04: accept x -> release x -> forget at 1h -> replay -> resurrect x\nX-03: recovery t=0; first update t=101ms -> disagreement at t=100ms\nE-02..E-10: capacity, routing, identity, sticky rejection and release checks pass\nE-11..E-14: 6 replay permutations, join laws, conflicts and repair pass\nFinite model: 189 reachable states, 2646 transitions; two IDs, amounts 1..6; local usage <=5, terminality, immutable identity pass\nPASS: all finite checks. No unbounded proof or timing measurement claimed.\n"
+    },
+    "artifactHashes": {
+      "AGENTS.md": "9be50968665e9327c35d24f316f42f989511148682254934d290a61d11b611d8",
+      "TASK.md": "39c9846774f7d355bbc66d84881d49597d45461390b9cad28733870a4c6cb10d",
+      "answer.md": "847a4611ef0b03d36ce7408d4e00ea9f14387dcf3e9dc8a04cbe366b694559ec",
+      "checks.py": "1050c847a705b1ac19a430e2bc1216cea8523db4974c5487630fa410aff60864",
+      "events.jsonl": "d1f0230a4932d937496e61709e35312777705de9fa41c0fba2d77b352fe17467",
+      "final-message.md": "f6279e12558ba800b911da764c190eb6d66f6b3c004ae4e8c95de700e19d14a6",
+      "prompt.txt": "86697db8ff1af24145d3729b123c343a257c1186c8bb8221ea705ab9bf43c388",
+      "run.json": "cf84a0b67d4d0c56dc349cfd917eb5533604a172a912f849cf76dde818a2c8b2",
+      "spec.md": "08fb7d6a9922c1904559dabc55a0917693a677f04724a52bc6f5051671487350",
+      "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "12/with-skills": {
+    "run": {
+      "case": "12",
+      "arm": "with-skills",
+      "command": [
+        "codex",
+        "exec",
+        "--ignore-user-config",
+        "--ephemeral",
+        "--skip-git-repo-check",
+        "--sandbox",
+        "workspace-write",
+        "--json",
+        "--color",
+        "never",
+        "--model",
+        "gpt-6.1-sol",
+        "-c",
+        "model_reasoning_effort=\"medium\"",
+        "--output-last-message",
+        "final-message.md",
+        "-"
+      ],
+      "elapsedSeconds": 274.39,
+      "exitCode": 0,
+      "timedOut": false
+    },
+    "usage": {
+      "input_tokens": 276241,
+      "cached_input_tokens": 251264,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 12332,
+      "reasoning_output_tokens": 1442
+    },
+    "changedCommonInputs": [],
+    "changedSkillInputs": [],
+    "completedCommands": 13,
+    "skillReadCommands": [
+      "/bin/bash -lc 'cat TASK.md catalog/ai/skills/specification-consistency/SKILL.md catalog/ai/skills/formal-model-checking/SKILL.md'",
+      "/bin/bash -lc 'cat catalog/ai/skills/specification-consistency/references/checking-and-reporting.md catalog/ai/skills/formal-model-checking/references/backend-selection.md catalog/ai/skills/formal-model-checking/references/mutex-tla-example.md'"
+    ],
+    "generatedChecksRerun": {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "-B",
+        "checks.py"
+      ],
+      "exitCode": 0,
+      "output": "Backend: dependency-free Python explicit-state enumeration\nPython: 3.13.9\nSHA256 TASK.md: 39c9846774f7d355bbc66d84881d49597d45461390b9cad28733870a4c6cb10d\nSHA256 spec.md: f85c1b4219577c5fc47da989118478c74703b5d18a33761e5ba33a9d4ca9e03b\nSHA256 checks.py: f08c1b9b3f13af8f0db939fde88d5975b781faf99ac2fe59323a88f4149c58b2\nF-CAP: partition empty A/B -> A accepts x:10 -> B accepts y:10 -> outstanding=20>10. 55/100 forced-success amount pairs violate R1.\nF-TIME: A has x, B empty; heal at 0 ms; B still empty at 100 ms; update delivered at 101 ms. Eventual delivery holds; deadline fails.\nF-GC: t=0 accept x:10; t=1 release x; t=3601 erase x; t=3602 original reserve arrives -> x active again (R4 violation).\nF-ORDER: unordered last-arrival overwrite RELEASED -> stale ACTIVE resurrects x; proposed prefix replay is checked separately.\nTargeted API/order checks PASS: fresh 1..10, invalid inputs, 11, cross-ingress retry/conflict, terminal release/rejection, out-of-order and duplicate replay, unknown release, conflict orders.\nFinite BFS PASS: 313 distinct/reachable states; 3504 edges; 2848 self-loops; 313 quiescent drain paths checked.\nBounds: 2 replicas, 2 IDs, reserve amounts {6,10}, log <=4; no depth cutoff. No universal fair-liveness/deadlock check claimed.\nAll expected counterexamples reproduced and proposed finite checks passed.\n"
+    },
+    "artifactHashes": {
+      "AGENTS.md": "9be50968665e9327c35d24f316f42f989511148682254934d290a61d11b611d8",
+      "TASK.md": "39c9846774f7d355bbc66d84881d49597d45461390b9cad28733870a4c6cb10d",
+      "answer.md": "036af263b7f974659faffd8ac9dc023e4b0e3084f4752ef7f223ca02ba1923ea",
+      "checks-output.txt": "b8fbd4e51132f5df349d294ce9d09cbaaa003b855b7f183b70898500a9c64109",
+      "checks.py": "f08c1b9b3f13af8f0db939fde88d5975b781faf99ac2fe59323a88f4149c58b2",
+      "events.jsonl": "02e15856bef60c09bb0fe8bd60da744c2d574980c383f8abbc513f051589b04f",
+      "final-message.md": "87773b35aa66884b410eb8fe027b1056f2bc6109d4fc4ea8083ad4c883005edd",
+      "prompt.txt": "f78f85b66f7119cdcb67f3ea1dcc117aa56493a9003d4c1007f816895bd31f29",
+      "run.json": "8939727face5d4e3b7a0e833e716101c3b125bdd670ad5f3b178478b0782a8d1",
+      "spec.md": "f85c1b4219577c5fc47da989118478c74703b5d18a33761e5ba33a9d4ca9e03b",
+      "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

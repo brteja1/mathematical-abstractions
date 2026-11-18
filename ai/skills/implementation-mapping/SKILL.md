@@ -36,6 +36,10 @@ Record selected stable IDs and source-file hashes or a catalog revision plus rel
 
 Use the focused `mathematicalFormulation`, scope and limitations to map the contract. Load `--view lean` and the relevant part of the [formulation guide](../mathematical-tests/references/formulations.md) only when a typed interpretation or witness is needed; `--view full` is for a required complete-record audit. Record only relied-on equations and evidence. A partial interface leaves explicit obligations; it does not authorize narrowing the product contract.
 
+## Fill a required mathematical gap
+
+If the selected task needs an abstraction, operation or proof absent from the catalog, use [abstraction-acquisition](../abstraction-acquisition/SKILL.md). Search for reusable entries first, acquire or construct only the missing mathematics, and compile/audit the required Lean model and claims. After verification, offer catalog promotion (default) or task-local retention and wait for the user's choice unless already specified. Then resume this workflow with the explicit semantic mapping. Unverified assumptions require an explicit user choice for conditional continuation.
+
 ## Define the concrete interpretation
 
 For each selected operation, map all of the following that affect its behavior:

@@ -1,0 +1,3 @@
+case,repeat,anonymous_label,arm,model,reasoning,order,task_correctness_0_4,defects_found,defects_expected,false_positives,evidence_0_3,completion_0_2,critical_failure,elapsed_seconds,input_tokens,output_tokens,commands_executed,skill_files_read,notes
+01,1,,without-skills,CLI default unresolved,CLI default unresolved,1,4,2,2,0,3,2,none,63.39,133779,1940,8,0,Author scored unblinded; exact review recovered from tool transcript
+01,1,,with-skills,CLI default unresolved,CLI default unresolved,2,4,2,2,0,3,2,none,61.08,129546,2360,10,3,Author scored unblinded; exact review recovered from tool transcript

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Abstraction Acquisition"
+  short_description: "Acquire missing abstractions and verify their Lean models"
+  default_prompt: "Use $abstraction-acquisition to fill the mathematical gaps in this problem, verify the required model and claims in Lean, offer catalog or task-local retention, and resume the task."

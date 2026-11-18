@@ -47,6 +47,10 @@ Select concepts based on the system's operational model:
 
 Retrieve focused records for the chosen concept. Use the formal statements and assumptions in the catalog records to formulate the model's transition relations and invariant predicates.
 
+## Fill a required mathematical gap
+
+If the selected task needs an abstraction, operation or proof absent from the catalog, use [abstraction-acquisition](../abstraction-acquisition/SKILL.md). Search for reusable entries first, acquire or construct only the missing mathematics, and compile/audit the required Lean model and claims. After verification, offer catalog promotion (default) or task-local retention and wait for the user's choice unless already specified. Then resume this workflow with the explicit semantic mapping. Unverified assumptions require an explicit user choice for conditional continuation.
+
 ## Select the verification backend
 
 Route by the nature of the verification task:

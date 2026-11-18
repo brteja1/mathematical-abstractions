@@ -15,6 +15,10 @@ Record carriers, equality/observations, operations and before/after states, quan
 
 Ask for missing information only when it blocks the interpretation; continue with independent checks. Do not strengthen preconditions, exclude required scenarios, or invent priorities to make the specification pass.
 
+## Fill a required mathematical gap
+
+If the selected task needs an abstraction, operation or proof absent from the catalog, use [abstraction-acquisition](../abstraction-acquisition/SKILL.md). Search for reusable entries first, acquire or construct only the missing mathematics, and compile/audit the required Lean model and claims. After verification, offer catalog promotion (default) or task-local retention and wait for the user's choice unless already specified. Then resume this workflow with the explicit semantic mapping. Unverified assumptions require an explicit user choice for conditional continuation.
+
 ## Retrieve applicable mathematics
 
 The catalog dependency is located relative to this skill file's directory: starting from `<skill_dir>` (the directory containing this `SKILL.md`), the catalog root is three levels up at `<skill_dir>/../../..`. This relative structure is preserved whether cloned or extracted from an archive or zip without requiring git.
@@ -77,6 +81,6 @@ When practical, shrink a conflict by removing clauses and rechecking. Call it in
 
 Lead with findings and their scope. For each finding, give clause IDs/locators, the interpretation, catalog IDs and semantic mapping, the conflict or failing input, reproducible evidence, and limitations. Distinguish demonstrated conflicts, conditional conflicts, ambiguities, missing requirements, and inconclusive checks. A finite search with no conflict supports only its stated domain/bound unless a completeness argument applies.
 
-Propose concrete repairs with the behavior each repair changes; do not edit normative requirements without authorization. Recheck a proposed repair before claiming it resolves the conflict. Keep specification findings outside catalog records unless catalog maintenance is requested. New graph claims still require consulted sources and the repository's full build/validation workflow. For Lean, follow `lean/README.md`; prove contradictions from explicit hypotheses without global axioms or `sorry`, and require fresh compilation before claiming a proof. A proof conditional on inconsistent hypotheses does not establish that those hypotheses have a model.
+Propose concrete repairs with the behavior each repair changes; do not edit normative requirements without authorization. Recheck a proposed repair before claiming it resolves the conflict. Keep specification findings outside catalog records. For required missing mathematics, use the acquisition workflow and the user's retention choice. New graph claims still require consulted sources and the repository's full build/validation workflow. For Lean, follow `lean/README.md`; prove contradictions from explicit hypotheses without global axioms or `sorry`, and require fresh compilation before claiming a proof. A proof conditional on inconsistent hypotheses does not establish that those hypotheses have a model.
 
 This skill lives in the requested `ai/skills/` location. Agents can read it explicitly; automatic discovery depends on the host's skill configuration. Keep it attached to this checkout so its infrastructure links resolve.

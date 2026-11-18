@@ -1,0 +1,49 @@
+{
+  "modelRequested": "gpt-6.1-sol",
+  "reasoningRequested": "medium",
+  "timeoutPerArmSeconds": 480,
+  "seed": 20261118,
+  "schedule": [
+    {
+      "case": "10",
+      "arm": "with-skills"
+    },
+    {
+      "case": "10",
+      "arm": "without-skills"
+    },
+    {
+      "case": "11",
+      "arm": "without-skills"
+    },
+    {
+      "case": "11",
+      "arm": "with-skills"
+    },
+    {
+      "case": "12",
+      "arm": "with-skills"
+    },
+    {
+      "case": "12",
+      "arm": "without-skills"
+    }
+  ],
+  "frozenEvaluatorHashes": {
+    "quality-rubric.md": "95b55d43ed43cc688afb328a6f8b1d7e910af4dd8ef4fd022f79d4979ed1d049",
+    "quality_checks.py": "80066a754673f9e724321c07f228e3c1caa0d8e5490d727ae270954b7f414aec",
+    "run_quality.py": "d04b9571022eed1929139af8650608ad691a5cbfdcb00cbe7264d751f3d1437c",
+    "prepare.py": "260976f81d63aa3e9ab843220de63c1b4289c1c1b755d94960b51702c7f24db0",
+    "cases.json": "f79fd3dba0fefd6e2809259c61fc5a5041176b6fe35f5d7f34877aa0fbe111a2",
+    "prompts/10-calendar-quality.md": "3f75e1326e06b5e9e3698648d54196e0f3ca7be1189e87ee35b928238fb46448",
+    "prompts/11-scheduler-test-quality.md": "3835ab2fce616b3f25648227f10619fb0164451885f4890312c9aa95fff1d01d",
+    "prompts/12-quota-spec-quality.md": "39c9846774f7d355bbc66d84881d49597d45461390b9cad28733870a4c6cb10d"
+  },
+  "cliVersion": "codex-cli 0.169.0",
+  "sourceStatus": " M AGENTS.md\n M README.md\n M ai/skills/abstraction-discovery/SKILL.md\n M ai/skills/formal-model-checking/SKILL.md\n M ai/skills/implementation-conformance/SKILL.md\n M ai/skills/implementation-mapping/SKILL.md\n M ai/skills/mathematical-tests/SKILL.md\n M ai/skills/specification-consistency/SKILL.md\n m deps/ONTFS\n M docs/AGENT_WORKFLOWS.md\n M tests/test_lean_proofs.py\n?? ai/evaluations/\n?? ai/skills/abstraction-acquisition/\n?? examples/readability/\n?? tests/test_skill_evaluations.py\n",
+  "limits": [
+    "One run per arm per task; exploratory, not statistical evidence.",
+    "Host context and runtime symlinks are not OS-isolated.",
+    "Model/reasoning are explicitly requested; backend revision may not be emitted."
+  ]
+}

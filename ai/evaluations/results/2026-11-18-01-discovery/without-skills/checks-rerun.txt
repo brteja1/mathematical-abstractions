@@ -1,0 +1,3 @@
+command: python3 checks.py
+exit_code: 0
+All reducer checks passed.
