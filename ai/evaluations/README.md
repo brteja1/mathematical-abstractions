@@ -2,6 +2,8 @@
 
 This suite compares the same user task in fresh sessions **without repository skill instructions** and **with the selected skills**. Both arms have the same catalog, task inputs, tools and budget. This measures the added value of the skill instructions given catalog access; it does not measure the combined value of skills plus catalog versus a model with neither.
 
+The protocol works with any AI agent that can read the task and use the required tools. Workspace instructions are explicit Markdown inputs; scoring does not depend on a vendor transcript format.
+
 The prompts are realistic tasks with seeded pitfalls and controls. They request outcomes without prescribing the skill's reasoning steps. Evaluator-only [criteria](grader.md) identify correct results, false positives and evidence requirements. Do not give that file, other outputs or past-session memory to either evaluated session.
 
 | Case | Primary skill | What the comparison probes |
@@ -19,60 +21,86 @@ The prompts are realistic tasks with seeded pitfalls and controls. They request 
 | [11](prompts/11-scheduler-test-quality.md) | mathematical-tests | Stateful test efficacy against ten hidden faults and two correct representations |
 | [12](prompts/12-quota-spec-quality.md) | specification-consistency, formal-model-checking | Implementable distributed specification, conflicts and lifecycle semantics |
 
-## Harder quality evaluations
-
-Cases 10–12 evaluate the artifacts beyond task completion. The evaluator-only [quality rubric](quality-rubric.md) separates behavioral correctness, test defect detection, specification precision, code maintainability, test maintainability and reviewer readability. Human comprehension requires actual readers; anonymous packets and questions support that trial without claiming human results before it occurs.
-
-The [independent checks](quality_checks.py) validate case 10 against 18 contract scenarios, including seeded mixed histories. Case 11 runs each generated test suite against two correct implementations (including an opaque state type with different tie behavior) and ten prevalidated semantic mutants. Behavioral failures detect defects; import or syntax failures are invalid evidence. Validate the evaluator fixtures before running models:
-
-```sh
-python3 ai/evaluations/quality_checks.py --case self-test --out /tmp/scheduler-oracle-validation.json
-```
-
-The [hard-case runner](run_quality.py) freezes evaluator and prompt hashes, prepares all pairs before generation, randomizes arm order with a recorded seed, sets the same explicit model/reasoning request, and saves separate task artifacts and final replies. It starts six paid model sessions only with `--execute`:
-
-```sh
-python3 ai/evaluations/run_quality.py --out /tmp/skill-quality-run \
-  --model MODEL --effort medium --timeout 480 --execute
-```
-
-Use a model available in your environment. One pair per hard case broadens task coverage but still does not measure run-to-run variation. Report dimension-level differences and concrete examples rather than declaring one arm universally better.
-
 ## Prepare a pair
 
-Run from this repository. The helper uses Python's standard library and does not call a model, install dependencies or change the source catalog:
+Run from this repository. The helper uses Python's standard library and does not invoke an agent or install dependencies:
 
 ```sh
 python3 ai/evaluations/prepare.py --case 01 --out /tmp/skill-eval-01
 ```
 
-It creates `without-skills/` and `with-skills/`, each with identical `TASK.md`, neutral workspace instructions, a catalog snapshot and a generated `prompt.txt`. Only the treatment includes `catalog/ai/skills/` and instructions to read the selected entrypoints. Copying all skills to that arm permits ordinary cross-skill routing; loaded entrypoints are recorded in `manifest.json`.
+It creates `without-skills/` and `with-skills/` with identical `TASK.md`, `WORKSPACE.md`, catalog snapshots and task fixtures. Each generated `prompt.txt` explicitly asks the agent to read the workspace instructions; automatic discovery of an agent-specific instruction filename is unnecessary. Only the treatment receives `catalog/ai/skills/` and instructions to read the selected entrypoints. All skills are copied there for cross-skill routing; selected entrypoints and input hashes are recorded in `manifest.json`.
 
-Snapshots include authoritative graph files, tools, selected workflow documentation and Lean sources. If installed, `.venv`, `deps/ONTFS` and `lean/.lake` are shared by symlink for both arms; these runtimes must remain unchanged. These are convenient workspaces, **not OS security boundaries**. Use separate containers/read mounts for strict isolation. Do not run inside this repository: its `AGENTS.md` already exposes the skills. Disable repository skill registration and prior-session memory in the baseline host; record any unavoidable host/global instructions or tools as possible contamination. The helper cannot control host policy.
+Snapshots include authoritative graph files, tools, selected workflow documentation and Lean sources. Installed `.venv`, `deps/ONTFS` and `lean/.lake` runtimes are shared by symlink and must remain unchanged. These workspaces are not OS security boundaries. Use containers/read mounts for strict isolation. Run outside the source repository to avoid inherited repository instructions. Disable host skill registration and past-session memory for both arms; disclose unavoidable global instructions or tools. The helper cannot control host policy.
 
-## Run and retain evidence
+## Run with any agent
 
-Start a fresh session for each generated prompt, using its arm directory as the working directory. Use the same model/version, reasoning setting, tool permissions, network policy and time/token budget. Do not inherit this conversation. Record the model's actual resolved settings rather than assuming a requested alias was honored. Exclude evaluator files and the other arm's directory. Allow both arms equal catalog access; only treatment receives the skill files. Retain prompts, final answers, tool transcripts, elapsed time, token usage if available, errors and artifact hashes.
+Start a fresh session in each arm directory and submit the entire `prompt.txt`. Use the same agent/model version, reasoning settings, permissions, network policy, tools and time/token budget in both arms. Do not inherit the preparing conversation. Exclude evaluator files and the other arm. Retain prompts, task artifacts, final replies, native transcripts, elapsed time, usage where available, errors and artifact hashes. Record resolved settings separately from requested aliases.
 
-For a CLI supporting these options, one manual invocation is:
+For an interactive agent, use its normal fresh-session interface. For automation, write a wrapper that accepts the prompt on stdin, runs in the current directory, and waits until the session finishes:
 
 ```sh
 cd /tmp/skill-eval-01/without-skills
-codex exec --ignore-user-config --ephemeral --skip-git-repo-check \
-  --sandbox workspace-write --json --output-last-message final-message.md - \
-  < prompt.txt > events.jsonl 2> stderr.txt
+/path/to/agent-wrapper < prompt.txt > stdout.txt 2> stderr.txt
 ```
 
-Repeat in the treatment directory with identical settings. Keep `final-message.md` distinct from the task's `answer.md`: the CLI writes its final reply after the model's task artifacts and would otherwise overwrite the review. Check your installed CLI's help; tool availability is a host property. This command may use a paid model. The helper itself never starts runs. Stop on authentication/network/tool blockers and record them; do not count an infrastructure failure as a skill failure.
+Configure session isolation, instruction loading, permissions and transcript export using your agent's supported options. Repeat in the treatment directory with identical settings. Save the final reply separately from requested task files such as `answer.md`. Stop on authentication/network/tool blockers and disclose them; infrastructure failures are not skill failures.
 
-For a first pilot use case 01 with a 5-minute wall-clock cap per arm, sequentially. For repeated evaluation use at least three independent runs per case, randomize arm order, and counterbalance it across repeats. Record the run order before reading answers. A single pair is exploratory and cannot establish a general efficacy improvement.
+For an initial pilot, use case 01 with a five-minute cap per arm. For repeated evaluations, use at least three independent runs per case, randomize arm order and counterbalance across repeats. Record the order before reading answers. One pair is exploratory evidence. Case 07 preselects task-local retention to keep budgets comparable; to evaluate the post-verification choice, remove that sentence in both prompts and supply the same user response. Record clarification turns and waiting time separately.
 
-Case 07 preselects task-local retention to keep its two budgets comparable. To evaluate the post-verification choice separately, remove that sentence in **both** prompts and script the same user response when the choice appears; record turn counts and time waiting separately. Do not score an appropriate clarification as a failure.
+## Automated hard-case runs
+
+Cases 10–12 evaluate code, tests and specifications beyond task completion. The evaluator-only [quality rubric](quality-rubric.md) separates correctness, defect detection, specification precision, maintainability and readability. Human comprehension requires actual readers; prepared packets alone are not measured human results.
+
+Validate the [independent checks](quality_checks.py) before running agents. Case 10 has 18 contract scenarios and seeded histories; case 11 uses two correct implementations and ten semantic mutants. Import/syntax failures do not count as behavioral defect detection.
+
+```sh
+python3 ai/evaluations/quality_checks.py --case self-test --out /tmp/scheduler-oracle-validation.json
+```
+
+The [runner](run_quality.py) prepares all pairs before generation, freezes evaluator/prompt hashes and records randomized arm order. Supply an external agent configuration:
+
+```json
+{
+  "agent": "your-agent-name",
+  "version": "installed-version",
+  "command": ["/absolute/path/to/agent-wrapper", "--model", "{model}", "--effort", "{effort}"]
+}
+```
+
+The command is an argv array executed without a shell. Only `{model}` and `{effort}` are substituted; escape literal braces as `{{` and `}}`. Omit unsupported reasoning arguments and disclose that limitation. Record other host settings in the configuration, which is archived; keep credentials out. Model/reasoning labels are requests, not verified resolved settings.
+
+```sh
+python3 ai/evaluations/run_quality.py --out /tmp/skill-quality-run \
+  --agent-config /path/to/agent.json --model MODEL --effort medium \
+  --timeout 480 --execute
+```
+
+Only `--execute` permits the six agent invocations, which may incur charges. Each receives `prompt.txt` on stdin and the arm directory as its working directory. The runner saves `stdout.txt`, `stderr.txt` and `run.json`; wrappers may retain native transcripts and `final-message.md`. Launch/process failures stop the schedule; timeouts are recorded. A zero exit code does not establish task completion or successful tool access.
+
+After all runs finish, [collect artifacts](collect_quality.py) and execute the frozen checks:
+
+```sh
+python3 ai/evaluations/collect_quality.py --run /tmp/skill-quality-run \
+  --out /tmp/skill-quality-archive
+```
+
+Collection does not parse native transcripts. An optional `agent-metadata.json` in each arm may contain reported resolved settings, usage counters with units, and completed command strings:
+
+```json
+{
+  "resolvedSettings": {"model": "reported-model-version", "reasoning": "medium"},
+  "usage": {"inputTokens": 123, "outputTokens": 45},
+  "commands": ["python3 -m unittest -v"]
+}
+```
+
+Omit unavailable fields: missing usage and command counts remain unknown, not zero. Metadata is reported evidence, not independently verified identity or instruction compliance. Collection works without it or a structured transcript. Preserve native transcripts for audit where available.
 
 ## Score and compare
 
-After both sessions finish, assign anonymous output labels and score with [grader.md](grader.md), preferably using an independent reviewer unaware of the arm. Report correctness, missed defects, false positives, runnable evidence, task completion and cost separately. Stable catalog IDs and workflow compliance are useful process diagnostics, not correctness bonuses unavailable to the baseline. Do not substitute verbosity, test counts, code coverage or a Lean structure declaration for task success.
+Assign anonymous labels and score using [grader.md](grader.md), preferably with an independent reviewer unaware of the arm. Report correctness, missed defects, false positives, runnable evidence, task completion and cost separately. Catalog IDs and workflow compliance are process diagnostics, not correctness bonuses. Do not substitute verbosity, test counts, coverage or structure declarations for task success. Compare skill arms within the same agent/model configuration; report cross-agent differences separately.
 
-Record scores in a CSV file outside the repository; leave unmeasured fields blank. A failed/unperformed check is not a passing result. For case 05 run the generated tests against the known-good implementation and semantic mutants described in the grader; count killed mutants only when the failure is an assertion about behavior, not an import/syntax error. Retain counterexamples, failing seeds and commands. For case 07 require actual Lean compilation and axiom audits in both arms before awarding verified proof credit.
+Record scores in a CSV file outside the repository; leave unmeasured fields blank. For case 05, run tests against the known-good implementation and semantic mutants described in the grader; only behavioral assertion failures count as killed mutants. Retain counterexamples, seeds and commands. For case 07 require Lean compilation and axiom audits in both arms before awarding verified proof credit.
 
-Keep actual reports outside the repository with raw evidence and limitations. Separate authored examples, evaluator fixture checks and actual independently generated model outputs. Publishing a prompt suite or validating its fixtures does not demonstrate that skills improve results.
+Keep reports outside the repository with raw evidence and limitations. Distinguish authored examples, fixture validation and independently generated agent outputs. Publishing prompts or validating fixtures does not demonstrate skill efficacy. Report dimension-level differences and concrete examples; one pair per hard case does not measure run-to-run variation.

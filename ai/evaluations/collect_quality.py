@@ -73,23 +73,24 @@ def main():
             dest = target / arm; dest.mkdir()
             for path in source.iterdir():
                 if path.is_file() and not path.is_symlink(): shutil.copy2(path, dest / path.name)
-            events = [json.loads(line) for line in (source / 'events.jsonl').read_text().splitlines()]
+            metadata_path = source / 'agent-metadata.json'
+            metadata = json.loads(metadata_path.read_text()) if metadata_path.exists() else {}
+            if not isinstance(metadata, dict):
+                parser.error('Agent metadata must be a JSON object: ' + str(metadata_path))
+            commands = metadata.get('commands')
+            if commands is not None and (not isinstance(commands, list) or
+                                         not all(isinstance(c, str) for c in commands)):
+                parser.error('Agent metadata commands must be an array of strings')
             changed = [name for name, digest in manifest['commonInputHashes'].items()
                        if not (source / name).is_file() or
                        hashlib.sha256((source / name).read_bytes()).hexdigest() != digest]
-            usage = next((e['usage'] for e in reversed(events) if e['type'] == 'turn.completed'), None)
-            commands = [e['item'] for e in events if e['type'] == 'item.completed' and
-                        e.get('item', {}).get('type') == 'command_execution']
             result = {'run': json.loads((source / 'run.json').read_text()),
-                      'usage': usage, 'changedCommonInputs': changed,
+                      'usage': metadata.get('usage'), 'agentMetadata': metadata, 'changedCommonInputs': changed,
                       'changedSkillInputs': [name for name, digest in manifest['skillInputHashes'].items()
                                              if arm == 'with-skills' and
                                              (not (source / 'catalog/ai/skills' / name).is_file() or
                                               hashlib.sha256((source / 'catalog/ai/skills' / name).read_bytes()).hexdigest() != digest)],
-                      'completedCommands': len(commands),
-                      'skillReadCommands': [item['command'] for item in commands
-                                            if 'catalog/ai/skills/' in item['command'] and
-                                            any(word in item['command'] for word in ('cat ', 'sed ', 'read_text'))]}
+                      'completedCommands': len(commands) if commands is not None else None}
             if case == '10':
                 result['independentContract'] = calendar_evaluation(source)
             elif case == '11':

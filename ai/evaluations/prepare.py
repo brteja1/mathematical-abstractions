@@ -12,7 +12,7 @@ import tempfile
 SUITE = Path(__file__).resolve().parent
 ROOT = SUITE.parents[1]
 COMMON = """This is an isolated evaluation task. Work only in this workspace.
-Read TASK.md and complete it, writing the requested outputs here. The catalog
+Read WORKSPACE.md and TASK.md and complete the task, writing the requested outputs here. The catalog
 at catalog/ is available as mathematical reference in both evaluation arms.
 Use python3 catalog/scripts/catalog.py for focused queries. The pinned Lean
 project is catalog/lean/; available installed runtimes are linked into the
@@ -82,7 +82,7 @@ def prepare(case_id, output):
         baseline.mkdir()
         runtime_links = snapshot(baseline / 'catalog')
         (baseline / 'TASK.md').write_text(task)
-        (baseline / 'AGENTS.md').write_text(NEUTRAL)
+        (baseline / 'WORKSPACE.md').write_text(NEUTRAL)
         for name, source in case.get('fixtures', {}).items():
             if Path(name).name != name:
                 raise ValueError('Fixture destination must be a filename: ' + name)
