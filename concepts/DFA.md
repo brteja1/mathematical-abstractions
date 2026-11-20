@@ -18,6 +18,8 @@ A finite-state recognizer with exactly one next state for every state and input 
 
 ## Backlinks
 
+- [Mealy deterministic finite sequential transducer](MealyTransducer.md) — `relatedConcept`
+- [Moore deterministic finite sequential transducer](MooreTransducer.md) — `relatedConcept`
 - [Nondeterministic finite automaton without epsilon moves](NFA.md) — `relatedConcept`
 - [Regular language over a finite alphabet](RegularLanguage.md) — `requiresConcept`
 - [Deterministic one-tape Turing machine](TuringMachine.md) — `relatedConcept`

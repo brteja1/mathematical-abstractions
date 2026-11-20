@@ -49,3 +49,9 @@ public import Catalog.ProgramStructures
 public import Catalog.KleeneForests
 public import Catalog.RetrievalDecisions
 public import Catalog.StreamCipher
+
+public import Catalog.Digests
+
+public import Catalog.ReleaseSequenceModels
+
+public import Catalog.LanguageClasses

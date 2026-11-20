@@ -21,6 +21,8 @@ A reflexive and transitive relation on a carrier; distinct values may be mutuall
 - [Partial Order](PartialOrder.md) — `requiresConcept`
 - [Partial Order](PartialOrder.md) — `specializationOf`
 - [SKOS Core ontology (relational semantic presentation)](SKOS.md) — `relatedConcept`
+- [Release precedence under Semantic Versioning 2.0.0](SemanticVersionOrder.md) — `requiresConcept`
+- [Release precedence under Semantic Versioning 2.0.0](SemanticVersionOrder.md) — `specializationOf`
 
 ## Mathematical formulation
 

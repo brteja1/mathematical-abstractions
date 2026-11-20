@@ -19,6 +19,7 @@ A sequence of exactly w bits, with bitwise operations and optional signed or uns
 - [GHASH polynomial accumulator](GHASH.md) — `requiresConcept`
 - [LLVM fixed-width integer operations and flags](LLVMIntegerSemantics.md) — `requiresConcept`
 - [LLVM scalar deferred undefinedness and freeze](LLVMPoisonSemantics.md) — `requiresConcept`
+- [Synchronous stream cipher (bounded XOR-keystream profile)](StreamCipher.md) — `requiresConcept`
 
 ## Mathematical formulation
 

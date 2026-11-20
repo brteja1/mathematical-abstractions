@@ -19,12 +19,17 @@ A partial order in which every two elements are comparable.
 - [B-tree (balanced multiway search tree)](BTree.md) — `requiresConcept`
 - [Finite complete binary min-heap](BinaryHeap.md) — `requiresConcept`
 - [Strict binary search tree](BinarySearchTree.md) — `requiresConcept`
+- [Positive-year proleptic Gregorian calendar date](CalendarDate.md) — `requiresConcept`
+- [Positive-year proleptic Gregorian calendar date](CalendarDate.md) — `specializationOf`
 - [Nonempty bounded closed interval](ClosedInterval.md) — `requiresConcept`
 - [Lamport bakery lock protocol](LamportBakery.md) — `requiresConcept`
+- [Linear extension of a partial order](OrderLinearExtension.md) — `requiresConcept`
+- [Linear extension of a partial order](OrderLinearExtension.md) — `specializationOf`
 - [Priority Queue](PriorityQueue.md) — `requiresConcept`
 - [Finite score-ranked retrieval](RankedRetrieval.md) — `requiresConcept`
 - [Exact real number](RealNumber.md) — `requiresConcept`
 - [Residuated fuzzy truth-value algebra (left-continuous t-norm profile)](ResiduatedFuzzyLogic.md) — `requiresConcept`
+- [Release precedence under Semantic Versioning 2.0.0](SemanticVersionOrder.md) — `relatedConcept`
 - [Triangular conorm (t-conorm)](TConorm.md) — `requiresConcept`
 - [Triangular norm (t-norm)](TNorm.md) — `requiresConcept`
 

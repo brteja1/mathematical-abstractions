@@ -24,15 +24,19 @@ A finite ordered collection allowing repeated values, equivalently the inductive
 - [Finite JSON document value (interoperable profile)](DocumentValue.md) — `requiresConcept`
 - [Finite fused sequence iterator](FiniteIterator.md) — `requiresConcept`
 - [Finite set collection](FiniteSet.md) — `relatedConcept`
+- [Ordered first-hit decision table](FirstHitDecisionTable.md) — `requiresConcept`
 - [Formal language of finite words](FormalLanguage.md) — `requiresConcept`
 - [GHASH polynomial accumulator](GHASH.md) — `requiresConcept`
 - [Finite kinded generic parameter signature](GenericSignature.md) — `requiresConcept`
 - [Hamming space (finite fixed-length words)](HammingSpace.md) — `requiresConcept`
 - [Action-labelled transition system with initial states](LabelledTransitionSystem.md) — `requiresConcept`
+- [Mealy deterministic finite sequential transducer](MealyTransducer.md) — `requiresConcept`
+- [Moore deterministic finite sequential transducer](MooreTransducer.md) — `requiresConcept`
 - [Ordered collection without duplicates](OrderedSet.md) — `requiresConcept`
 - [Finite labelled property graph (single-valued profile)](PropertyGraph.md) — `requiresConcept`
 - [Finite score-ranked retrieval](RankedRetrieval.md) — `requiresConcept`
 - [Finite ordered rose tree](RoseTree.md) — `requiresConcept`
+- [Release precedence under Semantic Versioning 2.0.0](SemanticVersionOrder.md) — `requiresConcept`
 - [Infinite discrete stream](Stream.md) — `requiresConcept`
 - [Normalized template constraints with atomic identity](TemplateConstraint.md) — `requiresConcept`
 - [Kinded partial template metafunction](TemplateMetafunction.md) — `requiresConcept`
@@ -65,11 +69,11 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 ## Interface and scope
 
-**axiomBasis:** Selected presentation: An ordered finite collection in which repeated values are allowed. Governing rules: Finite sequences consist exactly of empty or a value followed by a finite sequence. Predicates holding for nil and preserved by cons hold for every finite sequence. Concatenation is defined by recursion on the left argument. Length counts constructors.
+**axiomBasis:** Selected presentation: An ordered finite collection in which repeated values are allowed. Governing rules: Finite sequences consist exactly of empty or a value followed by a finite sequence. Predicates holding for nil and preserved by cons hold for every finite sequence. Concatenation is defined by recursion on the left argument. Length counts constructors. Additional selected editing rules: nonempty-pattern leftmost non-overlapping replacement recursion, and valid half-open deletion by take(i)++drop(j).
 
 **basisKind:** defined-structure
 
-**basisScope:** Finite well-founded values, including [] even if A is empty; structural equality uses equality of A and element order. Pure operations; lengths use unbounded naturals. No cycles, infinite lists or pointer identity. Indexing is partial outside 0≤i<len(xs). view is a total tagged decomposition; foldr takes a total step function.
+**basisScope:** Finite well-founded values, including [] even if A is empty; structural equality uses equality of A and element order. Pure operations; lengths use unbounded naturals. No cycles, infinite lists or pointer identity. Indexing is partial outside 0≤i<len(xs). view is a total tagged decomposition; foldr takes a total step function. Editing profile: literal leftmost non-overlapping replaceAll requires a nonempty pattern and decidable exact element equality, never rescans replacements; span deletion uses valid half-open [i,j), 0≤i≤j≤length. Neither operation changes the finite-list carrier or existing constructors.
 
 **verificationObligation:** Use the stated carriers, equality, domain restrictions and semantic conventions; alternative conventions require an explicit variant.
 
@@ -205,6 +209,54 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 **provenanceKind:** adapted
 
+<a id="node-urn-csabs-operation-Sequence-edit-replace-all"></a>
+
+### leftmost non-overlapping replace all
+
+`urn:csabs:operation/Sequence-edit-replace-all`
+
+**signature:** replaceAll : Seq(A)×NonemptySeq(A)×Seq(A)→Seq(A)
+
+**description:** Scan original input, consuming complete matched patterns or one unmatched element.
+
+**precondition:** Exact decidable equality; pattern p≠[].
+
+**postcondition:** Returns concatenated untouched segments and replacements in scan order; empty input returns []. No inserted element is rescanned.
+
+**totality:** Total on the stated domain.
+
+**source:** [Rust standard library: str replacement and match indices](https://doc.rust-lang.org/std/primitive.str.html); citation: std 1.100.0; replace and match_indices, including the first disjoint overlapping-match example.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; [Pinned Mathlib list and lexicographic order constructions and linear-order extension](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); citation: Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679: Data/Finset/Card.lean Finset.card; Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Data/List/Lex.lean linearOrder; Order/Sum/Order.lean Sum.Lex; Order/Prod/Lex/Basic.lean Prod.Lex; Order/Extension/Linear.lean extend_partialOrder and toLinearExtension. Apache-2.0.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference
+
+**sourceLocator:** Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice
+
+**sourceNote:** Adds an exact-equality finite-list adaptation of first disjoint matching and valid half-open deletion; the pattern must be nonempty and inserted output is not scanned.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-Sequence-edit-delete-span"></a>
+
+### delete half-open span
+
+`urn:csabs:operation/Sequence-edit-delete-span`
+
+**signature:** deleteSpan : {(xs,i,j) | 0≤i≤j≤length(xs)}→Seq(A)
+
+**description:** Retain take(i,xs) followed by drop(j,xs).
+
+**precondition:** Valid half-open bounds; exact list equality.
+
+**postcondition:** Returns all elements outside [i,j), preserving order and multiplicity.
+
+**totality:** Partial outside valid bounds. Lean helper uses saturated take/drop there; that extension is not the catalog operation.
+
+**source:** [Rust standard library: str replacement and match indices](https://doc.rust-lang.org/std/primitive.str.html); citation: std 1.100.0; replace and match_indices, including the first disjoint overlapping-match example.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; [Pinned Mathlib list and lexicographic order constructions and linear-order extension](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); citation: Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679: Data/Finset/Card.lean Finset.card; Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Data/List/Lex.lean linearOrder; Order/Sum/Order.lean Sum.Lex; Order/Prod/Lex/Basic.lean Prod.Lex; Order/Extension/Linear.lean extend_partialOrder and toLinearExtension. Apache-2.0.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference
+
+**sourceLocator:** Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice
+
+**sourceNote:** Adds an exact-equality finite-list adaptation of first disjoint matching and valid half-open deletion; the pattern must be nonempty and inserted output is not scanned.
+
+**provenanceKind:** adapted
+
 ## Axioms and defining rules
 
 <a id="node-urn-csabs-axiom-Sequence-constructors"></a>
@@ -311,6 +363,54 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 **reviewStatus:** Editorial defining rule; not a compiled theorem.
 
+<a id="node-urn-csabs-axiom-Sequence-edit-replacement"></a>
+
+### replacement defining equations
+
+`urn:csabs:axiom/Sequence-edit-replacement`
+
+**statement:** For a nonempty literal pattern, scan original input left to right, taking each first available match and continuing after its whole span; inserted replacement elements are not rescanned.
+
+**formalStatement:** R([],p,r)=[]; R(a::xs,p,r)=r++R(drop(|p|,a::xs),p,r) if p is a prefix; otherwise a::R(xs,p,r); |p|>0.
+
+**assumptions:** Finite exact-equality lists; unbounded natural indices. Replacement requires decidable equality and nonempty pattern. Span deletion requires valid bounds.
+
+**ruleRole:** defining-rule
+
+**reviewStatus:** Sourced defining equations; separate model-satisfaction and law witnesses.
+
+**source:** [Rust standard library: str replacement and match indices](https://doc.rust-lang.org/std/primitive.str.html); citation: std 1.100.0; replace and match_indices, including the first disjoint overlapping-match example.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; [Pinned Mathlib list and lexicographic order constructions and linear-order extension](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); citation: Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679: Data/Finset/Card.lean Finset.card; Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Data/List/Lex.lean linearOrder; Order/Sum/Order.lean Sum.Lex; Order/Prod/Lex/Basic.lean Prod.Lex; Order/Extension/Linear.lean extend_partialOrder and toLinearExtension. Apache-2.0.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference
+
+**sourceLocator:** Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice
+
+**sourceNote:** Adds an exact-equality finite-list adaptation of first disjoint matching and valid half-open deletion; the pattern must be nonempty and inserted output is not scanned.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-axiom-Sequence-edit-span-deletion"></a>
+
+### span-deletion defining equations
+
+`urn:csabs:axiom/Sequence-edit-span-deletion`
+
+**statement:** Delete a valid half-open span while retaining the prefix before i and suffix from j.
+
+**formalStatement:** D(xs,i,j)=take(i,xs)++drop(j,xs), defined for 0≤i≤j≤|xs|.
+
+**assumptions:** Finite exact-equality lists; unbounded natural indices. Replacement requires decidable equality and nonempty pattern. Span deletion requires valid bounds.
+
+**ruleRole:** defining-rule
+
+**reviewStatus:** Sourced defining equations; separate model-satisfaction and law witnesses.
+
+**source:** [Rust standard library: str replacement and match indices](https://doc.rust-lang.org/std/primitive.str.html); citation: std 1.100.0; replace and match_indices, including the first disjoint overlapping-match example.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; [Pinned Mathlib list and lexicographic order constructions and linear-order extension](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); citation: Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679: Data/Finset/Card.lean Finset.card; Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Data/List/Lex.lean linearOrder; Order/Sum/Order.lean Sum.Lex; Order/Prod/Lex/Basic.lean Prod.Lex; Order/Extension/Linear.lean extend_partialOrder and toLinearExtension. Apache-2.0.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference
+
+**sourceLocator:** Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice
+
+**sourceNote:** Adds an exact-equality finite-list adaptation of first disjoint matching and valid half-open deletion; the pattern must be nonempty and inserted output is not scanned.
+
+**provenanceKind:** adapted
+
 ## Laws
 
 <a id="node-urn-csabs-law-sequence-concat-associative"></a>
@@ -371,6 +471,146 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 **provenanceStatus:** legacy-source-missing
 
+<a id="node-urn-csabs-law-Sequence-edit-replacement-self"></a>
+
+### replacement-self
+
+`urn:csabs:law/Sequence-edit-replacement-self`
+
+**statement:** Induct on remaining input length. Prefix decomposition reconstructs each consumed match; the unmatched branch preserves its head.
+
+**formalStatement:** ∀ {A : Type u} [DecidableEq A] (p : List A) (hp : p ≠ []) (xs : List A), Catalog.replaceAll p hp p xs = xs
+
+**assumptions:** Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality.
+
+**dependsOn:** [replacement defining equations](Sequence.md#node-urn-csabs-axiom-Sequence-edit-replacement); [induction](Sequence.md#node-urn-csabs-axiom-Sequence-induction); [concat-recursion](Sequence.md#node-urn-csabs-axiom-Sequence-concat-recursion)
+
+**proofSketch:** Induct on remaining input length. Prefix decomposition reconstructs each consumed match; the unmatched branch preserves its head.
+
+**reviewStatus:** Derived mathematical law; separately registered theorem supplies explicit proof evidence.
+
+**source:** [Rust standard library: str replacement and match indices](https://doc.rust-lang.org/std/primitive.str.html); citation: std 1.100.0; replace and match_indices, including the first disjoint overlapping-match example.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; [Pinned Mathlib list and lexicographic order constructions and linear-order extension](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); citation: Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679: Data/Finset/Card.lean Finset.card; Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Data/List/Lex.lean linearOrder; Order/Sum/Order.lean Sum.Lex; Order/Prod/Lex/Basic.lean Prod.Lex; Order/Extension/Linear.lean extend_partialOrder and toLinearExtension. Apache-2.0.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; Catalog release, sequence, transducer, schema, date and extension models and witnesses; path: lean/Catalog/ReleaseSequenceModels.lean; accessedOn: 2026-11-20; sourceRole: local-lean-formulation-and-proof
+
+**sourceLocator:** Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.replace_self
+
+**sourceNote:** Derived for the explicit selected model. Induct on remaining input length. Prefix decomposition reconstructs each consumed match; the unmatched branch preserves its head.
+
+**provenanceKind:** derived
+
+**ruleRole:** derived-law
+
+<a id="node-urn-csabs-law-Sequence-edit-span-deletion-length"></a>
+
+### span-deletion-length
+
+`urn:csabs:law/Sequence-edit-span-deletion-length`
+
+**statement:** The retained prefix has length i and suffix length |xs|-j; valid bounds justify natural subtraction.
+
+**formalStatement:** ∀ {A : Type u} (xs : List A) (i j : Nat), i ≤ j → j ≤ xs.length → (Catalog.deleteSpan xs i j).length = xs.length - (j - i)
+
+**assumptions:** Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality.
+
+**dependsOn:** [span-deletion defining equations](Sequence.md#node-urn-csabs-axiom-Sequence-edit-span-deletion); [length-recursion](Sequence.md#node-urn-csabs-axiom-Sequence-length-recursion); [urn:csabs:law/sequence-length-concat](Sequence.md#node-urn-csabs-law-sequence-length-concat)
+
+**proofSketch:** The retained prefix has length i and suffix length |xs|-j; valid bounds justify natural subtraction.
+
+**reviewStatus:** Derived mathematical law; separately registered theorem supplies explicit proof evidence.
+
+**source:** [Rust standard library: str replacement and match indices](https://doc.rust-lang.org/std/primitive.str.html); citation: std 1.100.0; replace and match_indices, including the first disjoint overlapping-match example.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; [Pinned Mathlib list and lexicographic order constructions and linear-order extension](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); citation: Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679: Data/Finset/Card.lean Finset.card; Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Data/List/Lex.lean linearOrder; Order/Sum/Order.lean Sum.Lex; Order/Prod/Lex/Basic.lean Prod.Lex; Order/Extension/Linear.lean extend_partialOrder and toLinearExtension. Apache-2.0.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; Catalog release, sequence, transducer, schema, date and extension models and witnesses; path: lean/Catalog/ReleaseSequenceModels.lean; accessedOn: 2026-11-20; sourceRole: local-lean-formulation-and-proof
+
+**sourceLocator:** Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.delete_span_length
+
+**sourceNote:** Derived for the explicit selected model. The retained prefix has length i and suffix length |xs|-j; valid bounds justify natural subtraction.
+
+**provenanceKind:** derived
+
+**ruleRole:** derived-law
+
+<a id="node-urn-csabs-law-Sequence-edit-span-deletion-empty"></a>
+
+### span-deletion-empty
+
+`urn:csabs:law/Sequence-edit-span-deletion-empty`
+
+**statement:** Take and drop at the same position partition a list. The Lean helper also satisfies this for saturated indices.
+
+**formalStatement:** ∀ {A : Type u} (xs : List A) (i : Nat), Catalog.deleteSpan xs i i = xs
+
+**assumptions:** Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality.
+
+**dependsOn:** [span-deletion defining equations](Sequence.md#node-urn-csabs-axiom-Sequence-edit-span-deletion); [concat-recursion](Sequence.md#node-urn-csabs-axiom-Sequence-concat-recursion)
+
+**proofSketch:** Take and drop at the same position partition a list. The Lean helper also satisfies this for saturated indices.
+
+**reviewStatus:** Derived mathematical law; separately registered theorem supplies explicit proof evidence.
+
+**source:** [Rust standard library: str replacement and match indices](https://doc.rust-lang.org/std/primitive.str.html); citation: std 1.100.0; replace and match_indices, including the first disjoint overlapping-match example.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; [Pinned Mathlib list and lexicographic order constructions and linear-order extension](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); citation: Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679: Data/Finset/Card.lean Finset.card; Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Data/List/Lex.lean linearOrder; Order/Sum/Order.lean Sum.Lex; Order/Prod/Lex/Basic.lean Prod.Lex; Order/Extension/Linear.lean extend_partialOrder and toLinearExtension. Apache-2.0.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; Catalog release, sequence, transducer, schema, date and extension models and witnesses; path: lean/Catalog/ReleaseSequenceModels.lean; accessedOn: 2026-11-20; sourceRole: local-lean-formulation-and-proof
+
+**sourceLocator:** Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.delete_span_empty
+
+**sourceNote:** Derived for the explicit selected model. Take and drop at the same position partition a list. The Lean helper also satisfies this for saturated indices.
+
+**provenanceKind:** derived
+
+**ruleRole:** derived-law
+
+<a id="node-urn-csabs-law-Sequence-edit-span-deletion-full"></a>
+
+### span-deletion-full
+
+`urn:csabs:law/Sequence-edit-span-deletion-full`
+
+**statement:** Taking zero and dropping the full list both yield empty.
+
+**formalStatement:** ∀ {A : Type u} (xs : List A), Catalog.deleteSpan xs 0 xs.length = []
+
+**assumptions:** Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality.
+
+**dependsOn:** [span-deletion defining equations](Sequence.md#node-urn-csabs-axiom-Sequence-edit-span-deletion); [concat-recursion](Sequence.md#node-urn-csabs-axiom-Sequence-concat-recursion)
+
+**proofSketch:** Taking zero and dropping the full list both yield empty.
+
+**reviewStatus:** Derived mathematical law; separately registered theorem supplies explicit proof evidence.
+
+**source:** [Rust standard library: str replacement and match indices](https://doc.rust-lang.org/std/primitive.str.html); citation: std 1.100.0; replace and match_indices, including the first disjoint overlapping-match example.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; [Pinned Mathlib list and lexicographic order constructions and linear-order extension](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); citation: Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679: Data/Finset/Card.lean Finset.card; Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Data/List/Lex.lean linearOrder; Order/Sum/Order.lean Sum.Lex; Order/Prod/Lex/Basic.lean Prod.Lex; Order/Extension/Linear.lean extend_partialOrder and toLinearExtension. Apache-2.0.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; Catalog release, sequence, transducer, schema, date and extension models and witnesses; path: lean/Catalog/ReleaseSequenceModels.lean; accessedOn: 2026-11-20; sourceRole: local-lean-formulation-and-proof
+
+**sourceLocator:** Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.delete_span_full
+
+**sourceNote:** Derived for the explicit selected model. Taking zero and dropping the full list both yield empty.
+
+**provenanceKind:** derived
+
+**ruleRole:** derived-law
+
+<a id="node-urn-csabs-law-Sequence-edit-replacement-equal-length"></a>
+
+### replacement-equal-length
+
+`urn:csabs:law/Sequence-edit-replacement-equal-length`
+
+**statement:** Induct on remaining input length. Each matched span removes |p| original elements and inserts exactly |r|=|p| elements; an unmatched step preserves one element.
+
+**formalStatement:** ∀ {A : Type u} [DecidableEq A] (p : List A) (hp : p ≠ []) (r xs : List A), r.length = p.length → (Catalog.replaceAll p hp r xs).length = xs.length
+
+**assumptions:** Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality.
+
+**dependsOn:** [replacement defining equations](Sequence.md#node-urn-csabs-axiom-Sequence-edit-replacement); [induction](Sequence.md#node-urn-csabs-axiom-Sequence-induction); [concat-recursion](Sequence.md#node-urn-csabs-axiom-Sequence-concat-recursion); [length-recursion](Sequence.md#node-urn-csabs-axiom-Sequence-length-recursion); [urn:csabs:law/sequence-length-concat](Sequence.md#node-urn-csabs-law-sequence-length-concat)
+
+**proofSketch:** Induct on remaining input length. Each matched span removes |p| original elements and inserts exactly |r|=|p| elements; an unmatched step preserves one element.
+
+**reviewStatus:** Derived mathematical law; separately registered theorem supplies explicit proof evidence.
+
+**source:** [Rust standard library: str replacement and match indices](https://doc.rust-lang.org/std/primitive.str.html); citation: std 1.100.0; replace and match_indices, including the first disjoint overlapping-match example.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; [Pinned Mathlib list and lexicographic order constructions and linear-order extension](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); citation: Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679: Data/Finset/Card.lean Finset.card; Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Data/List/Lex.lean linearOrder; Order/Sum/Order.lean Sum.Lex; Order/Prod/Lex/Basic.lean Prod.Lex; Order/Extension/Linear.lean extend_partialOrder and toLinearExtension. Apache-2.0.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; Catalog release, sequence, transducer, schema, date and extension models and witnesses; path: lean/Catalog/ReleaseSequenceModels.lean; accessedOn: 2026-11-20; sourceRole: local-lean-formulation-and-proof
+
+**sourceLocator:** Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.replace_length_equal
+
+**sourceNote:** Derived for the explicit selected model. Induct on remaining input length. Each matched span removes |p| original elements and inserts exactly |r|=|p| elements; an unmatched step preserves one element.
+
+**provenanceKind:** derived
+
+**ruleRole:** derived-law
+
 ## Theorems
 
 <a id="node-urn-csabs-theorem-Sequence-concat-right-identity"></a>
@@ -395,13 +635,390 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 **provenanceStatus:** legacy-source-missing
 
+<a id="node-urn-csabs-theorem-Sequence-edit-replacement-equations"></a>
+
+### replacement-equations
+
+`urn:csabs:theorem/Sequence-edit-replacement-equations`
+
+**statement:** Unfold the well-founded scan. A match consumes the entire nonempty pattern; otherwise consume exactly one original element. The remaining original input strictly shrinks.
+
+**formalStatement:** ∀ {A : Type u} [DecidableEq A] (p : List A) (hp : p ≠ []) (r : List A), Catalog.replaceAll p hp r [] = [] ∧ (∀ a xs, p <+: (a :: xs) → Catalog.replaceAll p hp r (a :: xs) = r ++ Catalog.replaceAll p hp r ((a :: xs).drop p.length)) ∧ (∀ a xs, ¬ p <+: (a :: xs) → Catalog.replaceAll p hp r (a :: xs) = a :: Catalog.replaceAll p hp r xs)
+
+**assumptions:** Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality.
+
+**dependsOn:** [replacement defining equations](Sequence.md#node-urn-csabs-axiom-Sequence-edit-replacement)
+
+**proofSketch:** Unfold the well-founded scan. A match consumes the entire nonempty pattern; otherwise consume exactly one original element. The remaining original input strictly shrinks.
+
+**reviewStatus:** Separately registered Lean witness; require fresh compiler and axiom audit for verified status.
+
+**source:** [Rust standard library: str replacement and match indices](https://doc.rust-lang.org/std/primitive.str.html); citation: std 1.100.0; replace and match_indices, including the first disjoint overlapping-match example.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; [Pinned Mathlib list and lexicographic order constructions and linear-order extension](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); citation: Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679: Data/Finset/Card.lean Finset.card; Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Data/List/Lex.lean linearOrder; Order/Sum/Order.lean Sum.Lex; Order/Prod/Lex/Basic.lean Prod.Lex; Order/Extension/Linear.lean extend_partialOrder and toLinearExtension. Apache-2.0.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; Catalog release, sequence, transducer, schema, date and extension models and witnesses; path: lean/Catalog/ReleaseSequenceModels.lean; accessedOn: 2026-11-20; sourceRole: local-lean-formulation-and-proof
+
+**sourceLocator:** Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.replace_equations
+
+**sourceNote:** Derived for the explicit selected model. Unfold the well-founded scan. A match consumes the entire nonempty pattern; otherwise consume exactly one original element. The remaining original input strictly shrinks.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} [DecidableEq A] (p : List A) (hp : p ≠ []) (r : List A), Catalog.replaceAll p hp r [] = [] ∧ (∀ a xs, p <+: (a :: xs) → Catalog.replaceAll p hp r (a :: xs) = r ++ Catalog.replaceAll p hp r ((a :: xs).drop p.length)) ∧ (∀ a xs, ¬ p <+: (a :: xs) → Catalog.replaceAll p hp r (a :: xs) = a :: Catalog.replaceAll p hp r xs)
+```
+
+**Source:** [`Catalog.replace_equations`](../lean/Catalog/ReleaseSequenceModels.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Unfold the well-founded scan. A match consumes the entire nonempty pattern; otherwise consume exactly one original element. The remaining original input strictly shrinks.
+
+**Limits:** Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Sequence-edit-replacement": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Unfold the well-founded scan. A match consumes the entire nonempty pattern; otherwise consume exactly one original element. The remaining original input strictly shrinks."
+}
+```
+
+<a id="node-urn-csabs-theorem-Sequence-edit-editing-model-satisfaction"></a>
+
+### editing-model-satisfaction
+
+`urn:csabs:theorem/Sequence-edit-editing-model-satisfaction`
+
+**statement:** Evaluate explicit examples distinguishing overlapping matches, rescanning, and half-open deletion.
+
+**formalStatement:** Catalog.replaceAll [1, 1] (by decide) [2] [1, 1, 1] = [2, 1] ∧ Catalog.replaceAll [1] (by decide) [1, 1] [1] = [1, 1] ∧ Catalog.deleteSpan [0, 1, 2, 3] 1 3 = [0, 3]
+
+**assumptions:** Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality.
+
+**dependsOn:** [replacement defining equations](Sequence.md#node-urn-csabs-axiom-Sequence-edit-replacement); [span-deletion defining equations](Sequence.md#node-urn-csabs-axiom-Sequence-edit-span-deletion)
+
+**proofSketch:** Evaluate explicit examples distinguishing overlapping matches, rescanning, and half-open deletion.
+
+**reviewStatus:** Separately registered Lean witness; require fresh compiler and axiom audit for verified status.
+
+**source:** [Rust standard library: str replacement and match indices](https://doc.rust-lang.org/std/primitive.str.html); citation: std 1.100.0; replace and match_indices, including the first disjoint overlapping-match example.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; [Pinned Mathlib list and lexicographic order constructions and linear-order extension](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); citation: Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679: Data/Finset/Card.lean Finset.card; Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Data/List/Lex.lean linearOrder; Order/Sum/Order.lean Sum.Lex; Order/Prod/Lex/Basic.lean Prod.Lex; Order/Extension/Linear.lean extend_partialOrder and toLinearExtension. Apache-2.0.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; Catalog release, sequence, transducer, schema, date and extension models and witnesses; path: lean/Catalog/ReleaseSequenceModels.lean; accessedOn: 2026-11-20; sourceRole: local-lean-formulation-and-proof
+
+**sourceLocator:** Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.sequence_edit_model_satisfaction
+
+**sourceNote:** Derived for the explicit selected model. Evaluate explicit examples distinguishing overlapping matches, rescanning, and half-open deletion.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+Catalog.replaceAll [1, 1] (by decide) [2] [1, 1, 1] = [2, 1] ∧ Catalog.replaceAll [1] (by decide) [1, 1] [1] = [1, 1] ∧ Catalog.deleteSpan [0, 1, 2, 3] 1 3 = [0, 3]
+```
+
+**Source:** [`Catalog.sequence_edit_model_satisfaction`](../lean/Catalog/ReleaseSequenceModels.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Evaluate explicit examples distinguishing overlapping matches, rescanning, and half-open deletion.
+
+**Limits:** Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Sequence-edit-replacement": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Evaluate explicit examples distinguishing overlapping matches, rescanning, and half-open deletion.",
+  "urn:csabs:axiom/Sequence-edit-span-deletion": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Evaluate explicit examples distinguishing overlapping matches, rescanning, and half-open deletion."
+}
+```
+
+<a id="node-urn-csabs-theorem-Sequence-edit-replacement-self"></a>
+
+### replacement-self
+
+`urn:csabs:theorem/Sequence-edit-replacement-self`
+
+**statement:** Induct on remaining input length. Prefix decomposition reconstructs each consumed match; the unmatched branch preserves its head.
+
+**formalStatement:** ∀ {A : Type u} [DecidableEq A] (p : List A) (hp : p ≠ []) (xs : List A), Catalog.replaceAll p hp p xs = xs
+
+**assumptions:** Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality.
+
+**dependsOn:** [replacement defining equations](Sequence.md#node-urn-csabs-axiom-Sequence-edit-replacement); [induction](Sequence.md#node-urn-csabs-axiom-Sequence-induction); [concat-recursion](Sequence.md#node-urn-csabs-axiom-Sequence-concat-recursion)
+
+**proofSketch:** Induct on remaining input length. Prefix decomposition reconstructs each consumed match; the unmatched branch preserves its head.
+
+**reviewStatus:** Separately registered Lean witness; require fresh compiler and axiom audit for verified status.
+
+**source:** [Rust standard library: str replacement and match indices](https://doc.rust-lang.org/std/primitive.str.html); citation: std 1.100.0; replace and match_indices, including the first disjoint overlapping-match example.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; [Pinned Mathlib list and lexicographic order constructions and linear-order extension](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); citation: Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679: Data/Finset/Card.lean Finset.card; Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Data/List/Lex.lean linearOrder; Order/Sum/Order.lean Sum.Lex; Order/Prod/Lex/Basic.lean Prod.Lex; Order/Extension/Linear.lean extend_partialOrder and toLinearExtension. Apache-2.0.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; Catalog release, sequence, transducer, schema, date and extension models and witnesses; path: lean/Catalog/ReleaseSequenceModels.lean; accessedOn: 2026-11-20; sourceRole: local-lean-formulation-and-proof
+
+**sourceLocator:** Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.replace_self
+
+**sourceNote:** Derived for the explicit selected model. Induct on remaining input length. Prefix decomposition reconstructs each consumed match; the unmatched branch preserves its head.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} [DecidableEq A] (p : List A) (hp : p ≠ []) (xs : List A), Catalog.replaceAll p hp p xs = xs
+```
+
+**Source:** [`Catalog.replace_self`](../lean/Catalog/ReleaseSequenceModels.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Induct on remaining input length. Prefix decomposition reconstructs each consumed match; the unmatched branch preserves its head.
+
+**Limits:** Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Sequence-concat-recursion": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.",
+  "urn:csabs:axiom/Sequence-edit-replacement": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Induct on remaining input length. Prefix decomposition reconstructs each consumed match; the unmatched branch preserves its head.",
+  "urn:csabs:axiom/Sequence-induction": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it."
+}
+```
+
+<a id="node-urn-csabs-theorem-Sequence-edit-span-deletion-length"></a>
+
+### span-deletion-length
+
+`urn:csabs:theorem/Sequence-edit-span-deletion-length`
+
+**statement:** The retained prefix has length i and suffix length |xs|-j; valid bounds justify natural subtraction.
+
+**formalStatement:** ∀ {A : Type u} (xs : List A) (i j : Nat), i ≤ j → j ≤ xs.length → (Catalog.deleteSpan xs i j).length = xs.length - (j - i)
+
+**assumptions:** Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality.
+
+**dependsOn:** [span-deletion defining equations](Sequence.md#node-urn-csabs-axiom-Sequence-edit-span-deletion); [length-recursion](Sequence.md#node-urn-csabs-axiom-Sequence-length-recursion); [urn:csabs:law/sequence-length-concat](Sequence.md#node-urn-csabs-law-sequence-length-concat)
+
+**proofSketch:** The retained prefix has length i and suffix length |xs|-j; valid bounds justify natural subtraction.
+
+**reviewStatus:** Separately registered Lean witness; require fresh compiler and axiom audit for verified status.
+
+**source:** [Rust standard library: str replacement and match indices](https://doc.rust-lang.org/std/primitive.str.html); citation: std 1.100.0; replace and match_indices, including the first disjoint overlapping-match example.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; [Pinned Mathlib list and lexicographic order constructions and linear-order extension](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); citation: Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679: Data/Finset/Card.lean Finset.card; Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Data/List/Lex.lean linearOrder; Order/Sum/Order.lean Sum.Lex; Order/Prod/Lex/Basic.lean Prod.Lex; Order/Extension/Linear.lean extend_partialOrder and toLinearExtension. Apache-2.0.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; Catalog release, sequence, transducer, schema, date and extension models and witnesses; path: lean/Catalog/ReleaseSequenceModels.lean; accessedOn: 2026-11-20; sourceRole: local-lean-formulation-and-proof
+
+**sourceLocator:** Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.delete_span_length
+
+**sourceNote:** Derived for the explicit selected model. The retained prefix has length i and suffix length |xs|-j; valid bounds justify natural subtraction.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} (xs : List A) (i j : Nat), i ≤ j → j ≤ xs.length → (Catalog.deleteSpan xs i j).length = xs.length - (j - i)
+```
+
+**Source:** [`Catalog.delete_span_length`](../lean/Catalog/ReleaseSequenceModels.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** The retained prefix has length i and suffix length |xs|-j; valid bounds justify natural subtraction.
+
+**Limits:** Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Sequence-edit-span-deletion": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. The retained prefix has length i and suffix length |xs|-j; valid bounds justify natural subtraction.",
+  "urn:csabs:axiom/Sequence-length-recursion": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.",
+  "urn:csabs:law/sequence-length-concat": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it."
+}
+```
+
+<a id="node-urn-csabs-theorem-Sequence-edit-span-deletion-empty"></a>
+
+### span-deletion-empty
+
+`urn:csabs:theorem/Sequence-edit-span-deletion-empty`
+
+**statement:** Take and drop at the same position partition a list. The Lean helper also satisfies this for saturated indices.
+
+**formalStatement:** ∀ {A : Type u} (xs : List A) (i : Nat), Catalog.deleteSpan xs i i = xs
+
+**assumptions:** Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality.
+
+**dependsOn:** [span-deletion defining equations](Sequence.md#node-urn-csabs-axiom-Sequence-edit-span-deletion); [concat-recursion](Sequence.md#node-urn-csabs-axiom-Sequence-concat-recursion)
+
+**proofSketch:** Take and drop at the same position partition a list. The Lean helper also satisfies this for saturated indices.
+
+**reviewStatus:** Separately registered Lean witness; require fresh compiler and axiom audit for verified status.
+
+**source:** [Rust standard library: str replacement and match indices](https://doc.rust-lang.org/std/primitive.str.html); citation: std 1.100.0; replace and match_indices, including the first disjoint overlapping-match example.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; [Pinned Mathlib list and lexicographic order constructions and linear-order extension](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); citation: Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679: Data/Finset/Card.lean Finset.card; Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Data/List/Lex.lean linearOrder; Order/Sum/Order.lean Sum.Lex; Order/Prod/Lex/Basic.lean Prod.Lex; Order/Extension/Linear.lean extend_partialOrder and toLinearExtension. Apache-2.0.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; Catalog release, sequence, transducer, schema, date and extension models and witnesses; path: lean/Catalog/ReleaseSequenceModels.lean; accessedOn: 2026-11-20; sourceRole: local-lean-formulation-and-proof
+
+**sourceLocator:** Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.delete_span_empty
+
+**sourceNote:** Derived for the explicit selected model. Take and drop at the same position partition a list. The Lean helper also satisfies this for saturated indices.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} (xs : List A) (i : Nat), Catalog.deleteSpan xs i i = xs
+```
+
+**Source:** [`Catalog.delete_span_empty`](../lean/Catalog/ReleaseSequenceModels.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Take and drop at the same position partition a list. The Lean helper also satisfies this for saturated indices.
+
+**Limits:** Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Sequence-concat-recursion": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.",
+  "urn:csabs:axiom/Sequence-edit-span-deletion": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Take and drop at the same position partition a list. The Lean helper also satisfies this for saturated indices."
+}
+```
+
+<a id="node-urn-csabs-theorem-Sequence-edit-span-deletion-full"></a>
+
+### span-deletion-full
+
+`urn:csabs:theorem/Sequence-edit-span-deletion-full`
+
+**statement:** Taking zero and dropping the full list both yield empty.
+
+**formalStatement:** ∀ {A : Type u} (xs : List A), Catalog.deleteSpan xs 0 xs.length = []
+
+**assumptions:** Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality.
+
+**dependsOn:** [span-deletion defining equations](Sequence.md#node-urn-csabs-axiom-Sequence-edit-span-deletion); [concat-recursion](Sequence.md#node-urn-csabs-axiom-Sequence-concat-recursion)
+
+**proofSketch:** Taking zero and dropping the full list both yield empty.
+
+**reviewStatus:** Separately registered Lean witness; require fresh compiler and axiom audit for verified status.
+
+**source:** [Rust standard library: str replacement and match indices](https://doc.rust-lang.org/std/primitive.str.html); citation: std 1.100.0; replace and match_indices, including the first disjoint overlapping-match example.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; [Pinned Mathlib list and lexicographic order constructions and linear-order extension](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); citation: Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679: Data/Finset/Card.lean Finset.card; Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Data/List/Lex.lean linearOrder; Order/Sum/Order.lean Sum.Lex; Order/Prod/Lex/Basic.lean Prod.Lex; Order/Extension/Linear.lean extend_partialOrder and toLinearExtension. Apache-2.0.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; Catalog release, sequence, transducer, schema, date and extension models and witnesses; path: lean/Catalog/ReleaseSequenceModels.lean; accessedOn: 2026-11-20; sourceRole: local-lean-formulation-and-proof
+
+**sourceLocator:** Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.delete_span_full
+
+**sourceNote:** Derived for the explicit selected model. Taking zero and dropping the full list both yield empty.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} (xs : List A), Catalog.deleteSpan xs 0 xs.length = []
+```
+
+**Source:** [`Catalog.delete_span_full`](../lean/Catalog/ReleaseSequenceModels.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Taking zero and dropping the full list both yield empty.
+
+**Limits:** Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Sequence-concat-recursion": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.",
+  "urn:csabs:axiom/Sequence-edit-span-deletion": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Taking zero and dropping the full list both yield empty."
+}
+```
+
+<a id="node-urn-csabs-theorem-Sequence-edit-replacement-equal-length"></a>
+
+### replacement-equal-length
+
+`urn:csabs:theorem/Sequence-edit-replacement-equal-length`
+
+**statement:** Induct on remaining input length. Each matched span removes |p| original elements and inserts exactly |r|=|p| elements; an unmatched step preserves one element.
+
+**formalStatement:** ∀ {A : Type u} [DecidableEq A] (p : List A) (hp : p ≠ []) (r xs : List A), r.length = p.length → (Catalog.replaceAll p hp r xs).length = xs.length
+
+**assumptions:** Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality.
+
+**dependsOn:** [replacement defining equations](Sequence.md#node-urn-csabs-axiom-Sequence-edit-replacement); [induction](Sequence.md#node-urn-csabs-axiom-Sequence-induction); [concat-recursion](Sequence.md#node-urn-csabs-axiom-Sequence-concat-recursion); [length-recursion](Sequence.md#node-urn-csabs-axiom-Sequence-length-recursion); [urn:csabs:law/sequence-length-concat](Sequence.md#node-urn-csabs-law-sequence-length-concat)
+
+**proofSketch:** Induct on remaining input length. Each matched span removes |p| original elements and inserts exactly |r|=|p| elements; an unmatched step preserves one element.
+
+**reviewStatus:** Separately registered Lean witness; require fresh compiler and axiom audit for verified status.
+
+**source:** [Rust standard library: str replacement and match indices](https://doc.rust-lang.org/std/primitive.str.html); citation: std 1.100.0; replace and match_indices, including the first disjoint overlapping-match example.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; [Pinned Mathlib list and lexicographic order constructions and linear-order extension](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); citation: Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679: Data/Finset/Card.lean Finset.card; Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Data/List/Lex.lean linearOrder; Order/Sum/Order.lean Sum.Lex; Order/Prod/Lex/Basic.lean Prod.Lex; Order/Extension/Linear.lean extend_partialOrder and toLinearExtension. Apache-2.0.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference; Catalog release, sequence, transducer, schema, date and extension models and witnesses; path: lean/Catalog/ReleaseSequenceModels.lean; accessedOn: 2026-11-20; sourceRole: local-lean-formulation-and-proof
+
+**sourceLocator:** Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.replace_length_equal
+
+**sourceNote:** Derived for the explicit selected model. Induct on remaining input length. Each matched span removes |p| original elements and inserts exactly |r|=|p| elements; an unmatched step preserves one element.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} [DecidableEq A] (p : List A) (hp : p ≠ []) (r xs : List A), r.length = p.length → (Catalog.replaceAll p hp r xs).length = xs.length
+```
+
+**Source:** [`Catalog.replace_length_equal`](../lean/Catalog/ReleaseSequenceModels.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Induct on remaining input length. Each matched span removes |p| original elements and inserts exactly |r|=|p| elements; an unmatched step preserves one element.
+
+**Limits:** Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Sequence-concat-recursion": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.",
+  "urn:csabs:axiom/Sequence-edit-replacement": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Induct on remaining input length. Each matched span removes |p| original elements and inserts exactly |r|=|p| elements; an unmatched step preserves one element.",
+  "urn:csabs:axiom/Sequence-induction": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.",
+  "urn:csabs:axiom/Sequence-length-recursion": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.",
+  "urn:csabs:law/sequence-length-concat": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it."
+}
+```
+
 ## Concept provenance
 
 - [Lean Language Reference: Linked Lists](https://lean-lang.org/doc/reference/latest/Basic-Types/Linked-Lists/); accessedOn: 2026-11-08; sourceRole: datatype-and-operation-reference
+- [Rust standard library: str replacement and match indices](https://doc.rust-lang.org/std/primitive.str.html); citation: std 1.100.0; replace and match_indices, including the first disjoint overlapping-match example.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference
+- [Pinned Mathlib list and lexicographic order constructions and linear-order extension](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); citation: Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679: Data/Finset/Card.lean Finset.card; Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Data/List/Lex.lean linearOrder; Order/Sum/Order.lean Sum.Lex; Order/Prod/Lex/Basic.lean Prod.Lex; Order/Extension/Linear.lean extend_partialOrder and toLinearExtension. Apache-2.0.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference
 
-**sourceLocator:** §21.15: List, nil, cons; API: append, length, head/tail, foldr
+**sourceLocator:** §21.15: List, nil, cons; API: append, length, head/tail, foldr; Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice
 
-**sourceNote:** The finite inductive List presentation extends the existing Sequence entry without creating a duplicate concept.
+**sourceNote:** The finite inductive List presentation extends the existing Sequence entry without creating a duplicate concept. Editing profile adds sourced replacement/deletion semantics without duplicating the List carrier.
 
 **provenanceKind:** adapted
 
@@ -430,41 +1047,59 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:operation/Sequence-nil",
       "urn:csabs:operation/Sequence-cons",
       "urn:csabs:operation/Sequence-view",
-      "urn:csabs:operation/Sequence-foldr"
+      "urn:csabs:operation/Sequence-foldr",
+      "urn:csabs:operation/Sequence-edit-replace-all",
+      "urn:csabs:operation/Sequence-edit-delete-span"
     ],
     "hasAxiom": [
       "urn:csabs:axiom/Sequence-constructors",
       "urn:csabs:axiom/Sequence-induction",
       "urn:csabs:axiom/Sequence-concat-recursion",
       "urn:csabs:axiom/Sequence-length-recursion",
-      "urn:csabs:axiom/Sequence-foldr-equations"
+      "urn:csabs:axiom/Sequence-foldr-equations",
+      "urn:csabs:axiom/Sequence-edit-replacement",
+      "urn:csabs:axiom/Sequence-edit-span-deletion"
     ],
     "hasLaw": [
       "urn:csabs:law/sequence-concat-associative",
       "urn:csabs:law/sequence-empty-identity",
-      "urn:csabs:law/sequence-length-concat"
+      "urn:csabs:law/sequence-length-concat",
+      "urn:csabs:law/Sequence-edit-replacement-self",
+      "urn:csabs:law/Sequence-edit-span-deletion-length",
+      "urn:csabs:law/Sequence-edit-span-deletion-empty",
+      "urn:csabs:law/Sequence-edit-span-deletion-full",
+      "urn:csabs:law/Sequence-edit-replacement-equal-length"
     ],
     "hasTheorem": [
-      "urn:csabs:theorem/Sequence-concat-right-identity"
+      "urn:csabs:theorem/Sequence-concat-right-identity",
+      "urn:csabs:theorem/Sequence-edit-replacement-equations",
+      "urn:csabs:theorem/Sequence-edit-editing-model-satisfaction",
+      "urn:csabs:theorem/Sequence-edit-replacement-self",
+      "urn:csabs:theorem/Sequence-edit-span-deletion-length",
+      "urn:csabs:theorem/Sequence-edit-span-deletion-empty",
+      "urn:csabs:theorem/Sequence-edit-span-deletion-full",
+      "urn:csabs:theorem/Sequence-edit-replacement-equal-length"
     ],
     "source": [
-      "urn:csabs:source/lean-list-reference"
+      "urn:csabs:source/lean-list-reference",
+      "urn:csabs:source/seven-replace",
+      "urn:csabs:source/seven-mathlib"
     ],
     "coverageStatus": "basis-reviewed",
     "requiresConcept": [],
     "verificationObligation": [
       "Use the stated carriers, equality, domain restrictions and semantic conventions; alternative conventions require an explicit variant."
     ],
-    "axiomBasis": "Selected presentation: An ordered finite collection in which repeated values are allowed. Governing rules: Finite sequences consist exactly of empty or a value followed by a finite sequence. Predicates holding for nil and preserved by cons hold for every finite sequence. Concatenation is defined by recursion on the left argument. Length counts constructors.",
+    "axiomBasis": "Selected presentation: An ordered finite collection in which repeated values are allowed. Governing rules: Finite sequences consist exactly of empty or a value followed by a finite sequence. Predicates holding for nil and preserved by cons hold for every finite sequence. Concatenation is defined by recursion on the left argument. Length counts constructors. Additional selected editing rules: nonempty-pattern leftmost non-overlapping replacement recursion, and valid half-open deletion by take(i)++drop(j).",
     "basisKind": "defined-structure",
-    "basisScope": "Finite well-founded values, including [] even if A is empty; structural equality uses equality of A and element order. Pure operations; lengths use unbounded naturals. No cycles, infinite lists or pointer identity. Indexing is partial outside 0≤i<len(xs). view is a total tagged decomposition; foldr takes a total step function.",
+    "basisScope": "Finite well-founded values, including [] even if A is empty; structural equality uses equality of A and element order. Pure operations; lengths use unbounded naturals. No cycles, infinite lists or pointer identity. Indexing is partial outside 0≤i<len(xs). view is a total tagged decomposition; foldr takes a total step function. Editing profile: literal leftmost non-overlapping replaceAll requires a nonempty pattern and decidable exact element equality, never rescans replacements; span deletion uses valid half-open [i,j), 0≤i≤j≤length. Neither operation changes the finite-list carrier or existing constructors.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
     "relatedConcept": [
       "urn:csabs:concept/OrderedSet",
       "urn:csabs:concept/FormalLanguage"
     ],
-    "sourceLocator": "§21.15: List, nil, cons; API: append, length, head/tail, foldr",
-    "sourceNote": "The finite inductive List presentation extends the existing Sequence entry without creating a duplicate concept.",
+    "sourceLocator": "§21.15: List, nil, cons; API: append, length, head/tail, foldr; Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice",
+    "sourceNote": "The finite inductive List presentation extends the existing Sequence entry without creating a duplicate concept. Editing profile adds sourced replacement/deletion semantics without duplicating the List carrier.",
     "provenanceKind": "adapted",
     "leanFormulation": "abbrev Sequence (A : Type u) := List A",
     "formulationSource": "urn:csabs:source/local-lean-DataStructures",
@@ -567,6 +1202,42 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "provenanceKind": "adapted"
   },
   {
+    "id": "urn:csabs:operation/Sequence-edit-replace-all",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/Sequence",
+    "name": "leftmost non-overlapping replace all",
+    "signature": "replaceAll : Seq(A)×NonemptySeq(A)×Seq(A)→Seq(A)",
+    "description": "Scan original input, consuming complete matched patterns or one unmatched element.",
+    "precondition": "Exact decidable equality; pattern p≠[].",
+    "postcondition": "Returns concatenated untouched segments and replacements in scan order; empty input returns []. No inserted element is rescanned.",
+    "totality": "Total on the stated domain.",
+    "source": [
+      "urn:csabs:source/seven-replace",
+      "urn:csabs:source/seven-mathlib"
+    ],
+    "sourceLocator": "Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice",
+    "sourceNote": "Adds an exact-equality finite-list adaptation of first disjoint matching and valid half-open deletion; the pattern must be nonempty and inserted output is not scanned.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/Sequence-edit-delete-span",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/Sequence",
+    "name": "delete half-open span",
+    "signature": "deleteSpan : {(xs,i,j) | 0≤i≤j≤length(xs)}→Seq(A)",
+    "description": "Retain take(i,xs) followed by drop(j,xs).",
+    "precondition": "Valid half-open bounds; exact list equality.",
+    "postcondition": "Returns all elements outside [i,j), preserving order and multiplicity.",
+    "totality": "Partial outside valid bounds. Lean helper uses saturated take/drop there; that extension is not the catalog operation.",
+    "source": [
+      "urn:csabs:source/seven-replace",
+      "urn:csabs:source/seven-mathlib"
+    ],
+    "sourceLocator": "Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice",
+    "sourceNote": "Adds an exact-equality finite-list adaptation of first disjoint matching and valid half-open deletion; the pattern must be nonempty and inserted output is not scanned.",
+    "provenanceKind": "adapted"
+  },
+  {
     "id": "urn:csabs:axiom/Sequence-constructors",
     "type": "Axiom",
     "name": "constructors",
@@ -656,6 +1327,50 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "reviewStatus": "Editorial defining rule; not a compiled theorem."
   },
   {
+    "id": "urn:csabs:axiom/Sequence-edit-replacement",
+    "type": "Axiom",
+    "name": "replacement defining equations",
+    "statement": "For a nonempty literal pattern, scan original input left to right, taking each first available match and continuing after its whole span; inserted replacement elements are not rescanned.",
+    "formalStatement": "R([],p,r)=[]; R(a::xs,p,r)=r++R(drop(|p|,a::xs),p,r) if p is a prefix; otherwise a::R(xs,p,r); |p|>0.",
+    "assumptions": [
+      "Finite exact-equality lists; unbounded natural indices. Replacement requires decidable equality and nonempty pattern. Span deletion requires valid bounds."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Sequence"
+    ],
+    "ruleRole": "defining-rule",
+    "reviewStatus": "Sourced defining equations; separate model-satisfaction and law witnesses.",
+    "source": [
+      "urn:csabs:source/seven-replace",
+      "urn:csabs:source/seven-mathlib"
+    ],
+    "sourceLocator": "Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice",
+    "sourceNote": "Adds an exact-equality finite-list adaptation of first disjoint matching and valid half-open deletion; the pattern must be nonempty and inserted output is not scanned.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:axiom/Sequence-edit-span-deletion",
+    "type": "Axiom",
+    "name": "span-deletion defining equations",
+    "statement": "Delete a valid half-open span while retaining the prefix before i and suffix from j.",
+    "formalStatement": "D(xs,i,j)=take(i,xs)++drop(j,xs), defined for 0≤i≤j≤|xs|.",
+    "assumptions": [
+      "Finite exact-equality lists; unbounded natural indices. Replacement requires decidable equality and nonempty pattern. Span deletion requires valid bounds."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Sequence"
+    ],
+    "ruleRole": "defining-rule",
+    "reviewStatus": "Sourced defining equations; separate model-satisfaction and law witnesses.",
+    "source": [
+      "urn:csabs:source/seven-replace",
+      "urn:csabs:source/seven-mathlib"
+    ],
+    "sourceLocator": "Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice",
+    "sourceNote": "Adds an exact-equality finite-list adaptation of first disjoint matching and valid half-open deletion; the pattern must be nonempty and inserted output is not scanned.",
+    "provenanceKind": "adapted"
+  },
+  {
     "id": "urn:csabs:law/sequence-concat-associative",
     "type": "Law",
     "statement": "Sequence concatenation is associative.",
@@ -718,6 +1433,151 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "provenanceStatus": "legacy-source-missing"
   },
   {
+    "id": "urn:csabs:law/Sequence-edit-replacement-self",
+    "type": "Law",
+    "name": "replacement-self",
+    "statement": "Induct on remaining input length. Prefix decomposition reconstructs each consumed match; the unmatched branch preserves its head.",
+    "formalStatement": "∀ {A : Type u} [DecidableEq A] (p : List A) (hp : p ≠ []) (xs : List A), Catalog.replaceAll p hp p xs = xs",
+    "assumptions": [
+      "Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Sequence"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/Sequence-edit-replacement",
+      "urn:csabs:axiom/Sequence-induction",
+      "urn:csabs:axiom/Sequence-concat-recursion"
+    ],
+    "proofSketch": "Induct on remaining input length. Prefix decomposition reconstructs each consumed match; the unmatched branch preserves its head.",
+    "reviewStatus": "Derived mathematical law; separately registered theorem supplies explicit proof evidence.",
+    "source": [
+      "urn:csabs:source/seven-replace",
+      "urn:csabs:source/seven-mathlib",
+      "urn:csabs:source/seven-lean-models"
+    ],
+    "sourceLocator": "Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.replace_self",
+    "sourceNote": "Derived for the explicit selected model. Induct on remaining input length. Prefix decomposition reconstructs each consumed match; the unmatched branch preserves its head.",
+    "provenanceKind": "derived",
+    "ruleRole": "derived-law"
+  },
+  {
+    "id": "urn:csabs:law/Sequence-edit-span-deletion-length",
+    "type": "Law",
+    "name": "span-deletion-length",
+    "statement": "The retained prefix has length i and suffix length |xs|-j; valid bounds justify natural subtraction.",
+    "formalStatement": "∀ {A : Type u} (xs : List A) (i j : Nat), i ≤ j → j ≤ xs.length → (Catalog.deleteSpan xs i j).length = xs.length - (j - i)",
+    "assumptions": [
+      "Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Sequence"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/Sequence-edit-span-deletion",
+      "urn:csabs:axiom/Sequence-length-recursion",
+      "urn:csabs:law/sequence-length-concat"
+    ],
+    "proofSketch": "The retained prefix has length i and suffix length |xs|-j; valid bounds justify natural subtraction.",
+    "reviewStatus": "Derived mathematical law; separately registered theorem supplies explicit proof evidence.",
+    "source": [
+      "urn:csabs:source/seven-replace",
+      "urn:csabs:source/seven-mathlib",
+      "urn:csabs:source/seven-lean-models"
+    ],
+    "sourceLocator": "Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.delete_span_length",
+    "sourceNote": "Derived for the explicit selected model. The retained prefix has length i and suffix length |xs|-j; valid bounds justify natural subtraction.",
+    "provenanceKind": "derived",
+    "ruleRole": "derived-law"
+  },
+  {
+    "id": "urn:csabs:law/Sequence-edit-span-deletion-empty",
+    "type": "Law",
+    "name": "span-deletion-empty",
+    "statement": "Take and drop at the same position partition a list. The Lean helper also satisfies this for saturated indices.",
+    "formalStatement": "∀ {A : Type u} (xs : List A) (i : Nat), Catalog.deleteSpan xs i i = xs",
+    "assumptions": [
+      "Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Sequence"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/Sequence-edit-span-deletion",
+      "urn:csabs:axiom/Sequence-concat-recursion"
+    ],
+    "proofSketch": "Take and drop at the same position partition a list. The Lean helper also satisfies this for saturated indices.",
+    "reviewStatus": "Derived mathematical law; separately registered theorem supplies explicit proof evidence.",
+    "source": [
+      "urn:csabs:source/seven-replace",
+      "urn:csabs:source/seven-mathlib",
+      "urn:csabs:source/seven-lean-models"
+    ],
+    "sourceLocator": "Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.delete_span_empty",
+    "sourceNote": "Derived for the explicit selected model. Take and drop at the same position partition a list. The Lean helper also satisfies this for saturated indices.",
+    "provenanceKind": "derived",
+    "ruleRole": "derived-law"
+  },
+  {
+    "id": "urn:csabs:law/Sequence-edit-span-deletion-full",
+    "type": "Law",
+    "name": "span-deletion-full",
+    "statement": "Taking zero and dropping the full list both yield empty.",
+    "formalStatement": "∀ {A : Type u} (xs : List A), Catalog.deleteSpan xs 0 xs.length = []",
+    "assumptions": [
+      "Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Sequence"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/Sequence-edit-span-deletion",
+      "urn:csabs:axiom/Sequence-concat-recursion"
+    ],
+    "proofSketch": "Taking zero and dropping the full list both yield empty.",
+    "reviewStatus": "Derived mathematical law; separately registered theorem supplies explicit proof evidence.",
+    "source": [
+      "urn:csabs:source/seven-replace",
+      "urn:csabs:source/seven-mathlib",
+      "urn:csabs:source/seven-lean-models"
+    ],
+    "sourceLocator": "Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.delete_span_full",
+    "sourceNote": "Derived for the explicit selected model. Taking zero and dropping the full list both yield empty.",
+    "provenanceKind": "derived",
+    "ruleRole": "derived-law"
+  },
+  {
+    "id": "urn:csabs:law/Sequence-edit-replacement-equal-length",
+    "type": "Law",
+    "name": "replacement-equal-length",
+    "statement": "Induct on remaining input length. Each matched span removes |p| original elements and inserts exactly |r|=|p| elements; an unmatched step preserves one element.",
+    "formalStatement": "∀ {A : Type u} [DecidableEq A] (p : List A) (hp : p ≠ []) (r xs : List A), r.length = p.length → (Catalog.replaceAll p hp r xs).length = xs.length",
+    "assumptions": [
+      "Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Sequence"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/Sequence-edit-replacement",
+      "urn:csabs:axiom/Sequence-induction",
+      "urn:csabs:axiom/Sequence-concat-recursion",
+      "urn:csabs:axiom/Sequence-length-recursion",
+      "urn:csabs:law/sequence-length-concat"
+    ],
+    "proofSketch": "Induct on remaining input length. Each matched span removes |p| original elements and inserts exactly |r|=|p| elements; an unmatched step preserves one element.",
+    "reviewStatus": "Derived mathematical law; separately registered theorem supplies explicit proof evidence.",
+    "source": [
+      "urn:csabs:source/seven-replace",
+      "urn:csabs:source/seven-mathlib",
+      "urn:csabs:source/seven-lean-models"
+    ],
+    "sourceLocator": "Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.replace_length_equal",
+    "sourceNote": "Derived for the explicit selected model. Induct on remaining input length. Each matched span removes |p| original elements and inserts exactly |r|=|p| elements; an unmatched step preserves one element.",
+    "provenanceKind": "derived",
+    "ruleRole": "derived-law"
+  },
+  {
     "id": "urn:csabs:theorem/Sequence-concat-right-identity",
     "type": "Theorem",
     "name": "concat-right-identity",
@@ -739,6 +1599,248 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "reviewStatus": "editorial-summary; not machine-proved",
     "notationLanguage": "informal mathematical Unicode",
     "provenanceStatus": "legacy-source-missing"
+  },
+  {
+    "id": "urn:csabs:theorem/Sequence-edit-replacement-equations",
+    "type": "Theorem",
+    "name": "replacement-equations",
+    "statement": "Unfold the well-founded scan. A match consumes the entire nonempty pattern; otherwise consume exactly one original element. The remaining original input strictly shrinks.",
+    "formalStatement": "∀ {A : Type u} [DecidableEq A] (p : List A) (hp : p ≠ []) (r : List A), Catalog.replaceAll p hp r [] = [] ∧ (∀ a xs, p <+: (a :: xs) → Catalog.replaceAll p hp r (a :: xs) = r ++ Catalog.replaceAll p hp r ((a :: xs).drop p.length)) ∧ (∀ a xs, ¬ p <+: (a :: xs) → Catalog.replaceAll p hp r (a :: xs) = a :: Catalog.replaceAll p hp r xs)",
+    "assumptions": [
+      "Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Sequence"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/Sequence-edit-replacement"
+    ],
+    "proofSketch": "Unfold the well-founded scan. A match consumes the entire nonempty pattern; otherwise consume exactly one original element. The remaining original input strictly shrinks.",
+    "reviewStatus": "Separately registered Lean witness; require fresh compiler and axiom audit for verified status.",
+    "source": [
+      "urn:csabs:source/seven-replace",
+      "urn:csabs:source/seven-mathlib",
+      "urn:csabs:source/seven-lean-models"
+    ],
+    "sourceLocator": "Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.replace_equations",
+    "sourceNote": "Derived for the explicit selected model. Unfold the well-founded scan. A match consumes the entire nonempty pattern; otherwise consume exactly one original element. The remaining original input strictly shrinks.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type u} [DecidableEq A] (p : List A) (hp : p ≠ []) (r : List A), Catalog.replaceAll p hp r [] = [] ∧ (∀ a xs, p <+: (a :: xs) → Catalog.replaceAll p hp r (a :: xs) = r ++ Catalog.replaceAll p hp r ((a :: xs).drop p.length)) ∧ (∀ a xs, ¬ p <+: (a :: xs) → Catalog.replaceAll p hp r (a :: xs) = a :: Catalog.replaceAll p hp r xs)",
+    "formulationSource": "urn:csabs:source/seven-lean-models",
+    "formulationLocator": "Catalog.replace_equations",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Unfold the well-founded scan. A match consumes the entire nonempty pattern; otherwise consume exactly one original element. The remaining original input strictly shrinks.",
+    "leanModelLimitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Sequence-edit-replacement\": \"Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Unfold the well-founded scan. A match consumes the entire nonempty pattern; otherwise consume exactly one original element. The remaining original input strictly shrinks.\"}"
+  },
+  {
+    "id": "urn:csabs:theorem/Sequence-edit-editing-model-satisfaction",
+    "type": "Theorem",
+    "name": "editing-model-satisfaction",
+    "statement": "Evaluate explicit examples distinguishing overlapping matches, rescanning, and half-open deletion.",
+    "formalStatement": "Catalog.replaceAll [1, 1] (by decide) [2] [1, 1, 1] = [2, 1] ∧ Catalog.replaceAll [1] (by decide) [1, 1] [1] = [1, 1] ∧ Catalog.deleteSpan [0, 1, 2, 3] 1 3 = [0, 3]",
+    "assumptions": [
+      "Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Sequence"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/Sequence-edit-replacement",
+      "urn:csabs:axiom/Sequence-edit-span-deletion"
+    ],
+    "proofSketch": "Evaluate explicit examples distinguishing overlapping matches, rescanning, and half-open deletion.",
+    "reviewStatus": "Separately registered Lean witness; require fresh compiler and axiom audit for verified status.",
+    "source": [
+      "urn:csabs:source/seven-replace",
+      "urn:csabs:source/seven-mathlib",
+      "urn:csabs:source/seven-lean-models"
+    ],
+    "sourceLocator": "Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.sequence_edit_model_satisfaction",
+    "sourceNote": "Derived for the explicit selected model. Evaluate explicit examples distinguishing overlapping matches, rescanning, and half-open deletion.",
+    "provenanceKind": "derived",
+    "leanFormulation": "Catalog.replaceAll [1, 1] (by decide) [2] [1, 1, 1] = [2, 1] ∧ Catalog.replaceAll [1] (by decide) [1, 1] [1] = [1, 1] ∧ Catalog.deleteSpan [0, 1, 2, 3] 1 3 = [0, 3]",
+    "formulationSource": "urn:csabs:source/seven-lean-models",
+    "formulationLocator": "Catalog.sequence_edit_model_satisfaction",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Evaluate explicit examples distinguishing overlapping matches, rescanning, and half-open deletion.",
+    "leanModelLimitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Sequence-edit-replacement\": \"Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Evaluate explicit examples distinguishing overlapping matches, rescanning, and half-open deletion.\", \"urn:csabs:axiom/Sequence-edit-span-deletion\": \"Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Evaluate explicit examples distinguishing overlapping matches, rescanning, and half-open deletion.\"}"
+  },
+  {
+    "id": "urn:csabs:theorem/Sequence-edit-replacement-self",
+    "type": "Theorem",
+    "name": "replacement-self",
+    "statement": "Induct on remaining input length. Prefix decomposition reconstructs each consumed match; the unmatched branch preserves its head.",
+    "formalStatement": "∀ {A : Type u} [DecidableEq A] (p : List A) (hp : p ≠ []) (xs : List A), Catalog.replaceAll p hp p xs = xs",
+    "assumptions": [
+      "Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Sequence"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/Sequence-edit-replacement",
+      "urn:csabs:axiom/Sequence-induction",
+      "urn:csabs:axiom/Sequence-concat-recursion"
+    ],
+    "proofSketch": "Induct on remaining input length. Prefix decomposition reconstructs each consumed match; the unmatched branch preserves its head.",
+    "reviewStatus": "Separately registered Lean witness; require fresh compiler and axiom audit for verified status.",
+    "source": [
+      "urn:csabs:source/seven-replace",
+      "urn:csabs:source/seven-mathlib",
+      "urn:csabs:source/seven-lean-models"
+    ],
+    "sourceLocator": "Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.replace_self",
+    "sourceNote": "Derived for the explicit selected model. Induct on remaining input length. Prefix decomposition reconstructs each consumed match; the unmatched branch preserves its head.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type u} [DecidableEq A] (p : List A) (hp : p ≠ []) (xs : List A), Catalog.replaceAll p hp p xs = xs",
+    "formulationSource": "urn:csabs:source/seven-lean-models",
+    "formulationLocator": "Catalog.replace_self",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Induct on remaining input length. Prefix decomposition reconstructs each consumed match; the unmatched branch preserves its head.",
+    "leanModelLimitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Sequence-concat-recursion\": \"Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.\", \"urn:csabs:axiom/Sequence-edit-replacement\": \"Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Induct on remaining input length. Prefix decomposition reconstructs each consumed match; the unmatched branch preserves its head.\", \"urn:csabs:axiom/Sequence-induction\": \"Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.\"}"
+  },
+  {
+    "id": "urn:csabs:theorem/Sequence-edit-span-deletion-length",
+    "type": "Theorem",
+    "name": "span-deletion-length",
+    "statement": "The retained prefix has length i and suffix length |xs|-j; valid bounds justify natural subtraction.",
+    "formalStatement": "∀ {A : Type u} (xs : List A) (i j : Nat), i ≤ j → j ≤ xs.length → (Catalog.deleteSpan xs i j).length = xs.length - (j - i)",
+    "assumptions": [
+      "Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Sequence"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/Sequence-edit-span-deletion",
+      "urn:csabs:axiom/Sequence-length-recursion",
+      "urn:csabs:law/sequence-length-concat"
+    ],
+    "proofSketch": "The retained prefix has length i and suffix length |xs|-j; valid bounds justify natural subtraction.",
+    "reviewStatus": "Separately registered Lean witness; require fresh compiler and axiom audit for verified status.",
+    "source": [
+      "urn:csabs:source/seven-replace",
+      "urn:csabs:source/seven-mathlib",
+      "urn:csabs:source/seven-lean-models"
+    ],
+    "sourceLocator": "Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.delete_span_length",
+    "sourceNote": "Derived for the explicit selected model. The retained prefix has length i and suffix length |xs|-j; valid bounds justify natural subtraction.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type u} (xs : List A) (i j : Nat), i ≤ j → j ≤ xs.length → (Catalog.deleteSpan xs i j).length = xs.length - (j - i)",
+    "formulationSource": "urn:csabs:source/seven-lean-models",
+    "formulationLocator": "Catalog.delete_span_length",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "The retained prefix has length i and suffix length |xs|-j; valid bounds justify natural subtraction.",
+    "leanModelLimitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Sequence-edit-span-deletion\": \"Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. The retained prefix has length i and suffix length |xs|-j; valid bounds justify natural subtraction.\", \"urn:csabs:axiom/Sequence-length-recursion\": \"Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.\", \"urn:csabs:law/sequence-length-concat\": \"Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.\"}"
+  },
+  {
+    "id": "urn:csabs:theorem/Sequence-edit-span-deletion-empty",
+    "type": "Theorem",
+    "name": "span-deletion-empty",
+    "statement": "Take and drop at the same position partition a list. The Lean helper also satisfies this for saturated indices.",
+    "formalStatement": "∀ {A : Type u} (xs : List A) (i : Nat), Catalog.deleteSpan xs i i = xs",
+    "assumptions": [
+      "Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Sequence"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/Sequence-edit-span-deletion",
+      "urn:csabs:axiom/Sequence-concat-recursion"
+    ],
+    "proofSketch": "Take and drop at the same position partition a list. The Lean helper also satisfies this for saturated indices.",
+    "reviewStatus": "Separately registered Lean witness; require fresh compiler and axiom audit for verified status.",
+    "source": [
+      "urn:csabs:source/seven-replace",
+      "urn:csabs:source/seven-mathlib",
+      "urn:csabs:source/seven-lean-models"
+    ],
+    "sourceLocator": "Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.delete_span_empty",
+    "sourceNote": "Derived for the explicit selected model. Take and drop at the same position partition a list. The Lean helper also satisfies this for saturated indices.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type u} (xs : List A) (i : Nat), Catalog.deleteSpan xs i i = xs",
+    "formulationSource": "urn:csabs:source/seven-lean-models",
+    "formulationLocator": "Catalog.delete_span_empty",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Take and drop at the same position partition a list. The Lean helper also satisfies this for saturated indices.",
+    "leanModelLimitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Sequence-concat-recursion\": \"Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.\", \"urn:csabs:axiom/Sequence-edit-span-deletion\": \"Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Take and drop at the same position partition a list. The Lean helper also satisfies this for saturated indices.\"}"
+  },
+  {
+    "id": "urn:csabs:theorem/Sequence-edit-span-deletion-full",
+    "type": "Theorem",
+    "name": "span-deletion-full",
+    "statement": "Taking zero and dropping the full list both yield empty.",
+    "formalStatement": "∀ {A : Type u} (xs : List A), Catalog.deleteSpan xs 0 xs.length = []",
+    "assumptions": [
+      "Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Sequence"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/Sequence-edit-span-deletion",
+      "urn:csabs:axiom/Sequence-concat-recursion"
+    ],
+    "proofSketch": "Taking zero and dropping the full list both yield empty.",
+    "reviewStatus": "Separately registered Lean witness; require fresh compiler and axiom audit for verified status.",
+    "source": [
+      "urn:csabs:source/seven-replace",
+      "urn:csabs:source/seven-mathlib",
+      "urn:csabs:source/seven-lean-models"
+    ],
+    "sourceLocator": "Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.delete_span_full",
+    "sourceNote": "Derived for the explicit selected model. Taking zero and dropping the full list both yield empty.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type u} (xs : List A), Catalog.deleteSpan xs 0 xs.length = []",
+    "formulationSource": "urn:csabs:source/seven-lean-models",
+    "formulationLocator": "Catalog.delete_span_full",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Taking zero and dropping the full list both yield empty.",
+    "leanModelLimitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Sequence-concat-recursion\": \"Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.\", \"urn:csabs:axiom/Sequence-edit-span-deletion\": \"Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Taking zero and dropping the full list both yield empty.\"}"
+  },
+  {
+    "id": "urn:csabs:theorem/Sequence-edit-replacement-equal-length",
+    "type": "Theorem",
+    "name": "replacement-equal-length",
+    "statement": "Induct on remaining input length. Each matched span removes |p| original elements and inserts exactly |r|=|p| elements; an unmatched step preserves one element.",
+    "formalStatement": "∀ {A : Type u} [DecidableEq A] (p : List A) (hp : p ≠ []) (r xs : List A), r.length = p.length → (Catalog.replaceAll p hp r xs).length = xs.length",
+    "assumptions": [
+      "Exactly the typed binders and explicit preconditions of the formal statement; selected profile carrier and equality."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Sequence"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/Sequence-edit-replacement",
+      "urn:csabs:axiom/Sequence-induction",
+      "urn:csabs:axiom/Sequence-concat-recursion",
+      "urn:csabs:axiom/Sequence-length-recursion",
+      "urn:csabs:law/sequence-length-concat"
+    ],
+    "proofSketch": "Induct on remaining input length. Each matched span removes |p| original elements and inserts exactly |r|=|p| elements; an unmatched step preserves one element.",
+    "reviewStatus": "Separately registered Lean witness; require fresh compiler and axiom audit for verified status.",
+    "source": [
+      "urn:csabs:source/seven-replace",
+      "urn:csabs:source/seven-mathlib",
+      "urn:csabs:source/seven-lean-models"
+    ],
+    "sourceLocator": "Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Catalog.replace_length_equal",
+    "sourceNote": "Derived for the explicit selected model. Induct on remaining input length. Each matched span removes |p| original elements and inserts exactly |r|=|p| elements; an unmatched step preserves one element.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type u} [DecidableEq A] (p : List A) (hp : p ≠ []) (r xs : List A), r.length = p.length → (Catalog.replaceAll p hp r xs).length = xs.length",
+    "formulationSource": "urn:csabs:source/seven-lean-models",
+    "formulationLocator": "Catalog.replace_length_equal",
+    "formulationScope": "registered-witness-type",
+    "leanModelMapping": "Induct on remaining input length. Each matched span removes |p| original elements and inserts exactly |r|=|p| elements; an unmatched step preserves one element.",
+    "leanModelLimitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Sequence-concat-recursion\": \"Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.\", \"urn:csabs:axiom/Sequence-edit-replacement\": \"Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Induct on remaining input length. Each matched span removes |p| original elements and inserts exactly |r|=|p| elements; an unmatched step preserves one element.\", \"urn:csabs:axiom/Sequence-induction\": \"Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.\", \"urn:csabs:axiom/Sequence-length-recursion\": \"Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.\", \"urn:csabs:law/sequence-length-concat\": \"Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.\"}"
   }
 ]
 ```

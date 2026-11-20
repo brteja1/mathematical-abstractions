@@ -19,8 +19,11 @@ An arbitrary set of finite words over a fixed finite alphabet. The set of words 
 ## Backlinks
 
 - [Context-free grammar of finite words](ContextFreeGrammar.md) — `requiresConcept`
+- [Context-free language over a finite alphabet](ContextFreeLanguage.md) — `requiresConcept`
+- [Context-free language over a finite alphabet](ContextFreeLanguage.md) — `specializationOf`
 - [Deterministic finite automaton with total transition](DFA.md) — `requiresConcept`
 - [Nondeterministic finite automaton without epsilon moves](NFA.md) — `requiresConcept`
+- [Classical regular expression of finite words](RegularExpression.md) — `requiresConcept`
 - [Regular language over a finite alphabet](RegularLanguage.md) — `requiresConcept`
 - [Regular language over a finite alphabet](RegularLanguage.md) — `specializationOf`
 - [Finite sequence (List datatype)](Sequence.md) — `relatedConcept`

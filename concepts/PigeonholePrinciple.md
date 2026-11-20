@@ -12,6 +12,11 @@ Mapping more elements into fewer finite slots forces two distinct elements to sh
 
 **Prerequisites:** [Total function](Function.md), [Set](Set.md)
 
+## Backlinks
+
+- [Digest with explicit collision freedom on a specified set](CollisionFreeDigest.md) — `relatedConcept`
+- [Deterministic finite digest function](DigestFunction.md) — `relatedConcept`
+
 ## Mathematical formulation
 
 For finite types A,B, |B|<|A| ⇒ ∀f:A→B, ∃x,y∈A, x≠y ∧ f(x)=f(y). This defines the proposition to establish; it does not assume it as a global axiom.

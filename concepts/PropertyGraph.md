@@ -17,6 +17,7 @@ A finite directed multigraph with a string label per vertex and edge and a finit
 ## Backlinks
 
 - [Finite RDF 1.1 graph](RDFGraph.md) — `relatedConcept`
+- [Typed-edge schema with incidence cardinalities](TypedEdgeSchema.md) — `relatedConcept`
 
 ## Mathematical formulation
 

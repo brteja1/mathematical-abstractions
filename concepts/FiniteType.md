@@ -14,8 +14,11 @@ A carrier A equipped with an exhaustive duplicate-free finite set of all its val
 
 ## Backlinks
 
+- [Digest with explicit collision freedom on a specified set](CollisionFreeDigest.md) — `requiresConcept`
+- [Deterministic finite digest function](DigestFunction.md) — `requiresConcept`
 - [Finite directed multigraph with edge identities](DirectedMultigraph.md) — `requiresConcept`
 - [Union Find (disjoint-set union with representatives)](DisjointSet.md) — `requiresConcept`
+- [Typed-edge schema with incidence cardinalities](TypedEdgeSchema.md) — `requiresConcept`
 
 ## Mathematical formulation
 

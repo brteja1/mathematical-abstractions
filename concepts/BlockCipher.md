@@ -17,6 +17,7 @@ A family of permutations on fixed-length bit strings, indexed by a nonempty key 
 - [Advanced Encryption Standard (AES)](AES.md) — `requiresConcept`
 - [Advanced Encryption Standard (AES)](AES.md) — `specializationOf`
 - [Galois/Counter Mode (96-bit IV, 128-bit tag profile)](GCM.md) — `requiresConcept`
+- [Synchronous stream cipher (bounded XOR-keystream profile)](StreamCipher.md) — `relatedConcept`
 
 ## Mathematical formulation
 

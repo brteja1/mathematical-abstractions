@@ -16,6 +16,7 @@ A finite family of identifiable guarded rules, each carrying an outcome, with at
 
 ## Backlinks
 
+- [Ordered first-hit decision table](FirstHitDecisionTable.md) — `relatedConcept`
 - [Finite verdict-label coverage](VerdictCoverage.md) — `relatedConcept`
 
 ## Mathematical formulation

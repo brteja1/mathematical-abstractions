@@ -16,6 +16,7 @@ A deterministic nonce-based interface that encrypts a plaintext while authentica
 
 - [Galois/Counter Mode (96-bit IV, 128-bit tag profile)](GCM.md) — `requiresConcept`
 - [Galois/Counter Mode (96-bit IV, 128-bit tag profile)](GCM.md) — `specializationOf`
+- [Synchronous stream cipher (bounded XOR-keystream profile)](StreamCipher.md) — `relatedConcept`
 
 ## Mathematical formulation
 

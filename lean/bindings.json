@@ -776,7 +776,7 @@
       "scope": "model",
       "mapping": "List A, finite ordered values with duplicates allowed; structural list equality.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "9df151409dae9686dbac07bcb24309bfc6f587c41780bb40e9718a53d8f7c2e6"
+      "catalogHash": "f0febb89ec4d744862f1b9097e1256570c4349a83bf7c970c55d92b0b8964a8c"
     },
     "urn:csabs:concept/SequentialConsistency": {
       "kind": "model",
@@ -1340,7 +1340,7 @@
         "Quot.sound",
         "propext"
       ],
-      "catalogHash": "45a770f5f24d4592e96b206ac6d01b23b4b70497658c05c422338672d17c8c95"
+      "catalogHash": "00f5c408c68f12cba76afe0a62efa8fc134c1e7a87ae17b0637423f1b089a22a"
     },
     "urn:csabs:theorem/BinaryTree-mirror-size": {
       "kind": "witness",
@@ -1396,7 +1396,7 @@
       "allowedAxioms": [
         "propext"
       ],
-      "catalogHash": "c8a2496101f4c01620865be7b704c6d88fcbc9ed3a6bfd55051b7e5b63bf6126"
+      "catalogHash": "ae33caa880c9cb97a85593685e3235bb9b1e88a19d01ec378027b6afa0092c68"
     },
     "urn:csabs:theorem/BinaryTree-external-leaves-size": {
       "kind": "witness",
@@ -4341,6 +4341,863 @@
         "Classical.choice"
       ],
       "catalogHash": "420d8db7b96f2f164d089cfe0192708c616fee91174df862b2ce61418f17c803"
+    },
+    "urn:csabs:concept/DigestFunction": {
+      "kind": "model",
+      "symbol": "Catalog.DigestFunction",
+      "module": "Catalog.Digests",
+      "scope": "model",
+      "mapping": "A→Fin(n), n is the fixed digest-space cardinality; exact equality.",
+      "limitations": "Exact mathematical equality and finite outputs only. No cryptographic security, collision search algorithm, implementation refinement, serialization correctness, or automatic proof of injectivity for a supplied hash and set.",
+      "catalogHash": "643fb77578d5143b95d2a4199ac6631bf9780a59633c4d192e0913178cb296c7"
+    },
+    "urn:csabs:concept/CollisionFreeDigest": {
+      "kind": "model",
+      "symbol": "Catalog.CollisionFreeDigest",
+      "module": "Catalog.Digests",
+      "scope": "model",
+      "mapping": "CollisionFreeDigest stores h:A→Fin(n) and Set.InjOn h S; both membership conditions remain explicit.",
+      "limitations": "Exact mathematical equality and finite outputs only. No cryptographic security, collision search algorithm, implementation refinement, serialization correctness, or automatic proof of injectivity for a supplied hash and set.",
+      "catalogHash": "643fb77578d5143b95d2a4199ac6631bf9780a59633c4d192e0913178cb296c7"
+    },
+    "urn:csabs:theorem/DigestFunction-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.digest_model_satisfaction",
+      "module": "Catalog.Digests",
+      "mapping": "Total digest evaluation has a unique result, and the concrete modulo-two digest has distinct outputs for 0 and 1.",
+      "limitations": "Exact mathematical equality and finite outputs only. No cryptographic security, collision search algorithm, implementation refinement, serialization correctness, or automatic proof of injectivity for a supplied hash and set.",
+      "expectedType": "(∀ (A : Type) (n : Nat) (h : Catalog.DigestFunction A n) (x : A), ∃! d : Fin n, d = h x) ∧ Catalog.exampleDigest 0 ≠ Catalog.exampleDigest 1",
+      "premiseMapping": {
+        "urn:csabs:axiom/DigestFunction-total-evaluation": "Proved obligation for exampleDigest and exampleDigestScope, not an assumed law field."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "d889aaf5039bc49acbe0044f86342906af750d31053c1d7b47e8174a7a0aa2c0"
+    },
+    "urn:csabs:theorem/CollisionFreeDigest-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.scoped_digest_model_satisfaction",
+      "module": "Catalog.Digests",
+      "mapping": "The modulo-two digest satisfies collision freedom on S={0,1}, with two distinct members, yet 0 and the out-of-scope input 2 collide.",
+      "limitations": "Exact mathematical equality and finite outputs only. No cryptographic security, collision search algorithm, implementation refinement, serialization correctness, or automatic proof of injectivity for a supplied hash and set.",
+      "expectedType": "Set.InjOn Catalog.exampleDigest Catalog.exampleDigestScope ∧ (0 ∈ Catalog.exampleDigestScope ∧ 1 ∈ Catalog.exampleDigestScope ∧ (0 : Nat) ≠ 1) ∧ (2 ∉ Catalog.exampleDigestScope ∧ Catalog.exampleDigest 0 = Catalog.exampleDigest 2)",
+      "premiseMapping": {
+        "urn:csabs:axiom/DigestFunction-total-evaluation": "Proved obligation for exampleDigest and exampleDigestScope, not an assumed law field.",
+        "urn:csabs:axiom/CollisionFreeDigest-injective-on-set": "Proved obligation for exampleDigest and exampleDigestScope, not an assumed law field."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "45d972950ba48fe60c6e5893f0fdd9286c232c1bb6870e31f8d7e28c303d6aed"
+    },
+    "urn:csabs:theorem/CollisionFreeDigest-equality-reflection": {
+      "kind": "witness",
+      "symbol": "Catalog.scoped_digest_eq_iff",
+      "module": "Catalog.Digests",
+      "mapping": "For two inputs in S, digest equality is equivalent to input equality.",
+      "limitations": "Exact mathematical equality and finite outputs only. No cryptographic security, collision search algorithm, implementation refinement, serialization correctness, or automatic proof of injectivity for a supplied hash and set.",
+      "expectedType": "∀ {A : Type} {n : Nat} {S : Set A} (h : Catalog.CollisionFreeDigest A n S) (x y : A), x ∈ S → y ∈ S → (h.digest x = h.digest y ↔ x = y)",
+      "premiseMapping": {
+        "urn:csabs:axiom/DigestFunction-total-evaluation": "Typed digest evaluation.",
+        "urn:csabs:axiom/CollisionFreeDigest-injective-on-set": "h.collisionFree is the explicit hypothesis; scoped membership is retained."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "12024e0e525d5473edf79edaf33201ea1321bc0eadb457288283fc5b2fa6ea3b"
+    },
+    "urn:csabs:theorem/CollisionFreeDigest-subset-restriction": {
+      "kind": "witness",
+      "symbol": "Catalog.scoped_digest_subset",
+      "module": "Catalog.Digests",
+      "mapping": "Collision freedom on S remains valid on every subset T⊆S for the same digest.",
+      "limitations": "Exact mathematical equality and finite outputs only. No cryptographic security, collision search algorithm, implementation refinement, serialization correctness, or automatic proof of injectivity for a supplied hash and set.",
+      "expectedType": "∀ {A : Type} {n : Nat} {S T : Set A} (h : Catalog.CollisionFreeDigest A n S), T ⊆ S → Set.InjOn h.digest T",
+      "premiseMapping": {
+        "urn:csabs:axiom/CollisionFreeDigest-injective-on-set": "h.collisionFree is the explicit hypothesis; scoped membership is retained."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "5a7b3fca3987939354ea0d5e0276851be9bb29c24bb8a2c06b50b1cb0a8996eb"
+    },
+    "urn:csabs:concept/SemanticVersionOrder": {
+      "kind": "model",
+      "symbol": "Catalog.SemanticVersionOrder",
+      "module": "Catalog.ReleaseSequenceModels",
+      "scope": "model",
+      "mapping": "Key=ℕ×lexℕ×lexℕ×lex WithTop(NonemptyList(ℕ⊕lex NonNumericASCIIWord)). SemVer=Key×List(ASCIIWord). v≼w ⇔ key(v)≤key(w). Key order is antisymmetric; the release relation is generally not antisymmetric because builds may differ.",
+      "limitations": "Core fields are unbounded naturals serialized canonically without leading zeros. Prerelease is absent or a nonempty list of identifiers: numeric identifiers are naturals (canonical no-leading-zero decimal); nonnumeric identifiers are nonempty ASCII [0-9A-Za-z-] words containing a nondigit. Build identifiers are nonempty words over the same ASCII alphabet and may have leading zeros; absent build is []. Exact parsed release equality includes build metadata. No parser, coercion of invalid text, v-prefix, package-manager range syntax, time ordering, overflow or stability guarantee is included. Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "catalogHash": "9dd99c14bc61a99342c0a85d86beb93a3be47109c6226831f28ca20d00e43723"
+    },
+    "urn:csabs:concept/MealyTransducer": {
+      "kind": "model",
+      "symbol": "Catalog.MealyTransducer",
+      "module": "Catalog.ReleaseSequenceModels",
+      "scope": "model",
+      "mapping": "For q₀,q₁,…,qₙ with qᵢ₊₁=δ(qᵢ,aᵢ), return final qₙ and [λ(q₀,a₀),…,λ(qₙ₋₁,aₙ₋₁)].",
+      "limitations": "Q,I,O are finite exact-equality sets; q₀∈Q makes Q nonempty. I may be empty. O may be empty only when Q×I is empty. Input words are finite, including ε; run from any q, default q₀. Pure deterministic total steps, unbounded word length, no ε-input transitions, nondeterminism, time, effects or accepting states. A run on n inputs has n outputs. Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "catalogHash": "04215ab2ea6d1f2749fa2aa7faa0158e6faaf888f1d1f9467a5f4d9bafbfac59"
+    },
+    "urn:csabs:concept/MooreTransducer": {
+      "kind": "model",
+      "symbol": "Catalog.MooreTransducer",
+      "module": "Catalog.ReleaseSequenceModels",
+      "scope": "model",
+      "mapping": "For q₀,q₁,…,qₙ with qᵢ₊₁=δ(qᵢ,aᵢ), return final qₙ and [λ(q₀),…,λ(qₙ)].",
+      "limitations": "Q,I,O are finite exact-equality sets; q₀∈Q makes Q nonempty. I may be empty. O is nonempty because λ:Q→O. Input words are finite, including ε; run from any q, default q₀. Pure deterministic total steps, unbounded word length, no ε-input transitions, nondeterminism, time, effects or accepting states. A run on n inputs has n+1 outputs; a convention suppressing the initial output needs an explicit mapping. Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "catalogHash": "3130b843c51ee009ea5646a698027e37f84fa36f7e423a787ea0d6750c0182c4"
+    },
+    "urn:csabs:concept/FirstHitDecisionTable": {
+      "kind": "model",
+      "symbol": "Catalog.FirstHitDecisionTable",
+      "module": "Catalog.ReleaseSequenceModels",
+      "scope": "model",
+      "mapping": "eval(R,x)=some(vᵢ) for i=min{j<|R| | gⱼ(x)=true}, or none when that set is empty.",
+      "limitations": "X,V arbitrary exact-equality carriers; rules retain list position even when repeated. Guards are total and pure. Empty table yields none, and no-match differs from any returned outcome. No implicit default, unique-hit constraint, output-priority sorting, effects, guard exceptions, or inferred coverage/feasibility. A final always-true rule explicitly encodes a default. Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "catalogHash": "2507c5eaab1591d4c68d0c0d0a47b08555cbf251b7084f28e9de8061fdda5dcf"
+    },
+    "urn:csabs:concept/TypedEdgeSchema": {
+      "kind": "model",
+      "symbol": "Catalog.TypedEdgeSchema",
+      "module": "Catalog.ReleaseSequenceModels",
+      "scope": "model",
+      "mapping": "G=(V,E,src,dst,τV,τE). Endpoint laws: τV(src e)=s(τE e), τV(dst e)=t(τE e). cout(v,k)=|{e∈E | src e=v ∧ τE e=k}|; cin analogously. Conforms iff endpoints agree and applicable counts satisfy bounds.",
+      "limitations": "Finite graph vertex and edge identity sets V,E, and finite vertex/edge kind sets T,K in the intended finite-schema profile. Types and endpoint maps are total; every vertex/edge has exactly one kind. Loops and parallel edge identities are allowed. For each k count edges of that kind incident to each vertex of the required endpoint type; zero counts and isolated vertices are checked. Bounds count edge identities, not distinct targets, pairs, or SHACL value nodes. None means no upper bound; inclusive min/max. Inconsistent bounds and schemas with no conforming graph are representable and not asserted satisfiable. The Lean predicate generalizes to arbitrary V,T,K with finite E. Empty kinds require compatible empty graphs; no inheritance, subtyping, attributes or global connectivity constraints. Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "catalogHash": "0b91532aafca0bb4adc63217ae1a5db96cee8b5b236d855c16d4c356dc6684cd"
+    },
+    "urn:csabs:concept/CalendarDate": {
+      "kind": "model",
+      "symbol": "Catalog.CalendarDate",
+      "module": "Catalog.ReleaseSequenceModels",
+      "scope": "model",
+      "mapping": "Date={(y,m,d)∈ℕ³ | y≥1 ∧ 1≤m≤12 ∧ 1≤d≤days(y,m)}; leap(y)⇔4|y∧(100∤y∨400|y); a≤b ⇔ (a.y,a.m,a.d)≤lex(b.y,b.m,b.d).",
+      "limitations": "Years are positive unbounded naturals, with no year zero or BCE dates. Apply Gregorian rules uniformly to all years, independent of historical calendar adoption. Exact tuple equality; no timezone, UTC instant, time of day, leap seconds, duration, date arithmetic, parsing/formatting, overflow or locale semantics. This extends RFC 3339 calendar rules beyond its four-digit timestamp syntax; it is not that timestamp datatype. Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "catalogHash": "e7ee4afc933ff61e1a173063f27161b939f97db68de23d2d6f2dee507c2d776b"
+    },
+    "urn:csabs:concept/OrderLinearExtension": {
+      "kind": "model",
+      "symbol": "Catalog.OrderLinearExtension",
+      "module": "Catalog.ReleaseSequenceModels",
+      "scope": "model",
+      "mapping": "Ext(A,r)={s:A→A→Prop | IsLinearOrder(A,s) ∧ ∀a,b,r(a,b)⇒s(a,b)}. Szpilrajn: IsPartialOrder(A,r) ⇒ Ext(A,r)≠∅.",
+      "limitations": "A may be empty, finite or infinite; r is a reflexive, transitive, antisymmetric non-strict partial order on A with exact equality. s is non-strict and uses the same carrier and equality. Incomparable elements may become comparable. Identity is a monotone bijection, generally not an order embedding reflecting comparisons. No uniqueness, canonical choice, finite algorithm, ordering of arbitrary preorders without quotienting, or constructive existence is promised. Existence is classical, using the choice/Zorn assumptions exposed by the pinned Lean audit. Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "catalogHash": "6a764b3f8857c89e13a03ca281da7b115b240fb4ac88e95ccd617bd2219e5e16"
+    },
+    "urn:csabs:theorem/SemanticVersionOrder-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.version_model_satisfaction",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "The nested lexicographic linear order on parsed precedence keys supplies reflexivity, transitivity, comparability and key antisymmetry. Full release identity also contains build metadata.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "(∀ a : Catalog.SemanticVersionOrder, Catalog.versionLE a a) ∧ (∀ a b c, Catalog.versionLE a b → Catalog.versionLE b c → Catalog.versionLE a c) ∧ (∀ a b, Catalog.versionLE a b ∨ Catalog.versionLE b a) ∧ (∀ a b, Catalog.versionLE a b → Catalog.versionLE b a → a.key = b.key)",
+      "premiseMapping": {
+        "urn:csabs:axiom/SemanticVersionOrder-defining-profile": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. The nested lexicographic linear order on parsed precedence keys supplies reflexivity, transitivity, comparability and key antisymmetry. Full release identity also contains build metadata."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "17e81947d7fb0310654fb998940be56314d1a7eb061e6176e709a07825298f47"
+    },
+    "urn:csabs:theorem/SemanticVersionOrder-build-invariance": {
+      "kind": "witness",
+      "symbol": "Catalog.version_build_invariance",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Both projected keys are k, so both inequalities are reflexivity.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "∀ (k : Catalog.VersionKey) (a b : List Catalog.VersionText), Catalog.versionLE ⟨k, a⟩ ⟨k, b⟩ ∧ Catalog.versionLE ⟨k, b⟩ ⟨k, a⟩",
+      "premiseMapping": {
+        "urn:csabs:axiom/SemanticVersionOrder-defining-profile": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Both projected keys are k, so both inequalities are reflexivity."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "0a619235c53e711a3435f3a879a5c3bea03cb267b7a99fc97c23d154990c9e25"
+    },
+    "urn:csabs:theorem/Sequence-edit-replacement-equations": {
+      "kind": "witness",
+      "symbol": "Catalog.replace_equations",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Unfold the well-founded scan. A match consumes the entire nonempty pattern; otherwise consume exactly one original element. The remaining original input strictly shrinks.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "∀ {A : Type u} [DecidableEq A] (p : List A) (hp : p ≠ []) (r : List A), Catalog.replaceAll p hp r [] = [] ∧ (∀ a xs, p <+: (a :: xs) → Catalog.replaceAll p hp r (a :: xs) = r ++ Catalog.replaceAll p hp r ((a :: xs).drop p.length)) ∧ (∀ a xs, ¬ p <+: (a :: xs) → Catalog.replaceAll p hp r (a :: xs) = a :: Catalog.replaceAll p hp r xs)",
+      "premiseMapping": {
+        "urn:csabs:axiom/Sequence-edit-replacement": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Unfold the well-founded scan. A match consumes the entire nonempty pattern; otherwise consume exactly one original element. The remaining original input strictly shrinks."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "c7f7caa212f4513730ad0b3c64c2ae9c61c4d3826ef2dd94d8bd3d3b8e868138"
+    },
+    "urn:csabs:theorem/Sequence-edit-editing-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.sequence_edit_model_satisfaction",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Evaluate explicit examples distinguishing overlapping matches, rescanning, and half-open deletion.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "Catalog.replaceAll [1, 1] (by decide) [2] [1, 1, 1] = [2, 1] ∧ Catalog.replaceAll [1] (by decide) [1, 1] [1] = [1, 1] ∧ Catalog.deleteSpan [0, 1, 2, 3] 1 3 = [0, 3]",
+      "premiseMapping": {
+        "urn:csabs:axiom/Sequence-edit-replacement": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Evaluate explicit examples distinguishing overlapping matches, rescanning, and half-open deletion.",
+        "urn:csabs:axiom/Sequence-edit-span-deletion": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Evaluate explicit examples distinguishing overlapping matches, rescanning, and half-open deletion."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "61136213f5ec72ccc3182c4c4e791273a515bb9c5c2805ff5a2a383bf0bee596"
+    },
+    "urn:csabs:theorem/Sequence-edit-replacement-self": {
+      "kind": "witness",
+      "symbol": "Catalog.replace_self",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Induct on remaining input length. Prefix decomposition reconstructs each consumed match; the unmatched branch preserves its head.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "∀ {A : Type u} [DecidableEq A] (p : List A) (hp : p ≠ []) (xs : List A), Catalog.replaceAll p hp p xs = xs",
+      "premiseMapping": {
+        "urn:csabs:axiom/Sequence-edit-replacement": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Induct on remaining input length. Prefix decomposition reconstructs each consumed match; the unmatched branch preserves its head.",
+        "urn:csabs:axiom/Sequence-induction": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.",
+        "urn:csabs:axiom/Sequence-concat-recursion": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "6100712d7a970c6b9e280ab4bec9f268d7c54fc230b5d7441c5499ab4d0db004"
+    },
+    "urn:csabs:theorem/Sequence-edit-span-deletion-length": {
+      "kind": "witness",
+      "symbol": "Catalog.delete_span_length",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "The retained prefix has length i and suffix length |xs|-j; valid bounds justify natural subtraction.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "∀ {A : Type u} (xs : List A) (i j : Nat), i ≤ j → j ≤ xs.length → (Catalog.deleteSpan xs i j).length = xs.length - (j - i)",
+      "premiseMapping": {
+        "urn:csabs:axiom/Sequence-edit-span-deletion": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. The retained prefix has length i and suffix length |xs|-j; valid bounds justify natural subtraction.",
+        "urn:csabs:axiom/Sequence-length-recursion": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.",
+        "urn:csabs:law/sequence-length-concat": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "13247264e417a0a7b9395c19d73b9e96fb6a21e3e72fa1378ec12f8a56aecc3e"
+    },
+    "urn:csabs:theorem/Sequence-edit-span-deletion-empty": {
+      "kind": "witness",
+      "symbol": "Catalog.delete_span_empty",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Take and drop at the same position partition a list. The Lean helper also satisfies this for saturated indices.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "∀ {A : Type u} (xs : List A) (i : Nat), Catalog.deleteSpan xs i i = xs",
+      "premiseMapping": {
+        "urn:csabs:axiom/Sequence-edit-span-deletion": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Take and drop at the same position partition a list. The Lean helper also satisfies this for saturated indices.",
+        "urn:csabs:axiom/Sequence-concat-recursion": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "a9807a798499b684da833ab64016c2d075aec7ab971b18f79a575b0bc9c9fbca"
+    },
+    "urn:csabs:theorem/Sequence-edit-span-deletion-full": {
+      "kind": "witness",
+      "symbol": "Catalog.delete_span_full",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Taking zero and dropping the full list both yield empty.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "∀ {A : Type u} (xs : List A), Catalog.deleteSpan xs 0 xs.length = []",
+      "premiseMapping": {
+        "urn:csabs:axiom/Sequence-edit-span-deletion": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Taking zero and dropping the full list both yield empty.",
+        "urn:csabs:axiom/Sequence-concat-recursion": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "51f4d6b2a912798922b999baefc9ac995535877c605a7461e5e6b9b9e107a4fe"
+    },
+    "urn:csabs:theorem/MealyTransducer-run-equations": {
+      "kind": "witness",
+      "symbol": "Catalog.mealy_equations",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Primitive recursion on finite input words realizes the selected total transition/output equations.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "∀ {Q I O : Type} [Fintype Q] [Fintype I] [Fintype O] (m : Catalog.MealyTransducer Q I O) (q : Q), Catalog.mealyRun m q [] = (q, []) ∧ (∀ a xs, Catalog.mealyRun m q (a :: xs) = ((Catalog.mealyRun m (m.next q a) xs).1, m.emit q a :: (Catalog.mealyRun m (m.next q a) xs).2))",
+      "premiseMapping": {
+        "urn:csabs:axiom/MealyTransducer-defining-profile": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Primitive recursion on finite input words realizes the selected total transition/output equations."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "f8921cf19a15043e0802a096f9b1b4899125c9c8154f6f0fc70a0fcf20a9ad12"
+    },
+    "urn:csabs:theorem/MealyTransducer-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.mealy_model_satisfaction",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Construct a two-state, two-input, two-output total machine and evaluate a nonempty word; no assumed machine laws.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "Catalog.mealyRun Catalog.boolMealy false [true, false] = (false, [true, true])",
+      "premiseMapping": {
+        "urn:csabs:axiom/MealyTransducer-defining-profile": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Construct a two-state, two-input, two-output total machine and evaluate a nonempty word; no assumed machine laws."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "26204816597e7a274fdbf4bdca8b4dd106f75b537d740c410c8e7e1a59262416"
+    },
+    "urn:csabs:theorem/MealyTransducer-output-length": {
+      "kind": "witness",
+      "symbol": "Catalog.mealy_length",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Induct on inputs; each step prepends exactly one output.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "∀ {Q I O : Type} [Fintype Q] [Fintype I] [Fintype O] (m : Catalog.MealyTransducer Q I O) (q : Q) (xs : List I), (Catalog.mealyRun m q xs).2.length = xs.length",
+      "premiseMapping": {
+        "urn:csabs:axiom/MealyTransducer-defining-profile": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Induct on inputs; each step prepends exactly one output.",
+        "urn:csabs:axiom/Sequence-induction": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.",
+        "urn:csabs:axiom/Sequence-length-recursion": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "fe3196dac8348c7f95ab2dc65af3f238a06f15a89ddbb37192e271d1e6b818ad"
+    },
+    "urn:csabs:theorem/MealyTransducer-word-composition": {
+      "kind": "witness",
+      "symbol": "Catalog.mealy_append",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Induct on the first input word, threading its final state into the second run.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "∀ {Q I O : Type} [Fintype Q] [Fintype I] [Fintype O] (m : Catalog.MealyTransducer Q I O) (q : Q) (xs ys : List I), Catalog.mealyRun m q (xs ++ ys) = ((Catalog.mealyRun m (Catalog.mealyRun m q xs).1 ys).1, (Catalog.mealyRun m q xs).2 ++ (Catalog.mealyRun m (Catalog.mealyRun m q xs).1 ys).2)",
+      "premiseMapping": {
+        "urn:csabs:axiom/MealyTransducer-defining-profile": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Induct on the first input word, threading its final state into the second run.",
+        "urn:csabs:axiom/Sequence-induction": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.",
+        "urn:csabs:axiom/Sequence-concat-recursion": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "aecb44341f1422e526618709d38fa8c3d49edb834bb924c8cc4b9c19970b4665"
+    },
+    "urn:csabs:theorem/MooreTransducer-run-equations": {
+      "kind": "witness",
+      "symbol": "Catalog.moore_equations",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Primitive recursion realizes the state-output convention including the initial state output.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "∀ {Q I O : Type} [Fintype Q] [Fintype I] [Fintype O] (m : Catalog.MooreTransducer Q I O) (q : Q), Catalog.mooreRun m q [] = (q, [m.emit q]) ∧ (∀ a xs, Catalog.mooreRun m q (a :: xs) = ((Catalog.mooreRun m (m.next q a) xs).1, m.emit q :: (Catalog.mooreRun m (m.next q a) xs).2))",
+      "premiseMapping": {
+        "urn:csabs:axiom/MooreTransducer-defining-profile": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Primitive recursion realizes the state-output convention including the initial state output."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "27bc1a24e88fe2b32889751788046498db87e1eecddfff6d75b45b602711781a"
+    },
+    "urn:csabs:theorem/MooreTransducer-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.moore_model_satisfaction",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Construct a two-state total machine and evaluate its initial and subsequent outputs.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "Catalog.mooreRun Catalog.boolMoore false [true, false] = (false, [false, true, false])",
+      "premiseMapping": {
+        "urn:csabs:axiom/MooreTransducer-defining-profile": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Construct a two-state total machine and evaluate its initial and subsequent outputs."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "a491ae6915755170aa3be3f5aa915c0ea5718f1f5579db66e0acd629e5702e51"
+    },
+    "urn:csabs:theorem/MooreTransducer-output-length": {
+      "kind": "witness",
+      "symbol": "Catalog.moore_length",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Induct on inputs; empty input has one output and each transition adds one.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "∀ {Q I O : Type} [Fintype Q] [Fintype I] [Fintype O] (m : Catalog.MooreTransducer Q I O) (q : Q) (xs : List I), (Catalog.mooreRun m q xs).2.length = xs.length + 1",
+      "premiseMapping": {
+        "urn:csabs:axiom/MooreTransducer-defining-profile": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Induct on inputs; empty input has one output and each transition adds one.",
+        "urn:csabs:axiom/Sequence-induction": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.",
+        "urn:csabs:axiom/Sequence-length-recursion": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "173855e466202a998d9ffdac851f16e3c3c8d629b2d4bc4821c8883d4965f85f"
+    },
+    "urn:csabs:theorem/MooreTransducer-mealy-alignment": {
+      "kind": "witness",
+      "symbol": "Catalog.moore_mealy_alignment",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Choose Mealy emission λ(δ(q,a)); induction shows equivalence after accounting for the Moore initial output.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "∀ {Q I O : Type} [Fintype Q] [Fintype I] [Fintype O] (m : Catalog.MooreTransducer Q I O) (q : Q) (xs : List I), (Catalog.mooreRun m q xs).2 = m.emit q :: (Catalog.mealyRun (Catalog.mooreAsMealy m) q xs).2",
+      "premiseMapping": {
+        "urn:csabs:axiom/MooreTransducer-defining-profile": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Choose Mealy emission λ(δ(q,a)); induction shows equivalence after accounting for the Moore initial output.",
+        "urn:csabs:axiom/Sequence-induction": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "36ba1a26589e4a8a95875bdb02e43d43450e7e685bc96bf92a3baf5f89f567d3"
+    },
+    "urn:csabs:theorem/FirstHitDecisionTable-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.first_hit_model_satisfaction",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Compute overlapping guards and the empty table; the first rule wins even when a later guard is also true.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "Catalog.firstHit [(fun _ : Bool => true, 1), (fun _ => true, 2)] false = some 1 ∧ Catalog.firstHit ([] : Catalog.FirstHitDecisionTable Bool Nat) false = none",
+      "premiseMapping": {
+        "urn:csabs:axiom/FirstHitDecisionTable-defining-profile": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Compute overlapping guards and the empty table; the first rule wins even when a later guard is also true."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "f040b3d588c6f6fb99da9f7dbcdec63b89de06a56ee65ee4cda6f38ab5df34ce"
+    },
+    "urn:csabs:theorem/FirstHitDecisionTable-ordered-append": {
+      "kind": "witness",
+      "symbol": "Catalog.first_hit_append",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Induct on the left table. A matching rule suppresses all later rules; otherwise recur.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "∀ {X V : Type} (a b : Catalog.FirstHitDecisionTable X V) (x : X), Catalog.firstHit (a ++ b) x = (Catalog.firstHit a x).or (Catalog.firstHit b x)",
+      "premiseMapping": {
+        "urn:csabs:axiom/FirstHitDecisionTable-defining-profile": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Induct on the left table. A matching rule suppresses all later rules; otherwise recur.",
+        "urn:csabs:axiom/Sequence-induction": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.",
+        "urn:csabs:axiom/Sequence-concat-recursion": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "dfc7dbe6d2d309f1fbc0a1e12fc6628eae83509ba3f3d151678cfb6ff356259b"
+    },
+    "urn:csabs:theorem/FirstHitDecisionTable-no-match": {
+      "kind": "witness",
+      "symbol": "Catalog.first_hit_none",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Induct on the ordered rule list and split on its head guard.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "∀ {X V : Type} (rs : Catalog.FirstHitDecisionTable X V) (x : X), Catalog.firstHit rs x = none ↔ ∀ r ∈ rs, r.1 x = false",
+      "premiseMapping": {
+        "urn:csabs:axiom/FirstHitDecisionTable-defining-profile": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Induct on the ordered rule list and split on its head guard.",
+        "urn:csabs:axiom/Sequence-induction": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "3bb8c2771068739d5c07615679ac0c9995c45c689668e604e7aca0ac915dcdb9"
+    },
+    "urn:csabs:theorem/FirstHitDecisionTable-first-match-selection": {
+      "kind": "witness",
+      "symbol": "Catalog.first_hit_selection",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "All preceding rules yield none; append composition then selects the current true guard independently of later rules.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "∀ {X V : Type} (before after : Catalog.FirstHitDecisionTable X V) (g : X → Bool) (v : V) (x : X), (∀ r ∈ before, r.1 x = false) → g x = true → Catalog.firstHit (before ++ (g,v) :: after) x = some v",
+      "premiseMapping": {
+        "urn:csabs:axiom/FirstHitDecisionTable-defining-profile": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. All preceding rules yield none; append composition then selects the current true guard independently of later rules.",
+        "urn:csabs:axiom/Sequence-induction": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.",
+        "urn:csabs:axiom/Sequence-concat-recursion": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "9cd2a7eb630a11d04781d0132d6153c3d67ec2f6bfec276d93cdd13c0bb9bed3"
+    },
+    "urn:csabs:theorem/TypedEdgeSchema-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.schema_model_satisfaction",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "A finite one-vertex one-edge loop has correctly typed endpoints and exactly one incoming and outgoing edge; it realizes positive lower and upper bounds.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "Catalog.schemaConforms Catalog.unitSchema Catalog.unitGraph",
+      "premiseMapping": {
+        "urn:csabs:axiom/TypedEdgeSchema-defining-profile": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. A finite one-vertex one-edge loop has correctly typed endpoints and exactly one incoming and outgoing edge; it realizes positive lower and upper bounds."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "38b26efa82d4194fa1369707974f7075b686d658aeec0696ec463df0ecf04ac4"
+    },
+    "urn:csabs:theorem/TypedEdgeSchema-bound-relaxation": {
+      "kind": "witness",
+      "symbol": "Catalog.bounds_relax",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Use transitivity for the lowered minimum and for each enlarged finite maximum; none denotes unbounded.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "∀ (n lo lo' : Nat) (hi hi' : Option Nat), lo' ≤ lo → (∀ h' ∈ hi', ∃ h ∈ hi, h ≤ h') → Catalog.withinBounds n lo hi → Catalog.withinBounds n lo' hi'",
+      "premiseMapping": {
+        "urn:csabs:axiom/TypedEdgeSchema-defining-profile": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Use transitivity for the lowered minimum and for each enlarged finite maximum; none denotes unbounded."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "2939717420d4995e19d486e9173fc992c0ca1eec2fe39018bd02179b78a59804"
+    },
+    "urn:csabs:theorem/CalendarDate-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.date_model_satisfaction",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Compute the Gregorian century rule and month lengths; include valid and invalid dates.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "Catalog.validDate 2000 2 29 ∧ ¬ Catalog.validDate 1900 2 29 ∧ Catalog.validDate 2026 11 20 ∧ ¬ Catalog.validDate 2026 4 31",
+      "premiseMapping": {
+        "urn:csabs:axiom/CalendarDate-defining-profile": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Compute the Gregorian century rule and month lengths; include valid and invalid dates."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "ad7a453f9456317701a78b7dcd0ef4b015a6137af179aaf2c1291c8d45469e11"
+    },
+    "urn:csabs:theorem/CalendarDate-date-order": {
+      "kind": "witness",
+      "symbol": "Catalog.date_order_laws",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Lift the lexicographic linear order on year/month/day; injectivity of the tuple key gives exact date antisymmetry.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "(∀ a : Catalog.CalendarDate, Catalog.dateLE a a) ∧ (∀ a b c, Catalog.dateLE a b → Catalog.dateLE b c → Catalog.dateLE a c) ∧ (∀ a b, Catalog.dateLE a b ∨ Catalog.dateLE b a) ∧ (∀ a b, Catalog.dateLE a b → Catalog.dateLE b a → a = b)",
+      "premiseMapping": {
+        "urn:csabs:axiom/CalendarDate-defining-profile": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Lift the lexicographic linear order on year/month/day; injectivity of the tuple key gives exact date antisymmetry."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "1884e52c7dea3ff8d2e7cde39c8380cd43edf85ccaca0cbf2bb84e74cacc98d8"
+    },
+    "urn:csabs:theorem/OrderLinearExtension-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.linear_extension_model_satisfaction",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Natural-number ≤ is linear and contains equality, giving an inhabited infinite example with distinct comparable elements.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "Nonempty (Catalog.OrderLinearExtension Nat (fun a b => a = b))",
+      "premiseMapping": {
+        "urn:csabs:axiom/OrderLinearExtension-defining-profile": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Natural-number ≤ is linear and contains equality, giving an inhabited infinite example with distinct comparable elements."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "d41db1b38d201f38616fcc821f0381152d40b0e6b241c52048d9b45024fadb2f"
+    },
+    "urn:csabs:theorem/OrderLinearExtension-szpilrajn-existence": {
+      "kind": "witness",
+      "symbol": "Catalog.szpilrajn",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Instantiate pinned Mathlib extend_partialOrder, whose Zorn argument produces a total extension on the same carrier. This uses classical choice and gives no canonical algorithm.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "∀ (A : Type) (r : A → A → Prop) [IsPartialOrder A r], Nonempty (Catalog.OrderLinearExtension A r)",
+      "premiseMapping": {
+        "urn:csabs:axiom/OrderLinearExtension-defining-profile": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Instantiate pinned Mathlib extend_partialOrder, whose Zorn argument produces a total extension on the same carrier. This uses classical choice and gives no canonical algorithm."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "082905466de007e1ee44c95d7bb9833c8d6a3c15a53b03fbb5c2fd67dca5c420"
+    },
+    "urn:csabs:theorem/Sequence-edit-replacement-equal-length": {
+      "kind": "witness",
+      "symbol": "Catalog.replace_length_equal",
+      "module": "Catalog.ReleaseSequenceModels",
+      "mapping": "Induct on remaining input length. Each matched span removes |p| original elements and inserts exactly |r|=|p| elements; an unmatched step preserves one element.",
+      "limitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
+      "expectedType": "∀ {A : Type u} [DecidableEq A] (p : List A) (hp : p ≠ []) (r xs : List A), r.length = p.length → (Catalog.replaceAll p hp r xs).length = xs.length",
+      "premiseMapping": {
+        "urn:csabs:axiom/Sequence-edit-replacement": "Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Induct on remaining input length. Each matched span removes |p| original elements and inserts exactly |r|=|p| elements; an unmatched step preserves one element.",
+        "urn:csabs:axiom/Sequence-induction": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.",
+        "urn:csabs:axiom/Sequence-concat-recursion": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.",
+        "urn:csabs:axiom/Sequence-length-recursion": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.",
+        "urn:csabs:law/sequence-length-concat": "Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "19d9a1f6fcba60996a4ef1f0c5d447b3d639de096db4a5cca0fe7b59f857f680"
+    },
+    "urn:csabs:concept/RegularExpression": {
+      "kind": "model",
+      "symbol": "Catalog.RegularExpression",
+      "module": "Catalog.LanguageClasses",
+      "scope": "model",
+      "mapping": "Regex(Σ)=μX.(1+1+Σ+X²+X²+X); ⟦0⟧=∅; ⟦1⟧={ε}; ⟦a⟧={[a]}; ⟦r+s⟧=⟦r⟧∪⟦s⟧; ⟦r·s⟧={u++v | u∈⟦r⟧,v∈⟦s⟧}; ⟦r*⟧={w₁++…++wₖ | k≥0,∀i,wᵢ∈⟦r⟧}.",
+      "limitations": "Finite fixed alphabet, possibly empty; finite words and finite expression trees. Syntax equality is exact constructor-tree equality; semantic equivalence is extensional equality of denoted languages and is a different relation. Star includes zero factors. Letter matching requires decidable exact equality. Whole-word matching; no substring search, wildcard interpretation, parser, captures, backreferences, lookaround, engine priority, or runtime bounds are specified. Regex-to-DFA equivalence is outside the registered witness scope. Selected mathematical profile only; no blanket software refinement, missing closure theorem or automata-equivalence proof. Verification requires fresh compiler and axiom-audit evidence.",
+      "catalogHash": "c4e0b102d1f8383d890a03dca32130c08e02d95bbea506bcf62911dab9b0777a"
+    },
+    "urn:csabs:concept/ContextFreeLanguage": {
+      "kind": "model",
+      "symbol": "Catalog.ContextFreeLanguage",
+      "module": "Catalog.LanguageClasses",
+      "scope": "model",
+      "mapping": "ContextFree(L) ⇔ ∃ G=(N,Σ,P,S), finite(N) ∧ finite(P) ∧ S∈N ∧ P⊆N×(N+Σ)* ∧ ∀w∈Σ*, (w∈L ⇔ [S]⇒*_P terminal(w)).",
+      "limitations": "Finite fixed alphabet, possibly empty; exact finite-word equality and extensional language equality. Existential witnesses have finite nonterminal sets, a start nonterminal, and finitely many single-nonterminal productions with finite right sides. Terminal and nonterminal symbols are disjoint tagged carriers. Empty productions, ambiguity, left recursion and nonproductive grammars are permitted. A language is not a chosen grammar; no parser, normal form, uniqueness or decision procedure is specified. Selected mathematical profile only; no blanket software refinement, missing closure theorem or automata-equivalence proof. Verification requires fresh compiler and axiom-audit evidence.",
+      "catalogHash": "76730a692d69e6b0f6edeccfc7bd5d03b34849c30cce753ecb3a7f62cec78538"
+    },
+    "urn:csabs:theorem/RegularExpression-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.regex_model_satisfaction",
+      "module": "Catalog.LanguageClasses",
+      "mapping": "Structural recursion interprets all six constructors as the empty language, singleton empty word, singleton letter, union, concatenation and finite Kleene iteration. Each equation is proved by reduction for the actual inductive syntax, without assumed language laws.",
+      "limitations": "Selected mathematical profile only; no blanket software refinement, missing closure theorem or automata-equivalence proof. Verification requires fresh compiler and axiom-audit evidence.",
+      "expectedType": "∀ {A : Type} [Fintype A], (_root_.RegularExpression.zero : Catalog.RegularExpression A).matches' = 0 ∧ (_root_.RegularExpression.epsilon : Catalog.RegularExpression A).matches' = 1 ∧ (∀ a : A, (_root_.RegularExpression.char a).matches' = {[a]}) ∧ (∀ r s : Catalog.RegularExpression A, (r + s).matches' = r.matches' + s.matches') ∧ (∀ r s : Catalog.RegularExpression A, (r * s).matches' = r.matches' * s.matches') ∧ (∀ r : Catalog.RegularExpression A, r.star.matches' = KStar.kstar r.matches')",
+      "premiseMapping": {
+        "urn:csabs:axiom/RegularExpression-defining-profile": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Structural recursion interprets all six constructors as the empty language, singleton empty word, singleton letter, union, concatenation and finite Kleene iteration. Each equation is proved by reduction for the actual inductive syntax, without assumed language laws.",
+        "urn:csabs:axiom/FormalLanguage-language-operations": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Structural recursion interprets all six constructors as the empty language, singleton empty word, singleton letter, union, concatenation and finite Kleene iteration. Each equation is proved by reduction for the actual inductive syntax, without assumed language laws."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "ede55bbf688d33740a2c1f3ebd1a54f1ac6fc907e2db9ca5fe1641940f9440b0"
+    },
+    "urn:csabs:theorem/RegularExpression-syntax-distinct": {
+      "kind": "witness",
+      "symbol": "Catalog.regex_syntax_distinct",
+      "module": "Catalog.LanguageClasses",
+      "mapping": "Disjoint constructors distinguish empty-language syntax from empty-word syntax.",
+      "limitations": "Selected mathematical profile only; no blanket software refinement, missing closure theorem or automata-equivalence proof. Verification requires fresh compiler and axiom-audit evidence.",
+      "expectedType": "∀ {A : Type} [Fintype A] , (0 : Catalog.RegularExpression A) ≠ 1",
+      "premiseMapping": {
+        "urn:csabs:axiom/RegularExpression-defining-profile": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Disjoint constructors distinguish empty-language syntax from empty-word syntax.",
+        "urn:csabs:axiom/FormalLanguage-language-operations": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Disjoint constructors distinguish empty-language syntax from empty-word syntax."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "681827b7ff079ee8aac02d7bd1f8dc1ae7655f08fcfb138e68f9db03e39efa60"
+    },
+    "urn:csabs:theorem/RegularExpression-semantic-union-idempotence": {
+      "kind": "witness",
+      "symbol": "Catalog.regex_union_idempotent",
+      "module": "Catalog.LanguageClasses",
+      "mapping": "Language union is idempotent by extensional set membership. The syntax trees need not be equal.",
+      "limitations": "Selected mathematical profile only; no blanket software refinement, missing closure theorem or automata-equivalence proof. Verification requires fresh compiler and axiom-audit evidence.",
+      "expectedType": "∀ {A : Type} [Fintype A] (r : Catalog.RegularExpression A), (r + r).matches' = r.matches'",
+      "premiseMapping": {
+        "urn:csabs:axiom/RegularExpression-defining-profile": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Language union is idempotent by extensional set membership. The syntax trees need not be equal.",
+        "urn:csabs:axiom/FormalLanguage-language-operations": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Language union is idempotent by extensional set membership. The syntax trees need not be equal.",
+        "urn:csabs:axiom/FormalLanguage-union-membership": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Language union is idempotent by extensional set membership. The syntax trees need not be equal."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "40bcc10a57157d5011427b801f7a470f9a1c8f3b8e196fb0e72cb655433e23fc"
+    },
+    "urn:csabs:theorem/RegularExpression-semantic-concat-associativity": {
+      "kind": "witness",
+      "symbol": "Catalog.regex_concat_associative",
+      "module": "Catalog.LanguageClasses",
+      "mapping": "Language multiplication is associative because word append is associative; only denotational equality is claimed.",
+      "limitations": "Selected mathematical profile only; no blanket software refinement, missing closure theorem or automata-equivalence proof. Verification requires fresh compiler and axiom-audit evidence.",
+      "expectedType": "∀ {A : Type} [Fintype A] (r s t : Catalog.RegularExpression A), ((r * s) * t).matches' = (r * (s * t)).matches'",
+      "premiseMapping": {
+        "urn:csabs:axiom/RegularExpression-defining-profile": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Language multiplication is associative because word append is associative; only denotational equality is claimed.",
+        "urn:csabs:axiom/FormalLanguage-language-operations": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Language multiplication is associative because word append is associative; only denotational equality is claimed.",
+        "urn:csabs:law/FormalLanguage-concatenation-monoid": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Language multiplication is associative because word append is associative; only denotational equality is claimed."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "5930c51af13cc24284329b7bb9bfc636dcd6a63dcba1817e43187b24f8268535"
+    },
+    "urn:csabs:theorem/RegularExpression-star-empty-word": {
+      "kind": "witness",
+      "symbol": "Catalog.regex_star_empty_word",
+      "module": "Catalog.LanguageClasses",
+      "mapping": "The zero-factor word belongs to every Kleene star, even when the operand denotes the empty language.",
+      "limitations": "Selected mathematical profile only; no blanket software refinement, missing closure theorem or automata-equivalence proof. Verification requires fresh compiler and axiom-audit evidence.",
+      "expectedType": "∀ {A : Type} [Fintype A] (r : Catalog.RegularExpression A), [] ∈ r.star.matches'",
+      "premiseMapping": {
+        "urn:csabs:axiom/RegularExpression-defining-profile": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. The zero-factor word belongs to every Kleene star, even when the operand denotes the empty language.",
+        "urn:csabs:axiom/FormalLanguage-language-operations": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. The zero-factor word belongs to every Kleene star, even when the operand denotes the empty language."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "951a51adad31b973f402be6970c2c299b35de17ebc92a3ffd88d7d25652c2620"
+    },
+    "urn:csabs:theorem/RegularExpression-matching-correctness": {
+      "kind": "witness",
+      "symbol": "Catalog.regex_match_correct",
+      "module": "Catalog.LanguageClasses",
+      "mapping": "Instantiate the pinned derivative-matcher correctness theorem; the result concerns whole finite words with exact decidable letter equality.",
+      "limitations": "Selected mathematical profile only; no blanket software refinement, missing closure theorem or automata-equivalence proof. Verification requires fresh compiler and axiom-audit evidence.",
+      "expectedType": "∀ {A : Type} [Fintype A] [DecidableEq A] (r : Catalog.RegularExpression A) (w : List A), r.rmatch w = true ↔ w ∈ r.matches'",
+      "premiseMapping": {
+        "urn:csabs:axiom/RegularExpression-defining-profile": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Instantiate the pinned derivative-matcher correctness theorem; the result concerns whole finite words with exact decidable letter equality.",
+        "urn:csabs:axiom/FormalLanguage-language-operations": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Instantiate the pinned derivative-matcher correctness theorem; the result concerns whole finite words with exact decidable letter equality."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "0b446966e471a7c44c5b8ccf59685f4cec4b56bd1c7f47b0a439843d5279c84e"
+    },
+    "urn:csabs:theorem/ContextFreeLanguage-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.cfl_model_satisfaction",
+      "module": "Catalog.LanguageClasses",
+      "mapping": "The interpretation is precisely existence of a finite-nonterminal finite-production grammar with the given language, not a chosen grammar representation.",
+      "limitations": "Selected mathematical profile only; no blanket software refinement, missing closure theorem or automata-equivalence proof. Verification requires fresh compiler and axiom-audit evidence.",
+      "expectedType": "∀ {A : Type} [Fintype A] (L : Language A), Catalog.ContextFreeLanguage L ↔ ∃ g : Catalog.ContextFreeGrammar A, g.grammar.language = L",
+      "premiseMapping": {
+        "urn:csabs:axiom/ContextFreeLanguage-defining-profile": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. The interpretation is precisely existence of a finite-nonterminal finite-production grammar with the given language, not a chosen grammar representation.",
+        "urn:csabs:axiom/ContextFreeGrammar-productions": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. The interpretation is precisely existence of a finite-nonterminal finite-production grammar with the given language, not a chosen grammar representation.",
+        "urn:csabs:axiom/ContextFreeGrammar-derivations": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. The interpretation is precisely existence of a finite-nonterminal finite-production grammar with the given language, not a chosen grammar representation."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "9b973b4292ef3641674a923285d290392fae061f0aea38c9be515fab23a733a6"
+    },
+    "urn:csabs:theorem/ContextFreeLanguage-extensional-transfer": {
+      "kind": "witness",
+      "symbol": "Catalog.cfl_extensional_transfer",
+      "module": "Catalog.LanguageClasses",
+      "mapping": "Transport the same grammar witness along exact extensional language equality.",
+      "limitations": "Selected mathematical profile only; no blanket software refinement, missing closure theorem or automata-equivalence proof. Verification requires fresh compiler and axiom-audit evidence.",
+      "expectedType": "∀ {A : Type} [Fintype A] (L M : Language A), L = M → Catalog.ContextFreeLanguage L → Catalog.ContextFreeLanguage M",
+      "premiseMapping": {
+        "urn:csabs:axiom/ContextFreeLanguage-defining-profile": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Transport the same grammar witness along exact extensional language equality.",
+        "urn:csabs:axiom/ContextFreeGrammar-productions": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Transport the same grammar witness along exact extensional language equality.",
+        "urn:csabs:axiom/ContextFreeGrammar-derivations": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Transport the same grammar witness along exact extensional language equality.",
+        "urn:csabs:axiom/FormalLanguage-language-equality": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Transport the same grammar witness along exact extensional language equality."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "145ae0864a13c45847bf7258254e349db6f1bd10fbd18ba1e4681220d6e91204"
+    },
+    "urn:csabs:theorem/ContextFreeLanguage-reversal-closure": {
+      "kind": "witness",
+      "symbol": "Catalog.cfl_reversal",
+      "module": "Catalog.LanguageClasses",
+      "mapping": "Reverse every production right side; preserve the finite nonterminal carrier and finite rules. The pinned derivation-reversal theorem identifies the resulting language.",
+      "limitations": "Selected mathematical profile only; no blanket software refinement, missing closure theorem or automata-equivalence proof. Verification requires fresh compiler and axiom-audit evidence.",
+      "expectedType": "∀ {A : Type} [Fintype A] (L : Language A), Catalog.ContextFreeLanguage L → Catalog.ContextFreeLanguage L.reverse",
+      "premiseMapping": {
+        "urn:csabs:axiom/ContextFreeLanguage-defining-profile": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Reverse every production right side; preserve the finite nonterminal carrier and finite rules. The pinned derivation-reversal theorem identifies the resulting language.",
+        "urn:csabs:axiom/ContextFreeGrammar-productions": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Reverse every production right side; preserve the finite nonterminal carrier and finite rules. The pinned derivation-reversal theorem identifies the resulting language.",
+        "urn:csabs:axiom/ContextFreeGrammar-derivations": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Reverse every production right side; preserve the finite nonterminal carrier and finite rules. The pinned derivation-reversal theorem identifies the resulting language."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "5f63882e47301f544b080655271f8a328e14499465c6fc9b3fb5d86e271994d1"
+    },
+    "urn:csabs:theorem/ContextFreeLanguage-empty-language": {
+      "kind": "witness",
+      "symbol": "Catalog.cfl_empty",
+      "module": "Catalog.LanguageClasses",
+      "mapping": "Construct one nonterminal with no rules. No terminal word is reachable, giving the empty language for every finite alphabet, including the empty alphabet.",
+      "limitations": "Selected mathematical profile only; no blanket software refinement, missing closure theorem or automata-equivalence proof. Verification requires fresh compiler and axiom-audit evidence.",
+      "expectedType": "∀ {A : Type} [Fintype A] , Catalog.ContextFreeLanguage (0 : Language A)",
+      "premiseMapping": {
+        "urn:csabs:axiom/ContextFreeLanguage-defining-profile": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Construct one nonterminal with no rules. No terminal word is reachable, giving the empty language for every finite alphabet, including the empty alphabet.",
+        "urn:csabs:axiom/ContextFreeGrammar-productions": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Construct one nonterminal with no rules. No terminal word is reachable, giving the empty language for every finite alphabet, including the empty alphabet.",
+        "urn:csabs:axiom/ContextFreeGrammar-derivations": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Construct one nonterminal with no rules. No terminal word is reachable, giving the empty language for every finite alphabet, including the empty alphabet."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "72dd1fd27792da21f99ce27b48d57f0c38da65b8c8a051f1b0647bde506ac52f"
+    },
+    "urn:csabs:theorem/ContextFreeLanguage-nonempty-example": {
+      "kind": "witness",
+      "symbol": "Catalog.cfl_nonempty_example",
+      "module": "Catalog.LanguageClasses",
+      "mapping": "Construct one nonterminal and its empty right-side production; one derivation produces the empty word. This supplies an inhabited-language example distinct from the empty-language model.",
+      "limitations": "Selected mathematical profile only; no blanket software refinement, missing closure theorem or automata-equivalence proof. Verification requires fresh compiler and axiom-audit evidence.",
+      "expectedType": "∀ {A : Type} [Fintype A] , Catalog.ContextFreeLanguage (Catalog.epsilonCFGrammar A).grammar.language ∧ [] ∈ (Catalog.epsilonCFGrammar A).grammar.language",
+      "premiseMapping": {
+        "urn:csabs:axiom/ContextFreeLanguage-defining-profile": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Construct one nonterminal and its empty right-side production; one derivation produces the empty word. This supplies an inhabited-language example distinct from the empty-language model.",
+        "urn:csabs:axiom/ContextFreeGrammar-productions": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Construct one nonterminal and its empty right-side production; one derivation produces the empty word. This supplies an inhabited-language example distinct from the empty-language model.",
+        "urn:csabs:axiom/ContextFreeGrammar-derivations": "Instantiate exact finite words/languages and the finite-nonterminal grammar profile; these premises describe the interpretation, not hypotheses of their own satisfaction. Construct one nonterminal and its empty right-side production; one derivation produces the empty word. This supplies an inhabited-language example distinct from the empty-language model."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "94a0e60b13e8cfa66f593b2b80721484ddadf26ece2fc67bf4205d8709e45054"
     }
   }
 }

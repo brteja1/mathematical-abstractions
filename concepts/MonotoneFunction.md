@@ -20,6 +20,7 @@ A function between ordered sets that preserves their order.
 - [Closure Operator](ClosureOperator.md) — `specializationOf`
 - [Galois Connection](GaloisConnection.md) — `requiresConcept`
 - [Monotone dataflow framework (forward join profile)](MonotoneDataflow.md) — `requiresConcept`
+- [Linear extension of a partial order](OrderLinearExtension.md) — `relatedConcept`
 
 ## Mathematical formulation
 

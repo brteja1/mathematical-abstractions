@@ -2408,6 +2408,138 @@
       "path": "lean/Catalog/StreamCipher.lean",
       "accessedOn": "2026-11-20",
       "sourceRole": "Executable model and proof witness source; separate from mathematical provenance."
+    },
+    {
+      "id": "urn:csabs:source/mathlib-scoped-digest",
+      "type": "Source",
+      "label": "Mathlib pinned set-restricted injectivity and equality rules",
+      "url": "https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Data/Set",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "consulted-definition-and-theorem-reference",
+      "citation": "Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679: Data/Set/Operations.lean, Set.InjOn; Data/Set/Function.lean, Set.InjOn.eq_iff and Set.InjOn.mono. Apache-2.0."
+    },
+    {
+      "id": "urn:csabs:source/lean-digests",
+      "type": "Source",
+      "label": "Catalog digest models and scoped-injectivity witnesses",
+      "path": "lean/Catalog/Digests.lean",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "local-lean-formulation-and-proof"
+    },
+    {
+      "id": "urn:csabs:source/nist-hash-glossary-2026-11-20",
+      "type": "Source",
+      "label": "NIST CSRC glossary: hash function and collision resistance",
+      "url": "https://csrc.nist.gov/glossary/term/hash_function",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "consulted-terminology-reference",
+      "citation": "NIST CSRC Glossary, hash function, Definitions; collision resistance, Definitions (https://csrc.nist.gov/glossary/term/collision_resistance)."
+    },
+    {
+      "id": "urn:csabs:source/seven-semver",
+      "type": "Source",
+      "label": "Semantic Versioning 2.0.0",
+      "url": "https://semver.org/spec/v2.0.0.html",
+      "citation": "Specification §§2,9–11 and Backus–Naur grammar.",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "consulted-definition-and-theorem-reference"
+    },
+    {
+      "id": "urn:csabs:source/seven-calendar",
+      "type": "Source",
+      "label": "RFC 3339: Date and Time on the Internet: Timestamps",
+      "url": "https://www.rfc-editor.org/rfc/rfc3339",
+      "citation": "July 2002, §§5.6–5.7 and Appendix C: Gregorian month lengths and leap-year calculation.",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "consulted-definition-and-theorem-reference"
+    },
+    {
+      "id": "urn:csabs:source/seven-shacl",
+      "type": "Source",
+      "label": "W3C Shapes Constraint Language (SHACL)",
+      "url": "https://www.w3.org/TR/shacl/",
+      "citation": "W3C Recommendation 20 July 2017, §§4.1,4.2.1–4.2.2,4.7.3: class/node constraints, minCount/maxCount and property paths.",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "consulted-definition-and-theorem-reference"
+    },
+    {
+      "id": "urn:csabs:source/seven-dmn",
+      "type": "Source",
+      "label": "OMG Decision Model and Notation 1.5",
+      "url": "https://www.omg.org/spec/DMN/1.5/PDF",
+      "citation": "Decision Model and Notation v1.5, §8.2.11.1, FIRST hit policy.",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "consulted-definition-and-theorem-reference"
+    },
+    {
+      "id": "urn:csabs:source/seven-transducer",
+      "type": "Source",
+      "label": "MathWorks Stateflow: Overview of Mealy and Moore Machines",
+      "url": "https://www.mathworks.com/help/stateflow/ug/overview-of-mealy-and-moore-machines.html",
+      "citation": "R2026b, Semantics of Mealy and Moore Machines: next-state and output equations.",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "consulted-definition-and-theorem-reference"
+    },
+    {
+      "id": "urn:csabs:source/seven-replace",
+      "type": "Source",
+      "label": "Rust standard library: str replacement and match indices",
+      "url": "https://doc.rust-lang.org/std/primitive.str.html",
+      "citation": "std 1.100.0; replace and match_indices, including the first disjoint overlapping-match example.",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "consulted-definition-and-theorem-reference"
+    },
+    {
+      "id": "urn:csabs:source/seven-mathlib",
+      "type": "Source",
+      "label": "Pinned Mathlib list and lexicographic order constructions and linear-order extension",
+      "url": "https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib",
+      "citation": "Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679: Data/Finset/Card.lean Finset.card; Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Data/List/Lex.lean linearOrder; Order/Sum/Order.lean Sum.Lex; Order/Prod/Lex/Basic.lean Prod.Lex; Order/Extension/Linear.lean extend_partialOrder and toLinearExtension. Apache-2.0.",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "consulted-definition-and-theorem-reference"
+    },
+    {
+      "id": "urn:csabs:source/seven-lean-models",
+      "type": "Source",
+      "label": "Catalog release, sequence, transducer, schema, date and extension models and witnesses",
+      "path": "lean/Catalog/ReleaseSequenceModels.lean",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "local-lean-formulation-and-proof"
+    },
+    {
+      "id": "urn:csabs:source/language-acquisition-regex",
+      "type": "Source",
+      "label": "Mathlib classical regular expressions and derivative matching",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Computability/RegularExpressions.lean",
+      "citation": "Pinned Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679, Mathlib/Computability/RegularExpressions.lean, Apache-2.0; consulted local pinned source.",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "consulted-definition-and-theorem-reference"
+    },
+    {
+      "id": "urn:csabs:source/language-acquisition-cfg",
+      "type": "Source",
+      "label": "Mathlib context-free grammars and reversal",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Computability/ContextFreeGrammar.lean",
+      "citation": "Pinned Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679, Mathlib/Computability/ContextFreeGrammar.lean, Apache-2.0; consulted local pinned source.",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "consulted-definition-and-theorem-reference"
+    },
+    {
+      "id": "urn:csabs:source/language-acquisition-language",
+      "type": "Source",
+      "label": "Mathlib formal languages and Kleene iteration",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Computability/Language.lean",
+      "citation": "Pinned Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679, Mathlib/Computability/Language.lean, Apache-2.0; consulted local pinned source.",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "consulted-definition-and-theorem-reference"
+    },
+    {
+      "id": "urn:csabs:source/language-acquisition-lean-models",
+      "type": "Source",
+      "label": "Catalog language classes and regular-expression models and witnesses",
+      "path": "lean/Catalog/LanguageClasses.lean",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "local-lean-formulation-and-proof"
     }
   ]
 }

@@ -12,6 +12,10 @@ Finite typed entity sets and positive-arity relationship sets with named roles a
 
 **Prerequisites:** [Finite set collection](FiniteSet.md), [Dependent function (Pi type)](DependentFunction.md), [Named relational schema with attribute domains](RelationalSchema.md)
 
+## Backlinks
+
+- [Typed-edge schema with incidence cardinalities](TypedEdgeSchema.md) — `relatedConcept`
+
 ## Mathematical formulation
 
 For finite entity/relationship kinds, entities E\_k are finite sets of global IDs. A relationship of kind r is a tuple t:Fin(arity(r))→ID with arity(r)>0 and ∀i,t\_i∈E\_{role(r,i)}. Entity and relationship attributes are total functions into their declared dependent value domains. Additional cardinality/weak-entity constraints require extra predicates.

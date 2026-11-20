@@ -42,7 +42,9 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Finite serial Kripke structure for model checking](concepts/KripkeStructure.md)
   - [Action-labelled transition system with initial states](concepts/LabelledTransitionSystem.md)
   - [Linear temporal logic on infinite discrete traces](concepts/LinearTemporalLogic.md)
+  - [Mealy deterministic finite sequential transducer](concepts/MealyTransducer.md)
   - [Classical propositional modal logic K](concepts/ModalLogic.md)
+  - [Moore deterministic finite sequential transducer](concepts/MooreTransducer.md)
   - [Nondeterministic finite automaton without epsilon moves](concepts/NFA.md)
   - [Simulation](concepts/Simulation.md)
   - [Strong finite partial-trace equivalence](concepts/TraceEquivalence.md)
@@ -173,9 +175,11 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
       - [Uniquely decodable binary source code](concepts/UniquelyDecodableCode.md)
 - **Languages and computation**
   - [Context-free grammar of finite words](concepts/ContextFreeGrammar.md)
+  - [Context-free language over a finite alphabet](concepts/ContextFreeLanguage.md)
   - [Deterministic finite automaton with total transition](concepts/DFA.md)
   - [Formal language of finite words](concepts/FormalLanguage.md)
   - [Nondeterministic finite automaton without epsilon moves](concepts/NFA.md)
+  - [Classical regular expression of finite words](concepts/RegularExpression.md)
   - [Regular language over a finite alphabet](concepts/RegularLanguage.md)
   - [Deterministic one-tape Turing machine](concepts/TuringMachine.md)
 - **Logic and proof**
@@ -231,6 +235,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Exact real number](concepts/RealNumber.md)
   - [Saturating Integer](concepts/SaturatingInteger.md)
 - **Order and fixed points**
+  - [Positive-year proleptic Gregorian calendar date](concepts/CalendarDate.md)
   - [Closure Operator](concepts/ClosureOperator.md)
   - [Complete Lattice](concepts/CompleteLattice.md)
   - [Program side-effect algebra (total sequential effect-quantale profile)](concepts/EffectAlgebra.md)
@@ -243,8 +248,10 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Min-plus semiring (tropical semiring, min convention)](concepts/MinPlusSemiring.md)
   - [Monotone dataflow framework (forward join profile)](concepts/MonotoneDataflow.md)
   - [Monotone Function](concepts/MonotoneFunction.md)
+  - [Linear extension of a partial order](concepts/OrderLinearExtension.md)
   - [Partial Order](concepts/PartialOrder.md)
   - [Preorder](concepts/Preorder.md)
+  - [Release precedence under Semantic Versioning 2.0.0](concepts/SemanticVersionOrder.md)
   - [Total Order](concepts/TotalOrder.md)
   - [Well Founded Relation](concepts/WellFoundedRelation.md)
 - **Probability and stochastic models**
@@ -358,14 +365,18 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Finite database relation under set semantics](concepts/DatabaseRelation.md)
   - [Finite JSON document value (interoperable profile)](concepts/DocumentValue.md)
   - [Finite typed entity-relationship instance](concepts/EntityRelationshipModel.md)
+  - [Ordered first-hit decision table](concepts/FirstHitDecisionTable.md)
   - [Functional dependency on a relational schema](concepts/FunctionalDependency.md)
   - [Finite labelled property graph (single-valued profile)](concepts/PropertyGraph.md)
   - [Finite RDF 1.1 dataset](concepts/RDFDataset.md)
   - [Finite RDF 1.1 graph](concepts/RDFGraph.md)
   - [Named relational schema with attribute domains](concepts/RelationalSchema.md)
   - [SKOS Core ontology (relational semantic presentation)](concepts/SKOS.md)
+  - [Typed-edge schema with incidence cardinalities](concepts/TypedEdgeSchema.md)
 - **Set theory and foundations**
   - [Cartesian product](concepts/CartesianProduct.md)
+  - [Digest with explicit collision freedom on a specified set](concepts/CollisionFreeDigest.md)
+  - [Deterministic finite digest function](concepts/DigestFunction.md)
   - [Equivalence relation](concepts/EquivalenceRelation.md)
   - [Finite set collection](concepts/FiniteSet.md)
   - [Total function](concepts/Function.md)
@@ -439,6 +450,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Two-valued Boolean type](concepts/BooleanType.md) | Types and semantics |
 | [Byte-addressed memory with typed access obligations](concepts/ByteMemory.md) | Programming-language semantics → Compiler transformations |
 | [Closest vector problem (Euclidean search relation)](concepts/CVP.md) | Cryptography → Public-key cryptography → Lattice-based cryptography |
+| [Positive-year proleptic Gregorian calendar date](concepts/CalendarDate.md) | Order and fixed points |
 | [Call-boundary behavior and effect contract](concepts/CallEffectContract.md) | Programming-language semantics → Compiler transformations |
 | [Candidate key relative to functional dependencies](concepts/CandidateKey.md) | Relational data modelling |
 | [Cartesian product](concepts/CartesianProduct.md) | Set theory and foundations |
@@ -448,12 +460,14 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Single-inheritance class table and dynamic dispatch](concepts/ClassTable.md) | Programming-language semantics → Object-oriented semantics |
 | [Nonempty bounded closed interval](concepts/ClosedInterval.md) | Data structures → Intervals |
 | [Closure Operator](concepts/ClosureOperator.md) | Order and fixed points |
+| [Digest with explicit collision freedom on a specified set](concepts/CollisionFreeDigest.md) | Set theory and foundations |
 | [Checked signed-integer constant-evaluation fragment](concepts/CompileTimeEvaluation.md) | Programming-language semantics → Generic programming → Template metaprogramming |
 | [Complete Lattice](concepts/CompleteLattice.md) | Order and fixed points |
 | [Exact complex number](concepts/ComplexNumber.md) | Numeric computation |
 | [Conditional entropy (finite discrete profile)](concepts/ConditionalEntropy.md) | Information theory |
 | [Conditional probability given a positive-probability event](concepts/ConditionalProbability.md) | Probability and stochastic models |
 | [Context-free grammar of finite words](concepts/ContextFreeGrammar.md) | Languages and computation |
+| [Context-free language over a finite alphabet](concepts/ContextFreeLanguage.md) | Languages and computation |
 | [Control-flow graph (single entry, single exit)](concepts/ControlFlowGraph.md) | Graph theory, Programming-language semantics → Compiler transformations |
 | [CFG refinement with path correspondence and progress](concepts/ControlFlowRefinement.md) | Programming-language semantics → Compiler transformations |
 | [Control-sensitive communicating thread instances](concepts/ConvergentExecution.md) | Programming-language semantics → Compiler transformations |
@@ -469,6 +483,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Deque](concepts/Deque.md) | Data structures → Sequential collections |
 | [Typed IR legalization with representation relation](concepts/DialectConversion.md) | Programming-language semantics → Compiler transformations |
 | [Diffie–Hellman key exchange (prime-order cyclic-group core)](concepts/DiffieHellman.md) | Cryptography → Public-key cryptography |
+| [Deterministic finite digest function](concepts/DigestFunction.md) | Set theory and foundations |
 | [Directed Graph](concepts/DirectedGraph.md) | Graph theory |
 | [Finite directed multigraph with edge identities](concepts/DirectedMultigraph.md) | Graph theory |
 | [Discrete memoryless channel (stationary finite profile)](concepts/DiscreteMemorylessChannel.md) | Information theory |
@@ -494,6 +509,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Finite fused sequence iterator](concepts/FiniteIterator.md) | Data structures → Sequential collections |
 | [Finite set collection](concepts/FiniteSet.md) | Data structures → Sets and mappings, Set theory and foundations |
 | [Finite carrier with exhaustive enumeration](concepts/FiniteType.md) | Types and semantics |
+| [Ordered first-hit decision table](concepts/FirstHitDecisionTable.md) | Relational data modelling |
 | [First-order formula syntax with named variables](concepts/FirstOrderFormula.md) | Logic and proof |
 | [Classical first-order natural deduction with equality](concepts/FirstOrderNaturalDeduction.md) | Logic and proof |
 | [Single-sorted first-order signature](concepts/FirstOrderSignature.md) | Logic and proof |
@@ -556,6 +572,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Martingale (discrete-time real-valued)](concepts/Martingale.md) | Probability and stochastic models → Stochastic processes, Probability and stochastic models, Measure theory |
 | [Finite rectangular matrix over a field](concepts/Matrix.md) | Algebra → Linear and multilinear algebra |
 | [Exact structured matrix decomposition witness](concepts/MatrixDecomposition.md) | Algebra → Linear and multilinear algebra → Matrix decompositions |
+| [Mealy deterministic finite sequential transducer](concepts/MealyTransducer.md) | Behavior and transition systems |
 | [Measurable function](concepts/MeasurableFunction.md) | Measure theory |
 | [Measurable space (sigma-algebra on a carrier)](concepts/MeasurableSpace.md) | Measure theory |
 | [Measure space (nonnegative countably additive measure)](concepts/MeasureSpace.md) | Measure theory |
@@ -569,6 +586,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Monoid](concepts/Monoid.md) | Algebra |
 | [Monotone dataflow framework (forward join profile)](concepts/MonotoneDataflow.md) | Programming-language semantics → Compiler transformations, Order and fixed points |
 | [Monotone Function](concepts/MonotoneFunction.md) | Order and fixed points |
+| [Moore deterministic finite sequential transducer](concepts/MooreTransducer.md) | Behavior and transition systems |
 | [Finite set-valued multimap](concepts/Multimap.md) | Data structures → Sets and mappings |
 | [Multiset](concepts/Multiset.md) | Data structures → Sets and mappings |
 | [Mutex (non-reentrant mutual-exclusion lock)](concepts/Mutex.md) | Concurrency and distributed systems → Synchronization → Locks |
@@ -579,6 +597,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Sequential object heap with reference identity](concepts/ObjectHeap.md) | Programming-language semantics → Object-oriented semantics |
 | [Visible-state object invariant protocol](concepts/ObjectInvariant.md) | Programming-language semantics → Object-oriented semantics |
 | [Option Type](concepts/OptionType.md) | Types and semantics |
+| [Linear extension of a partial order](concepts/OrderLinearExtension.md) | Order and fixed points |
 | [Ordered collection without duplicates](concepts/OrderedSet.md) | Data structures → Sets and mappings, Data structures → Sequential collections |
 | [Contextual parametric declaration instantiation](concepts/ParametricInstantiation.md) | Programming-language semantics → Generic programming |
 | [Parity-check matrix of a linear block code (row convention)](concepts/ParityCheckMatrix.md) | Information theory → Coding theory → Channel coding |
@@ -611,6 +630,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Rate–distortion function (finite iid source, average cost)](concepts/RateDistortion.md) | Information theory → Coding theory → Source coding |
 | [Exact rational number](concepts/RationalNumber.md) | Numeric computation |
 | [Exact real number](concepts/RealNumber.md) | Numeric computation |
+| [Classical regular expression of finite words](concepts/RegularExpression.md) | Languages and computation |
 | [Regular language over a finite alphabet](concepts/RegularLanguage.md) | Languages and computation |
 | [Binary relation](concepts/Relation.md) | Set theory and foundations |
 | [Named relational schema with attribute domains](concepts/RelationalSchema.md) | Relational data modelling, Types and semantics |
@@ -629,6 +649,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Safety Property](concepts/SafetyProperty.md) | Concurrency and distributed systems → Correctness properties |
 | [Saturating Integer](concepts/SaturatingInteger.md) | Numeric computation |
 | [Scoped induction recurrence and trip-count facts](concepts/ScalarRecurrence.md) | Programming-language semantics → Compiler transformations |
+| [Release precedence under Semantic Versioning 2.0.0](concepts/SemanticVersionOrder.md) | Order and fixed points |
 | [Semigroup](concepts/Semigroup.md) | Algebra |
 | [Semiring](concepts/Semiring.md) | Algebra |
 | [Finite sequence (List datatype)](concepts/Sequence.md) | Data structures → Sequential collections |
@@ -672,6 +693,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Tree](concepts/Tree.md) | Graph theory |
 | [Finite prefix dictionary](concepts/Trie.md) | Data structures → Tree structures, Data structures → Sets and mappings |
 | [Deterministic one-tape Turing machine](concepts/TuringMachine.md) | Languages and computation, Programming-language semantics |
+| [Typed-edge schema with incidence cardinalities](concepts/TypedEdgeSchema.md) | Relational data modelling |
 | [Uniquely decodable binary source code](concepts/UniquelyDecodableCode.md) | Information theory → Coding theory → Source coding |
 | [Unit type](concepts/UnitType.md) | Types and semantics |
 | [VHDL generic elaboration and static structural generation](concepts/VHDLGenericElaboration.md) | Programming-language semantics → Generic programming → VHDL generics |

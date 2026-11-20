@@ -19,9 +19,11 @@ A language recognized by some deterministic finite automaton over the same alpha
 ## Backlinks
 
 - [Context-free grammar of finite words](ContextFreeGrammar.md) — `relatedConcept`
+- [Context-free language over a finite alphabet](ContextFreeLanguage.md) — `relatedConcept`
 - [Deterministic finite automaton with total transition](DFA.md) — `relatedConcept`
 - [Formal language of finite words](FormalLanguage.md) — `relatedConcept`
 - [Nondeterministic finite automaton without epsilon moves](NFA.md) — `relatedConcept`
+- [Classical regular expression of finite words](RegularExpression.md) — `relatedConcept`
 
 ## Mathematical formulation
 

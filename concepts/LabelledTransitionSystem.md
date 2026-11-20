@@ -24,6 +24,8 @@ States evolve through an arbitrary relation labelled by actions; a chosen initia
 - [Single-thread cooperative scheduler with explicit waiting](CooperativeScheduler.md) — `specializationOf`
 - [Lamport bakery lock protocol](LamportBakery.md) — `requiresConcept`
 - [Lock with compatible access modes](Lock.md) — `requiresConcept`
+- [Mealy deterministic finite sequential transducer](MealyTransducer.md) — `relatedConcept`
+- [Moore deterministic finite sequential transducer](MooreTransducer.md) — `relatedConcept`
 - [Nondeterministic finite automaton without epsilon moves](NFA.md) — `requiresConcept`
 - [Nondeterministic finite automaton without epsilon moves](NFA.md) — `specializationOf`
 - [Strong finite partial-trace equivalence](TraceEquivalence.md) — `requiresConcept`

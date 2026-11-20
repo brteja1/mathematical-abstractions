@@ -18,6 +18,7 @@ Authenticated encryption combining counter-mode use of a 128-bit block cipher wi
 
 - [AES-GCM (96-bit nonce, 128-bit tag profile)](AESGCM.md) — `requiresConcept`
 - [AES-GCM (96-bit nonce, 128-bit tag profile)](AESGCM.md) — `specializationOf`
+- [Synchronous stream cipher (bounded XOR-keystream profile)](StreamCipher.md) — `relatedConcept`
 
 ## Mathematical formulation
 

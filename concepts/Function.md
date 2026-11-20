@@ -19,9 +19,12 @@ A mapping assigning each element of a domain exactly one element of a codomain.
 - [Analysis validity across IR mutation](AnalysisPreservation.md) — `requiresConcept`
 - [Finite ordered binary tree with node labels](BinaryTree.md) — `requiresConcept`
 - [Finite block code (Hamming profile)](BlockCode.md) — `requiresConcept`
+- [Digest with explicit collision freedom on a specified set](CollisionFreeDigest.md) — `requiresConcept`
 - [Deterministic finite automaton with total transition](DFA.md) — `requiresConcept`
+- [Deterministic finite digest function](DigestFunction.md) — `requiresConcept`
 - [Finite directed multigraph with edge identities](DirectedMultigraph.md) — `requiresConcept`
 - [Empty type](EmptyType.md) — `requiresConcept`
+- [Ordered first-hit decision table](FirstHitDecisionTable.md) — `requiresConcept`
 - [Fixed Point](FixedPoint.md) — `requiresConcept`
 - [Function type](FunctionType.md) — `requiresConcept`
 - [Functional dependency on a relational schema](FunctionalDependency.md) — `relatedConcept`
@@ -32,12 +35,14 @@ A mapping assigning each element of a domain exactly one element of a codomain.
 - [Linear map](LinearMap.md) — `specializationOf`
 - [Finite rectangular matrix over a field](Matrix.md) — `requiresConcept`
 - [Finite rectangular matrix over a field](Matrix.md) — `specializationOf`
+- [Mealy deterministic finite sequential transducer](MealyTransducer.md) — `requiresConcept`
 - [Measurable function](MeasurableFunction.md) — `requiresConcept`
 - [Measurable function](MeasurableFunction.md) — `specializationOf`
 - [Empirical mode set (all observed frequency maximizers)](Mode.md) — `requiresConcept`
 - [Empirical mode set (all observed frequency maximizers)](Mode.md) — `specializationOf`
 - [Monotone Function](MonotoneFunction.md) — `requiresConcept`
 - [Monotone Function](MonotoneFunction.md) — `specializationOf`
+- [Moore deterministic finite sequential transducer](MooreTransducer.md) — `requiresConcept`
 - [Partial function](PartialFunction.md) — `requiresConcept`
 - [Pigeonhole Principle](PigeonholePrinciple.md) — `requiresConcept`
 - [Named relational schema with attribute domains](RelationalSchema.md) — `requiresConcept`
