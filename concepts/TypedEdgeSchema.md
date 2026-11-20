@@ -16,7 +16,7 @@ A schema assigning each edge kind one source vertex type and one target vertex t
 
 ## Mathematical formulation
 
-G=(V,E,src,dst,τV,τE). Endpoint laws: τV(src e)=s(τE e), τV(dst e)=t(τE e). cout(v,k)=|{e∈E | src e=v ∧ τE e=k}|; cin analogously. Conforms iff endpoints agree and applicable counts satisfy bounds.
+G=(V,E,src,dst,τV,τE). Endpoint laws: τV(src e)=s(τE e), τV(dst e)=t(τE e). cout(v,k)=|{e∈E | src e=v ∧ τE e=k}|; cin analogously. Conforms iff endpoints agree and applicable counts satisfy bounds. Utility profile: Optional profile: actual endpoint type ≤ declared endpoint type. For every vertex and edge kind, outgoing/incoming incidence bounds apply when actual vertex type ≤ that kind’s corresponding declared endpoint type. Count each edge identity once, including parallel edges. Overlapping type eligibility imposes each applicable constraint. Exact profile is recovered with ≤ defined as equality; no inheritance is silently added to the original conformance predicate.
 
 **Lean formulation** (in its source module context):
 
@@ -42,7 +42,7 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 ## Interface and scope
 
-**axiomBasis:** Conformance requires endpoint type agreement for every edge and lower≤incident-edge-count≤upper for each applicable vertex/kind and direction. A loop contributes once to each direction. Upper bound None imposes no upper constraint.
+**axiomBasis:** Conformance requires endpoint type agreement for every edge and lower≤incident-edge-count≤upper for each applicable vertex/kind and direction. A loop contributes once to each direction. Upper bound None imposes no upper constraint. Utility definitions are recorded separately; optional bottom, subtype and goal-relative conventions are conditional and do not strengthen the base carrier.
 
 **basisKind:** defined-structure
 
@@ -104,6 +104,30 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 **provenanceKind:** adapted
 
+<a id="node-urn-csabs-operation-TypedEdgeSchema-subtype-conforms"></a>
+
+### subtype-conforms
+
+`urn:csabs:operation/TypedEdgeSchema-subtype-conforms`
+
+**signature:** subtypeConforms : Preorder(T)×Schema(T,K)×TypedGraph(V,E,T,K)→Prop
+
+**description:** Optional profile: actual endpoint type ≤ declared endpoint type. For every vertex and edge kind, outgoing/incoming incidence bounds apply when actual vertex type ≤ that kind’s corresponding declared endpoint type. Count each edge identity once, including parallel edges. Overlapping type eligibility imposes each applicable constraint. Exact profile is recovered with ≤ defined as equality; no inheritance is silently added to the original conformance predicate.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** Optional profile: actual endpoint type ≤ declared endpoint type. For every vertex and edge kind, outgoing/incoming incidence bounds apply when actual vertex type ≤ that kind’s corresponding declared endpoint type. Count each edge identity once, including parallel edges. Overlapping type eligibility imposes each applicable constraint. Exact profile is recovered with ≤ defined as equality; no inheritance is silently added to the original conformance predicate.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Logic/Relation.lean: reflexive/transitive relations; Data/Finset/Filter.lean: incidence counting; constructed subtype-qualified endpoint profile
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
 ## Axioms and defining rules
 
 <a id="node-urn-csabs-axiom-TypedEdgeSchema-defining-profile"></a>
@@ -127,6 +151,30 @@ Read with the linked module’s imports, namespaces, universes and section varia
 **sourceLocator:** SHACL §§4.1,4.2.1–4.2.2,4.7.3; Mathlib Finset cardinality
 
 **sourceNote:** Constructed adaptation of type and inclusive cardinality constraints. SHACL property paths count distinct value nodes; this profile deliberately counts multigraph edge identities, so it is not a SHACL equivalence.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-axiom-TypedEdgeSchema-utility-profile"></a>
+
+### Explicit utility operation definitions
+
+`urn:csabs:axiom/TypedEdgeSchema-utility-profile`
+
+**statement:** Optional profile: actual endpoint type ≤ declared endpoint type. For every vertex and edge kind, outgoing/incoming incidence bounds apply when actual vertex type ≤ that kind’s corresponding declared endpoint type. Count each edge identity once, including parallel edges. Overlapping type eligibility imposes each applicable constraint. Exact profile is recovered with ≤ defined as equality; no inheritance is silently added to the original conformance predicate.
+
+**formalStatement:** subtypeConforms : Preorder(T)×Schema(T,K)×TypedGraph(V,E,T,K)→Prop: Optional profile: actual endpoint type ≤ declared endpoint type. For every vertex and edge kind, outgoing/incoming incidence bounds apply when actual vertex type ≤ that kind’s corresponding declared endpoint type. Count each edge identity once, including parallel edges. Overlapping type eligibility imposes each applicable constraint. Exact profile is recovered with ≤ defined as equality; no inheritance is silently added to the original conformance predicate.
+
+**assumptions:** Base concept conventions remain unchanged. Optional profiles apply only under their explicitly stated additional hypotheses; identity equality, finite inputs and exact mathematics.
+
+**ruleRole:** defining-rule
+
+**reviewStatus:** Definitions of a selected extension, not new foundational axioms; individual model and result witnesses are separate.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Logic/Relation.lean: reflexive/transitive relations; Data/Finset/Filter.lean: incidence counting; constructed subtype-qualified endpoint profile
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
 
 **provenanceKind:** adapted
 
@@ -266,6 +314,171 @@ Read with the linked module’s imports, namespaces, universes and section varia
 }
 ```
 
+<a id="node-urn-csabs-theorem-TypedEdgeSchema-subtype-exact-recovery"></a>
+
+### subtype-exact-recovery
+
+`urn:csabs:theorem/TypedEdgeSchema-subtype-exact-recovery`
+
+**statement:** Subtype-qualified conformance with equality as the subtype preorder is exactly the original exact-type conformance predicate, including incidence bounds.
+
+**formalStatement:** Subtype-qualified conformance with equality as the subtype preorder is exactly the original exact-type conformance predicate, including incidence bounds.
+
+**proofSketch:** Unfold both definitions; endpoint and eligible-bound predicates coincide.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](TypedEdgeSchema.md#node-urn-csabs-axiom-TypedEdgeSchema-utility-profile)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog ReachabilityUtilities Lean formulations and proofs; path: lean/Catalog/ReachabilityUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Logic/Relation.lean: reflexive/transitive relations; Data/Finset/Filter.lean: incidence counting; constructed subtype-qualified endpoint profile; Catalog.subtype_exact
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+Subtype-qualified conformance with equality as the subtype preorder is exactly the original exact-type conformance predicate, including incidence bounds.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {V E T K : Type} [Fintype E] [DecidableEq V] [DecidableEq K]
+    (s : Catalog.TypedEdgeSchema T K) (g : Catalog.TypedEdgeGraph V E T K), Catalog.subtypeSchemaConforms Eq s g ↔ Catalog.schemaConforms s g
+```
+
+**Source:** [`Catalog.subtype_exact`](../lean/Catalog/ReachabilityUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Subtype-qualified conformance with equality as the subtype preorder is exactly the original exact-type conformance predicate, including incidence bounds. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/TypedEdgeSchema-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
+<a id="node-urn-csabs-theorem-TypedEdgeSchema-subtype-model-satisfaction"></a>
+
+### subtype-model-satisfaction
+
+`urn:csabs:theorem/TypedEdgeSchema-subtype-model-satisfaction`
+
+**statement:** The original one-vertex, one-edge schema model also satisfies the equality-subtype profile.
+
+**formalStatement:** The original one-vertex, one-edge schema model also satisfies the equality-subtype profile.
+
+**proofSketch:** Recover the existing concrete exact-type satisfaction theorem.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](TypedEdgeSchema.md#node-urn-csabs-axiom-TypedEdgeSchema-utility-profile); [defining profile](TypedEdgeSchema.md#node-urn-csabs-axiom-TypedEdgeSchema-defining-profile)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog ReachabilityUtilities Lean formulations and proofs; path: lean/Catalog/ReachabilityUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Logic/Relation.lean: reflexive/transitive relations; Data/Finset/Filter.lean: incidence counting; constructed subtype-qualified endpoint profile; Catalog.subtype_model
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+The original one-vertex, one-edge schema model also satisfies the equality-subtype profile.
+
+**Lean formulation** (in its source module context):
+
+```lean
+Catalog.subtypeSchemaConforms Eq Catalog.unitSchema Catalog.unitGraph
+```
+
+**Source:** [`Catalog.subtype_model`](../lean/Catalog/ReachabilityUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** The original one-vertex, one-edge schema model also satisfies the equality-subtype profile. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/TypedEdgeSchema-defining-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:axiom/TypedEdgeSchema-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
+<a id="node-urn-csabs-theorem-TypedEdgeSchema-proper-subtype-model"></a>
+
+### proper-subtype-model
+
+`urn:csabs:theorem/TypedEdgeSchema-proper-subtype-model`
+
+**statement:** A graph whose endpoint types are 0 conforms to declarations of type 1 under the Fin 2 ≤ preorder with zero lower/unbounded upper incidence bounds, while exact-type conformance fails.
+
+**formalStatement:** A graph whose endpoint types are 0 conforms to declarations of type 1 under the Fin 2 ≤ preorder with zero lower/unbounded upper incidence bounds, while exact-type conformance fails.
+
+**proofSketch:** Evaluate concrete endpoints, preorder comparisons and incidence bounds; endpoint equality 0=1 is false.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](TypedEdgeSchema.md#node-urn-csabs-axiom-TypedEdgeSchema-utility-profile)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog ReachabilityUtilities Lean formulations and proofs; path: lean/Catalog/ReachabilityUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Logic/Relation.lean: reflexive/transitive relations; Data/Finset/Filter.lean: incidence counting; constructed subtype-qualified endpoint profile; Catalog.subtype_strict_model
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+A graph whose endpoint types are 0 conforms to declarations of type 1 under the Fin 2 ≤ preorder with zero lower/unbounded upper incidence bounds, while exact-type conformance fails.
+
+**Lean formulation** (in its source module context):
+
+```lean
+Catalog.subtypeSchemaConforms (· ≤ ·) Catalog.subtypeExampleSchema Catalog.subtypeExampleGraph ∧
+    ¬ Catalog.schemaConforms Catalog.subtypeExampleSchema Catalog.subtypeExampleGraph
+```
+
+**Source:** [`Catalog.subtype_strict_model`](../lean/Catalog/ReachabilityUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** A graph whose endpoint types are 0 conforms to declarations of type 1 under the Fin 2 ≤ preorder with zero lower/unbounded upper incidence bounds, while exact-type conformance fails. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/TypedEdgeSchema-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
 ## Concept provenance
 
 - [W3C Shapes Constraint Language (SHACL)](https://www.w3.org/TR/shacl/); citation: W3C Recommendation 20 July 2017, §§4.1,4.2.1–4.2.2,4.7.3: class/node constraints, minCount/maxCount and property paths.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference
@@ -307,10 +520,10 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/PropertyGraph",
       "urn:csabs:concept/EntityRelationshipModel"
     ],
-    "axiomBasis": "Conformance requires endpoint type agreement for every edge and lower≤incident-edge-count≤upper for each applicable vertex/kind and direction. A loop contributes once to each direction. Upper bound None imposes no upper constraint.",
+    "axiomBasis": "Conformance requires endpoint type agreement for every edge and lower≤incident-edge-count≤upper for each applicable vertex/kind and direction. A loop contributes once to each direction. Upper bound None imposes no upper constraint. Utility definitions are recorded separately; optional bottom, subtype and goal-relative conventions are conditional and do not strengthen the base carrier.",
     "basisKind": "defined-structure",
     "basisScope": "Finite graph vertex and edge identity sets V,E, and finite vertex/edge kind sets T,K in the intended finite-schema profile. Types and endpoint maps are total; every vertex/edge has exactly one kind. Loops and parallel edge identities are allowed. For each k count edges of that kind incident to each vertex of the required endpoint type; zero counts and isolated vertices are checked. Bounds count edge identities, not distinct targets, pairs, or SHACL value nodes. None means no upper bound; inclusive min/max. Inconsistent bounds and schemas with no conforming graph are representable and not asserted satisfiable. The Lean predicate generalizes to arbitrary V,T,K with finite E. Empty kinds require compatible empty graphs; no inheritance, subtyping, attributes or global connectivity constraints.",
-    "mathematicalFormulation": "G=(V,E,src,dst,τV,τE). Endpoint laws: τV(src e)=s(τE e), τV(dst e)=t(τE e). cout(v,k)=|{e∈E | src e=v ∧ τE e=k}|; cin analogously. Conforms iff endpoints agree and applicable counts satisfy bounds.",
+    "mathematicalFormulation": "G=(V,E,src,dst,τV,τE). Endpoint laws: τV(src e)=s(τE e), τV(dst e)=t(τE e). cout(v,k)=|{e∈E | src e=v ∧ τE e=k}|; cin analogously. Conforms iff endpoints agree and applicable counts satisfy bounds. Utility profile: Optional profile: actual endpoint type ≤ declared endpoint type. For every vertex and edge kind, outgoing/incoming incidence bounds apply when actual vertex type ≤ that kind’s corresponding declared endpoint type. Count each edge identity once, including parallel edges. Overlapping type eligibility imposes each applicable constraint. Exact profile is recovered with ≤ defined as equality; no inheritance is silently added to the original conformance predicate.",
     "coverageStatus": "basis-reviewed",
     "reviewStatus": "Sourced model with separately registered Lean satisfaction and derived witnesses; verification requires fresh audit evidence.",
     "verificationObligation": [
@@ -319,17 +532,22 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "hasOperation": [
       "urn:csabs:operation/TypedEdgeSchema-conforms",
-      "urn:csabs:operation/TypedEdgeSchema-incidence"
+      "urn:csabs:operation/TypedEdgeSchema-incidence",
+      "urn:csabs:operation/TypedEdgeSchema-subtype-conforms"
     ],
     "hasAxiom": [
-      "urn:csabs:axiom/TypedEdgeSchema-defining-profile"
+      "urn:csabs:axiom/TypedEdgeSchema-defining-profile",
+      "urn:csabs:axiom/TypedEdgeSchema-utility-profile"
     ],
     "hasLaw": [
       "urn:csabs:law/TypedEdgeSchema-bound-relaxation"
     ],
     "hasTheorem": [
       "urn:csabs:theorem/TypedEdgeSchema-model-satisfaction",
-      "urn:csabs:theorem/TypedEdgeSchema-bound-relaxation"
+      "urn:csabs:theorem/TypedEdgeSchema-bound-relaxation",
+      "urn:csabs:theorem/TypedEdgeSchema-subtype-exact-recovery",
+      "urn:csabs:theorem/TypedEdgeSchema-subtype-model-satisfaction",
+      "urn:csabs:theorem/TypedEdgeSchema-proper-subtype-model"
     ],
     "source": [
       "urn:csabs:source/seven-shacl",
@@ -382,6 +600,23 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "provenanceKind": "adapted"
   },
   {
+    "id": "urn:csabs:operation/TypedEdgeSchema-subtype-conforms",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/TypedEdgeSchema",
+    "name": "subtype-conforms",
+    "signature": "subtypeConforms : Preorder(T)×Schema(T,K)×TypedGraph(V,E,T,K)→Prop",
+    "description": "Optional profile: actual endpoint type ≤ declared endpoint type. For every vertex and edge kind, outgoing/incoming incidence bounds apply when actual vertex type ≤ that kind’s corresponding declared endpoint type. Count each edge identity once, including parallel edges. Overlapping type eligibility imposes each applicable constraint. Exact profile is recovered with ≤ defined as equality; no inheritance is silently added to the original conformance predicate.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "Optional profile: actual endpoint type ≤ declared endpoint type. For every vertex and edge kind, outgoing/incoming incidence bounds apply when actual vertex type ≤ that kind’s corresponding declared endpoint type. Count each edge identity once, including parallel edges. Overlapping type eligibility imposes each applicable constraint. Exact profile is recovered with ≤ defined as equality; no inheritance is silently added to the original conformance predicate.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Logic/Relation.lean: reflexive/transitive relations; Data/Finset/Filter.lean: incidence counting; constructed subtype-qualified endpoint profile",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
     "id": "urn:csabs:axiom/TypedEdgeSchema-defining-profile",
     "type": "Axiom",
     "name": "defining profile",
@@ -401,6 +636,27 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "SHACL §§4.1,4.2.1–4.2.2,4.7.3; Mathlib Finset cardinality",
     "sourceNote": "Constructed adaptation of type and inclusive cardinality constraints. SHACL property paths count distinct value nodes; this profile deliberately counts multigraph edge identities, so it is not a SHACL equivalence.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:axiom/TypedEdgeSchema-utility-profile",
+    "type": "Axiom",
+    "name": "Explicit utility operation definitions",
+    "statement": "Optional profile: actual endpoint type ≤ declared endpoint type. For every vertex and edge kind, outgoing/incoming incidence bounds apply when actual vertex type ≤ that kind’s corresponding declared endpoint type. Count each edge identity once, including parallel edges. Overlapping type eligibility imposes each applicable constraint. Exact profile is recovered with ≤ defined as equality; no inheritance is silently added to the original conformance predicate.",
+    "formalStatement": "subtypeConforms : Preorder(T)×Schema(T,K)×TypedGraph(V,E,T,K)→Prop: Optional profile: actual endpoint type ≤ declared endpoint type. For every vertex and edge kind, outgoing/incoming incidence bounds apply when actual vertex type ≤ that kind’s corresponding declared endpoint type. Count each edge identity once, including parallel edges. Overlapping type eligibility imposes each applicable constraint. Exact profile is recovered with ≤ defined as equality; no inheritance is silently added to the original conformance predicate.",
+    "assumptions": [
+      "Base concept conventions remain unchanged. Optional profiles apply only under their explicitly stated additional hypotheses; identity equality, finite inputs and exact mathematics."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/TypedEdgeSchema"
+    ],
+    "ruleRole": "defining-rule",
+    "reviewStatus": "Definitions of a selected extension, not new foundational axioms; individual model and result witnesses are separate.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Logic/Relation.lean: reflexive/transitive relations; Data/Finset/Filter.lean: incidence counting; constructed subtype-qualified endpoint profile",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
     "provenanceKind": "adapted"
   },
   {
@@ -495,6 +751,106 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "leanModelMapping": "Use transitivity for the lowered minimum and for each enlarged finite maximum; none denotes unbounded.",
     "leanModelLimitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
     "leanPremiseMapping": "{\"urn:csabs:axiom/TypedEdgeSchema-defining-profile\": \"Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Use transitivity for the lowered minimum and for each enlarged finite maximum; none denotes unbounded.\"}"
+  },
+  {
+    "id": "urn:csabs:theorem/TypedEdgeSchema-subtype-exact-recovery",
+    "type": "Theorem",
+    "name": "subtype-exact-recovery",
+    "statement": "Subtype-qualified conformance with equality as the subtype preorder is exactly the original exact-type conformance predicate, including incidence bounds.",
+    "formalStatement": "Subtype-qualified conformance with equality as the subtype preorder is exactly the original exact-type conformance predicate, including incidence bounds.",
+    "mathematicalFormulation": "Subtype-qualified conformance with equality as the subtype preorder is exactly the original exact-type conformance predicate, including incidence bounds.",
+    "proofSketch": "Unfold both definitions; endpoint and eligible-bound predicates coincide.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/TypedEdgeSchema"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/TypedEdgeSchema-utility-profile"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-ReachabilityUtilities"
+    ],
+    "sourceLocator": "Logic/Relation.lean: reflexive/transitive relations; Data/Finset/Filter.lean: incidence counting; constructed subtype-qualified endpoint profile; Catalog.subtype_exact",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {V E T K : Type} [Fintype E] [DecidableEq V] [DecidableEq K]\n    (s : Catalog.TypedEdgeSchema T K) (g : Catalog.TypedEdgeGraph V E T K), Catalog.subtypeSchemaConforms Eq s g ↔ Catalog.schemaConforms s g",
+    "leanModelMapping": "Subtype-qualified conformance with equality as the subtype preorder is exactly the original exact-type conformance predicate, including incidence bounds. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/TypedEdgeSchema-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-ReachabilityUtilities",
+    "formulationLocator": "Catalog.subtype_exact"
+  },
+  {
+    "id": "urn:csabs:theorem/TypedEdgeSchema-subtype-model-satisfaction",
+    "type": "Theorem",
+    "name": "subtype-model-satisfaction",
+    "statement": "The original one-vertex, one-edge schema model also satisfies the equality-subtype profile.",
+    "formalStatement": "The original one-vertex, one-edge schema model also satisfies the equality-subtype profile.",
+    "mathematicalFormulation": "The original one-vertex, one-edge schema model also satisfies the equality-subtype profile.",
+    "proofSketch": "Recover the existing concrete exact-type satisfaction theorem.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/TypedEdgeSchema"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/TypedEdgeSchema-utility-profile",
+      "urn:csabs:axiom/TypedEdgeSchema-defining-profile"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-ReachabilityUtilities"
+    ],
+    "sourceLocator": "Logic/Relation.lean: reflexive/transitive relations; Data/Finset/Filter.lean: incidence counting; constructed subtype-qualified endpoint profile; Catalog.subtype_model",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "Catalog.subtypeSchemaConforms Eq Catalog.unitSchema Catalog.unitGraph",
+    "leanModelMapping": "The original one-vertex, one-edge schema model also satisfies the equality-subtype profile. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/TypedEdgeSchema-defining-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:axiom/TypedEdgeSchema-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-ReachabilityUtilities",
+    "formulationLocator": "Catalog.subtype_model"
+  },
+  {
+    "id": "urn:csabs:theorem/TypedEdgeSchema-proper-subtype-model",
+    "type": "Theorem",
+    "name": "proper-subtype-model",
+    "statement": "A graph whose endpoint types are 0 conforms to declarations of type 1 under the Fin 2 ≤ preorder with zero lower/unbounded upper incidence bounds, while exact-type conformance fails.",
+    "formalStatement": "A graph whose endpoint types are 0 conforms to declarations of type 1 under the Fin 2 ≤ preorder with zero lower/unbounded upper incidence bounds, while exact-type conformance fails.",
+    "mathematicalFormulation": "A graph whose endpoint types are 0 conforms to declarations of type 1 under the Fin 2 ≤ preorder with zero lower/unbounded upper incidence bounds, while exact-type conformance fails.",
+    "proofSketch": "Evaluate concrete endpoints, preorder comparisons and incidence bounds; endpoint equality 0=1 is false.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/TypedEdgeSchema"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/TypedEdgeSchema-utility-profile"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-ReachabilityUtilities"
+    ],
+    "sourceLocator": "Logic/Relation.lean: reflexive/transitive relations; Data/Finset/Filter.lean: incidence counting; constructed subtype-qualified endpoint profile; Catalog.subtype_strict_model",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "Catalog.subtypeSchemaConforms (· ≤ ·) Catalog.subtypeExampleSchema Catalog.subtypeExampleGraph ∧\n    ¬ Catalog.schemaConforms Catalog.subtypeExampleSchema Catalog.subtypeExampleGraph",
+    "leanModelMapping": "A graph whose endpoint types are 0 conforms to declarations of type 1 under the Fin 2 ≤ preorder with zero lower/unbounded upper incidence bounds, while exact-type conformance fails. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/TypedEdgeSchema-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-ReachabilityUtilities",
+    "formulationLocator": "Catalog.subtype_strict_model"
   }
 ]
 ```

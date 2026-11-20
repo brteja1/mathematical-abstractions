@@ -18,6 +18,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | AsymmetricCoroutine | 3 | 3 | 2 | 1 | defined-operational-semantics |
 | AtomicMemoryModel | 2 | 2 | 1 | 0 | relational-structural-definition |
 | BM25 | 5 | 2 | 2 | 1 | defined-structure |
+| BM25FTS5 | 6 | 1 | 0 | 7 | defined-structure |
 | BTree | 6 | 6 | 2 | 1 | extensional-structural-definition |
 | BagRelation | 4 | 5 | 1 | 1 | extensional-structural-definition |
 | BayesianNetwork | 3 | 2 | 0 | 1 | defined-structure |
@@ -61,7 +62,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | ControlFlowRefinement | 2 | 2 | 1 | 0 | relational-structural-definition |
 | ConvergentExecution | 2 | 2 | 1 | 0 | relational-structural-definition |
 | CooperativeScheduler | 3 | 4 | 2 | 2 | defined-operational-semantics |
-| DAG | 1 | 2 | 0 | 2 | defined-structure |
+| DAG | 1 | 2 | 0 | 5 | defined-structure |
 | DFA | 2 | 2 | 1 | 3 | defined-structure |
 | DataLayout | 2 | 2 | 1 | 0 | relational-structural-definition |
 | DatabaseRelation | 6 | 3 | 2 | 2 | defined-structure |
@@ -96,7 +97,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | FiniteDistribution | 3 | 3 | 1 | 1 | extensional-structural-definition |
 | FiniteField | 7 | 14 | 0 | 3 | axiomatic-structure |
 | FiniteIterator | 3 | 3 | 1 | 1 | extensional-structural-definition |
-| FiniteSet | 3 | 2 | 2 | 2 | defined-structure |
+| FiniteSet | 9 | 3 | 2 | 3 | defined-structure |
 | FiniteType | 2 | 3 | 1 | 1 | extensional-structural-definition |
 | FirstHitDecisionTable | 1 | 1 | 3 | 4 | defined-structure |
 | FirstOrderFormula | 3 | 3 | 1 | 1 | inductive-definition |
@@ -117,7 +118,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | GeneratorMatrix | 1 | 1 | 0 | 1 | extensional-structural-definition |
 | GenericArgumentBinding | 2 | 2 | 2 | 0 | extensional-structural-definition |
 | GenericSignature | 2 | 2 | 2 | 0 | extensional-structural-definition |
-| Graph | 1 | 2 | 1 | 1 | defined-structure |
+| Graph | 4 | 3 | 1 | 3 | defined-structure |
 | Group | 2 | 5 | 1 | 2 | axiomatic-structure |
 | GuardedRewrite | 2 | 2 | 1 | 0 | relational-structural-definition |
 | HammingSpace | 2 | 1 | 1 | 1 | extensional-structural-definition |
@@ -134,8 +135,8 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | JavaTypeErasure | 3 | 2 | 2 | 0 | extensional-structural-definition |
 | JavaTypeInference | 3 | 3 | 2 | 0 | extensional-structural-definition |
 | JavaWildcardCapture | 2 | 2 | 2 | 0 | extensional-structural-definition |
-| JoinSemilattice | 2 | 5 | 1 | 1 | extensional-structural-definition |
-| KleeneLogic | 6 | 2 | 2 | 2 | defined-structure |
+| JoinSemilattice | 4 | 6 | 3 | 3 | extensional-structural-definition |
+| KleeneLogic | 8 | 3 | 3 | 3 | defined-structure |
 | KripkeStructure | 2 | 2 | 1 | 3 | defined-structure |
 | LLVMAttributeContract | 2 | 2 | 1 | 0 | relational-structural-definition |
 | LLVMFloatingPointSemantics | 2 | 2 | 1 | 0 | relational-structural-definition |
@@ -143,7 +144,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | LLVMPoisonSemantics | 2 | 3 | 1 | 0 | relational-structural-definition |
 | LUDecomposition | 2 | 2 | 1 | 0 | defined-structure |
 | LWE | 3 | 2 | 0 | 2 | defined-structure |
-| LabelledTransitionSystem | 2 | 2 | 2 | 2 | defined-structure |
+| LabelledTransitionSystem | 7 | 3 | 2 | 4 | defined-structure |
 | LamportBakery | 4 | 4 | 1 | 1 | operational-state-machine-definition |
 | Lattice | 2 | 3 | 1 | 1 | defined-structure |
 | LinearBlockCode | 1 | 1 | 0 | 5 | extensional-structural-definition |
@@ -156,7 +157,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | LoopInvariant | 1 | 2 | 1 | 1 | defined-structure |
 | LoopIterationMapping | 2 | 2 | 1 | 0 | relational-structural-definition |
 | Manifold | 3 | 3 | 0 | 2 | defined-structure |
-| Map | 4 | 5 | 2 | 1 | defined-structure |
+| Map | 6 | 6 | 2 | 3 | defined-structure |
 | MarkovChain | 2 | 2 | 0 | 2 | defined-structure |
 | Martingale | 2 | 1 | 0 | 1 | defined-structure |
 | Matrix | 5 | 3 | 0 | 3 | defined-structure |
@@ -186,7 +187,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | ObjectHeap | 5 | 3 | 2 | 0 | extensional-structural-definition |
 | ObjectInvariant | 3 | 3 | 0 | 1 | extensional-structural-definition |
 | OptionType | 4 | 4 | 3 | 2 | extensional-type-theory |
-| OrderLinearExtension | 2 | 1 | 1 | 2 | defined-structure |
+| OrderLinearExtension | 2 | 1 | 1 | 3 | defined-structure |
 | OrderedSet | 3 | 3 | 2 | 2 | defined-structure |
 | ParametricInstantiation | 2 | 2 | 2 | 0 | extensional-structural-definition |
 | ParityCheckMatrix | 1 | 1 | 0 | 1 | extensional-structural-definition |
@@ -215,7 +216,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | RDFGraph | 4 | 4 | 1 | 1 | extensional-structural-definition |
 | RSA | 2 | 2 | 0 | 1 | defined-structure |
 | RandomVariable | 1 | 1 | 0 | 1 | defined-structure |
-| RankedRetrieval | 3 | 1 | 0 | 1 | defined-structure |
+| RankedRetrieval | 6 | 2 | 0 | 3 | defined-structure |
 | RateDistortion | 1 | 1 | 0 | 2 | extensional-structural-definition |
 | RationalNumber | 4 | 3 | 1 | 1 | extensional-structural-definition |
 | RealNumber | 3 | 2 | 1 | 1 | extensional-structural-definition |
@@ -225,7 +226,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | RelationalSchema | 3 | 3 | 3 | 1 | defined-structure |
 | RelativeEntropy | 1 | 1 | 0 | 1 | extensional-structural-definition |
 | ResiduatedFuzzyLogic | 3 | 6 | 1 | 1 | defined-structure |
-| RewriteSystem | 3 | 2 | 1 | 0 | extensional-structural-definition |
+| RewriteSystem | 6 | 3 | 1 | 5 | extensional-structural-definition |
 | Ring | 3 | 11 | 0 | 1 | axiomatic-structure |
 | RootedTree | 3 | 3 | 1 | 1 | extensional-structural-definition |
 | RoseTree | 4 | 4 | 1 | 1 | extensional-structural-definition |
@@ -241,12 +242,12 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | SemanticVersionOrder | 2 | 1 | 1 | 2 | defined-structure |
 | Semigroup | 1 | 4 | 0 | 1 | axiomatic-structure |
 | Semiring | 2 | 12 | 0 | 1 | axiomatic-structure |
-| Sequence | 9 | 7 | 8 | 8 | defined-structure |
+| Sequence | 19 | 8 | 10 | 12 | defined-structure |
 | SequentialConsistency | 1 | 1 | 1 | 1 | defined-structure |
 | Set | 6 | 9 | 2 | 2 | foundational-theory |
 | ShannonEntropy | 1 | 1 | 0 | 2 | extensional-structural-definition |
 | Simulation | 1 | 1 | 1 | 1 | defined-structure |
-| SingleParentForest | 4 | 2 | 1 | 0 | extensional-structural-definition |
+| SingleParentForest | 5 | 3 | 1 | 5 | extensional-structural-definition |
 | SmoothManifold | 1 | 2 | 0 | 1 | defined-structure |
 | SparseVector | 4 | 3 | 1 | 1 | extensional-structural-definition |
 | SpeculationSafety | 1 | 2 | 1 | 0 | relational-structural-definition |
@@ -277,12 +278,12 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | TopologicalSpace | 2 | 4 | 0 | 1 | defined-structure |
 | TotalOrder | 1 | 4 | 1 | 1 | defined-structure |
 | TraceEquivalence | 1 | 1 | 1 | 3 | defined-structure |
-| TransitionSystem | 1 | 2 | 1 | 1 | defined-structure |
+| TransitionSystem | 6 | 3 | 1 | 3 | defined-structure |
 | TranslationValidation | 1 | 2 | 1 | 0 | relational-structural-definition |
 | Tree | 1 | 3 | 0 | 2 | defined-structure |
 | Trie | 3 | 4 | 1 | 1 | extensional-structural-definition |
 | TuringMachine | 3 | 4 | 1 | 3 | defined-structure |
-| TypedEdgeSchema | 2 | 1 | 1 | 2 | defined-structure |
+| TypedEdgeSchema | 3 | 2 | 1 | 5 | defined-structure |
 | UniquelyDecodableCode | 2 | 1 | 0 | 2 | extensional-structural-definition |
 | UnitType | 1 | 1 | 0 | 2 | extensional-type-theory |
 | VHDLGenericElaboration | 4 | 3 | 2 | 0 | extensional-structural-definition |
@@ -293,6 +294,6 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | WeightedDirectedGraph | 3 | 2 | 1 | 1 | extensional-structural-definition |
 | WellFoundedRelation | 1 | 1 | 1 | 1 | defined-structure |
 
-288 of 288 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
+289 of 289 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
 
 Use `ruleRole` to distinguish foundational axioms, structure constraints, and defining equations. Use `basisScope` for interface boundaries. Alternate language policies, intensional equality, IEEE payload/trap details, and formal proof artifacts require further formalization.

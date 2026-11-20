@@ -19,6 +19,7 @@ An unordered finite subset of a fixed carrier, with extensional equality and no 
 ## Backlinks
 
 - [BM25 score model (positive-IDF, normalized single-field profile)](BM25.md) — `requiresConcept`
+- [SQLite FTS5-style BM25 phrase and weighted-column profile](BM25FTS5.md) — `requiresConcept`
 - [B-tree (balanced multiway search tree)](BTree.md) — `requiresConcept`
 - [Strict binary search tree](BinarySearchTree.md) — `requiresConcept`
 - [Finite block code (Hamming profile)](BlockCode.md) — `requiresConcept`
@@ -45,7 +46,7 @@ An unordered finite subset of a fixed carrier, with extensional equality and no 
 
 ## Mathematical formulation
 
-FinSet(A)={S⊆A | S is finite}; S=T ⇔ ∀x, x∈S↔x∈T. insert(S,x)=S∪{x}; erase(S,x)=S∖{x}. The empty set is included; repeated insertion has no multiplicity.
+FinSet(A)={S⊆A | S is finite}; S=T ⇔ ∀x, x∈S↔x∈T. insert(S,x)=S∪{x}; erase(S,x)=S∖{x}. The empty set is included; repeated insertion has no multiplicity. Utility profile: s∪t={x | x∈s ∨ x∈t}; s∩t={x | x∈s ∧ x∈t}; s∖t={x | x∈s ∧ x∉t}; s⊆t iff every member of s belongs to t; empty s is allowed.; filter(p,s)={x∈s | p(x)}; exact predicate semantics.; The number of distinct elements; |∅|=0; arbitrary-precision natural result.
 
 **Lean formulation** (in its source module context):
 
@@ -65,7 +66,7 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 ## Interface and scope
 
-**axiomBasis:** Selected defining presentation: Collection states are finite subsets and equality is membership equality. Empty and insertion have set membership semantics.
+**axiomBasis:** Selected defining presentation: Collection states are finite subsets and equality is membership equality. Empty and insertion have set membership semantics. Utility definitions are recorded separately; optional bottom, subtype and goal-relative conventions are conditional and do not strengthen the base carrier.
 
 **basisKind:** defined-structure
 
@@ -129,6 +130,150 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 **postcondition:** Adds an element; an existing element is not duplicated.
 
+<a id="node-urn-csabs-operation-FiniteSet-union"></a>
+
+### union
+
+`urn:csabs:operation/FiniteSet-union`
+
+**signature:** union : FinSet(A)²→FinSet(A)
+
+**description:** s∪t={x | x∈s ∨ x∈t}
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** s∪t={x | x∈s ∨ x∈t}
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Data/Finset/Filter.lean: mem_filter; Data/Finset/Card.lean: card_union_add_card_inter; Data/Finset/Basic.lean: union, inter, sdiff membership
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-FiniteSet-intersection"></a>
+
+### intersection
+
+`urn:csabs:operation/FiniteSet-intersection`
+
+**signature:** intersection : FinSet(A)²→FinSet(A)
+
+**description:** s∩t={x | x∈s ∧ x∈t}
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** s∩t={x | x∈s ∧ x∈t}
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Data/Finset/Filter.lean: mem_filter; Data/Finset/Card.lean: card_union_add_card_inter; Data/Finset/Basic.lean: union, inter, sdiff membership
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-FiniteSet-difference"></a>
+
+### difference
+
+`urn:csabs:operation/FiniteSet-difference`
+
+**signature:** difference : FinSet(A)²→FinSet(A)
+
+**description:** s∖t={x | x∈s ∧ x∉t}
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** s∖t={x | x∈s ∧ x∉t}
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Data/Finset/Filter.lean: mem_filter; Data/Finset/Card.lean: card_union_add_card_inter; Data/Finset/Basic.lean: union, inter, sdiff membership
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-FiniteSet-subset"></a>
+
+### subset
+
+`urn:csabs:operation/FiniteSet-subset`
+
+**signature:** subset : FinSet(A)²→Prop
+
+**description:** s⊆t iff every member of s belongs to t; empty s is allowed.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** s⊆t iff every member of s belongs to t; empty s is allowed.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Data/Finset/Filter.lean: mem_filter; Data/Finset/Card.lean: card_union_add_card_inter; Data/Finset/Basic.lean: union, inter, sdiff membership
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-FiniteSet-filter"></a>
+
+### filter
+
+`urn:csabs:operation/FiniteSet-filter`
+
+**signature:** filter : (A→Prop)×FinSet(A)→FinSet(A)
+
+**description:** filter(p,s)={x∈s | p(x)}; exact predicate semantics.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** filter(p,s)={x∈s | p(x)}; exact predicate semantics.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Data/Finset/Filter.lean: mem_filter; Data/Finset/Card.lean: card_union_add_card_inter; Data/Finset/Basic.lean: union, inter, sdiff membership
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-FiniteSet-cardinality"></a>
+
+### cardinality
+
+`urn:csabs:operation/FiniteSet-cardinality`
+
+**signature:** cardinality : FinSet(A)→ℕ
+
+**description:** The number of distinct elements; |∅|=0; arbitrary-precision natural result.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** The number of distinct elements; |∅|=0; arbitrary-precision natural result.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Data/Finset/Filter.lean: mem_filter; Data/Finset/Card.lean: card_union_add_card_inter; Data/Finset/Basic.lean: union, inter, sdiff membership
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
 ## Axioms and defining rules
 
 <a id="node-urn-csabs-axiom-FiniteSet-carrier-extensionality"></a>
@@ -184,6 +329,30 @@ Read with the linked module’s imports, namespaces, universes and section varia
 **sourceLocator:** Finset definition; Finset.ext_iff; Finset.mem_insert
 
 **sourceNote:** Abstracts the finite-subset interface from Finset; no Lean representation or computability guarantee is assumed. Local notation specifies the chosen defining presentation.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-axiom-FiniteSet-utility-profile"></a>
+
+### Explicit utility operation definitions
+
+`urn:csabs:axiom/FiniteSet-utility-profile`
+
+**statement:** s∪t={x | x∈s ∨ x∈t}; s∩t={x | x∈s ∧ x∈t}; s∖t={x | x∈s ∧ x∉t}; s⊆t iff every member of s belongs to t; empty s is allowed.; filter(p,s)={x∈s | p(x)}; exact predicate semantics.; The number of distinct elements; |∅|=0; arbitrary-precision natural result.
+
+**formalStatement:** union : FinSet(A)²→FinSet(A): s∪t={x | x∈s ∨ x∈t}; intersection : FinSet(A)²→FinSet(A): s∩t={x | x∈s ∧ x∈t}; difference : FinSet(A)²→FinSet(A): s∖t={x | x∈s ∧ x∉t}; subset : FinSet(A)²→Prop: s⊆t iff every member of s belongs to t; empty s is allowed.; filter : (A→Prop)×FinSet(A)→FinSet(A): filter(p,s)={x∈s | p(x)}; exact predicate semantics.; cardinality : FinSet(A)→ℕ: The number of distinct elements; |∅|=0; arbitrary-precision natural result.
+
+**assumptions:** Base concept conventions remain unchanged. Optional profiles apply only under their explicitly stated additional hypotheses; identity equality, finite inputs and exact mathematics.
+
+**ruleRole:** defining-rule
+
+**reviewStatus:** Definitions of a selected extension, not new foundational axioms; individual model and result witnesses are separate.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Data/Finset/Filter.lean: mem_filter; Data/Finset/Card.lean: card_union_add_card_inter; Data/Finset/Basic.lean: union, inter, sdiff membership
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
 
 **provenanceKind:** adapted
 
@@ -319,6 +488,67 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 **dependsOn:** [carrier-extensionality](FiniteSet.md#node-urn-csabs-axiom-FiniteSet-carrier-extensionality); [constructors](FiniteSet.md#node-urn-csabs-axiom-FiniteSet-constructors); [induction-schema](NaturalNumber.md#node-urn-csabs-axiom-NaturalNumber-induction-schema)
 
+<a id="node-urn-csabs-theorem-FiniteSet-utility-membership-cardinality"></a>
+
+### utility-membership-cardinality
+
+`urn:csabs:theorem/FiniteSet-utility-membership-cardinality`
+
+**statement:** Union, intersection, difference, subset and filter have their displayed membership semantics, and |s∪t|+|s∩t|=|s|+|t|.
+
+**formalStatement:** Union, intersection, difference, subset and filter have their displayed membership semantics, and |s∪t|+|s∩t|=|s|+|t|.
+
+**proofSketch:** Instantiate finite-set membership lemmas and the inclusion-exclusion identity.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](FiniteSet.md#node-urn-csabs-axiom-FiniteSet-utility-profile); [carrier-extensionality](FiniteSet.md#node-urn-csabs-axiom-FiniteSet-carrier-extensionality)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog CollectionUtilities Lean formulations and proofs; path: lean/Catalog/CollectionUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Data/Finset/Filter.lean: mem_filter; Data/Finset/Card.lean: card_union_add_card_inter; Data/Finset/Basic.lean: union, inter, sdiff membership; Catalog.finiteSet_utilities
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+Union, intersection, difference, subset and filter have their displayed membership semantics, and |s∪t|+|s∩t|=|s|+|t|.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} [DecidableEq A] (s t : Finset A)
+    (p : A → Prop) [DecidablePred p] (x : A), (x ∈ s ∪ t ↔ x ∈ s ∨ x ∈ t) ∧
+    (x ∈ s ∩ t ↔ x ∈ s ∧ x ∈ t) ∧
+    (x ∈ s \ t ↔ x ∈ s ∧ x ∉ t) ∧
+    (s ⊆ t ↔ ∀ a ∈ s, a ∈ t) ∧
+    (x ∈ s.filter p ↔ x ∈ s ∧ p x) ∧
+    (s ∪ t).card + (s ∩ t).card = s.card + t.card
+```
+
+**Source:** [`Catalog.finiteSet_utilities`](../lean/Catalog/CollectionUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Union, intersection, difference, subset and filter have their displayed membership semantics, and |s∪t|+|s∩t|=|s|+|t|. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/FiniteSet-carrier-extensionality": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:axiom/FiniteSet-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
 ## Concept provenance
 
 - [Mathlib: finite sets, membership and extensionality](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Data/Finset/Defs.html); accessedOn: 2026-11-07; sourceRole: primary reference for selected mathematical interfaces
@@ -352,11 +582,18 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "hasOperation": [
       "urn:csabs:operation/FiniteSet-empty",
       "urn:csabs:operation/FiniteSet-member",
-      "urn:csabs:operation/FiniteSet-insert"
+      "urn:csabs:operation/FiniteSet-insert",
+      "urn:csabs:operation/FiniteSet-union",
+      "urn:csabs:operation/FiniteSet-intersection",
+      "urn:csabs:operation/FiniteSet-difference",
+      "urn:csabs:operation/FiniteSet-subset",
+      "urn:csabs:operation/FiniteSet-filter",
+      "urn:csabs:operation/FiniteSet-cardinality"
     ],
     "hasAxiom": [
       "urn:csabs:axiom/FiniteSet-carrier-extensionality",
-      "urn:csabs:axiom/FiniteSet-constructors"
+      "urn:csabs:axiom/FiniteSet-constructors",
+      "urn:csabs:axiom/FiniteSet-utility-profile"
     ],
     "hasLaw": [
       "urn:csabs:law/FiniteSet-insert-commutation",
@@ -364,7 +601,8 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "hasTheorem": [
       "urn:csabs:theorem/FiniteSet-insert-idempotence",
-      "urn:csabs:theorem/FiniteSet-finite-insertion-induction"
+      "urn:csabs:theorem/FiniteSet-finite-insertion-induction",
+      "urn:csabs:theorem/FiniteSet-utility-membership-cardinality"
     ],
     "requiresConcept": [
       "urn:csabs:concept/Set"
@@ -374,7 +612,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/Sequence"
     ],
     "coverageStatus": "basis-reviewed",
-    "axiomBasis": "Selected defining presentation: Collection states are finite subsets and equality is membership equality. Empty and insertion have set membership semantics.",
+    "axiomBasis": "Selected defining presentation: Collection states are finite subsets and equality is membership equality. Empty and insertion have set membership semantics. Utility definitions are recorded separately; optional bottom, subtype and goal-relative conventions are conditional and do not strengthen the base carrier.",
     "basisKind": "defined-structure",
     "basisScope": "A is any set with identity equality. Empty collections are allowed; membership is a mathematical predicate. Executable membership/insertion additionally require a way to decide equality.",
     "source": [
@@ -398,7 +636,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "formulationScope": "model",
     "leanModelMapping": "Finset A, quotient-based finite sets with extensional equality.",
     "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-    "mathematicalFormulation": "FinSet(A)={S⊆A | S is finite}; S=T ⇔ ∀x, x∈S↔x∈T. insert(S,x)=S∪{x}; erase(S,x)=S∖{x}. The empty set is included; repeated insertion has no multiplicity."
+    "mathematicalFormulation": "FinSet(A)={S⊆A | S is finite}; S=T ⇔ ∀x, x∈S↔x∈T. insert(S,x)=S∪{x}; erase(S,x)=S∖{x}. The empty set is included; repeated insertion has no multiplicity. Utility profile: s∪t={x | x∈s ∨ x∈t}; s∩t={x | x∈s ∧ x∈t}; s∖t={x | x∈s ∧ x∉t}; s⊆t iff every member of s belongs to t; empty s is allowed.; filter(p,s)={x∈s | p(x)}; exact predicate semantics.; The number of distinct elements; |∅|=0; arbitrary-precision natural result."
   },
   {
     "id": "urn:csabs:operation/FiniteSet-empty",
@@ -432,6 +670,108 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "precondition": "Arguments belong to the carriers in the signature.",
     "totality": "total mathematical operation on the stated domain",
     "postcondition": "Adds an element; an existing element is not duplicated."
+  },
+  {
+    "id": "urn:csabs:operation/FiniteSet-union",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/FiniteSet",
+    "name": "union",
+    "signature": "union : FinSet(A)²→FinSet(A)",
+    "description": "s∪t={x | x∈s ∨ x∈t}",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "s∪t={x | x∈s ∨ x∈t}",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Data/Finset/Filter.lean: mem_filter; Data/Finset/Card.lean: card_union_add_card_inter; Data/Finset/Basic.lean: union, inter, sdiff membership",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/FiniteSet-intersection",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/FiniteSet",
+    "name": "intersection",
+    "signature": "intersection : FinSet(A)²→FinSet(A)",
+    "description": "s∩t={x | x∈s ∧ x∈t}",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "s∩t={x | x∈s ∧ x∈t}",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Data/Finset/Filter.lean: mem_filter; Data/Finset/Card.lean: card_union_add_card_inter; Data/Finset/Basic.lean: union, inter, sdiff membership",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/FiniteSet-difference",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/FiniteSet",
+    "name": "difference",
+    "signature": "difference : FinSet(A)²→FinSet(A)",
+    "description": "s∖t={x | x∈s ∧ x∉t}",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "s∖t={x | x∈s ∧ x∉t}",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Data/Finset/Filter.lean: mem_filter; Data/Finset/Card.lean: card_union_add_card_inter; Data/Finset/Basic.lean: union, inter, sdiff membership",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/FiniteSet-subset",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/FiniteSet",
+    "name": "subset",
+    "signature": "subset : FinSet(A)²→Prop",
+    "description": "s⊆t iff every member of s belongs to t; empty s is allowed.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "s⊆t iff every member of s belongs to t; empty s is allowed.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Data/Finset/Filter.lean: mem_filter; Data/Finset/Card.lean: card_union_add_card_inter; Data/Finset/Basic.lean: union, inter, sdiff membership",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/FiniteSet-filter",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/FiniteSet",
+    "name": "filter",
+    "signature": "filter : (A→Prop)×FinSet(A)→FinSet(A)",
+    "description": "filter(p,s)={x∈s | p(x)}; exact predicate semantics.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "filter(p,s)={x∈s | p(x)}; exact predicate semantics.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Data/Finset/Filter.lean: mem_filter; Data/Finset/Card.lean: card_union_add_card_inter; Data/Finset/Basic.lean: union, inter, sdiff membership",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/FiniteSet-cardinality",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/FiniteSet",
+    "name": "cardinality",
+    "signature": "cardinality : FinSet(A)→ℕ",
+    "description": "The number of distinct elements; |∅|=0; arbitrary-precision natural result.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "The number of distinct elements; |∅|=0; arbitrary-precision natural result.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Data/Finset/Filter.lean: mem_filter; Data/Finset/Card.lean: card_union_add_card_inter; Data/Finset/Basic.lean: union, inter, sdiff membership",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
   },
   {
     "id": "urn:csabs:axiom/FiniteSet-carrier-extensionality",
@@ -479,6 +819,27 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Finset definition; Finset.ext_iff; Finset.mem_insert",
     "sourceNote": "Abstracts the finite-subset interface from Finset; no Lean representation or computability guarantee is assumed. Local notation specifies the chosen defining presentation.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:axiom/FiniteSet-utility-profile",
+    "type": "Axiom",
+    "name": "Explicit utility operation definitions",
+    "statement": "s∪t={x | x∈s ∨ x∈t}; s∩t={x | x∈s ∧ x∈t}; s∖t={x | x∈s ∧ x∉t}; s⊆t iff every member of s belongs to t; empty s is allowed.; filter(p,s)={x∈s | p(x)}; exact predicate semantics.; The number of distinct elements; |∅|=0; arbitrary-precision natural result.",
+    "formalStatement": "union : FinSet(A)²→FinSet(A): s∪t={x | x∈s ∨ x∈t}; intersection : FinSet(A)²→FinSet(A): s∩t={x | x∈s ∧ x∈t}; difference : FinSet(A)²→FinSet(A): s∖t={x | x∈s ∧ x∉t}; subset : FinSet(A)²→Prop: s⊆t iff every member of s belongs to t; empty s is allowed.; filter : (A→Prop)×FinSet(A)→FinSet(A): filter(p,s)={x∈s | p(x)}; exact predicate semantics.; cardinality : FinSet(A)→ℕ: The number of distinct elements; |∅|=0; arbitrary-precision natural result.",
+    "assumptions": [
+      "Base concept conventions remain unchanged. Optional profiles apply only under their explicitly stated additional hypotheses; identity equality, finite inputs and exact mathematics."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/FiniteSet"
+    ],
+    "ruleRole": "defining-rule",
+    "reviewStatus": "Definitions of a selected extension, not new foundational axioms; individual model and result witnesses are separate.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Data/Finset/Filter.lean: mem_filter; Data/Finset/Card.lean: card_union_add_card_inter; Data/Finset/Basic.lean: union, inter, sdiff membership",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
     "provenanceKind": "adapted"
   },
   {
@@ -597,6 +958,40 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:axiom/FiniteSet-constructors",
       "urn:csabs:axiom/NaturalNumber-induction-schema"
     ]
+  },
+  {
+    "id": "urn:csabs:theorem/FiniteSet-utility-membership-cardinality",
+    "type": "Theorem",
+    "name": "utility-membership-cardinality",
+    "statement": "Union, intersection, difference, subset and filter have their displayed membership semantics, and |s∪t|+|s∩t|=|s|+|t|.",
+    "formalStatement": "Union, intersection, difference, subset and filter have their displayed membership semantics, and |s∪t|+|s∩t|=|s|+|t|.",
+    "mathematicalFormulation": "Union, intersection, difference, subset and filter have their displayed membership semantics, and |s∪t|+|s∩t|=|s|+|t|.",
+    "proofSketch": "Instantiate finite-set membership lemmas and the inclusion-exclusion identity.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/FiniteSet"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/FiniteSet-utility-profile",
+      "urn:csabs:axiom/FiniteSet-carrier-extensionality"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-CollectionUtilities"
+    ],
+    "sourceLocator": "Data/Finset/Filter.lean: mem_filter; Data/Finset/Card.lean: card_union_add_card_inter; Data/Finset/Basic.lean: union, inter, sdiff membership; Catalog.finiteSet_utilities",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type u} [DecidableEq A] (s t : Finset A)\n    (p : A → Prop) [DecidablePred p] (x : A), (x ∈ s ∪ t ↔ x ∈ s ∨ x ∈ t) ∧\n    (x ∈ s ∩ t ↔ x ∈ s ∧ x ∈ t) ∧\n    (x ∈ s \\ t ↔ x ∈ s ∧ x ∉ t) ∧\n    (s ⊆ t ↔ ∀ a ∈ s, a ∈ t) ∧\n    (x ∈ s.filter p ↔ x ∈ s ∧ p x) ∧\n    (s ∪ t).card + (s ∩ t).card = s.card + t.card",
+    "leanModelMapping": "Union, intersection, difference, subset and filter have their displayed membership semantics, and |s∪t|+|s∩t|=|s|+|t|. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/FiniteSet-carrier-extensionality\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:axiom/FiniteSet-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-CollectionUtilities",
+    "formulationLocator": "Catalog.finiteSet_utilities"
   }
 ]
 ```

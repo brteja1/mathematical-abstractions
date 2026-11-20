@@ -166,6 +166,176 @@ No entries recorded. This does not assert absence of mathematical facts.
 
 **provenanceStatus:** legacy-source-missing
 
+<a id="node-urn-csabs-theorem-DAG-reachability-partial-order"></a>
+
+### reachability-partial-order
+
+`urn:csabs:theorem/DAG-reachability-partial-order`
+
+**statement:** Reflexive-transitive DAG reachability is reflexive, transitive and antisymmetric.
+
+**formalStatement:** Reflexive-transitive DAG reachability is reflexive, transitive and antisymmetric.
+
+**proofSketch:** A nontrivial mutual reachability pair gives a positive cycle, contradicting DAG acyclicity.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [acyclic](DAG.md#node-urn-csabs-axiom-DAG-acyclic)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog ReachabilityUtilities Lean formulations and proofs; path: lean/Catalog/ReachabilityUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Logic/Relation.lean: ReflTransGen and TransGen; Order/Extension/Linear.lean: extend_partialOrder; Catalog.dag_reach_order
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+Reflexive-transitive DAG reachability is reflexive, transitive and antisymmetric.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {V : Type u} (g : Catalog.DAG V), (∀ a, Relation.ReflTransGen g.edge a a) ∧
+    (∀ a b c, Relation.ReflTransGen g.edge a b → Relation.ReflTransGen g.edge b c →
+      Relation.ReflTransGen g.edge a c) ∧
+    (∀ a b, Relation.ReflTransGen g.edge a b → Relation.ReflTransGen g.edge b a → a = b)
+```
+
+**Source:** [`Catalog.dag_reach_order`](../lean/Catalog/ReachabilityUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Reflexive-transitive DAG reachability is reflexive, transitive and antisymmetric. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/DAG-acyclic": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
+<a id="node-urn-csabs-theorem-DAG-topological-converse"></a>
+
+### topological-converse
+
+`urn:csabs:theorem/DAG-topological-converse`
+
+**statement:** If a strict transitive irreflexive order respects every edge, the edge relation has no positive cycle.
+
+**formalStatement:** If a strict transitive irreflexive order respects every edge, the edge relation has no positive cycle.
+
+**proofSketch:** Lift each positive path into the strict order; a cycle contradicts irreflexivity.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [underlying-digraph](DAG.md#node-urn-csabs-axiom-DAG-underlying-digraph)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog ReachabilityUtilities Lean formulations and proofs; path: lean/Catalog/ReachabilityUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Logic/Relation.lean: ReflTransGen and TransGen; Order/Extension/Linear.lean: extend_partialOrder; Catalog.topological_converse
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+If a strict transitive irreflexive order respects every edge, the edge relation has no positive cycle.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {V : Type u} (edge : V → V → Prop)
+    (lt : V → V → Prop) (_irrefl : ∀ v, ¬ lt v v)
+    (_trans : ∀ a b c, lt a b → lt b c → lt a c)
+    (_respects : ∀ a b, edge a b → lt a b), ∀ v, ¬ Relation.TransGen edge v v
+```
+
+**Source:** [`Catalog.topological_converse`](../lean/Catalog/ReachabilityUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** If a strict transitive irreflexive order respects every edge, the edge relation has no positive cycle. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/DAG-underlying-digraph": "The underlying relation is the edge relation; the explicit strict transitive irreflexive respecting order is the theorem hypothesis, not assumed DAG acyclicity."
+}
+```
+
+<a id="node-urn-csabs-theorem-DAG-all-linear-extensions"></a>
+
+### all-linear-extensions
+
+`urn:csabs:theorem/DAG-all-linear-extensions`
+
+**statement:** a reaches b iff every linear extension of DAG reachability places a≤b. Quantification over all extensions is essential; one chosen order does not reflect reachability.
+
+**formalStatement:** a reaches b iff every linear extension of DAG reachability places a≤b. Quantification over all extensions is essential; one chosen order does not reflect reachability.
+
+**proofSketch:** Apply the general all-extensions separation theorem to the DAG reachability partial order.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [reachability-partial-order](DAG.md#node-urn-csabs-theorem-DAG-reachability-partial-order); [all-extensions-reflect-order](OrderLinearExtension.md#node-urn-csabs-theorem-OrderLinearExtension-all-extensions-reflect-order)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog ReachabilityUtilities Lean formulations and proofs; path: lean/Catalog/ReachabilityUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Logic/Relation.lean: ReflTransGen and TransGen; Order/Extension/Linear.lean: extend_partialOrder; Catalog.dag_all_extensions
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+a reaches b iff every linear extension of DAG reachability places a≤b. Quantification over all extensions is essential; one chosen order does not reflect reachability.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {V : Type u} (g : Catalog.DAG V) (a b : V), Relation.ReflTransGen g.edge a b ↔
+    ∀ s : V → V → Prop, IsLinearOrder V s → Relation.ReflTransGen g.edge ≤ s → s a b
+```
+
+**Source:** [`Catalog.dag_all_extensions`](../lean/Catalog/ReachabilityUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** a reaches b iff every linear extension of DAG reachability places a≤b. Quantification over all extensions is essential; one chosen order does not reflect reachability. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:theorem/DAG-reachability-partial-order": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:theorem/OrderLinearExtension-all-extensions-reflect-order": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
 ## Concept provenance
 
 Historical source gap retained; see `provenanceStatus` and the frozen baseline.
@@ -198,7 +368,10 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "hasLaw": [],
     "hasTheorem": [
       "urn:csabs:law/DAG-core",
-      "urn:csabs:theorem/DAG-positive-reach-irreflexive"
+      "urn:csabs:theorem/DAG-positive-reach-irreflexive",
+      "urn:csabs:theorem/DAG-reachability-partial-order",
+      "urn:csabs:theorem/DAG-topological-converse",
+      "urn:csabs:theorem/DAG-all-linear-extensions"
     ],
     "requiresConcept": [
       "urn:csabs:concept/DirectedGraph"
@@ -307,6 +480,106 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "reviewStatus": "editorial-summary; not machine-proved",
     "notationLanguage": "informal mathematical Unicode",
     "provenanceStatus": "legacy-source-missing"
+  },
+  {
+    "id": "urn:csabs:theorem/DAG-reachability-partial-order",
+    "type": "Theorem",
+    "name": "reachability-partial-order",
+    "statement": "Reflexive-transitive DAG reachability is reflexive, transitive and antisymmetric.",
+    "formalStatement": "Reflexive-transitive DAG reachability is reflexive, transitive and antisymmetric.",
+    "mathematicalFormulation": "Reflexive-transitive DAG reachability is reflexive, transitive and antisymmetric.",
+    "proofSketch": "A nontrivial mutual reachability pair gives a positive cycle, contradicting DAG acyclicity.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/DAG"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/DAG-acyclic"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-ReachabilityUtilities"
+    ],
+    "sourceLocator": "Logic/Relation.lean: ReflTransGen and TransGen; Order/Extension/Linear.lean: extend_partialOrder; Catalog.dag_reach_order",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {V : Type u} (g : Catalog.DAG V), (∀ a, Relation.ReflTransGen g.edge a a) ∧\n    (∀ a b c, Relation.ReflTransGen g.edge a b → Relation.ReflTransGen g.edge b c →\n      Relation.ReflTransGen g.edge a c) ∧\n    (∀ a b, Relation.ReflTransGen g.edge a b → Relation.ReflTransGen g.edge b a → a = b)",
+    "leanModelMapping": "Reflexive-transitive DAG reachability is reflexive, transitive and antisymmetric. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/DAG-acyclic\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-ReachabilityUtilities",
+    "formulationLocator": "Catalog.dag_reach_order"
+  },
+  {
+    "id": "urn:csabs:theorem/DAG-topological-converse",
+    "type": "Theorem",
+    "name": "topological-converse",
+    "statement": "If a strict transitive irreflexive order respects every edge, the edge relation has no positive cycle.",
+    "formalStatement": "If a strict transitive irreflexive order respects every edge, the edge relation has no positive cycle.",
+    "mathematicalFormulation": "If a strict transitive irreflexive order respects every edge, the edge relation has no positive cycle.",
+    "proofSketch": "Lift each positive path into the strict order; a cycle contradicts irreflexivity.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/DAG"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/DAG-underlying-digraph"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-ReachabilityUtilities"
+    ],
+    "sourceLocator": "Logic/Relation.lean: ReflTransGen and TransGen; Order/Extension/Linear.lean: extend_partialOrder; Catalog.topological_converse",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {V : Type u} (edge : V → V → Prop)\n    (lt : V → V → Prop) (_irrefl : ∀ v, ¬ lt v v)\n    (_trans : ∀ a b c, lt a b → lt b c → lt a c)\n    (_respects : ∀ a b, edge a b → lt a b), ∀ v, ¬ Relation.TransGen edge v v",
+    "leanModelMapping": "If a strict transitive irreflexive order respects every edge, the edge relation has no positive cycle. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/DAG-underlying-digraph\": \"The underlying relation is the edge relation; the explicit strict transitive irreflexive respecting order is the theorem hypothesis, not assumed DAG acyclicity.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-ReachabilityUtilities",
+    "formulationLocator": "Catalog.topological_converse"
+  },
+  {
+    "id": "urn:csabs:theorem/DAG-all-linear-extensions",
+    "type": "Theorem",
+    "name": "all-linear-extensions",
+    "statement": "a reaches b iff every linear extension of DAG reachability places a≤b. Quantification over all extensions is essential; one chosen order does not reflect reachability.",
+    "formalStatement": "a reaches b iff every linear extension of DAG reachability places a≤b. Quantification over all extensions is essential; one chosen order does not reflect reachability.",
+    "mathematicalFormulation": "a reaches b iff every linear extension of DAG reachability places a≤b. Quantification over all extensions is essential; one chosen order does not reflect reachability.",
+    "proofSketch": "Apply the general all-extensions separation theorem to the DAG reachability partial order.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/DAG"
+    ],
+    "dependsOn": [
+      "urn:csabs:theorem/DAG-reachability-partial-order",
+      "urn:csabs:theorem/OrderLinearExtension-all-extensions-reflect-order"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-ReachabilityUtilities"
+    ],
+    "sourceLocator": "Logic/Relation.lean: ReflTransGen and TransGen; Order/Extension/Linear.lean: extend_partialOrder; Catalog.dag_all_extensions",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {V : Type u} (g : Catalog.DAG V) (a b : V), Relation.ReflTransGen g.edge a b ↔\n    ∀ s : V → V → Prop, IsLinearOrder V s → Relation.ReflTransGen g.edge ≤ s → s a b",
+    "leanModelMapping": "a reaches b iff every linear extension of DAG reachability places a≤b. Quantification over all extensions is essential; one chosen order does not reflect reachability. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:theorem/DAG-reachability-partial-order\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:theorem/OrderLinearExtension-all-extensions-reflect-order\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-ReachabilityUtilities",
+    "formulationLocator": "Catalog.dag_all_extensions"
   }
 ]
 ```

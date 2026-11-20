@@ -23,7 +23,7 @@ A carrier equipped with an arbitrary one-step reduction relation and its finite 
 
 ## Mathematical formulation
 
-(A,→); →\* = finite reflexive transitive closure of →; NF(a) ⇔ ¬∃b,a→b. A may be empty; equality is carrier equality. One-step reduction may be nondeterministic, cyclic, nonterminating or infinitely branching; no effective decision procedure is assumed. This is abstract rewriting; substitution/context closure for term rewriting is an additional instantiation on TermAlgebra. Termination, confluence, semantic refinement and a normalization strategy are independent properties.
+(A,→); →\* = finite reflexive transitive closure of →; NF(a) ⇔ ¬∃b,a→b. A may be empty; equality is carrier equality. One-step reduction may be nondeterministic, cyclic, nonterminating or infinitely branching; no effective decision procedure is assumed. This is abstract rewriting; substitution/context closure for term rewriting is an additional instantiation on TermAlgebra. Termination, confluence, semantic refinement and a normalization strategy are independent properties. Utility profile: For every a→\*b and a→\*c there exists d with b→\*d and c→\*d; global confluence, not merely local one-step confluence.; The converse step relation is well-founded, excluding infinite forward reduction chains in the classical model; no fixed global step bound is asserted.; With both termination and confluence, choose the unique reachable normal form; no effective reduction strategy or complexity bound is asserted.
 
 **Lean formulation** (in its source module context):
 
@@ -44,7 +44,7 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 ## Interface and scope
 
-**axiomBasis:** Arbitrary typed step relation; inductively generated finite closure; absence-of-successor normal-form definition.
+**axiomBasis:** Arbitrary typed step relation; inductively generated finite closure; absence-of-successor normal-form definition. Utility definitions are recorded separately; optional bottom, subtype and goal-relative conventions are conditional and do not strengthen the base carrier.
 
 **basisKind:** extensional-structural-definition
 
@@ -132,6 +132,78 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 **provenanceKind:** adapted
 
+<a id="node-urn-csabs-operation-RewriteSystem-confluence"></a>
+
+### confluence
+
+`urn:csabs:operation/RewriteSystem-confluence`
+
+**signature:** confluent : RewriteSystem(A)→Prop
+
+**description:** For every a→*b and a→*c there exists d with b→*d and c→*d; global confluence, not merely local one-step confluence.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** For every a→*b and a→*c there exists d with b→*d and c→*d; global confluence, not merely local one-step confluence.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Logic/Relation.lean: ReflTransGen, Join, church_rosser; well-founded induction; constructed existence and uniqueness arguments
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-RewriteSystem-termination"></a>
+
+### termination
+
+`urn:csabs:operation/RewriteSystem-termination`
+
+**signature:** terminating : RewriteSystem(A)→Prop
+
+**description:** The converse step relation is well-founded, excluding infinite forward reduction chains in the classical model; no fixed global step bound is asserted.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** The converse step relation is well-founded, excluding infinite forward reduction chains in the classical model; no fixed global step bound is asserted.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Logic/Relation.lean: ReflTransGen, Join, church_rosser; well-founded induction; constructed existence and uniqueness arguments
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-RewriteSystem-unique-normal-form"></a>
+
+### unique-normal-form
+
+`urn:csabs:operation/RewriteSystem-unique-normal-form`
+
+**signature:** normalFormOf : ConvergentRewriteSystem(A)×A→A
+
+**description:** With both termination and confluence, choose the unique reachable normal form; no effective reduction strategy or complexity bound is asserted.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** With both termination and confluence, choose the unique reachable normal form; no effective reduction strategy or complexity bound is asserted.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Logic/Relation.lean: ReflTransGen, Join, church_rosser; well-founded induction; constructed existence and uniqueness arguments
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
 ## Axioms and defining rules
 
 <a id="node-urn-csabs-axiom-RewriteSystem-closure"></a>
@@ -190,6 +262,30 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 **provenanceKind:** adapted
 
+<a id="node-urn-csabs-axiom-RewriteSystem-utility-profile"></a>
+
+### Explicit utility operation definitions
+
+`urn:csabs:axiom/RewriteSystem-utility-profile`
+
+**statement:** For every a→*b and a→*c there exists d with b→*d and c→*d; global confluence, not merely local one-step confluence.; The converse step relation is well-founded, excluding infinite forward reduction chains in the classical model; no fixed global step bound is asserted.; With both termination and confluence, choose the unique reachable normal form; no effective reduction strategy or complexity bound is asserted.
+
+**formalStatement:** confluent : RewriteSystem(A)→Prop: For every a→*b and a→*c there exists d with b→*d and c→*d; global confluence, not merely local one-step confluence.; terminating : RewriteSystem(A)→Prop: The converse step relation is well-founded, excluding infinite forward reduction chains in the classical model; no fixed global step bound is asserted.; normalFormOf : ConvergentRewriteSystem(A)×A→A: With both termination and confluence, choose the unique reachable normal form; no effective reduction strategy or complexity bound is asserted.
+
+**assumptions:** Base concept conventions remain unchanged. Optional profiles apply only under their explicitly stated additional hypotheses; identity equality, finite inputs and exact mathematics.
+
+**ruleRole:** defining-rule
+
+**reviewStatus:** Definitions of a selected extension, not new foundational axioms; individual model and result witnesses are separate.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Logic/Relation.lean: ReflTransGen, Join, church_rosser; well-founded induction; constructed existence and uniqueness arguments
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
 ## Laws
 
 <a id="node-urn-csabs-law-RewriteSystem-closure-transitive"></a>
@@ -224,7 +320,287 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 ## Theorems
 
-No entries recorded. This does not assert absence of mathematical facts.
+<a id="node-urn-csabs-theorem-RewriteSystem-normal-form-closure-equality"></a>
+
+### normal-form-closure-equality
+
+`urn:csabs:theorem/RewriteSystem-normal-form-closure-equality`
+
+**statement:** If a is a normal form and a→*b then a=b.
+
+**formalStatement:** If a is a normal form and a→*b then a=b.
+
+**proofSketch:** A nonempty path would have a first outgoing step, contradicting normality.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](RewriteSystem.md#node-urn-csabs-axiom-RewriteSystem-utility-profile); [closure](RewriteSystem.md#node-urn-csabs-axiom-RewriteSystem-closure); [normal-forms](RewriteSystem.md#node-urn-csabs-axiom-RewriteSystem-normal-forms)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog ReachabilityUtilities Lean formulations and proofs; path: lean/Catalog/ReachabilityUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Logic/Relation.lean: ReflTransGen, Join, church_rosser; well-founded induction; constructed existence and uniqueness arguments; Catalog.Programs.normalForm_reduces_eq
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+If a is a normal form and a→\*b then a=b.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} (r : Catalog.Programs.RewriteSystem A) (a b : A)
+    (_ha : r.normalForm a) (_hab : r.reduces a b), a = b
+```
+
+**Source:** [`Catalog.Programs.normalForm_reduces_eq`](../lean/Catalog/ReachabilityUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** If a is a normal form and a→*b then a=b. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/RewriteSystem-closure": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:axiom/RewriteSystem-normal-forms": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:axiom/RewriteSystem-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
+<a id="node-urn-csabs-theorem-RewriteSystem-confluent-normal-form-uniqueness"></a>
+
+### confluent-normal-form-uniqueness
+
+`urn:csabs:theorem/RewriteSystem-confluent-normal-form-uniqueness`
+
+**statement:** Confluence implies any two reachable normal forms from the same term are equal. Termination is not needed for uniqueness alone.
+
+**formalStatement:** Confluence implies any two reachable normal forms from the same term are equal. Termination is not needed for uniqueness alone.
+
+**proofSketch:** Join the two reducts by confluence; a normal form reduces only to itself.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](RewriteSystem.md#node-urn-csabs-axiom-RewriteSystem-utility-profile); [normal-form-closure-equality](RewriteSystem.md#node-urn-csabs-theorem-RewriteSystem-normal-form-closure-equality)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog ReachabilityUtilities Lean formulations and proofs; path: lean/Catalog/ReachabilityUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Logic/Relation.lean: ReflTransGen, Join, church_rosser; well-founded induction; constructed existence and uniqueness arguments; Catalog.Programs.confluent_unique_normalForm
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+Confluence implies any two reachable normal forms from the same term are equal. Termination is not needed for uniqueness alone.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} (r : Catalog.Programs.RewriteSystem A)
+    (_hc : Catalog.Programs.confluent r) (a b c : A) (_hab : r.reduces a b) (_hac : r.reduces a c)
+    (_hb : r.normalForm b) (_hc' : r.normalForm c), b = c
+```
+
+**Source:** [`Catalog.Programs.confluent_unique_normalForm`](../lean/Catalog/ReachabilityUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Confluence implies any two reachable normal forms from the same term are equal. Termination is not needed for uniqueness alone. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/RewriteSystem-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:theorem/RewriteSystem-normal-form-closure-equality": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
+<a id="node-urn-csabs-theorem-RewriteSystem-termination-normal-form-existence"></a>
+
+### termination-normal-form-existence
+
+`urn:csabs:theorem/RewriteSystem-termination-normal-form-existence`
+
+**statement:** Termination implies every term has a reachable normal form. Confluence is not needed for existence alone.
+
+**formalStatement:** Termination implies every term has a reachable normal form. Confluence is not needed for existence alone.
+
+**proofSketch:** Well-founded induction: stop if normal; otherwise take one step and prepend it to the inductively obtained path.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](RewriteSystem.md#node-urn-csabs-axiom-RewriteSystem-utility-profile); [closure](RewriteSystem.md#node-urn-csabs-axiom-RewriteSystem-closure); [normal-forms](RewriteSystem.md#node-urn-csabs-axiom-RewriteSystem-normal-forms)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog ReachabilityUtilities Lean formulations and proofs; path: lean/Catalog/ReachabilityUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Logic/Relation.lean: ReflTransGen, Join, church_rosser; well-founded induction; constructed existence and uniqueness arguments; Catalog.Programs.terminating_normalForm
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+Termination implies every term has a reachable normal form. Confluence is not needed for existence alone.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} (r : Catalog.Programs.RewriteSystem A)
+    (_ht : Catalog.Programs.terminating r) (a : A), ∃ b, r.reduces a b ∧ r.normalForm b
+```
+
+**Source:** [`Catalog.Programs.terminating_normalForm`](../lean/Catalog/ReachabilityUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Termination implies every term has a reachable normal form. Confluence is not needed for existence alone. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/RewriteSystem-closure": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:axiom/RewriteSystem-normal-forms": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:axiom/RewriteSystem-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
+<a id="node-urn-csabs-theorem-RewriteSystem-convergent-unique-normal-form"></a>
+
+### convergent-unique-normal-form
+
+`urn:csabs:theorem/RewriteSystem-convergent-unique-normal-form`
+
+**statement:** Termination plus confluence implies every term has exactly one reachable normal form.
+
+**formalStatement:** Termination plus confluence implies every term has exactly one reachable normal form.
+
+**proofSketch:** Combine existence from termination with uniqueness from confluence.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](RewriteSystem.md#node-urn-csabs-axiom-RewriteSystem-utility-profile); [termination-normal-form-existence](RewriteSystem.md#node-urn-csabs-theorem-RewriteSystem-termination-normal-form-existence); [confluent-normal-form-uniqueness](RewriteSystem.md#node-urn-csabs-theorem-RewriteSystem-confluent-normal-form-uniqueness)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog ReachabilityUtilities Lean formulations and proofs; path: lean/Catalog/ReachabilityUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Logic/Relation.lean: ReflTransGen, Join, church_rosser; well-founded induction; constructed existence and uniqueness arguments; Catalog.Programs.convergent_unique_normalForm
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+Termination plus confluence implies every term has exactly one reachable normal form.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} (r : Catalog.Programs.RewriteSystem A)
+    (_ht : Catalog.Programs.terminating r) (_hc : Catalog.Programs.confluent r) (a : A), ∃! b, r.reduces a b ∧ r.normalForm b
+```
+
+**Source:** [`Catalog.Programs.convergent_unique_normalForm`](../lean/Catalog/ReachabilityUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Termination plus confluence implies every term has exactly one reachable normal form. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/RewriteSystem-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:theorem/RewriteSystem-confluent-normal-form-uniqueness": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:theorem/RewriteSystem-termination-normal-form-existence": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
+<a id="node-urn-csabs-theorem-RewriteSystem-convergent-model-satisfaction"></a>
+
+### convergent-model-satisfaction
+
+`urn:csabs:theorem/RewriteSystem-convergent-model-satisfaction`
+
+**statement:** The empty-step rewrite system on any carrier is terminating and confluent.
+
+**formalStatement:** The empty-step rewrite system on any carrier is terminating and confluent.
+
+**proofSketch:** Every state is accessible without predecessors; the only closure paths are identities. This model is nonvacuously inhabited whenever its carrier is inhabited.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](RewriteSystem.md#node-urn-csabs-axiom-RewriteSystem-utility-profile)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog ReachabilityUtilities Lean formulations and proofs; path: lean/Catalog/ReachabilityUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Logic/Relation.lean: ReflTransGen, Join, church_rosser; well-founded induction; constructed existence and uniqueness arguments; Catalog.Programs.rewrite_model
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+The empty-step rewrite system on any carrier is terminating and confluent.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ (A : Type u), Catalog.Programs.terminating (Catalog.Programs.emptyRewrite A) ∧ Catalog.Programs.confluent (Catalog.Programs.emptyRewrite A)
+```
+
+**Source:** [`Catalog.Programs.rewrite_model`](../lean/Catalog/ReachabilityUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** The empty-step rewrite system on any carrier is terminating and confluent. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/RewriteSystem-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
 
 ## Concept provenance
 
@@ -257,14 +633,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "kind": "urn:csabs:kind/mathematical-structure",
     "basisKind": "extensional-structural-definition",
     "basisScope": "A may be empty; equality is carrier equality. One-step reduction may be nondeterministic, cyclic, nonterminating or infinitely branching; no effective decision procedure is assumed. This is abstract rewriting; substitution/context closure for term rewriting is an additional instantiation on TermAlgebra. Termination, confluence, semantic refinement and a normalization strategy are independent properties.",
-    "axiomBasis": "Arbitrary typed step relation; inductively generated finite closure; absence-of-successor normal-form definition.",
+    "axiomBasis": "Arbitrary typed step relation; inductively generated finite closure; absence-of-successor normal-form definition. Utility definitions are recorded separately; optional bottom, subtype and goal-relative conventions are conditional and do not strengthen the base carrier.",
     "coverageStatus": "basis-reviewed",
     "reviewStatus": "Editorial mathematical interface review; Lean models and individual proof witnesses are separate.",
     "verificationObligation": [
       "Instantiate carrier, equality, operation definedness and semantic assumptions before application.",
       "Typed links do not transfer axioms; retrieve explicit premises."
     ],
-    "mathematicalFormulation": "(A,→); →* = finite reflexive transitive closure of →; NF(a) ⇔ ¬∃b,a→b. A may be empty; equality is carrier equality. One-step reduction may be nondeterministic, cyclic, nonterminating or infinitely branching; no effective decision procedure is assumed. This is abstract rewriting; substitution/context closure for term rewriting is an additional instantiation on TermAlgebra. Termination, confluence, semantic refinement and a normalization strategy are independent properties.",
+    "mathematicalFormulation": "(A,→); →* = finite reflexive transitive closure of →; NF(a) ⇔ ¬∃b,a→b. A may be empty; equality is carrier equality. One-step reduction may be nondeterministic, cyclic, nonterminating or infinitely branching; no effective decision procedure is assumed. This is abstract rewriting; substitution/context closure for term rewriting is an additional instantiation on TermAlgebra. Termination, confluence, semantic refinement and a normalization strategy are independent properties. Utility profile: For every a→*b and a→*c there exists d with b→*d and c→*d; global confluence, not merely local one-step confluence.; The converse step relation is well-founded, excluding infinite forward reduction chains in the classical model; no fixed global step bound is asserted.; With both termination and confluence, choose the unique reachable normal form; no effective reduction strategy or complexity bound is asserted.",
     "requiresConcept": [
       "urn:csabs:concept/Relation"
     ],
@@ -276,16 +652,26 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "hasOperation": [
       "urn:csabs:operation/RewriteSystem-step",
       "urn:csabs:operation/RewriteSystem-reduces",
-      "urn:csabs:operation/RewriteSystem-normal-form"
+      "urn:csabs:operation/RewriteSystem-normal-form",
+      "urn:csabs:operation/RewriteSystem-confluence",
+      "urn:csabs:operation/RewriteSystem-termination",
+      "urn:csabs:operation/RewriteSystem-unique-normal-form"
     ],
     "hasAxiom": [
       "urn:csabs:axiom/RewriteSystem-closure",
-      "urn:csabs:axiom/RewriteSystem-normal-forms"
+      "urn:csabs:axiom/RewriteSystem-normal-forms",
+      "urn:csabs:axiom/RewriteSystem-utility-profile"
     ],
     "hasLaw": [
       "urn:csabs:law/RewriteSystem-closure-transitive"
     ],
-    "hasTheorem": [],
+    "hasTheorem": [
+      "urn:csabs:theorem/RewriteSystem-normal-form-closure-equality",
+      "urn:csabs:theorem/RewriteSystem-confluent-normal-form-uniqueness",
+      "urn:csabs:theorem/RewriteSystem-termination-normal-form-existence",
+      "urn:csabs:theorem/RewriteSystem-convergent-unique-normal-form",
+      "urn:csabs:theorem/RewriteSystem-convergent-model-satisfaction"
+    ],
     "source": [
       "urn:csabs:source/sf-smallstep-2026"
     ],
@@ -355,6 +741,57 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "provenanceKind": "adapted"
   },
   {
+    "id": "urn:csabs:operation/RewriteSystem-confluence",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/RewriteSystem",
+    "name": "confluence",
+    "signature": "confluent : RewriteSystem(A)→Prop",
+    "description": "For every a→*b and a→*c there exists d with b→*d and c→*d; global confluence, not merely local one-step confluence.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "For every a→*b and a→*c there exists d with b→*d and c→*d; global confluence, not merely local one-step confluence.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Logic/Relation.lean: ReflTransGen, Join, church_rosser; well-founded induction; constructed existence and uniqueness arguments",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/RewriteSystem-termination",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/RewriteSystem",
+    "name": "termination",
+    "signature": "terminating : RewriteSystem(A)→Prop",
+    "description": "The converse step relation is well-founded, excluding infinite forward reduction chains in the classical model; no fixed global step bound is asserted.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "The converse step relation is well-founded, excluding infinite forward reduction chains in the classical model; no fixed global step bound is asserted.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Logic/Relation.lean: ReflTransGen, Join, church_rosser; well-founded induction; constructed existence and uniqueness arguments",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/RewriteSystem-unique-normal-form",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/RewriteSystem",
+    "name": "unique-normal-form",
+    "signature": "normalFormOf : ConvergentRewriteSystem(A)×A→A",
+    "description": "With both termination and confluence, choose the unique reachable normal form; no effective reduction strategy or complexity bound is asserted.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "With both termination and confluence, choose the unique reachable normal form; no effective reduction strategy or complexity bound is asserted.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Logic/Relation.lean: ReflTransGen, Join, church_rosser; well-founded induction; constructed existence and uniqueness arguments",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
     "id": "urn:csabs:axiom/RewriteSystem-closure",
     "type": "Axiom",
     "name": "closure",
@@ -401,6 +838,27 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "provenanceKind": "adapted"
   },
   {
+    "id": "urn:csabs:axiom/RewriteSystem-utility-profile",
+    "type": "Axiom",
+    "name": "Explicit utility operation definitions",
+    "statement": "For every a→*b and a→*c there exists d with b→*d and c→*d; global confluence, not merely local one-step confluence.; The converse step relation is well-founded, excluding infinite forward reduction chains in the classical model; no fixed global step bound is asserted.; With both termination and confluence, choose the unique reachable normal form; no effective reduction strategy or complexity bound is asserted.",
+    "formalStatement": "confluent : RewriteSystem(A)→Prop: For every a→*b and a→*c there exists d with b→*d and c→*d; global confluence, not merely local one-step confluence.; terminating : RewriteSystem(A)→Prop: The converse step relation is well-founded, excluding infinite forward reduction chains in the classical model; no fixed global step bound is asserted.; normalFormOf : ConvergentRewriteSystem(A)×A→A: With both termination and confluence, choose the unique reachable normal form; no effective reduction strategy or complexity bound is asserted.",
+    "assumptions": [
+      "Base concept conventions remain unchanged. Optional profiles apply only under their explicitly stated additional hypotheses; identity equality, finite inputs and exact mathematics."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/RewriteSystem"
+    ],
+    "ruleRole": "defining-rule",
+    "reviewStatus": "Definitions of a selected extension, not new foundational axioms; individual model and result witnesses are separate.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Logic/Relation.lean: ReflTransGen, Join, church_rosser; well-founded induction; constructed existence and uniqueness arguments",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
     "id": "urn:csabs:law/RewriteSystem-closure-transitive",
     "type": "Law",
     "name": "closure-transitive",
@@ -425,6 +883,178 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "Smallstep: Normal Forms and Multi-Step Reduction (multi, multi_R, multi_trans).",
     "sourceNote": "Derived from the linked premises by the supplied editorial proof sketch.",
     "provenanceKind": "derived"
+  },
+  {
+    "id": "urn:csabs:theorem/RewriteSystem-normal-form-closure-equality",
+    "type": "Theorem",
+    "name": "normal-form-closure-equality",
+    "statement": "If a is a normal form and a→*b then a=b.",
+    "formalStatement": "If a is a normal form and a→*b then a=b.",
+    "mathematicalFormulation": "If a is a normal form and a→*b then a=b.",
+    "proofSketch": "A nonempty path would have a first outgoing step, contradicting normality.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/RewriteSystem"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/RewriteSystem-utility-profile",
+      "urn:csabs:axiom/RewriteSystem-closure",
+      "urn:csabs:axiom/RewriteSystem-normal-forms"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-ReachabilityUtilities"
+    ],
+    "sourceLocator": "Logic/Relation.lean: ReflTransGen, Join, church_rosser; well-founded induction; constructed existence and uniqueness arguments; Catalog.Programs.normalForm_reduces_eq",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type u} (r : Catalog.Programs.RewriteSystem A) (a b : A)\n    (_ha : r.normalForm a) (_hab : r.reduces a b), a = b",
+    "leanModelMapping": "If a is a normal form and a→*b then a=b. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/RewriteSystem-closure\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:axiom/RewriteSystem-normal-forms\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:axiom/RewriteSystem-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-ReachabilityUtilities",
+    "formulationLocator": "Catalog.Programs.normalForm_reduces_eq"
+  },
+  {
+    "id": "urn:csabs:theorem/RewriteSystem-confluent-normal-form-uniqueness",
+    "type": "Theorem",
+    "name": "confluent-normal-form-uniqueness",
+    "statement": "Confluence implies any two reachable normal forms from the same term are equal. Termination is not needed for uniqueness alone.",
+    "formalStatement": "Confluence implies any two reachable normal forms from the same term are equal. Termination is not needed for uniqueness alone.",
+    "mathematicalFormulation": "Confluence implies any two reachable normal forms from the same term are equal. Termination is not needed for uniqueness alone.",
+    "proofSketch": "Join the two reducts by confluence; a normal form reduces only to itself.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/RewriteSystem"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/RewriteSystem-utility-profile",
+      "urn:csabs:theorem/RewriteSystem-normal-form-closure-equality"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-ReachabilityUtilities"
+    ],
+    "sourceLocator": "Logic/Relation.lean: ReflTransGen, Join, church_rosser; well-founded induction; constructed existence and uniqueness arguments; Catalog.Programs.confluent_unique_normalForm",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type u} (r : Catalog.Programs.RewriteSystem A)\n    (_hc : Catalog.Programs.confluent r) (a b c : A) (_hab : r.reduces a b) (_hac : r.reduces a c)\n    (_hb : r.normalForm b) (_hc' : r.normalForm c), b = c",
+    "leanModelMapping": "Confluence implies any two reachable normal forms from the same term are equal. Termination is not needed for uniqueness alone. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/RewriteSystem-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:theorem/RewriteSystem-normal-form-closure-equality\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-ReachabilityUtilities",
+    "formulationLocator": "Catalog.Programs.confluent_unique_normalForm"
+  },
+  {
+    "id": "urn:csabs:theorem/RewriteSystem-termination-normal-form-existence",
+    "type": "Theorem",
+    "name": "termination-normal-form-existence",
+    "statement": "Termination implies every term has a reachable normal form. Confluence is not needed for existence alone.",
+    "formalStatement": "Termination implies every term has a reachable normal form. Confluence is not needed for existence alone.",
+    "mathematicalFormulation": "Termination implies every term has a reachable normal form. Confluence is not needed for existence alone.",
+    "proofSketch": "Well-founded induction: stop if normal; otherwise take one step and prepend it to the inductively obtained path.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/RewriteSystem"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/RewriteSystem-utility-profile",
+      "urn:csabs:axiom/RewriteSystem-closure",
+      "urn:csabs:axiom/RewriteSystem-normal-forms"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-ReachabilityUtilities"
+    ],
+    "sourceLocator": "Logic/Relation.lean: ReflTransGen, Join, church_rosser; well-founded induction; constructed existence and uniqueness arguments; Catalog.Programs.terminating_normalForm",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type u} (r : Catalog.Programs.RewriteSystem A)\n    (_ht : Catalog.Programs.terminating r) (a : A), ∃ b, r.reduces a b ∧ r.normalForm b",
+    "leanModelMapping": "Termination implies every term has a reachable normal form. Confluence is not needed for existence alone. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/RewriteSystem-closure\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:axiom/RewriteSystem-normal-forms\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:axiom/RewriteSystem-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-ReachabilityUtilities",
+    "formulationLocator": "Catalog.Programs.terminating_normalForm"
+  },
+  {
+    "id": "urn:csabs:theorem/RewriteSystem-convergent-unique-normal-form",
+    "type": "Theorem",
+    "name": "convergent-unique-normal-form",
+    "statement": "Termination plus confluence implies every term has exactly one reachable normal form.",
+    "formalStatement": "Termination plus confluence implies every term has exactly one reachable normal form.",
+    "mathematicalFormulation": "Termination plus confluence implies every term has exactly one reachable normal form.",
+    "proofSketch": "Combine existence from termination with uniqueness from confluence.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/RewriteSystem"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/RewriteSystem-utility-profile",
+      "urn:csabs:theorem/RewriteSystem-termination-normal-form-existence",
+      "urn:csabs:theorem/RewriteSystem-confluent-normal-form-uniqueness"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-ReachabilityUtilities"
+    ],
+    "sourceLocator": "Logic/Relation.lean: ReflTransGen, Join, church_rosser; well-founded induction; constructed existence and uniqueness arguments; Catalog.Programs.convergent_unique_normalForm",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type u} (r : Catalog.Programs.RewriteSystem A)\n    (_ht : Catalog.Programs.terminating r) (_hc : Catalog.Programs.confluent r) (a : A), ∃! b, r.reduces a b ∧ r.normalForm b",
+    "leanModelMapping": "Termination plus confluence implies every term has exactly one reachable normal form. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/RewriteSystem-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:theorem/RewriteSystem-confluent-normal-form-uniqueness\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:theorem/RewriteSystem-termination-normal-form-existence\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-ReachabilityUtilities",
+    "formulationLocator": "Catalog.Programs.convergent_unique_normalForm"
+  },
+  {
+    "id": "urn:csabs:theorem/RewriteSystem-convergent-model-satisfaction",
+    "type": "Theorem",
+    "name": "convergent-model-satisfaction",
+    "statement": "The empty-step rewrite system on any carrier is terminating and confluent.",
+    "formalStatement": "The empty-step rewrite system on any carrier is terminating and confluent.",
+    "mathematicalFormulation": "The empty-step rewrite system on any carrier is terminating and confluent.",
+    "proofSketch": "Every state is accessible without predecessors; the only closure paths are identities. This model is nonvacuously inhabited whenever its carrier is inhabited.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/RewriteSystem"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/RewriteSystem-utility-profile"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-ReachabilityUtilities"
+    ],
+    "sourceLocator": "Logic/Relation.lean: ReflTransGen, Join, church_rosser; well-founded induction; constructed existence and uniqueness arguments; Catalog.Programs.rewrite_model",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ (A : Type u), Catalog.Programs.terminating (Catalog.Programs.emptyRewrite A) ∧ Catalog.Programs.confluent (Catalog.Programs.emptyRewrite A)",
+    "leanModelMapping": "The empty-step rewrite system on any carrier is terminating and confluent. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/RewriteSystem-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-ReachabilityUtilities",
+    "formulationLocator": "Catalog.Programs.rewrite_model"
   }
 ]
 ```

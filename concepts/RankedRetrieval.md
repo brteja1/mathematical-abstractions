@@ -12,14 +12,17 @@ A finite candidate set scored for a query and returned in descending score order
 
 **Prerequisites:** [Finite set collection](FiniteSet.md), [Total Order](TotalOrder.md), [Finite sequence (List datatype)](Sequence.md)
 
+**Related concepts:** [SQLite FTS5-style BM25 phrase and weighted-column profile](BM25FTS5.md)
+
 ## Backlinks
 
 - [BM25 score model (positive-IDF, normalized single-field profile)](BM25.md) — `requiresConcept`
 - [BM25 score model (positive-IDF, normalized single-field profile)](BM25.md) — `specializationOf`
+- [SQLite FTS5-style BM25 phrase and weighted-column profile](BM25FTS5.md) — `requiresConcept`
 
 ## Mathematical formulation
 
-rank(q,C)=sort C by (-s(q,d),d); top(k,q,C)=take(k,rank(q,C)). Document identities D have exact equality and a fixed total order; C is a finite subset of D, possibly empty. Scores are exact real numbers, so NaN, infinities and rounding are excluded. The query carrier is arbitrary; for fixed q the scorer is D→ℝ. Higher scores precede lower ones; equal scores use ascending identifier order. Ranking returns every candidate exactly once, including zero or negative scores; top-k has length min(k,|C|), with k∈ℕ. No relevance threshold, retrieval-quality guarantee or probability calibration is assumed.
+rank(q,C)=sort C by (-s(q,d),d); top(k,q,C)=take(k,rank(q,C)). Document identities D have exact equality and a fixed total order; C is a finite subset of D, possibly empty. Scores are exact real numbers, so NaN, infinities and rounding are excluded. The query carrier is arbitrary; for fixed q the scorer is D→ℝ. Higher scores precede lower ones; equal scores use ascending identifier order. Ranking returns every candidate exactly once, including zero or negative scores; top-k has length min(k,|C|), with k∈ℕ. No relevance threshold, retrieval-quality guarantee or probability calibration is assumed. Utility profile: All phrase-hit predicates hold; intersect with finite candidate universe before ranking.; At least one phrase-hit predicate holds; intersect with finite candidate universe before ranking.; Map SQL FTS5 score σ to relevance −σ so existing descending-score ranking agrees with ascending SQL scores. Existing deterministic identifier tie-break remains explicit; SQLite ties alone are not assumed stable.
 
 **Lean formulation** (in its source module context):
 
@@ -39,7 +42,7 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 ## Interface and scope
 
-**axiomBasis:** Finite candidate identity set; total real scoring; lexicographic descending-score/ascending-identifier ordering; exact permutation and prefix selection.
+**axiomBasis:** Finite candidate identity set; total real scoring; lexicographic descending-score/ascending-identifier ordering; exact permutation and prefix selection. Utility definitions are recorded separately; optional bottom, subtype and goal-relative conventions are conditional and do not strengthen the base carrier.
 
 **basisKind:** defined-structure
 
@@ -125,6 +128,78 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 **provenanceKind:** adapted
 
+<a id="node-urn-csabs-operation-RankedRetrieval-phrase-and"></a>
+
+### phrase-and
+
+`urn:csabs:operation/RankedRetrieval-phrase-and`
+
+**signature:** phraseAND : (Phrase×D→Prop)×Seq(Phrase)→Set(D)
+
+**description:** All phrase-hit predicates hold; intersect with finite candidate universe before ranking.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** All phrase-hit predicates hold; intersect with finite candidate universe before ranking.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [SQLite FTS5 documentation and BM25 auxiliary implementation](https://www.sqlite.org/fts5.html); citation: SQLite project, FTS5 Extension §§3.7, 5.1.1; ext/fts5/fts5_aux.c, https://raw.githubusercontent.com/sqlite/sqlite/master/ext/fts5/fts5_aux.c, consulted 2026-11-20. This consultation URL is not a dependency pin.; accessedOn: 2026-11-20; sourceRole: Consulted primary documentation sections 3.7 and 5.1.1, and fts5_aux.c fts5Bm25GetData/fts5Bm25Function. Exact-real mathematical adaptation; no binary floating-point or tokenizer equivalence claim.
+
+**sourceLocator:** SQLite FTS5 §§3.7 and 5.1.1; exact-real score sign mapping and set Boolean predicates in Catalog.FTS5Profile
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-RankedRetrieval-phrase-or"></a>
+
+### phrase-or
+
+`urn:csabs:operation/RankedRetrieval-phrase-or`
+
+**signature:** phraseOR : (Phrase×D→Prop)×Seq(Phrase)→Set(D)
+
+**description:** At least one phrase-hit predicate holds; intersect with finite candidate universe before ranking.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** At least one phrase-hit predicate holds; intersect with finite candidate universe before ranking.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [SQLite FTS5 documentation and BM25 auxiliary implementation](https://www.sqlite.org/fts5.html); citation: SQLite project, FTS5 Extension §§3.7, 5.1.1; ext/fts5/fts5_aux.c, https://raw.githubusercontent.com/sqlite/sqlite/master/ext/fts5/fts5_aux.c, consulted 2026-11-20. This consultation URL is not a dependency pin.; accessedOn: 2026-11-20; sourceRole: Consulted primary documentation sections 3.7 and 5.1.1, and fts5_aux.c fts5Bm25GetData/fts5Bm25Function. Exact-real mathematical adaptation; no binary floating-point or tokenizer equivalence claim.
+
+**sourceLocator:** SQLite FTS5 §§3.7 and 5.1.1; exact-real score sign mapping and set Boolean predicates in Catalog.FTS5Profile
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-RankedRetrieval-fts5-relevance"></a>
+
+### fts5-relevance
+
+`urn:csabs:operation/RankedRetrieval-fts5-relevance`
+
+**signature:** fts5Relevance : ℝ→ℝ
+
+**description:** Map SQL FTS5 score σ to relevance −σ so existing descending-score ranking agrees with ascending SQL scores. Existing deterministic identifier tie-break remains explicit; SQLite ties alone are not assumed stable.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** Map SQL FTS5 score σ to relevance −σ so existing descending-score ranking agrees with ascending SQL scores. Existing deterministic identifier tie-break remains explicit; SQLite ties alone are not assumed stable.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [SQLite FTS5 documentation and BM25 auxiliary implementation](https://www.sqlite.org/fts5.html); citation: SQLite project, FTS5 Extension §§3.7, 5.1.1; ext/fts5/fts5_aux.c, https://raw.githubusercontent.com/sqlite/sqlite/master/ext/fts5/fts5_aux.c, consulted 2026-11-20. This consultation URL is not a dependency pin.; accessedOn: 2026-11-20; sourceRole: Consulted primary documentation sections 3.7 and 5.1.1, and fts5_aux.c fts5Bm25GetData/fts5Bm25Function. Exact-real mathematical adaptation; no binary floating-point or tokenizer equivalence claim.
+
+**sourceLocator:** SQLite FTS5 §§3.7 and 5.1.1; exact-real score sign mapping and set Boolean predicates in Catalog.FTS5Profile
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
 ## Axioms and defining rules
 
 <a id="node-urn-csabs-axiom-RankedRetrieval-ranking-definition"></a>
@@ -154,6 +229,30 @@ Read with the linked module’s imports, namespaces, universes and section varia
 **provenanceKind:** adapted
 
 **ruleRole:** defining-rule
+
+<a id="node-urn-csabs-axiom-RankedRetrieval-utility-profile"></a>
+
+### Explicit utility operation definitions
+
+`urn:csabs:axiom/RankedRetrieval-utility-profile`
+
+**statement:** All phrase-hit predicates hold; intersect with finite candidate universe before ranking.; At least one phrase-hit predicate holds; intersect with finite candidate universe before ranking.; Map SQL FTS5 score σ to relevance −σ so existing descending-score ranking agrees with ascending SQL scores. Existing deterministic identifier tie-break remains explicit; SQLite ties alone are not assumed stable.
+
+**formalStatement:** phraseAND : (Phrase×D→Prop)×Seq(Phrase)→Set(D): All phrase-hit predicates hold; intersect with finite candidate universe before ranking.; phraseOR : (Phrase×D→Prop)×Seq(Phrase)→Set(D): At least one phrase-hit predicate holds; intersect with finite candidate universe before ranking.; fts5Relevance : ℝ→ℝ: Map SQL FTS5 score σ to relevance −σ so existing descending-score ranking agrees with ascending SQL scores. Existing deterministic identifier tie-break remains explicit; SQLite ties alone are not assumed stable.
+
+**assumptions:** Base concept conventions remain unchanged. Optional profiles apply only under their explicitly stated additional hypotheses; identity equality, finite inputs and exact mathematics.
+
+**ruleRole:** defining-rule
+
+**reviewStatus:** Definitions of a selected extension, not new foundational axioms; individual model and result witnesses are separate.
+
+**source:** [SQLite FTS5 documentation and BM25 auxiliary implementation](https://www.sqlite.org/fts5.html); citation: SQLite project, FTS5 Extension §§3.7, 5.1.1; ext/fts5/fts5_aux.c, https://raw.githubusercontent.com/sqlite/sqlite/master/ext/fts5/fts5_aux.c, consulted 2026-11-20. This consultation URL is not a dependency pin.; accessedOn: 2026-11-20; sourceRole: Consulted primary documentation sections 3.7 and 5.1.1, and fts5_aux.c fts5Bm25GetData/fts5Bm25Function. Exact-real mathematical adaptation; no binary floating-point or tokenizer equivalence claim.
+
+**sourceLocator:** SQLite FTS5 §§3.7 and 5.1.1; exact-real score sign mapping and set Boolean predicates in Catalog.FTS5Profile
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
 
 ## Laws
 
@@ -217,6 +316,118 @@ Read with the linked module’s imports, namespaces, universes and section varia
 }
 ```
 
+<a id="node-urn-csabs-theorem-BM25FTS5-phrase-boolean-equations"></a>
+
+### phrase-boolean-equations
+
+`urn:csabs:theorem/BM25FTS5-phrase-boolean-equations`
+
+**statement:** AND(p::ps)=hit(p)∩AND(ps), OR(p::ps)=hit(p)∪OR(ps), AND([])=universe and OR([])=empty.
+
+**formalStatement:** AND(p::ps)=hit(p)∩AND(ps), OR(p::ps)=hit(p)∪OR(ps), AND([])=universe and OR([])=empty.
+
+**proofSketch:** Expand universal/existential membership over a cons list; apply finite corpus restriction separately.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](BM25FTS5.md#node-urn-csabs-axiom-BM25FTS5-utility-profile); [Explicit utility operation definitions](RankedRetrieval.md#node-urn-csabs-axiom-RankedRetrieval-utility-profile)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [SQLite FTS5 documentation and BM25 auxiliary implementation](https://www.sqlite.org/fts5.html); citation: SQLite project, FTS5 Extension §§3.7, 5.1.1; ext/fts5/fts5_aux.c, https://raw.githubusercontent.com/sqlite/sqlite/master/ext/fts5/fts5_aux.c, consulted 2026-11-20. This consultation URL is not a dependency pin.; accessedOn: 2026-11-20; sourceRole: Consulted primary documentation sections 3.7 and 5.1.1, and fts5_aux.c fts5Bm25GetData/fts5Bm25Function. Exact-real mathematical adaptation; no binary floating-point or tokenizer equivalence claim.; Catalog FTS5Profile Lean formulations and proofs; path: lean/Catalog/FTS5Profile.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** SQLite FTS5 §§3.7 and 5.1.1; fts5_aux.c: fts5Bm25GetData, fts5Bm25Function; Catalog.fts5_boolean
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+AND(p::ps)=hit(p)∩AND(ps), OR(p::ps)=hit(p)∪OR(ps), AND([])=universe and OR([])=empty.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {D : Type u} {P : Type v} (hit : P → D → Prop) (p : P) (ps : List P) (d : D), (d ∈ Catalog.phraseAND hit (p :: ps) ↔ hit p d ∧ d ∈ Catalog.phraseAND hit ps) ∧
+    (d ∈ Catalog.phraseOR hit (p :: ps) ↔ hit p d ∨ d ∈ Catalog.phraseOR hit ps) ∧
+    d ∈ Catalog.phraseAND hit [] ∧ d ∉ Catalog.phraseOR hit []
+```
+
+**Source:** [`Catalog.fts5_boolean`](../lean/Catalog/FTS5Profile.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** AND(p::ps)=hit(p)∩AND(ps), OR(p::ps)=hit(p)∪OR(ps), AND([])=universe and OR([])=empty. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/BM25FTS5-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:axiom/RankedRetrieval-utility-profile": "The same mathematical predicate is shared with this concept; the state-step relation or phrase-hit predicate is explicitly instantiated."
+}
+```
+
+<a id="node-urn-csabs-theorem-BM25FTS5-sql-ranking-direction"></a>
+
+### sql-ranking-direction
+
+`urn:csabs:theorem/BM25FTS5-sql-ranking-direction`
+
+**statement:** −σ₁≥−σ₂ iff σ₁≤σ₂; descending negated SQL scores agree with ascending SQL scores.
+
+**formalStatement:** −σ₁≥−σ₂ iff σ₁≤σ₂; descending negated SQL scores agree with ascending SQL scores.
+
+**proofSketch:** Order reversal by real negation; identifier ties remain a separate RankedRetrieval convention.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](BM25FTS5.md#node-urn-csabs-axiom-BM25FTS5-utility-profile); [Explicit utility operation definitions](RankedRetrieval.md#node-urn-csabs-axiom-RankedRetrieval-utility-profile)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [SQLite FTS5 documentation and BM25 auxiliary implementation](https://www.sqlite.org/fts5.html); citation: SQLite project, FTS5 Extension §§3.7, 5.1.1; ext/fts5/fts5_aux.c, https://raw.githubusercontent.com/sqlite/sqlite/master/ext/fts5/fts5_aux.c, consulted 2026-11-20. This consultation URL is not a dependency pin.; accessedOn: 2026-11-20; sourceRole: Consulted primary documentation sections 3.7 and 5.1.1, and fts5_aux.c fts5Bm25GetData/fts5Bm25Function. Exact-real mathematical adaptation; no binary floating-point or tokenizer equivalence claim.; Catalog FTS5Profile Lean formulations and proofs; path: lean/Catalog/FTS5Profile.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** SQLite FTS5 §§3.7 and 5.1.1; fts5_aux.c: fts5Bm25GetData, fts5Bm25Function; Catalog.fts5_rank_direction
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+−σ₁≥−σ₂ iff σ₁≤σ₂; descending negated SQL scores agree with ascending SQL scores.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ (sql₁ sql₂ : ℝ), -sql₁ ≥ -sql₂ ↔ sql₁ ≤ sql₂
+```
+
+**Source:** [`Catalog.fts5_rank_direction`](../lean/Catalog/FTS5Profile.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** −σ₁≥−σ₂ iff σ₁≤σ₂; descending negated SQL scores agree with ascending SQL scores. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/BM25FTS5-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:axiom/RankedRetrieval-utility-profile": "The same mathematical predicate is shared with this concept; the state-step relation or phrase-hit predicate is explicitly instantiated."
+}
+```
+
 ## Concept provenance
 
 - [Mathlib finite sorting, lexicographic order and cardinality at the pinned revision](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted Data/Finset/Sort.lean (sort, pairwise_sort, sort_nodup, sort_toFinset), Order/Prod/Lex/Basic.lean (toLex_le_toLex) and Data/Finset/Card.lean (card_le_card).
@@ -250,7 +461,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "Finite ranked search",
       "Deterministic top-k retrieval"
     ],
-    "axiomBasis": "Finite candidate identity set; total real scoring; lexicographic descending-score/ascending-identifier ordering; exact permutation and prefix selection.",
+    "axiomBasis": "Finite candidate identity set; total real scoring; lexicographic descending-score/ascending-identifier ordering; exact permutation and prefix selection. Utility definitions are recorded separately; optional bottom, subtype and goal-relative conventions are conditional and do not strengthen the base carrier.",
     "basisKind": "defined-structure",
     "basisScope": "Document identities D have exact equality and a fixed total order; C is a finite subset of D, possibly empty. Scores are exact real numbers, so NaN, infinities and rounding are excluded. The query carrier is arbitrary; for fixed q the scorer is D→ℝ. Higher scores precede lower ones; equal scores use ascending identifier order. Ranking returns every candidate exactly once, including zero or negative scores; top-k has length min(k,|C|), with k∈ℕ. No relevance threshold, retrieval-quality guarantee or probability calibration is assumed.",
     "coverageStatus": "basis-reviewed",
@@ -258,18 +469,24 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "verificationObligation": [
       "Instantiate the stated carrier, equality, operation and definedness conventions. Typed links do not transfer axioms."
     ],
-    "mathematicalFormulation": "rank(q,C)=sort C by (-s(q,d),d); top(k,q,C)=take(k,rank(q,C)). Document identities D have exact equality and a fixed total order; C is a finite subset of D, possibly empty. Scores are exact real numbers, so NaN, infinities and rounding are excluded. The query carrier is arbitrary; for fixed q the scorer is D→ℝ. Higher scores precede lower ones; equal scores use ascending identifier order. Ranking returns every candidate exactly once, including zero or negative scores; top-k has length min(k,|C|), with k∈ℕ. No relevance threshold, retrieval-quality guarantee or probability calibration is assumed.",
+    "mathematicalFormulation": "rank(q,C)=sort C by (-s(q,d),d); top(k,q,C)=take(k,rank(q,C)). Document identities D have exact equality and a fixed total order; C is a finite subset of D, possibly empty. Scores are exact real numbers, so NaN, infinities and rounding are excluded. The query carrier is arbitrary; for fixed q the scorer is D→ℝ. Higher scores precede lower ones; equal scores use ascending identifier order. Ranking returns every candidate exactly once, including zero or negative scores; top-k has length min(k,|C|), with k∈ℕ. No relevance threshold, retrieval-quality guarantee or probability calibration is assumed. Utility profile: All phrase-hit predicates hold; intersect with finite candidate universe before ranking.; At least one phrase-hit predicate holds; intersect with finite candidate universe before ranking.; Map SQL FTS5 score σ to relevance −σ so existing descending-score ranking agrees with ascending SQL scores. Existing deterministic identifier tie-break remains explicit; SQLite ties alone are not assumed stable.",
     "hasOperation": [
       "urn:csabs:operation/RankedRetrieval-score",
       "urn:csabs:operation/RankedRetrieval-rank",
-      "urn:csabs:operation/RankedRetrieval-top-k"
+      "urn:csabs:operation/RankedRetrieval-top-k",
+      "urn:csabs:operation/RankedRetrieval-phrase-and",
+      "urn:csabs:operation/RankedRetrieval-phrase-or",
+      "urn:csabs:operation/RankedRetrieval-fts5-relevance"
     ],
     "hasAxiom": [
-      "urn:csabs:axiom/RankedRetrieval-ranking-definition"
+      "urn:csabs:axiom/RankedRetrieval-ranking-definition",
+      "urn:csabs:axiom/RankedRetrieval-utility-profile"
     ],
     "hasLaw": [],
     "hasTheorem": [
-      "urn:csabs:theorem/RankedRetrieval-finite-sorting-model-satisfaction"
+      "urn:csabs:theorem/RankedRetrieval-finite-sorting-model-satisfaction",
+      "urn:csabs:theorem/BM25FTS5-phrase-boolean-equations",
+      "urn:csabs:theorem/BM25FTS5-sql-ranking-direction"
     ],
     "source": [
       "urn:csabs:source/mathlib-finite-ranking-pinned"
@@ -287,7 +504,10 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "formulationLocator": "Catalog.RankedRetrieval",
     "formulationScope": "model",
     "leanModelMapping": "For a fixed query, D→ℝ supplies scores; D has LinearOrder. retrievalKeys sorts the finite image d↦toLex(-score d,d) using exact lexicographic order. Document identities are the second coordinates.",
-    "leanModelLimitations": "Witness establishes sorted, duplicate-free key enumeration with exact finite-set membership. Projecting identifiers and taking prefixes are mathematical interface operations, without separate Lean witnesses for top-k length or relevance quality."
+    "leanModelLimitations": "Witness establishes sorted, duplicate-free key enumeration with exact finite-set membership. Projecting identifiers and taking prefixes are mathematical interface operations, without separate Lean witnesses for top-k length or relevance quality.",
+    "relatedConcept": [
+      "urn:csabs:concept/BM25FTS5"
+    ]
   },
   {
     "id": "urn:csabs:operation/RankedRetrieval-score",
@@ -341,6 +561,57 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "provenanceKind": "adapted"
   },
   {
+    "id": "urn:csabs:operation/RankedRetrieval-phrase-and",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/RankedRetrieval",
+    "name": "phrase-and",
+    "signature": "phraseAND : (Phrase×D→Prop)×Seq(Phrase)→Set(D)",
+    "description": "All phrase-hit predicates hold; intersect with finite candidate universe before ranking.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "All phrase-hit predicates hold; intersect with finite candidate universe before ranking.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/sqlite-fts5-profile-2026-11-20"
+    ],
+    "sourceLocator": "SQLite FTS5 §§3.7 and 5.1.1; exact-real score sign mapping and set Boolean predicates in Catalog.FTS5Profile",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/RankedRetrieval-phrase-or",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/RankedRetrieval",
+    "name": "phrase-or",
+    "signature": "phraseOR : (Phrase×D→Prop)×Seq(Phrase)→Set(D)",
+    "description": "At least one phrase-hit predicate holds; intersect with finite candidate universe before ranking.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "At least one phrase-hit predicate holds; intersect with finite candidate universe before ranking.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/sqlite-fts5-profile-2026-11-20"
+    ],
+    "sourceLocator": "SQLite FTS5 §§3.7 and 5.1.1; exact-real score sign mapping and set Boolean predicates in Catalog.FTS5Profile",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/RankedRetrieval-fts5-relevance",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/RankedRetrieval",
+    "name": "fts5-relevance",
+    "signature": "fts5Relevance : ℝ→ℝ",
+    "description": "Map SQL FTS5 score σ to relevance −σ so existing descending-score ranking agrees with ascending SQL scores. Existing deterministic identifier tie-break remains explicit; SQLite ties alone are not assumed stable.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "Map SQL FTS5 score σ to relevance −σ so existing descending-score ranking agrees with ascending SQL scores. Existing deterministic identifier tie-break remains explicit; SQLite ties alone are not assumed stable.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/sqlite-fts5-profile-2026-11-20"
+    ],
+    "sourceLocator": "SQLite FTS5 §§3.7 and 5.1.1; exact-real score sign mapping and set Boolean predicates in Catalog.FTS5Profile",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
     "id": "urn:csabs:axiom/RankedRetrieval-ranking-definition",
     "type": "Axiom",
     "name": "ranking-definition",
@@ -362,6 +633,27 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceNote": "Definition adapted to the explicitly stated catalog carrier and operations.",
     "provenanceKind": "adapted",
     "ruleRole": "defining-rule"
+  },
+  {
+    "id": "urn:csabs:axiom/RankedRetrieval-utility-profile",
+    "type": "Axiom",
+    "name": "Explicit utility operation definitions",
+    "statement": "All phrase-hit predicates hold; intersect with finite candidate universe before ranking.; At least one phrase-hit predicate holds; intersect with finite candidate universe before ranking.; Map SQL FTS5 score σ to relevance −σ so existing descending-score ranking agrees with ascending SQL scores. Existing deterministic identifier tie-break remains explicit; SQLite ties alone are not assumed stable.",
+    "formalStatement": "phraseAND : (Phrase×D→Prop)×Seq(Phrase)→Set(D): All phrase-hit predicates hold; intersect with finite candidate universe before ranking.; phraseOR : (Phrase×D→Prop)×Seq(Phrase)→Set(D): At least one phrase-hit predicate holds; intersect with finite candidate universe before ranking.; fts5Relevance : ℝ→ℝ: Map SQL FTS5 score σ to relevance −σ so existing descending-score ranking agrees with ascending SQL scores. Existing deterministic identifier tie-break remains explicit; SQLite ties alone are not assumed stable.",
+    "assumptions": [
+      "Base concept conventions remain unchanged. Optional profiles apply only under their explicitly stated additional hypotheses; identity equality, finite inputs and exact mathematics."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/RankedRetrieval"
+    ],
+    "ruleRole": "defining-rule",
+    "reviewStatus": "Definitions of a selected extension, not new foundational axioms; individual model and result witnesses are separate.",
+    "source": [
+      "urn:csabs:source/sqlite-fts5-profile-2026-11-20"
+    ],
+    "sourceLocator": "SQLite FTS5 §§3.7 and 5.1.1; exact-real score sign mapping and set Boolean predicates in Catalog.FTS5Profile",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
   },
   {
     "id": "urn:csabs:theorem/RankedRetrieval-finite-sorting-model-satisfaction",

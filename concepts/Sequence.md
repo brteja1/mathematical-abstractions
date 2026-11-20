@@ -16,6 +16,7 @@ A finite ordered collection allowing repeated values, equivalently the inductive
 
 - [Nonce-based authenticated encryption with associated data](AEAD.md) — `requiresConcept`
 - [Fixed-length array](Array.md) — `relatedConcept`
+- [SQLite FTS5-style BM25 phrase and weighted-column profile](BM25FTS5.md) — `requiresConcept`
 - [B-tree (balanced multiway search tree)](BTree.md) — `requiresConcept`
 - [Finite complete binary min-heap](BinaryHeap.md) — `requiresConcept`
 - [Finite ordered binary tree with node labels](BinaryTree.md) — `requiresConcept`
@@ -49,7 +50,7 @@ A finite ordered collection allowing repeated values, equivalently the inductive
 
 ## Mathematical formulation
 
-Seq(A)=∐\_{n∈ℕ} A^{Fin(n)}, equivalently the inductive carrier nil | cons(a,s). Equality preserves length, order and repeated values; concatenation is finite list append.
+Seq(A)=∐\_{n∈ℕ} A^{Fin(n)}, equivalently the inductive carrier nil | cons(a,s). Equality preserves length, order and repeated values; concatenation is finite list append. Utility profile: take(n,xs) is the first min(n,|xs|) entries.; drop(n,xs) removes the first min(n,|xs|) entries.; isPrefix(xs,ys) iff ∃zs,xs++zs=ys; empty prefix allowed.; isSuffix(xs,ys) iff ∃zs,zs++xs=ys; empty suffix allowed.; Contiguous infix: ∃as,bs,as++xs++bs=ys; empty infix allowed.; Keep precisely true-predicate occurrences in original order, preserving multiplicity.; Retain the first occurrence of each value under identity equality. Model reverse(dedupLast(reverse(xs))); this differs from Mathlib List.dedup, which keeps last occurrences.; First matching value, or none when no value matches; findFirst(p,xs)=head?(filter(p,xs)).; Last matching value: findFirst(p,reverse(xs)); none if no match.; splitAt(n,xs)=(take(n,xs),drop(n,xs)); n≥length returns (xs,[]).
 
 **Lean formulation** (in its source module context):
 
@@ -69,7 +70,7 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 ## Interface and scope
 
-**axiomBasis:** Selected presentation: An ordered finite collection in which repeated values are allowed. Governing rules: Finite sequences consist exactly of empty or a value followed by a finite sequence. Predicates holding for nil and preserved by cons hold for every finite sequence. Concatenation is defined by recursion on the left argument. Length counts constructors. Additional selected editing rules: nonempty-pattern leftmost non-overlapping replacement recursion, and valid half-open deletion by take(i)++drop(j).
+**axiomBasis:** Selected presentation: An ordered finite collection in which repeated values are allowed. Governing rules: Finite sequences consist exactly of empty or a value followed by a finite sequence. Predicates holding for nil and preserved by cons hold for every finite sequence. Concatenation is defined by recursion on the left argument. Length counts constructors. Additional selected editing rules: nonempty-pattern leftmost non-overlapping replacement recursion, and valid half-open deletion by take(i)++drop(j). Utility definitions are recorded separately; optional bottom, subtype and goal-relative conventions are conditional and do not strengthen the base carrier.
 
 **basisKind:** defined-structure
 
@@ -257,6 +258,246 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 **provenanceKind:** adapted
 
+<a id="node-urn-csabs-operation-Sequence-take"></a>
+
+### take
+
+`urn:csabs:operation/Sequence-take`
+
+**signature:** take : ℕ×Seq(A)→Seq(A)
+
+**description:** take(n,xs) is the first min(n,|xs|) entries.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** take(n,xs) is the first min(n,|xs|) entries.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-Sequence-drop"></a>
+
+### drop
+
+`urn:csabs:operation/Sequence-drop`
+
+**signature:** drop : ℕ×Seq(A)→Seq(A)
+
+**description:** drop(n,xs) removes the first min(n,|xs|) entries.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** drop(n,xs) removes the first min(n,|xs|) entries.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-Sequence-prefix"></a>
+
+### prefix
+
+`urn:csabs:operation/Sequence-prefix`
+
+**signature:** isPrefix : Seq(A)²→Prop
+
+**description:** isPrefix(xs,ys) iff ∃zs,xs++zs=ys; empty prefix allowed.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** isPrefix(xs,ys) iff ∃zs,xs++zs=ys; empty prefix allowed.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-Sequence-suffix"></a>
+
+### suffix
+
+`urn:csabs:operation/Sequence-suffix`
+
+**signature:** isSuffix : Seq(A)²→Prop
+
+**description:** isSuffix(xs,ys) iff ∃zs,zs++xs=ys; empty suffix allowed.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** isSuffix(xs,ys) iff ∃zs,zs++xs=ys; empty suffix allowed.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-Sequence-infix"></a>
+
+### infix
+
+`urn:csabs:operation/Sequence-infix`
+
+**signature:** isInfix : Seq(A)²→Prop
+
+**description:** Contiguous infix: ∃as,bs,as++xs++bs=ys; empty infix allowed.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** Contiguous infix: ∃as,bs,as++xs++bs=ys; empty infix allowed.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-Sequence-filter"></a>
+
+### filter
+
+`urn:csabs:operation/Sequence-filter`
+
+**signature:** filter : (A→Bool)×Seq(A)→Seq(A)
+
+**description:** Keep precisely true-predicate occurrences in original order, preserving multiplicity.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** Keep precisely true-predicate occurrences in original order, preserving multiplicity.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-Sequence-dedup-first"></a>
+
+### dedup-first
+
+`urn:csabs:operation/Sequence-dedup-first`
+
+**signature:** dedupFirst : Seq(A)→Seq(A)
+
+**description:** Retain the first occurrence of each value under identity equality. Model reverse(dedupLast(reverse(xs))); this differs from Mathlib List.dedup, which keeps last occurrences.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** Retain the first occurrence of each value under identity equality. Model reverse(dedupLast(reverse(xs))); this differs from Mathlib List.dedup, which keeps last occurrences.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-Sequence-find-first"></a>
+
+### find-first
+
+`urn:csabs:operation/Sequence-find-first`
+
+**signature:** findFirst : (A→Bool)×Seq(A)→Option(A)
+
+**description:** First matching value, or none when no value matches; findFirst(p,xs)=head?(filter(p,xs)).
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** First matching value, or none when no value matches; findFirst(p,xs)=head?(filter(p,xs)).
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-Sequence-find-last"></a>
+
+### find-last
+
+`urn:csabs:operation/Sequence-find-last`
+
+**signature:** findLast : (A→Bool)×Seq(A)→Option(A)
+
+**description:** Last matching value: findFirst(p,reverse(xs)); none if no match.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** Last matching value: findFirst(p,reverse(xs)); none if no match.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-Sequence-split-at"></a>
+
+### split-at
+
+`urn:csabs:operation/Sequence-split-at`
+
+**signature:** splitAt : ℕ×Seq(A)→Seq(A)²
+
+**description:** splitAt(n,xs)=(take(n,xs),drop(n,xs)); n≥length returns (xs,[]).
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** splitAt(n,xs)=(take(n,xs),drop(n,xs)); n≥length returns (xs,[]).
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
 ## Axioms and defining rules
 
 <a id="node-urn-csabs-axiom-Sequence-constructors"></a>
@@ -408,6 +649,30 @@ Read with the linked module’s imports, namespaces, universes and section varia
 **sourceLocator:** Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice
 
 **sourceNote:** Adds an exact-equality finite-list adaptation of first disjoint matching and valid half-open deletion; the pattern must be nonempty and inserted output is not scanned.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-axiom-Sequence-utility-profile"></a>
+
+### Explicit utility operation definitions
+
+`urn:csabs:axiom/Sequence-utility-profile`
+
+**statement:** take(n,xs) is the first min(n,|xs|) entries.; drop(n,xs) removes the first min(n,|xs|) entries.; isPrefix(xs,ys) iff ∃zs,xs++zs=ys; empty prefix allowed.; isSuffix(xs,ys) iff ∃zs,zs++xs=ys; empty suffix allowed.; Contiguous infix: ∃as,bs,as++xs++bs=ys; empty infix allowed.; Keep precisely true-predicate occurrences in original order, preserving multiplicity.; Retain the first occurrence of each value under identity equality. Model reverse(dedupLast(reverse(xs))); this differs from Mathlib List.dedup, which keeps last occurrences.; First matching value, or none when no value matches; findFirst(p,xs)=head?(filter(p,xs)).; Last matching value: findFirst(p,reverse(xs)); none if no match.; splitAt(n,xs)=(take(n,xs),drop(n,xs)); n≥length returns (xs,[]).
+
+**formalStatement:** take : ℕ×Seq(A)→Seq(A): take(n,xs) is the first min(n,|xs|) entries.; drop : ℕ×Seq(A)→Seq(A): drop(n,xs) removes the first min(n,|xs|) entries.; isPrefix : Seq(A)²→Prop: isPrefix(xs,ys) iff ∃zs,xs++zs=ys; empty prefix allowed.; isSuffix : Seq(A)²→Prop: isSuffix(xs,ys) iff ∃zs,zs++xs=ys; empty suffix allowed.; isInfix : Seq(A)²→Prop: Contiguous infix: ∃as,bs,as++xs++bs=ys; empty infix allowed.; filter : (A→Bool)×Seq(A)→Seq(A): Keep precisely true-predicate occurrences in original order, preserving multiplicity.; dedupFirst : Seq(A)→Seq(A): Retain the first occurrence of each value under identity equality. Model reverse(dedupLast(reverse(xs))); this differs from Mathlib List.dedup, which keeps last occurrences.; findFirst : (A→Bool)×Seq(A)→Option(A): First matching value, or none when no value matches; findFirst(p,xs)=head?(filter(p,xs)).; findLast : (A→Bool)×Seq(A)→Option(A): Last matching value: findFirst(p,reverse(xs)); none if no match.; splitAt : ℕ×Seq(A)→Seq(A)²: splitAt(n,xs)=(take(n,xs),drop(n,xs)); n≥length returns (xs,[]).
+
+**assumptions:** Base concept conventions remain unchanged. Optional profiles apply only under their explicitly stated additional hypotheses; identity equality, finite inputs and exact mathematics.
+
+**ruleRole:** defining-rule
+
+**reviewStatus:** Definitions of a selected extension, not new foundational axioms; individual model and result witnesses are separate.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
 
 **provenanceKind:** adapted
 
@@ -610,6 +875,117 @@ Read with the linked module’s imports, namespaces, universes and section varia
 **provenanceKind:** derived
 
 **ruleRole:** derived-law
+
+<a id="node-urn-csabs-law-Sequence-take-drop-reconstruction"></a>
+
+### take-drop-reconstruction
+
+`urn:csabs:law/Sequence-take-drop-reconstruction`
+
+**statement:** take(n,xs)++drop(n,xs)=xs; lengths are min(n,|xs|) and |xs|−n.
+
+**formalStatement:** take(n,xs)++drop(n,xs)=xs; lengths are min(n,|xs|) and |xs|−n.
+
+**proofSketch:** List take/drop reconstruction and length lemmas.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](Sequence.md#node-urn-csabs-axiom-Sequence-utility-profile); [constructors](Sequence.md#node-urn-csabs-axiom-Sequence-constructors)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog CollectionUtilities Lean formulations and proofs; path: lean/Catalog/CollectionUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist; Catalog.sequence_split
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+take(n,xs)++drop(n,xs)=xs; lengths are min(n,|xs|) and |xs|−n.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} (xs : List A) (n : Nat), xs.take n ++ xs.drop n = xs ∧
+    (xs.take n).length = min n xs.length ∧
+    (xs.drop n).length = xs.length - n
+```
+
+**Source:** [`Catalog.sequence_split`](../lean/Catalog/CollectionUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** take(n,xs)++drop(n,xs)=xs; lengths are min(n,|xs|) and |xs|−n. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Sequence-constructors": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:axiom/Sequence-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
+<a id="node-urn-csabs-law-Sequence-find-filter-head"></a>
+
+### find-filter-head
+
+`urn:csabs:law/Sequence-find-filter-head`
+
+**statement:** findFirst(p,xs)=head?(filter(p,xs)).
+
+**formalStatement:** findFirst(p,xs)=head?(filter(p,xs)).
+
+**proofSketch:** Induction on xs and a case split on p(head).
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](Sequence.md#node-urn-csabs-axiom-Sequence-utility-profile)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog CollectionUtilities Lean formulations and proofs; path: lean/Catalog/CollectionUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist; Catalog.sequence_find
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+findFirst(p,xs)=head?(filter(p,xs)).
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} (xs : List A) (p : A → Bool), xs.find? p = (xs.filter p).head?
+```
+
+**Source:** [`Catalog.sequence_find`](../lean/Catalog/CollectionUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** findFirst(p,xs)=head?(filter(p,xs)). Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Sequence-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
 
 ## Theorems
 
@@ -1010,6 +1386,229 @@ Read with the linked module’s imports, namespaces, universes and section varia
 }
 ```
 
+<a id="node-urn-csabs-theorem-Sequence-stable-filter-membership"></a>
+
+### stable-filter-membership
+
+`urn:csabs:theorem/Sequence-stable-filter-membership`
+
+**statement:** a∈filter(p,xs) iff a∈xs and p(a)=true.
+
+**formalStatement:** a∈filter(p,xs) iff a∈xs and p(a)=true.
+
+**proofSketch:** List.mem_filter; stability is in the concrete recursive List.filter definition.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](Sequence.md#node-urn-csabs-axiom-Sequence-utility-profile); [constructors](Sequence.md#node-urn-csabs-axiom-Sequence-constructors)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog CollectionUtilities Lean formulations and proofs; path: lean/Catalog/CollectionUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist; Catalog.sequence_filter
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+a∈filter(p,xs) iff a∈xs and p(a)=true.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} (xs : List A) (p : A → Bool) (a : A), a ∈ xs.filter p ↔ a ∈ xs ∧ p a = true
+```
+
+**Source:** [`Catalog.sequence_filter`](../lean/Catalog/CollectionUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** a∈filter(p,xs) iff a∈xs and p(a)=true. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Sequence-constructors": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:axiom/Sequence-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
+<a id="node-urn-csabs-theorem-Sequence-first-occurrence-dedup"></a>
+
+### first-occurrence-dedup
+
+`urn:csabs:theorem/Sequence-first-occurrence-dedup`
+
+**statement:** dedupFirst(a::xs)=a::dedupFirst(filter(b≠a,xs)).
+
+**formalStatement:** dedupFirst(a::xs)=a::dedupFirst(filter(b≠a,xs)).
+
+**proofSketch:** Reverse-list induction using last-occurrence deduplication gives the first-occurrence recurrence.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](Sequence.md#node-urn-csabs-axiom-Sequence-utility-profile); [constructors](Sequence.md#node-urn-csabs-axiom-Sequence-constructors)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog CollectionUtilities Lean formulations and proofs; path: lean/Catalog/CollectionUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist; Catalog.dedupFirst_first
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+dedupFirst(a::xs)=a::dedupFirst(filter(b≠a,xs)).
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} [DecidableEq A] (a : A) (xs : List A), Catalog.dedupFirst (a :: xs) = a :: Catalog.dedupFirst (xs.filter (fun b => b != a))
+```
+
+**Source:** [`Catalog.dedupFirst_first`](../lean/Catalog/CollectionUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** dedupFirst(a::xs)=a::dedupFirst(filter(b≠a,xs)). Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Sequence-constructors": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:axiom/Sequence-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
+<a id="node-urn-csabs-theorem-Sequence-dedup-properties"></a>
+
+### dedup-properties
+
+`urn:csabs:theorem/Sequence-dedup-properties`
+
+**statement:** dedupFirst(xs) is duplicate-free, a sublist of xs, has the same members, and is idempotent.
+
+**formalStatement:** dedupFirst(xs) is duplicate-free, a sublist of xs, has the same members, and is idempotent.
+
+**proofSketch:** Reverse preserves membership, sublist and no-duplicates; apply List.dedup properties.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](Sequence.md#node-urn-csabs-axiom-Sequence-utility-profile); [constructors](Sequence.md#node-urn-csabs-axiom-Sequence-constructors)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog CollectionUtilities Lean formulations and proofs; path: lean/Catalog/CollectionUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist; Catalog.dedupFirst_properties
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+dedupFirst(xs) is duplicate-free, a sublist of xs, has the same members, and is idempotent.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} [DecidableEq A] (xs : List A), (Catalog.dedupFirst xs).Nodup ∧ (Catalog.dedupFirst xs).Sublist xs ∧
+    (∀ a, a ∈ Catalog.dedupFirst xs ↔ a ∈ xs) ∧
+    Catalog.dedupFirst (Catalog.dedupFirst xs) = Catalog.dedupFirst xs
+```
+
+**Source:** [`Catalog.dedupFirst_properties`](../lean/Catalog/CollectionUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** dedupFirst(xs) is duplicate-free, a sublist of xs, has the same members, and is idempotent. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Sequence-constructors": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:axiom/Sequence-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
+<a id="node-urn-csabs-theorem-Sequence-contiguous-relations"></a>
+
+### contiguous-relations
+
+`urn:csabs:theorem/Sequence-contiguous-relations`
+
+**statement:** Prefix, suffix and contiguous infix hold exactly when the corresponding concatenation witnesses exist.
+
+**formalStatement:** Prefix, suffix and contiguous infix hold exactly when the corresponding concatenation witnesses exist.
+
+**proofSketch:** Unfold the three List relation definitions.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](Sequence.md#node-urn-csabs-axiom-Sequence-utility-profile)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog CollectionUtilities Lean formulations and proofs; path: lean/Catalog/CollectionUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist; Catalog.sequence_relations
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+Prefix, suffix and contiguous infix hold exactly when the corresponding concatenation witnesses exist.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} (xs ys : List A), (List.IsPrefix xs ys ↔ ∃ zs, xs ++ zs = ys) ∧
+    (List.IsSuffix xs ys ↔ ∃ zs, zs ++ xs = ys) ∧
+    (List.IsInfix xs ys ↔ ∃ as bs, as ++ xs ++ bs = ys)
+```
+
+**Source:** [`Catalog.sequence_relations`](../lean/Catalog/CollectionUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Prefix, suffix and contiguous infix hold exactly when the corresponding concatenation witnesses exist. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Sequence-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
 ## Concept provenance
 
 - [Lean Language Reference: Linked Lists](https://lean-lang.org/doc/reference/latest/Basic-Types/Linked-Lists/); accessedOn: 2026-11-08; sourceRole: datatype-and-operation-reference
@@ -1049,7 +1648,17 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:operation/Sequence-view",
       "urn:csabs:operation/Sequence-foldr",
       "urn:csabs:operation/Sequence-edit-replace-all",
-      "urn:csabs:operation/Sequence-edit-delete-span"
+      "urn:csabs:operation/Sequence-edit-delete-span",
+      "urn:csabs:operation/Sequence-take",
+      "urn:csabs:operation/Sequence-drop",
+      "urn:csabs:operation/Sequence-prefix",
+      "urn:csabs:operation/Sequence-suffix",
+      "urn:csabs:operation/Sequence-infix",
+      "urn:csabs:operation/Sequence-filter",
+      "urn:csabs:operation/Sequence-dedup-first",
+      "urn:csabs:operation/Sequence-find-first",
+      "urn:csabs:operation/Sequence-find-last",
+      "urn:csabs:operation/Sequence-split-at"
     ],
     "hasAxiom": [
       "urn:csabs:axiom/Sequence-constructors",
@@ -1058,7 +1667,8 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:axiom/Sequence-length-recursion",
       "urn:csabs:axiom/Sequence-foldr-equations",
       "urn:csabs:axiom/Sequence-edit-replacement",
-      "urn:csabs:axiom/Sequence-edit-span-deletion"
+      "urn:csabs:axiom/Sequence-edit-span-deletion",
+      "urn:csabs:axiom/Sequence-utility-profile"
     ],
     "hasLaw": [
       "urn:csabs:law/sequence-concat-associative",
@@ -1068,7 +1678,9 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:law/Sequence-edit-span-deletion-length",
       "urn:csabs:law/Sequence-edit-span-deletion-empty",
       "urn:csabs:law/Sequence-edit-span-deletion-full",
-      "urn:csabs:law/Sequence-edit-replacement-equal-length"
+      "urn:csabs:law/Sequence-edit-replacement-equal-length",
+      "urn:csabs:law/Sequence-take-drop-reconstruction",
+      "urn:csabs:law/Sequence-find-filter-head"
     ],
     "hasTheorem": [
       "urn:csabs:theorem/Sequence-concat-right-identity",
@@ -1078,7 +1690,11 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:theorem/Sequence-edit-span-deletion-length",
       "urn:csabs:theorem/Sequence-edit-span-deletion-empty",
       "urn:csabs:theorem/Sequence-edit-span-deletion-full",
-      "urn:csabs:theorem/Sequence-edit-replacement-equal-length"
+      "urn:csabs:theorem/Sequence-edit-replacement-equal-length",
+      "urn:csabs:theorem/Sequence-stable-filter-membership",
+      "urn:csabs:theorem/Sequence-first-occurrence-dedup",
+      "urn:csabs:theorem/Sequence-dedup-properties",
+      "urn:csabs:theorem/Sequence-contiguous-relations"
     ],
     "source": [
       "urn:csabs:source/lean-list-reference",
@@ -1090,7 +1706,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "verificationObligation": [
       "Use the stated carriers, equality, domain restrictions and semantic conventions; alternative conventions require an explicit variant."
     ],
-    "axiomBasis": "Selected presentation: An ordered finite collection in which repeated values are allowed. Governing rules: Finite sequences consist exactly of empty or a value followed by a finite sequence. Predicates holding for nil and preserved by cons hold for every finite sequence. Concatenation is defined by recursion on the left argument. Length counts constructors. Additional selected editing rules: nonempty-pattern leftmost non-overlapping replacement recursion, and valid half-open deletion by take(i)++drop(j).",
+    "axiomBasis": "Selected presentation: An ordered finite collection in which repeated values are allowed. Governing rules: Finite sequences consist exactly of empty or a value followed by a finite sequence. Predicates holding for nil and preserved by cons hold for every finite sequence. Concatenation is defined by recursion on the left argument. Length counts constructors. Additional selected editing rules: nonempty-pattern leftmost non-overlapping replacement recursion, and valid half-open deletion by take(i)++drop(j). Utility definitions are recorded separately; optional bottom, subtype and goal-relative conventions are conditional and do not strengthen the base carrier.",
     "basisKind": "defined-structure",
     "basisScope": "Finite well-founded values, including [] even if A is empty; structural equality uses equality of A and element order. Pure operations; lengths use unbounded naturals. No cycles, infinite lists or pointer identity. Indexing is partial outside 0≤i<len(xs). view is a total tagged decomposition; foldr takes a total step function. Editing profile: literal leftmost non-overlapping replaceAll requires a nonempty pattern and decidable exact element equality, never rescans replacements; span deletion uses valid half-open [i,j), 0≤i≤j≤length. Neither operation changes the finite-list carrier or existing constructors.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
@@ -1107,7 +1723,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "formulationScope": "model",
     "leanModelMapping": "List A, finite ordered values with duplicates allowed; structural list equality.",
     "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-    "mathematicalFormulation": "Seq(A)=∐_{n∈ℕ} A^{Fin(n)}, equivalently the inductive carrier nil | cons(a,s). Equality preserves length, order and repeated values; concatenation is finite list append."
+    "mathematicalFormulation": "Seq(A)=∐_{n∈ℕ} A^{Fin(n)}, equivalently the inductive carrier nil | cons(a,s). Equality preserves length, order and repeated values; concatenation is finite list append. Utility profile: take(n,xs) is the first min(n,|xs|) entries.; drop(n,xs) removes the first min(n,|xs|) entries.; isPrefix(xs,ys) iff ∃zs,xs++zs=ys; empty prefix allowed.; isSuffix(xs,ys) iff ∃zs,zs++xs=ys; empty suffix allowed.; Contiguous infix: ∃as,bs,as++xs++bs=ys; empty infix allowed.; Keep precisely true-predicate occurrences in original order, preserving multiplicity.; Retain the first occurrence of each value under identity equality. Model reverse(dedupLast(reverse(xs))); this differs from Mathlib List.dedup, which keeps last occurrences.; First matching value, or none when no value matches; findFirst(p,xs)=head?(filter(p,xs)).; Last matching value: findFirst(p,reverse(xs)); none if no match.; splitAt(n,xs)=(take(n,xs),drop(n,xs)); n≥length returns (xs,[])."
   },
   {
     "id": "urn:csabs:operation/sequence-concatenation",
@@ -1235,6 +1851,176 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice",
     "sourceNote": "Adds an exact-equality finite-list adaptation of first disjoint matching and valid half-open deletion; the pattern must be nonempty and inserted output is not scanned.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/Sequence-take",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/Sequence",
+    "name": "take",
+    "signature": "take : ℕ×Seq(A)→Seq(A)",
+    "description": "take(n,xs) is the first min(n,|xs|) entries.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "take(n,xs) is the first min(n,|xs|) entries.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/Sequence-drop",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/Sequence",
+    "name": "drop",
+    "signature": "drop : ℕ×Seq(A)→Seq(A)",
+    "description": "drop(n,xs) removes the first min(n,|xs|) entries.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "drop(n,xs) removes the first min(n,|xs|) entries.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/Sequence-prefix",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/Sequence",
+    "name": "prefix",
+    "signature": "isPrefix : Seq(A)²→Prop",
+    "description": "isPrefix(xs,ys) iff ∃zs,xs++zs=ys; empty prefix allowed.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "isPrefix(xs,ys) iff ∃zs,xs++zs=ys; empty prefix allowed.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/Sequence-suffix",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/Sequence",
+    "name": "suffix",
+    "signature": "isSuffix : Seq(A)²→Prop",
+    "description": "isSuffix(xs,ys) iff ∃zs,zs++xs=ys; empty suffix allowed.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "isSuffix(xs,ys) iff ∃zs,zs++xs=ys; empty suffix allowed.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/Sequence-infix",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/Sequence",
+    "name": "infix",
+    "signature": "isInfix : Seq(A)²→Prop",
+    "description": "Contiguous infix: ∃as,bs,as++xs++bs=ys; empty infix allowed.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "Contiguous infix: ∃as,bs,as++xs++bs=ys; empty infix allowed.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/Sequence-filter",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/Sequence",
+    "name": "filter",
+    "signature": "filter : (A→Bool)×Seq(A)→Seq(A)",
+    "description": "Keep precisely true-predicate occurrences in original order, preserving multiplicity.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "Keep precisely true-predicate occurrences in original order, preserving multiplicity.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/Sequence-dedup-first",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/Sequence",
+    "name": "dedup-first",
+    "signature": "dedupFirst : Seq(A)→Seq(A)",
+    "description": "Retain the first occurrence of each value under identity equality. Model reverse(dedupLast(reverse(xs))); this differs from Mathlib List.dedup, which keeps last occurrences.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "Retain the first occurrence of each value under identity equality. Model reverse(dedupLast(reverse(xs))); this differs from Mathlib List.dedup, which keeps last occurrences.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/Sequence-find-first",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/Sequence",
+    "name": "find-first",
+    "signature": "findFirst : (A→Bool)×Seq(A)→Option(A)",
+    "description": "First matching value, or none when no value matches; findFirst(p,xs)=head?(filter(p,xs)).",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "First matching value, or none when no value matches; findFirst(p,xs)=head?(filter(p,xs)).",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/Sequence-find-last",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/Sequence",
+    "name": "find-last",
+    "signature": "findLast : (A→Bool)×Seq(A)→Option(A)",
+    "description": "Last matching value: findFirst(p,reverse(xs)); none if no match.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "Last matching value: findFirst(p,reverse(xs)); none if no match.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/Sequence-split-at",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/Sequence",
+    "name": "split-at",
+    "signature": "splitAt : ℕ×Seq(A)→Seq(A)²",
+    "description": "splitAt(n,xs)=(take(n,xs),drop(n,xs)); n≥length returns (xs,[]).",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "splitAt(n,xs)=(take(n,xs),drop(n,xs)); n≥length returns (xs,[]).",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
     "provenanceKind": "adapted"
   },
   {
@@ -1368,6 +2154,27 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Rust str::replace and str::match_indices; Mathlib Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice",
     "sourceNote": "Adds an exact-equality finite-list adaptation of first disjoint matching and valid half-open deletion; the pattern must be nonempty and inserted output is not scanned.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:axiom/Sequence-utility-profile",
+    "type": "Axiom",
+    "name": "Explicit utility operation definitions",
+    "statement": "take(n,xs) is the first min(n,|xs|) entries.; drop(n,xs) removes the first min(n,|xs|) entries.; isPrefix(xs,ys) iff ∃zs,xs++zs=ys; empty prefix allowed.; isSuffix(xs,ys) iff ∃zs,zs++xs=ys; empty suffix allowed.; Contiguous infix: ∃as,bs,as++xs++bs=ys; empty infix allowed.; Keep precisely true-predicate occurrences in original order, preserving multiplicity.; Retain the first occurrence of each value under identity equality. Model reverse(dedupLast(reverse(xs))); this differs from Mathlib List.dedup, which keeps last occurrences.; First matching value, or none when no value matches; findFirst(p,xs)=head?(filter(p,xs)).; Last matching value: findFirst(p,reverse(xs)); none if no match.; splitAt(n,xs)=(take(n,xs),drop(n,xs)); n≥length returns (xs,[]).",
+    "formalStatement": "take : ℕ×Seq(A)→Seq(A): take(n,xs) is the first min(n,|xs|) entries.; drop : ℕ×Seq(A)→Seq(A): drop(n,xs) removes the first min(n,|xs|) entries.; isPrefix : Seq(A)²→Prop: isPrefix(xs,ys) iff ∃zs,xs++zs=ys; empty prefix allowed.; isSuffix : Seq(A)²→Prop: isSuffix(xs,ys) iff ∃zs,zs++xs=ys; empty suffix allowed.; isInfix : Seq(A)²→Prop: Contiguous infix: ∃as,bs,as++xs++bs=ys; empty infix allowed.; filter : (A→Bool)×Seq(A)→Seq(A): Keep precisely true-predicate occurrences in original order, preserving multiplicity.; dedupFirst : Seq(A)→Seq(A): Retain the first occurrence of each value under identity equality. Model reverse(dedupLast(reverse(xs))); this differs from Mathlib List.dedup, which keeps last occurrences.; findFirst : (A→Bool)×Seq(A)→Option(A): First matching value, or none when no value matches; findFirst(p,xs)=head?(filter(p,xs)).; findLast : (A→Bool)×Seq(A)→Option(A): Last matching value: findFirst(p,reverse(xs)); none if no match.; splitAt : ℕ×Seq(A)→Seq(A)²: splitAt(n,xs)=(take(n,xs),drop(n,xs)); n≥length returns (xs,[]).",
+    "assumptions": [
+      "Base concept conventions remain unchanged. Optional profiles apply only under their explicitly stated additional hypotheses; identity equality, finite inputs and exact mathematics."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Sequence"
+    ],
+    "ruleRole": "defining-rule",
+    "reviewStatus": "Definitions of a selected extension, not new foundational axioms; individual model and result witnesses are separate.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
     "provenanceKind": "adapted"
   },
   {
@@ -1576,6 +2383,73 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceNote": "Derived for the explicit selected model. Induct on remaining input length. Each matched span removes |p| original elements and inserts exactly |r|=|p| elements; an unmatched step preserves one element.",
     "provenanceKind": "derived",
     "ruleRole": "derived-law"
+  },
+  {
+    "id": "urn:csabs:law/Sequence-take-drop-reconstruction",
+    "type": "Law",
+    "name": "take-drop-reconstruction",
+    "statement": "take(n,xs)++drop(n,xs)=xs; lengths are min(n,|xs|) and |xs|−n.",
+    "formalStatement": "take(n,xs)++drop(n,xs)=xs; lengths are min(n,|xs|) and |xs|−n.",
+    "mathematicalFormulation": "take(n,xs)++drop(n,xs)=xs; lengths are min(n,|xs|) and |xs|−n.",
+    "proofSketch": "List take/drop reconstruction and length lemmas.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Sequence"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/Sequence-utility-profile",
+      "urn:csabs:axiom/Sequence-constructors"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-CollectionUtilities"
+    ],
+    "sourceLocator": "Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist; Catalog.sequence_split",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type u} (xs : List A) (n : Nat), xs.take n ++ xs.drop n = xs ∧\n    (xs.take n).length = min n xs.length ∧\n    (xs.drop n).length = xs.length - n",
+    "leanModelMapping": "take(n,xs)++drop(n,xs)=xs; lengths are min(n,|xs|) and |xs|−n. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Sequence-constructors\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:axiom/Sequence-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-CollectionUtilities",
+    "formulationLocator": "Catalog.sequence_split"
+  },
+  {
+    "id": "urn:csabs:law/Sequence-find-filter-head",
+    "type": "Law",
+    "name": "find-filter-head",
+    "statement": "findFirst(p,xs)=head?(filter(p,xs)).",
+    "formalStatement": "findFirst(p,xs)=head?(filter(p,xs)).",
+    "mathematicalFormulation": "findFirst(p,xs)=head?(filter(p,xs)).",
+    "proofSketch": "Induction on xs and a case split on p(head).",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Sequence"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/Sequence-utility-profile"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-CollectionUtilities"
+    ],
+    "sourceLocator": "Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist; Catalog.sequence_find",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type u} (xs : List A) (p : A → Bool), xs.find? p = (xs.filter p).head?",
+    "leanModelMapping": "findFirst(p,xs)=head?(filter(p,xs)). Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Sequence-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-CollectionUtilities",
+    "formulationLocator": "Catalog.sequence_find"
   },
   {
     "id": "urn:csabs:theorem/Sequence-concat-right-identity",
@@ -1841,6 +2715,141 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "leanModelMapping": "Induct on remaining input length. Each matched span removes |p| original elements and inserts exactly |r|=|p| elements; an unmatched step preserves one element.",
     "leanModelLimitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
     "leanPremiseMapping": "{\"urn:csabs:axiom/Sequence-concat-recursion\": \"Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.\", \"urn:csabs:axiom/Sequence-edit-replacement\": \"Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Induct on remaining input length. Each matched span removes |p| original elements and inserts exactly |r|=|p| elements; an unmatched step preserves one element.\", \"urn:csabs:axiom/Sequence-induction\": \"Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.\", \"urn:csabs:axiom/Sequence-length-recursion\": \"Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.\", \"urn:csabs:law/sequence-length-concat\": \"Existing finite-list induction, concatenation or length premise, instantiated with exact List equality; no editing behavior is inferred from it.\"}"
+  },
+  {
+    "id": "urn:csabs:theorem/Sequence-stable-filter-membership",
+    "type": "Theorem",
+    "name": "stable-filter-membership",
+    "statement": "a∈filter(p,xs) iff a∈xs and p(a)=true.",
+    "formalStatement": "a∈filter(p,xs) iff a∈xs and p(a)=true.",
+    "mathematicalFormulation": "a∈filter(p,xs) iff a∈xs and p(a)=true.",
+    "proofSketch": "List.mem_filter; stability is in the concrete recursive List.filter definition.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Sequence"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/Sequence-utility-profile",
+      "urn:csabs:axiom/Sequence-constructors"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-CollectionUtilities"
+    ],
+    "sourceLocator": "Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist; Catalog.sequence_filter",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type u} (xs : List A) (p : A → Bool) (a : A), a ∈ xs.filter p ↔ a ∈ xs ∧ p a = true",
+    "leanModelMapping": "a∈filter(p,xs) iff a∈xs and p(a)=true. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Sequence-constructors\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:axiom/Sequence-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-CollectionUtilities",
+    "formulationLocator": "Catalog.sequence_filter"
+  },
+  {
+    "id": "urn:csabs:theorem/Sequence-first-occurrence-dedup",
+    "type": "Theorem",
+    "name": "first-occurrence-dedup",
+    "statement": "dedupFirst(a::xs)=a::dedupFirst(filter(b≠a,xs)).",
+    "formalStatement": "dedupFirst(a::xs)=a::dedupFirst(filter(b≠a,xs)).",
+    "mathematicalFormulation": "dedupFirst(a::xs)=a::dedupFirst(filter(b≠a,xs)).",
+    "proofSketch": "Reverse-list induction using last-occurrence deduplication gives the first-occurrence recurrence.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Sequence"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/Sequence-utility-profile",
+      "urn:csabs:axiom/Sequence-constructors"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-CollectionUtilities"
+    ],
+    "sourceLocator": "Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist; Catalog.dedupFirst_first",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type u} [DecidableEq A] (a : A) (xs : List A), Catalog.dedupFirst (a :: xs) = a :: Catalog.dedupFirst (xs.filter (fun b => b != a))",
+    "leanModelMapping": "dedupFirst(a::xs)=a::dedupFirst(filter(b≠a,xs)). Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Sequence-constructors\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:axiom/Sequence-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-CollectionUtilities",
+    "formulationLocator": "Catalog.dedupFirst_first"
+  },
+  {
+    "id": "urn:csabs:theorem/Sequence-dedup-properties",
+    "type": "Theorem",
+    "name": "dedup-properties",
+    "statement": "dedupFirst(xs) is duplicate-free, a sublist of xs, has the same members, and is idempotent.",
+    "formalStatement": "dedupFirst(xs) is duplicate-free, a sublist of xs, has the same members, and is idempotent.",
+    "mathematicalFormulation": "dedupFirst(xs) is duplicate-free, a sublist of xs, has the same members, and is idempotent.",
+    "proofSketch": "Reverse preserves membership, sublist and no-duplicates; apply List.dedup properties.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Sequence"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/Sequence-utility-profile",
+      "urn:csabs:axiom/Sequence-constructors"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-CollectionUtilities"
+    ],
+    "sourceLocator": "Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist; Catalog.dedupFirst_properties",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type u} [DecidableEq A] (xs : List A), (Catalog.dedupFirst xs).Nodup ∧ (Catalog.dedupFirst xs).Sublist xs ∧\n    (∀ a, a ∈ Catalog.dedupFirst xs ↔ a ∈ xs) ∧\n    Catalog.dedupFirst (Catalog.dedupFirst xs) = Catalog.dedupFirst xs",
+    "leanModelMapping": "dedupFirst(xs) is duplicate-free, a sublist of xs, has the same members, and is idempotent. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Sequence-constructors\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:axiom/Sequence-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-CollectionUtilities",
+    "formulationLocator": "Catalog.dedupFirst_properties"
+  },
+  {
+    "id": "urn:csabs:theorem/Sequence-contiguous-relations",
+    "type": "Theorem",
+    "name": "contiguous-relations",
+    "statement": "Prefix, suffix and contiguous infix hold exactly when the corresponding concatenation witnesses exist.",
+    "formalStatement": "Prefix, suffix and contiguous infix hold exactly when the corresponding concatenation witnesses exist.",
+    "mathematicalFormulation": "Prefix, suffix and contiguous infix hold exactly when the corresponding concatenation witnesses exist.",
+    "proofSketch": "Unfold the three List relation definitions.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Sequence"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/Sequence-utility-profile"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-CollectionUtilities"
+    ],
+    "sourceLocator": "Data/List/Defs.lean and Basic.lean: IsPrefix, IsSuffix, IsInfix, find?; Data/List/TakeDrop.lean: take_append_drop; Data/List/Dedup.lean: dedup, nodup_dedup, dedup_sublist; Catalog.sequence_relations",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type u} (xs ys : List A), (List.IsPrefix xs ys ↔ ∃ zs, xs ++ zs = ys) ∧\n    (List.IsSuffix xs ys ↔ ∃ zs, zs ++ xs = ys) ∧\n    (List.IsInfix xs ys ↔ ∃ as bs, as ++ xs ++ bs = ys)",
+    "leanModelMapping": "Prefix, suffix and contiguous infix hold exactly when the corresponding concatenation witnesses exist. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Sequence-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-CollectionUtilities",
+    "formulationLocator": "Catalog.sequence_relations"
   }
 ]
 ```

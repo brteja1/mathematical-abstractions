@@ -2540,6 +2540,48 @@
       "path": "lean/Catalog/LanguageClasses.lean",
       "accessedOn": "2026-11-20",
       "sourceRole": "local-lean-formulation-and-proof"
+    },
+    {
+      "id": "urn:csabs:source/utility-mathlib-pinned",
+      "type": "Source",
+      "label": "Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.",
+      "url": "https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib",
+      "path": "lean/.lake/packages/mathlib/Mathlib"
+    },
+    {
+      "id": "urn:csabs:source/sqlite-fts5-profile-2026-11-20",
+      "type": "Source",
+      "label": "SQLite FTS5 documentation and BM25 auxiliary implementation",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "Consulted primary documentation sections 3.7 and 5.1.1, and fts5_aux.c fts5Bm25GetData/fts5Bm25Function. Exact-real mathematical adaptation; no binary floating-point or tokenizer equivalence claim.",
+      "url": "https://www.sqlite.org/fts5.html",
+      "citation": "SQLite project, FTS5 Extension §§3.7, 5.1.1; ext/fts5/fts5_aux.c, https://raw.githubusercontent.com/sqlite/sqlite/master/ext/fts5/fts5_aux.c, consulted 2026-11-20. This consultation URL is not a dependency pin."
+    },
+    {
+      "id": "urn:csabs:source/utility-lean-CollectionUtilities",
+      "type": "Source",
+      "label": "Catalog CollectionUtilities Lean formulations and proofs",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.",
+      "path": "lean/Catalog/CollectionUtilities.lean"
+    },
+    {
+      "id": "urn:csabs:source/utility-lean-ReachabilityUtilities",
+      "type": "Source",
+      "label": "Catalog ReachabilityUtilities Lean formulations and proofs",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.",
+      "path": "lean/Catalog/ReachabilityUtilities.lean"
+    },
+    {
+      "id": "urn:csabs:source/utility-lean-FTS5Profile",
+      "type": "Source",
+      "label": "Catalog FTS5Profile Lean formulations and proofs",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.",
+      "path": "lean/Catalog/FTS5Profile.lean"
     }
   ]
 }

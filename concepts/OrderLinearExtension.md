@@ -267,6 +267,61 @@ Read with the linked module’s imports, namespaces, universes and section varia
 }
 ```
 
+<a id="node-urn-csabs-theorem-OrderLinearExtension-all-extensions-reflect-order"></a>
+
+### all-extensions-reflect-order
+
+`urn:csabs:theorem/OrderLinearExtension-all-extensions-reflect-order`
+
+**statement:** For a partial order r, r(a,b) iff s(a,b) for every linear order s extending r.
+
+**formalStatement:** For a partial order r, r(a,b) iff s(a,b) for every linear order s extending r.
+
+**proofSketch:** If ¬r(a,b), add b≤a by t(x,y)=r(x,y) or (r(x,b) and r(a,y)); prove t partial, extend it by Szpilrajn, and use antisymmetry to refute a≤b.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [defining profile](OrderLinearExtension.md#node-urn-csabs-axiom-OrderLinearExtension-defining-profile)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog ReachabilityUtilities Lean formulations and proofs; path: lean/Catalog/ReachabilityUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Order/Extension/Linear.lean: extend_partialOrder and its relation-extension construction; derived separation argument; Catalog.order_all_extensions
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+For a partial order r, r(a,b) iff s(a,b) for every linear order s extending r.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} (r : A → A → Prop) [IsPartialOrder A r]
+    (a b : A), r a b ↔ ∀ s : A → A → Prop, IsLinearOrder A s → r ≤ s → s a b
+```
+
+**Source:** [`Catalog.order_all_extensions`](../lean/Catalog/ReachabilityUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** For a partial order r, r(a,b) iff s(a,b) for every linear order s extending r. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/OrderLinearExtension-defining-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
 ## Concept provenance
 
 - [Pinned Mathlib list and lexicographic order constructions and linear-order extension](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); citation: Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679: Data/Finset/Card.lean Finset.card; Data/List/TakeDrop.lean dropSlice_eq and length_dropSlice; Data/List/Lex.lean linearOrder; Order/Sum/Order.lean Sum.Lex; Order/Prod/Lex/Basic.lean Prod.Lex; Order/Extension/Linear.lean extend_partialOrder and toLinearExtension. Apache-2.0.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference
@@ -328,7 +383,8 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "hasTheorem": [
       "urn:csabs:theorem/OrderLinearExtension-model-satisfaction",
-      "urn:csabs:theorem/OrderLinearExtension-szpilrajn-existence"
+      "urn:csabs:theorem/OrderLinearExtension-szpilrajn-existence",
+      "urn:csabs:theorem/OrderLinearExtension-all-extensions-reflect-order"
     ],
     "source": [
       "urn:csabs:source/seven-mathlib"
@@ -491,6 +547,39 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "leanModelMapping": "Instantiate pinned Mathlib extend_partialOrder, whose Zorn argument produces a total extension on the same carrier. This uses classical choice and gives no canonical algorithm.",
     "leanModelLimitations": "Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
     "leanPremiseMapping": "{\"urn:csabs:axiom/OrderLinearExtension-defining-profile\": \"Proved constraint for the specified concrete interpretation or structural recursion; not a hypothesis asserting its own satisfaction. Instantiate pinned Mathlib extend_partialOrder, whose Zorn argument produces a total extension on the same carrier. This uses classical choice and gives no canonical algorithm.\"}"
+  },
+  {
+    "id": "urn:csabs:theorem/OrderLinearExtension-all-extensions-reflect-order",
+    "type": "Theorem",
+    "name": "all-extensions-reflect-order",
+    "statement": "For a partial order r, r(a,b) iff s(a,b) for every linear order s extending r.",
+    "formalStatement": "For a partial order r, r(a,b) iff s(a,b) for every linear order s extending r.",
+    "mathematicalFormulation": "For a partial order r, r(a,b) iff s(a,b) for every linear order s extending r.",
+    "proofSketch": "If ¬r(a,b), add b≤a by t(x,y)=r(x,y) or (r(x,b) and r(a,y)); prove t partial, extend it by Szpilrajn, and use antisymmetry to refute a≤b.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/OrderLinearExtension"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/OrderLinearExtension-defining-profile"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-ReachabilityUtilities"
+    ],
+    "sourceLocator": "Order/Extension/Linear.lean: extend_partialOrder and its relation-extension construction; derived separation argument; Catalog.order_all_extensions",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type u} (r : A → A → Prop) [IsPartialOrder A r]\n    (a b : A), r a b ↔ ∀ s : A → A → Prop, IsLinearOrder A s → r ≤ s → s a b",
+    "leanModelMapping": "For a partial order r, r(a,b) iff s(a,b) for every linear order s extending r. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/OrderLinearExtension-defining-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-ReachabilityUtilities",
+    "formulationLocator": "Catalog.order_all_extensions"
   }
 ]
 ```

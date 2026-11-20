@@ -34,7 +34,7 @@ A finite partial function associating each present key with exactly one value; a
 
 ## Mathematical formulation
 
-Map(K,V)={f:K→Option(V) | {k | f(k)≠none} is finite}. lookup(f,k)=f(k); setting k to v replaces f(k) with some(v); erasing k replaces it with none. Equality is extensional on lookup.
+Map(K,V)={f:K→Option(V) | {k | f(k)≠none} is finite}. lookup(f,k)=f(k); setting k to v replaces f(k) with some(v); erasing k replaces it with none. Equality is extensional on lookup. Utility profile: Right-biased override: lookup(m▷n,k)=lookup(n,k) when present, otherwise lookup(m,k). Finite domain is the domain union; a missing value in n does not delete m.; All keys where Option-valued lookups differ, including addition, deletion and replacement; value identity equality and absent/present distinction are explicit.
 
 **Lean formulation** (in its source module context):
 
@@ -56,7 +56,7 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 ## Interface and scope
 
-**axiomBasis:** Selected presentation: A finite partial function associating each present key with exactly one value; absence is distinct from stored values. Governing rules: A finite map is a partial function with a finite defined domain. Empty has no bindings. Updating a key overwrites it and leaves other bindings unchanged. Deleting a key makes it absent and preserves other bindings. Maps are equal if all lookups agree.
+**axiomBasis:** Selected presentation: A finite partial function associating each present key with exactly one value; absence is distinct from stored values. Governing rules: A finite map is a partial function with a finite defined domain. Empty has no bindings. Updating a key overwrites it and leaves other bindings unchanged. Deleting a key makes it absent and preserves other bindings. Maps are equal if all lookups agree. Utility definitions are recorded separately; optional bottom, subtype and goal-relative conventions are conditional and do not strengthen the base carrier.
 
 **basisKind:** defined-structure
 
@@ -113,6 +113,54 @@ Read with the linked module’s imports, namespaces, universes and section varia
 **signature:** empty : Map(K,V)
 
 **description:** Constructs a map with no bindings.
+
+<a id="node-urn-csabs-operation-Map-override-merge"></a>
+
+### override-merge
+
+`urn:csabs:operation/Map-override-merge`
+
+**signature:** overrideMerge : Map(K,V)²→Map(K,V)
+
+**description:** Right-biased override: lookup(m▷n,k)=lookup(n,k) when present, otherwise lookup(m,k). Finite domain is the domain union; a missing value in n does not delete m.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** Right-biased override: lookup(m▷n,k)=lookup(n,k) when present, otherwise lookup(m,k). Finite domain is the domain union; a missing value in n does not delete m.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Data/Set/Finite/Basic.lean: finite union and subset; Option.or; constructed finite-support override and unequal-lookup support
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-Map-diff"></a>
+
+### diff
+
+`urn:csabs:operation/Map-diff`
+
+**signature:** diff : Map(K,V)²→FinSet(K)
+
+**description:** All keys where Option-valued lookups differ, including addition, deletion and replacement; value identity equality and absent/present distinction are explicit.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** All keys where Option-valued lookups differ, including addition, deletion and replacement; value identity equality and absent/present distinction are explicit.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Data/Set/Finite/Basic.lean: finite union and subset; Option.or; constructed finite-support override and unequal-lookup support
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
 
 ## Axioms and defining rules
 
@@ -234,6 +282,30 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 **provenanceKind:** adapted
 
+<a id="node-urn-csabs-axiom-Map-utility-profile"></a>
+
+### Explicit utility operation definitions
+
+`urn:csabs:axiom/Map-utility-profile`
+
+**statement:** Right-biased override: lookup(m▷n,k)=lookup(n,k) when present, otherwise lookup(m,k). Finite domain is the domain union; a missing value in n does not delete m.; All keys where Option-valued lookups differ, including addition, deletion and replacement; value identity equality and absent/present distinction are explicit.
+
+**formalStatement:** overrideMerge : Map(K,V)²→Map(K,V): Right-biased override: lookup(m▷n,k)=lookup(n,k) when present, otherwise lookup(m,k). Finite domain is the domain union; a missing value in n does not delete m.; diff : Map(K,V)²→FinSet(K): All keys where Option-valued lookups differ, including addition, deletion and replacement; value identity equality and absent/present distinction are explicit.
+
+**assumptions:** Base concept conventions remain unchanged. Optional profiles apply only under their explicitly stated additional hypotheses; identity equality, finite inputs and exact mathematics.
+
+**ruleRole:** defining-rule
+
+**reviewStatus:** Definitions of a selected extension, not new foundational axioms; individual model and result witnesses are separate.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Data/Set/Finite/Basic.lean: finite union and subset; Option.or; constructed finite-support override and unequal-lookup support
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
 ## Laws
 
 <a id="node-urn-csabs-law-Map-core"></a>
@@ -298,6 +370,116 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 **provenanceStatus:** legacy-source-missing
 
+<a id="node-urn-csabs-theorem-Map-override-lookup"></a>
+
+### override-lookup
+
+`urn:csabs:theorem/Map-override-lookup`
+
+**statement:** lookup(m▷n,k)=Option.or(lookup(n,k),lookup(m,k)); right present values override, right absence preserves left.
+
+**formalStatement:** lookup(m▷n,k)=Option.or(lookup(n,k),lookup(m,k)); right present values override, right absence preserves left.
+
+**proofSketch:** Construct finite support by inclusion in the union of the input finite supports; lookup equation is definitional.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](Map.md#node-urn-csabs-axiom-Map-utility-profile); [finite-graph](Map.md#node-urn-csabs-axiom-Map-finite-graph)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog CollectionUtilities Lean formulations and proofs; path: lean/Catalog/CollectionUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Data/Set/Finite/Basic.lean: finite union and subset; Option.or; constructed finite-support override and unequal-lookup support; Catalog.mapOverride_lookup
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+lookup(m▷n,k)=Option.or(lookup(n,k),lookup(m,k)); right present values override, right absence preserves left.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {K : Type u} {V : Type v} (m n : Catalog.Map K V) (k : K), (Catalog.mapOverride m n).lookup k = (n.lookup k).or (m.lookup k)
+```
+
+**Source:** [`Catalog.mapOverride_lookup`](../lean/Catalog/CollectionUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** lookup(m▷n,k)=Option.or(lookup(n,k),lookup(m,k)); right present values override, right absence preserves left. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Map-finite-graph": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:axiom/Map-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
+<a id="node-urn-csabs-theorem-Map-diff-membership"></a>
+
+### diff-membership
+
+`urn:csabs:theorem/Map-diff-membership`
+
+**statement:** k∈diff(m,n) iff lookup(m,k)≠lookup(n,k).
+
+**formalStatement:** k∈diff(m,n) iff lookup(m,k)≠lookup(n,k).
+
+**proofSketch:** Unequal Option lookups imply at least one is present, so the finite union support contains every changed key.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](Map.md#node-urn-csabs-axiom-Map-utility-profile); [finite-graph](Map.md#node-urn-csabs-axiom-Map-finite-graph)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog CollectionUtilities Lean formulations and proofs; path: lean/Catalog/CollectionUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Data/Set/Finite/Basic.lean: finite union and subset; Option.or; constructed finite-support override and unequal-lookup support; Catalog.mapDiff_membership
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+k∈diff(m,n) iff lookup(m,k)≠lookup(n,k).
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {K : Type u} {V : Type v} (m n : Catalog.Map K V) (k : K), k ∈ Catalog.mapDiff m n ↔ m.lookup k ≠ n.lookup k
+```
+
+**Source:** [`Catalog.mapDiff_membership`](../lean/Catalog/CollectionUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** k∈diff(m,n) iff lookup(m,k)≠lookup(n,k). Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/Map-finite-graph": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:axiom/Map-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
 ## Concept provenance
 
 Historical source gap retained; see `provenanceStatus` and the frozen baseline.
@@ -324,21 +506,26 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:operation/Map-lookup",
       "urn:csabs:operation/Map-set",
       "urn:csabs:operation/Map-delete",
-      "urn:csabs:operation/Map-basis-empty"
+      "urn:csabs:operation/Map-basis-empty",
+      "urn:csabs:operation/Map-override-merge",
+      "urn:csabs:operation/Map-diff"
     ],
     "hasAxiom": [
       "urn:csabs:axiom/Map-finite-graph",
       "urn:csabs:axiom/Map-empty-lookup",
       "urn:csabs:axiom/Map-update-lookup",
       "urn:csabs:axiom/Map-delete-lookup",
-      "urn:csabs:axiom/Map-lookup-extensionality"
+      "urn:csabs:axiom/Map-lookup-extensionality",
+      "urn:csabs:axiom/Map-utility-profile"
     ],
     "hasLaw": [
       "urn:csabs:law/Map-core",
       "urn:csabs:law/map-frame"
     ],
     "hasTheorem": [
-      "urn:csabs:theorem/Map-update-shadow"
+      "urn:csabs:theorem/Map-update-shadow",
+      "urn:csabs:theorem/Map-override-lookup",
+      "urn:csabs:theorem/Map-diff-membership"
     ],
     "requiresConcept": [
       "urn:csabs:concept/PartialFunction"
@@ -348,7 +535,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "Instantiate carrier, equality, and stated semantic conventions before using this entry.",
       "Use the stated carriers, equality, domain restrictions and semantic conventions; alternative conventions require an explicit variant."
     ],
-    "axiomBasis": "Selected presentation: A finite partial function associating each present key with exactly one value; absence is distinct from stored values. Governing rules: A finite map is a partial function with a finite defined domain. Empty has no bindings. Updating a key overwrites it and leaves other bindings unchanged. Deleting a key makes it absent and preserves other bindings. Maps are equal if all lookups agree.",
+    "axiomBasis": "Selected presentation: A finite partial function associating each present key with exactly one value; absence is distinct from stored values. Governing rules: A finite map is a partial function with a finite defined domain. Empty has no bindings. Updating a key overwrites it and leaves other bindings unchanged. Deleting a key makes it absent and preserves other bindings. Maps are equal if all lookups agree. Utility definitions are recorded separately; optional bottom, subtype and goal-relative conventions are conditional and do not strengthen the base carrier.",
     "basisKind": "defined-structure",
     "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
@@ -366,7 +553,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "formulationScope": "model",
     "leanModelMapping": "Lookup K -> Option V plus proof that the defined-key set is finite; record proof fields are propositionally irrelevant.",
     "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-    "mathematicalFormulation": "Map(K,V)={f:K→Option(V) | {k | f(k)≠none} is finite}. lookup(f,k)=f(k); setting k to v replaces f(k) with some(v); erasing k replaces it with none. Equality is extensional on lookup."
+    "mathematicalFormulation": "Map(K,V)={f:K→Option(V) | {k | f(k)≠none} is finite}. lookup(f,k)=f(k); setting k to v replaces f(k) with some(v); erasing k replaces it with none. Equality is extensional on lookup. Utility profile: Right-biased override: lookup(m▷n,k)=lookup(n,k) when present, otherwise lookup(m,k). Finite domain is the domain union; a missing value in n does not delete m.; All keys where Option-valued lookups differ, including addition, deletion and replacement; value identity equality and absent/present distinction are explicit."
   },
   {
     "id": "urn:csabs:operation/Map-lookup",
@@ -399,6 +586,40 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "signature": "empty : Map(K,V)",
     "description": "Constructs a map with no bindings.",
     "concept": "urn:csabs:concept/Map"
+  },
+  {
+    "id": "urn:csabs:operation/Map-override-merge",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/Map",
+    "name": "override-merge",
+    "signature": "overrideMerge : Map(K,V)²→Map(K,V)",
+    "description": "Right-biased override: lookup(m▷n,k)=lookup(n,k) when present, otherwise lookup(m,k). Finite domain is the domain union; a missing value in n does not delete m.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "Right-biased override: lookup(m▷n,k)=lookup(n,k) when present, otherwise lookup(m,k). Finite domain is the domain union; a missing value in n does not delete m.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Data/Set/Finite/Basic.lean: finite union and subset; Option.or; constructed finite-support override and unequal-lookup support",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/Map-diff",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/Map",
+    "name": "diff",
+    "signature": "diff : Map(K,V)²→FinSet(K)",
+    "description": "All keys where Option-valued lookups differ, including addition, deletion and replacement; value identity equality and absent/present distinction are explicit.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "All keys where Option-valued lookups differ, including addition, deletion and replacement; value identity equality and absent/present distinction are explicit.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Data/Set/Finite/Basic.lean: finite union and subset; Option.or; constructed finite-support override and unequal-lookup support",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
   },
   {
     "id": "urn:csabs:axiom/Map-finite-graph",
@@ -507,6 +728,27 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "provenanceKind": "adapted"
   },
   {
+    "id": "urn:csabs:axiom/Map-utility-profile",
+    "type": "Axiom",
+    "name": "Explicit utility operation definitions",
+    "statement": "Right-biased override: lookup(m▷n,k)=lookup(n,k) when present, otherwise lookup(m,k). Finite domain is the domain union; a missing value in n does not delete m.; All keys where Option-valued lookups differ, including addition, deletion and replacement; value identity equality and absent/present distinction are explicit.",
+    "formalStatement": "overrideMerge : Map(K,V)²→Map(K,V): Right-biased override: lookup(m▷n,k)=lookup(n,k) when present, otherwise lookup(m,k). Finite domain is the domain union; a missing value in n does not delete m.; diff : Map(K,V)²→FinSet(K): All keys where Option-valued lookups differ, including addition, deletion and replacement; value identity equality and absent/present distinction are explicit.",
+    "assumptions": [
+      "Base concept conventions remain unchanged. Optional profiles apply only under their explicitly stated additional hypotheses; identity equality, finite inputs and exact mathematics."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Map"
+    ],
+    "ruleRole": "defining-rule",
+    "reviewStatus": "Definitions of a selected extension, not new foundational axioms; individual model and result witnesses are separate.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Data/Set/Finite/Basic.lean: finite union and subset; Option.or; constructed finite-support override and unequal-lookup support",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
     "id": "urn:csabs:law/Map-core",
     "type": "Law",
     "statement": "Looking up a key after setting it returns the assigned value.",
@@ -572,6 +814,74 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "reviewStatus": "editorial-summary; not machine-proved",
     "notationLanguage": "informal mathematical Unicode",
     "provenanceStatus": "legacy-source-missing"
+  },
+  {
+    "id": "urn:csabs:theorem/Map-override-lookup",
+    "type": "Theorem",
+    "name": "override-lookup",
+    "statement": "lookup(m▷n,k)=Option.or(lookup(n,k),lookup(m,k)); right present values override, right absence preserves left.",
+    "formalStatement": "lookup(m▷n,k)=Option.or(lookup(n,k),lookup(m,k)); right present values override, right absence preserves left.",
+    "mathematicalFormulation": "lookup(m▷n,k)=Option.or(lookup(n,k),lookup(m,k)); right present values override, right absence preserves left.",
+    "proofSketch": "Construct finite support by inclusion in the union of the input finite supports; lookup equation is definitional.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Map"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/Map-utility-profile",
+      "urn:csabs:axiom/Map-finite-graph"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-CollectionUtilities"
+    ],
+    "sourceLocator": "Data/Set/Finite/Basic.lean: finite union and subset; Option.or; constructed finite-support override and unequal-lookup support; Catalog.mapOverride_lookup",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {K : Type u} {V : Type v} (m n : Catalog.Map K V) (k : K), (Catalog.mapOverride m n).lookup k = (n.lookup k).or (m.lookup k)",
+    "leanModelMapping": "lookup(m▷n,k)=Option.or(lookup(n,k),lookup(m,k)); right present values override, right absence preserves left. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Map-finite-graph\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:axiom/Map-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-CollectionUtilities",
+    "formulationLocator": "Catalog.mapOverride_lookup"
+  },
+  {
+    "id": "urn:csabs:theorem/Map-diff-membership",
+    "type": "Theorem",
+    "name": "diff-membership",
+    "statement": "k∈diff(m,n) iff lookup(m,k)≠lookup(n,k).",
+    "formalStatement": "k∈diff(m,n) iff lookup(m,k)≠lookup(n,k).",
+    "mathematicalFormulation": "k∈diff(m,n) iff lookup(m,k)≠lookup(n,k).",
+    "proofSketch": "Unequal Option lookups imply at least one is present, so the finite union support contains every changed key.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/Map"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/Map-utility-profile",
+      "urn:csabs:axiom/Map-finite-graph"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-CollectionUtilities"
+    ],
+    "sourceLocator": "Data/Set/Finite/Basic.lean: finite union and subset; Option.or; constructed finite-support override and unequal-lookup support; Catalog.mapDiff_membership",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {K : Type u} {V : Type v} (m n : Catalog.Map K V) (k : K), k ∈ Catalog.mapDiff m n ↔ m.lookup k ≠ n.lookup k",
+    "leanModelMapping": "k∈diff(m,n) iff lookup(m,k)≠lookup(n,k). Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/Map-finite-graph\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:axiom/Map-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-CollectionUtilities",
+    "formulationLocator": "Catalog.mapDiff_membership"
   }
 ]
 ```

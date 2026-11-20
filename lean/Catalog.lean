@@ -53,5 +53,8 @@ public import Catalog.StreamCipher
 public import Catalog.Digests
 
 public import Catalog.ReleaseSequenceModels
+public import Catalog.CollectionUtilities
+public import Catalog.ReachabilityUtilities
+public import Catalog.FTS5Profile
 
 public import Catalog.LanguageClasses

@@ -33,7 +33,7 @@ States evolve through an arbitrary relation labelled by actions; a chosen initia
 
 ## Mathematical formulation
 
-An LTS is (S,Act,I,→) with I⊆S and →⊆S×Act×S. Finite traces from s are words a₁…a\_n labeling a path from s; the empty word is admitted by the reflexive path.
+An LTS is (S,Act,I,→) with I⊆S and →⊆S×Act×S. Finite traces from s are words a₁…a\_n labeling a path from s; the empty word is admitted by the reflexive path. Utility profile: enabled(s,a) iff ∃t,s —a→ t; enabledAny(s) iff ∃a,t,s —a→ t.; No outgoing labelled transition: ¬∃a,t,s —a→ t; internal labels count unless explicitly hidden by a separate model.; Membership in a designated goal set, independent of termination.; No outgoing labelled step and not in the designated goal set; no implicit stutter.; For a valid finite state path (initial state included), every Q-state has a strictly earlier P-state. State predicate, not a predicate on label words alone; empty and Q-free lists satisfy it vacuously.
 
 **Lean formulation** (in its source module context):
 
@@ -55,7 +55,7 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 ## Interface and scope
 
-**axiomBasis:** Selected defining presentation: The labelled next-state relation may have zero, one, or many outcomes. Finite traces are the labels of finite paths, including the zero-step path.
+**axiomBasis:** Selected defining presentation: The labelled next-state relation may have zero, one, or many outcomes. Finite traces are the labels of finite paths, including the zero-step path. Utility definitions are recorded separately; optional bottom, subtype and goal-relative conventions are conditional and do not strengthen the base carrier.
 
 **basisKind:** defined-structure
 
@@ -102,6 +102,126 @@ Read with the linked module’s imports, namespaces, universes and section varia
 **totality:** total mathematical operation on the stated domain
 
 **postcondition:** Returns all finite action words realizable from a state; it does not record termination or infinite behavior.
+
+<a id="node-urn-csabs-operation-LabelledTransitionSystem-enabled-label"></a>
+
+### enabled-label
+
+`urn:csabs:operation/LabelledTransitionSystem-enabled-label`
+
+**signature:** enabled : S×Label→Prop
+
+**description:** enabled(s,a) iff ∃t,s —a→ t; enabledAny(s) iff ∃a,t,s —a→ t.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** enabled(s,a) iff ∃t,s —a→ t; enabledAny(s) iff ∃a,t,s —a→ t.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Logic/Relation.lean: terminal-state closure equality; constructed predicates for the erased labelled-step relation and finite-state traces
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-LabelledTransitionSystem-terminal"></a>
+
+### terminal
+
+`urn:csabs:operation/LabelledTransitionSystem-terminal`
+
+**signature:** terminal : S→Prop
+
+**description:** No outgoing labelled transition: ¬∃a,t,s —a→ t; internal labels count unless explicitly hidden by a separate model.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** No outgoing labelled transition: ¬∃a,t,s —a→ t; internal labels count unless explicitly hidden by a separate model.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Logic/Relation.lean: terminal-state closure equality; constructed predicates for the erased labelled-step relation and finite-state traces
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-LabelledTransitionSystem-goal"></a>
+
+### goal
+
+`urn:csabs:operation/LabelledTransitionSystem-goal`
+
+**signature:** goal : Set(S)×S→Prop
+
+**description:** Membership in a designated goal set, independent of termination.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** Membership in a designated goal set, independent of termination.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Logic/Relation.lean: terminal-state closure equality; constructed predicates for the erased labelled-step relation and finite-state traces
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-LabelledTransitionSystem-deadlock"></a>
+
+### deadlock
+
+`urn:csabs:operation/LabelledTransitionSystem-deadlock`
+
+**signature:** deadlock : Set(S)×S→Prop
+
+**description:** No outgoing labelled step and not in the designated goal set; no implicit stutter.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** No outgoing labelled step and not in the designated goal set; no implicit stutter.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Logic/Relation.lean: terminal-state closure equality; constructed predicates for the erased labelled-step relation and finite-state traces
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-operation-LabelledTransitionSystem-finite-trace-precedence"></a>
+
+### finite-trace-precedence
+
+`urn:csabs:operation/LabelledTransitionSystem-finite-trace-precedence`
+
+**signature:** precedes : (S→Prop)²×Seq(S)→Prop
+
+**description:** For a valid finite state path (initial state included), every Q-state has a strictly earlier P-state. State predicate, not a predicate on label words alone; empty and Q-free lists satisfy it vacuously.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** For a valid finite state path (initial state included), every Q-state has a strictly earlier P-state. State predicate, not a predicate on label words alone; empty and Q-free lists satisfy it vacuously.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Logic/Relation.lean: terminal-state closure equality; constructed predicates for the erased labelled-step relation and finite-state traces
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
 
 ## Axioms and defining rules
 
@@ -158,6 +278,30 @@ Read with the linked module’s imports, namespaces, universes and section varia
 **sourceLocator:** Lecture 1, process graphs and LTSs; Lecture 2, trace semantics
 
 **sourceNote:** Adapts the source process graph with one initial state to a possibly empty set of initial states. No successful-termination predicate is included. Local notation specifies the chosen defining presentation.
+
+**provenanceKind:** adapted
+
+<a id="node-urn-csabs-axiom-LabelledTransitionSystem-utility-profile"></a>
+
+### Explicit utility operation definitions
+
+`urn:csabs:axiom/LabelledTransitionSystem-utility-profile`
+
+**statement:** enabled(s,a) iff ∃t,s —a→ t; enabledAny(s) iff ∃a,t,s —a→ t.; No outgoing labelled transition: ¬∃a,t,s —a→ t; internal labels count unless explicitly hidden by a separate model.; Membership in a designated goal set, independent of termination.; No outgoing labelled step and not in the designated goal set; no implicit stutter.; For a valid finite state path (initial state included), every Q-state has a strictly earlier P-state. State predicate, not a predicate on label words alone; empty and Q-free lists satisfy it vacuously.
+
+**formalStatement:** enabled : S×Label→Prop: enabled(s,a) iff ∃t,s —a→ t; enabledAny(s) iff ∃a,t,s —a→ t.; terminal : S→Prop: No outgoing labelled transition: ¬∃a,t,s —a→ t; internal labels count unless explicitly hidden by a separate model.; goal : Set(S)×S→Prop: Membership in a designated goal set, independent of termination.; deadlock : Set(S)×S→Prop: No outgoing labelled step and not in the designated goal set; no implicit stutter.; precedes : (S→Prop)²×Seq(S)→Prop: For a valid finite state path (initial state included), every Q-state has a strictly earlier P-state. State predicate, not a predicate on label words alone; empty and Q-free lists satisfy it vacuously.
+
+**assumptions:** Base concept conventions remain unchanged. Optional profiles apply only under their explicitly stated additional hypotheses; identity equality, finite inputs and exact mathematics.
+
+**ruleRole:** defining-rule
+
+**reviewStatus:** Definitions of a selected extension, not new foundational axioms; individual model and result witnesses are separate.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Logic/Relation.lean: terminal-state closure equality; constructed predicates for the erased labelled-step relation and finite-state traces
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
 
 **provenanceKind:** adapted
 
@@ -293,6 +437,117 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 **dependsOn:** [labelled-steps](LabelledTransitionSystem.md#node-urn-csabs-axiom-LabelledTransitionSystem-labelled-steps); [finite-paths](LabelledTransitionSystem.md#node-urn-csabs-axiom-LabelledTransitionSystem-finite-paths); [induction-schema](NaturalNumber.md#node-urn-csabs-axiom-NaturalNumber-induction-schema)
 
+<a id="node-urn-csabs-theorem-TransitionSystem-terminal-enabled-equivalence"></a>
+
+### terminal-enabled-equivalence
+
+`urn:csabs:theorem/TransitionSystem-terminal-enabled-equivalence`
+
+**statement:** terminal(s) iff no outgoing successor exists; for an LTS use next(s,t) iff ∃label,step(s,label,t).
+
+**formalStatement:** terminal(s) iff no outgoing successor exists; for an LTS use next(s,t) iff ∃label,step(s,label,t).
+
+**proofSketch:** Unfold the terminal predicate; labelled enabledness is obtained by existential label erasure.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](TransitionSystem.md#node-urn-csabs-axiom-TransitionSystem-utility-profile); [Explicit utility operation definitions](LabelledTransitionSystem.md#node-urn-csabs-axiom-LabelledTransitionSystem-utility-profile)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog ReachabilityUtilities Lean formulations and proofs; path: lean/Catalog/ReachabilityUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Logic/Relation.lean: terminal-state closure equality; constructed enabled/terminal/goal/deadlock and indexed finite-state-trace predicates; Catalog.terminal_enabled
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+terminal(s) iff no outgoing successor exists; for an LTS use next(s,t) iff ∃label,step(s,label,t).
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {S : Type u} (next : S → S → Prop) (s : S), Catalog.terminal next s ↔ ¬ ∃ t, next s t
+```
+
+**Source:** [`Catalog.terminal_enabled`](../lean/Catalog/ReachabilityUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** terminal(s) iff no outgoing successor exists; for an LTS use next(s,t) iff ∃label,step(s,label,t). Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/LabelledTransitionSystem-utility-profile": "The same mathematical predicate is shared with this concept; the state-step relation or phrase-hit predicate is explicitly instantiated.",
+  "urn:csabs:axiom/TransitionSystem-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
+<a id="node-urn-csabs-theorem-TransitionSystem-strict-precedence-initial"></a>
+
+### strict-precedence-initial
+
+`urn:csabs:theorem/TransitionSystem-strict-precedence-initial`
+
+**statement:** If every Q-state in a finite state trace has a strictly earlier P-state, the first state cannot satisfy Q.
+
+**formalStatement:** If every Q-state in a finite state trace has a strictly earlier P-state, the first state cannot satisfy Q.
+
+**proofSketch:** Index zero has no smaller natural-number index. Valid path and goal conditions are separate explicit predicates.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](TransitionSystem.md#node-urn-csabs-axiom-TransitionSystem-utility-profile); [Explicit utility operation definitions](LabelledTransitionSystem.md#node-urn-csabs-axiom-LabelledTransitionSystem-utility-profile)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog ReachabilityUtilities Lean formulations and proofs; path: lean/Catalog/ReachabilityUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Logic/Relation.lean: terminal-state closure equality; constructed enabled/terminal/goal/deadlock and indexed finite-state-trace predicates; Catalog.tracePrecedes_initial
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+If every Q-state in a finite state trace has a strictly earlier P-state, the first state cannot satisfy Q.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {S : Type u} (p q : S → Prop) (a : S) (xs : List S)
+    (_h : Catalog.tracePrecedes p q (a :: xs)), ¬ q a
+```
+
+**Source:** [`Catalog.tracePrecedes_initial`](../lean/Catalog/ReachabilityUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** If every Q-state in a finite state trace has a strictly earlier P-state, the first state cannot satisfy Q. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/LabelledTransitionSystem-utility-profile": "The same mathematical predicate is shared with this concept; the state-step relation or phrase-hit predicate is explicitly instantiated.",
+  "urn:csabs:axiom/TransitionSystem-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
 ## Concept provenance
 
 - [Rob van Glabbeek: Modelling Concurrent Systems (2024), course notes](https://homepages.inf.ed.ac.uk/rvangla/MCS/notes.html); accessedOn: 2026-11-07; sourceRole: primary reference for selected mathematical interfaces
@@ -325,11 +580,17 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "notation": "T=(S,Act,I,→); I⊆S; →⊆S×Act×S",
     "hasOperation": [
       "urn:csabs:operation/LabelledTransitionSystem-postAction",
-      "urn:csabs:operation/LabelledTransitionSystem-traces"
+      "urn:csabs:operation/LabelledTransitionSystem-traces",
+      "urn:csabs:operation/LabelledTransitionSystem-enabled-label",
+      "urn:csabs:operation/LabelledTransitionSystem-terminal",
+      "urn:csabs:operation/LabelledTransitionSystem-goal",
+      "urn:csabs:operation/LabelledTransitionSystem-deadlock",
+      "urn:csabs:operation/LabelledTransitionSystem-finite-trace-precedence"
     ],
     "hasAxiom": [
       "urn:csabs:axiom/LabelledTransitionSystem-labelled-steps",
-      "urn:csabs:axiom/LabelledTransitionSystem-finite-paths"
+      "urn:csabs:axiom/LabelledTransitionSystem-finite-paths",
+      "urn:csabs:axiom/LabelledTransitionSystem-utility-profile"
     ],
     "hasLaw": [
       "urn:csabs:law/LabelledTransitionSystem-post-union",
@@ -337,7 +598,9 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "hasTheorem": [
       "urn:csabs:theorem/LabelledTransitionSystem-prefix-closure",
-      "urn:csabs:theorem/LabelledTransitionSystem-finite-path-induction"
+      "urn:csabs:theorem/LabelledTransitionSystem-finite-path-induction",
+      "urn:csabs:theorem/TransitionSystem-terminal-enabled-equivalence",
+      "urn:csabs:theorem/TransitionSystem-strict-precedence-initial"
     ],
     "requiresConcept": [
       "urn:csabs:concept/TransitionSystem",
@@ -351,7 +614,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:concept/Bisimulation"
     ],
     "coverageStatus": "basis-reviewed",
-    "axiomBasis": "Selected defining presentation: The labelled next-state relation may have zero, one, or many outcomes. Finite traces are the labels of finite paths, including the zero-step path.",
+    "axiomBasis": "Selected defining presentation: The labelled next-state relation may have zero, one, or many outcomes. Finite traces are the labels of finite paths, including the zero-step path. Utility definitions are recorded separately; optional bottom, subtype and goal-relative conventions are conditional and do not strengthen the base carrier.",
     "basisKind": "defined-structure",
     "basisScope": "States and actions use identity equality. State/action sets and branching may be infinite; transitions may deadlock or be nondeterministic. All actions, including a symbol called τ if present, are observable here; hiding requires a variant.",
     "source": [
@@ -374,7 +637,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "formulationScope": "model",
     "leanModelMapping": "Initial states and S -> Act -> S -> Prop; finite paths include empty path.",
     "leanModelLimitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-    "mathematicalFormulation": "An LTS is (S,Act,I,→) with I⊆S and →⊆S×Act×S. Finite traces from s are words a₁…a_n labeling a path from s; the empty word is admitted by the reflexive path."
+    "mathematicalFormulation": "An LTS is (S,Act,I,→) with I⊆S and →⊆S×Act×S. Finite traces from s are words a₁…a_n labeling a path from s; the empty word is admitted by the reflexive path. Utility profile: enabled(s,a) iff ∃t,s —a→ t; enabledAny(s) iff ∃a,t,s —a→ t.; No outgoing labelled transition: ¬∃a,t,s —a→ t; internal labels count unless explicitly hidden by a separate model.; Membership in a designated goal set, independent of termination.; No outgoing labelled step and not in the designated goal set; no implicit stutter.; For a valid finite state path (initial state included), every Q-state has a strictly earlier P-state. State predicate, not a predicate on label words alone; empty and Q-free lists satisfy it vacuously."
   },
   {
     "id": "urn:csabs:operation/LabelledTransitionSystem-postAction",
@@ -397,6 +660,91 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "precondition": "Arguments belong to the carriers in the signature.",
     "totality": "total mathematical operation on the stated domain",
     "postcondition": "Returns all finite action words realizable from a state; it does not record termination or infinite behavior."
+  },
+  {
+    "id": "urn:csabs:operation/LabelledTransitionSystem-enabled-label",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/LabelledTransitionSystem",
+    "name": "enabled-label",
+    "signature": "enabled : S×Label→Prop",
+    "description": "enabled(s,a) iff ∃t,s —a→ t; enabledAny(s) iff ∃a,t,s —a→ t.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "enabled(s,a) iff ∃t,s —a→ t; enabledAny(s) iff ∃a,t,s —a→ t.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Logic/Relation.lean: terminal-state closure equality; constructed predicates for the erased labelled-step relation and finite-state traces",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/LabelledTransitionSystem-terminal",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/LabelledTransitionSystem",
+    "name": "terminal",
+    "signature": "terminal : S→Prop",
+    "description": "No outgoing labelled transition: ¬∃a,t,s —a→ t; internal labels count unless explicitly hidden by a separate model.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "No outgoing labelled transition: ¬∃a,t,s —a→ t; internal labels count unless explicitly hidden by a separate model.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Logic/Relation.lean: terminal-state closure equality; constructed predicates for the erased labelled-step relation and finite-state traces",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/LabelledTransitionSystem-goal",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/LabelledTransitionSystem",
+    "name": "goal",
+    "signature": "goal : Set(S)×S→Prop",
+    "description": "Membership in a designated goal set, independent of termination.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "Membership in a designated goal set, independent of termination.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Logic/Relation.lean: terminal-state closure equality; constructed predicates for the erased labelled-step relation and finite-state traces",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/LabelledTransitionSystem-deadlock",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/LabelledTransitionSystem",
+    "name": "deadlock",
+    "signature": "deadlock : Set(S)×S→Prop",
+    "description": "No outgoing labelled step and not in the designated goal set; no implicit stutter.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "No outgoing labelled step and not in the designated goal set; no implicit stutter.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Logic/Relation.lean: terminal-state closure equality; constructed predicates for the erased labelled-step relation and finite-state traces",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:operation/LabelledTransitionSystem-finite-trace-precedence",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/LabelledTransitionSystem",
+    "name": "finite-trace-precedence",
+    "signature": "precedes : (S→Prop)²×Seq(S)→Prop",
+    "description": "For a valid finite state path (initial state included), every Q-state has a strictly earlier P-state. State predicate, not a predicate on label words alone; empty and Q-free lists satisfy it vacuously.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "For a valid finite state path (initial state included), every Q-state has a strictly earlier P-state. State predicate, not a predicate on label words alone; empty and Q-free lists satisfy it vacuously.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Logic/Relation.lean: terminal-state closure equality; constructed predicates for the erased labelled-step relation and finite-state traces",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
   },
   {
     "id": "urn:csabs:axiom/LabelledTransitionSystem-labelled-steps",
@@ -442,6 +790,27 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Lecture 1, process graphs and LTSs; Lecture 2, trace semantics",
     "sourceNote": "Adapts the source process graph with one initial state to a possibly empty set of initial states. No successful-termination predicate is included. Local notation specifies the chosen defining presentation.",
+    "provenanceKind": "adapted"
+  },
+  {
+    "id": "urn:csabs:axiom/LabelledTransitionSystem-utility-profile",
+    "type": "Axiom",
+    "name": "Explicit utility operation definitions",
+    "statement": "enabled(s,a) iff ∃t,s —a→ t; enabledAny(s) iff ∃a,t,s —a→ t.; No outgoing labelled transition: ¬∃a,t,s —a→ t; internal labels count unless explicitly hidden by a separate model.; Membership in a designated goal set, independent of termination.; No outgoing labelled step and not in the designated goal set; no implicit stutter.; For a valid finite state path (initial state included), every Q-state has a strictly earlier P-state. State predicate, not a predicate on label words alone; empty and Q-free lists satisfy it vacuously.",
+    "formalStatement": "enabled : S×Label→Prop: enabled(s,a) iff ∃t,s —a→ t; enabledAny(s) iff ∃a,t,s —a→ t.; terminal : S→Prop: No outgoing labelled transition: ¬∃a,t,s —a→ t; internal labels count unless explicitly hidden by a separate model.; goal : Set(S)×S→Prop: Membership in a designated goal set, independent of termination.; deadlock : Set(S)×S→Prop: No outgoing labelled step and not in the designated goal set; no implicit stutter.; precedes : (S→Prop)²×Seq(S)→Prop: For a valid finite state path (initial state included), every Q-state has a strictly earlier P-state. State predicate, not a predicate on label words alone; empty and Q-free lists satisfy it vacuously.",
+    "assumptions": [
+      "Base concept conventions remain unchanged. Optional profiles apply only under their explicitly stated additional hypotheses; identity equality, finite inputs and exact mathematics."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/LabelledTransitionSystem"
+    ],
+    "ruleRole": "defining-rule",
+    "reviewStatus": "Definitions of a selected extension, not new foundational axioms; individual model and result witnesses are separate.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Logic/Relation.lean: terminal-state closure equality; constructed predicates for the erased labelled-step relation and finite-state traces",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
     "provenanceKind": "adapted"
   },
   {
@@ -556,6 +925,76 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:axiom/LabelledTransitionSystem-finite-paths",
       "urn:csabs:axiom/NaturalNumber-induction-schema"
     ]
+  },
+  {
+    "id": "urn:csabs:theorem/TransitionSystem-terminal-enabled-equivalence",
+    "type": "Theorem",
+    "name": "terminal-enabled-equivalence",
+    "statement": "terminal(s) iff no outgoing successor exists; for an LTS use next(s,t) iff ∃label,step(s,label,t).",
+    "formalStatement": "terminal(s) iff no outgoing successor exists; for an LTS use next(s,t) iff ∃label,step(s,label,t).",
+    "mathematicalFormulation": "terminal(s) iff no outgoing successor exists; for an LTS use next(s,t) iff ∃label,step(s,label,t).",
+    "proofSketch": "Unfold the terminal predicate; labelled enabledness is obtained by existential label erasure.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/TransitionSystem",
+      "urn:csabs:concept/LabelledTransitionSystem"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/TransitionSystem-utility-profile",
+      "urn:csabs:axiom/LabelledTransitionSystem-utility-profile"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-ReachabilityUtilities"
+    ],
+    "sourceLocator": "Logic/Relation.lean: terminal-state closure equality; constructed enabled/terminal/goal/deadlock and indexed finite-state-trace predicates; Catalog.terminal_enabled",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {S : Type u} (next : S → S → Prop) (s : S), Catalog.terminal next s ↔ ¬ ∃ t, next s t",
+    "leanModelMapping": "terminal(s) iff no outgoing successor exists; for an LTS use next(s,t) iff ∃label,step(s,label,t). Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/LabelledTransitionSystem-utility-profile\": \"The same mathematical predicate is shared with this concept; the state-step relation or phrase-hit predicate is explicitly instantiated.\", \"urn:csabs:axiom/TransitionSystem-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-ReachabilityUtilities",
+    "formulationLocator": "Catalog.terminal_enabled"
+  },
+  {
+    "id": "urn:csabs:theorem/TransitionSystem-strict-precedence-initial",
+    "type": "Theorem",
+    "name": "strict-precedence-initial",
+    "statement": "If every Q-state in a finite state trace has a strictly earlier P-state, the first state cannot satisfy Q.",
+    "formalStatement": "If every Q-state in a finite state trace has a strictly earlier P-state, the first state cannot satisfy Q.",
+    "mathematicalFormulation": "If every Q-state in a finite state trace has a strictly earlier P-state, the first state cannot satisfy Q.",
+    "proofSketch": "Index zero has no smaller natural-number index. Valid path and goal conditions are separate explicit predicates.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/TransitionSystem",
+      "urn:csabs:concept/LabelledTransitionSystem"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/TransitionSystem-utility-profile",
+      "urn:csabs:axiom/LabelledTransitionSystem-utility-profile"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-ReachabilityUtilities"
+    ],
+    "sourceLocator": "Logic/Relation.lean: terminal-state closure equality; constructed enabled/terminal/goal/deadlock and indexed finite-state-trace predicates; Catalog.tracePrecedes_initial",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {S : Type u} (p q : S → Prop) (a : S) (xs : List S)\n    (_h : Catalog.tracePrecedes p q (a :: xs)), ¬ q a",
+    "leanModelMapping": "If every Q-state in a finite state trace has a strictly earlier P-state, the first state cannot satisfy Q. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/LabelledTransitionSystem-utility-profile\": \"The same mathematical predicate is shared with this concept; the state-step relation or phrase-hit predicate is explicitly instantiated.\", \"urn:csabs:axiom/TransitionSystem-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-ReachabilityUtilities",
+    "formulationLocator": "Catalog.tracePrecedes_initial"
   }
 ]
 ```

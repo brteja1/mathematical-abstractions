@@ -34,7 +34,8 @@ class FoundationalModelTests(unittest.TestCase):
 
     def test_shared_prefix_map_rules_retrieve_once_with_explicit_applicability(self):
         seed = resolve(self.index, 'Trie')
-        context = dossier(self.index, seed, 'tests', 100)
+        # Map's utility profile adds explicit operations and proof premises.
+        context = dossier(self.index, seed, 'tests', 140)
         self.assertFalse(context['truncated'])
         nodes = {n['id']: n for n in context['nodes']}
         rule = 'urn:csabs:axiom/Map-update-lookup'

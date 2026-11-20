@@ -24,7 +24,7 @@ A finite vertex carrier with a partial parent function whose upward chains are a
 
 ## Mathematical formulation
 
-p:V→Option(V); E(v,w) ⇔ p(v)=Some(w); ¬E⁺(v,v). V finite, possibly empty; exact vertex identities; unordered children and arbitrarily many components. Edges point child-to-parent; roots have parent None, never a self-parent sentinel. No sharing of a child between parents, cycles or dangling references. Parent function alone does not exclude cycles: acyclicity is a separate rule. A root and its descendants form a rooted tree after forgetting edge orientation; RootedTree currently uses an undirected carrier, so that relation is a construction rather than a literal specialization.
+p:V→Option(V); E(v,w) ⇔ p(v)=Some(w); ¬E⁺(v,v). V finite, possibly empty; exact vertex identities; unordered children and arbitrarily many components. Edges point child-to-parent; roots have parent None, never a self-parent sentinel. No sharing of a child between parents, cycles or dangling references. Parent function alone does not exclude cycles: acyclicity is a separate rule. A root and its descendants form a rooted tree after forgetting edge orientation; RootedTree currently uses an undirected carrier, so that relation is a construction rather than a literal specialization. Utility profile: x≼y iff zero or more parent steps take x to y. This orientation places roots above descendants; it is a partial order, not a total order.
 
 **Lean formulation** (in its source module context):
 
@@ -46,7 +46,7 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 ## Interface and scope
 
-**axiomBasis:** Finite typed partial parent function; induced child-to-parent edges; no positive directed cycles.
+**axiomBasis:** Finite typed partial parent function; induced child-to-parent edges; no positive directed cycles. Utility definitions are recorded separately; optional bottom, subtype and goal-relative conventions are conditional and do not strengthen the base carrier.
 
 **basisKind:** extensional-structural-definition
 
@@ -158,6 +158,30 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 **provenanceKind:** adapted
 
+<a id="node-urn-csabs-operation-SingleParentForest-descendant-or-self"></a>
+
+### descendant-or-self
+
+`urn:csabs:operation/SingleParentForest-descendant-or-self`
+
+**signature:** descendantOrSelf : V²→Prop
+
+**description:** x≼y iff zero or more parent steps take x to y. This orientation places roots above descendants; it is a partial order, not a total order.
+
+**precondition:** Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.
+
+**postcondition:** x≼y iff zero or more parent steps take x to y. This orientation places roots above descendants; it is a partial order, not a total order.
+
+**totality:** Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Logic/Relation.lean: ReflTransGen, TransGen; Data/Fintype/Card.lean: Finite.wellFounded_of_trans_of_irrefl; constructed functional-parent root proofs
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
 ## Axioms and defining rules
 
 <a id="node-urn-csabs-axiom-SingleParentForest-parent-function"></a>
@@ -216,6 +240,30 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 **provenanceKind:** adapted
 
+<a id="node-urn-csabs-axiom-SingleParentForest-utility-profile"></a>
+
+### Explicit utility operation definitions
+
+`urn:csabs:axiom/SingleParentForest-utility-profile`
+
+**statement:** x≼y iff zero or more parent steps take x to y. This orientation places roots above descendants; it is a partial order, not a total order.
+
+**formalStatement:** descendantOrSelf : V²→Prop: x≼y iff zero or more parent steps take x to y. This orientation places roots above descendants; it is a partial order, not a total order.
+
+**assumptions:** Base concept conventions remain unchanged. Optional profiles apply only under their explicitly stated additional hypotheses; identity equality, finite inputs and exact mathematics.
+
+**ruleRole:** defining-rule
+
+**reviewStatus:** Definitions of a selected extension, not new foundational axioms; individual model and result witnesses are separate.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Logic/Relation.lean: ReflTransGen, TransGen; Data/Fintype/Card.lean: Finite.wellFounded_of_trans_of_irrefl; constructed functional-parent root proofs
+
+**sourceNote:** Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.
+
+**provenanceKind:** adapted
+
 ## Laws
 
 <a id="node-urn-csabs-law-SingleParentForest-unique-root"></a>
@@ -250,7 +298,292 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 ## Theorems
 
-No entries recorded. This does not assert absence of mathematical facts.
+<a id="node-urn-csabs-theorem-SingleParentForest-descendant-order"></a>
+
+### descendant-order
+
+`urn:csabs:theorem/SingleParentForest-descendant-order`
+
+**statement:** Descendant-or-self, oriented from descendant to ancestor, is a partial order.
+
+**formalStatement:** Descendant-or-self, oriented from descendant to ancestor, is a partial order.
+
+**proofSketch:** Interpret parent edges as a DAG, then apply the reachability-order theorem.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](SingleParentForest.md#node-urn-csabs-axiom-SingleParentForest-utility-profile); [acyclic](SingleParentForest.md#node-urn-csabs-axiom-SingleParentForest-acyclic)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog ReachabilityUtilities Lean formulations and proofs; path: lean/Catalog/ReachabilityUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Logic/Relation.lean: ReflTransGen, TransGen; Data/Fintype/Card.lean: Finite.wellFounded_of_trans_of_irrefl; constructed functional-parent root proofs; Catalog.Programs.forest_descendant_order
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+Descendant-or-self, oriented from descendant to ancestor, is a partial order.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {V : Type u} [Fintype V] (f : Catalog.Programs.SingleParentForest V), (∀ a, Relation.ReflTransGen (Catalog.Programs.parentEdge f) a a) ∧
+    (∀ a b c, Relation.ReflTransGen (Catalog.Programs.parentEdge f) a b →
+      Relation.ReflTransGen (Catalog.Programs.parentEdge f) b c → Relation.ReflTransGen (Catalog.Programs.parentEdge f) a c) ∧
+    (∀ a b, Relation.ReflTransGen (Catalog.Programs.parentEdge f) a b →
+      Relation.ReflTransGen (Catalog.Programs.parentEdge f) b a → a = b)
+```
+
+**Source:** [`Catalog.Programs.forest_descendant_order`](../lean/Catalog/ReachabilityUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Descendant-or-self, oriented from descendant to ancestor, is a partial order. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/SingleParentForest-acyclic": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:axiom/SingleParentForest-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
+<a id="node-urn-csabs-theorem-SingleParentForest-parent-chains-terminate"></a>
+
+### parent-chains-terminate
+
+`urn:csabs:theorem/SingleParentForest-parent-chains-terminate`
+
+**statement:** The converse parent-step relation of a finite single-parent acyclic forest is well-founded; forward parent chains terminate.
+
+**formalStatement:** The converse parent-step relation of a finite single-parent acyclic forest is well-founded; forward parent chains terminate.
+
+**proofSketch:** The transitive parent closure is irreflexive and transitive on a finite carrier; use finite well-foundedness and relation inclusion.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](SingleParentForest.md#node-urn-csabs-axiom-SingleParentForest-utility-profile); [parent-function](SingleParentForest.md#node-urn-csabs-axiom-SingleParentForest-parent-function); [acyclic](SingleParentForest.md#node-urn-csabs-axiom-SingleParentForest-acyclic)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog ReachabilityUtilities Lean formulations and proofs; path: lean/Catalog/ReachabilityUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Logic/Relation.lean: ReflTransGen, TransGen; Data/Fintype/Card.lean: Finite.wellFounded_of_trans_of_irrefl; constructed functional-parent root proofs; Catalog.Programs.forest_termination
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+The converse parent-step relation of a finite single-parent acyclic forest is well-founded; forward parent chains terminate.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {V : Type u} [Fintype V] (f : Catalog.Programs.SingleParentForest V), WellFounded (fun w v => Catalog.Programs.parentEdge f v w)
+```
+
+**Source:** [`Catalog.Programs.forest_termination`](../lean/Catalog/ReachabilityUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** The converse parent-step relation of a finite single-parent acyclic forest is well-founded; forward parent chains terminate. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/SingleParentForest-acyclic": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:axiom/SingleParentForest-parent-function": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:axiom/SingleParentForest-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
+<a id="node-urn-csabs-theorem-SingleParentForest-root-existence"></a>
+
+### root-existence
+
+`urn:csabs:theorem/SingleParentForest-root-existence`
+
+**statement:** Every vertex has a reachable root whose parent is none.
+
+**formalStatement:** Every vertex has a reachable root whose parent is none.
+
+**proofSketch:** Well-founded induction: stop at parent none; otherwise prepend the parent step to the parent’s root path.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](SingleParentForest.md#node-urn-csabs-axiom-SingleParentForest-utility-profile); [parent-chains-terminate](SingleParentForest.md#node-urn-csabs-theorem-SingleParentForest-parent-chains-terminate)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog ReachabilityUtilities Lean formulations and proofs; path: lean/Catalog/ReachabilityUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Logic/Relation.lean: ReflTransGen, TransGen; Data/Fintype/Card.lean: Finite.wellFounded_of_trans_of_irrefl; constructed functional-parent root proofs; Catalog.Programs.forest_root_exists
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+Every vertex has a reachable root whose parent is none.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {V : Type u} [Fintype V] (f : Catalog.Programs.SingleParentForest V) (v : V), ∃ r, f.parent r = none ∧ Relation.ReflTransGen (Catalog.Programs.parentEdge f) v r
+```
+
+**Source:** [`Catalog.Programs.forest_root_exists`](../lean/Catalog/ReachabilityUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Every vertex has a reachable root whose parent is none. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/SingleParentForest-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:theorem/SingleParentForest-parent-chains-terminate": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
+<a id="node-urn-csabs-theorem-SingleParentForest-root-uniqueness"></a>
+
+### root-uniqueness
+
+`urn:csabs:theorem/SingleParentForest-root-uniqueness`
+
+**statement:** Any two parent-none roots reachable from the same vertex are equal.
+
+**formalStatement:** Any two parent-none roots reachable from the same vertex are equal.
+
+**proofSketch:** Induct over one path; functional parenthood forces the first steps of both nonempty paths to coincide.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](SingleParentForest.md#node-urn-csabs-axiom-SingleParentForest-utility-profile); [parent-function](SingleParentForest.md#node-urn-csabs-axiom-SingleParentForest-parent-function)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog ReachabilityUtilities Lean formulations and proofs; path: lean/Catalog/ReachabilityUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Logic/Relation.lean: ReflTransGen, TransGen; Data/Fintype/Card.lean: Finite.wellFounded_of_trans_of_irrefl; constructed functional-parent root proofs; Catalog.Programs.forest_root_unique
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+Any two parent-none roots reachable from the same vertex are equal.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {V : Type u} [Fintype V] (f : Catalog.Programs.SingleParentForest V)
+    (v r s : V) (_hr : f.parent r = none) (_hs : f.parent s = none)
+    (_hvr : Relation.ReflTransGen (Catalog.Programs.parentEdge f) v r)
+    (_hvs : Relation.ReflTransGen (Catalog.Programs.parentEdge f) v s), r = s
+```
+
+**Source:** [`Catalog.Programs.forest_root_unique`](../lean/Catalog/ReachabilityUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Any two parent-none roots reachable from the same vertex are equal. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/SingleParentForest-parent-function": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:axiom/SingleParentForest-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
+
+<a id="node-urn-csabs-theorem-SingleParentForest-rootOf-equation"></a>
+
+### rootOf-equation
+
+`urn:csabs:theorem/SingleParentForest-rootOf-equation`
+
+**statement:** parent(rootOf(v))=none, v reaches rootOf(v), and parent(v)=some(w) implies rootOf(v)=rootOf(w). If parent(v)=none then rootOf(v)=v.
+
+**formalStatement:** parent(rootOf(v))=none, v reaches rootOf(v), and parent(v)=some(w) implies rootOf(v)=rootOf(w). If parent(v)=none then rootOf(v)=v.
+
+**proofSketch:** Choose the existence witness; uniqueness equates it to the root obtained by first following the parent.
+
+**assumptions:** Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles.
+
+**dependsOn:** [Explicit utility operation definitions](SingleParentForest.md#node-urn-csabs-axiom-SingleParentForest-utility-profile); [root-existence](SingleParentForest.md#node-urn-csabs-theorem-SingleParentForest-root-existence); [root-uniqueness](SingleParentForest.md#node-urn-csabs-theorem-SingleParentForest-root-uniqueness)
+
+**reviewStatus:** Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.
+
+**source:** [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.; Catalog ReachabilityUtilities Lean formulations and proofs; path: lean/Catalog/ReachabilityUtilities.lean; accessedOn: 2026-11-20; sourceRole: Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.
+
+**sourceLocator:** Logic/Relation.lean: ReflTransGen, TransGen; Data/Fintype/Card.lean: Finite.wellFounded_of_trans_of_irrefl; constructed functional-parent root proofs; Catalog.Programs.forest_root_equation
+
+**sourceNote:** Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.
+
+**provenanceKind:** derived
+
+#### Mathematical formulation
+
+parent(rootOf(v))=none, v reaches rootOf(v), and parent(v)=some(w) implies rootOf(v)=rootOf(w). If parent(v)=none then rootOf(v)=v.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {V : Type u} [Fintype V] (f : Catalog.Programs.SingleParentForest V) (v : V), f.parent (Catalog.Programs.forestRootOf f v) = none ∧
+    Relation.ReflTransGen (Catalog.Programs.parentEdge f) v (Catalog.Programs.forestRootOf f v) ∧
+    (∀ w, f.parent v = some w → Catalog.Programs.forestRootOf f v = Catalog.Programs.forestRootOf f w) ∧
+    (f.parent v = none → Catalog.Programs.forestRootOf f v = v)
+```
+
+**Source:** [`Catalog.Programs.forest_root_equation`](../lean/Catalog/ReachabilityUtilities.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** parent(rootOf(v))=none, v reaches rootOf(v), and parent(v)=some(w) implies rootOf(v)=rootOf(w). Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated. The root case fixes v itself.
+
+**Limits:** Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/SingleParentForest-utility-profile": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:theorem/SingleParentForest-root-existence": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.",
+  "urn:csabs:theorem/SingleParentForest-root-uniqueness": "Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders."
+}
+```
 
 ## Concept provenance
 
@@ -283,14 +616,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "kind": "urn:csabs:kind/mathematical-structure",
     "basisKind": "extensional-structural-definition",
     "basisScope": "V finite, possibly empty; exact vertex identities; unordered children and arbitrarily many components. Edges point child-to-parent; roots have parent None, never a self-parent sentinel. No sharing of a child between parents, cycles or dangling references. Parent function alone does not exclude cycles: acyclicity is a separate rule. A root and its descendants form a rooted tree after forgetting edge orientation; RootedTree currently uses an undirected carrier, so that relation is a construction rather than a literal specialization.",
-    "axiomBasis": "Finite typed partial parent function; induced child-to-parent edges; no positive directed cycles.",
+    "axiomBasis": "Finite typed partial parent function; induced child-to-parent edges; no positive directed cycles. Utility definitions are recorded separately; optional bottom, subtype and goal-relative conventions are conditional and do not strengthen the base carrier.",
     "coverageStatus": "basis-reviewed",
     "reviewStatus": "Editorial mathematical interface review; Lean models and individual proof witnesses are separate.",
     "verificationObligation": [
       "Instantiate carrier, equality, operation definedness and semantic assumptions before application.",
       "Typed links do not transfer axioms; retrieve explicit premises."
     ],
-    "mathematicalFormulation": "p:V→Option(V); E(v,w) ⇔ p(v)=Some(w); ¬E⁺(v,v). V finite, possibly empty; exact vertex identities; unordered children and arbitrarily many components. Edges point child-to-parent; roots have parent None, never a self-parent sentinel. No sharing of a child between parents, cycles or dangling references. Parent function alone does not exclude cycles: acyclicity is a separate rule. A root and its descendants form a rooted tree after forgetting edge orientation; RootedTree currently uses an undirected carrier, so that relation is a construction rather than a literal specialization.",
+    "mathematicalFormulation": "p:V→Option(V); E(v,w) ⇔ p(v)=Some(w); ¬E⁺(v,v). V finite, possibly empty; exact vertex identities; unordered children and arbitrarily many components. Edges point child-to-parent; roots have parent None, never a self-parent sentinel. No sharing of a child between parents, cycles or dangling references. Parent function alone does not exclude cycles: acyclicity is a separate rule. A root and its descendants form a rooted tree after forgetting edge orientation; RootedTree currently uses an undirected carrier, so that relation is a construction rather than a literal specialization. Utility profile: x≼y iff zero or more parent steps take x to y. This orientation places roots above descendants; it is a partial order, not a total order.",
     "requiresConcept": [
       "urn:csabs:concept/DAG"
     ],
@@ -304,16 +637,24 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:operation/SingleParentForest-parent",
       "urn:csabs:operation/SingleParentForest-children",
       "urn:csabs:operation/SingleParentForest-roots",
-      "urn:csabs:operation/SingleParentForest-root-of"
+      "urn:csabs:operation/SingleParentForest-root-of",
+      "urn:csabs:operation/SingleParentForest-descendant-or-self"
     ],
     "hasAxiom": [
       "urn:csabs:axiom/SingleParentForest-parent-function",
-      "urn:csabs:axiom/SingleParentForest-acyclic"
+      "urn:csabs:axiom/SingleParentForest-acyclic",
+      "urn:csabs:axiom/SingleParentForest-utility-profile"
     ],
     "hasLaw": [
       "urn:csabs:law/SingleParentForest-unique-root"
     ],
-    "hasTheorem": [],
+    "hasTheorem": [
+      "urn:csabs:theorem/SingleParentForest-descendant-order",
+      "urn:csabs:theorem/SingleParentForest-parent-chains-terminate",
+      "urn:csabs:theorem/SingleParentForest-root-existence",
+      "urn:csabs:theorem/SingleParentForest-root-uniqueness",
+      "urn:csabs:theorem/SingleParentForest-rootOf-equation"
+    ],
     "source": [
       "urn:csabs:source/opendsa-general-trees-2024"
     ],
@@ -400,6 +741,23 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "provenanceKind": "adapted"
   },
   {
+    "id": "urn:csabs:operation/SingleParentForest-descendant-or-self",
+    "type": "Operation",
+    "concept": "urn:csabs:concept/SingleParentForest",
+    "name": "descendant-or-self",
+    "signature": "descendantOrSelf : V²→Prop",
+    "description": "x≼y iff zero or more parent steps take x to y. This orientation places roots above descendants; it is a partial order, not a total order.",
+    "precondition": "Stated carrier and optional-profile assumptions; executable equality/predicates require decision procedures.",
+    "postcondition": "x≼y iff zero or more parent steps take x to y. This orientation places roots above descendants; it is a partial order, not a total order.",
+    "totality": "Mathematical totality on the stated domain; no runtime resource or floating-point guarantee.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Logic/Relation.lean: ReflTransGen, TransGen; Data/Fintype/Card.lean: Finite.wellFounded_of_trans_of_irrefl; constructed functional-parent root proofs",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
     "id": "urn:csabs:axiom/SingleParentForest-parent-function",
     "type": "Axiom",
     "name": "parent-function",
@@ -446,6 +804,27 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "provenanceKind": "adapted"
   },
   {
+    "id": "urn:csabs:axiom/SingleParentForest-utility-profile",
+    "type": "Axiom",
+    "name": "Explicit utility operation definitions",
+    "statement": "x≼y iff zero or more parent steps take x to y. This orientation places roots above descendants; it is a partial order, not a total order.",
+    "formalStatement": "descendantOrSelf : V²→Prop: x≼y iff zero or more parent steps take x to y. This orientation places roots above descendants; it is a partial order, not a total order.",
+    "assumptions": [
+      "Base concept conventions remain unchanged. Optional profiles apply only under their explicitly stated additional hypotheses; identity equality, finite inputs and exact mathematics."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/SingleParentForest"
+    ],
+    "ruleRole": "defining-rule",
+    "reviewStatus": "Definitions of a selected extension, not new foundational axioms; individual model and result witnesses are separate.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Logic/Relation.lean: ReflTransGen, TransGen; Data/Fintype/Card.lean: Finite.wellFounded_of_trans_of_irrefl; constructed functional-parent root proofs",
+    "sourceNote": "Adapts consulted primitives to this explicitly defined mathematical profile; no claim that the source states the entire constructed composition.",
+    "provenanceKind": "adapted"
+  },
+  {
     "id": "urn:csabs:law/SingleParentForest-unique-root",
     "type": "Law",
     "name": "unique-root",
@@ -471,6 +850,178 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "sourceLocator": "§18.1.1.1 General Tree Definitions and Terminology: forest, root and unique parent; adapted to unordered forests including the empty forest.",
     "sourceNote": "Derived from the linked premises by the supplied editorial proof sketch.",
     "provenanceKind": "derived"
+  },
+  {
+    "id": "urn:csabs:theorem/SingleParentForest-descendant-order",
+    "type": "Theorem",
+    "name": "descendant-order",
+    "statement": "Descendant-or-self, oriented from descendant to ancestor, is a partial order.",
+    "formalStatement": "Descendant-or-self, oriented from descendant to ancestor, is a partial order.",
+    "mathematicalFormulation": "Descendant-or-self, oriented from descendant to ancestor, is a partial order.",
+    "proofSketch": "Interpret parent edges as a DAG, then apply the reachability-order theorem.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/SingleParentForest"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/SingleParentForest-utility-profile",
+      "urn:csabs:axiom/SingleParentForest-acyclic"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-ReachabilityUtilities"
+    ],
+    "sourceLocator": "Logic/Relation.lean: ReflTransGen, TransGen; Data/Fintype/Card.lean: Finite.wellFounded_of_trans_of_irrefl; constructed functional-parent root proofs; Catalog.Programs.forest_descendant_order",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {V : Type u} [Fintype V] (f : Catalog.Programs.SingleParentForest V), (∀ a, Relation.ReflTransGen (Catalog.Programs.parentEdge f) a a) ∧\n    (∀ a b c, Relation.ReflTransGen (Catalog.Programs.parentEdge f) a b →\n      Relation.ReflTransGen (Catalog.Programs.parentEdge f) b c → Relation.ReflTransGen (Catalog.Programs.parentEdge f) a c) ∧\n    (∀ a b, Relation.ReflTransGen (Catalog.Programs.parentEdge f) a b →\n      Relation.ReflTransGen (Catalog.Programs.parentEdge f) b a → a = b)",
+    "leanModelMapping": "Descendant-or-self, oriented from descendant to ancestor, is a partial order. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/SingleParentForest-acyclic\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:axiom/SingleParentForest-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-ReachabilityUtilities",
+    "formulationLocator": "Catalog.Programs.forest_descendant_order"
+  },
+  {
+    "id": "urn:csabs:theorem/SingleParentForest-parent-chains-terminate",
+    "type": "Theorem",
+    "name": "parent-chains-terminate",
+    "statement": "The converse parent-step relation of a finite single-parent acyclic forest is well-founded; forward parent chains terminate.",
+    "formalStatement": "The converse parent-step relation of a finite single-parent acyclic forest is well-founded; forward parent chains terminate.",
+    "mathematicalFormulation": "The converse parent-step relation of a finite single-parent acyclic forest is well-founded; forward parent chains terminate.",
+    "proofSketch": "The transitive parent closure is irreflexive and transitive on a finite carrier; use finite well-foundedness and relation inclusion.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/SingleParentForest"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/SingleParentForest-utility-profile",
+      "urn:csabs:axiom/SingleParentForest-parent-function",
+      "urn:csabs:axiom/SingleParentForest-acyclic"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-ReachabilityUtilities"
+    ],
+    "sourceLocator": "Logic/Relation.lean: ReflTransGen, TransGen; Data/Fintype/Card.lean: Finite.wellFounded_of_trans_of_irrefl; constructed functional-parent root proofs; Catalog.Programs.forest_termination",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {V : Type u} [Fintype V] (f : Catalog.Programs.SingleParentForest V), WellFounded (fun w v => Catalog.Programs.parentEdge f v w)",
+    "leanModelMapping": "The converse parent-step relation of a finite single-parent acyclic forest is well-founded; forward parent chains terminate. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/SingleParentForest-acyclic\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:axiom/SingleParentForest-parent-function\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:axiom/SingleParentForest-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-ReachabilityUtilities",
+    "formulationLocator": "Catalog.Programs.forest_termination"
+  },
+  {
+    "id": "urn:csabs:theorem/SingleParentForest-root-existence",
+    "type": "Theorem",
+    "name": "root-existence",
+    "statement": "Every vertex has a reachable root whose parent is none.",
+    "formalStatement": "Every vertex has a reachable root whose parent is none.",
+    "mathematicalFormulation": "Every vertex has a reachable root whose parent is none.",
+    "proofSketch": "Well-founded induction: stop at parent none; otherwise prepend the parent step to the parent’s root path.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/SingleParentForest"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/SingleParentForest-utility-profile",
+      "urn:csabs:theorem/SingleParentForest-parent-chains-terminate"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-ReachabilityUtilities"
+    ],
+    "sourceLocator": "Logic/Relation.lean: ReflTransGen, TransGen; Data/Fintype/Card.lean: Finite.wellFounded_of_trans_of_irrefl; constructed functional-parent root proofs; Catalog.Programs.forest_root_exists",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {V : Type u} [Fintype V] (f : Catalog.Programs.SingleParentForest V) (v : V), ∃ r, f.parent r = none ∧ Relation.ReflTransGen (Catalog.Programs.parentEdge f) v r",
+    "leanModelMapping": "Every vertex has a reachable root whose parent is none. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/SingleParentForest-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:theorem/SingleParentForest-parent-chains-terminate\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-ReachabilityUtilities",
+    "formulationLocator": "Catalog.Programs.forest_root_exists"
+  },
+  {
+    "id": "urn:csabs:theorem/SingleParentForest-root-uniqueness",
+    "type": "Theorem",
+    "name": "root-uniqueness",
+    "statement": "Any two parent-none roots reachable from the same vertex are equal.",
+    "formalStatement": "Any two parent-none roots reachable from the same vertex are equal.",
+    "mathematicalFormulation": "Any two parent-none roots reachable from the same vertex are equal.",
+    "proofSketch": "Induct over one path; functional parenthood forces the first steps of both nonempty paths to coincide.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/SingleParentForest"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/SingleParentForest-utility-profile",
+      "urn:csabs:axiom/SingleParentForest-parent-function"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-ReachabilityUtilities"
+    ],
+    "sourceLocator": "Logic/Relation.lean: ReflTransGen, TransGen; Data/Fintype/Card.lean: Finite.wellFounded_of_trans_of_irrefl; constructed functional-parent root proofs; Catalog.Programs.forest_root_unique",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {V : Type u} [Fintype V] (f : Catalog.Programs.SingleParentForest V)\n    (v r s : V) (_hr : f.parent r = none) (_hs : f.parent s = none)\n    (_hvr : Relation.ReflTransGen (Catalog.Programs.parentEdge f) v r)\n    (_hvs : Relation.ReflTransGen (Catalog.Programs.parentEdge f) v s), r = s",
+    "leanModelMapping": "Any two parent-none roots reachable from the same vertex are equal. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/SingleParentForest-parent-function\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:axiom/SingleParentForest-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-ReachabilityUtilities",
+    "formulationLocator": "Catalog.Programs.forest_root_unique"
+  },
+  {
+    "id": "urn:csabs:theorem/SingleParentForest-rootOf-equation",
+    "type": "Theorem",
+    "name": "rootOf-equation",
+    "statement": "parent(rootOf(v))=none, v reaches rootOf(v), and parent(v)=some(w) implies rootOf(v)=rootOf(w). If parent(v)=none then rootOf(v)=v.",
+    "formalStatement": "parent(rootOf(v))=none, v reaches rootOf(v), and parent(v)=some(w) implies rootOf(v)=rootOf(w). If parent(v)=none then rootOf(v)=v.",
+    "mathematicalFormulation": "parent(rootOf(v))=none, v reaches rootOf(v), and parent(v)=some(w) implies rootOf(v)=rootOf(w). If parent(v)=none then rootOf(v)=v.",
+    "proofSketch": "Choose the existence witness; uniqueness equates it to the root obtained by first following the parent.",
+    "assumptions": [
+      "Exactly the carrier, equality and explicit hypotheses in leanFormulation; see the base and utility profiles."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/SingleParentForest"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/SingleParentForest-utility-profile",
+      "urn:csabs:theorem/SingleParentForest-root-existence",
+      "urn:csabs:theorem/SingleParentForest-root-uniqueness"
+    ],
+    "reviewStatus": "Compiled local proof and axiom audit; catalog verification status requires a fresh verification report.",
+    "source": [
+      "urn:csabs:source/utility-mathlib-pinned",
+      "urn:csabs:source/utility-lean-ReachabilityUtilities"
+    ],
+    "sourceLocator": "Logic/Relation.lean: ReflTransGen, TransGen; Data/Fintype/Card.lean: Finite.wellFounded_of_trans_of_irrefl; constructed functional-parent root proofs; Catalog.Programs.forest_root_equation",
+    "sourceNote": "Derived from the explicit linked premises using the separately recorded Lean proof; primitives are adapted to the displayed carriers and conventions.",
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {V : Type u} [Fintype V] (f : Catalog.Programs.SingleParentForest V) (v : V), f.parent (Catalog.Programs.forestRootOf f v) = none ∧\n    Relation.ReflTransGen (Catalog.Programs.parentEdge f) v (Catalog.Programs.forestRootOf f v) ∧\n    (∀ w, f.parent v = some w → Catalog.Programs.forestRootOf f v = Catalog.Programs.forestRootOf f w) ∧\n    (f.parent v = none → Catalog.Programs.forestRootOf f v = v)",
+    "leanModelMapping": "parent(rootOf(v))=none, v reaches rootOf(v), and parent(v)=some(w) implies rootOf(v)=rootOf(w). Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated. The root case fixes v itself.",
+    "leanModelLimitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/SingleParentForest-utility-profile\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:theorem/SingleParentForest-root-existence\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\", \"urn:csabs:theorem/SingleParentForest-root-uniqueness\": \"Defining premise interpreted by the named concrete operations and typed structural assumptions; the displayed theorem proves the stated consequence under exactly its binders.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/utility-lean-ReachabilityUtilities",
+    "formulationLocator": "Catalog.Programs.forest_root_equation"
   }
 ]
 ```

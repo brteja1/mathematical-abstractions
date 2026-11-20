@@ -150,6 +150,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Finite real-weighted directed multigraph](concepts/WeightedDirectedGraph.md)
 - **Information theory**
   - [BM25 score model (positive-IDF, normalized single-field profile)](concepts/BM25.md)
+  - [SQLite FTS5-style BM25 phrase and weighted-column profile](concepts/BM25FTS5.md)
   - [Channel capacity (finite DMC, vanishing error)](concepts/ChannelCapacity.md)
   - [Conditional entropy (finite discrete profile)](concepts/ConditionalEntropy.md)
   - [Discrete memoryless channel (stationary finite profile)](concepts/DiscreteMemorylessChannel.md)
@@ -429,6 +430,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Asymmetric coroutine with explicit resume/yield lifecycle](concepts/AsymmetricCoroutine.md) | Programming-language semantics → Coroutines and cooperative execution, Concurrency and distributed systems → Behavioral models |
 | [Scoped atomic execution graph and memory ordering](concepts/AtomicMemoryModel.md) | Programming-language semantics → Compiler transformations |
 | [BM25 score model (positive-IDF, normalized single-field profile)](concepts/BM25.md) | Information theory |
+| [SQLite FTS5-style BM25 phrase and weighted-column profile](concepts/BM25FTS5.md) | Information theory |
 | [B-tree (balanced multiway search tree)](concepts/BTree.md) | Data structures → Tree structures |
 | [Finite database relation under bag semantics](concepts/BagRelation.md) | Relational data modelling |
 | [Bayesian network (finite discrete variables)](concepts/BayesianNetwork.md) | Probability and stochastic models, Graph theory |
