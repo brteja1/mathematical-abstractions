@@ -136,7 +136,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | JavaTypeInference | 3 | 3 | 2 | 0 | extensional-structural-definition |
 | JavaWildcardCapture | 2 | 2 | 2 | 0 | extensional-structural-definition |
 | JoinSemilattice | 4 | 6 | 3 | 3 | extensional-structural-definition |
-| KleeneLogic | 8 | 3 | 3 | 3 | defined-structure |
+| KleeneLogic | 8 | 3 | 3 | 4 | defined-structure |
 | KripkeStructure | 2 | 2 | 1 | 3 | defined-structure |
 | LLVMAttributeContract | 2 | 2 | 1 | 0 | relational-structural-definition |
 | LLVMFloatingPointSemantics | 2 | 2 | 1 | 0 | relational-structural-definition |
@@ -216,7 +216,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | RDFGraph | 4 | 4 | 1 | 1 | extensional-structural-definition |
 | RSA | 2 | 2 | 0 | 1 | defined-structure |
 | RandomVariable | 1 | 1 | 0 | 1 | defined-structure |
-| RankedRetrieval | 6 | 2 | 0 | 3 | defined-structure |
+| RankedRetrieval | 6 | 2 | 0 | 4 | defined-structure |
 | RateDistortion | 1 | 1 | 0 | 2 | extensional-structural-definition |
 | RationalNumber | 4 | 3 | 1 | 1 | extensional-structural-definition |
 | RealNumber | 3 | 2 | 1 | 1 | extensional-structural-definition |
@@ -226,7 +226,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | RelationalSchema | 3 | 3 | 3 | 1 | defined-structure |
 | RelativeEntropy | 1 | 1 | 0 | 1 | extensional-structural-definition |
 | ResiduatedFuzzyLogic | 3 | 6 | 1 | 1 | defined-structure |
-| RewriteSystem | 6 | 3 | 1 | 5 | extensional-structural-definition |
+| RewriteSystem | 6 | 3 | 1 | 8 | extensional-structural-definition |
 | Ring | 3 | 11 | 0 | 1 | axiomatic-structure |
 | RootedTree | 3 | 3 | 1 | 1 | extensional-structural-definition |
 | RoseTree | 4 | 4 | 1 | 1 | extensional-structural-definition |
@@ -283,7 +283,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | Tree | 1 | 3 | 0 | 2 | defined-structure |
 | Trie | 3 | 4 | 1 | 1 | extensional-structural-definition |
 | TuringMachine | 3 | 4 | 1 | 3 | defined-structure |
-| TypedEdgeSchema | 3 | 2 | 1 | 5 | defined-structure |
+| TypedEdgeSchema | 3 | 2 | 1 | 6 | defined-structure |
 | UniquelyDecodableCode | 2 | 1 | 0 | 2 | extensional-structural-definition |
 | UnitType | 1 | 1 | 0 | 2 | extensional-type-theory |
 | VHDLGenericElaboration | 4 | 3 | 2 | 0 | extensional-structural-definition |

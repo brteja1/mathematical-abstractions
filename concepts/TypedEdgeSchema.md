@@ -479,6 +479,61 @@ Read with the linked module’s imports, namespaces, universes and section varia
 }
 ```
 
+<a id="node-urn-csabs-theorem-TypedEdgeSchema-set-endpoint-singleton-recovery"></a>
+
+### set-endpoint-singleton-recovery
+
+`urn:csabs:theorem/TypedEdgeSchema-set-endpoint-singleton-recovery`
+
+**statement:** Optional EndpointSetSchema assigns sourceTypes(k),targetTypes(k)⊆T. Each edge endpoint must belong to its declared set. Incidence bounds apply at every vertex whose type belongs to the corresponding set, counting edge identities once per kind. Empty sets reject edges of that kind; overlapping eligible kinds impose each constraint. Singleton sets recover exact conformance, including bounds. The bounds carrier reuses TypedEdgeSchema; its sourceType/targetType fields are ignored in this profile.
+
+**formalStatement:** Optional EndpointSetSchema assigns sourceTypes(k),targetTypes(k)⊆T. Each edge endpoint must belong to its declared set. Incidence bounds apply at every vertex whose type belongs to the corresponding set, counting edge identities once per kind. Empty sets reject edges of that kind; overlapping eligible kinds impose each constraint. Singleton sets recover exact conformance, including bounds. The bounds carrier reuses TypedEdgeSchema; its sourceType/targetType fields are ignored in this profile.
+
+**assumptions:** Exactly the displayed Lean binders and the explicit profile definitions.
+
+**dependsOn:** [defining profile](TypedEdgeSchema.md#node-urn-csabs-axiom-TypedEdgeSchema-defining-profile)
+
+**source:** Constructed information, prefix, replacement and endpoint-set models over pinned Mathlib; citation: Constructed models; primitives consulted in pinned Mathlib Data/Finset/Sort.lean length_sort, Data/List/TakeDrop.lean take_of_length_le, list map composition and Set membership. Independent mathematical primitive provenance: utility-mathlib-pinned.; path: lean/Catalog/ExtensionProfiles.lean; accessedOn: 2026-11-20; sourceRole: local-lean-formulation-and-derived-proof; [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Catalog.setSchema_singleton; pinned Mathlib finite-list, finite-set and relation primitives
+
+**sourceNote:** Constructed and proved in the local module from the directly linked primitive definitions; not attributed verbatim to Mathlib.
+
+**provenanceKind:** derived
+
+**proofSketch:** Use the concrete definitions and the compiled proof in the cited local module.
+
+**reviewStatus:** Selected model proof; verification requires fresh compiler and axiom audit.
+
+#### Mathematical formulation
+
+Optional EndpointSetSchema assigns sourceTypes(k),targetTypes(k)⊆T. Each edge endpoint must belong to its declared set. Incidence bounds apply at every vertex whose type belongs to the corresponding set, counting edge identities once per kind. Empty sets reject edges of that kind; overlapping eligible kinds impose each constraint. Singleton sets recover exact conformance, including bounds. The bounds carrier reuses TypedEdgeSchema; its sourceType/targetType fields are ignored in this profile.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {V E T K : Type} [Fintype E] [DecidableEq V] [DecidableEq K]
+    (s : Catalog.TypedEdgeSchema T K) (g : Catalog.TypedEdgeGraph V E T K), Catalog.setSchemaConforms (Catalog.singletonSchema s) g ↔ Catalog.schemaConforms s g
+```
+
+**Source:** [`Catalog.setSchema_singleton`](../lean/Catalog/ExtensionProfiles.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Optional EndpointSetSchema assigns sourceTypes(k),targetTypes(k)⊆T. Each edge endpoint must belong to its declared set. Incidence bounds apply at every vertex whose type belongs to the corresponding set, counting edge identities once per kind. Empty sets reject edges of that kind; overlapping eligible kinds impose each constraint. Singleton sets recover exact conformance, including bounds. The bounds carrier reuses TypedEdgeSchema; its sourceType/targetType fields are ignored in this profile. Exact equality and typed carriers are those displayed in the Lean proposition.
+
+**Limits:** Selected mathematical profile only; singleton replacement does not establish arbitrary substring replacement confluence. Set endpoint declarations use disjunctive membership; no automatic subtype closure.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/TypedEdgeSchema-defining-profile": "Interpret the linked definitions on the explicit carriers in the witness; no target law is assumed."
+}
+```
+
 ## Concept provenance
 
 - [W3C Shapes Constraint Language (SHACL)](https://www.w3.org/TR/shacl/); citation: W3C Recommendation 20 July 2017, §§4.1,4.2.1–4.2.2,4.7.3: class/node constraints, minCount/maxCount and property paths.; accessedOn: 2026-11-20; sourceRole: consulted-definition-and-theorem-reference
@@ -547,7 +602,8 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:theorem/TypedEdgeSchema-bound-relaxation",
       "urn:csabs:theorem/TypedEdgeSchema-subtype-exact-recovery",
       "urn:csabs:theorem/TypedEdgeSchema-subtype-model-satisfaction",
-      "urn:csabs:theorem/TypedEdgeSchema-proper-subtype-model"
+      "urn:csabs:theorem/TypedEdgeSchema-proper-subtype-model",
+      "urn:csabs:theorem/TypedEdgeSchema-set-endpoint-singleton-recovery"
     ],
     "source": [
       "urn:csabs:source/seven-shacl",
@@ -851,6 +907,39 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "formulationScope": "registered-witness-type",
     "formulationSource": "urn:csabs:source/utility-lean-ReachabilityUtilities",
     "formulationLocator": "Catalog.subtype_strict_model"
+  },
+  {
+    "id": "urn:csabs:theorem/TypedEdgeSchema-set-endpoint-singleton-recovery",
+    "type": "Theorem",
+    "name": "set-endpoint-singleton-recovery",
+    "statement": "Optional EndpointSetSchema assigns sourceTypes(k),targetTypes(k)⊆T. Each edge endpoint must belong to its declared set. Incidence bounds apply at every vertex whose type belongs to the corresponding set, counting edge identities once per kind. Empty sets reject edges of that kind; overlapping eligible kinds impose each constraint. Singleton sets recover exact conformance, including bounds. The bounds carrier reuses TypedEdgeSchema; its sourceType/targetType fields are ignored in this profile.",
+    "formalStatement": "Optional EndpointSetSchema assigns sourceTypes(k),targetTypes(k)⊆T. Each edge endpoint must belong to its declared set. Incidence bounds apply at every vertex whose type belongs to the corresponding set, counting edge identities once per kind. Empty sets reject edges of that kind; overlapping eligible kinds impose each constraint. Singleton sets recover exact conformance, including bounds. The bounds carrier reuses TypedEdgeSchema; its sourceType/targetType fields are ignored in this profile.",
+    "mathematicalFormulation": "Optional EndpointSetSchema assigns sourceTypes(k),targetTypes(k)⊆T. Each edge endpoint must belong to its declared set. Incidence bounds apply at every vertex whose type belongs to the corresponding set, counting edge identities once per kind. Empty sets reject edges of that kind; overlapping eligible kinds impose each constraint. Singleton sets recover exact conformance, including bounds. The bounds carrier reuses TypedEdgeSchema; its sourceType/targetType fields are ignored in this profile.",
+    "assumptions": [
+      "Exactly the displayed Lean binders and the explicit profile definitions."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/TypedEdgeSchema"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/TypedEdgeSchema-defining-profile"
+    ],
+    "source": [
+      "urn:csabs:source/extension-profiles-2026-11-20",
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Catalog.setSchema_singleton; pinned Mathlib finite-list, finite-set and relation primitives",
+    "sourceNote": "Constructed and proved in the local module from the directly linked primitive definitions; not attributed verbatim to Mathlib.",
+    "provenanceKind": "derived",
+    "proofSketch": "Use the concrete definitions and the compiled proof in the cited local module.",
+    "leanFormulation": "∀ {V E T K : Type} [Fintype E] [DecidableEq V] [DecidableEq K]\n    (s : Catalog.TypedEdgeSchema T K) (g : Catalog.TypedEdgeGraph V E T K), Catalog.setSchemaConforms (Catalog.singletonSchema s) g ↔ Catalog.schemaConforms s g",
+    "leanModelMapping": "Optional EndpointSetSchema assigns sourceTypes(k),targetTypes(k)⊆T. Each edge endpoint must belong to its declared set. Incidence bounds apply at every vertex whose type belongs to the corresponding set, counting edge identities once per kind. Empty sets reject edges of that kind; overlapping eligible kinds impose each constraint. Singleton sets recover exact conformance, including bounds. The bounds carrier reuses TypedEdgeSchema; its sourceType/targetType fields are ignored in this profile. Exact equality and typed carriers are those displayed in the Lean proposition.",
+    "leanModelLimitations": "Selected mathematical profile only; singleton replacement does not establish arbitrary substring replacement confluence. Set endpoint declarations use disjunctive membership; no automatic subtype closure.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/TypedEdgeSchema-defining-profile\": \"Interpret the linked definitions on the explicit carriers in the witness; no target law is assumed.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/extension-profiles-2026-11-20",
+    "formulationLocator": "Catalog.setSchema_singleton",
+    "reviewStatus": "Selected model proof; verification requires fresh compiler and axiom audit."
   }
 ]
 ```

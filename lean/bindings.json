@@ -3752,7 +3752,7 @@
       "scope": "partial",
       "mapping": "Arbitrary step relation on A; reduces is Relation.ReflTransGen and normalForm excludes step successors.",
       "limitations": "No matching engine, term substitution/context closure, strategy, termination, confluence or refinement proof.",
-      "catalogHash": "1d875ee3f00e067d5f704bce1c0f51fdf392fb5678cafb99898466a430d283be"
+      "catalogHash": "7b170e99254751ca27422a783787dc42c1b31414803ffaf5fca7f4a00d981554"
     },
     "urn:csabs:concept/EffectAlgebra": {
       "kind": "model",
@@ -3954,7 +3954,7 @@
         "Quot.sound",
         "Classical.choice"
       ],
-      "catalogHash": "8eb986c044c94224448f887016d050efe4aafd6151d2431ca919a786eb1b92b3"
+      "catalogHash": "9075ba8acbb289424044191e6a84c76d2d09a2a092008110a62f68b1267ce368"
     },
     "urn:csabs:law/VerdictCoverage-covered-count-bound": {
       "kind": "witness",
@@ -4032,7 +4032,7 @@
         "Quot.sound",
         "Classical.choice"
       ],
-      "catalogHash": "b424b263adc27e64f1f59e48c5f9dd0a090f372ef74294b9c4e0e8ed3d6d6608"
+      "catalogHash": "754984d4a8a0d0e68a7c7248ad0b7511d3c7c6e12b7e89bbf053ef4957a424c0"
     },
     "urn:csabs:concept/BM25": {
       "kind": "model",
@@ -4084,7 +4084,7 @@
         "Quot.sound",
         "Classical.choice"
       ],
-      "catalogHash": "ff26276124ff7c3788f47d92b4f8f15d7c55668e2293869db8dff85be4158558"
+      "catalogHash": "de07ae29f6f7255400bd0443ce00fb6d8d4126c8f4d3120ea7bdac8ef247dd96"
     },
     "urn:csabs:law/BM25-empty-query-zero": {
       "kind": "witness",
@@ -4118,7 +4118,7 @@
         "Quot.sound",
         "Classical.choice"
       ],
-      "catalogHash": "05f4704bf7f4e33556235734d40d4cdc9eaafd19ffc9fe5442608dc5e37d2986"
+      "catalogHash": "fa3934eeb149bedbf60386d672514b1c736590d53625e0661f51e17c173d4193"
     },
     "urn:csabs:theorem/AcyclicGraph-path-model-satisfaction": {
       "kind": "witness",
@@ -4153,7 +4153,7 @@
         "Quot.sound",
         "Classical.choice"
       ],
-      "catalogHash": "03135f802012b42b495d1977404614d2918fe35d1d4627d3ed9f6c54103fcf7a"
+      "catalogHash": "e2fab480546698ce625719c8755744d068fb0adb26909eab11e94cf6b4b51b67"
     },
     "urn:csabs:concept/RankedRetrieval": {
       "kind": "model",
@@ -4162,7 +4162,7 @@
       "scope": "model",
       "mapping": "For a fixed query, D→ℝ supplies scores; D has LinearOrder. retrievalKeys sorts the finite image d↦toLex(-score d,d) using exact lexicographic order. Document identities are the second coordinates.",
       "limitations": "Witness establishes sorted, duplicate-free key enumeration with exact finite-set membership. Projecting identifiers and taking prefixes are mathematical interface operations, without separate Lean witnesses for top-k length or relevance quality.",
-      "catalogHash": "c5d052e73136ecde26fd7de127555d534067737c69897a55bf8845c19aa355b8"
+      "catalogHash": "5ef26d6a2f4811afa84ade6f266bf8c94ece9821d1b930cb931593ed4cb710b9"
     },
     "urn:csabs:theorem/DecisionTable-boolean-partition-model-satisfaction": {
       "kind": "witness",
@@ -4188,7 +4188,7 @@
       "scope": "model",
       "mapping": "Fin 3 encodes F=0, U=1, T=2 in truth order; propositional syntax is Catalog.PropFormula; equality is exact Fin equality. kleeneNeg/And/Or, kleeneEval and kleeneConsequence implement the selected semantics.",
       "limitations": "Finite connective equations are proved by registered witnesses; evaluation and consequence are definitions. No proof calculus, soundness/completeness metatheorem, knowledge-order domain or short-circuit evaluator is supplied.",
-      "catalogHash": "3e167ef31365b6b5dff75296e3fe13dd1a3affce5f53b29c6eec2c66388d2276"
+      "catalogHash": "e8ff2861171ce030f9438f337f8205e5d971e4ad672a625339b8f728338509a1"
     },
     "urn:csabs:theorem/VerdictCoverage-intersection-model-satisfaction": {
       "kind": "witness",
@@ -4473,7 +4473,7 @@
       "scope": "model",
       "mapping": "G=(V,E,src,dst,τV,τE). Endpoint laws: τV(src e)=s(τE e), τV(dst e)=t(τE e). cout(v,k)=|{e∈E | src e=v ∧ τE e=k}|; cin analogously. Conforms iff endpoints agree and applicable counts satisfy bounds.",
       "limitations": "Finite graph vertex and edge identity sets V,E, and finite vertex/edge kind sets T,K in the intended finite-schema profile. Types and endpoint maps are total; every vertex/edge has exactly one kind. Loops and parallel edge identities are allowed. For each k count edges of that kind incident to each vertex of the required endpoint type; zero counts and isolated vertices are checked. Bounds count edge identities, not distinct targets, pairs, or SHACL value nodes. None means no upper bound; inclusive min/max. Inconsistent bounds and schemas with no conforming graph are representable and not asserted satisfiable. The Lean predicate generalizes to arbitrary V,T,K with finite E. Empty kinds require compatible empty graphs; no inheritance, subtyping, attributes or global connectivity constraints. Exact selected mathematical profile; no parser, implementation refinement or blanket theorem transfer. Read individual binders, carrier constraints and source adaptation notes. Witness verification requires a fresh compiler/axiom audit.",
-      "catalogHash": "9c352207b93c913e2d297a009b199b0ed9fab6395c0ad32b0c302a55c39097e3"
+      "catalogHash": "08cdd75f4f19001ee1b1cba16fdd60e187820ca1ba1c7e335b213b4730b1d30f"
     },
     "urn:csabs:concept/CalendarDate": {
       "kind": "model",
@@ -4867,7 +4867,7 @@
         "Quot.sound",
         "Classical.choice"
       ],
-      "catalogHash": "32f97c235bc38f1e84c88ec7f10497ba6ea5e89befcf8b189610eb167837707d"
+      "catalogHash": "0b29aeab3f946918533334b7dfef05fb6e0261f1239f2f82f4631f31e19b37e0"
     },
     "urn:csabs:theorem/TypedEdgeSchema-bound-relaxation": {
       "kind": "witness",
@@ -4884,7 +4884,7 @@
         "Quot.sound",
         "Classical.choice"
       ],
-      "catalogHash": "cf3ac099405884f4d9808cde7e6815b62d30a1a4578b64f681e042c12d421503"
+      "catalogHash": "2c8791d0a8153cd269280e03c1c12cdadd0ef059ea14406fab4ff6e062d7a897"
     },
     "urn:csabs:theorem/CalendarDate-model-satisfaction": {
       "kind": "witness",
@@ -5375,7 +5375,7 @@
       ],
       "mapping": "Both ∧ and ∨ are associative, commutative and idempotent; T is the two-sided ∧ identity and F the two-sided ∨ identity. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
       "limitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
-      "catalogHash": "c02247f0a2aa65c16a2455def16ebcda7ad8f5cdb5edecfa6182b45757d14c27"
+      "catalogHash": "0601a3c27525f4f54015876cbef2208cdf2f21b09fd984cde9d97556f965df55"
     },
     "urn:csabs:theorem/KleeneLogic-nary-fold-equations": {
       "kind": "witness",
@@ -5393,7 +5393,7 @@
       ],
       "mapping": "all([])=T, any([])=F, all(a::xs)=a∧all(xs), any(a::xs)=a∨any(xs). Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
       "limitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
-      "catalogHash": "42fc4e0fee2c1476df58bcb1ab09ca84c2af2b90bbfd887225d0e1bdf267b942"
+      "catalogHash": "2094519fa37feede5d0c4f0dc19638609c793c1a563925e0f2a0a41ca60d116d"
     },
     "urn:csabs:law/JoinSemilattice-associativity": {
       "kind": "witness",
@@ -5716,7 +5716,7 @@
       ],
       "mapping": "If a is a normal form and a→*b then a=b. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
       "limitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
-      "catalogHash": "2b122d36ef3c1b7dde2b2af40cfd1ae7e41cff8a20090dd2f2a1644082717c2e"
+      "catalogHash": "2c0b9d0ba44f98a50cc54d5a2244628102fdcbd4a208736491b87d6ecfd67f66"
     },
     "urn:csabs:theorem/RewriteSystem-confluent-normal-form-uniqueness": {
       "kind": "witness",
@@ -5734,7 +5734,7 @@
       ],
       "mapping": "Confluence implies any two reachable normal forms from the same term are equal. Termination is not needed for uniqueness alone. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
       "limitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
-      "catalogHash": "2393247c5a003b61dd203ba568073b638e61ffde8ea134d82d6ead1bf005eab9"
+      "catalogHash": "1c92fb83b844205a66b3e84c55d2d76b07a537936a8fac7a504d0fb26eb3e30c"
     },
     "urn:csabs:theorem/RewriteSystem-termination-normal-form-existence": {
       "kind": "witness",
@@ -5753,7 +5753,7 @@
       ],
       "mapping": "Termination implies every term has a reachable normal form. Confluence is not needed for existence alone. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
       "limitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
-      "catalogHash": "d345e435f29f65a0ae4e8371b96894eb295216a624a522bd9ca15e8377846aee"
+      "catalogHash": "c73470bb5683cfab4c53cea15b7837c4901ab94e2cfeaac780ea3cce7daad817"
     },
     "urn:csabs:theorem/RewriteSystem-convergent-unique-normal-form": {
       "kind": "witness",
@@ -5772,7 +5772,7 @@
       ],
       "mapping": "Termination plus confluence implies every term has exactly one reachable normal form. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
       "limitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
-      "catalogHash": "5919e6cd6cb532eeeea1dd14de073554c74b05c4c48cfcfc02f9dfbb89d54ec3"
+      "catalogHash": "4ceba71938f6229f33d2ab0b027f4f364d7a1f9a8fd28a59f67ef6a0acbc80f5"
     },
     "urn:csabs:theorem/RewriteSystem-convergent-model-satisfaction": {
       "kind": "witness",
@@ -5789,7 +5789,7 @@
       ],
       "mapping": "The empty-step rewrite system on any carrier is terminating and confluent. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
       "limitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
-      "catalogHash": "829c7a63734e0ae7a8745f48a4ef33893fa18edfbe229e47834bc6fda5cfc78d"
+      "catalogHash": "8de1bc4fe14410ddc3233adf7bc61c5035d5b0966a2f11244ae2340579324e37"
     },
     "urn:csabs:theorem/TypedEdgeSchema-subtype-exact-recovery": {
       "kind": "witness",
@@ -5806,7 +5806,7 @@
       ],
       "mapping": "Subtype-qualified conformance with equality as the subtype preorder is exactly the original exact-type conformance predicate, including incidence bounds. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
       "limitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
-      "catalogHash": "842d38e06bfe6cb6222cf98798750ad69a5fbbad9026d0de1bf9e5b87a92efb1"
+      "catalogHash": "780ea83c7c4403d8dd433dc4da3a6c4b50bba5b5c1263c6220d022767428c25e"
     },
     "urn:csabs:theorem/TypedEdgeSchema-subtype-model-satisfaction": {
       "kind": "witness",
@@ -5824,7 +5824,7 @@
       ],
       "mapping": "The original one-vertex, one-edge schema model also satisfies the equality-subtype profile. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
       "limitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
-      "catalogHash": "7e64c26e4586dc19b3294230b605f4aefe112833f44d1e3a85b2bd9271aab205"
+      "catalogHash": "d8edf804287f61a1b86df340f5a89f3a90e3fdd58f9d0d29fb83d527947c9035"
     },
     "urn:csabs:theorem/TypedEdgeSchema-proper-subtype-model": {
       "kind": "witness",
@@ -5841,7 +5841,7 @@
       ],
       "mapping": "A graph whose endpoint types are 0 conforms to declarations of type 1 under the Fin 2 ≤ preorder with zero lower/unbounded upper incidence bounds, while exact-type conformance fails. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
       "limitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
-      "catalogHash": "854cca231ca4165e9a71f7e2393038da995b966d591d179a9f72951fea1b794a"
+      "catalogHash": "bbdbd28b10ef852f1785b97a3ec014f79b9de64c9f9a9dad7d7fd4378bb47ea3"
     },
     "urn:csabs:theorem/BM25FTS5-phrase-boolean-equations": {
       "kind": "witness",
@@ -5859,7 +5859,7 @@
       ],
       "mapping": "AND(p::ps)=hit(p)∩AND(ps), OR(p::ps)=hit(p)∪OR(ps), AND([])=universe and OR([])=empty. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
       "limitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
-      "catalogHash": "15888d1a2ed37b95a2c9116506548220fedde65cba53542e61c789a671f1003f"
+      "catalogHash": "0020f5b054f9158314857262100c9d14653029bd724b62904324a399836eb9e6"
     },
     "urn:csabs:theorem/BM25FTS5-sql-ranking-direction": {
       "kind": "witness",
@@ -5877,7 +5877,7 @@
       ],
       "mapping": "−σ₁≥−σ₂ iff σ₁≤σ₂; descending negated SQL scores agree with ascending SQL scores. Carrier/equality mapping is exactly the typed Lean binders; operations are the named concrete definitions in the formulation module. Defining equations and structural consequences are proved, not postulated.",
       "limitations": "Proves the displayed proposition in the selected exact mathematical model. Optional hypotheses remain explicit. No software refinement, tokenizer correctness, floating-point equivalence or blanket proof coverage.",
-      "catalogHash": "f6bd79dd2a4aae5d287bd159e765be1f0d9ab51cdc9946f1bcd0d2585bc497ec"
+      "catalogHash": "724d06bc06f9a3f0a774312b19157b6d3a80c132242202fb1b000eb8ad91a1cc"
     },
     "urn:csabs:theorem/BM25FTS5-default-column-weights": {
       "kind": "witness",
@@ -5972,6 +5972,109 @@
       "mapping": "P phrase identities, D document identities, Fin n column indices, finite document set, natural token and phrase-occurrence counts, exact real weights/logarithms/scores. Statistics and tokenization are explicit inputs; negative SQL scores are mapped to descending relevance by negation.",
       "limitations": "Finite nonempty corpus, at least one token per corpus document, finitely many columns, exact real arithmetic and token/phrase occurrence statistics supplied by the caller. Phrases may span multiple tokens within a column; matching and tokenization are external inputs. Default missing column weights are 1; extras are ignored. Use nonnegative finite real weights for scoring with the stated nonzero-denominator domain. k₁=6/5 and b=3/4. Document length sums tokens across all columns and average divides by corpus size. Raw log IDF is replaced by 10⁻⁶ exactly when nonpositive; a small positive raw IDF is retained. Query phrase occurrences retain multiplicity. SQL scores ascend; negated scores fit descending RankedRetrieval. No SQLite floating-point, tokenizer, SQL parser, NEAR, NOT or stable-tie behavior is proved. Empty phrase lists are mathematical extensions (AND universe, OR empty, score zero), not valid empty SQL MATCH syntax.",
       "catalogHash": "357b29b87494f518c124a0a05ddb93a44c1e76821ea199385907b74c0683c1d4"
+    },
+    "urn:csabs:theorem/KleeneLogic-information-order-monotonicity": {
+      "kind": "witness",
+      "symbol": "Catalog.information_monotone",
+      "module": "Catalog.ExtensionProfiles",
+      "expectedType": "∀ (a b c d : Catalog.KleeneLogic), Catalog.informationLE a b → Catalog.informationLE c d →\n    Catalog.informationLE (Catalog.kleeneAnd a c) (Catalog.kleeneAnd b d) ∧\n    Catalog.informationLE (Catalog.kleeneOr a c) (Catalog.kleeneOr b d) ∧\n    Catalog.informationLE (Catalog.kleeneNeg a) (Catalog.kleeneNeg b)",
+      "premiseMapping": {
+        "urn:csabs:axiom/KleeneLogic-truth-matrix": "Interpret the linked definitions on the explicit carriers in the witness; no target law is assumed."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "mapping": "Define a ⊑ b iff a=U or a=b. U is below F and T, which are incomparable. Negation and both binary strong Kleene connectives preserve this information order (jointly for binary arguments). Exact equality and typed carriers are those displayed in the Lean proposition.",
+      "limitations": "Selected mathematical profile only; singleton replacement does not establish arbitrary substring replacement confluence. Set endpoint declarations use disjunctive membership; no automatic subtype closure.",
+      "catalogHash": "37e69bc9cf164cb364c467f97e3ab76c46bc34a74dce99a6bb16b5f04c39d3a9"
+    },
+    "urn:csabs:theorem/RankedRetrieval-top-k-saturation": {
+      "kind": "witness",
+      "symbol": "Catalog.retrieval_saturation",
+      "module": "Catalog.ExtensionProfiles",
+      "expectedType": "∀ {D : Type u} [LinearOrder D]\n    (s : Finset D) (score : Catalog.RankedRetrieval D) (k : Nat) (_h : s.card ≤ k), (Catalog.retrievalKeys s score).take k = Catalog.retrievalKeys s score",
+      "premiseMapping": {
+        "urn:csabs:axiom/RankedRetrieval-ranking-definition": "Interpret the linked definitions on the explicit carriers in the witness; no target law is assumed."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "mapping": "For finite candidates C, k≥|C| implies take(k,rank(C))=rank(C), including empty C and deterministic ties. This is candidate-count saturation, not score saturation. Exact equality and typed carriers are those displayed in the Lean proposition.",
+      "limitations": "Selected mathematical profile only; singleton replacement does not establish arbitrary substring replacement confluence. Set endpoint declarations use disjunctive membership; no automatic subtype closure.",
+      "catalogHash": "9650360ff9261bdeedd5588ff216ef333a90e3fc6515f3560f3993e0877b5f39"
+    },
+    "urn:csabs:theorem/RewriteSystem-singleton-replace-all-idempotence": {
+      "kind": "witness",
+      "symbol": "Catalog.replaceSymbol_idempotent",
+      "module": "Catalog.ExtensionProfiles",
+      "expectedType": "∀ {A : Type u} [DecidableEq A] (a b : A) (xs : List A), Catalog.replaceSymbol a b (Catalog.replaceSymbol a b xs) = Catalog.replaceSymbol a b xs",
+      "premiseMapping": {
+        "urn:csabs:axiom/RewriteSystem-closure": "Interpret the linked definitions on the explicit carriers in the witness; no target law is assumed."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "mapping": "For singleton pattern [a] and singleton replacement [b], the leftmost replace-all map R is idempotent: R(R(xs))=R(xs), including a=b. No arbitrary-pattern idempotence is claimed. Exact equality and typed carriers are those displayed in the Lean proposition.",
+      "limitations": "Selected mathematical profile only; singleton replacement does not establish arbitrary substring replacement confluence. Set endpoint declarations use disjunctive membership; no automatic subtype closure.",
+      "catalogHash": "8c9652ddd91e2963f6b9bbe27cb0b188280b40a43dfce47f7c8a921834008859"
+    },
+    "urn:csabs:theorem/RewriteSystem-singleton-replace-all-correspondence": {
+      "kind": "witness",
+      "symbol": "Catalog.replaceSymbol_eq_replaceAll",
+      "module": "Catalog.ExtensionProfiles",
+      "expectedType": "∀ {A : Type u} [DecidableEq A] (a b : A) (xs : List A), Catalog.replaceSymbol a b xs = Catalog.replaceAll [a] (by simp) [b] xs",
+      "premiseMapping": {
+        "urn:csabs:operation/Sequence-edit-replace-all": "Interpret the linked definitions on the explicit carriers in the witness; no target law is assumed."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "mapping": "Pointwise symbol replacement equals the existing Sequence.replaceAll [a] [b] operation on every finite list. Exact equality and typed carriers are those displayed in the Lean proposition.",
+      "limitations": "Selected mathematical profile only; singleton replacement does not establish arbitrary substring replacement confluence. Set endpoint declarations use disjunctive membership; no automatic subtype closure.",
+      "catalogHash": "3f655a5f0df7b620df9407a95eb6d001fcca3b915050c04c0062d1ddae5830ae"
+    },
+    "urn:csabs:theorem/RewriteSystem-singleton-replace-all-confluence": {
+      "kind": "witness",
+      "symbol": "Catalog.symbolRewrite_confluent",
+      "module": "Catalog.ExtensionProfiles",
+      "expectedType": "∀ {A : Type u} [DecidableEq A] (a b : A), Catalog.Programs.confluent (Catalog.symbolRewrite a b)",
+      "premiseMapping": {
+        "urn:csabs:theorem/RewriteSystem-singleton-replace-all-idempotence": "Interpret the linked definitions on the explicit carriers in the witness; no target law is assumed.",
+        "urn:csabs:theorem/RewriteSystem-singleton-replace-all-correspondence": "Interpret the linked definitions on the explicit carriers in the witness; no target law is assumed."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "mapping": "Define xs→ys iff ys=replaceAll([a],[b],xs) and ys≠xs. This full-pass rewrite relation is confluent: every pair of reachable reducts joins at their common normalized replacement result. This is not arbitrary-position substring rewriting. Exact equality and typed carriers are those displayed in the Lean proposition.",
+      "limitations": "Selected mathematical profile only; singleton replacement does not establish arbitrary substring replacement confluence. Set endpoint declarations use disjunctive membership; no automatic subtype closure.",
+      "catalogHash": "304166239f834efc02be8258e0472eb2ea64fbb8065963995859ba87381c1fc0"
+    },
+    "urn:csabs:theorem/TypedEdgeSchema-set-endpoint-singleton-recovery": {
+      "kind": "witness",
+      "symbol": "Catalog.setSchema_singleton",
+      "module": "Catalog.ExtensionProfiles",
+      "expectedType": "∀ {V E T K : Type} [Fintype E] [DecidableEq V] [DecidableEq K]\n    (s : Catalog.TypedEdgeSchema T K) (g : Catalog.TypedEdgeGraph V E T K), Catalog.setSchemaConforms (Catalog.singletonSchema s) g ↔ Catalog.schemaConforms s g",
+      "premiseMapping": {
+        "urn:csabs:axiom/TypedEdgeSchema-defining-profile": "Interpret the linked definitions on the explicit carriers in the witness; no target law is assumed."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "mapping": "Optional EndpointSetSchema assigns sourceTypes(k),targetTypes(k)⊆T. Each edge endpoint must belong to its declared set. Incidence bounds apply at every vertex whose type belongs to the corresponding set, counting edge identities once per kind. Empty sets reject edges of that kind; overlapping eligible kinds impose each constraint. Singleton sets recover exact conformance, including bounds. The bounds carrier reuses TypedEdgeSchema; its sourceType/targetType fields are ignored in this profile. Exact equality and typed carriers are those displayed in the Lean proposition.",
+      "limitations": "Selected mathematical profile only; singleton replacement does not establish arbitrary substring replacement confluence. Set endpoint declarations use disjunctive membership; no automatic subtype closure.",
+      "catalogHash": "b525ec09d18dac5fbb3641209e3bf96d2cded4db6c9a6d02a88517528d453b13"
     }
   }
 }

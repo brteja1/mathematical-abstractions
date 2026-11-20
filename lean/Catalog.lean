@@ -58,3 +58,5 @@ public import Catalog.ReachabilityUtilities
 public import Catalog.FTS5Profile
 
 public import Catalog.LanguageClasses
+
+public import Catalog.ExtensionProfiles

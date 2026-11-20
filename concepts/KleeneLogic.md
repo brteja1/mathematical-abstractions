@@ -669,6 +669,63 @@ Read with the linked module’s imports, namespaces, universes and section varia
 }
 ```
 
+<a id="node-urn-csabs-theorem-KleeneLogic-information-order-monotonicity"></a>
+
+### information-order-monotonicity
+
+`urn:csabs:theorem/KleeneLogic-information-order-monotonicity`
+
+**statement:** Define a ⊑ b iff a=U or a=b. U is below F and T, which are incomparable. Negation and both binary strong Kleene connectives preserve this information order (jointly for binary arguments).
+
+**formalStatement:** Define a ⊑ b iff a=U or a=b. U is below F and T, which are incomparable. Negation and both binary strong Kleene connectives preserve this information order (jointly for binary arguments).
+
+**assumptions:** Exactly the displayed Lean binders and the explicit profile definitions.
+
+**dependsOn:** [truth-matrix](KleeneLogic.md#node-urn-csabs-axiom-KleeneLogic-truth-matrix)
+
+**source:** Constructed information, prefix, replacement and endpoint-set models over pinned Mathlib; citation: Constructed models; primitives consulted in pinned Mathlib Data/Finset/Sort.lean length_sort, Data/List/TakeDrop.lean take_of_length_le, list map composition and Set membership. Independent mathematical primitive provenance: utility-mathlib-pinned.; path: lean/Catalog/ExtensionProfiles.lean; accessedOn: 2026-11-20; sourceRole: local-lean-formulation-and-derived-proof; [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Catalog.information_monotone; pinned Mathlib finite-list, finite-set and relation primitives
+
+**sourceNote:** Constructed and proved in the local module from the directly linked primitive definitions; not attributed verbatim to Mathlib.
+
+**provenanceKind:** derived
+
+**proofSketch:** Use the concrete definitions and the compiled proof in the cited local module.
+
+**reviewStatus:** Selected model proof; verification requires fresh compiler and axiom audit.
+
+#### Mathematical formulation
+
+Define a ⊑ b iff a=U or a=b. U is below F and T, which are incomparable. Negation and both binary strong Kleene connectives preserve this information order (jointly for binary arguments).
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ (a b c d : Catalog.KleeneLogic), Catalog.informationLE a b → Catalog.informationLE c d →
+    Catalog.informationLE (Catalog.kleeneAnd a c) (Catalog.kleeneAnd b d) ∧
+    Catalog.informationLE (Catalog.kleeneOr a c) (Catalog.kleeneOr b d) ∧
+    Catalog.informationLE (Catalog.kleeneNeg a) (Catalog.kleeneNeg b)
+```
+
+**Source:** [`Catalog.information_monotone`](../lean/Catalog/ExtensionProfiles.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Define a ⊑ b iff a=U or a=b. U is below F and T, which are incomparable. Negation and both binary strong Kleene connectives preserve this information order (jointly for binary arguments). Exact equality and typed carriers are those displayed in the Lean proposition.
+
+**Limits:** Selected mathematical profile only; singleton replacement does not establish arbitrary substring replacement confluence. Set endpoint declarations use disjunctive membership; no automatic subtype closure.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/KleeneLogic-truth-matrix": "Interpret the linked definitions on the explicit carriers in the witness; no target law is assumed."
+}
+```
+
 ## Concept provenance
 
 - [Kevin C. Klement, Non-Classical Logic lecture notes](https://people.umass.edu/klement/512/ln.pdf); accessedOn: 2026-11-20; sourceRole: Consulted author-hosted exposition: section H.2, strong Kleene matrix and designated-value semantics, printed pp.31–32.
@@ -734,7 +791,8 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "hasTheorem": [
       "urn:csabs:theorem/KleeneLogic-matrix-model-satisfaction",
       "urn:csabs:theorem/KleeneLogic-excluded-middle-counterexample",
-      "urn:csabs:theorem/KleeneLogic-nary-fold-equations"
+      "urn:csabs:theorem/KleeneLogic-nary-fold-equations",
+      "urn:csabs:theorem/KleeneLogic-information-order-monotonicity"
     ],
     "source": [
       "urn:csabs:source/klement-nonclassical-k3"
@@ -1158,6 +1216,39 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "formulationScope": "registered-witness-type",
     "formulationSource": "urn:csabs:source/utility-lean-CollectionUtilities",
     "formulationLocator": "Catalog.kleene_folds"
+  },
+  {
+    "id": "urn:csabs:theorem/KleeneLogic-information-order-monotonicity",
+    "type": "Theorem",
+    "name": "information-order-monotonicity",
+    "statement": "Define a ⊑ b iff a=U or a=b. U is below F and T, which are incomparable. Negation and both binary strong Kleene connectives preserve this information order (jointly for binary arguments).",
+    "formalStatement": "Define a ⊑ b iff a=U or a=b. U is below F and T, which are incomparable. Negation and both binary strong Kleene connectives preserve this information order (jointly for binary arguments).",
+    "mathematicalFormulation": "Define a ⊑ b iff a=U or a=b. U is below F and T, which are incomparable. Negation and both binary strong Kleene connectives preserve this information order (jointly for binary arguments).",
+    "assumptions": [
+      "Exactly the displayed Lean binders and the explicit profile definitions."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/KleeneLogic"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/KleeneLogic-truth-matrix"
+    ],
+    "source": [
+      "urn:csabs:source/extension-profiles-2026-11-20",
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Catalog.information_monotone; pinned Mathlib finite-list, finite-set and relation primitives",
+    "sourceNote": "Constructed and proved in the local module from the directly linked primitive definitions; not attributed verbatim to Mathlib.",
+    "provenanceKind": "derived",
+    "proofSketch": "Use the concrete definitions and the compiled proof in the cited local module.",
+    "leanFormulation": "∀ (a b c d : Catalog.KleeneLogic), Catalog.informationLE a b → Catalog.informationLE c d →\n    Catalog.informationLE (Catalog.kleeneAnd a c) (Catalog.kleeneAnd b d) ∧\n    Catalog.informationLE (Catalog.kleeneOr a c) (Catalog.kleeneOr b d) ∧\n    Catalog.informationLE (Catalog.kleeneNeg a) (Catalog.kleeneNeg b)",
+    "leanModelMapping": "Define a ⊑ b iff a=U or a=b. U is below F and T, which are incomparable. Negation and both binary strong Kleene connectives preserve this information order (jointly for binary arguments). Exact equality and typed carriers are those displayed in the Lean proposition.",
+    "leanModelLimitations": "Selected mathematical profile only; singleton replacement does not establish arbitrary substring replacement confluence. Set endpoint declarations use disjunctive membership; no automatic subtype closure.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/KleeneLogic-truth-matrix\": \"Interpret the linked definitions on the explicit carriers in the witness; no target law is assumed.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/extension-profiles-2026-11-20",
+    "formulationLocator": "Catalog.information_monotone",
+    "reviewStatus": "Selected model proof; verification requires fresh compiler and axiom audit."
   }
 ]
 ```

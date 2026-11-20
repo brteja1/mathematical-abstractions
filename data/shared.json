@@ -2582,6 +2582,15 @@
       "accessedOn": "2026-11-20",
       "sourceRole": "Local formulation and derived-proof evidence. Independent mathematical provenance is linked separately.",
       "path": "lean/Catalog/FTS5Profile.lean"
+    },
+    {
+      "id": "urn:csabs:source/extension-profiles-2026-11-20",
+      "type": "Source",
+      "label": "Constructed information, prefix, replacement and endpoint-set models over pinned Mathlib",
+      "path": "lean/Catalog/ExtensionProfiles.lean",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "local-lean-formulation-and-derived-proof",
+      "citation": "Constructed models; primitives consulted in pinned Mathlib Data/Finset/Sort.lean length_sort, Data/List/TakeDrop.lean take_of_length_le, list map composition and Set membership. Independent mathematical primitive provenance: utility-mathlib-pinned."
     }
   ]
 }

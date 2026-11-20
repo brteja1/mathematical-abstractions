@@ -602,6 +602,169 @@ Read with the linked module’s imports, namespaces, universes and section varia
 }
 ```
 
+<a id="node-urn-csabs-theorem-RewriteSystem-singleton-replace-all-idempotence"></a>
+
+### singleton-replace-all-idempotence
+
+`urn:csabs:theorem/RewriteSystem-singleton-replace-all-idempotence`
+
+**statement:** For singleton pattern [a] and singleton replacement [b], the leftmost replace-all map R is idempotent: R(R(xs))=R(xs), including a=b. No arbitrary-pattern idempotence is claimed.
+
+**formalStatement:** For singleton pattern [a] and singleton replacement [b], the leftmost replace-all map R is idempotent: R(R(xs))=R(xs), including a=b. No arbitrary-pattern idempotence is claimed.
+
+**assumptions:** Exactly the displayed Lean binders and the explicit profile definitions.
+
+**dependsOn:** [closure](RewriteSystem.md#node-urn-csabs-axiom-RewriteSystem-closure)
+
+**source:** Constructed information, prefix, replacement and endpoint-set models over pinned Mathlib; citation: Constructed models; primitives consulted in pinned Mathlib Data/Finset/Sort.lean length_sort, Data/List/TakeDrop.lean take_of_length_le, list map composition and Set membership. Independent mathematical primitive provenance: utility-mathlib-pinned.; path: lean/Catalog/ExtensionProfiles.lean; accessedOn: 2026-11-20; sourceRole: local-lean-formulation-and-derived-proof; [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Catalog.replaceSymbol_idempotent; pinned Mathlib finite-list, finite-set and relation primitives
+
+**sourceNote:** Constructed and proved in the local module from the directly linked primitive definitions; not attributed verbatim to Mathlib.
+
+**provenanceKind:** derived
+
+**proofSketch:** Use the concrete definitions and the compiled proof in the cited local module.
+
+**reviewStatus:** Selected model proof; verification requires fresh compiler and axiom audit.
+
+#### Mathematical formulation
+
+For singleton pattern [a] and singleton replacement [b], the leftmost replace-all map R is idempotent: R(R(xs))=R(xs), including a=b. No arbitrary-pattern idempotence is claimed.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} [DecidableEq A] (a b : A) (xs : List A), Catalog.replaceSymbol a b (Catalog.replaceSymbol a b xs) = Catalog.replaceSymbol a b xs
+```
+
+**Source:** [`Catalog.replaceSymbol_idempotent`](../lean/Catalog/ExtensionProfiles.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** For singleton pattern [a] and singleton replacement [b], the leftmost replace-all map R is idempotent: R(R(xs))=R(xs), including a=b. No arbitrary-pattern idempotence is claimed. Exact equality and typed carriers are those displayed in the Lean proposition.
+
+**Limits:** Selected mathematical profile only; singleton replacement does not establish arbitrary substring replacement confluence. Set endpoint declarations use disjunctive membership; no automatic subtype closure.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/RewriteSystem-closure": "Interpret the linked definitions on the explicit carriers in the witness; no target law is assumed."
+}
+```
+
+<a id="node-urn-csabs-theorem-RewriteSystem-singleton-replace-all-correspondence"></a>
+
+### singleton-replace-all-correspondence
+
+`urn:csabs:theorem/RewriteSystem-singleton-replace-all-correspondence`
+
+**statement:** Pointwise symbol replacement equals the existing Sequence.replaceAll [a] [b] operation on every finite list.
+
+**formalStatement:** Pointwise symbol replacement equals the existing Sequence.replaceAll [a] [b] operation on every finite list.
+
+**assumptions:** Exactly the displayed Lean binders and the explicit profile definitions.
+
+**dependsOn:** [leftmost non-overlapping replace all](Sequence.md#node-urn-csabs-operation-Sequence-edit-replace-all)
+
+**source:** Constructed information, prefix, replacement and endpoint-set models over pinned Mathlib; citation: Constructed models; primitives consulted in pinned Mathlib Data/Finset/Sort.lean length_sort, Data/List/TakeDrop.lean take_of_length_le, list map composition and Set membership. Independent mathematical primitive provenance: utility-mathlib-pinned.; path: lean/Catalog/ExtensionProfiles.lean; accessedOn: 2026-11-20; sourceRole: local-lean-formulation-and-derived-proof; [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Catalog.replaceSymbol_eq_replaceAll; pinned Mathlib finite-list, finite-set and relation primitives
+
+**sourceNote:** Constructed and proved in the local module from the directly linked primitive definitions; not attributed verbatim to Mathlib.
+
+**provenanceKind:** derived
+
+**proofSketch:** Use the concrete definitions and the compiled proof in the cited local module.
+
+**reviewStatus:** Selected model proof; verification requires fresh compiler and axiom audit.
+
+#### Mathematical formulation
+
+Pointwise symbol replacement equals the existing Sequence.replaceAll [a] [b] operation on every finite list.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} [DecidableEq A] (a b : A) (xs : List A), Catalog.replaceSymbol a b xs = Catalog.replaceAll [a] (by simp) [b] xs
+```
+
+**Source:** [`Catalog.replaceSymbol_eq_replaceAll`](../lean/Catalog/ExtensionProfiles.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Pointwise symbol replacement equals the existing Sequence.replaceAll [a] [b] operation on every finite list. Exact equality and typed carriers are those displayed in the Lean proposition.
+
+**Limits:** Selected mathematical profile only; singleton replacement does not establish arbitrary substring replacement confluence. Set endpoint declarations use disjunctive membership; no automatic subtype closure.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:operation/Sequence-edit-replace-all": "Interpret the linked definitions on the explicit carriers in the witness; no target law is assumed."
+}
+```
+
+<a id="node-urn-csabs-theorem-RewriteSystem-singleton-replace-all-confluence"></a>
+
+### singleton-replace-all-confluence
+
+`urn:csabs:theorem/RewriteSystem-singleton-replace-all-confluence`
+
+**statement:** Define xs→ys iff ys=replaceAll([a],[b],xs) and ys≠xs. This full-pass rewrite relation is confluent: every pair of reachable reducts joins at their common normalized replacement result. This is not arbitrary-position substring rewriting.
+
+**formalStatement:** Define xs→ys iff ys=replaceAll([a],[b],xs) and ys≠xs. This full-pass rewrite relation is confluent: every pair of reachable reducts joins at their common normalized replacement result. This is not arbitrary-position substring rewriting.
+
+**assumptions:** Exactly the displayed Lean binders and the explicit profile definitions.
+
+**dependsOn:** [singleton-replace-all-idempotence](RewriteSystem.md#node-urn-csabs-theorem-RewriteSystem-singleton-replace-all-idempotence); [singleton-replace-all-correspondence](RewriteSystem.md#node-urn-csabs-theorem-RewriteSystem-singleton-replace-all-correspondence)
+
+**source:** Constructed information, prefix, replacement and endpoint-set models over pinned Mathlib; citation: Constructed models; primitives consulted in pinned Mathlib Data/Finset/Sort.lean length_sort, Data/List/TakeDrop.lean take_of_length_le, list map composition and Set membership. Independent mathematical primitive provenance: utility-mathlib-pinned.; path: lean/Catalog/ExtensionProfiles.lean; accessedOn: 2026-11-20; sourceRole: local-lean-formulation-and-derived-proof; [Mathlib finite collection, relation, order and graph sources, pinned revision 56a005855ea17e0b0958f73ec801ae140b0a1679](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib); path: lean/.lake/packages/mathlib/Mathlib; accessedOn: 2026-11-20; sourceRole: Consulted primary library definitions and proofs for the primitive operations and constructed utility profiles.
+
+**sourceLocator:** Catalog.symbolRewrite_confluent; pinned Mathlib finite-list, finite-set and relation primitives
+
+**sourceNote:** Constructed and proved in the local module from the directly linked primitive definitions; not attributed verbatim to Mathlib.
+
+**provenanceKind:** derived
+
+**proofSketch:** Use the concrete definitions and the compiled proof in the cited local module.
+
+**reviewStatus:** Selected model proof; verification requires fresh compiler and axiom audit.
+
+#### Mathematical formulation
+
+Define xs→ys iff ys=replaceAll([a],[b],xs) and ys≠xs. This full-pass rewrite relation is confluent: every pair of reachable reducts joins at their common normalized replacement result. This is not arbitrary-position substring rewriting.
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} [DecidableEq A] (a b : A), Catalog.Programs.confluent (Catalog.symbolRewrite a b)
+```
+
+**Source:** [`Catalog.symbolRewrite_confluent`](../lean/Catalog/ExtensionProfiles.lean); consulted 2026-11-20.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Define xs→ys iff ys=replaceAll([a],[b],xs) and ys≠xs. This full-pass rewrite relation is confluent: every pair of reachable reducts joins at their common normalized replacement result. This is not arbitrary-position substring rewriting. Exact equality and typed carriers are those displayed in the Lean proposition.
+
+**Limits:** Selected mathematical profile only; singleton replacement does not establish arbitrary substring replacement confluence. Set endpoint declarations use disjunctive membership; no automatic subtype closure.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:theorem/RewriteSystem-singleton-replace-all-correspondence": "Interpret the linked definitions on the explicit carriers in the witness; no target law is assumed.",
+  "urn:csabs:theorem/RewriteSystem-singleton-replace-all-idempotence": "Interpret the linked definitions on the explicit carriers in the witness; no target law is assumed."
+}
+```
+
 ## Concept provenance
 
 - [Software Foundations, Programming Language Foundations: Smallstep](https://softwarefoundations.cis.upenn.edu/plf-current/Smallstep.html); accessedOn: 2026-11-17; sourceRole: consulted-author-formalization
@@ -670,7 +833,10 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:theorem/RewriteSystem-confluent-normal-form-uniqueness",
       "urn:csabs:theorem/RewriteSystem-termination-normal-form-existence",
       "urn:csabs:theorem/RewriteSystem-convergent-unique-normal-form",
-      "urn:csabs:theorem/RewriteSystem-convergent-model-satisfaction"
+      "urn:csabs:theorem/RewriteSystem-convergent-model-satisfaction",
+      "urn:csabs:theorem/RewriteSystem-singleton-replace-all-idempotence",
+      "urn:csabs:theorem/RewriteSystem-singleton-replace-all-correspondence",
+      "urn:csabs:theorem/RewriteSystem-singleton-replace-all-confluence"
     ],
     "source": [
       "urn:csabs:source/sf-smallstep-2026"
@@ -1055,6 +1221,106 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "formulationScope": "registered-witness-type",
     "formulationSource": "urn:csabs:source/utility-lean-ReachabilityUtilities",
     "formulationLocator": "Catalog.Programs.rewrite_model"
+  },
+  {
+    "id": "urn:csabs:theorem/RewriteSystem-singleton-replace-all-idempotence",
+    "type": "Theorem",
+    "name": "singleton-replace-all-idempotence",
+    "statement": "For singleton pattern [a] and singleton replacement [b], the leftmost replace-all map R is idempotent: R(R(xs))=R(xs), including a=b. No arbitrary-pattern idempotence is claimed.",
+    "formalStatement": "For singleton pattern [a] and singleton replacement [b], the leftmost replace-all map R is idempotent: R(R(xs))=R(xs), including a=b. No arbitrary-pattern idempotence is claimed.",
+    "mathematicalFormulation": "For singleton pattern [a] and singleton replacement [b], the leftmost replace-all map R is idempotent: R(R(xs))=R(xs), including a=b. No arbitrary-pattern idempotence is claimed.",
+    "assumptions": [
+      "Exactly the displayed Lean binders and the explicit profile definitions."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/RewriteSystem"
+    ],
+    "dependsOn": [
+      "urn:csabs:axiom/RewriteSystem-closure"
+    ],
+    "source": [
+      "urn:csabs:source/extension-profiles-2026-11-20",
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Catalog.replaceSymbol_idempotent; pinned Mathlib finite-list, finite-set and relation primitives",
+    "sourceNote": "Constructed and proved in the local module from the directly linked primitive definitions; not attributed verbatim to Mathlib.",
+    "provenanceKind": "derived",
+    "proofSketch": "Use the concrete definitions and the compiled proof in the cited local module.",
+    "leanFormulation": "∀ {A : Type u} [DecidableEq A] (a b : A) (xs : List A), Catalog.replaceSymbol a b (Catalog.replaceSymbol a b xs) = Catalog.replaceSymbol a b xs",
+    "leanModelMapping": "For singleton pattern [a] and singleton replacement [b], the leftmost replace-all map R is idempotent: R(R(xs))=R(xs), including a=b. No arbitrary-pattern idempotence is claimed. Exact equality and typed carriers are those displayed in the Lean proposition.",
+    "leanModelLimitations": "Selected mathematical profile only; singleton replacement does not establish arbitrary substring replacement confluence. Set endpoint declarations use disjunctive membership; no automatic subtype closure.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/RewriteSystem-closure\": \"Interpret the linked definitions on the explicit carriers in the witness; no target law is assumed.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/extension-profiles-2026-11-20",
+    "formulationLocator": "Catalog.replaceSymbol_idempotent",
+    "reviewStatus": "Selected model proof; verification requires fresh compiler and axiom audit."
+  },
+  {
+    "id": "urn:csabs:theorem/RewriteSystem-singleton-replace-all-correspondence",
+    "type": "Theorem",
+    "name": "singleton-replace-all-correspondence",
+    "statement": "Pointwise symbol replacement equals the existing Sequence.replaceAll [a] [b] operation on every finite list.",
+    "formalStatement": "Pointwise symbol replacement equals the existing Sequence.replaceAll [a] [b] operation on every finite list.",
+    "mathematicalFormulation": "Pointwise symbol replacement equals the existing Sequence.replaceAll [a] [b] operation on every finite list.",
+    "assumptions": [
+      "Exactly the displayed Lean binders and the explicit profile definitions."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/RewriteSystem"
+    ],
+    "dependsOn": [
+      "urn:csabs:operation/Sequence-edit-replace-all"
+    ],
+    "source": [
+      "urn:csabs:source/extension-profiles-2026-11-20",
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Catalog.replaceSymbol_eq_replaceAll; pinned Mathlib finite-list, finite-set and relation primitives",
+    "sourceNote": "Constructed and proved in the local module from the directly linked primitive definitions; not attributed verbatim to Mathlib.",
+    "provenanceKind": "derived",
+    "proofSketch": "Use the concrete definitions and the compiled proof in the cited local module.",
+    "leanFormulation": "∀ {A : Type u} [DecidableEq A] (a b : A) (xs : List A), Catalog.replaceSymbol a b xs = Catalog.replaceAll [a] (by simp) [b] xs",
+    "leanModelMapping": "Pointwise symbol replacement equals the existing Sequence.replaceAll [a] [b] operation on every finite list. Exact equality and typed carriers are those displayed in the Lean proposition.",
+    "leanModelLimitations": "Selected mathematical profile only; singleton replacement does not establish arbitrary substring replacement confluence. Set endpoint declarations use disjunctive membership; no automatic subtype closure.",
+    "leanPremiseMapping": "{\"urn:csabs:operation/Sequence-edit-replace-all\": \"Interpret the linked definitions on the explicit carriers in the witness; no target law is assumed.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/extension-profiles-2026-11-20",
+    "formulationLocator": "Catalog.replaceSymbol_eq_replaceAll",
+    "reviewStatus": "Selected model proof; verification requires fresh compiler and axiom audit."
+  },
+  {
+    "id": "urn:csabs:theorem/RewriteSystem-singleton-replace-all-confluence",
+    "type": "Theorem",
+    "name": "singleton-replace-all-confluence",
+    "statement": "Define xs→ys iff ys=replaceAll([a],[b],xs) and ys≠xs. This full-pass rewrite relation is confluent: every pair of reachable reducts joins at their common normalized replacement result. This is not arbitrary-position substring rewriting.",
+    "formalStatement": "Define xs→ys iff ys=replaceAll([a],[b],xs) and ys≠xs. This full-pass rewrite relation is confluent: every pair of reachable reducts joins at their common normalized replacement result. This is not arbitrary-position substring rewriting.",
+    "mathematicalFormulation": "Define xs→ys iff ys=replaceAll([a],[b],xs) and ys≠xs. This full-pass rewrite relation is confluent: every pair of reachable reducts joins at their common normalized replacement result. This is not arbitrary-position substring rewriting.",
+    "assumptions": [
+      "Exactly the displayed Lean binders and the explicit profile definitions."
+    ],
+    "appliesTo": [
+      "urn:csabs:concept/RewriteSystem"
+    ],
+    "dependsOn": [
+      "urn:csabs:theorem/RewriteSystem-singleton-replace-all-idempotence",
+      "urn:csabs:theorem/RewriteSystem-singleton-replace-all-correspondence"
+    ],
+    "source": [
+      "urn:csabs:source/extension-profiles-2026-11-20",
+      "urn:csabs:source/utility-mathlib-pinned"
+    ],
+    "sourceLocator": "Catalog.symbolRewrite_confluent; pinned Mathlib finite-list, finite-set and relation primitives",
+    "sourceNote": "Constructed and proved in the local module from the directly linked primitive definitions; not attributed verbatim to Mathlib.",
+    "provenanceKind": "derived",
+    "proofSketch": "Use the concrete definitions and the compiled proof in the cited local module.",
+    "leanFormulation": "∀ {A : Type u} [DecidableEq A] (a b : A), Catalog.Programs.confluent (Catalog.symbolRewrite a b)",
+    "leanModelMapping": "Define xs→ys iff ys=replaceAll([a],[b],xs) and ys≠xs. This full-pass rewrite relation is confluent: every pair of reachable reducts joins at their common normalized replacement result. This is not arbitrary-position substring rewriting. Exact equality and typed carriers are those displayed in the Lean proposition.",
+    "leanModelLimitations": "Selected mathematical profile only; singleton replacement does not establish arbitrary substring replacement confluence. Set endpoint declarations use disjunctive membership; no automatic subtype closure.",
+    "leanPremiseMapping": "{\"urn:csabs:theorem/RewriteSystem-singleton-replace-all-correspondence\": \"Interpret the linked definitions on the explicit carriers in the witness; no target law is assumed.\", \"urn:csabs:theorem/RewriteSystem-singleton-replace-all-idempotence\": \"Interpret the linked definitions on the explicit carriers in the witness; no target law is assumed.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/extension-profiles-2026-11-20",
+    "formulationLocator": "Catalog.symbolRewrite_confluent",
+    "reviewStatus": "Selected model proof; verification requires fresh compiler and axiom audit."
   }
 ]
 ```
