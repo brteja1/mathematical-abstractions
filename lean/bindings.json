@@ -4242,6 +4242,105 @@
         "Classical.choice"
       ],
       "catalogHash": "27510ee373d11e285a1cd3f680b8aeec5337d6d0673025777ec30c6988cc2247"
+    },
+    "urn:csabs:concept/StreamCipher": {
+      "kind": "model",
+      "symbol": "Catalog.StreamCipher",
+      "module": "Catalog.StreamCipher",
+      "scope": "model",
+      "mapping": "For K,N : Type and capacity : Nat, StreamCipher K N capacity is K→N→Fin capacity→Bool. CryptoBits n is Fin n→Bool. streamCrypt uses an explicit fits : offset+n≤capacity proof, and implements both E and D. Use inhabited K,N when instantiating the catalog; Bool keys/nonces with capacity 2 supply a concrete nonvacuous example.",
+      "limitations": "Random-access denotation of a bounded synchronous generator, not an implementation of ChaCha20 or a general self-synchronizing cipher. No nonce history, state allocation, block serialization, key sampling or security game. The example generator is intentionally insecure. Nonempty K,N are an instantiation requirement; the generic Lean type does not carry Nonempty fields.",
+      "catalogHash": "0760d1cd2a02a65994670b335cd1988d7d2e3bb7d17597ce300a804a7beeec82"
+    },
+    "urn:csabs:law/StreamCipher-empty-message": {
+      "kind": "witness",
+      "symbol": "Catalog.stream_empty",
+      "module": "Catalog.StreamCipher",
+      "expectedType": "∀ {K N : Type} {capacity : Nat} (g : Catalog.StreamCipher K N capacity) (k : K) (nonce : N) (offset : Nat) (fits : offset + 0 ≤ capacity) (m : Catalog.CryptoBits 0), Catalog.streamCrypt g k nonce offset 0 fits m = m",
+      "mapping": "For K,N : Type and capacity : Nat, StreamCipher K N capacity is K→N→Fin capacity→Bool. CryptoBits n is Fin n→Bool. streamCrypt uses an explicit fits : offset+n≤capacity proof, and implements both E and D. Use inhabited K,N when instantiating the catalog; Bool keys/nonces with capacity 2 supply a concrete nonvacuous example.",
+      "limitations": "Proves the displayed Lean proposition only; semantic correspondence is reviewed metadata. No software implementation correctness or deductive-system completeness is asserted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/StreamCipher-bounded-keystream": "Direct defining premise interpreted using For K,N : Type and capacity : Nat, StreamCipher K N capacity is K→N→Fin capacity→Bool. CryptoBits n is Fin n→Bool. streamCrypt uses an explicit fits : offset+n≤capacity proof, and implements both E and D. Use inhabited K,N when instantiating the catalog; Bool keys/nonces with capacity 2 supply a concrete nonvacuous example.",
+        "urn:csabs:axiom/StreamCipher-xor-transform": "Direct defining premise interpreted using For K,N : Type and capacity : Nat, StreamCipher K N capacity is K→N→Fin capacity→Bool. CryptoBits n is Fin n→Bool. streamCrypt uses an explicit fits : offset+n≤capacity proof, and implements both E and D. Use inhabited K,N when instantiating the catalog; Bool keys/nonces with capacity 2 supply a concrete nonvacuous example."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "655182f6592cb4c5c7e5c06d2e40c2e1b7c2f31d1798ec6940e037d4aeb12ba1"
+    },
+    "urn:csabs:law/StreamCipher-roundtrip": {
+      "kind": "witness",
+      "symbol": "Catalog.stream_roundtrip",
+      "module": "Catalog.StreamCipher",
+      "expectedType": "∀ {K N : Type} {capacity : Nat} (g : Catalog.StreamCipher K N capacity) (k : K) (nonce : N) (offset n : Nat) (fits : offset + n ≤ capacity) (m : Catalog.CryptoBits n), Catalog.streamCrypt g k nonce offset n fits (Catalog.streamCrypt g k nonce offset n fits m) = m",
+      "mapping": "For K,N : Type and capacity : Nat, StreamCipher K N capacity is K→N→Fin capacity→Bool. CryptoBits n is Fin n→Bool. streamCrypt uses an explicit fits : offset+n≤capacity proof, and implements both E and D. Use inhabited K,N when instantiating the catalog; Bool keys/nonces with capacity 2 supply a concrete nonvacuous example.",
+      "limitations": "Proves the displayed Lean proposition only; semantic correspondence is reviewed metadata. No software implementation correctness or deductive-system completeness is asserted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/StreamCipher-bounded-keystream": "Direct defining premise interpreted using For K,N : Type and capacity : Nat, StreamCipher K N capacity is K→N→Fin capacity→Bool. CryptoBits n is Fin n→Bool. streamCrypt uses an explicit fits : offset+n≤capacity proof, and implements both E and D. Use inhabited K,N when instantiating the catalog; Bool keys/nonces with capacity 2 supply a concrete nonvacuous example.",
+        "urn:csabs:axiom/StreamCipher-xor-transform": "Direct defining premise interpreted using For K,N : Type and capacity : Nat, StreamCipher K N capacity is K→N→Fin capacity→Bool. CryptoBits n is Fin n→Bool. streamCrypt uses an explicit fits : offset+n≤capacity proof, and implements both E and D. Use inhabited K,N when instantiating the catalog; Bool keys/nonces with capacity 2 supply a concrete nonvacuous example."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "3a612731543e3ece05282943ee5d3904c58d87d374bbe2553a05161aa870edb3"
+    },
+    "urn:csabs:theorem/StreamCipher-keystream-reuse-leakage": {
+      "kind": "witness",
+      "symbol": "Catalog.stream_reused_keystream",
+      "module": "Catalog.StreamCipher",
+      "expectedType": "∀ {K N : Type} {capacity : Nat} (g : Catalog.StreamCipher K N capacity) (k : K) (nonce : N) (offset n : Nat) (fits : offset + n ≤ capacity) (a b : Catalog.CryptoBits n), Catalog.streamXor (Catalog.streamCrypt g k nonce offset n fits a) (Catalog.streamCrypt g k nonce offset n fits b) = Catalog.streamXor a b",
+      "mapping": "For K,N : Type and capacity : Nat, StreamCipher K N capacity is K→N→Fin capacity→Bool. CryptoBits n is Fin n→Bool. streamCrypt uses an explicit fits : offset+n≤capacity proof, and implements both E and D. Use inhabited K,N when instantiating the catalog; Bool keys/nonces with capacity 2 supply a concrete nonvacuous example.",
+      "limitations": "Proves the displayed Lean proposition only; semantic correspondence is reviewed metadata. No software implementation correctness or deductive-system completeness is asserted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/StreamCipher-bounded-keystream": "Direct defining premise interpreted using For K,N : Type and capacity : Nat, StreamCipher K N capacity is K→N→Fin capacity→Bool. CryptoBits n is Fin n→Bool. streamCrypt uses an explicit fits : offset+n≤capacity proof, and implements both E and D. Use inhabited K,N when instantiating the catalog; Bool keys/nonces with capacity 2 supply a concrete nonvacuous example.",
+        "urn:csabs:axiom/StreamCipher-xor-transform": "Direct defining premise interpreted using For K,N : Type and capacity : Nat, StreamCipher K N capacity is K→N→Fin capacity→Bool. CryptoBits n is Fin n→Bool. streamCrypt uses an explicit fits : offset+n≤capacity proof, and implements both E and D. Use inhabited K,N when instantiating the catalog; Bool keys/nonces with capacity 2 supply a concrete nonvacuous example."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "5cded1fa46f2f34a70dcfc762ed6db4d72ab6b76acc553a769ab94f47f137303"
+    },
+    "urn:csabs:theorem/StreamCipher-malleability": {
+      "kind": "witness",
+      "symbol": "Catalog.stream_malleability",
+      "module": "Catalog.StreamCipher",
+      "expectedType": "∀ {K N : Type} {capacity : Nat} (g : Catalog.StreamCipher K N capacity) (k : K) (nonce : N) (offset n : Nat) (fits : offset + n ≤ capacity) (m delta : Catalog.CryptoBits n), Catalog.streamCrypt g k nonce offset n fits (Catalog.streamXor (Catalog.streamCrypt g k nonce offset n fits m) delta) = Catalog.streamXor m delta",
+      "mapping": "For K,N : Type and capacity : Nat, StreamCipher K N capacity is K→N→Fin capacity→Bool. CryptoBits n is Fin n→Bool. streamCrypt uses an explicit fits : offset+n≤capacity proof, and implements both E and D. Use inhabited K,N when instantiating the catalog; Bool keys/nonces with capacity 2 supply a concrete nonvacuous example.",
+      "limitations": "Proves the displayed Lean proposition only; semantic correspondence is reviewed metadata. No software implementation correctness or deductive-system completeness is asserted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/StreamCipher-bounded-keystream": "Direct defining premise interpreted using For K,N : Type and capacity : Nat, StreamCipher K N capacity is K→N→Fin capacity→Bool. CryptoBits n is Fin n→Bool. streamCrypt uses an explicit fits : offset+n≤capacity proof, and implements both E and D. Use inhabited K,N when instantiating the catalog; Bool keys/nonces with capacity 2 supply a concrete nonvacuous example.",
+        "urn:csabs:axiom/StreamCipher-xor-transform": "Direct defining premise interpreted using For K,N : Type and capacity : Nat, StreamCipher K N capacity is K→N→Fin capacity→Bool. CryptoBits n is Fin n→Bool. streamCrypt uses an explicit fits : offset+n≤capacity proof, and implements both E and D. Use inhabited K,N when instantiating the catalog; Bool keys/nonces with capacity 2 supply a concrete nonvacuous example."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "16158ab3921096330205ef2f475e6561ab79bcdb57697c0e255c63b5025e0ff9"
+    },
+    "urn:csabs:theorem/StreamCipher-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.stream_model_satisfaction",
+      "module": "Catalog.StreamCipher",
+      "expectedType": "(∀ {K N : Type} {capacity : Nat} (g : Catalog.StreamCipher K N capacity) (k : K) (nonce : N) (offset n : Nat) (fits : offset + n ≤ capacity) (m : Catalog.CryptoBits n) (i : Fin n), Catalog.streamCrypt g k nonce offset n fits m i = xor (m i) (g k nonce ⟨offset + i.val, Nat.lt_of_lt_of_le (Nat.add_lt_add_left i.isLt offset) fits⟩)) ∧ Catalog.streamCrypt Catalog.exampleStreamCipher true false 0 1 (by decide) (fun _ => false) 0 = true ∧ Catalog.streamCrypt Catalog.exampleStreamCipher false false 0 1 (by decide) (fun _ => false) 0 = false",
+      "mapping": "For K,N : Type and capacity : Nat, StreamCipher K N capacity is K→N→Fin capacity→Bool. CryptoBits n is Fin n→Bool. streamCrypt uses an explicit fits : offset+n≤capacity proof, and implements both E and D. Use inhabited K,N when instantiating the catalog; Bool keys/nonces with capacity 2 supply a concrete nonvacuous example.",
+      "limitations": "Proves the displayed Lean proposition only; semantic correspondence is reviewed metadata. No software implementation correctness or deductive-system completeness is asserted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/StreamCipher-bounded-keystream": "Direct defining premise interpreted using For K,N : Type and capacity : Nat, StreamCipher K N capacity is K→N→Fin capacity→Bool. CryptoBits n is Fin n→Bool. streamCrypt uses an explicit fits : offset+n≤capacity proof, and implements both E and D. Use inhabited K,N when instantiating the catalog; Bool keys/nonces with capacity 2 supply a concrete nonvacuous example.",
+        "urn:csabs:axiom/StreamCipher-xor-transform": "Direct defining premise interpreted using For K,N : Type and capacity : Nat, StreamCipher K N capacity is K→N→Fin capacity→Bool. CryptoBits n is Fin n→Bool. streamCrypt uses an explicit fits : offset+n≤capacity proof, and implements both E and D. Use inhabited K,N when instantiating the catalog; Bool keys/nonces with capacity 2 supply a concrete nonvacuous example."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "420d8db7b96f2f164d089cfe0192708c616fee91174df862b2ce61418f17c803"
     }
   }
 }

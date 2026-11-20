@@ -91,6 +91,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
     - [Keyed block cipher](concepts/BlockCipher.md)
     - [Galois/Counter Mode (96-bit IV, 128-bit tag profile)](concepts/GCM.md)
     - [GHASH polynomial accumulator](concepts/GHASH.md)
+    - [Synchronous stream cipher (bounded XOR-keystream profile)](concepts/StreamCipher.md)
 - **Data structures**
   - **Connectivity structures**
     - [Union Find (disjoint-set union with representatives)](concepts/DisjointSet.md)
@@ -646,6 +647,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Stochastic process (measurable random family)](concepts/StochasticProcess.md) | Probability and stochastic models → Stochastic processes, Probability and stochastic models, Measure theory |
 | [Stopping time (discrete time, possibly infinite)](concepts/StoppingTime.md) | Probability and stochastic models → Stochastic processes, Probability and stochastic models, Measure theory |
 | [Infinite discrete stream](concepts/Stream.md) | Data structures → Sequential collections |
+| [Synchronous stream cipher (bounded XOR-keystream profile)](concepts/StreamCipher.md) | Cryptography → Symmetric cryptography |
 | [Structural Induction](concepts/StructuralInduction.md) | Counting and induction |
 | [Predicate-restricted subtype](concepts/Subtype.md) | Types and semantics |
 | [Sum Type](concepts/SumType.md) | Types and semantics |

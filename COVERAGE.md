@@ -247,6 +247,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | StochasticProcess | 3 | 1 | 0 | 1 | defined-structure |
 | StoppingTime | 1 | 1 | 0 | 1 | defined-structure |
 | Stream | 4 | 3 | 1 | 1 | extensional-structural-definition |
+| StreamCipher | 4 | 2 | 2 | 3 | defined-structure |
 | StructuralInduction | 0 | 2 | 1 | 1 | defined-structure |
 | Subtype | 3 | 3 | 1 | 1 | extensional-structural-definition |
 | SumType | 6 | 6 | 7 | 6 | extensional-type-theory |
@@ -281,6 +282,6 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | WeightedDirectedGraph | 3 | 2 | 1 | 1 | extensional-structural-definition |
 | WellFoundedRelation | 1 | 1 | 1 | 1 | defined-structure |
 
-276 of 276 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
+277 of 277 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
 
 Use `ruleRole` to distinguish foundational axioms, structure constraints, and defining equations. Use `basisScope` for interface boundaries. Alternate language policies, intensional equality, IEEE payload/trap details, and formal proof artifacts require further formalization.

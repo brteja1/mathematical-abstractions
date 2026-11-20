@@ -2392,6 +2392,22 @@
       "path": "lean/Catalog/RetrievalDecisions.lean",
       "accessedOn": "2026-11-20",
       "sourceRole": "Executable formulations and registered witness source, separate from independent mathematical provenance."
+    },
+    {
+      "id": "urn:csabs:source/rfc8439",
+      "type": "Source",
+      "label": "Nir and Langley, RFC 8439: ChaCha20 and Poly1305 for IETF Protocols (June 2018)",
+      "url": "https://www.rfc-editor.org/rfc/rfc8439.html",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "Consulted primary specification, sections 2.4, 2.4.1 and 4: synchronous keystream XOR encryption/decryption, equal lengths and keystream reuse. Adapted to an abstract bounded bit keystream rather than a ChaCha20 implementation."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-StreamCipher",
+      "type": "Source",
+      "label": "Local Lean formulation of bounded synchronous stream ciphers",
+      "path": "lean/Catalog/StreamCipher.lean",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "Executable model and proof witness source; separate from mathematical provenance."
     }
   ]
 }

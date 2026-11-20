@@ -48,3 +48,4 @@ public import Catalog.LLVMTransforms
 public import Catalog.ProgramStructures
 public import Catalog.KleeneForests
 public import Catalog.RetrievalDecisions
+public import Catalog.StreamCipher
