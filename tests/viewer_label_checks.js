@@ -118,12 +118,17 @@ function runLabelChecks(){
  for(const subject of ['algebra','data-structures','concurrency','synchronization','sequential-collections']){
   const subjectId='urn:csabs:category/'+subject;
   clear();settleLabels();
+  const subjectPlan=planSnapshot();
   sectorGroup.querySelector(`[data-category="${subjectId}"]`).dispatchEvent(new MouseEvent('click',{bubbles:true}));
   settleLabels();
   assertLabel(category===subjectId&&targetView.span<overviewSpan*.9,subject+': selecting subject visibly zooms into its members');
+  // Root headings keep the same visibility during subject selection.
+  if(!all.get(subjectId).parentCategory)assertLabel(planSnapshot()===subjectPlan,subject+': focusing preserves the displayed label geometry');
   for(const n of concepts.filter(n=>inCategory(n,subjectId))){
    const p=positions.get(n.id);
    assertLabel(Math.abs(p.x-targetView.x)<targetView.span/2&&Math.abs(p.y-targetView.y)<targetView.span/2,subject+': camera includes every descendant member');
+   const r=worldLabelRect(nodeEls.get(n.id).querySelector('text'));
+   assertLabel(r.left>=targetView.x-targetView.span/2&&r.right<=targetView.x+targetView.span/2&&r.top>=targetView.y-targetView.span/2&&r.bottom<=targetView.y+targetView.span/2,subject+': camera includes complete descendant labels across all memberships');
   }
   const selectedCamera={...targetView};
   sectorGroup.querySelector(`[data-category="${subjectId}"]`).dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}));

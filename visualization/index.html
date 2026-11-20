@@ -1293,13 +1293,13 @@ function update() {
 // Shared selection framing
 
 // selection-camera:start
-function selectionCamera(boxes, overview, step, backoff) {
+function selectionCamera(boxes, overview, step, backoff, padding = 1.15) {
   if (!boxes.length) return null;
   const x0 = Math.min(...boxes.map(b => b.x));
   const y0 = Math.min(...boxes.map(b => b.y));
   const x1 = Math.max(...boxes.map(b => b.x + b.width));
   const y1 = Math.max(...boxes.map(b => b.y + b.height));
-  const familySpan = Math.max(180, (x1 - x0) * 1.15 + 48, (y1 - y0) * 1.15 + 48);
+  const familySpan = Math.max(180, (x1 - x0) * padding + 48, (y1 - y0) * padding + 48);
   return {
     x: (x0 + x1) / 2,
     y: (y0 + y1) / 2,
@@ -1359,7 +1359,6 @@ function focusSelection() {
   const boxes = [...focus].filter(id => shown.has(id)).map(id => {
     const text = nodeEls.get(id).querySelector('text');
     const p = positions.get(id);
-    wrapSvgLabel(text, all.get(id).shortForm, 180);
     const r = worldLabelRect(text);
     const x = Math.min(p.x - 8, r.left);
     const y = Math.min(p.y - 8, r.top);
@@ -1371,8 +1370,9 @@ function focusSelection() {
     };
   });
   // Concept families use a deliberately loose frame. Subjects already span
-  // whole sectors, so that backoff would expand most selections to overview.
-  const camera = selectionCamera(boxes, overviewSpan, zoomStep, pinned ? selectionZoomOutSteps : 0);
+  // whole sectors (and shared members can lie in other sectors), so they use
+  // tighter padding around the existing labels and no concept-family backoff.
+  const camera = selectionCamera(boxes, overviewSpan, zoomStep, pinned ? selectionZoomOutSteps : 0, pinned ? 1.15 : 1.05);
   if (camera) moveView(camera);else fit();
 }
 
