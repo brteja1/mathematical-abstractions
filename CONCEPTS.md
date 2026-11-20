@@ -131,6 +131,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Smooth manifold (C∞, without boundary)](concepts/SmoothManifold.md)
   - [Tensor of specified valence on a finite-dimensional vector space](concepts/Tensor.md)
 - **Graph theory**
+  - [Finite acyclic undirected graph (forest)](concepts/AcyclicGraph.md)
   - [Bayesian network (finite discrete variables)](concepts/BayesianNetwork.md)
   - [Finite ordered binary tree with node labels](concepts/BinaryTree.md)
   - [Finite simple graph with chosen bipartition](concepts/BipartiteGraph.md)
@@ -145,10 +146,12 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Tree](concepts/Tree.md)
   - [Finite real-weighted directed multigraph](concepts/WeightedDirectedGraph.md)
 - **Information theory**
+  - [BM25 score model (positive-IDF, normalized single-field profile)](concepts/BM25.md)
   - [Channel capacity (finite DMC, vanishing error)](concepts/ChannelCapacity.md)
   - [Conditional entropy (finite discrete profile)](concepts/ConditionalEntropy.md)
   - [Discrete memoryless channel (stationary finite profile)](concepts/DiscreteMemorylessChannel.md)
   - [Mutual information (finite discrete profile)](concepts/MutualInformation.md)
+  - [Finite score-ranked retrieval](concepts/RankedRetrieval.md)
   - [Relative entropy (finite Kullback–Leibler divergence)](concepts/RelativeEntropy.md)
   - [Shannon entropy (finite discrete profile)](concepts/ShannonEntropy.md)
   - [Finite stochastic channel](concepts/StochasticChannel.md)
@@ -180,6 +183,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Classical first-order natural deduction with equality](concepts/FirstOrderNaturalDeduction.md)
   - [Single-sorted first-order signature](concepts/FirstOrderSignature.md)
   - [Functional dependency on a relational schema](concepts/FunctionalDependency.md)
+  - [Strong Kleene three-valued logic (K3)](concepts/KleeneLogic.md)
   - [Finite serial Kripke structure for model checking](concepts/KripkeStructure.md)
   - [Linear temporal logic on infinite discrete traces](concepts/LinearTemporalLogic.md)
   - [Classical propositional modal logic K](concepts/ModalLogic.md)
@@ -264,6 +268,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 - **Programming-language semantics**
   - [Bisimulation](concepts/Bisimulation.md)
   - [Fixed-width bit vector](concepts/BitVector.md)
+  - [Finite unique-hit decision table](concepts/DecisionTable.md)
   - [Program side-effect algebra (total sequential effect-quantale profile)](concepts/EffectAlgebra.md)
   - [Fixed-width signed integer](concepts/FixedWidthSignedInteger.md)
   - [Fixed-width unsigned integer](concepts/FixedWidthUnsignedInteger.md)
@@ -278,6 +283,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Termination Variant](concepts/TerminationVariant.md)
   - [Transition System](concepts/TransitionSystem.md)
   - [Deterministic one-tape Turing machine](concepts/TuringMachine.md)
+  - [Finite verdict-label coverage](concepts/VerdictCoverage.md)
   - [Weakest Precondition](concepts/WeakestPrecondition.md)
   - **Compiler transformations**
     - [Sound abstract transfer and inductive dataflow facts](concepts/AbstractInterpretation.md)
@@ -401,6 +407,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Advanced Encryption Standard (AES)](concepts/AES.md) | Cryptography → Symmetric cryptography |
 | [AES-GCM (96-bit nonce, 128-bit tag profile)](concepts/AESGCM.md) | Cryptography → Symmetric cryptography |
 | [Sound abstract transfer and inductive dataflow facts](concepts/AbstractInterpretation.md) | Programming-language semantics → Compiler transformations |
+| [Finite acyclic undirected graph (forest)](concepts/AcyclicGraph.md) | Graph theory |
 | [Adapted stochastic process](concepts/AdaptedProcess.md) | Probability and stochastic models → Stochastic processes, Probability and stochastic models, Measure theory |
 | [Conservative alias and Mod/Ref query contract](concepts/AliasAnalysis.md) | Programming-language semantics → Compiler transformations |
 | [Analysis validity across IR mutation](concepts/AnalysisPreservation.md) | Programming-language semantics → Compiler transformations |
@@ -409,6 +416,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Fixed-length array](concepts/Array.md) | Data structures → Sequential collections |
 | [Asymmetric coroutine with explicit resume/yield lifecycle](concepts/AsymmetricCoroutine.md) | Programming-language semantics → Coroutines and cooperative execution, Concurrency and distributed systems → Behavioral models |
 | [Scoped atomic execution graph and memory ordering](concepts/AtomicMemoryModel.md) | Programming-language semantics → Compiler transformations |
+| [BM25 score model (positive-IDF, normalized single-field profile)](concepts/BM25.md) | Information theory |
 | [B-tree (balanced multiway search tree)](concepts/BTree.md) | Data structures → Tree structures |
 | [Finite database relation under bag semantics](concepts/BagRelation.md) | Relational data modelling |
 | [Bayesian network (finite discrete variables)](concepts/BayesianNetwork.md) | Probability and stochastic models, Graph theory |
@@ -453,6 +461,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Deterministic finite automaton with total transition](concepts/DFA.md) | Languages and computation, Behavior and transition systems |
 | [Target-indexed storage and ABI layout](concepts/DataLayout.md) | Programming-language semantics → Compiler transformations |
 | [Finite database relation under set semantics](concepts/DatabaseRelation.md) | Relational data modelling, Data structures → Sets and mappings |
+| [Finite unique-hit decision table](concepts/DecisionTable.md) | Programming-language semantics |
 | [Dependent function (Pi type)](concepts/DependentFunction.md) | Types and semantics |
 | [Definition/instantiation lookup for dependent calls](concepts/DependentNameLookup.md) | Programming-language semantics → Generic programming → Template metaprogramming |
 | [Dependent pair (Sigma type)](concepts/DependentPair.md) | Types and semantics |
@@ -520,6 +529,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Java generic inference constraints and resolution obligations](concepts/JavaTypeInference.md) | Programming-language semantics → Generic programming → Java generics |
 | [Java wildcard capture with fresh bounded variables](concepts/JavaWildcardCapture.md) | Programming-language semantics → Generic programming → Java generics |
 | [Join semilattice](concepts/JoinSemilattice.md) | Order and fixed points |
+| [Strong Kleene three-valued logic (K3)](concepts/KleeneLogic.md) | Logic and proof |
 | [Finite serial Kripke structure for model checking](concepts/KripkeStructure.md) | Behavior and transition systems, Logic and proof |
 | [Scoped LLVM attribute, flag and metadata contract](concepts/LLVMAttributeContract.md) | Programming-language semantics → Compiler transformations |
 | [LLVM floating-point environment and rewrite permissions](concepts/LLVMFloatingPointSemantics.md) | Programming-language semantics → Compiler transformations |
@@ -596,6 +606,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Finite RDF 1.1 graph](concepts/RDFGraph.md) | Relational data modelling |
 | [RSA modular-exponentiation primitives (two-prime profile)](concepts/RSA.md) | Cryptography → Public-key cryptography |
 | [Random variable (measurable random element)](concepts/RandomVariable.md) | Probability and stochastic models, Measure theory |
+| [Finite score-ranked retrieval](concepts/RankedRetrieval.md) | Information theory |
 | [Rate–distortion function (finite iid source, average cost)](concepts/RateDistortion.md) | Information theory → Coding theory → Source coding |
 | [Exact rational number](concepts/RationalNumber.md) | Numeric computation |
 | [Exact real number](concepts/RealNumber.md) | Numeric computation |
@@ -664,6 +675,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [VHDL generic elaboration and static structural generation](concepts/VHDLGenericElaboration.md) | Programming-language semantics → Generic programming → VHDL generics |
 | [VHDL generic interfaces and whole-formal association](concepts/VHDLGenericInterface.md) | Programming-language semantics → Generic programming → VHDL generics |
 | [Vector space over a field](concepts/VectorSpace.md) | Algebra → Linear and multilinear algebra, Algebra |
+| [Finite verdict-label coverage](concepts/VerdictCoverage.md) | Programming-language semantics |
 | [Weakest Precondition](concepts/WeakestPrecondition.md) | Programming-language semantics |
 | [Finite real-weighted directed multigraph](concepts/WeightedDirectedGraph.md) | Graph theory |
 | [Well Founded Relation](concepts/WellFoundedRelation.md) | Order and fixed points |

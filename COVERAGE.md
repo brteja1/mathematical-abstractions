@@ -8,6 +8,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | AES | 2 | 1 | 1 | 0 | defined-structure |
 | AESGCM | 4 | 2 | 0 | 1 | defined-structure |
 | AbstractInterpretation | 3 | 2 | 1 | 0 | relational-structural-definition |
+| AcyclicGraph | 4 | 2 | 0 | 2 | defined-structure |
 | AdaptedProcess | 1 | 1 | 0 | 1 | defined-structure |
 | AliasAnalysis | 2 | 2 | 1 | 0 | relational-structural-definition |
 | AnalysisPreservation | 2 | 2 | 1 | 0 | relational-structural-definition |
@@ -16,6 +17,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | Array | 2 | 4 | 2 | 1 | defined-structure |
 | AsymmetricCoroutine | 3 | 3 | 2 | 1 | defined-operational-semantics |
 | AtomicMemoryModel | 2 | 2 | 1 | 0 | relational-structural-definition |
+| BM25 | 5 | 2 | 2 | 1 | defined-structure |
 | BTree | 6 | 6 | 2 | 1 | extensional-structural-definition |
 | BagRelation | 4 | 5 | 1 | 1 | extensional-structural-definition |
 | BayesianNetwork | 3 | 2 | 0 | 1 | defined-structure |
@@ -60,6 +62,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | DFA | 2 | 2 | 1 | 3 | defined-structure |
 | DataLayout | 2 | 2 | 1 | 0 | relational-structural-definition |
 | DatabaseRelation | 6 | 3 | 2 | 2 | defined-structure |
+| DecisionTable | 5 | 2 | 0 | 2 | defined-structure |
 | DependentFunction | 2 | 2 | 1 | 1 | extensional-structural-definition |
 | DependentNameLookup | 2 | 2 | 2 | 0 | extensional-structural-definition |
 | DependentPair | 4 | 3 | 1 | 1 | extensional-structural-definition |
@@ -127,6 +130,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | JavaTypeInference | 3 | 3 | 2 | 0 | extensional-structural-definition |
 | JavaWildcardCapture | 2 | 2 | 2 | 0 | extensional-structural-definition |
 | JoinSemilattice | 2 | 5 | 1 | 1 | extensional-structural-definition |
+| KleeneLogic | 6 | 2 | 2 | 2 | defined-structure |
 | KripkeStructure | 2 | 2 | 1 | 3 | defined-structure |
 | LLVMAttributeContract | 2 | 2 | 1 | 0 | relational-structural-definition |
 | LLVMFloatingPointSemantics | 2 | 2 | 1 | 0 | relational-structural-definition |
@@ -203,6 +207,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | RDFGraph | 4 | 4 | 1 | 1 | extensional-structural-definition |
 | RSA | 2 | 2 | 0 | 1 | defined-structure |
 | RandomVariable | 1 | 1 | 0 | 1 | defined-structure |
+| RankedRetrieval | 3 | 1 | 0 | 1 | defined-structure |
 | RateDistortion | 1 | 1 | 0 | 2 | extensional-structural-definition |
 | RationalNumber | 4 | 3 | 1 | 1 | extensional-structural-definition |
 | RealNumber | 3 | 2 | 1 | 1 | extensional-structural-definition |
@@ -271,10 +276,11 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | VHDLGenericElaboration | 4 | 3 | 2 | 0 | extensional-structural-definition |
 | VHDLGenericInterface | 2 | 3 | 2 | 0 | extensional-structural-definition |
 | VectorSpace | 3 | 3 | 0 | 1 | defined-structure |
+| VerdictCoverage | 4 | 1 | 2 | 2 | defined-structure |
 | WeakestPrecondition | 1 | 1 | 1 | 1 | defined-structure |
 | WeightedDirectedGraph | 3 | 2 | 1 | 1 | extensional-structural-definition |
 | WellFoundedRelation | 1 | 1 | 1 | 1 | defined-structure |
 
-270 of 270 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
+276 of 276 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
 
 Use `ruleRole` to distinguish foundational axioms, structure constraints, and defining equations. Use `basisScope` for interface boundaries. Alternate language policies, intensional equality, IEEE payload/trap details, and formal proof artifacts require further formalization.

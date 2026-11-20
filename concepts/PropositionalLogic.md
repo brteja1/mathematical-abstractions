@@ -16,6 +16,7 @@ Classical two-valued formulas built from atomic propositions and Boolean connect
 
 ## Backlinks
 
+- [Strong Kleene three-valued logic (K3)](KleeneLogic.md) — `relatedConcept`
 - [Finite serial Kripke structure for model checking](KripkeStructure.md) — `requiresConcept`
 - [Linear temporal logic on infinite discrete traces](LinearTemporalLogic.md) — `requiresConcept`
 - [Classical propositional modal logic K](ModalLogic.md) — `requiresConcept`

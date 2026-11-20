@@ -18,6 +18,7 @@ A finite vertex carrier with a partial parent function whose upward chains are a
 
 ## Backlinks
 
+- [Finite acyclic undirected graph (forest)](AcyclicGraph.md) — `relatedConcept`
 - [Single-inheritance class table and dynamic dispatch](ClassTable.md) — `relatedConcept`
 - [Finite rooted undirected tree](RootedTree.md) — `relatedConcept`
 

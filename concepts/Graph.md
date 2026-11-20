@@ -16,10 +16,11 @@ A finite simple undirected graph consists of vertices and unordered pairs of dis
 
 ## Backlinks
 
+- [Finite acyclic undirected graph (forest)](AcyclicGraph.md) — `requiresConcept`
+- [Finite acyclic undirected graph (forest)](AcyclicGraph.md) — `specializationOf`
 - [Finite simple graph with chosen bipartition](BipartiteGraph.md) — `requiresConcept`
 - [Finite simple graph with chosen bipartition](BipartiteGraph.md) — `specializationOf`
 - [Tree](Tree.md) — `requiresConcept`
-- [Tree](Tree.md) — `specializationOf`
 
 ## Mathematical formulation
 

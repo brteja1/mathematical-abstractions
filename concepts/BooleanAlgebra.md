@@ -18,6 +18,7 @@ A bounded distributive complemented lattice, equivalently an algebra satisfying 
 
 - [Two-valued Boolean type](BooleanType.md) — `specializationOf`
 - [Fuzzy set (unit-interval membership, min/max profile)](FuzzySet.md) — `relatedConcept`
+- [Strong Kleene three-valued logic (K3)](KleeneLogic.md) — `relatedConcept`
 - [Propositional Logic](PropositionalLogic.md) — `requiresConcept`
 
 ## Mathematical formulation

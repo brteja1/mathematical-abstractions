@@ -17,6 +17,7 @@ The free finite formula syntax over a fixed set A of atoms with primitive falsit
 ## Backlinks
 
 - [First-order formula syntax with named variables](FirstOrderFormula.md) — `relatedConcept`
+- [Strong Kleene three-valued logic (K3)](KleeneLogic.md) — `requiresConcept`
 - [Propositional Logic](PropositionalLogic.md) — `requiresConcept`
 - [Classical propositional natural deduction](PropositionalNaturalDeduction.md) — `requiresConcept`
 - [Normalized template constraints with atomic identity](TemplateConstraint.md) — `requiresConcept`

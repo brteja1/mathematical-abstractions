@@ -12,7 +12,7 @@ A nonempty finite connected acyclic simple undirected graph.
 
 **Prerequisites:** [Graph](Graph.md)
 
-**Specializes:** [Graph](Graph.md)
+**Specializes:** [Finite acyclic undirected graph (forest)](AcyclicGraph.md)
 
 **Related concepts:** [Finite ordered binary tree with node labels](BinaryTree.md)
 
@@ -55,7 +55,7 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 **basisInstantiation:** A nonempty BinaryTree value yields this Tree carrier by taking node occurrences as vertices, adding parent-child edges and forgetting labels, the root and left/right order. E is excluded; equal labels do not merge vertices. BinaryTree as a whole is therefore a related construction, not a specialization of this nonempty graph carrier.
 
-**specializationNote:** Keep the same finite simple undirected graph; nonemptiness, connectivity and acyclicity are additional constraints.
+**specializationNote:** Keep the same finite simple undirected graph; a Tree is a nonempty connected AcyclicGraph. These added restrictions exclude the empty and disconnected forests.
 
 **verificationObligation:** Instantiate carrier, equality, and stated semantic conventions before using this entry.; Use the stated carriers, equality, domain restrictions and semantic conventions; alternative conventions require an explicit variant.
 
@@ -238,9 +238,9 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
     "provenanceStatus": "legacy-source-missing",
     "specializationOf": [
-      "urn:csabs:concept/Graph"
+      "urn:csabs:concept/AcyclicGraph"
     ],
-    "specializationNote": "Keep the same finite simple undirected graph; nonemptiness, connectivity and acyclicity are additional constraints.",
+    "specializationNote": "Keep the same finite simple undirected graph; a Tree is a nonempty connected AcyclicGraph. These added restrictions exclude the empty and disconnected forests.",
     "relatedConcept": [
       "urn:csabs:concept/BinaryTree"
     ],

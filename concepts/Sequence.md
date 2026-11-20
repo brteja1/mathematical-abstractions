@@ -31,6 +31,7 @@ A finite ordered collection allowing repeated values, equivalently the inductive
 - [Action-labelled transition system with initial states](LabelledTransitionSystem.md) — `requiresConcept`
 - [Ordered collection without duplicates](OrderedSet.md) — `requiresConcept`
 - [Finite labelled property graph (single-valued profile)](PropertyGraph.md) — `requiresConcept`
+- [Finite score-ranked retrieval](RankedRetrieval.md) — `requiresConcept`
 - [Finite ordered rose tree](RoseTree.md) — `requiresConcept`
 - [Infinite discrete stream](Stream.md) — `requiresConcept`
 - [Normalized template constraints with atomic identity](TemplateConstraint.md) — `requiresConcept`

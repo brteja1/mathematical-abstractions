@@ -46,3 +46,5 @@ public import Catalog.CompilerTransforms
 public import Catalog.LLVMTransforms
 
 public import Catalog.ProgramStructures
+public import Catalog.KleeneForests
+public import Catalog.RetrievalDecisions

@@ -911,7 +911,7 @@
       "scope": "model",
       "mapping": "Finite nonempty SimpleGraph with Mathlib IsTree (connected and acyclic). Nonempty BinaryTree values are related by their parent-child occurrence graphs after forgetting labels, root and child order; no direct specialization or axiom inheritance is asserted.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "650a7b733858e42452fddc54fa78fa1f597f6a8482d3e18d0c7829e0b5065367"
+      "catalogHash": "703bd99fe5f84daa1afc703ba57833275645de19d2ca90f81c0fed1985511ae2"
     },
     "urn:csabs:concept/TuringMachine": {
       "kind": "model",
@@ -3910,6 +3910,338 @@
         "Classical.choice"
       ],
       "catalogHash": "7c9cdfcaaa561f7e987130c024948614a6e5dbae78ad95d0769978171d81b6ae"
+    },
+    "urn:csabs:theorem/VerdictCoverage-verdict-does-not-imply-rule-coverage": {
+      "kind": "witness",
+      "symbol": "Catalog.verdict_not_rule_coverage",
+      "module": "Catalog.RetrievalDecisions",
+      "expectedType": "(Catalog.tableExercised Catalog.booleanTable {false}).image Catalog.booleanTable.verdict = (Catalog.tableFeasible Catalog.booleanTable).image Catalog.booleanTable.verdict ∧ Catalog.tableExercised Catalog.booleanTable {false} ≠ Catalog.tableFeasible Catalog.booleanTable",
+      "mapping": "Finset V target and observed with exact equality; coveredVerdicts is intersection; verdictRatio is Option ℚ with none exactly on zero target cardinality. Rule instances use V=R; verdict instances use the image of rule outcomes.",
+      "limitations": "Proves the displayed Lean proposition only; semantic correspondence is reviewed metadata. No software implementation correctness or deductive-system completeness is asserted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/VerdictCoverage-finite-observation-definition": "Direct defining premise interpreted using Finset V target and observed with exact equality; coveredVerdicts is intersection; verdictRatio is Option ℚ with none exactly on zero target cardinality. Rule instances use V=R; verdict instances use the image of rule outcomes.",
+        "urn:csabs:axiom/DecisionTable-unique-hit-rules": "Direct defining premise interpreted using Finset V target and observed with exact equality; coveredVerdicts is intersection; verdictRatio is Option ℚ with none exactly on zero target cardinality. Rule instances use V=R; verdict instances use the image of rule outcomes.",
+        "urn:csabs:axiom/DecisionTable-feasible-rule-coverage": "Direct defining premise interpreted using Finset V target and observed with exact equality; coveredVerdicts is intersection; verdictRatio is Option ℚ with none exactly on zero target cardinality. Rule instances use V=R; verdict instances use the image of rule outcomes."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "dc84b93c0eea3f74eb6fe364026a6fbab792cf627fbda403b2417844aa32d330"
+    },
+    "urn:csabs:concept/AcyclicGraph": {
+      "kind": "model",
+      "symbol": "Catalog.AcyclicGraph",
+      "module": "Catalog.KleeneForests",
+      "scope": "model",
+      "mapping": "Finite V via Fintype V; graph : SimpleGraph V supplies symmetric irreflexive adjacency; graph.IsAcyclic excludes cyclic walks. Exact vertex equality.",
+      "limitations": "No chosen roots or orientations, component enumeration, edge-count theorem or graph update algorithm is supplied. Path uniqueness and a family of concrete path-graph models have separate witnesses.",
+      "catalogHash": "0b0eda33a460b2be651f974ba6f96b8eba59b1ee0d22f35e44d586f7cfdf641c"
+    },
+    "urn:csabs:theorem/RankedRetrieval-finite-sorting-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.retrieval_model_satisfaction",
+      "module": "Catalog.RetrievalDecisions",
+      "expectedType": "∀ {D : Type u} [LinearOrder D] (s : Finset D) (score : Catalog.RankedRetrieval D), (Catalog.retrievalKeys s score).Nodup ∧ (Catalog.retrievalKeys s score).Pairwise (· ≤ ·) ∧ (Catalog.retrievalKeys s score).toFinset = s.image (fun d => toLex (-score d, d))",
+      "mapping": "For a fixed query, D→ℝ supplies scores; D has LinearOrder. retrievalKeys sorts the finite image d↦toLex(-score d,d) using exact lexicographic order. Document identities are the second coordinates.",
+      "limitations": "Proves the displayed Lean proposition only; semantic correspondence is reviewed metadata. No software implementation correctness or deductive-system completeness is asserted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/RankedRetrieval-ranking-definition": "Direct defining premise interpreted using For a fixed query, D→ℝ supplies scores; D has LinearOrder. retrievalKeys sorts the finite image d↦toLex(-score d,d) using exact lexicographic order. Document identities are the second coordinates."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "df8f14c84108396633429c716326a0574486918e02436899401d764e08c46552"
+    },
+    "urn:csabs:law/VerdictCoverage-covered-count-bound": {
+      "kind": "witness",
+      "symbol": "Catalog.verdict_count_bound",
+      "module": "Catalog.RetrievalDecisions",
+      "expectedType": "∀ {V} (m : Catalog.VerdictCoverage V), (Catalog.coveredVerdicts m).card ≤ m.target.card",
+      "mapping": "Finset V target and observed with exact equality; coveredVerdicts is intersection; verdictRatio is Option ℚ with none exactly on zero target cardinality. Rule instances use V=R; verdict instances use the image of rule outcomes.",
+      "limitations": "Proves the displayed Lean proposition only; semantic correspondence is reviewed metadata. No software implementation correctness or deductive-system completeness is asserted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/VerdictCoverage-finite-observation-definition": "Direct defining premise interpreted using Finset V target and observed with exact equality; coveredVerdicts is intersection; verdictRatio is Option ℚ with none exactly on zero target cardinality. Rule instances use V=R; verdict instances use the image of rule outcomes."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "e4ae12a9611babcfdb63dd92aa721fdef53da471e2969140ea6d3cd341b7e978"
+    },
+    "urn:csabs:law/BM25-absent-term-zero": {
+      "kind": "witness",
+      "symbol": "Catalog.bm25_zero_term",
+      "module": "Catalog.RetrievalDecisions",
+      "expectedType": "∀ {T D} [Fintype T] (m : Catalog.BM25 T D) (t : T) (d : D), m.tf t d = 0 → Catalog.bm25Term m t d = 0",
+      "mapping": "BM25 T D stores a finite corpus, natural counts and parameter restrictions. bm25Length/Average/DF derive statistics, bm25IDF/Term/Score implement the displayed exact-real formula. unitBM25 is a concrete one-token, one-document model with k₁=1,b=0.",
+      "limitations": "Proves the displayed Lean proposition only; semantic correspondence is reviewed metadata. No software implementation correctness or deductive-system completeness is asserted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/BM25-corpus-and-parameters": "Direct defining premise interpreted using BM25 T D stores a finite corpus, natural counts and parameter restrictions. bm25Length/Average/DF derive statistics, bm25IDF/Term/Score implement the displayed exact-real formula. unitBM25 is a concrete one-token, one-document model with k₁=1,b=0.",
+        "urn:csabs:axiom/BM25-score-definition": "Direct defining premise interpreted using BM25 T D stores a finite corpus, natural counts and parameter restrictions. bm25Length/Average/DF derive statistics, bm25IDF/Term/Score implement the displayed exact-real formula. unitBM25 is a concrete one-token, one-document model with k₁=1,b=0."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "9981501516ff57558bdfd0d94e2ee2e3bfecdee573851a6b1facd47ded7f9f38"
+    },
+    "urn:csabs:theorem/DecisionTable-matching-rule-uniqueness": {
+      "kind": "witness",
+      "symbol": "Catalog.decision_matching_unique",
+      "module": "Catalog.RetrievalDecisions",
+      "expectedType": "∀ {X R V} (m : Catalog.DecisionTable X R V) (x : X) (r s : R), r ∈ Catalog.tableMatches m x → s ∈ Catalog.tableMatches m x → r = s",
+      "mapping": "Finite rules : Finset R, guard : R→X→Prop, verdict : R→V and uniqueHit constraint. tableMatches, tableFeasible and tableExercised realize rule-set operations. booleanTable uses two Boolean identity guards and a common Unit verdict.",
+      "limitations": "Proves the displayed Lean proposition only; semantic correspondence is reviewed metadata. No software implementation correctness or deductive-system completeness is asserted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/DecisionTable-unique-hit-rules": "Direct defining premise interpreted using Finite rules : Finset R, guard : R→X→Prop, verdict : R→V and uniqueHit constraint. tableMatches, tableFeasible and tableExercised realize rule-set operations. booleanTable uses two Boolean identity guards and a common Unit verdict."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "52a0508625931a1d5e95973ee1bb897c1f9be6a949e21780bb4149e5fc9507fa"
+    },
+    "urn:csabs:concept/VerdictCoverage": {
+      "kind": "model",
+      "symbol": "Catalog.VerdictCoverage",
+      "module": "Catalog.RetrievalDecisions",
+      "scope": "model",
+      "mapping": "Finset V target and observed with exact equality; coveredVerdicts is intersection; verdictRatio is Option ℚ with none exactly on zero target cardinality. Rule instances use V=R; verdict instances use the image of rule outcomes.",
+      "limitations": "Witnesses prove the intersection constraints, count bound, empty-target ratio convention and a concrete distinction from rule coverage. No claim that observed labels are feasible, correct, exhaustive of behavior or probabilistically representative is made.",
+      "catalogHash": "623e3855b45e4f494ec1928baa7ac59ec70e2df3892b3491e5e567a323593325"
+    },
+    "urn:csabs:theorem/KleeneLogic-excluded-middle-counterexample": {
+      "kind": "witness",
+      "symbol": "Catalog.kleene_unknown_excluded_middle",
+      "module": "Catalog.KleeneForests",
+      "expectedType": "Catalog.kleeneOr 1 (Catalog.kleeneNeg 1) = 1 ∧ ¬ Catalog.kleeneDesignated 1",
+      "mapping": "Fin 3 encodes F=0, U=1, T=2 in truth order; propositional syntax is Catalog.PropFormula; equality is exact Fin equality. kleeneNeg/And/Or, kleeneEval and kleeneConsequence implement the selected semantics.",
+      "limitations": "Proves the displayed Lean proposition only; semantic correspondence is reviewed metadata. No software implementation correctness or deductive-system completeness is asserted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/KleeneLogic-truth-matrix": "Direct defining premise interpreted using Fin 3 encodes F=0, U=1, T=2 in truth order; propositional syntax is Catalog.PropFormula; equality is exact Fin equality. kleeneNeg/And/Or, kleeneEval and kleeneConsequence implement the selected semantics."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "018f23747e587f2982de1a521b7f3cc3b6f24045c4f34b6945d4e421de3c5ab5"
+    },
+    "urn:csabs:concept/BM25": {
+      "kind": "model",
+      "symbol": "Catalog.BM25",
+      "module": "Catalog.RetrievalDecisions",
+      "scope": "model",
+      "mapping": "BM25 T D stores a finite corpus, natural counts and parameter restrictions. bm25Length/Average/DF derive statistics, bm25IDF/Term/Score implement the displayed exact-real formula. unitBM25 is a concrete one-token, one-document model with k₁=1,b=0.",
+      "limitations": "The registered realization is a minimal nonempty corpus; it proves the admissibility constraints and uses definitional statistics/scoring, not assumed scoring-law fields. Separate witnesses prove zero absent-term and empty-query scores. No saturation monotonicity, ranking-quality, floating-point or Lucene norm-encoding correctness theorem is supplied. Lean functions extend outside corpus documents using Lean total division; catalog guarantees are restricted to d∈C.",
+      "catalogHash": "df95118813b3bee3d54dd44908c39bc22d493488beaca05f4fb4a0b50391036b"
+    },
+    "urn:csabs:concept/DecisionTable": {
+      "kind": "model",
+      "symbol": "Catalog.DecisionTable",
+      "module": "Catalog.RetrievalDecisions",
+      "scope": "model",
+      "mapping": "Finite rules : Finset R, guard : R→X→Prop, verdict : R→V and uniqueHit constraint. tableMatches, tableFeasible and tableExercised realize rule-set operations. booleanTable uses two Boolean identity guards and a common Unit verdict.",
+      "limitations": "General uniqueHit is a structure constraint; the concrete Boolean partition model discharges it and is total on Bool. No chosen Option-valued evaluator, guard decision procedure or general completeness proof is supplied. Rule coverage witnesses do not prove software outcome correctness.",
+      "catalogHash": "f58264de78ca7b5d1673afa35af0cd650a486e4da6dc3c7fba151c8ea74e70ae"
+    },
+    "urn:csabs:law/VerdictCoverage-empty-target-ratio": {
+      "kind": "witness",
+      "symbol": "Catalog.verdict_empty_target",
+      "module": "Catalog.RetrievalDecisions",
+      "expectedType": "∀ {V} (observed : Finset V), Catalog.verdictRatio (⟨∅, observed⟩ : Catalog.VerdictCoverage V) = none",
+      "mapping": "Finset V target and observed with exact equality; coveredVerdicts is intersection; verdictRatio is Option ℚ with none exactly on zero target cardinality. Rule instances use V=R; verdict instances use the image of rule outcomes.",
+      "limitations": "Proves the displayed Lean proposition only; semantic correspondence is reviewed metadata. No software implementation correctness or deductive-system completeness is asserted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/VerdictCoverage-finite-observation-definition": "Direct defining premise interpreted using Finset V target and observed with exact equality; coveredVerdicts is intersection; verdictRatio is Option ℚ with none exactly on zero target cardinality. Rule instances use V=R; verdict instances use the image of rule outcomes."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "57acc675d2856b206d75bb121db2c0209340f045dc35bc7c034bde33f76f6464"
+    },
+    "urn:csabs:law/KleeneLogic-de-morgan": {
+      "kind": "witness",
+      "symbol": "Catalog.kleene_de_morgan",
+      "module": "Catalog.KleeneForests",
+      "expectedType": "∀ a b : Catalog.KleeneLogic, Catalog.kleeneNeg (Catalog.kleeneAnd a b) = Catalog.kleeneOr (Catalog.kleeneNeg a) (Catalog.kleeneNeg b)",
+      "mapping": "Fin 3 encodes F=0, U=1, T=2 in truth order; propositional syntax is Catalog.PropFormula; equality is exact Fin equality. kleeneNeg/And/Or, kleeneEval and kleeneConsequence implement the selected semantics.",
+      "limitations": "Proves the displayed Lean proposition only; semantic correspondence is reviewed metadata. No software implementation correctness or deductive-system completeness is asserted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/KleeneLogic-truth-matrix": "Direct defining premise interpreted using Fin 3 encodes F=0, U=1, T=2 in truth order; propositional syntax is Catalog.PropFormula; equality is exact Fin equality. kleeneNeg/And/Or, kleeneEval and kleeneConsequence implement the selected semantics."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "84f71b3d9c5ecb159cf157f4036517b25cc0ec658aa30e8463c79de0aa429d8e"
+    },
+    "urn:csabs:law/BM25-empty-query-zero": {
+      "kind": "witness",
+      "symbol": "Catalog.bm25_empty_query",
+      "module": "Catalog.RetrievalDecisions",
+      "expectedType": "∀ {T D} [Fintype T] (m : Catalog.BM25 T D) (d : D), Catalog.bm25Score m ∅ d = 0",
+      "mapping": "BM25 T D stores a finite corpus, natural counts and parameter restrictions. bm25Length/Average/DF derive statistics, bm25IDF/Term/Score implement the displayed exact-real formula. unitBM25 is a concrete one-token, one-document model with k₁=1,b=0.",
+      "limitations": "Proves the displayed Lean proposition only; semantic correspondence is reviewed metadata. No software implementation correctness or deductive-system completeness is asserted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/BM25-score-definition": "Direct defining premise interpreted using BM25 T D stores a finite corpus, natural counts and parameter restrictions. bm25Length/Average/DF derive statistics, bm25IDF/Term/Score implement the displayed exact-real formula. unitBM25 is a concrete one-token, one-document model with k₁=1,b=0."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "1dbb2f674dde2bbe44254361e9982dc25f24c12847e185aa368d276da5607bc4"
+    },
+    "urn:csabs:theorem/KleeneLogic-matrix-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.kleene_model_satisfaction",
+      "module": "Catalog.KleeneForests",
+      "expectedType": "Catalog.kleeneNeg 0 = 2 ∧ Catalog.kleeneNeg 1 = 1 ∧ Catalog.kleeneNeg 2 = 0 ∧ (∀ a b : Catalog.KleeneLogic, Catalog.kleeneAnd a b = min a b ∧ Catalog.kleeneOr a b = max a b) ∧ (∀ a : Catalog.KleeneLogic, Catalog.kleeneDesignated a ↔ a = 2)",
+      "mapping": "Fin 3 encodes F=0, U=1, T=2 in truth order; propositional syntax is Catalog.PropFormula; equality is exact Fin equality. kleeneNeg/And/Or, kleeneEval and kleeneConsequence implement the selected semantics.",
+      "limitations": "Proves the displayed Lean proposition only; semantic correspondence is reviewed metadata. No software implementation correctness or deductive-system completeness is asserted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/KleeneLogic-truth-matrix": "Direct defining premise interpreted using Fin 3 encodes F=0, U=1, T=2 in truth order; propositional syntax is Catalog.PropFormula; equality is exact Fin equality. kleeneNeg/And/Or, kleeneEval and kleeneConsequence implement the selected semantics."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "dc0f56ee2c0797fc44ef44df3ee3867183b4a0a54629e1d437eea60d749efc04"
+    },
+    "urn:csabs:theorem/AcyclicGraph-path-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.forest_model_satisfaction",
+      "module": "Catalog.KleeneForests",
+      "expectedType": "∀ n : Nat, (Catalog.pathForest n).graph.IsAcyclic",
+      "mapping": "Finite V via Fintype V; graph : SimpleGraph V supplies symmetric irreflexive adjacency; graph.IsAcyclic excludes cyclic walks. Exact vertex equality.",
+      "limitations": "Proves the displayed Lean proposition only; semantic correspondence is reviewed metadata. No software implementation correctness or deductive-system completeness is asserted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/AcyclicGraph-simple-undirected": "Direct defining premise interpreted using Finite V via Fintype V; graph : SimpleGraph V supplies symmetric irreflexive adjacency; graph.IsAcyclic excludes cyclic walks. Exact vertex equality.",
+        "urn:csabs:axiom/AcyclicGraph-no-cycle": "Direct defining premise interpreted using Finite V via Fintype V; graph : SimpleGraph V supplies symmetric irreflexive adjacency; graph.IsAcyclic excludes cyclic walks. Exact vertex equality."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "b423f28478b46728598428adf108b9f26eaf882d432828b6e73fd11efd689122"
+    },
+    "urn:csabs:law/KleeneLogic-negation-involution": {
+      "kind": "witness",
+      "symbol": "Catalog.kleene_involution",
+      "module": "Catalog.KleeneForests",
+      "expectedType": "∀ a : Catalog.KleeneLogic, Catalog.kleeneNeg (Catalog.kleeneNeg a) = a",
+      "mapping": "Fin 3 encodes F=0, U=1, T=2 in truth order; propositional syntax is Catalog.PropFormula; equality is exact Fin equality. kleeneNeg/And/Or, kleeneEval and kleeneConsequence implement the selected semantics.",
+      "limitations": "Proves the displayed Lean proposition only; semantic correspondence is reviewed metadata. No software implementation correctness or deductive-system completeness is asserted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/KleeneLogic-truth-matrix": "Direct defining premise interpreted using Fin 3 encodes F=0, U=1, T=2 in truth order; propositional syntax is Catalog.PropFormula; equality is exact Fin equality. kleeneNeg/And/Or, kleeneEval and kleeneConsequence implement the selected semantics."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "84b8cf4ad7423b17b7d53870767f08f2512e18ccbd79dc64388860e203c625fe"
+    },
+    "urn:csabs:concept/RankedRetrieval": {
+      "kind": "model",
+      "symbol": "Catalog.RankedRetrieval",
+      "module": "Catalog.RetrievalDecisions",
+      "scope": "model",
+      "mapping": "For a fixed query, D→ℝ supplies scores; D has LinearOrder. retrievalKeys sorts the finite image d↦toLex(-score d,d) using exact lexicographic order. Document identities are the second coordinates.",
+      "limitations": "Witness establishes sorted, duplicate-free key enumeration with exact finite-set membership. Projecting identifiers and taking prefixes are mathematical interface operations, without separate Lean witnesses for top-k length or relevance quality.",
+      "catalogHash": "c79621d70ccda0a89776ebe2b316f83b7148d99009cb482cca356b57d527771d"
+    },
+    "urn:csabs:theorem/DecisionTable-boolean-partition-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.decision_model_satisfaction",
+      "module": "Catalog.RetrievalDecisions",
+      "expectedType": "(∀ x, ∀ r ∈ Catalog.booleanTable.rules, ∀ s ∈ Catalog.booleanTable.rules, Catalog.booleanTable.guard r x → Catalog.booleanTable.guard s x → r = s) ∧ (∀ x : Bool, ∃ r ∈ Catalog.booleanTable.rules, Catalog.booleanTable.guard r x)",
+      "mapping": "Finite rules : Finset R, guard : R→X→Prop, verdict : R→V and uniqueHit constraint. tableMatches, tableFeasible and tableExercised realize rule-set operations. booleanTable uses two Boolean identity guards and a common Unit verdict.",
+      "limitations": "Proves the displayed Lean proposition only; semantic correspondence is reviewed metadata. No software implementation correctness or deductive-system completeness is asserted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/DecisionTable-unique-hit-rules": "Direct defining premise interpreted using Finite rules : Finset R, guard : R→X→Prop, verdict : R→V and uniqueHit constraint. tableMatches, tableFeasible and tableExercised realize rule-set operations. booleanTable uses two Boolean identity guards and a common Unit verdict."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "ea46576c7cc54b805ce141e8204ec1dba92c605d790aeddc309dc393da010803"
+    },
+    "urn:csabs:concept/KleeneLogic": {
+      "kind": "model",
+      "symbol": "Catalog.KleeneLogic",
+      "module": "Catalog.KleeneForests",
+      "scope": "model",
+      "mapping": "Fin 3 encodes F=0, U=1, T=2 in truth order; propositional syntax is Catalog.PropFormula; equality is exact Fin equality. kleeneNeg/And/Or, kleeneEval and kleeneConsequence implement the selected semantics.",
+      "limitations": "Finite connective equations are proved by registered witnesses; evaluation and consequence are definitions. No proof calculus, soundness/completeness metatheorem, knowledge-order domain or short-circuit evaluator is supplied.",
+      "catalogHash": "4231719eb092ae3c9dc9fee333f91f082e29f4fe2101227adcb052182e48372f"
+    },
+    "urn:csabs:theorem/VerdictCoverage-intersection-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.verdict_model_satisfaction",
+      "module": "Catalog.RetrievalDecisions",
+      "expectedType": "∀ {V} (m : Catalog.VerdictCoverage V), Catalog.coveredVerdicts m ⊆ m.target ∧ Catalog.coveredVerdicts m ⊆ m.observed",
+      "mapping": "Finset V target and observed with exact equality; coveredVerdicts is intersection; verdictRatio is Option ℚ with none exactly on zero target cardinality. Rule instances use V=R; verdict instances use the image of rule outcomes.",
+      "limitations": "Proves the displayed Lean proposition only; semantic correspondence is reviewed metadata. No software implementation correctness or deductive-system completeness is asserted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/VerdictCoverage-finite-observation-definition": "Direct defining premise interpreted using Finset V target and observed with exact equality; coveredVerdicts is intersection; verdictRatio is Option ℚ with none exactly on zero target cardinality. Rule instances use V=R; verdict instances use the image of rule outcomes."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "731bb77b14d0affe6ef570f3edfb452eb68cb821731417ee7cfb4cb50b2aba78"
+    },
+    "urn:csabs:theorem/AcyclicGraph-path-uniqueness": {
+      "kind": "witness",
+      "symbol": "Catalog.forest_path_unique",
+      "module": "Catalog.KleeneForests",
+      "expectedType": "∀ {V : Type u} [Fintype V] (f : Catalog.AcyclicGraph V) (v w : V) (p q : f.graph.Path v w), p = q",
+      "mapping": "Finite V via Fintype V; graph : SimpleGraph V supplies symmetric irreflexive adjacency; graph.IsAcyclic excludes cyclic walks. Exact vertex equality.",
+      "limitations": "Proves the displayed Lean proposition only; semantic correspondence is reviewed metadata. No software implementation correctness or deductive-system completeness is asserted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/AcyclicGraph-simple-undirected": "Direct defining premise interpreted using Finite V via Fintype V; graph : SimpleGraph V supplies symmetric irreflexive adjacency; graph.IsAcyclic excludes cyclic walks. Exact vertex equality.",
+        "urn:csabs:axiom/AcyclicGraph-no-cycle": "Direct defining premise interpreted using Finite V via Fintype V; graph : SimpleGraph V supplies symmetric irreflexive adjacency; graph.IsAcyclic excludes cyclic walks. Exact vertex equality."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "8a5e9e42238b49abcb3f4ca3e2841f3d3eb4becc61d6732be50b9cf98ad0931c"
+    },
+    "urn:csabs:theorem/BM25-corpus-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.bm25_model_satisfaction",
+      "module": "Catalog.RetrievalDecisions",
+      "expectedType": "Catalog.unitBM25.docs.Nonempty ∧ (∀ d ∈ Catalog.unitBM25.docs, 0 < ∑ t, Catalog.unitBM25.tf t d) ∧ 0 < Catalog.unitBM25.k1 ∧ 0 ≤ Catalog.unitBM25.b ∧ Catalog.unitBM25.b ≤ 1",
+      "mapping": "BM25 T D stores a finite corpus, natural counts and parameter restrictions. bm25Length/Average/DF derive statistics, bm25IDF/Term/Score implement the displayed exact-real formula. unitBM25 is a concrete one-token, one-document model with k₁=1,b=0.",
+      "limitations": "Proves the displayed Lean proposition only; semantic correspondence is reviewed metadata. No software implementation correctness or deductive-system completeness is asserted.",
+      "premiseMapping": {
+        "urn:csabs:axiom/BM25-corpus-and-parameters": "Direct defining premise interpreted using BM25 T D stores a finite corpus, natural counts and parameter restrictions. bm25Length/Average/DF derive statistics, bm25IDF/Term/Score implement the displayed exact-real formula. unitBM25 is a concrete one-token, one-document model with k₁=1,b=0.",
+        "urn:csabs:axiom/BM25-score-definition": "Direct defining premise interpreted using BM25 T D stores a finite corpus, natural counts and parameter restrictions. bm25Length/Average/DF derive statistics, bm25IDF/Term/Score implement the displayed exact-real formula. unitBM25 is a concrete one-token, one-document model with k₁=1,b=0."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "27510ee373d11e285a1cd3f680b8aeec5337d6d0673025777ec30c6988cc2247"
     }
   }
 }

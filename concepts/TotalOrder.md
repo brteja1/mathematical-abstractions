@@ -22,6 +22,7 @@ A partial order in which every two elements are comparable.
 - [Nonempty bounded closed interval](ClosedInterval.md) — `requiresConcept`
 - [Lamport bakery lock protocol](LamportBakery.md) — `requiresConcept`
 - [Priority Queue](PriorityQueue.md) — `requiresConcept`
+- [Finite score-ranked retrieval](RankedRetrieval.md) — `requiresConcept`
 - [Exact real number](RealNumber.md) — `requiresConcept`
 - [Residuated fuzzy truth-value algebra (left-continuous t-norm profile)](ResiduatedFuzzyLogic.md) — `requiresConcept`
 - [Triangular conorm (t-conorm)](TConorm.md) — `requiresConcept`

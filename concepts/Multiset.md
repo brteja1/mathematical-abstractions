@@ -17,6 +17,7 @@ A finite collection represented by nonnegative multiplicities, with only finitel
 ## Backlinks
 
 - [Arithmetic mean of a finite real sample](ArithmeticMean.md) — `requiresConcept`
+- [BM25 score model (positive-IDF, normalized single-field profile)](BM25.md) — `relatedConcept`
 - [Finite database relation under bag semantics](BagRelation.md) — `requiresConcept`
 - [Finite database relation under bag semantics](BagRelation.md) — `specializationOf`
 - [Finite database relation under set semantics](DatabaseRelation.md) — `relatedConcept`

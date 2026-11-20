@@ -16,6 +16,7 @@ A directed graph with no directed cycle.
 
 ## Backlinks
 
+- [Finite acyclic undirected graph (forest)](AcyclicGraph.md) — `relatedConcept`
 - [Bayesian network (finite discrete variables)](BayesianNetwork.md) — `requiresConcept`
 - [Bayesian network (finite discrete variables)](BayesianNetwork.md) — `specializationOf`
 - [Finite single-parent rooted forest](SingleParentForest.md) — `requiresConcept`

@@ -2326,6 +2326,72 @@
       "type": "Category",
       "label": "Stochastic processes",
       "parentCategory": "urn:csabs:category/probability"
+    },
+    {
+      "id": "urn:csabs:source/klement-nonclassical-k3",
+      "type": "Source",
+      "label": "Kevin C. Klement, Non-Classical Logic lecture notes",
+      "url": "https://people.umass.edu/klement/512/ln.pdf",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "Consulted author-hosted exposition: section H.2, strong Kleene matrix and designated-value semantics, printed pp.31–32."
+    },
+    {
+      "id": "urn:csabs:source/mathlib-acyclic-pinned",
+      "type": "Source",
+      "label": "Mathlib: acyclic simple graphs and trees (pinned source)",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean",
+      "path": "lean/.lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/Acyclic.lean",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "Consulted upstream formal-library mathematical definitions and proofs at the pinned revision; Kyle Miller and Mathlib contributors, Apache-2.0."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-KleeneForests",
+      "type": "Source",
+      "label": "Local Lean formulations for K3 and finite forests",
+      "path": "lean/Catalog/KleeneForests.lean",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "Executable formulation and registered witness source; separate from mathematical provenance."
+    },
+    {
+      "id": "urn:csabs:source/lucene-bm25-10-2-2",
+      "type": "Source",
+      "label": "Apache Lucene 10.2.2 BM25Similarity source",
+      "url": "https://raw.githubusercontent.com/apache/lucene/releases/lucene/10.2.2/lucene/core/src/java/org/apache/lucene/search/similarities/BM25Similarity.java",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "Consulted primary implementation documentation for the chosen BM25 normalization and positive IDF; exact-real adaptation, not a claim about implementation arithmetic."
+    },
+    {
+      "id": "urn:csabs:source/svore-burges-bm25-2009",
+      "type": "Source",
+      "label": "Svore and Burges, A Machine Learning Approach for Improved BM25 Retrieval, MSR-TR-2009-92 (2009)",
+      "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/LearningBM25MSRTechReport.pdf",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "Consulted primary research report, section 4 equations (3)-(7), printed pp.8-10, for scoring, saturation and length normalization; its unshifted IDF differs from the selected profile."
+    },
+    {
+      "id": "urn:csabs:source/istqb-ctfl-4-0-1",
+      "type": "Source",
+      "label": "ISTQB Certified Tester Foundation Level Syllabus v4.0.1 (2024-09-15)",
+      "url": "https://istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "Consulted standard syllabus sections 4.2.1 and 4.2.3, printed pp.39-41: partitions, decision rules, feasibility and rule coverage. Verdict-label coverage is a catalog adaptation, not a named ISTQB criterion."
+    },
+    {
+      "id": "urn:csabs:source/mathlib-finite-ranking-pinned",
+      "type": "Source",
+      "label": "Mathlib finite sorting, lexicographic order and cardinality at the pinned revision",
+      "url": "https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib",
+      "path": "lean/.lake/packages/mathlib/Mathlib",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "Consulted Data/Finset/Sort.lean (sort, pairwise_sort, sort_nodup, sort_toFinset), Order/Prod/Lex/Basic.lean (toLex_le_toLex) and Data/Finset/Card.lean (card_le_card)."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-RetrievalDecisions",
+      "type": "Source",
+      "label": "Local Lean formulations for finite ranking, BM25, decision tables and verdict coverage",
+      "path": "lean/Catalog/RetrievalDecisions.lean",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "Executable formulations and registered witness source, separate from independent mathematical provenance."
     }
   ]
 }

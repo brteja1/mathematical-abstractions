@@ -18,11 +18,13 @@ An unordered finite subset of a fixed carrier, with extensional equality and no 
 
 ## Backlinks
 
+- [BM25 score model (positive-IDF, normalized single-field profile)](BM25.md) — `requiresConcept`
 - [B-tree (balanced multiway search tree)](BTree.md) — `requiresConcept`
 - [Strict binary search tree](BinarySearchTree.md) — `requiresConcept`
 - [Finite block code (Hamming profile)](BlockCode.md) — `requiresConcept`
 - [Finite database relation under set semantics](DatabaseRelation.md) — `requiresConcept`
 - [Finite database relation under set semantics](DatabaseRelation.md) — `specializationOf`
+- [Finite unique-hit decision table](DecisionTable.md) — `requiresConcept`
 - [Definition/instantiation lookup for dependent calls](DependentNameLookup.md) — `requiresConcept`
 - [Finite typed entity-relationship instance](EntityRelationshipModel.md) — `requiresConcept`
 - [Finitely supported probability distribution](FiniteDistribution.md) — `requiresConcept`
@@ -35,9 +37,11 @@ An unordered finite subset of a fixed carrier, with extensional equality and no 
 - [Multiset](Multiset.md) — `relatedConcept`
 - [Ordered collection without duplicates](OrderedSet.md) — `requiresConcept`
 - [Finite RDF 1.1 graph](RDFGraph.md) — `requiresConcept`
+- [Finite score-ranked retrieval](RankedRetrieval.md) — `requiresConcept`
 - [Set](Set.md) — `relatedConcept`
 - [Finitely supported vector](SparseVector.md) — `requiresConcept`
 - [Class template partial-specialization selection](TemplateSpecialization.md) — `requiresConcept`
+- [Finite verdict-label coverage](VerdictCoverage.md) — `requiresConcept`
 
 ## Mathematical formulation
 
