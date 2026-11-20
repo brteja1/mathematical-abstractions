@@ -22,6 +22,7 @@ First-order formulas over a signature, interpreted in a nonempty domain with var
 - [Exclusive finite-heap separation predicates](HeapSeparation.md) — `requiresConcept`
 - [Hoare Triple](HoareTriple.md) — `requiresConcept`
 - [Classical propositional modal logic K](ModalLogic.md) — `relatedConcept`
+- [SKOS Core ontology (relational semantic presentation)](SKOS.md) — `requiresConcept`
 - [Predicate-restricted subtype](Subtype.md) — `requiresConcept`
 - [Normalized template constraints with atomic identity](TemplateConstraint.md) — `relatedConcept`
 - [Free ranked term algebra with variables](TermAlgebra.md) — `relatedConcept`

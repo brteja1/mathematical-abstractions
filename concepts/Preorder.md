@@ -19,6 +19,7 @@ A reflexive and transitive relation on a carrier; distinct values may be mutuall
 - [Equivalence relation](EquivalenceRelation.md) — `specializationOf`
 - [Partial Order](PartialOrder.md) — `requiresConcept`
 - [Partial Order](PartialOrder.md) — `specializationOf`
+- [SKOS Core ontology (relational semantic presentation)](SKOS.md) — `relatedConcept`
 
 ## Mathematical formulation
 

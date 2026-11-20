@@ -44,6 +44,7 @@ A relation from A to B is a set of ordered pairs with first component in A and s
 - [Preorder](Preorder.md) — `specializationOf`
 - [Abstract rewrite system](RewriteSystem.md) — `requiresConcept`
 - [Abstract rewrite system](RewriteSystem.md) — `specializationOf`
+- [SKOS Core ontology (relational semantic presentation)](SKOS.md) — `requiresConcept`
 - [Sequential Consistency](SequentialConsistency.md) — `requiresConcept`
 - [Set](Set.md) — `relatedConcept`
 - [Simulation](Simulation.md) — `specializationOf`

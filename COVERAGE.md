@@ -214,6 +214,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | RoseTree | 4 | 4 | 1 | 1 | extensional-structural-definition |
 | RuntimeInstrumentation | 2 | 2 | 1 | 0 | relational-structural-definition |
 | SIS | 2 | 2 | 0 | 2 | defined-structure |
+| SKOS | 5 | 10 | 4 | 0 | defined-structure |
 | SSAForm | 2 | 2 | 1 | 0 | relational-structural-definition |
 | SVD | 2 | 2 | 1 | 1 | defined-structure |
 | SVP | 2 | 2 | 0 | 2 | defined-structure |
@@ -269,6 +270,6 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | WeightedDirectedGraph | 3 | 2 | 1 | 1 | extensional-structural-definition |
 | WellFoundedRelation | 1 | 1 | 1 | 1 | defined-structure |
 
-264 of 264 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
+265 of 265 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
 
 Use `ruleRole` to distinguish foundational axioms, structure constraints, and defining equations. Use `basisScope` for interface boundaries. Alternate language policies, intensional equality, IEEE payload/trap details, and formal proof artifacts require further formalization.

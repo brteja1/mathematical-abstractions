@@ -188,6 +188,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Propositional Logic](concepts/PropositionalLogic.md)
   - [Classical propositional natural deduction](concepts/PropositionalNaturalDeduction.md)
   - [Abstract rewrite system](concepts/RewriteSystem.md)
+  - [SKOS Core ontology (relational semantic presentation)](concepts/SKOS.md)
   - **Fuzzy logic**
     - [Fuzzy set (unit-interval membership, min/max profile)](concepts/FuzzySet.md)
     - [Residuated fuzzy truth-value algebra (left-continuous t-norm profile)](concepts/ResiduatedFuzzyLogic.md)
@@ -338,6 +339,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Finite RDF 1.1 dataset](concepts/RDFDataset.md)
   - [Finite RDF 1.1 graph](concepts/RDFGraph.md)
   - [Named relational schema with attribute domains](concepts/RelationalSchema.md)
+  - [SKOS Core ontology (relational semantic presentation)](concepts/SKOS.md)
 - **Set theory and foundations**
   - [Cartesian product](concepts/CartesianProduct.md)
   - [Equivalence relation](concepts/EquivalenceRelation.md)
@@ -588,6 +590,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Finite ordered rose tree](concepts/RoseTree.md) | Data structures → Tree structures |
 | [Instrumented trace projection and runtime contract](concepts/RuntimeInstrumentation.md) | Programming-language semantics → Compiler transformations |
 | [Short integer solution problem (Euclidean norm profile)](concepts/SIS.md) | Cryptography → Public-key cryptography → Lattice-based cryptography |
+| [SKOS Core ontology (relational semantic presentation)](concepts/SKOS.md) | Relational data modelling, Logic and proof |
 | [Typed static single assignment with scoped uses](concepts/SSAForm.md) | Programming-language semantics → Compiler transformations |
 | [Full singular value decomposition (rectangular real or complex SVD)](concepts/SVD.md) | Algebra → Linear and multilinear algebra → Matrix decompositions |
 | [Shortest vector problem (Euclidean search relation)](concepts/SVP.md) | Cryptography → Public-key cryptography → Lattice-based cryptography |

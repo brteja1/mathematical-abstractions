@@ -2235,6 +2235,30 @@
       "path": "lean/Catalog/ProgramStructures.lean",
       "accessedOn": "2026-11-17",
       "sourceRole": "local-formalization"
+    },
+    {
+      "id": "urn:csabs:source/w3c-skos-reference",
+      "type": "Source",
+      "label": "W3C SKOS Simple Knowledge Organization System Reference (18 August 2009)",
+      "url": "https://www.w3.org/TR/2009/REC-skos-reference-20090818/",
+      "accessedOn": "2026-11-19",
+      "sourceRole": "consulted-normative-definition-and-integrity-reference"
+    },
+    {
+      "id": "urn:csabs:source/w3c-skos-errata",
+      "type": "Source",
+      "label": "W3C SKOS Reference Errata",
+      "url": "https://www.w3.org/2006/07/SWD/SKOS/reference/20090811-errata",
+      "accessedOn": "2026-11-19",
+      "sourceRole": "consulted-normative-clarification"
+    },
+    {
+      "id": "urn:csabs:source/local-lean-skos",
+      "type": "Source",
+      "label": "Local partial Lean SKOS semantic-relation interface",
+      "path": "lean/Catalog/SKOS.lean",
+      "accessedOn": "2026-11-19",
+      "sourceRole": "local-formulation-source-not-independent-mathematical-provenance"
     }
   ]
 }

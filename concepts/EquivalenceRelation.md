@@ -19,6 +19,7 @@ A homogeneous relation that is reflexive, symmetric, and transitive.
 - [Union Find (disjoint-set union with representatives)](DisjointSet.md) — `requiresConcept`
 - [Quotient by an equivalence relation](QuotientType.md) — `requiresConcept`
 - [Binary relation](Relation.md) — `relatedConcept`
+- [SKOS Core ontology (relational semantic presentation)](SKOS.md) — `relatedConcept`
 - [Strong finite partial-trace equivalence](TraceEquivalence.md) — `requiresConcept`
 - [Strong finite partial-trace equivalence](TraceEquivalence.md) — `specializationOf`
 

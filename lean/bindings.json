@@ -3771,6 +3771,15 @@
       "mapping": "Finite V, Option-valued parent and explicit absence of positive child-to-parent cycles. Equality is vertex equality.",
       "limitations": "No root-following implementation, unique-root proof or update algorithm; no dangling references by typing. No witnesses registered.",
       "catalogHash": "49e2a6b93585f6241a5d86f592fc965face7c4c7ea83b377602baaf97cc10265"
+    },
+    "urn:csabs:concept/SKOS": {
+      "kind": "model",
+      "symbol": "Catalog.SKOS",
+      "module": "Catalog.SKOS",
+      "scope": "partial",
+      "mapping": "D is a nonempty domain of interpreted resources with identity equality. concept and the five binary relations interpret the corresponding SKOS extensions. The fields encode selected typing, inverse, inclusion, symmetry, transitivity and disjointness conditions from S19–S27 and S44–S45.",
+      "limitations": "Partial semantic-relation interface only. No labels, schemes, collections, full mapping hierarchy, RDF parser/interpretation, OWL Full metamodel, or general entailment solver. Structure law fields constrain inputs; no model-satisfaction theorem or catalog claim proof witness is registered.",
+      "catalogHash": "b95c940cc4a4d6eb196d4a9ada86ea2a6a27c584aafbb8919d33d619682651cf"
     }
   }
 }

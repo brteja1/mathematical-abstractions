@@ -17,6 +17,7 @@ A finite set of RDF triples with disjoint IRI, blank-node and literal sorts and 
 ## Backlinks
 
 - [Finite RDF 1.1 dataset](RDFDataset.md) — `requiresConcept`
+- [SKOS Core ontology (relational semantic presentation)](SKOS.md) — `requiresConcept`
 
 ## Mathematical formulation
 

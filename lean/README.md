@@ -50,6 +50,7 @@ Concept records expose `mathematicalFormulation` (readable mathematics), `leanFo
 | `Catalog/GenericProgramming.lean` | Shared generic signatures/binding/instantiation, Java parameterization/capture/erasure/inference and VHDL association/elaboration interfaces; see [scope](../docs/GENERIC_PROGRAMMING.md) |
 | `Catalog/GraphData.lean` | Rooted trees, edge-identity multigraphs, real weights, hypergraphs and chosen bipartitions |
 | `Catalog/InformationData.lean` | Bag relations, JSON value profile, typed ER instances, property graphs and RDF graphs/datasets |
+| `Catalog/SKOS.lean` | Partial SKOS semantic-relation interface; labels, schemes, collections and full OWL semantics omitted; see [scope](../docs/SKOS.md) |
 | `Catalog/BinaryTree.lean` | Finite ordered node-labelled trees, empty/node/view/fold, counts, traversal, mirror and label mapping; witnesses for all recorded binary-tree laws/theorems |
 | `Catalog/Numeric.lean` | Naturals, integers, bit vectors, bounded arithmetic and floating-point interfaces |
 | `Catalog/Graphs.lean` | Graphs, trees, transition systems, simulation, bisimulation and traces |
