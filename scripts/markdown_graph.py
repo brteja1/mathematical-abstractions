@@ -12,8 +12,9 @@ RELATIONS = {'requiresConcept': 'Prerequisites', 'specializationOf': 'Specialize
 SECTIONS = {'hasOperation': 'Operations', 'hasAxiom': 'Axioms and defining rules', 'hasLaw': 'Laws', 'hasTheorem': 'Theorems'}
 
 
-def read_records(path):
-    matches = BLOCK.findall(path.read_text())
+def read_records(path, *, text=None):
+    """Parse the page, optionally from bytes already captured by a read-only caller."""
+    matches = BLOCK.findall(path.read_text() if text is None else text)
     if len(matches) != 1:
         raise ValueError(f'{path}: expected exactly one graph-record JSON block')
     nodes = json.loads(matches[0])
@@ -31,13 +32,17 @@ def read_records(path):
     return nodes
 
 
-def load_graph(root=ROOT):
-    shared = json.loads((root / 'data/shared.json').read_text())
+def load_graph(root=ROOT, *, captured=None):
+    """Load disk files or an exact mapping of captured Path -> decoded page text."""
+    shared_path = root / 'data/shared.json'
+    shared = json.loads(shared_path.read_text() if captured is None else captured[shared_path])
     if any(n.get('type') in {'Concept', 'Operation', 'Axiom', 'Law', 'Theorem'} for n in shared['@graph']):
         raise ValueError('Concepts and their interfaces must be stored in concepts/*.md')
     nodes = list(shared['@graph'])
-    for path in sorted((root / 'concepts').glob('*.md')):
-        nodes.extend(read_records(path))
+    paths = ((root / 'concepts').glob('*.md') if captured is None else
+             (p for p in captured if p.parent == root / 'concepts' and p.suffix == '.md'))
+    for path in sorted(paths):
+        nodes.extend(read_records(path, text=None if captured is None else captured[path]))
     return {'@context': shared['@context'], '@graph': sorted(nodes, key=lambda n: n['id'])}
 
 

@@ -1,0 +1,57 @@
+{
+  "identity": {
+    "packetKey": "1c9d1a82517bbb691a3b6b874da4333758b854801ae907e0c927927a06963dfc",
+    "reviewer": {
+      "commandHash": null,
+      "id": "current-assistant",
+      "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+      "kind": "assistant-session",
+      "profile": "DT-1",
+      "stage": "primary",
+      "version": "session-model-version-not-exposed"
+    }
+  },
+  "payload": {
+    "origin": "imported-assistant-session",
+    "packetKey": "1c9d1a82517bbb691a3b6b874da4333758b854801ae907e0c927927a06963dfc",
+    "result": {
+      "decision": "distinct",
+      "differences": [
+        "Different observers and result carriers.",
+        "Both projection cases are part of the selected product interface."
+      ],
+      "evidence": [
+        {
+          "field": "formalStatement",
+          "quote": "fst(pair(a,b))=a",
+          "recordId": "urn:csabs:axiom/product-beta-first"
+        },
+        {
+          "field": "formalStatement",
+          "quote": "snd(pair(a,b))=b",
+          "recordId": "urn:csabs:axiom/product-beta-second"
+        }
+      ],
+      "mapping": {
+        "assumptions": "Total correctly typed set-like constructors and projections. Swapping component names would also change the API correspondence.",
+        "carriers": "One product A×B, with possibly different component carriers A and B.",
+        "equality": "Typed extensional equality in the respective result carriers.",
+        "operations": "fst(pair(a,b)) returns a; snd(pair(a,b)) returns b."
+      },
+      "missingContext": [],
+      "rationale": "These are the two projection beta rules. The first returns the A component and the second the B component; deleting either would lose an explicit constructor/observer obligation."
+    },
+    "resultHash": "22ff24be1cc045d51ee5e8db02987dd0d37ba3696820220a8e952ad6cd4800fc",
+    "reviewedAt": "2026-11-20T01:27:09.817706+00:00",
+    "reviewer": {
+      "commandHash": null,
+      "id": "current-assistant",
+      "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+      "kind": "assistant-session",
+      "profile": "DT-1",
+      "stage": "primary",
+      "version": "session-model-version-not-exposed"
+    }
+  },
+  "payloadHash": "72f010d461b5db82628baa35bf4417344b425abb6492553e8d2d74172d347369"
+}

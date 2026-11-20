@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "capturedOn": "2026-11-20",
+  "catalogRevision": "71b7fb32fd3d78161513ae44e8084702ed6408c8",
+  "catalogIncludesWorkingTreeChanges": true,
+  "catalogSnapshotHash": "c208bedba596c551b5b119a5077147c05adb98342cce751427e1ca04dd07ee92",
+  "catalogValidation": {
+    "command": "python3 scripts/catalog.py check",
+    "concepts": 265,
+    "nodes": 2507,
+    "errors": []
+  },
+  "retrievalBackend": "dependency-free authoritative Markdown CLI; no generated RDF projection",
+  "selectedRecords": {
+    "urn:csabs:concept/FiniteSet": {
+      "recordHash": "ec3e3e7b61c53f9b3d297aa7523b9ff65b45d7080b1126e8a4dacdbae6e1c737",
+      "source": [
+        "urn:csabs:source/mathlib-finset-defs",
+        "urn:csabs:source/mathlib-finset-insert"
+      ],
+      "provenanceStatus": "not-marked-legacy-missing",
+      "sourceLocator": "Finset definition; Finset.ext_iff; Finset.mem_insert"
+    },
+    "urn:csabs:axiom/FiniteSet-carrier-extensionality": {
+      "recordHash": "a6b03796348077a6f7e1c017a07fc288985a44bf27823417147515c6fc753b53",
+      "source": [
+        "urn:csabs:source/mathlib-finset-defs",
+        "urn:csabs:source/mathlib-finset-insert"
+      ],
+      "provenanceStatus": "not-marked-legacy-missing",
+      "sourceLocator": "Finset definition; Finset.ext_iff; Finset.mem_insert"
+    },
+    "urn:csabs:axiom/FiniteSet-constructors": {
+      "recordHash": "a65521bdaf56ffbbd5b55a8696cc2c6491a54b6aa95cd81a5986751cd08d3641",
+      "source": [
+        "urn:csabs:source/mathlib-finset-defs",
+        "urn:csabs:source/mathlib-finset-insert"
+      ],
+      "provenanceStatus": "not-marked-legacy-missing",
+      "sourceLocator": "Finset definition; Finset.ext_iff; Finset.mem_insert"
+    },
+    "urn:csabs:concept/Relation": {
+      "recordHash": "a97ae816f71a8f85fa1cae1947f042e69f8cb780263eb8670efa665686769022",
+      "source": [],
+      "provenanceStatus": "legacy-source-missing",
+      "sourceLocator": null
+    },
+    "urn:csabs:operation/relation-inverse": {
+      "recordHash": "997733a7774409e1eb991137225b091546df021af77a556132d9e862b320fa4d",
+      "source": [],
+      "provenanceStatus": "not-marked-legacy-missing",
+      "sourceLocator": null
+    },
+    "urn:csabs:concept/TotalOrder": {
+      "recordHash": "ad4f23f220323909c694a1233179df900f1db9c22f77f8ef392e55b60f74a8db",
+      "source": [
+        "urn:csabs:source/mathlib-order"
+      ],
+      "provenanceStatus": "not-marked-legacy-missing",
+      "sourceLocator": null
+    },
+    "urn:csabs:axiom/TotalOrder-comparable": {
+      "recordHash": "1c7565c73ded5386eec164f871e027518235adf13321b1542cc6ae1c02e3d703",
+      "source": [],
+      "provenanceStatus": "legacy-source-missing",
+      "sourceLocator": null
+    },
+    "urn:csabs:axiom/TotalOrder-antisymmetric": {
+      "recordHash": "f6f4c7e05507acb7c25ed9fba5039ee24f98c6034ea4f1490368887326291866",
+      "source": [],
+      "provenanceStatus": "legacy-source-missing",
+      "sourceLocator": null
+    }
+  },
+  "consultedFiles": {
+    "AGENTS.md": "22bc09fae1aefefa8c88b98d45fa9597f30d973434d8d4a9e2664a5511cdca39",
+    "scripts/markdown_graph.py": "cd9c81970aa37f8dae83b76feab2f361f41fdc9560e27f28cedebda12703d92b",
+    "scripts/validate_graph.py": "ac261b0a6308a44a45834f31900e90a9c1366d0c1152dd1ab915e795bff2e777",
+    "scripts/catalog.py": "26bfb36b0568a69c18f9be2d3ea66d78b13db87eed15af505bab94df99483010",
+    "scripts/agent_query.py": "bbfa0e1e18cbd6d3481f35caabefd1203d459a7df5001bc5ec3370ddffe36d7f",
+    "ai/skills/specification-consistency/SKILL.md": "410fffe711c02da6d55b55234a0d0f035f14fb1edc39a1e5ffd06d1ddde6f9db",
+    "ai/skills/specification-consistency/references/checking-and-reporting.md": "c18ce5fb5f5d182018955e67061d4a5d44e9110b8db3dfb82ab9015b6a06bb11",
+    "ai/skills/implementation-mapping/SKILL.md": "1442e1380ba1e43cb25cfa2d3c3cd072019d81a1ab581ba7eef7984169910db5",
+    "ai/skills/implementation-mapping/assets/implementation-map.md": "5736636ec8490044bf23e7d0354bcaef4c088330be2447b18f476351e9b565b9",
+    "concepts/FiniteSet.md": "922b72024316432021ebf18e02ddaa3277c8ea5f5ce7a7762500d1396a6c0b6f",
+    "concepts/Relation.md": "7bf9189b1b296b030d992f585d4c5d9a3b677a6372e4d0d39f1c63565eaba81c",
+    "concepts/TotalOrder.md": "752d41afa5ab9ce98bbadef52a051cd276c45ecf3d7a1e537688b51a241d0f6a",
+    "data/shared.json": "f2c4d40ed7c89a677e16d359036e8d96ec2d304e203c6876ecacb214558c531c"
+  },
+  "notes": [
+    "Hashes identify current working-tree inputs, not a clean commit.",
+    "Existing SKOS changes and unrelated workspace edits are preserved.",
+    "Local catalog records were consulted; mathematical sources were not re-consulted for this product specification.",
+    "No source gap is repaired or compiled proof relied upon."
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "identity": {
+    "fingerprint": "b2ddc42900a9383e0f0c17156e8a38a61ba70cca966c936b6024a00df1fe784a",
+    "id": "urn:csabs:axiom/Binary128-rounded-operations",
+    "profile": "DT-1",
+    "toolHash": "988c7d6e9a146c158d3c7be0da24e35d8b8c2715869555ed01aaa1e1843a36d9"
+  },
+  "payload": {
+    "fingerprint": "b2ddc42900a9383e0f0c17156e8a38a61ba70cca966c936b6024a00df1fe784a",
+    "id": "urn:csabs:axiom/Binary128-rounded-operations",
+    "interpretation": "Source extracts; missing fields are unknown, links do not inherit laws.",
+    "location": {
+      "anchor": "node-urn-csabs-axiom-Binary128-rounded-operations",
+      "id": "urn:csabs:axiom/Binary128-rounded-operations",
+      "path": "concepts/Binary128.md"
+    },
+    "missingFields": [
+      "basisScope",
+      "mathematicalFormulation"
+    ],
+    "records": {
+      "urn:csabs:axiom/Binary128-rounded-operations": {
+        "appliesTo": [
+          "urn:csabs:concept/Binary128"
+        ],
+        "assumptions": [
+          "All variables range over the carriers and semantic conventions specified in this concept."
+        ],
+        "formalStatement": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules",
+        "id": "urn:csabs:axiom/Binary128-rounded-operations",
+        "name": "rounded-operations",
+        "provenanceStatus": "legacy-source-missing",
+        "reviewStatus": "editorial-summary; not machine-proved",
+        "ruleRole": "defining-rule",
+        "statement": "Basic operations instantiate the general IEEE environment at this format.",
+        "type": "Axiom"
+      },
+      "urn:csabs:concept/Binary128": {
+        "axiomBasis": "IEEE binary interchange instance: bits=128, radix=2, precision=113, normal exponent range [-16382,16383], gradual underflow, signed zeros, infinities and NaNs. Rounding and flags are explicit environment parameters.",
+        "basisKind": "parameter-instance",
+        "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
+        "definition": "A 128-bit IEEE binary interchange format with 113 binary significand digits for normal numbers, signed zeros, subnormals, infinities, and NaNs. Rounding mode and arithmetic environment must be supplied separately.",
+        "fullName": "IEEE 754 binary128",
+        "hasAxiom": [
+          "urn:csabs:axiom/Binary128-normal-grid",
+          "urn:csabs:axiom/Binary128-subnormal-grid",
+          "urn:csabs:axiom/Binary128-special-values",
+          "urn:csabs:axiom/Binary128-rounded-operations"
+        ],
+        "hasOperation": [
+          "urn:csabs:operation/Binary128-add",
+          "urn:csabs:operation/Binary128-subtract",
+          "urn:csabs:operation/Binary128-multiply",
+          "urn:csabs:operation/Binary128-divide"
+        ],
+        "id": "urn:csabs:concept/Binary128",
+        "mathematicalFormulation": "The partial format instance has (width,radix,precision,e_min,e_max)=(128,2,113,−16382,16383), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−112}, 0<m<2^{113}, −16382≤e≤16383, and m≥2^{112} unless e=−16382. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim.",
+        "notation": "β=2; p=113; e_min=-16382; e_max=16383; normal x=(−1)^s(1+k·2^(1−p))·2^e, 0≤k<2^(p−1), e_min≤e≤e_max.",
+        "requiresConcept": [
+          "urn:csabs:concept/FloatingPointType"
+        ],
+        "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
+        "shortForm": "Binary128",
+        "source": [
+          "urn:csabs:source/ieee754"
+        ],
+        "specializationNote": "Instantiate FloatingPointType at this entry’s radix, precision and exponent range as specified by basisInstantiation; rounding and exception environment remain explicit parameters.",
+        "specializationOf": [
+          "urn:csabs:concept/FloatingPointType"
+        ],
+        "type": "Concept",
+        "verificationObligation": [
+          "Instantiate operations from FloatingPointType at this format; specify rounding, subnormal handling, and exceptions.",
+          "Use the stated carriers, equality, domain restrictions and semantic conventions; alternative conventions require an explicit variant."
+        ]
+      },
+      "urn:csabs:source/ieee754": {
+        "id": "urn:csabs:source/ieee754",
+        "label": "IEEE 754-2019",
+        "sourceRole": "normative-standard",
+        "type": "Source",
+        "url": "https://standards.ieee.org/ieee/754/6210/"
+      }
+    },
+    "unexpandedContext": [
+      "urn:csabs:axiom/Binary128-normal-grid",
+      "urn:csabs:axiom/Binary128-special-values",
+      "urn:csabs:axiom/Binary128-subnormal-grid",
+      "urn:csabs:concept/FloatingPointType",
+      "urn:csabs:operation/Binary128-add",
+      "urn:csabs:operation/Binary128-divide",
+      "urn:csabs:operation/Binary128-multiply",
+      "urn:csabs:operation/Binary128-subtract"
+    ]
+  },
+  "payloadHash": "9224e7615df975d02221e8bc602cbc77b1b3a91d0aa4f5add6dbd71ab251b6ec"
+}

@@ -1,0 +1,67 @@
+{
+  "identity": {
+    "packetKey": "0019fd96957b51ed1d5d2b1a5ea88f1a1eb1606d8394799b2f5c4402674d3557",
+    "reviewer": {
+      "commandHash": null,
+      "id": "current-assistant",
+      "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+      "kind": "assistant-session",
+      "profile": "DT-1",
+      "stage": "primary",
+      "version": "session-model-version-not-exposed"
+    }
+  },
+  "payload": {
+    "origin": "imported-assistant-session",
+    "packetKey": "0019fd96957b51ed1d5d2b1a5ea88f1a1eb1606d8394799b2f5c4402674d3557",
+    "result": {
+      "decision": "semantic_variant",
+      "differences": [
+        "Different representation carriers and finite-value universes.",
+        "A reusable policy schema is a possible refactoring, not an interchangeable concrete-record proof."
+      ],
+      "evidence": [
+        {
+          "field": "formalStatement",
+          "quote": "+0=−0 numerically, but sign bits differ; ±∞ ordered beyond finite values; NaN is unordered and NaN=NaN is false under IEEE numeric equality",
+          "recordId": "urn:csabs:axiom/Binary128-special-values"
+        },
+        {
+          "field": "formalStatement",
+          "quote": "+0=−0 numerically, but sign bits differ; ±∞ ordered beyond finite values; NaN is unordered and NaN=NaN is false under IEEE numeric equality",
+          "recordId": "urn:csabs:axiom/Binary32-special-values"
+        },
+        {
+          "field": "mathematicalFormulation",
+          "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(128,2,113,−16382,16383), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−112}, 0<m<2^{113}, −16382≤e≤16383, and m≥2^{112} unless e=−16382. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim.",
+          "recordId": "urn:csabs:concept/Binary128"
+        },
+        {
+          "field": "mathematicalFormulation",
+          "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(32,2,24,−126,127), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−23}, 0<m<2^{24}, −126≤e≤127, and m≥2^{23} unless e=−126. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim.",
+          "recordId": "urn:csabs:concept/Binary32"
+        }
+      ],
+      "mapping": {
+        "assumptions": "Each statement inherits only its explicitly stated format scope; no cross-format representation equivalence or compiled special-value witness is asserted.",
+        "carriers": "Different binary128 and binary32 representations and finite-value grids, including their special-value encodings.",
+        "equality": "Both describe IEEE numeric comparison, where NaN is not equal to itself and signed zeros compare equal; bit identity is a separate observation.",
+        "operations": "Numeric equality/order and special-value classification are applied within each format."
+      },
+      "missingContext": [],
+      "rationale": "The special-value policy is common, but these records apply it to binary128 and binary32 carriers. Keep the carrier-specific applications; review any future extraction of a shared format-parameterized policy separately."
+    },
+    "resultHash": "0d43c762bad4e66d3ffaab6e0565cf3d2b50163a9c8eaf4534fb13bbe9d0bd01",
+    "reviewedAt": "2026-11-20T01:27:09.900661+00:00",
+    "reviewer": {
+      "commandHash": null,
+      "id": "current-assistant",
+      "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+      "kind": "assistant-session",
+      "profile": "DT-1",
+      "stage": "primary",
+      "version": "session-model-version-not-exposed"
+    }
+  },
+  "payloadHash": "0000c0c3e611b1b1fc1911c273b491a0eed41db8d4715d540bc0ba9c2cf42d25"
+}

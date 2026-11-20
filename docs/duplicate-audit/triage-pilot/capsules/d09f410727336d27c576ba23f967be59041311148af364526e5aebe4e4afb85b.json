@@ -1,0 +1,114 @@
+{
+  "identity": {
+    "fingerprint": "bbd8459c1d288a9a424d7dca8c15b6edf30d51ba1a6a686ba76d4d9b089faeb4",
+    "id": "urn:csabs:axiom/EffectAlgebra-distributivity",
+    "profile": "DT-1",
+    "toolHash": "fae4231928001aa6044537d751dac56771cca9933b2a02fa5fec2d31633a1e88"
+  },
+  "payload": {
+    "fingerprint": "bbd8459c1d288a9a424d7dca8c15b6edf30d51ba1a6a686ba76d4d9b089faeb4",
+    "id": "urn:csabs:axiom/EffectAlgebra-distributivity",
+    "interpretation": "Source extracts; missing fields are unknown, links do not inherit laws.",
+    "location": {
+      "anchor": "node-urn-csabs-axiom-EffectAlgebra-distributivity",
+      "id": "urn:csabs:axiom/EffectAlgebra-distributivity",
+      "path": "concepts/EffectAlgebra.md"
+    },
+    "missingFields": [
+      "basisScope",
+      "mathematicalFormulation"
+    ],
+    "records": {
+      "urn:csabs:axiom/EffectAlgebra-distributivity": {
+        "appliesTo": [
+          "urn:csabs:concept/EffectAlgebra"
+        ],
+        "assumptions": [
+          "This is an algebra of program side effects, not the quantum-logical partial-sum effect algebra. Selected total effect-quantale profile: join and sequencing total, equality carrier equality, sequencing generally noncommutative. ε is sequential no-effect, not necessarily least; no bottom, top, iteration, parallel composition or cancellation is required. Partial protocol-effect algebras need a distinct definedness-aware variant. To model reads, writes, allocation, freeing, I/O or exceptions, supply atomic effects and a sound interpretation; algebraic laws alone do not justify reordering, speculation or concurrency."
+        ],
+        "description": "Defining rule for Program side-effect algebra (total sequential effect-quantale profile)",
+        "formalStatement": "a▷(b⊔c)=(a▷b)⊔(a▷c); (a⊔b)▷c=(a▷c)⊔(b▷c).",
+        "id": "urn:csabs:axiom/EffectAlgebra-distributivity",
+        "name": "distributivity",
+        "provenanceKind": "adapted",
+        "reviewStatus": "Editorial statement; no registered Lean proof witness.",
+        "ruleRole": "defining-rule",
+        "source": [
+          "urn:csabs:source/wilshaw-hutton-explicit-naming"
+        ],
+        "sourceLocator": "§3.3 name-effect sequencing; §3.4 Definition 3.8, p.12; adapted by restricting both operations to be total.",
+        "sourceNote": "Adapted to the explicitly stated catalog profile, carriers, equality and definedness; additional restrictions are identified in basisScope.",
+        "statement": "a▷(b⊔c)=(a▷b)⊔(a▷c); (a⊔b)▷c=(a▷c)⊔(b▷c).",
+        "type": "Axiom"
+      },
+      "urn:csabs:concept/EffectAlgebra": {
+        "axiomBasis": "Join associativity/commutativity/idempotence; sequential monoid; left and right distribution. No additive zero or annihilation assumption.",
+        "basisKind": "extensional-structural-definition",
+        "basisScope": "This is an algebra of program side effects, not the quantum-logical partial-sum effect algebra. Selected total effect-quantale profile: join and sequencing total, equality carrier equality, sequencing generally noncommutative. ε is sequential no-effect, not necessarily least; no bottom, top, iteration, parallel composition or cancellation is required. Partial protocol-effect algebras need a distinct definedness-aware variant. To model reads, writes, allocation, freeing, I/O or exceptions, supply atomic effects and a sound interpretation; algebraic laws alone do not justify reordering, speculation or concurrency.",
+        "definition": "A join semilattice of abstract program effects equipped with associative sequential composition, a no-effect identity and distributivity over alternatives.",
+        "fullName": "Program side-effect algebra (total sequential effect-quantale profile)",
+        "hasAxiom": [
+          "urn:csabs:axiom/EffectAlgebra-join-structure",
+          "urn:csabs:axiom/EffectAlgebra-sequencing-monoid",
+          "urn:csabs:axiom/EffectAlgebra-distributivity"
+        ],
+        "hasOperation": [
+          "urn:csabs:operation/EffectAlgebra-sequence",
+          "urn:csabs:operation/EffectAlgebra-alternative",
+          "urn:csabs:operation/EffectAlgebra-identity",
+          "urn:csabs:operation/EffectAlgebra-subeffect"
+        ],
+        "id": "urn:csabs:concept/EffectAlgebra",
+        "mathematicalFormulation": "(E,⊑,⊔,▷,ε); a⊑b ⇔ a⊔b=b; a▷(b⊔c)=(a▷b)⊔(a▷c). This is an algebra of program side effects, not the quantum-logical partial-sum effect algebra. Selected total effect-quantale profile: join and sequencing total, equality carrier equality, sequencing generally noncommutative. ε is sequential no-effect, not necessarily least; no bottom, top, iteration, parallel composition or cancellation is required. Partial protocol-effect algebras need a distinct definedness-aware variant. To model reads, writes, allocation, freeing, I/O or exceptions, supply atomic effects and a sound interpretation; algebraic laws alone do not justify reordering, speculation or concurrency.",
+        "notation": "(E,⊑,⊔,▷,ε); a⊑b ⇔ a⊔b=b; a▷(b⊔c)=(a▷b)⊔(a▷c).",
+        "provenanceKind": "adapted",
+        "relatedConcept": [
+          "urn:csabs:concept/EffectSummary",
+          "urn:csabs:concept/MethodContract",
+          "urn:csabs:concept/CallEffectContract",
+          "urn:csabs:concept/HeapSeparation"
+        ],
+        "requiresConcept": [
+          "urn:csabs:concept/JoinSemilattice",
+          "urn:csabs:concept/Monoid"
+        ],
+        "reviewStatus": "Editorial mathematical interface review; Lean models and individual proof witnesses are separate.",
+        "shortForm": "EffectAlgebra",
+        "source": [
+          "urn:csabs:source/wilshaw-hutton-explicit-naming"
+        ],
+        "sourceLocator": "§3.3 name-effect sequencing; §3.4 Definition 3.8, p.12; adapted by restricting both operations to be total.",
+        "sourceNote": "Adapted to the explicitly stated catalog profile, carriers, equality and definedness; additional restrictions are identified in basisScope.",
+        "specializationNote": "For JoinSemilattice retain E,⊑,⊔. For Monoid retain E,▷,ε. Join is not the sequential operation; distributivity relates the two. ε makes the carrier nonempty.",
+        "specializationOf": [
+          "urn:csabs:concept/JoinSemilattice",
+          "urn:csabs:concept/Monoid"
+        ],
+        "type": "Concept",
+        "verificationObligation": [
+          "Instantiate carrier, equality, operation definedness and semantic assumptions before application.",
+          "Typed links do not transfer axioms; retrieve explicit premises."
+        ]
+      },
+      "urn:csabs:source/wilshaw-hutton-explicit-naming": {
+        "accessedOn": "2026-11-17",
+        "id": "urn:csabs:source/wilshaw-hutton-explicit-naming",
+        "label": "Sky Wilshaw and Graham Hutton: A Compositional Semantics for Explicit Naming (Functional Pearl)",
+        "sourceRole": "consulted-primary-research",
+        "type": "Source",
+        "url": "https://people.cs.nott.ac.uk/pszgmh/explicit-naming.pdf"
+      }
+    },
+    "unexpandedContext": [
+      "urn:csabs:axiom/EffectAlgebra-join-structure",
+      "urn:csabs:axiom/EffectAlgebra-sequencing-monoid",
+      "urn:csabs:concept/JoinSemilattice",
+      "urn:csabs:concept/Monoid",
+      "urn:csabs:operation/EffectAlgebra-alternative",
+      "urn:csabs:operation/EffectAlgebra-identity",
+      "urn:csabs:operation/EffectAlgebra-sequence",
+      "urn:csabs:operation/EffectAlgebra-subeffect"
+    ]
+  },
+  "payloadHash": "c56dbe720096ddfb5bbbadd158ac45ead05fd669f245034034c52940ec58c0a1"
+}

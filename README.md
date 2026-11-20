@@ -113,6 +113,10 @@ Agents can read the skill explicitly or register its directory using their host'
 
 The [runnable Boolean example](ai/skills/specification-consistency/references/boolean-example.md) uses only Python's standard library. It demonstrates a conflict missed by pairwise checks, an input with no permitted output, and verification of a proposed repair. The [checking and reporting guide](ai/skills/specification-consistency/references/checking-and-reporting.md) explains backend selection and evidence requirements.
 
+The [duplicate-candidate audit](docs/duplicate-audit/README.md) applies these workflows to catalog maintenance. Run `python3 scripts/audit_duplicates.py --limit 10` for a read-only review queue, or pass `--changed` with stable IDs for an incremental audit. Its [specification](docs/duplicate-audit/spec.md), mapping and tests distinguish heuristic similarity from mathematical equivalence.
+
+The [semantic triage experiment](docs/duplicate-audit/TRIAGE.md) adds cached source context, AI review proposals and a concise [pilot report](docs/duplicate-audit/triage-pilot/report.md). Machine classifications remain separate from human receipts and catalog edits; coverage and independent-calibration limits are explicit.
+
 Catalog and SHACL validation check structure; semantic consistency requires a justified model and a separate check. Findings distinguish demonstrated conflicts from ambiguities, conditional results and inconclusive searches. A bounded search or a single satisfying instance does not establish that every required input or behavior is supported.
 
 ## AI skills for implementation and review

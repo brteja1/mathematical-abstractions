@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "method": "finite reference encoding plus documented manual specification review",
+  "command": "python3 -B docs/duplicate-audit/check_model.py",
+  "environment": {
+    "python": "3.13.9",
+    "unicode": "15.1.0"
+  },
+  "inputs": {
+    "spec.md": "6ea5a6614e8dc126a45e39dcc5dae6b99a6bb346d1ae14a4099daf1f59215628",
+    "mapping.md": "0b9d77733d6bc72c0fdea4910c1ff58da50f56090ae877074aa57091cf210e4a",
+    "check_model.py": "6de37d00539ee26c1bf6aa7c821e355091d938855a5519cd2c5b3bd1b27c4f54",
+    "context.json": "28184558be58c1dc83ced0278e28810a3f6d47205258e755c7d0cc0baaed9a2f"
+  },
+  "checks": {
+    "pairsAndReports": {
+      "cases": 95304,
+      "nonemptyQueueWitness": true,
+      "zeroLimitTruncationWitness": true,
+      "maxSubjects": 3,
+      "families": 2,
+      "completeWithinDeclaredSetBounds": true
+    },
+    "receiptClassification": {
+      "cases": 28,
+      "stateWitnessCounts": {
+        "unreviewed": 10,
+        "stale": 5,
+        "confirmed_duplicate": 1,
+        "undecided": 1,
+        "reviewed_distinct": 3
+      },
+      "limitations": "No JSON parsing, cryptography, dependency traversal or filesystem modeled."
+    },
+    "exactArithmetic": {
+      "cases": 31152,
+      "alphabet": [
+        "a",
+        "b",
+        "×"
+      ],
+      "componentDomain": [
+        "0",
+        "J(A,B)",
+        "1"
+      ],
+      "manualWitness": {
+        "channels": [
+          "1/3",
+          "1/3",
+          "1/3",
+          "1/3",
+          "1/3"
+        ],
+        "expectedScore": 3333
+      },
+      "limitations": "No real-record tokenization or detector efficacy evaluated."
+    },
+    "rejectedAlternatives": {
+      "cases": 4,
+      "witnesses": [
+        {
+          "rejected": "both endpoints must be changed",
+          "pair": [
+            0,
+            1
+          ],
+          "affected": [
+            0
+          ],
+          "requiredIncluded": true,
+          "clause": "DA-07"
+        },
+        {
+          "rejected": "all reviewed pairs become quiet",
+          "decision": "same_meaning",
+          "requiredState": "confirmed_duplicate",
+          "clause": "DA-14"
+        },
+        {
+          "rejected": "old distinct decision suppresses changed records",
+          "current": false,
+          "requiredState": "stale",
+          "clause": "DA-14"
+        },
+        {
+          "rejected": "empty Jaccard channels score 1",
+          "allChannelsEmpty": true,
+          "requiredScore": 0,
+          "requiredDefaultQualification": false,
+          "clause": "DA-09–10"
+        }
+      ]
+    }
+  },
+  "witness": {
+    "subjects": [
+      "a",
+      "b"
+    ],
+    "family": "concept",
+    "pair": [
+      "a",
+      "b"
+    ],
+    "baseQualifies": false,
+    "currentDecision": "same_meaning",
+    "qualifiedCount": 1,
+    "queueSize": 1,
+    "limit": 0,
+    "returnedCount": 0,
+    "truncated": true
+  },
+  "notEstablished": [
+    "Universal consistency or input coverage over all finite catalogs.",
+    "Parser, schema, captured-byte loader, recursive closure and hash implementation conformance.",
+    "Unicode feature extraction, full report evidence and deterministic serialization conformance.",
+    "I/O errors, exclusive output creation, concurrent snapshots, no-write or no-network behavior.",
+    "Detector precision/recall, mathematical equivalence, source entailment or production CLI correctness.",
+    "Lean-compiled proofs or a complete filesystem/state-machine verification."
+  ]
+}

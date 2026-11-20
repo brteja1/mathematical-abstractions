@@ -1,0 +1,123 @@
+{
+  "checks": {
+    "focused": {
+      "command": "python3 -B -m unittest discover -s tests -p test_audit_duplicates.py -v",
+      "exitCode": 0,
+      "outputSha256": "15996c044e59f8e4ce11d32eecae40fc2eaf97b96296088f879bad271f991319",
+      "outputTail": [
+        "test_source_only_is_not_similarity_and_semantic_fields_remain_visible (test_audit_duplicates.DuplicateAuditTests.test_source_only_is_not_similarity_and_semantic_fields_remain_visible)",
+        "AC-08,17/O-09: sharing a citation cannot invent similarity; scope/proof roles survive. ... ok",
+        "",
+        "----------------------------------------------------------------------",
+        "Ran 26 tests in 0.820s",
+        "",
+        "OK"
+      ],
+      "skipped": 0,
+      "status": "passed",
+      "tests": 26
+    },
+    "fullRegression": {
+      "command": "make test",
+      "exitCode": 0,
+      "outputSha256": "3133cf03bc5261443ffb2bd113daa796785d183b652f45a7f964ed56212b6137",
+      "outputTail": [
+        "",
+        "----------------------------------------------------------------------",
+        "Ran 178 tests in 106.801s",
+        "",
+        "OK (skipped=8)",
+        "ONTFS dependency is ready",
+        "ONTFS dependency is ready"
+      ],
+      "skipped": 8,
+      "status": "passed",
+      "tests": 178
+    },
+    "referenceModel": {
+      "bounds": "At most three subjects, two families; separate exact-arithmetic and receipt domains.",
+      "cases": {
+        "exactArithmetic": 31152,
+        "pairsAndReports": 95304,
+        "receiptClassification": 28,
+        "rejectedAlternatives": 4
+      },
+      "command": "python3 -B docs/duplicate-audit/check_model.py",
+      "exitCode": 0,
+      "status": "passed"
+    }
+  },
+  "commandVersion": "0.1.0",
+  "environment": {
+    "python": "3.13.9"
+  },
+  "limitations": [
+    "DA-P1 detector precision and recall are unmeasured.",
+    "High scoring candidates can be distinct mathematical laws.",
+    "Tests and fingerprints do not prove mathematical equivalence or universal implementation conformance.",
+    "No transactional safety guarantee against adversarial filesystem races or exhaustive OS-failure coverage.",
+    "Existing mathematical provenance gaps are unchanged.",
+    "No Lean proof or dependency-pin change is part of this implementation."
+  ],
+  "profile": "DA-P1",
+  "recordedOn": "2026-11-20",
+  "review": {
+    "artifact": "conformance.md",
+    "conclusion": "No remaining contract violation identified within reviewed scope; not a universal proof.",
+    "method": "code inspection, reverse traceability and finite tests",
+    "obligations": [
+      "O-01",
+      "O-02",
+      "O-03",
+      "O-04",
+      "O-05",
+      "O-06",
+      "O-07",
+      "O-08",
+      "O-09",
+      "O-10",
+      "O-11",
+      "O-12"
+    ]
+  },
+  "sampleRun": {
+    "catalogDigest": "f2f95d4d786b853c187bc6676f540293511ced3326906f253c4329133f1f5038",
+    "command": "python3 -B scripts/audit_duplicates.py --limit 10",
+    "counts": {
+      "hiddenReviewedCount": 0,
+      "qualifiedCount": 5538,
+      "queueSize": 5538,
+      "returnedCount": 10,
+      "stateCounts": {
+        "confirmed_duplicate": 0,
+        "reviewed_distinct": 0,
+        "stale": 0,
+        "undecided": 0,
+        "unreviewed": 5538
+      }
+    },
+    "exitCode": 0,
+    "inspectedPairCount": 828150,
+    "report": "sample-report.json",
+    "reportSha256": "da83d0039c7250223dd979d9bb6fc2ad08d3368a446c7ed1ca88ee6423408588",
+    "sourceAndToolHashesVerifiedBeforeRetention": true,
+    "truncated": true
+  },
+  "schemaVersion": 1,
+  "sourceHashes": {
+    "ai/skills/implementation-conformance/SKILL.md": "1822a5e0177ff2c15b6e165eca8008565fc8dc72f1023af7c745a424f0de29ae",
+    "ai/skills/implementation-mapping/SKILL.md": "1442e1380ba1e43cb25cfa2d3c3cd072019d81a1ab581ba7eef7984169910db5",
+    "ai/skills/mathematical-tests/SKILL.md": "9ee09afa7bb34b8e24859f09e807f75fa399e6c2af5fc9e27545541d1e14e58d",
+    "docs/duplicate-audit/README.md": "2854e3b19eb83bee3e49ec413c691136b8f783d71694975f972de35f6959047d",
+    "docs/duplicate-audit/conformance.md": "b83a215a59e2d85f254310192975368b76299e11f0ed391cc5ff9ad7ba10fa72",
+    "docs/duplicate-audit/context.json": "28184558be58c1dc83ced0278e28810a3f6d47205258e755c7d0cc0baaed9a2f",
+    "docs/duplicate-audit/evidence.json": "44463876f6e58604ca8501d73b737689ca0734ef595ac119bc06d8d7344183f9",
+    "docs/duplicate-audit/mapping.md": "0b9d77733d6bc72c0fdea4910c1ff58da50f56090ae877074aa57091cf210e4a",
+    "docs/duplicate-audit/spec.md": "6ea5a6614e8dc126a45e39dcc5dae6b99a6bb346d1ae14a4099daf1f59215628",
+    "scripts/audit_duplicates.py": "473867e691e75fdc2f2c4148394fdd52a16f654cc4734afed7bfef16e443f6b2",
+    "scripts/markdown_graph.py": "02028560b66ba4f338bb26a08b82bf030fa6f459380978d23716858ddc00c9c6",
+    "scripts/subjects.py": "23af0e2f7f514d7114fb39c36029b12344fc5b837e08ac8e4cf40a34cde26064",
+    "scripts/validate_graph.py": "53fdc91ae92af1411cf97a1223a46435aac6c8f57ecbfc34417c7fe3d2231df9",
+    "tests/test_audit_duplicates.py": "9034eb2de7d4406332835d8ad93ef369ab89bc30646eb301c458c22d042dacd0"
+  }
+}

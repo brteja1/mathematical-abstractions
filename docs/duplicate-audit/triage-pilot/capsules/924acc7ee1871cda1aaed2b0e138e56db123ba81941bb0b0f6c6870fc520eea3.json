@@ -1,0 +1,131 @@
+{
+  "identity": {
+    "fingerprint": "daa10b5fc5c73581c3c0e50be36fa821fd71d19d39f5c492fc7c9223cc0d4e5a",
+    "id": "urn:csabs:axiom/case-inl",
+    "profile": "DT-1",
+    "toolHash": "cbc0c3ae4bf5d9ba0f4c24a3762c2de5106b7090b9ab191e7e3b6786a95cfa1f"
+  },
+  "payload": {
+    "fingerprint": "daa10b5fc5c73581c3c0e50be36fa821fd71d19d39f5c492fc7c9223cc0d4e5a",
+    "id": "urn:csabs:axiom/case-inl",
+    "interpretation": "Source extracts; missing fields are unknown, links do not inherit laws.",
+    "location": {
+      "anchor": "node-urn-csabs-axiom-case-inl",
+      "id": "urn:csabs:axiom/case-inl",
+      "path": "concepts/SumType.md"
+    },
+    "missingFields": [
+      "basisScope",
+      "mathematicalFormulation"
+    ],
+    "records": {
+      "urn:csabs:axiom/case-inl": {
+        "appliesTo": [
+          "urn:csabs:concept/SumType"
+        ],
+        "assumptions": [
+          "Extensional total set-like types; all displayed functions total and correctly typed."
+        ],
+        "dependsOn": [
+          "urn:csabs:operation/sum-case"
+        ],
+        "formalStatement": "∀f:A→C,g:B→C,a:A: case(f,g,inl(a))=f(a)",
+        "id": "urn:csabs:axiom/case-inl",
+        "name": "case-inl",
+        "reviewStatus": "editorial-summary; not machine-proved",
+        "ruleRole": "structure-law",
+        "source": [
+          "urn:csabs:source/awodey-types"
+        ],
+        "statement": "Case analysis on a left injection evaluates the left branch.",
+        "type": "Axiom"
+      },
+      "urn:csabs:concept/SumType": {
+        "axiomBasis": "Extensional total set-like types: constructor/eliminator beta and eta equations; operation-definition equations where specified. Equality of functions is pointwise; no divergence, effects, or bottom values.",
+        "basisKind": "extensional-type-theory",
+        "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
+        "definition": "The tagged disjoint union of A and B: each value is exactly a left-tagged A value or a right-tagged B value, eliminated by exhaustive case analysis.",
+        "fullName": "Sum Type",
+        "hasAxiom": [
+          "urn:csabs:axiom/case-inl",
+          "urn:csabs:axiom/case-inr",
+          "urn:csabs:axiom/sum-eta",
+          "urn:csabs:axiom/map-sum-definition",
+          "urn:csabs:axiom/sum-swap-definition",
+          "urn:csabs:axiom/sum-associate-definition"
+        ],
+        "hasOperation": [
+          "urn:csabs:operation/SumType-injectLeft",
+          "urn:csabs:operation/SumType-injectRight",
+          "urn:csabs:operation/sum-case",
+          "urn:csabs:operation/sum-map",
+          "urn:csabs:operation/sum-swap",
+          "urn:csabs:operation/sum-associate"
+        ],
+        "id": "urn:csabs:concept/SumType",
+        "mathematicalFormulation": "A+B has disjoint constructors inl:A→A+B and inr:B→A+B. Each constructor is injective, inl(a)≠inr(b), and case(f,g)(inl(a))=f(a), case(f,g)(inr(b))=g(b).",
+        "notation": "A+B = ({L}×A) ∪ ({R}×B), L≠R; inl(a)=(L,a), inr(b)=(R,b).",
+        "requiresConcept": [
+          "urn:csabs:concept/Set",
+          "urn:csabs:concept/FunctionType",
+          "urn:csabs:concept/EmptyType",
+          "urn:csabs:concept/UnitType"
+        ],
+        "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
+        "shortForm": "SumType",
+        "source": [
+          "urn:csabs:source/awodey-types",
+          "urn:csabs:source/lean-sum"
+        ],
+        "type": "Concept",
+        "verificationObligation": [
+          "Instantiate type parameters and operation domains.",
+          "Function equality here is extensional; translating to intensional type theory may require function extensionality.",
+          "Account separately for nontermination, exceptions, mutation, or untagged representation in concrete software.",
+          "Use the stated carriers, equality, domain restrictions and semantic conventions; alternative conventions require an explicit variant."
+        ]
+      },
+      "urn:csabs:operation/sum-case": {
+        "description": "Eliminates a sum by applying the branch corresponding to its constructor. Write [f,g](s)=case(f,g,s).",
+        "id": "urn:csabs:operation/sum-case",
+        "name": "case",
+        "signature": "case : (A→C)×(B→C)×(A+B)→C",
+        "source": [
+          "urn:csabs:source/awodey-types"
+        ],
+        "type": "Operation"
+      },
+      "urn:csabs:source/awodey-types": {
+        "id": "urn:csabs:source/awodey-types",
+        "label": "Steve Awodey: Notes on Type Theory",
+        "sourceRole": "reference",
+        "type": "Source",
+        "url": "https://awodey.github.io/typetheory/notes/typetheory.pdf"
+      },
+      "urn:csabs:source/lean-sum": {
+        "id": "urn:csabs:source/lean-sum",
+        "label": "Lean reference: sum types",
+        "sourceRole": "reference",
+        "type": "Source",
+        "url": "https://lean-lang.org/doc/reference/latest/Basic-Types/Sum-Types/"
+      }
+    },
+    "unexpandedContext": [
+      "urn:csabs:axiom/case-inr",
+      "urn:csabs:axiom/map-sum-definition",
+      "urn:csabs:axiom/sum-associate-definition",
+      "urn:csabs:axiom/sum-eta",
+      "urn:csabs:axiom/sum-swap-definition",
+      "urn:csabs:concept/EmptyType",
+      "urn:csabs:concept/FunctionType",
+      "urn:csabs:concept/Set",
+      "urn:csabs:concept/UnitType",
+      "urn:csabs:operation/SumType-injectLeft",
+      "urn:csabs:operation/SumType-injectRight",
+      "urn:csabs:operation/sum-associate",
+      "urn:csabs:operation/sum-map",
+      "urn:csabs:operation/sum-swap"
+    ]
+  },
+  "payloadHash": "aca77a24618cdad745bb6d343ac66e4d1d18d62fe8b49f154daa8ef9a88fca4a"
+}

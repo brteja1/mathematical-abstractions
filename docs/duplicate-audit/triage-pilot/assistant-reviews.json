@@ -1,0 +1,395 @@
+{
+  "schemaVersion": 1,
+  "reviews": [
+    {
+      "pair": [
+        "urn:csabs:law/StateBasedCRDT-merge-idempotent",
+        "urn:csabs:theorem/StateBasedCRDT-merge-commutative"
+      ],
+      "packetKey": "fea56094510fe28ff8414efecb908ecfd8bb36f740ebc4d32f65a0ba8fe3917f",
+      "result": {
+        "decision": "distinct",
+        "rationale": "Repeated-state absorption and argument-order independence are different laws. Both concern merge, but one constrains merge(s,s) and the other compares merge(s,t) with merge(t,s); retain both.",
+        "mapping": {
+          "carriers": "The same state carrier S, explicitly a join semilattice with bottom.",
+          "equality": "Identity equality on the same state carrier.",
+          "operations": "The same binary merge, observed on repeated inputs versus exchanged inputs.",
+          "assumptions": "Pure state algebra only; neither statement supplies network delivery or liveness guarantees."
+        },
+        "differences": [
+          "Idempotence concerns duplication of one state; commutativity concerns ordering two states.",
+          "Their Law/Theorem record roles also differ."
+        ],
+        "missingContext": [],
+        "evidence": [
+          {
+            "recordId": "urn:csabs:law/StateBasedCRDT-merge-idempotent",
+            "field": "formalStatement",
+            "quote": "merge(s,s)=s"
+          },
+          {
+            "recordId": "urn:csabs:theorem/StateBasedCRDT-merge-commutative",
+            "field": "formalStatement",
+            "quote": "merge(s,t)=merge(t,s)"
+          }
+        ]
+      }
+    },
+    {
+      "pair": [
+        "urn:csabs:axiom/EffectAlgebra-distributivity",
+        "urn:csabs:axiom/EffectAlgebra-sequencing-monoid"
+      ],
+      "packetKey": "75d1a8afe9918cf2ea09384299857d880e5d6c5bf4593a0cf2f5e667d4f46137",
+      "result": {
+        "decision": "distinct",
+        "rationale": "Distributivity links sequencing to join, whereas the monoid rules give sequencing associativity and the no-effect identity. These are complementary interface obligations, not duplicate statements.",
+        "mapping": {
+          "carriers": "The same total program-effect carrier E in the chosen effect-quantale profile.",
+          "equality": "Carrier equality on effects, with the stated order/join conventions.",
+          "operations": "Distributivity uses both sequencing and join; the monoid condition uses sequencing and epsilon.",
+          "assumptions": "Total operations, potentially noncommutative sequencing, and no inferred concurrency or reordering guarantee."
+        },
+        "differences": [
+          "Different operation combinations and quantified equations.",
+          "Each contributes a different part of the chosen axiom basis."
+        ],
+        "missingContext": [],
+        "evidence": [
+          {
+            "recordId": "urn:csabs:axiom/EffectAlgebra-distributivity",
+            "field": "formalStatement",
+            "quote": "a▷(b⊔c)=(a▷b)⊔(a▷c); (a⊔b)▷c=(a▷c)⊔(b▷c)."
+          },
+          {
+            "recordId": "urn:csabs:axiom/EffectAlgebra-sequencing-monoid",
+            "field": "formalStatement",
+            "quote": "(a▷b)▷c=a▷(b▷c); ε▷a=a=a▷ε."
+          }
+        ]
+      }
+    },
+    {
+      "pair": [
+        "urn:csabs:axiom/product-beta-first",
+        "urn:csabs:axiom/product-beta-second"
+      ],
+      "packetKey": "1c9d1a82517bbb691a3b6b874da4333758b854801ae907e0c927927a06963dfc",
+      "result": {
+        "decision": "distinct",
+        "rationale": "These are the two projection beta rules. The first returns the A component and the second the B component; deleting either would lose an explicit constructor/observer obligation.",
+        "mapping": {
+          "carriers": "One product A×B, with possibly different component carriers A and B.",
+          "equality": "Typed extensional equality in the respective result carriers.",
+          "operations": "fst(pair(a,b)) returns a; snd(pair(a,b)) returns b.",
+          "assumptions": "Total correctly typed set-like constructors and projections. Swapping component names would also change the API correspondence."
+        },
+        "differences": [
+          "Different observers and result carriers.",
+          "Both projection cases are part of the selected product interface."
+        ],
+        "missingContext": [],
+        "evidence": [
+          {
+            "recordId": "urn:csabs:axiom/product-beta-first",
+            "field": "formalStatement",
+            "quote": "fst(pair(a,b))=a"
+          },
+          {
+            "recordId": "urn:csabs:axiom/product-beta-second",
+            "field": "formalStatement",
+            "quote": "snd(pair(a,b))=b"
+          }
+        ]
+      }
+    },
+    {
+      "pair": [
+        "urn:csabs:axiom/case-inl",
+        "urn:csabs:axiom/case-inr"
+      ],
+      "packetKey": "4d659a8837c8932cd646743900b207d0fd890532b8e25aea29d262204de92854",
+      "result": {
+        "decision": "distinct",
+        "rationale": "The elimination equations cover different disjoint constructors of a sum. One specifies the inl/f branch and the other the inr/g branch, so they are separate required cases.",
+        "mapping": {
+          "carriers": "A tagged sum A+B and a common result carrier C.",
+          "equality": "The chosen typed extensional equality on C.",
+          "operations": "case(f,g,inl(a)) uses f; case(f,g,inr(b)) uses g.",
+          "assumptions": "Total functions with the respective A→C and B→C types and disjoint tagged constructors."
+        },
+        "differences": [
+          "Different constructors, branch functions and input carriers.",
+          "Exchanging tags and branch names is not deletion of one required branch equation."
+        ],
+        "missingContext": [],
+        "evidence": [
+          {
+            "recordId": "urn:csabs:axiom/case-inl",
+            "field": "formalStatement",
+            "quote": "∀f:A→C,g:B→C,a:A: case(f,g,inl(a))=f(a)"
+          },
+          {
+            "recordId": "urn:csabs:axiom/case-inr",
+            "field": "formalStatement",
+            "quote": "∀f:A→C,g:B→C,b:B: case(f,g,inr(b))=g(b)"
+          }
+        ]
+      }
+    },
+    {
+      "pair": [
+        "urn:csabs:axiom/HeapStore-free-frame",
+        "urn:csabs:axiom/HeapStore-write-frame"
+      ],
+      "packetKey": "db5b9e79270c6aff50813c3a12d76056a8439eda01a5bbeeda08b5c7ee026c9a",
+      "result": {
+        "decision": "distinct",
+        "rationale": "The shared frame shape explains the high text score, but freeing makes the selected address unallocated while writing stores Some(v). Both preserve other addresses and express different heap effects.",
+        "mapping": {
+          "carriers": "Finite partial maps from positive natural addresses to a value carrier V.",
+          "equality": "Extensional heap equality with explicit None/Some observations.",
+          "operations": "free removes the selected binding; write updates the selected binding to v.",
+          "assumptions": "The selected address is allocated; invalid access, address reuse and lack of concurrency follow the stated snapshot profile."
+        },
+        "differences": [
+          "Different state updates at the selected address.",
+          "The common frame condition does not make deletion and update interchangeable."
+        ],
+        "missingContext": [],
+        "evidence": [
+          {
+            "recordId": "urn:csabs:axiom/HeapStore-free-frame",
+            "field": "formalStatement",
+            "quote": "a∈dom(h) ⇒ free(h,a)(b)=None if b=a, else h(b)"
+          },
+          {
+            "recordId": "urn:csabs:axiom/HeapStore-write-frame",
+            "field": "formalStatement",
+            "quote": "a∈dom(h) ⇒ write(h,a,v)(b)=Some(v) if b=a, else h(b)"
+          }
+        ]
+      }
+    },
+    {
+      "pair": [
+        "urn:csabs:axiom/Binary128-rounded-operations",
+        "urn:csabs:axiom/Binary16-rounded-operations"
+      ],
+      "packetKey": "5748244080656cfc0dec409e0a25836b7974a7b801822c0bea826ae112a5b38b",
+      "result": {
+        "decision": "semantic_variant",
+        "rationale": "The arithmetic-rule wording is shared, but it is instantiated over different floating-point grids: binary128 has precision 113, while binary16 has precision 11. Retain the format-specific applications; a common parameterized rule could be factored in a separate catalog change.",
+        "mapping": {
+          "carriers": "Different format carriers: binary128 has width 128 and precision 113; binary16 has width 16 and precision 11, with different exponent ranges.",
+          "equality": "Each format uses its declared numeric/special-value and representation observations; no cross-format equality or bijection is supplied.",
+          "operations": "The same arithmetic operation family is parameterized by the instance grid and chosen rounding mode.",
+          "assumptions": "Owner formulations define different partial format instances; the Lean interface does not prove correct arithmetic for either instance."
+        },
+        "differences": [
+          "Different widths, significand precisions and exponent ranges (-14,15 for binary16).",
+          "Identical generic wording does not identify the instantiated carriers or rounding results."
+        ],
+        "missingContext": [],
+        "evidence": [
+          {
+            "recordId": "urn:csabs:axiom/Binary128-rounded-operations",
+            "field": "formalStatement",
+            "quote": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules"
+          },
+          {
+            "recordId": "urn:csabs:axiom/Binary16-rounded-operations",
+            "field": "formalStatement",
+            "quote": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules"
+          },
+          {
+            "recordId": "urn:csabs:concept/Binary128",
+            "field": "mathematicalFormulation",
+            "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(128,2,113,−16382,16383), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−112}, 0<m<2^{113}, −16382≤e≤16383, and m≥2^{112} unless e=−16382. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim."
+          },
+          {
+            "recordId": "urn:csabs:concept/Binary16",
+            "field": "mathematicalFormulation",
+            "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(16,2,11,−14,15), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−10}, 0<m<2^{11}, −14≤e≤15, and m≥2^{10} unless e=−14. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim."
+          }
+        ]
+      }
+    },
+    {
+      "pair": [
+        "urn:csabs:axiom/Binary128-rounded-operations",
+        "urn:csabs:axiom/Binary32-rounded-operations"
+      ],
+      "packetKey": "2610e1f0d445113a96d10d43f1eb3fdb0da59598f93e964921b38ef5018d5c86",
+      "result": {
+        "decision": "semantic_variant",
+        "rationale": "The arithmetic-rule wording is shared, but it is instantiated over different floating-point grids: binary128 has precision 113, while binary32 has precision 24. Retain the format-specific applications; a common parameterized rule could be factored in a separate catalog change.",
+        "mapping": {
+          "carriers": "Different format carriers: binary128 has width 128 and precision 113; binary32 has width 32 and precision 24, with different exponent ranges.",
+          "equality": "Each format uses its declared numeric/special-value and representation observations; no cross-format equality or bijection is supplied.",
+          "operations": "The same arithmetic operation family is parameterized by the instance grid and chosen rounding mode.",
+          "assumptions": "Owner formulations define different partial format instances; the Lean interface does not prove correct arithmetic for either instance."
+        },
+        "differences": [
+          "Different widths, significand precisions and exponent ranges (-126,127 for binary32).",
+          "Identical generic wording does not identify the instantiated carriers or rounding results."
+        ],
+        "missingContext": [],
+        "evidence": [
+          {
+            "recordId": "urn:csabs:axiom/Binary128-rounded-operations",
+            "field": "formalStatement",
+            "quote": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules"
+          },
+          {
+            "recordId": "urn:csabs:axiom/Binary32-rounded-operations",
+            "field": "formalStatement",
+            "quote": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules"
+          },
+          {
+            "recordId": "urn:csabs:concept/Binary128",
+            "field": "mathematicalFormulation",
+            "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(128,2,113,−16382,16383), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−112}, 0<m<2^{113}, −16382≤e≤16383, and m≥2^{112} unless e=−16382. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim."
+          },
+          {
+            "recordId": "urn:csabs:concept/Binary32",
+            "field": "mathematicalFormulation",
+            "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(32,2,24,−126,127), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−23}, 0<m<2^{24}, −126≤e≤127, and m≥2^{23} unless e=−126. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim."
+          }
+        ]
+      }
+    },
+    {
+      "pair": [
+        "urn:csabs:axiom/Binary128-rounded-operations",
+        "urn:csabs:axiom/Binary64-rounded-operations"
+      ],
+      "packetKey": "83f2a2134d458424ad34622f45902166cb536392addefdb234c99c90cba81a1a",
+      "result": {
+        "decision": "semantic_variant",
+        "rationale": "The arithmetic-rule wording is shared, but it is instantiated over different floating-point grids: binary128 has precision 113, while binary64 has precision 53. Retain the format-specific applications; a common parameterized rule could be factored in a separate catalog change.",
+        "mapping": {
+          "carriers": "Different format carriers: binary128 has width 128 and precision 113; binary64 has width 64 and precision 53, with different exponent ranges.",
+          "equality": "Each format uses its declared numeric/special-value and representation observations; no cross-format equality or bijection is supplied.",
+          "operations": "The same arithmetic operation family is parameterized by the instance grid and chosen rounding mode.",
+          "assumptions": "Owner formulations define different partial format instances; the Lean interface does not prove correct arithmetic for either instance."
+        },
+        "differences": [
+          "Different widths, significand precisions and exponent ranges (-1022,1023 for binary64).",
+          "Identical generic wording does not identify the instantiated carriers or rounding results."
+        ],
+        "missingContext": [],
+        "evidence": [
+          {
+            "recordId": "urn:csabs:axiom/Binary128-rounded-operations",
+            "field": "formalStatement",
+            "quote": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules"
+          },
+          {
+            "recordId": "urn:csabs:axiom/Binary64-rounded-operations",
+            "field": "formalStatement",
+            "quote": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules"
+          },
+          {
+            "recordId": "urn:csabs:concept/Binary128",
+            "field": "mathematicalFormulation",
+            "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(128,2,113,−16382,16383), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−112}, 0<m<2^{113}, −16382≤e≤16383, and m≥2^{112} unless e=−16382. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim."
+          },
+          {
+            "recordId": "urn:csabs:concept/Binary64",
+            "field": "mathematicalFormulation",
+            "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(64,2,53,−1022,1023), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−52}, 0<m<2^{53}, −1022≤e≤1023, and m≥2^{52} unless e=−1022. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim."
+          }
+        ]
+      }
+    },
+    {
+      "pair": [
+        "urn:csabs:axiom/Binary128-special-values",
+        "urn:csabs:axiom/Binary16-special-values"
+      ],
+      "packetKey": "d3cf55648d5f0e5aad7d6a2aa4022f74c408f141f4c57ce6e5b0f40f947fef46",
+      "result": {
+        "decision": "semantic_variant",
+        "rationale": "The special-value policy is common, but these records apply it to binary128 and binary16 carriers. Keep the carrier-specific applications; review any future extraction of a shared format-parameterized policy separately.",
+        "mapping": {
+          "carriers": "Different binary128 and binary16 representations and finite-value grids, including their special-value encodings.",
+          "equality": "Both describe IEEE numeric comparison, where NaN is not equal to itself and signed zeros compare equal; bit identity is a separate observation.",
+          "operations": "Numeric equality/order and special-value classification are applied within each format.",
+          "assumptions": "Each statement inherits only its explicitly stated format scope; no cross-format representation equivalence or compiled special-value witness is asserted."
+        },
+        "differences": [
+          "Different representation carriers and finite-value universes.",
+          "A reusable policy schema is a possible refactoring, not an interchangeable concrete-record proof."
+        ],
+        "missingContext": [],
+        "evidence": [
+          {
+            "recordId": "urn:csabs:axiom/Binary128-special-values",
+            "field": "formalStatement",
+            "quote": "+0=−0 numerically, but sign bits differ; ±∞ ordered beyond finite values; NaN is unordered and NaN=NaN is false under IEEE numeric equality"
+          },
+          {
+            "recordId": "urn:csabs:axiom/Binary16-special-values",
+            "field": "formalStatement",
+            "quote": "+0=−0 numerically, but sign bits differ; ±∞ ordered beyond finite values; NaN is unordered and NaN=NaN is false under IEEE numeric equality"
+          },
+          {
+            "recordId": "urn:csabs:concept/Binary128",
+            "field": "mathematicalFormulation",
+            "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(128,2,113,−16382,16383), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−112}, 0<m<2^{113}, −16382≤e≤16383, and m≥2^{112} unless e=−16382. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim."
+          },
+          {
+            "recordId": "urn:csabs:concept/Binary16",
+            "field": "mathematicalFormulation",
+            "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(16,2,11,−14,15), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−10}, 0<m<2^{11}, −14≤e≤15, and m≥2^{10} unless e=−14. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim."
+          }
+        ]
+      }
+    },
+    {
+      "pair": [
+        "urn:csabs:axiom/Binary128-special-values",
+        "urn:csabs:axiom/Binary32-special-values"
+      ],
+      "packetKey": "0019fd96957b51ed1d5d2b1a5ea88f1a1eb1606d8394799b2f5c4402674d3557",
+      "result": {
+        "decision": "semantic_variant",
+        "rationale": "The special-value policy is common, but these records apply it to binary128 and binary32 carriers. Keep the carrier-specific applications; review any future extraction of a shared format-parameterized policy separately.",
+        "mapping": {
+          "carriers": "Different binary128 and binary32 representations and finite-value grids, including their special-value encodings.",
+          "equality": "Both describe IEEE numeric comparison, where NaN is not equal to itself and signed zeros compare equal; bit identity is a separate observation.",
+          "operations": "Numeric equality/order and special-value classification are applied within each format.",
+          "assumptions": "Each statement inherits only its explicitly stated format scope; no cross-format representation equivalence or compiled special-value witness is asserted."
+        },
+        "differences": [
+          "Different representation carriers and finite-value universes.",
+          "A reusable policy schema is a possible refactoring, not an interchangeable concrete-record proof."
+        ],
+        "missingContext": [],
+        "evidence": [
+          {
+            "recordId": "urn:csabs:axiom/Binary128-special-values",
+            "field": "formalStatement",
+            "quote": "+0=−0 numerically, but sign bits differ; ±∞ ordered beyond finite values; NaN is unordered and NaN=NaN is false under IEEE numeric equality"
+          },
+          {
+            "recordId": "urn:csabs:axiom/Binary32-special-values",
+            "field": "formalStatement",
+            "quote": "+0=−0 numerically, but sign bits differ; ±∞ ordered beyond finite values; NaN is unordered and NaN=NaN is false under IEEE numeric equality"
+          },
+          {
+            "recordId": "urn:csabs:concept/Binary128",
+            "field": "mathematicalFormulation",
+            "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(128,2,113,−16382,16383), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−112}, 0<m<2^{113}, −16382≤e≤16383, and m≥2^{112} unless e=−16382. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim."
+          },
+          {
+            "recordId": "urn:csabs:concept/Binary32",
+            "field": "mathematicalFormulation",
+            "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(32,2,24,−126,127), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−23}, 0<m<2^{24}, −126≤e≤127, and m≥2^{23} unless e=−126. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim."
+          }
+        ]
+      }
+    }
+  ]
+}

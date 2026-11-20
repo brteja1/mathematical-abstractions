@@ -1,0 +1,4803 @@
+{
+  "candidates": [
+    {
+      "components": {
+        "basis": {
+          "intersectionCount": 49,
+          "unionCount": 50,
+          "weight": 40
+        },
+        "context": {
+          "intersectionCount": 3,
+          "unionCount": 3,
+          "weight": 15
+        },
+        "description": {
+          "intersectionCount": 6,
+          "unionCount": 7,
+          "weight": 35
+        },
+        "interface": {
+          "intersectionCount": 0,
+          "unionCount": 0,
+          "weight": 0
+        },
+        "name": {
+          "intersectionCount": 2,
+          "unionCount": 4,
+          "weight": 10
+        }
+      },
+      "currentReview": null,
+      "differences": [
+        "formalStatement",
+        "formulationLocator",
+        "formulationScope",
+        "formulationSource",
+        "id",
+        "leanFormulation",
+        "leanModelLimitations",
+        "leanModelMapping",
+        "leanPremiseMapping",
+        "name",
+        "proofSketch",
+        "statement",
+        "type"
+      ],
+      "endpoints": [
+        {
+          "anchor": "node-urn-csabs-law-StateBasedCRDT-merge-idempotent",
+          "evidenceRecords": [
+            {
+              "anchor": "node-urn-csabs-axiom-StateBasedCRDT-merge-definition",
+              "id": "urn:csabs:axiom/StateBasedCRDT-merge-definition",
+              "path": "concepts/StateBasedCRDT.md"
+            },
+            {
+              "anchor": "node-urn-csabs-axiom-StateBasedCRDT-state-order",
+              "id": "urn:csabs:axiom/StateBasedCRDT-state-order",
+              "path": "concepts/StateBasedCRDT.md"
+            },
+            {
+              "anchor": null,
+              "id": "urn:csabs:concept/StateBasedCRDT",
+              "path": "concepts/StateBasedCRDT.md"
+            },
+            {
+              "anchor": null,
+              "id": "urn:csabs:source/crdt-state-core",
+              "path": "data/shared.json"
+            },
+            {
+              "anchor": null,
+              "id": "urn:csabs:source/local-lean-CoreData",
+              "path": "data/shared.json"
+            },
+            {
+              "anchor": null,
+              "id": "urn:csabs:source/mathlib-join-core",
+              "path": "data/shared.json"
+            }
+          ],
+          "fields": {
+            "appliesTo": [
+              "urn:csabs:concept/StateBasedCRDT"
+            ],
+            "assumptions": [
+              "Pure state-based algebra only. Updates need not commute or be order preserving beyond inflation. Eventual convergence requires delivery assumptions outside this record; no loss-free transport, liveness or Byzantine tolerance is asserted.",
+              "Typed mathematical equality and the stated defining requirements."
+            ],
+            "dependsOn": [
+              "urn:csabs:axiom/StateBasedCRDT-state-order",
+              "urn:csabs:axiom/StateBasedCRDT-merge-definition"
+            ],
+            "directSources": [
+              {
+                "accessedOn": "2026-11-07",
+                "id": "urn:csabs:source/crdt-state-core",
+                "label": "Preguiça, Baquero and Shapiro: Conflict-free Replicated Data Types (2018)",
+                "sourceRole": "consulted-definition-and-interface-reference",
+                "type": "Source",
+                "url": "https://arxiv.org/pdf/1805.06358"
+              },
+              {
+                "accessedOn": "2026-11-07",
+                "id": "urn:csabs:source/mathlib-join-core",
+                "label": "Mathlib pinned definitions: Order/Defs/Lattice.lean",
+                "sourceRole": "consulted-definition-and-interface-reference",
+                "type": "Source",
+                "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Order/Defs/Lattice.lean"
+              }
+            ],
+            "formalStatement": "merge(s,s)=s",
+            "formulationLocator": "Catalog.CoreDataProofs.crdt_merge_idempotent",
+            "formulationScope": "registered-witness-type",
+            "formulationSource": "urn:csabs:source/local-lean-CoreData",
+            "id": "urn:csabs:law/StateBasedCRDT-merge-idempotent",
+            "leanFormulation": "∀ {S : Type} [SemilatticeSup S] (x : S), Catalog.StateBasedCRDT.merge x x = x",
+            "leanModelLimitations": "Only the displayed proposition for this explicit interpretation. No proof of all catalog claims or of a software implementation; informal/formal correspondence remains reviewed metadata.",
+            "leanModelMapping": "merge is defined as ⊔. This proof uses only the join-semilattice part of the CRDT assumptions; bottom and inflationary updates are unnecessary for this state equality, and no network convergence is asserted.",
+            "leanPremiseMapping": "{\"urn:csabs:axiom/StateBasedCRDT-merge-definition\": \"Interpreted premise: merge(s,t)=s⊔t. merge is defined as ⊔. This proof uses only the join-semilattice part of the CRDT assumptions; bottom and inflationary updates are unnecessary for this state equality, and no network convergence is asserted.\", \"urn:csabs:axiom/StateBasedCRDT-state-order\": \"Interpreted premise: (S,≤,⊔) is a join semilattice and ∀s,⊥≤s. merge is defined as ⊔. This proof uses only the join-semilattice part of the CRDT assumptions; bottom and inflationary updates are unnecessary for this state equality, and no network convergence is asserted.\"}",
+            "name": "merge-idempotent",
+            "proofSketch": "By join leastness s⊔s=s; expand merge.",
+            "provenanceKind": "derived",
+            "reviewStatus": "Editorial derivation; a compiled Lean witness is asserted only by a fresh individual binding verification report.",
+            "source": [
+              "urn:csabs:source/crdt-state-core",
+              "urn:csabs:source/mathlib-join-core"
+            ],
+            "sourceLocator": "Synchronization Model, pp. 6–7: state-based join semilattice, inflationary update and join merge; SemilatticeSup: PartialOrder, le_sup_left, le_sup_right, sup_le",
+            "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
+            "statement": "merge(s,s)=s",
+            "type": "Law"
+          },
+          "fingerprint": "a1303f7abd43294d991bdf0cb7d3782fdcc02b142fe4560a8fd5504a1e6d203b",
+          "id": "urn:csabs:law/StateBasedCRDT-merge-idempotent",
+          "path": "concepts/StateBasedCRDT.md",
+          "type": "Law"
+        },
+        {
+          "anchor": "node-urn-csabs-theorem-StateBasedCRDT-merge-commutative",
+          "evidenceRecords": [
+            {
+              "anchor": "node-urn-csabs-axiom-StateBasedCRDT-merge-definition",
+              "id": "urn:csabs:axiom/StateBasedCRDT-merge-definition",
+              "path": "concepts/StateBasedCRDT.md"
+            },
+            {
+              "anchor": "node-urn-csabs-axiom-StateBasedCRDT-state-order",
+              "id": "urn:csabs:axiom/StateBasedCRDT-state-order",
+              "path": "concepts/StateBasedCRDT.md"
+            },
+            {
+              "anchor": null,
+              "id": "urn:csabs:concept/StateBasedCRDT",
+              "path": "concepts/StateBasedCRDT.md"
+            },
+            {
+              "anchor": null,
+              "id": "urn:csabs:source/crdt-state-core",
+              "path": "data/shared.json"
+            },
+            {
+              "anchor": null,
+              "id": "urn:csabs:source/mathlib-join-core",
+              "path": "data/shared.json"
+            }
+          ],
+          "fields": {
+            "appliesTo": [
+              "urn:csabs:concept/StateBasedCRDT"
+            ],
+            "assumptions": [
+              "Pure state-based algebra only. Updates need not commute or be order preserving beyond inflation. Eventual convergence requires delivery assumptions outside this record; no loss-free transport, liveness or Byzantine tolerance is asserted.",
+              "Typed mathematical equality and the stated defining requirements."
+            ],
+            "dependsOn": [
+              "urn:csabs:axiom/StateBasedCRDT-state-order",
+              "urn:csabs:axiom/StateBasedCRDT-merge-definition"
+            ],
+            "directSources": [
+              {
+                "accessedOn": "2026-11-07",
+                "id": "urn:csabs:source/crdt-state-core",
+                "label": "Preguiça, Baquero and Shapiro: Conflict-free Replicated Data Types (2018)",
+                "sourceRole": "consulted-definition-and-interface-reference",
+                "type": "Source",
+                "url": "https://arxiv.org/pdf/1805.06358"
+              },
+              {
+                "accessedOn": "2026-11-07",
+                "id": "urn:csabs:source/mathlib-join-core",
+                "label": "Mathlib pinned definitions: Order/Defs/Lattice.lean",
+                "sourceRole": "consulted-definition-and-interface-reference",
+                "type": "Source",
+                "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Order/Defs/Lattice.lean"
+              }
+            ],
+            "formalStatement": "merge(s,t)=merge(t,s)",
+            "id": "urn:csabs:theorem/StateBasedCRDT-merge-commutative",
+            "name": "merge-commutative",
+            "proofSketch": "Both orders compute the same least upper bound by antisymmetry.",
+            "provenanceKind": "derived",
+            "reviewStatus": "Editorial derivation; a compiled Lean witness is asserted only by a fresh individual binding verification report.",
+            "source": [
+              "urn:csabs:source/crdt-state-core",
+              "urn:csabs:source/mathlib-join-core"
+            ],
+            "sourceLocator": "Synchronization Model, pp. 6–7: state-based join semilattice, inflationary update and join merge; SemilatticeSup: PartialOrder, le_sup_left, le_sup_right, sup_le",
+            "sourceNote": "Catalog derivation from the explicitly linked premises; source supplies the selected underlying interface. No executable proof is implied.",
+            "statement": "merge(s,t)=merge(t,s)",
+            "type": "Theorem"
+          },
+          "fingerprint": "a1303f7abd43294d991bdf0cb7d3782fdcc02b142fe4560a8fd5504a1e6d203b",
+          "id": "urn:csabs:theorem/StateBasedCRDT-merge-commutative",
+          "path": "concepts/StateBasedCRDT.md",
+          "type": "Theorem"
+        }
+      ],
+      "family": "claim",
+      "matchedNames": [],
+      "matches": {
+        "basis": [
+          "(",
+          ")",
+          ",",
+          "-",
+          ".",
+          ";",
+          "=",
+          "algebra",
+          "and",
+          "asserted",
+          "assumptions",
+          "based",
+          "be",
+          "beyond",
+          "byzantine",
+          "commute",
+          "convergence",
+          "defining",
+          "delivery",
+          "equality",
+          "eventual",
+          "free",
+          "inflation",
+          "is",
+          "liveness",
+          "loss",
+          "mathematical",
+          "merge",
+          "need",
+          "no",
+          "not",
+          "only",
+          "or",
+          "order",
+          "outside",
+          "preserving",
+          "pure",
+          "record",
+          "requirements",
+          "requires",
+          "s",
+          "state",
+          "stated",
+          "the",
+          "this",
+          "tolerance",
+          "transport",
+          "typed",
+          "updates"
+        ],
+        "context": [
+          "urn:csabs:axiom/StateBasedCRDT-merge-definition",
+          "urn:csabs:axiom/StateBasedCRDT-state-order",
+          "urn:csabs:concept/StateBasedCRDT"
+        ],
+        "description": [
+          "(",
+          ")",
+          ",",
+          "=",
+          "merge",
+          "s"
+        ],
+        "interface": [],
+        "name": [
+          "-",
+          "merge"
+        ]
+      },
+      "pair": [
+        "urn:csabs:law/StateBasedCRDT-merge-idempotent",
+        "urn:csabs:theorem/StateBasedCRDT-merge-commutative"
+      ],
+      "previousReview": null,
+      "reviewState": "unreviewed",
+      "score": 8920,
+      "triggers": [
+        "threshold"
+      ]
+    },
+    {
+      "components": {
+        "basis": {
+          "intersectionCount": 82,
+          "unionCount": 83,
+          "weight": 40
+        },
+        "context": {
+          "intersectionCount": 1,
+          "unionCount": 1,
+          "weight": 15
+        },
+        "description": {
+          "intersectionCount": 21,
+          "unionCount": 23,
+          "weight": 35
+        },
+        "interface": {
+          "intersectionCount": 0,
+          "unionCount": 0,
+          "weight": 0
+        },
+        "name": {
+          "intersectionCount": 0,
+          "unionCount": 4,
+          "weight": 10
+        }
+      },
+      "currentReview": null,
+      "differences": [
+        "formalStatement",
+        "id",
+        "name",
+        "statement"
+      ],
+      "endpoints": [
+        {
+          "anchor": "node-urn-csabs-axiom-EffectAlgebra-distributivity",
+          "evidenceRecords": [
+            {
+              "anchor": null,
+              "id": "urn:csabs:concept/EffectAlgebra",
+              "path": "concepts/EffectAlgebra.md"
+            },
+            {
+              "anchor": null,
+              "id": "urn:csabs:source/wilshaw-hutton-explicit-naming",
+              "path": "data/shared.json"
+            }
+          ],
+          "fields": {
+            "appliesTo": [
+              "urn:csabs:concept/EffectAlgebra"
+            ],
+            "assumptions": [
+              "This is an algebra of program side effects, not the quantum-logical partial-sum effect algebra. Selected total effect-quantale profile: join and sequencing total, equality carrier equality, sequencing generally noncommutative. ε is sequential no-effect, not necessarily least; no bottom, top, iteration, parallel composition or cancellation is required. Partial protocol-effect algebras need a distinct definedness-aware variant. To model reads, writes, allocation, freeing, I/O or exceptions, supply atomic effects and a sound interpretation; algebraic laws alone do not justify reordering, speculation or concurrency."
+            ],
+            "description": "Defining rule for Program side-effect algebra (total sequential effect-quantale profile)",
+            "directSources": [
+              {
+                "accessedOn": "2026-11-17",
+                "id": "urn:csabs:source/wilshaw-hutton-explicit-naming",
+                "label": "Sky Wilshaw and Graham Hutton: A Compositional Semantics for Explicit Naming (Functional Pearl)",
+                "sourceRole": "consulted-primary-research",
+                "type": "Source",
+                "url": "https://people.cs.nott.ac.uk/pszgmh/explicit-naming.pdf"
+              }
+            ],
+            "formalStatement": "a▷(b⊔c)=(a▷b)⊔(a▷c); (a⊔b)▷c=(a▷c)⊔(b▷c).",
+            "id": "urn:csabs:axiom/EffectAlgebra-distributivity",
+            "name": "distributivity",
+            "notationLanguage": "informal mathematical Unicode",
+            "provenanceKind": "adapted",
+            "reviewStatus": "Editorial statement; no registered Lean proof witness.",
+            "ruleRole": "defining-rule",
+            "source": [
+              "urn:csabs:source/wilshaw-hutton-explicit-naming"
+            ],
+            "sourceLocator": "§3.3 name-effect sequencing; §3.4 Definition 3.8, p.12; adapted by restricting both operations to be total.",
+            "sourceNote": "Adapted to the explicitly stated catalog profile, carriers, equality and definedness; additional restrictions are identified in basisScope.",
+            "statement": "a▷(b⊔c)=(a▷b)⊔(a▷c); (a⊔b)▷c=(a▷c)⊔(b▷c).",
+            "type": "Axiom"
+          },
+          "fingerprint": "bbd8459c1d288a9a424d7dca8c15b6edf30d51ba1a6a686ba76d4d9b089faeb4",
+          "id": "urn:csabs:axiom/EffectAlgebra-distributivity",
+          "path": "concepts/EffectAlgebra.md",
+          "type": "Axiom"
+        },
+        {
+          "anchor": "node-urn-csabs-axiom-EffectAlgebra-sequencing-monoid",
+          "evidenceRecords": [
+            {
+              "anchor": null,
+              "id": "urn:csabs:concept/EffectAlgebra",
+              "path": "concepts/EffectAlgebra.md"
+            },
+            {
+              "anchor": null,
+              "id": "urn:csabs:source/wilshaw-hutton-explicit-naming",
+              "path": "data/shared.json"
+            }
+          ],
+          "fields": {
+            "appliesTo": [
+              "urn:csabs:concept/EffectAlgebra"
+            ],
+            "assumptions": [
+              "This is an algebra of program side effects, not the quantum-logical partial-sum effect algebra. Selected total effect-quantale profile: join and sequencing total, equality carrier equality, sequencing generally noncommutative. ε is sequential no-effect, not necessarily least; no bottom, top, iteration, parallel composition or cancellation is required. Partial protocol-effect algebras need a distinct definedness-aware variant. To model reads, writes, allocation, freeing, I/O or exceptions, supply atomic effects and a sound interpretation; algebraic laws alone do not justify reordering, speculation or concurrency."
+            ],
+            "description": "Defining rule for Program side-effect algebra (total sequential effect-quantale profile)",
+            "directSources": [
+              {
+                "accessedOn": "2026-11-17",
+                "id": "urn:csabs:source/wilshaw-hutton-explicit-naming",
+                "label": "Sky Wilshaw and Graham Hutton: A Compositional Semantics for Explicit Naming (Functional Pearl)",
+                "sourceRole": "consulted-primary-research",
+                "type": "Source",
+                "url": "https://people.cs.nott.ac.uk/pszgmh/explicit-naming.pdf"
+              }
+            ],
+            "formalStatement": "(a▷b)▷c=a▷(b▷c); ε▷a=a=a▷ε.",
+            "id": "urn:csabs:axiom/EffectAlgebra-sequencing-monoid",
+            "name": "sequencing-monoid",
+            "notationLanguage": "informal mathematical Unicode",
+            "provenanceKind": "adapted",
+            "reviewStatus": "Editorial statement; no registered Lean proof witness.",
+            "ruleRole": "defining-rule",
+            "source": [
+              "urn:csabs:source/wilshaw-hutton-explicit-naming"
+            ],
+            "sourceLocator": "§3.3 name-effect sequencing; §3.4 Definition 3.8, p.12; adapted by restricting both operations to be total.",
+            "sourceNote": "Adapted to the explicitly stated catalog profile, carriers, equality and definedness; additional restrictions are identified in basisScope.",
+            "statement": "(a▷b)▷c=a▷(b▷c); ε▷a=a=a▷ε.",
+            "type": "Axiom"
+          },
+          "fingerprint": "bbd8459c1d288a9a424d7dca8c15b6edf30d51ba1a6a686ba76d4d9b089faeb4",
+          "id": "urn:csabs:axiom/EffectAlgebra-sequencing-monoid",
+          "path": "concepts/EffectAlgebra.md",
+          "type": "Axiom"
+        }
+      ],
+      "family": "claim",
+      "matchedNames": [],
+      "matches": {
+        "basis": [
+          "(",
+          ")",
+          ",",
+          "-",
+          ".",
+          "/",
+          ":",
+          ";",
+          "=",
+          "a",
+          "algebra",
+          "algebraic",
+          "algebras",
+          "allocation",
+          "alone",
+          "an",
+          "and",
+          "atomic",
+          "aware",
+          "b",
+          "bottom",
+          "c",
+          "cancellation",
+          "carrier",
+          "composition",
+          "concurrency",
+          "definedness",
+          "defining",
+          "distinct",
+          "do",
+          "effect",
+          "effects",
+          "equality",
+          "exceptions",
+          "freeing",
+          "generally",
+          "i",
+          "interpretation",
+          "is",
+          "iteration",
+          "join",
+          "justify",
+          "laws",
+          "least",
+          "logical",
+          "model",
+          "necessarily",
+          "need",
+          "no",
+          "noncommutative",
+          "not",
+          "o",
+          "of",
+          "or",
+          "parallel",
+          "partial",
+          "profile",
+          "program",
+          "protocol",
+          "quantale",
+          "quantum",
+          "reads",
+          "reordering",
+          "required",
+          "rule",
+          "selected",
+          "sequencing",
+          "sequential",
+          "side",
+          "sound",
+          "speculation",
+          "sum",
+          "supply",
+          "the",
+          "this",
+          "to",
+          "top",
+          "total",
+          "variant",
+          "writes",
+          "ε",
+          "▷"
+        ],
+        "context": [
+          "urn:csabs:concept/EffectAlgebra"
+        ],
+        "description": [
+          "(",
+          ")",
+          "-",
+          ".",
+          ";",
+          "=",
+          "a",
+          "algebra",
+          "b",
+          "c",
+          "defining",
+          "effect",
+          "for",
+          "profile",
+          "program",
+          "quantale",
+          "rule",
+          "sequential",
+          "side",
+          "total",
+          "▷"
+        ],
+        "interface": [],
+        "name": []
+      },
+      "pair": [
+        "urn:csabs:axiom/EffectAlgebra-distributivity",
+        "urn:csabs:axiom/EffectAlgebra-sequencing-monoid"
+      ],
+      "previousReview": null,
+      "reviewState": "unreviewed",
+      "score": 8647,
+      "triggers": [
+        "threshold"
+      ]
+    },
+    {
+      "components": {
+        "basis": {
+          "intersectionCount": 23,
+          "unionCount": 25,
+          "weight": 40
+        },
+        "context": {
+          "intersectionCount": 2,
+          "unionCount": 2,
+          "weight": 15
+        },
+        "description": {
+          "intersectionCount": 9,
+          "unionCount": 11,
+          "weight": 35
+        },
+        "interface": {
+          "intersectionCount": 0,
+          "unionCount": 0,
+          "weight": 0
+        },
+        "name": {
+          "intersectionCount": 3,
+          "unionCount": 5,
+          "weight": 10
+        }
+      },
+      "currentReview": null,
+      "differences": [
+        "formalStatement",
+        "id",
+        "name",
+        "statement"
+      ],
+      "endpoints": [
+        {
+          "anchor": "node-urn-csabs-axiom-product-beta-first",
+          "evidenceRecords": [
+            {
+              "anchor": null,
+              "id": "urn:csabs:concept/ProductType",
+              "path": "concepts/ProductType.md"
+            },
+            {
+              "anchor": "node-urn-csabs-operation-product-pair",
+              "id": "urn:csabs:operation/product-pair",
+              "path": "concepts/ProductType.md"
+            },
+            {
+              "anchor": null,
+              "id": "urn:csabs:source/awodey-types",
+              "path": "data/shared.json"
+            }
+          ],
+          "fields": {
+            "appliesTo": [
+              "urn:csabs:concept/ProductType"
+            ],
+            "assumptions": [
+              "Extensional total set-like types; all displayed functions total and correctly typed."
+            ],
+            "dependsOn": [
+              "urn:csabs:operation/product-pair"
+            ],
+            "directSources": [
+              {
+                "id": "urn:csabs:source/awodey-types",
+                "label": "Steve Awodey: Notes on Type Theory",
+                "provenanceNote": "Supports the mathematical presentation; local claim names and notation are editorial, not verbatim library declarations.",
+                "sourceRole": "reference",
+                "type": "Source",
+                "url": "https://awodey.github.io/typetheory/notes/typetheory.pdf"
+              }
+            ],
+            "formalStatement": "fst(pair(a,b))=a",
+            "id": "urn:csabs:axiom/product-beta-first",
+            "name": "product-beta-first",
+            "notationLanguage": "informal mathematical Unicode",
+            "reviewStatus": "editorial-summary; not machine-proved",
+            "ruleRole": "structure-law",
+            "source": [
+              "urn:csabs:source/awodey-types"
+            ],
+            "statement": "The first projection of a pair is its first component.",
+            "type": "Axiom"
+          },
+          "fingerprint": "30da4ccb4e9d7f7b9666627ce0ae923c53a446906bc21f1abbe377a292ab034d",
+          "id": "urn:csabs:axiom/product-beta-first",
+          "path": "concepts/ProductType.md",
+          "type": "Axiom"
+        },
+        {
+          "anchor": "node-urn-csabs-axiom-product-beta-second",
+          "evidenceRecords": [
+            {
+              "anchor": null,
+              "id": "urn:csabs:concept/ProductType",
+              "path": "concepts/ProductType.md"
+            },
+            {
+              "anchor": "node-urn-csabs-operation-product-pair",
+              "id": "urn:csabs:operation/product-pair",
+              "path": "concepts/ProductType.md"
+            },
+            {
+              "anchor": null,
+              "id": "urn:csabs:source/awodey-types",
+              "path": "data/shared.json"
+            }
+          ],
+          "fields": {
+            "appliesTo": [
+              "urn:csabs:concept/ProductType"
+            ],
+            "assumptions": [
+              "Extensional total set-like types; all displayed functions total and correctly typed."
+            ],
+            "dependsOn": [
+              "urn:csabs:operation/product-pair"
+            ],
+            "directSources": [
+              {
+                "id": "urn:csabs:source/awodey-types",
+                "label": "Steve Awodey: Notes on Type Theory",
+                "provenanceNote": "Supports the mathematical presentation; local claim names and notation are editorial, not verbatim library declarations.",
+                "sourceRole": "reference",
+                "type": "Source",
+                "url": "https://awodey.github.io/typetheory/notes/typetheory.pdf"
+              }
+            ],
+            "formalStatement": "snd(pair(a,b))=b",
+            "id": "urn:csabs:axiom/product-beta-second",
+            "name": "product-beta-second",
+            "notationLanguage": "informal mathematical Unicode",
+            "reviewStatus": "editorial-summary; not machine-proved",
+            "ruleRole": "structure-law",
+            "source": [
+              "urn:csabs:source/awodey-types"
+            ],
+            "statement": "The second projection of a pair is its second component.",
+            "type": "Axiom"
+          },
+          "fingerprint": "30da4ccb4e9d7f7b9666627ce0ae923c53a446906bc21f1abbe377a292ab034d",
+          "id": "urn:csabs:axiom/product-beta-second",
+          "path": "concepts/ProductType.md",
+          "type": "Axiom"
+        }
+      ],
+      "family": "claim",
+      "matchedNames": [],
+      "matches": {
+        "basis": [
+          "(",
+          ")",
+          ",",
+          "-",
+          ".",
+          ";",
+          "=",
+          "a",
+          "all",
+          "and",
+          "b",
+          "correctly",
+          "displayed",
+          "extensional",
+          "functions",
+          "law",
+          "like",
+          "pair",
+          "set",
+          "structure",
+          "total",
+          "typed",
+          "types"
+        ],
+        "context": [
+          "urn:csabs:concept/ProductType",
+          "urn:csabs:operation/product-pair"
+        ],
+        "description": [
+          ".",
+          "a",
+          "component",
+          "is",
+          "its",
+          "of",
+          "pair",
+          "projection",
+          "the"
+        ],
+        "interface": [],
+        "name": [
+          "-",
+          "beta",
+          "product"
+        ]
+      },
+      "pair": [
+        "urn:csabs:axiom/product-beta-first",
+        "urn:csabs:axiom/product-beta-second"
+      ],
+      "previousReview": null,
+      "reviewState": "unreviewed",
+      "score": 8643,
+      "triggers": [
+        "threshold"
+      ]
+    },
+    {
+      "components": {
+        "basis": {
+          "intersectionCount": 29,
+          "unionCount": 31,
+          "weight": 40
+        },
+        "context": {
+          "intersectionCount": 2,
+          "unionCount": 2,
+          "weight": 15
+        },
+        "description": {
+          "intersectionCount": 9,
+          "unionCount": 11,
+          "weight": 35
+        },
+        "interface": {
+          "intersectionCount": 0,
+          "unionCount": 0,
+          "weight": 0
+        },
+        "name": {
+          "intersectionCount": 2,
+          "unionCount": 4,
+          "weight": 10
+        }
+      },
+      "currentReview": null,
+      "differences": [
+        "formalStatement",
+        "id",
+        "name",
+        "statement"
+      ],
+      "endpoints": [
+        {
+          "anchor": "node-urn-csabs-axiom-case-inl",
+          "evidenceRecords": [
+            {
+              "anchor": null,
+              "id": "urn:csabs:concept/SumType",
+              "path": "concepts/SumType.md"
+            },
+            {
+              "anchor": "node-urn-csabs-operation-sum-case",
+              "id": "urn:csabs:operation/sum-case",
+              "path": "concepts/SumType.md"
+            },
+            {
+              "anchor": null,
+              "id": "urn:csabs:source/awodey-types",
+              "path": "data/shared.json"
+            }
+          ],
+          "fields": {
+            "appliesTo": [
+              "urn:csabs:concept/SumType"
+            ],
+            "assumptions": [
+              "Extensional total set-like types; all displayed functions total and correctly typed."
+            ],
+            "dependsOn": [
+              "urn:csabs:operation/sum-case"
+            ],
+            "directSources": [
+              {
+                "id": "urn:csabs:source/awodey-types",
+                "label": "Steve Awodey: Notes on Type Theory",
+                "provenanceNote": "Supports the mathematical presentation; local claim names and notation are editorial, not verbatim library declarations.",
+                "sourceRole": "reference",
+                "type": "Source",
+                "url": "https://awodey.github.io/typetheory/notes/typetheory.pdf"
+              }
+            ],
+            "formalStatement": "∀f:A→C,g:B→C,a:A: case(f,g,inl(a))=f(a)",
+            "id": "urn:csabs:axiom/case-inl",
+            "name": "case-inl",
+            "notationLanguage": "informal mathematical Unicode",
+            "reviewStatus": "editorial-summary; not machine-proved",
+            "ruleRole": "structure-law",
+            "source": [
+              "urn:csabs:source/awodey-types"
+            ],
+            "statement": "Case analysis on a left injection evaluates the left branch.",
+            "type": "Axiom"
+          },
+          "fingerprint": "daa10b5fc5c73581c3c0e50be36fa821fd71d19d39f5c492fc7c9223cc0d4e5a",
+          "id": "urn:csabs:axiom/case-inl",
+          "path": "concepts/SumType.md",
+          "type": "Axiom"
+        },
+        {
+          "anchor": "node-urn-csabs-axiom-case-inr",
+          "evidenceRecords": [
+            {
+              "anchor": null,
+              "id": "urn:csabs:concept/SumType",
+              "path": "concepts/SumType.md"
+            },
+            {
+              "anchor": "node-urn-csabs-operation-sum-case",
+              "id": "urn:csabs:operation/sum-case",
+              "path": "concepts/SumType.md"
+            },
+            {
+              "anchor": null,
+              "id": "urn:csabs:source/awodey-types",
+              "path": "data/shared.json"
+            }
+          ],
+          "fields": {
+            "appliesTo": [
+              "urn:csabs:concept/SumType"
+            ],
+            "assumptions": [
+              "Extensional total set-like types; all displayed functions total and correctly typed."
+            ],
+            "dependsOn": [
+              "urn:csabs:operation/sum-case"
+            ],
+            "directSources": [
+              {
+                "id": "urn:csabs:source/awodey-types",
+                "label": "Steve Awodey: Notes on Type Theory",
+                "provenanceNote": "Supports the mathematical presentation; local claim names and notation are editorial, not verbatim library declarations.",
+                "sourceRole": "reference",
+                "type": "Source",
+                "url": "https://awodey.github.io/typetheory/notes/typetheory.pdf"
+              }
+            ],
+            "formalStatement": "∀f:A→C,g:B→C,b:B: case(f,g,inr(b))=g(b)",
+            "id": "urn:csabs:axiom/case-inr",
+            "name": "case-inr",
+            "notationLanguage": "informal mathematical Unicode",
+            "reviewStatus": "editorial-summary; not machine-proved",
+            "ruleRole": "structure-law",
+            "source": [
+              "urn:csabs:source/awodey-types"
+            ],
+            "statement": "Case analysis on a right injection evaluates the right branch.",
+            "type": "Axiom"
+          },
+          "fingerprint": "daa10b5fc5c73581c3c0e50be36fa821fd71d19d39f5c492fc7c9223cc0d4e5a",
+          "id": "urn:csabs:axiom/case-inr",
+          "path": "concepts/SumType.md",
+          "type": "Axiom"
+        }
+      ],
+      "family": "claim",
+      "matchedNames": [],
+      "matches": {
+        "basis": [
+          "(",
+          ")",
+          ",",
+          "-",
+          ".",
+          ":",
+          ";",
+          "=",
+          "a",
+          "all",
+          "and",
+          "b",
+          "c",
+          "case",
+          "correctly",
+          "displayed",
+          "extensional",
+          "f",
+          "functions",
+          "g",
+          "law",
+          "like",
+          "set",
+          "structure",
+          "total",
+          "typed",
+          "types",
+          "→",
+          "∀"
+        ],
+        "context": [
+          "urn:csabs:concept/SumType",
+          "urn:csabs:operation/sum-case"
+        ],
+        "description": [
+          ".",
+          "a",
+          "analysis",
+          "branch",
+          "case",
+          "evaluates",
+          "injection",
+          "on",
+          "the"
+        ],
+        "interface": [],
+        "name": [
+          "-",
+          "case"
+        ]
+      },
+      "pair": [
+        "urn:csabs:axiom/case-inl",
+        "urn:csabs:axiom/case-inr"
+      ],
+      "previousReview": null,
+      "reviewState": "unreviewed",
+      "score": 8605,
+      "triggers": [
+        "threshold"
+      ]
+    },
+    {
+      "components": {
+        "basis": {
+          "intersectionCount": 64,
+          "unionCount": 66,
+          "weight": 40
+        },
+        "context": {
+          "intersectionCount": 1,
+          "unionCount": 1,
+          "weight": 15
+        },
+        "description": {
+          "intersectionCount": 15,
+          "unionCount": 20,
+          "weight": 35
+        },
+        "interface": {
+          "intersectionCount": 0,
+          "unionCount": 0,
+          "weight": 0
+        },
+        "name": {
+          "intersectionCount": 2,
+          "unionCount": 4,
+          "weight": 10
+        }
+      },
+      "currentReview": null,
+      "differences": [
+        "formalStatement",
+        "id",
+        "name",
+        "statement"
+      ],
+      "endpoints": [
+        {
+          "anchor": "node-urn-csabs-axiom-HeapStore-free-frame",
+          "evidenceRecords": [
+            {
+              "anchor": null,
+              "id": "urn:csabs:concept/HeapStore",
+              "path": "concepts/HeapStore.md"
+            },
+            {
+              "anchor": null,
+              "id": "urn:csabs:source/slf-heap-core",
+              "path": "data/shared.json"
+            }
+          ],
+          "fields": {
+            "appliesTo": [
+              "urn:csabs:concept/HeapStore"
+            ],
+            "assumptions": [
+              "Pure mathematical snapshots. Unallocated read/write/free is undefined (None); stored values may themselves encode options. Allocation nondeterministically chooses any fresh positive address; address reuse after free allowed. No pointer arithmetic, GC, permissions, typing or concurrency assumed.",
+              "All variables range over the typed carriers in the notation and signatures."
+            ],
+            "directSources": [
+              {
+                "accessedOn": "2026-11-07",
+                "id": "urn:csabs:source/slf-heap-core",
+                "label": "Software Foundations, Separation Logic Foundations: Heap Predicates",
+                "sourceRole": "consulted-definition-and-interface-reference",
+                "type": "Source",
+                "url": "https://softwarefoundations.cis.upenn.edu/slf-current/Hprop.html"
+              }
+            ],
+            "formalStatement": "a∈dom(h) ⇒ free(h,a)(b)=None if b=a, else h(b)",
+            "id": "urn:csabs:axiom/HeapStore-free-frame",
+            "name": "free-frame",
+            "provenanceKind": "adapted",
+            "reviewStatus": "Editorial source/interface review; Lean model and individual proof evidence are separate.",
+            "ruleRole": "defining-rule",
+            "source": [
+              "urn:csabs:source/slf-heap-core"
+            ],
+            "sourceLocator": "Description of Memory States: heaps as finite maps",
+            "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
+            "statement": "Defining requirement: a∈dom(h) ⇒ free(h,a)(b)=None if b=a, else h(b)",
+            "type": "Axiom"
+          },
+          "fingerprint": "b0ea120f4ad4731dbd4354f0ef32bfe472b06a7e95006881a6c1be38f3d1a2f1",
+          "id": "urn:csabs:axiom/HeapStore-free-frame",
+          "path": "concepts/HeapStore.md",
+          "type": "Axiom"
+        },
+        {
+          "anchor": "node-urn-csabs-axiom-HeapStore-write-frame",
+          "evidenceRecords": [
+            {
+              "anchor": null,
+              "id": "urn:csabs:concept/HeapStore",
+              "path": "concepts/HeapStore.md"
+            },
+            {
+              "anchor": null,
+              "id": "urn:csabs:source/slf-heap-core",
+              "path": "data/shared.json"
+            }
+          ],
+          "fields": {
+            "appliesTo": [
+              "urn:csabs:concept/HeapStore"
+            ],
+            "assumptions": [
+              "Pure mathematical snapshots. Unallocated read/write/free is undefined (None); stored values may themselves encode options. Allocation nondeterministically chooses any fresh positive address; address reuse after free allowed. No pointer arithmetic, GC, permissions, typing or concurrency assumed.",
+              "All variables range over the typed carriers in the notation and signatures."
+            ],
+            "directSources": [
+              {
+                "accessedOn": "2026-11-07",
+                "id": "urn:csabs:source/slf-heap-core",
+                "label": "Software Foundations, Separation Logic Foundations: Heap Predicates",
+                "sourceRole": "consulted-definition-and-interface-reference",
+                "type": "Source",
+                "url": "https://softwarefoundations.cis.upenn.edu/slf-current/Hprop.html"
+              }
+            ],
+            "formalStatement": "a∈dom(h) ⇒ write(h,a,v)(b)=Some(v) if b=a, else h(b)",
+            "id": "urn:csabs:axiom/HeapStore-write-frame",
+            "name": "write-frame",
+            "provenanceKind": "adapted",
+            "reviewStatus": "Editorial source/interface review; Lean model and individual proof evidence are separate.",
+            "ruleRole": "defining-rule",
+            "source": [
+              "urn:csabs:source/slf-heap-core"
+            ],
+            "sourceLocator": "Description of Memory States: heaps as finite maps",
+            "sourceNote": "Adapted to the explicitly stated finite, typed and equality conventions of this entry. Additional profile restrictions and operation specifications are catalog choices, not claims about every implementation.",
+            "statement": "Defining requirement: a∈dom(h) ⇒ write(h,a,v)(b)=Some(v) if b=a, else h(b)",
+            "type": "Axiom"
+          },
+          "fingerprint": "b0ea120f4ad4731dbd4354f0ef32bfe472b06a7e95006881a6c1be38f3d1a2f1",
+          "id": "urn:csabs:axiom/HeapStore-write-frame",
+          "path": "concepts/HeapStore.md",
+          "type": "Axiom"
+        }
+      ],
+      "family": "claim",
+      "matchedNames": [],
+      "matches": {
+        "basis": [
+          "(",
+          ")",
+          ",",
+          "-",
+          ".",
+          "/",
+          ";",
+          "=",
+          "a",
+          "address",
+          "after",
+          "all",
+          "allocation",
+          "allowed",
+          "and",
+          "any",
+          "arithmetic",
+          "assumed",
+          "b",
+          "carriers",
+          "chooses",
+          "concurrency",
+          "defining",
+          "dom",
+          "else",
+          "encode",
+          "free",
+          "fresh",
+          "gc",
+          "h",
+          "if",
+          "in",
+          "is",
+          "mathematical",
+          "may",
+          "no",
+          "nondeterministically",
+          "none",
+          "notation",
+          "options",
+          "or",
+          "over",
+          "permissions",
+          "pointer",
+          "positive",
+          "pure",
+          "range",
+          "read",
+          "reuse",
+          "rule",
+          "signatures",
+          "snapshots",
+          "stored",
+          "the",
+          "themselves",
+          "typed",
+          "typing",
+          "unallocated",
+          "undefined",
+          "values",
+          "variables",
+          "write",
+          "⇒",
+          "∈"
+        ],
+        "context": [
+          "urn:csabs:concept/HeapStore"
+        ],
+        "description": [
+          "(",
+          ")",
+          ",",
+          ":",
+          "=",
+          "a",
+          "b",
+          "defining",
+          "dom",
+          "else",
+          "h",
+          "if",
+          "requirement",
+          "⇒",
+          "∈"
+        ],
+        "interface": [],
+        "name": [
+          "-",
+          "frame"
+        ]
+      },
+      "pair": [
+        "urn:csabs:axiom/HeapStore-free-frame",
+        "urn:csabs:axiom/HeapStore-write-frame"
+      ],
+      "previousReview": null,
+      "reviewState": "unreviewed",
+      "score": 8503,
+      "triggers": [
+        "threshold"
+      ]
+    },
+    {
+      "components": {
+        "basis": {
+          "intersectionCount": 41,
+          "unionCount": 41,
+          "weight": 40
+        },
+        "context": {
+          "intersectionCount": 0,
+          "unionCount": 2,
+          "weight": 15
+        },
+        "description": {
+          "intersectionCount": 11,
+          "unionCount": 11,
+          "weight": 35
+        },
+        "interface": {
+          "intersectionCount": 0,
+          "unionCount": 0,
+          "weight": 0
+        },
+        "name": {
+          "intersectionCount": 3,
+          "unionCount": 3,
+          "weight": 10
+        }
+      },
+      "currentReview": null,
+      "differences": [
+        "appliesTo",
+        "id"
+      ],
+      "endpoints": [
+        {
+          "anchor": "node-urn-csabs-axiom-Binary128-rounded-operations",
+          "evidenceRecords": [
+            {
+              "anchor": null,
+              "id": "urn:csabs:concept/Binary128",
+              "path": "concepts/Binary128.md"
+            }
+          ],
+          "fields": {
+            "appliesTo": [
+              "urn:csabs:concept/Binary128"
+            ],
+            "assumptions": [
+              "All variables range over the carriers and semantic conventions specified in this concept."
+            ],
+            "directSources": [],
+            "formalStatement": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules",
+            "id": "urn:csabs:axiom/Binary128-rounded-operations",
+            "name": "rounded-operations",
+            "notationLanguage": "informal mathematical Unicode",
+            "provenanceStatus": "legacy-source-missing",
+            "reviewStatus": "editorial-summary; not machine-proved",
+            "ruleRole": "defining-rule",
+            "statement": "Basic operations instantiate the general IEEE environment at this format.",
+            "type": "Axiom"
+          },
+          "fingerprint": "b2ddc42900a9383e0f0c17156e8a38a61ba70cca966c936b6024a00df1fe784a",
+          "id": "urn:csabs:axiom/Binary128-rounded-operations",
+          "path": "concepts/Binary128.md",
+          "type": "Axiom"
+        },
+        {
+          "anchor": "node-urn-csabs-axiom-Binary16-rounded-operations",
+          "evidenceRecords": [
+            {
+              "anchor": null,
+              "id": "urn:csabs:concept/Binary16",
+              "path": "concepts/Binary16.md"
+            }
+          ],
+          "fields": {
+            "appliesTo": [
+              "urn:csabs:concept/Binary16"
+            ],
+            "assumptions": [
+              "All variables range over the carriers and semantic conventions specified in this concept."
+            ],
+            "directSources": [],
+            "formalStatement": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules",
+            "id": "urn:csabs:axiom/Binary16-rounded-operations",
+            "name": "rounded-operations",
+            "notationLanguage": "informal mathematical Unicode",
+            "provenanceStatus": "legacy-source-missing",
+            "reviewStatus": "editorial-summary; not machine-proved",
+            "ruleRole": "defining-rule",
+            "statement": "Basic operations instantiate the general IEEE environment at this format.",
+            "type": "Axiom"
+          },
+          "fingerprint": "ef8fae6a4bc8ff26c8a81faad28a0cc1d3f9315d81e2c2b585e81af107e066b4",
+          "id": "urn:csabs:axiom/Binary16-rounded-operations",
+          "path": "concepts/Binary16.md",
+          "type": "Axiom"
+        }
+      ],
+      "family": "claim",
+      "matchedNames": [
+        "rounded-operations"
+      ],
+      "matches": {
+        "basis": [
+          "+",
+          ",",
+          "-",
+          ".",
+          "/",
+          "all",
+          "and",
+          "carriers",
+          "concept",
+          "conventions",
+          "defining",
+          "flag",
+          "for",
+          "grid",
+          "ieee",
+          "in",
+          "instance",
+          "mode",
+          "op",
+          "op_f",
+          "over",
+          "range",
+          "rounding",
+          "rule",
+          "rules",
+          "selected",
+          "semantic",
+          "special",
+          "specified",
+          "sqrt",
+          "the",
+          "this",
+          "uses",
+          "value",
+          "variables",
+          "{",
+          "}",
+          "×",
+          "÷",
+          "∈",
+          "−"
+        ],
+        "context": [],
+        "description": [
+          ".",
+          "at",
+          "basic",
+          "environment",
+          "format",
+          "general",
+          "ieee",
+          "instantiate",
+          "operations",
+          "the",
+          "this"
+        ],
+        "interface": [],
+        "name": [
+          "-",
+          "operations",
+          "rounded"
+        ]
+      },
+      "pair": [
+        "urn:csabs:axiom/Binary128-rounded-operations",
+        "urn:csabs:axiom/Binary16-rounded-operations"
+      ],
+      "previousReview": null,
+      "reviewState": "unreviewed",
+      "score": 8500,
+      "triggers": [
+        "exact_name",
+        "exact_statement",
+        "threshold"
+      ]
+    },
+    {
+      "components": {
+        "basis": {
+          "intersectionCount": 41,
+          "unionCount": 41,
+          "weight": 40
+        },
+        "context": {
+          "intersectionCount": 0,
+          "unionCount": 2,
+          "weight": 15
+        },
+        "description": {
+          "intersectionCount": 11,
+          "unionCount": 11,
+          "weight": 35
+        },
+        "interface": {
+          "intersectionCount": 0,
+          "unionCount": 0,
+          "weight": 0
+        },
+        "name": {
+          "intersectionCount": 3,
+          "unionCount": 3,
+          "weight": 10
+        }
+      },
+      "currentReview": null,
+      "differences": [
+        "appliesTo",
+        "id"
+      ],
+      "endpoints": [
+        {
+          "anchor": "node-urn-csabs-axiom-Binary128-rounded-operations",
+          "evidenceRecords": [
+            {
+              "anchor": null,
+              "id": "urn:csabs:concept/Binary128",
+              "path": "concepts/Binary128.md"
+            }
+          ],
+          "fields": {
+            "appliesTo": [
+              "urn:csabs:concept/Binary128"
+            ],
+            "assumptions": [
+              "All variables range over the carriers and semantic conventions specified in this concept."
+            ],
+            "directSources": [],
+            "formalStatement": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules",
+            "id": "urn:csabs:axiom/Binary128-rounded-operations",
+            "name": "rounded-operations",
+            "notationLanguage": "informal mathematical Unicode",
+            "provenanceStatus": "legacy-source-missing",
+            "reviewStatus": "editorial-summary; not machine-proved",
+            "ruleRole": "defining-rule",
+            "statement": "Basic operations instantiate the general IEEE environment at this format.",
+            "type": "Axiom"
+          },
+          "fingerprint": "b2ddc42900a9383e0f0c17156e8a38a61ba70cca966c936b6024a00df1fe784a",
+          "id": "urn:csabs:axiom/Binary128-rounded-operations",
+          "path": "concepts/Binary128.md",
+          "type": "Axiom"
+        },
+        {
+          "anchor": "node-urn-csabs-axiom-Binary32-rounded-operations",
+          "evidenceRecords": [
+            {
+              "anchor": null,
+              "id": "urn:csabs:concept/Binary32",
+              "path": "concepts/Binary32.md"
+            }
+          ],
+          "fields": {
+            "appliesTo": [
+              "urn:csabs:concept/Binary32"
+            ],
+            "assumptions": [
+              "All variables range over the carriers and semantic conventions specified in this concept."
+            ],
+            "directSources": [],
+            "formalStatement": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules",
+            "id": "urn:csabs:axiom/Binary32-rounded-operations",
+            "name": "rounded-operations",
+            "notationLanguage": "informal mathematical Unicode",
+            "provenanceStatus": "legacy-source-missing",
+            "reviewStatus": "editorial-summary; not machine-proved",
+            "ruleRole": "defining-rule",
+            "statement": "Basic operations instantiate the general IEEE environment at this format.",
+            "type": "Axiom"
+          },
+          "fingerprint": "b7314b70170b275a56ee7507bb57833047533b93946b026959dd33aa83862d81",
+          "id": "urn:csabs:axiom/Binary32-rounded-operations",
+          "path": "concepts/Binary32.md",
+          "type": "Axiom"
+        }
+      ],
+      "family": "claim",
+      "matchedNames": [
+        "rounded-operations"
+      ],
+      "matches": {
+        "basis": [
+          "+",
+          ",",
+          "-",
+          ".",
+          "/",
+          "all",
+          "and",
+          "carriers",
+          "concept",
+          "conventions",
+          "defining",
+          "flag",
+          "for",
+          "grid",
+          "ieee",
+          "in",
+          "instance",
+          "mode",
+          "op",
+          "op_f",
+          "over",
+          "range",
+          "rounding",
+          "rule",
+          "rules",
+          "selected",
+          "semantic",
+          "special",
+          "specified",
+          "sqrt",
+          "the",
+          "this",
+          "uses",
+          "value",
+          "variables",
+          "{",
+          "}",
+          "×",
+          "÷",
+          "∈",
+          "−"
+        ],
+        "context": [],
+        "description": [
+          ".",
+          "at",
+          "basic",
+          "environment",
+          "format",
+          "general",
+          "ieee",
+          "instantiate",
+          "operations",
+          "the",
+          "this"
+        ],
+        "interface": [],
+        "name": [
+          "-",
+          "operations",
+          "rounded"
+        ]
+      },
+      "pair": [
+        "urn:csabs:axiom/Binary128-rounded-operations",
+        "urn:csabs:axiom/Binary32-rounded-operations"
+      ],
+      "previousReview": null,
+      "reviewState": "unreviewed",
+      "score": 8500,
+      "triggers": [
+        "exact_name",
+        "exact_statement",
+        "threshold"
+      ]
+    },
+    {
+      "components": {
+        "basis": {
+          "intersectionCount": 41,
+          "unionCount": 41,
+          "weight": 40
+        },
+        "context": {
+          "intersectionCount": 0,
+          "unionCount": 2,
+          "weight": 15
+        },
+        "description": {
+          "intersectionCount": 11,
+          "unionCount": 11,
+          "weight": 35
+        },
+        "interface": {
+          "intersectionCount": 0,
+          "unionCount": 0,
+          "weight": 0
+        },
+        "name": {
+          "intersectionCount": 3,
+          "unionCount": 3,
+          "weight": 10
+        }
+      },
+      "currentReview": null,
+      "differences": [
+        "appliesTo",
+        "id"
+      ],
+      "endpoints": [
+        {
+          "anchor": "node-urn-csabs-axiom-Binary128-rounded-operations",
+          "evidenceRecords": [
+            {
+              "anchor": null,
+              "id": "urn:csabs:concept/Binary128",
+              "path": "concepts/Binary128.md"
+            }
+          ],
+          "fields": {
+            "appliesTo": [
+              "urn:csabs:concept/Binary128"
+            ],
+            "assumptions": [
+              "All variables range over the carriers and semantic conventions specified in this concept."
+            ],
+            "directSources": [],
+            "formalStatement": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules",
+            "id": "urn:csabs:axiom/Binary128-rounded-operations",
+            "name": "rounded-operations",
+            "notationLanguage": "informal mathematical Unicode",
+            "provenanceStatus": "legacy-source-missing",
+            "reviewStatus": "editorial-summary; not machine-proved",
+            "ruleRole": "defining-rule",
+            "statement": "Basic operations instantiate the general IEEE environment at this format.",
+            "type": "Axiom"
+          },
+          "fingerprint": "b2ddc42900a9383e0f0c17156e8a38a61ba70cca966c936b6024a00df1fe784a",
+          "id": "urn:csabs:axiom/Binary128-rounded-operations",
+          "path": "concepts/Binary128.md",
+          "type": "Axiom"
+        },
+        {
+          "anchor": "node-urn-csabs-axiom-Binary64-rounded-operations",
+          "evidenceRecords": [
+            {
+              "anchor": null,
+              "id": "urn:csabs:concept/Binary64",
+              "path": "concepts/Binary64.md"
+            }
+          ],
+          "fields": {
+            "appliesTo": [
+              "urn:csabs:concept/Binary64"
+            ],
+            "assumptions": [
+              "All variables range over the carriers and semantic conventions specified in this concept."
+            ],
+            "directSources": [],
+            "formalStatement": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules",
+            "id": "urn:csabs:axiom/Binary64-rounded-operations",
+            "name": "rounded-operations",
+            "notationLanguage": "informal mathematical Unicode",
+            "provenanceStatus": "legacy-source-missing",
+            "reviewStatus": "editorial-summary; not machine-proved",
+            "ruleRole": "defining-rule",
+            "statement": "Basic operations instantiate the general IEEE environment at this format.",
+            "type": "Axiom"
+          },
+          "fingerprint": "26fe69da5f1fe890be93e77573af90bfdb23df8e8988d6bc52dbc31b80fc94ad",
+          "id": "urn:csabs:axiom/Binary64-rounded-operations",
+          "path": "concepts/Binary64.md",
+          "type": "Axiom"
+        }
+      ],
+      "family": "claim",
+      "matchedNames": [
+        "rounded-operations"
+      ],
+      "matches": {
+        "basis": [
+          "+",
+          ",",
+          "-",
+          ".",
+          "/",
+          "all",
+          "and",
+          "carriers",
+          "concept",
+          "conventions",
+          "defining",
+          "flag",
+          "for",
+          "grid",
+          "ieee",
+          "in",
+          "instance",
+          "mode",
+          "op",
+          "op_f",
+          "over",
+          "range",
+          "rounding",
+          "rule",
+          "rules",
+          "selected",
+          "semantic",
+          "special",
+          "specified",
+          "sqrt",
+          "the",
+          "this",
+          "uses",
+          "value",
+          "variables",
+          "{",
+          "}",
+          "×",
+          "÷",
+          "∈",
+          "−"
+        ],
+        "context": [],
+        "description": [
+          ".",
+          "at",
+          "basic",
+          "environment",
+          "format",
+          "general",
+          "ieee",
+          "instantiate",
+          "operations",
+          "the",
+          "this"
+        ],
+        "interface": [],
+        "name": [
+          "-",
+          "operations",
+          "rounded"
+        ]
+      },
+      "pair": [
+        "urn:csabs:axiom/Binary128-rounded-operations",
+        "urn:csabs:axiom/Binary64-rounded-operations"
+      ],
+      "previousReview": null,
+      "reviewState": "unreviewed",
+      "score": 8500,
+      "triggers": [
+        "exact_name",
+        "exact_statement",
+        "threshold"
+      ]
+    },
+    {
+      "components": {
+        "basis": {
+          "intersectionCount": 43,
+          "unionCount": 43,
+          "weight": 40
+        },
+        "context": {
+          "intersectionCount": 0,
+          "unionCount": 2,
+          "weight": 15
+        },
+        "description": {
+          "intersectionCount": 14,
+          "unionCount": 14,
+          "weight": 35
+        },
+        "interface": {
+          "intersectionCount": 0,
+          "unionCount": 0,
+          "weight": 0
+        },
+        "name": {
+          "intersectionCount": 3,
+          "unionCount": 3,
+          "weight": 10
+        }
+      },
+      "currentReview": null,
+      "differences": [
+        "appliesTo",
+        "id"
+      ],
+      "endpoints": [
+        {
+          "anchor": "node-urn-csabs-axiom-Binary128-special-values",
+          "evidenceRecords": [
+            {
+              "anchor": null,
+              "id": "urn:csabs:concept/Binary128",
+              "path": "concepts/Binary128.md"
+            }
+          ],
+          "fields": {
+            "appliesTo": [
+              "urn:csabs:concept/Binary128"
+            ],
+            "assumptions": [
+              "All variables range over the carriers and semantic conventions specified in this concept."
+            ],
+            "directSources": [],
+            "formalStatement": "+0=−0 numerically, but sign bits differ; ±∞ ordered beyond finite values; NaN is unordered and NaN=NaN is false under IEEE numeric equality",
+            "id": "urn:csabs:axiom/Binary128-special-values",
+            "name": "special-values",
+            "notationLanguage": "informal mathematical Unicode",
+            "provenanceStatus": "legacy-source-missing",
+            "reviewStatus": "editorial-summary; not machine-proved",
+            "ruleRole": "defining-rule",
+            "statement": "Zero, infinities and NaNs are distinct encodings with IEEE numeric comparisons.",
+            "type": "Axiom"
+          },
+          "fingerprint": "b2ddc42900a9383e0f0c17156e8a38a61ba70cca966c936b6024a00df1fe784a",
+          "id": "urn:csabs:axiom/Binary128-special-values",
+          "path": "concepts/Binary128.md",
+          "type": "Axiom"
+        },
+        {
+          "anchor": "node-urn-csabs-axiom-Binary16-special-values",
+          "evidenceRecords": [
+            {
+              "anchor": null,
+              "id": "urn:csabs:concept/Binary16",
+              "path": "concepts/Binary16.md"
+            }
+          ],
+          "fields": {
+            "appliesTo": [
+              "urn:csabs:concept/Binary16"
+            ],
+            "assumptions": [
+              "All variables range over the carriers and semantic conventions specified in this concept."
+            ],
+            "directSources": [],
+            "formalStatement": "+0=−0 numerically, but sign bits differ; ±∞ ordered beyond finite values; NaN is unordered and NaN=NaN is false under IEEE numeric equality",
+            "id": "urn:csabs:axiom/Binary16-special-values",
+            "name": "special-values",
+            "notationLanguage": "informal mathematical Unicode",
+            "provenanceStatus": "legacy-source-missing",
+            "reviewStatus": "editorial-summary; not machine-proved",
+            "ruleRole": "defining-rule",
+            "statement": "Zero, infinities and NaNs are distinct encodings with IEEE numeric comparisons.",
+            "type": "Axiom"
+          },
+          "fingerprint": "ef8fae6a4bc8ff26c8a81faad28a0cc1d3f9315d81e2c2b585e81af107e066b4",
+          "id": "urn:csabs:axiom/Binary16-special-values",
+          "path": "concepts/Binary16.md",
+          "type": "Axiom"
+        }
+      ],
+      "family": "claim",
+      "matchedNames": [
+        "special-values"
+      ],
+      "matches": {
+        "basis": [
+          "+",
+          ",",
+          "-",
+          ".",
+          "0",
+          ";",
+          "=",
+          "all",
+          "and",
+          "beyond",
+          "bits",
+          "but",
+          "carriers",
+          "concept",
+          "conventions",
+          "defining",
+          "differ",
+          "equality",
+          "false",
+          "finite",
+          "ieee",
+          "in",
+          "is",
+          "n",
+          "na",
+          "numeric",
+          "numerically",
+          "ordered",
+          "over",
+          "range",
+          "rule",
+          "semantic",
+          "sign",
+          "specified",
+          "the",
+          "this",
+          "under",
+          "unordered",
+          "values",
+          "variables",
+          "±",
+          "−",
+          "∞"
+        ],
+        "context": [],
+        "description": [
+          ",",
+          ".",
+          "and",
+          "are",
+          "comparisons",
+          "distinct",
+          "encodings",
+          "ieee",
+          "infinities",
+          "na",
+          "ns",
+          "numeric",
+          "with",
+          "zero"
+        ],
+        "interface": [],
+        "name": [
+          "-",
+          "special",
+          "values"
+        ]
+      },
+      "pair": [
+        "urn:csabs:axiom/Binary128-special-values",
+        "urn:csabs:axiom/Binary16-special-values"
+      ],
+      "previousReview": null,
+      "reviewState": "unreviewed",
+      "score": 8500,
+      "triggers": [
+        "exact_name",
+        "exact_statement",
+        "threshold"
+      ]
+    },
+    {
+      "components": {
+        "basis": {
+          "intersectionCount": 43,
+          "unionCount": 43,
+          "weight": 40
+        },
+        "context": {
+          "intersectionCount": 0,
+          "unionCount": 2,
+          "weight": 15
+        },
+        "description": {
+          "intersectionCount": 14,
+          "unionCount": 14,
+          "weight": 35
+        },
+        "interface": {
+          "intersectionCount": 0,
+          "unionCount": 0,
+          "weight": 0
+        },
+        "name": {
+          "intersectionCount": 3,
+          "unionCount": 3,
+          "weight": 10
+        }
+      },
+      "currentReview": null,
+      "differences": [
+        "appliesTo",
+        "id"
+      ],
+      "endpoints": [
+        {
+          "anchor": "node-urn-csabs-axiom-Binary128-special-values",
+          "evidenceRecords": [
+            {
+              "anchor": null,
+              "id": "urn:csabs:concept/Binary128",
+              "path": "concepts/Binary128.md"
+            }
+          ],
+          "fields": {
+            "appliesTo": [
+              "urn:csabs:concept/Binary128"
+            ],
+            "assumptions": [
+              "All variables range over the carriers and semantic conventions specified in this concept."
+            ],
+            "directSources": [],
+            "formalStatement": "+0=−0 numerically, but sign bits differ; ±∞ ordered beyond finite values; NaN is unordered and NaN=NaN is false under IEEE numeric equality",
+            "id": "urn:csabs:axiom/Binary128-special-values",
+            "name": "special-values",
+            "notationLanguage": "informal mathematical Unicode",
+            "provenanceStatus": "legacy-source-missing",
+            "reviewStatus": "editorial-summary; not machine-proved",
+            "ruleRole": "defining-rule",
+            "statement": "Zero, infinities and NaNs are distinct encodings with IEEE numeric comparisons.",
+            "type": "Axiom"
+          },
+          "fingerprint": "b2ddc42900a9383e0f0c17156e8a38a61ba70cca966c936b6024a00df1fe784a",
+          "id": "urn:csabs:axiom/Binary128-special-values",
+          "path": "concepts/Binary128.md",
+          "type": "Axiom"
+        },
+        {
+          "anchor": "node-urn-csabs-axiom-Binary32-special-values",
+          "evidenceRecords": [
+            {
+              "anchor": null,
+              "id": "urn:csabs:concept/Binary32",
+              "path": "concepts/Binary32.md"
+            }
+          ],
+          "fields": {
+            "appliesTo": [
+              "urn:csabs:concept/Binary32"
+            ],
+            "assumptions": [
+              "All variables range over the carriers and semantic conventions specified in this concept."
+            ],
+            "directSources": [],
+            "formalStatement": "+0=−0 numerically, but sign bits differ; ±∞ ordered beyond finite values; NaN is unordered and NaN=NaN is false under IEEE numeric equality",
+            "id": "urn:csabs:axiom/Binary32-special-values",
+            "name": "special-values",
+            "notationLanguage": "informal mathematical Unicode",
+            "provenanceStatus": "legacy-source-missing",
+            "reviewStatus": "editorial-summary; not machine-proved",
+            "ruleRole": "defining-rule",
+            "statement": "Zero, infinities and NaNs are distinct encodings with IEEE numeric comparisons.",
+            "type": "Axiom"
+          },
+          "fingerprint": "b7314b70170b275a56ee7507bb57833047533b93946b026959dd33aa83862d81",
+          "id": "urn:csabs:axiom/Binary32-special-values",
+          "path": "concepts/Binary32.md",
+          "type": "Axiom"
+        }
+      ],
+      "family": "claim",
+      "matchedNames": [
+        "special-values"
+      ],
+      "matches": {
+        "basis": [
+          "+",
+          ",",
+          "-",
+          ".",
+          "0",
+          ";",
+          "=",
+          "all",
+          "and",
+          "beyond",
+          "bits",
+          "but",
+          "carriers",
+          "concept",
+          "conventions",
+          "defining",
+          "differ",
+          "equality",
+          "false",
+          "finite",
+          "ieee",
+          "in",
+          "is",
+          "n",
+          "na",
+          "numeric",
+          "numerically",
+          "ordered",
+          "over",
+          "range",
+          "rule",
+          "semantic",
+          "sign",
+          "specified",
+          "the",
+          "this",
+          "under",
+          "unordered",
+          "values",
+          "variables",
+          "±",
+          "−",
+          "∞"
+        ],
+        "context": [],
+        "description": [
+          ",",
+          ".",
+          "and",
+          "are",
+          "comparisons",
+          "distinct",
+          "encodings",
+          "ieee",
+          "infinities",
+          "na",
+          "ns",
+          "numeric",
+          "with",
+          "zero"
+        ],
+        "interface": [],
+        "name": [
+          "-",
+          "special",
+          "values"
+        ]
+      },
+      "pair": [
+        "urn:csabs:axiom/Binary128-special-values",
+        "urn:csabs:axiom/Binary32-special-values"
+      ],
+      "previousReview": null,
+      "reviewState": "unreviewed",
+      "score": 8500,
+      "triggers": [
+        "exact_name",
+        "exact_statement",
+        "threshold"
+      ]
+    }
+  ],
+  "counts": {
+    "hiddenReviewedCount": 0,
+    "qualifiedCount": 5538,
+    "queueSize": 5538,
+    "returnedCount": 10,
+    "stateCounts": {
+      "confirmed_duplicate": 0,
+      "reviewed_distinct": 0,
+      "stale": 0,
+      "undecided": 0,
+      "unreviewed": 5538
+    }
+  },
+  "inputs": {
+    "aliasesHash": null,
+    "catalogDigest": "f2f95d4d786b853c187bc6676f540293511ced3326906f253c4329133f1f5038",
+    "commandVersion": "0.1.0",
+    "manifest": [
+      {
+        "path": "concepts/AEAD.md",
+        "sha256": "13d3f8193919736fb48b4a602801a3a67cf6c5a8f971e46ed0bec74e5230eb4d"
+      },
+      {
+        "path": "concepts/AES.md",
+        "sha256": "b20d334d040d1f41504a47abb174b5871b92f0a9db9f9b312e479396e6df98d4"
+      },
+      {
+        "path": "concepts/AESGCM.md",
+        "sha256": "de1463a907b98cc7be904444b9cdbd33d9d84e2d86085fd397035dc615126af7"
+      },
+      {
+        "path": "concepts/AbstractInterpretation.md",
+        "sha256": "7017ca6fe8a940c9e0ee4fb5492347c9f4cfe7f3eb0f22bc18da74a45f53418f"
+      },
+      {
+        "path": "concepts/AliasAnalysis.md",
+        "sha256": "d0f3ee8e9cdf1999938a2ff236331f2b87f9edacd93fa0cb82c3e142c52db25a"
+      },
+      {
+        "path": "concepts/AnalysisPreservation.md",
+        "sha256": "0a40890fdc0532f30dc26fd3d6b7e17ddd92cbd61f8870719a2e9575cfaeff67"
+      },
+      {
+        "path": "concepts/ArbitraryPrecisionInteger.md",
+        "sha256": "27b8358919c9e85aa53f248b491907b798e3396c87a57d781ad8c139d014c175"
+      },
+      {
+        "path": "concepts/ArithmeticMean.md",
+        "sha256": "d8def8540972acb39cc27f23d095249c08ee6bf72490cad1d4617b41997afb65"
+      },
+      {
+        "path": "concepts/Array.md",
+        "sha256": "a389a9cb6b795aea0997ded44f9e7349568ae7ee99d2ecf92a6aeb9be5326ddb"
+      },
+      {
+        "path": "concepts/AsymmetricCoroutine.md",
+        "sha256": "d559c8babdfdae3ee2c1637d6a4f0e8e17b293f134e4cd67895ff8d4c40afde7"
+      },
+      {
+        "path": "concepts/AtomicMemoryModel.md",
+        "sha256": "bfb3a3172e4f9fb9f41afce76f2ac6d363fc1afdcbfcf353f010a82ecad3bfff"
+      },
+      {
+        "path": "concepts/BTree.md",
+        "sha256": "f1be65e8e01f522bbb7e9cf093824a0cc62c4f92f55695df1c2f3c40afe80c8b"
+      },
+      {
+        "path": "concepts/BagRelation.md",
+        "sha256": "1fe2124956ad7c9aba60981736a9c0d64e9cdc51b32f3216644bb00488d6a254"
+      },
+      {
+        "path": "concepts/BayesianNetwork.md",
+        "sha256": "f314930cae2a7814c9ab0ad34f88ed80d32103990e8e8c5769f0d9ea85ad5a46"
+      },
+      {
+        "path": "concepts/BehaviorRefinement.md",
+        "sha256": "859cdc810730b4f8e063d6c78d61a2cbb06545ce7d98bdf04c99c4e036b44f5c"
+      },
+      {
+        "path": "concepts/BehavioralSubtyping.md",
+        "sha256": "5ca0f834a5ba9bcb183ea9ad7ff4f2d1fd82eb0a8cb280654db8f351269fe6f8"
+      },
+      {
+        "path": "concepts/Binary128.md",
+        "sha256": "99d1dab7bb58221828b0e3ea1f0bcaa67622cd32b699b2cd0393b3ec4e3677ae"
+      },
+      {
+        "path": "concepts/Binary16.md",
+        "sha256": "fa1c6d9622bc7881e46adf726cb59d3675d63da71cc1576b1801c2e23ca2cd40"
+      },
+      {
+        "path": "concepts/Binary32.md",
+        "sha256": "16933c96a3dc88cdef3285979d1d85a177d93c4115063d0a55dc0c8df776de40"
+      },
+      {
+        "path": "concepts/Binary64.md",
+        "sha256": "fb22e22de276e28bbe8e1ecbd4a0265eae977760156dfe20baa74c14cda114f4"
+      },
+      {
+        "path": "concepts/BinaryHeap.md",
+        "sha256": "5facf67086c1ec5563163cc7a785b97816895b33f53923e1ecc69fecd253c21c"
+      },
+      {
+        "path": "concepts/BinarySearchTree.md",
+        "sha256": "31867e56fd95e3cb0d2d2d4786c686122c26f336e301ab18d54fc66f4b5ff9bc"
+      },
+      {
+        "path": "concepts/BinaryTree.md",
+        "sha256": "5e46c1c2dc04b1faa4e5c23f05bb1305f093888b29d746cf97c76823dd90133f"
+      },
+      {
+        "path": "concepts/BipartiteGraph.md",
+        "sha256": "8a1fe7af431ec36ed7554b80582b789c0f16ec8263d22ba8ef31fd93984d01c0"
+      },
+      {
+        "path": "concepts/Bisimulation.md",
+        "sha256": "13aa5f54db3c7f4bccfaa00dda86f0512837aff11378e3cf67e98d7ac471d793"
+      },
+      {
+        "path": "concepts/BitVector.md",
+        "sha256": "408007dd96a4a5fbf54d09e37dda987ac948aae0f1298e9b3e2950f8baf3681c"
+      },
+      {
+        "path": "concepts/BlockCipher.md",
+        "sha256": "cd5329d23af283b79581d86d335ba12697ad6c6d690f2490b512774a2958c0e4"
+      },
+      {
+        "path": "concepts/BlockCode.md",
+        "sha256": "df03611351bd6fd0a9d75139e39a955e88e3b022211247ace54923799e33f624"
+      },
+      {
+        "path": "concepts/BooleanAlgebra.md",
+        "sha256": "dbbdc8d548dfc7a22e92f09578887425cee4010b57a27e16efe264e69eff98a5"
+      },
+      {
+        "path": "concepts/BooleanType.md",
+        "sha256": "31362a5bab25697d1e06c4930336e04bcc5174a0d672f206ef8abb6f4e7b0b28"
+      },
+      {
+        "path": "concepts/ByteMemory.md",
+        "sha256": "dd387fa9867b1a500cd00eba6be39a1ba15df87f7c4c121be801068bce624f84"
+      },
+      {
+        "path": "concepts/CVP.md",
+        "sha256": "3b62927c61254e0786dd56668e512ba73c05d3fbbf2e5176fe5fce486d6cec72"
+      },
+      {
+        "path": "concepts/CallEffectContract.md",
+        "sha256": "e87708e77aed29a0209ab620c271fdc5acbfb39ce77cdfdc09eae758c688d679"
+      },
+      {
+        "path": "concepts/CandidateKey.md",
+        "sha256": "c7d3e71ae2dec70e4f19e2789ff74d7b4b66dbd8542eb7b8272c27b20c13d51d"
+      },
+      {
+        "path": "concepts/CartesianProduct.md",
+        "sha256": "1af29416993299877f5d2be40a9852022dd0ddffed1f62287a27991381205bb5"
+      },
+      {
+        "path": "concepts/ChannelCapacity.md",
+        "sha256": "934083a6f2b664fdc22d1a691bc65d4b8a55a8b1e31a20aafe02d7ec923158c6"
+      },
+      {
+        "path": "concepts/CheckedInteger.md",
+        "sha256": "ba14384cab9c47d61eed3969901b148b4d19b73a29549ce58573ae0ecbb7dd2f"
+      },
+      {
+        "path": "concepts/CholeskyDecomposition.md",
+        "sha256": "cc3b0153b5125ae7d698953cdf42584219793c307a9cb669d986af14ccb68d77"
+      },
+      {
+        "path": "concepts/ClassTable.md",
+        "sha256": "c9fc24e6b4ede7c1dfe16b44f9b44d72d86677d91522b2a7892eab357e8a48aa"
+      },
+      {
+        "path": "concepts/ClosedInterval.md",
+        "sha256": "26d8564006622273a805a261dc76291ab833f97f6acad0b19ab4e89784acc9c6"
+      },
+      {
+        "path": "concepts/ClosureOperator.md",
+        "sha256": "ca7b64b6291c9c3f841d25f9d222300f94de8269c5f1505415a090aafebd6d66"
+      },
+      {
+        "path": "concepts/CompileTimeEvaluation.md",
+        "sha256": "f2b2cac4ec1b7163b86e2728276ccfc0c79139732e3abd5bdfc55baea9cc653f"
+      },
+      {
+        "path": "concepts/CompleteLattice.md",
+        "sha256": "a98364fac74b11f1d92e2544bef1e5c9f72235c3c281584f43fc804eeddf1e15"
+      },
+      {
+        "path": "concepts/ComplexNumber.md",
+        "sha256": "57f74b551fce0d4b242e27ae7eeedc469ac06b7e1592cb1e6ee1fda9f1a7d7fd"
+      },
+      {
+        "path": "concepts/ConditionalEntropy.md",
+        "sha256": "891483f2e1c962482e5b7981fc2e81c220dc1d19e0019cd3382a80f9cdf59bfe"
+      },
+      {
+        "path": "concepts/ConditionalProbability.md",
+        "sha256": "eb3dc43a7e5abab5538e4bba97b948a3e0df53a04bac3d9816a026e6ad0d6298"
+      },
+      {
+        "path": "concepts/ContextFreeGrammar.md",
+        "sha256": "02ab3eb2a4f6921570a0738bb18ea9bf6ad13caffbb1b81e9f089e2b4425c319"
+      },
+      {
+        "path": "concepts/ControlFlowGraph.md",
+        "sha256": "ec17071e7f956f003ded3b253118268c04c508ff0895c4b466790ecce10691de"
+      },
+      {
+        "path": "concepts/ControlFlowRefinement.md",
+        "sha256": "fa38c23144b58677312b09586dbafb40b9f21d5dbc68d5c05c278656286b163f"
+      },
+      {
+        "path": "concepts/ConvergentExecution.md",
+        "sha256": "bc60b3a765b97f406cc868f0dcc56091a86d0e4df617309615693c272912c186"
+      },
+      {
+        "path": "concepts/CooperativeScheduler.md",
+        "sha256": "a6066ae5212882df5d93d8e077ca29145d0fde70ae6591ab68bb5ac6fd1f2895"
+      },
+      {
+        "path": "concepts/DAG.md",
+        "sha256": "f77b2b6a34fb443e1420193a27df0bf03c26b70dda7e2f1935e62c57029e2e75"
+      },
+      {
+        "path": "concepts/DFA.md",
+        "sha256": "b517c9d0cdcd47749d0bade3163b3916de8a2af59867db630a8a3b183fe824c4"
+      },
+      {
+        "path": "concepts/DataLayout.md",
+        "sha256": "c3f9bd56edebb4893f0f1f9feba3f0b2693c44be6b498640a3bf0a99d889d0b2"
+      },
+      {
+        "path": "concepts/DatabaseRelation.md",
+        "sha256": "00389be1999f97e4340b5996bb3d5a8a7d81da9380c1a6f4a44fac811cfa2e13"
+      },
+      {
+        "path": "concepts/DependentFunction.md",
+        "sha256": "5cb0c6ee793b6804c97f97bb1f77d4e4c1ae78edfd04b93d2ceed7666b39e25f"
+      },
+      {
+        "path": "concepts/DependentNameLookup.md",
+        "sha256": "b5e06b68d4e5b3cc524f436f42deb9d97383b2f34215c8a78aa982db76484f57"
+      },
+      {
+        "path": "concepts/DependentPair.md",
+        "sha256": "7fc8315bdea5dbee1f5d6c11ad936c6c7fbeccc188a5032741fa4799ec469135"
+      },
+      {
+        "path": "concepts/Deque.md",
+        "sha256": "1c19426aec93710506bd3989ea9c2cfcb61d8a91c54108c83136008306a64c1d"
+      },
+      {
+        "path": "concepts/DialectConversion.md",
+        "sha256": "a990a1edfc2fe81adba0ff6949a9b994c9fe73c6ed2c2e86f7e8ac182b4297fc"
+      },
+      {
+        "path": "concepts/DiffieHellman.md",
+        "sha256": "7844073d9a62ab2b5eb638e57d8a284de2dbc7a1187daf62e2885c346d53a1d6"
+      },
+      {
+        "path": "concepts/DirectedGraph.md",
+        "sha256": "9d61dad3d9b4a7b81b31d0ce7352625c8d32b1a0d9816b284a976adf88c10612"
+      },
+      {
+        "path": "concepts/DirectedMultigraph.md",
+        "sha256": "d0c575934eeee65d65ff4dafbac0c61adaa12f464be2f7eb6629467875843149"
+      },
+      {
+        "path": "concepts/DiscreteMemorylessChannel.md",
+        "sha256": "06b38dec13a78ab15bc47e95dcf4721999cc3424be20611287062c0ad3779b5b"
+      },
+      {
+        "path": "concepts/DisjointSet.md",
+        "sha256": "640c74e5de83f857ab90882c57dafb84b849f9cdfac34878f3efaaef3186fe18"
+      },
+      {
+        "path": "concepts/DistortionMeasure.md",
+        "sha256": "03c36682b1f7b2498a65ad5b96a2f5a22e741ae069fbf7792a84e2684d74875d"
+      },
+      {
+        "path": "concepts/DocumentValue.md",
+        "sha256": "efc2eada07e1557a91d1c09ecd3dd1399fc5560db0f87572db0cf99796532f8d"
+      },
+      {
+        "path": "concepts/Dominance.md",
+        "sha256": "b3d39738a06d43b38431d14ba234958316e1db29abcfe00a9d9d078cf36ed806"
+      },
+      {
+        "path": "concepts/DualCode.md",
+        "sha256": "070553461c975d99bd29c5bf6bc4c47487557ba2a96d46db94931bc3d3f40b41"
+      },
+      {
+        "path": "concepts/ECC.md",
+        "sha256": "735a50192dd4c7f24341c2fc31604f7ee1db67e80ce18279785b9051aa5aaa58"
+      },
+      {
+        "path": "concepts/ECDH.md",
+        "sha256": "55a84ede9d922a8e7f7214d3b3a3854f6199669ba6890262ec00310fc4adab0a"
+      },
+      {
+        "path": "concepts/EffectAlgebra.md",
+        "sha256": "dd1508160464c5fc6fb6c3e57234d61c3e6a15a3ffd7e9e6e44dc4ee8d791d10"
+      },
+      {
+        "path": "concepts/EffectSummary.md",
+        "sha256": "654d1098388edaeaddd80e28868aefb653ee2d1243e81d67ccbe1306ea997b95"
+      },
+      {
+        "path": "concepts/EigenDecomposition.md",
+        "sha256": "af1478e68620a250284d92e85ac20b590a1aba478055c1ad437c52b620c93d7e"
+      },
+      {
+        "path": "concepts/EmptyType.md",
+        "sha256": "df09751bcb829c6c4947a19dbf934be23e380a759ae76f8f78acfe614d58253e"
+      },
+      {
+        "path": "concepts/EntityRelationshipModel.md",
+        "sha256": "9238cd87b161750a1cab345dc3f4d420cdcb84ca6c8e8944864deab327d69110"
+      },
+      {
+        "path": "concepts/EquivalenceRelation.md",
+        "sha256": "6e37c22c79e76122bb069a564dd6fe51eb769cfd638472b3f8bd57fde1a24e8c"
+      },
+      {
+        "path": "concepts/EuclideanLattice.md",
+        "sha256": "2995e6e8e49d411754f79afbc85bc0e16775d2dd290624e7423a201baa2ac842"
+      },
+      {
+        "path": "concepts/ExceptionalControlFlow.md",
+        "sha256": "52ac2f6b4d096b19214c0ab9032a158cb4f4d09951faf78a66826bc1a6df465e"
+      },
+      {
+        "path": "concepts/Field.md",
+        "sha256": "fd6e25f903d2fd65122d97f803a48a758601e6f33aff6d3071e9246ab12df802"
+      },
+      {
+        "path": "concepts/FiniteDistribution.md",
+        "sha256": "4594488b2585bf780a5fd0e97a9d522c2a20a288c777ced917108bd12fda0a5b"
+      },
+      {
+        "path": "concepts/FiniteField.md",
+        "sha256": "e3880eddba544ac0d3b62ba9049ca6ab54d7136db80e0f565781c2c28a141e75"
+      },
+      {
+        "path": "concepts/FiniteIterator.md",
+        "sha256": "44e354e7685622c1cb27e166c25f7b38916e67760256e1c48b87cc36a5c759e0"
+      },
+      {
+        "path": "concepts/FiniteSet.md",
+        "sha256": "922b72024316432021ebf18e02ddaa3277c8ea5f5ce7a7762500d1396a6c0b6f"
+      },
+      {
+        "path": "concepts/FiniteType.md",
+        "sha256": "27d94757cbd68aff7ef251ea759699e1e91f994bbd05bc7417fa66f7a3617de5"
+      },
+      {
+        "path": "concepts/FirstOrderFormula.md",
+        "sha256": "dca992c42221793c8ca9fc4f75caf603b0786c673b987486169a23357f53fc6c"
+      },
+      {
+        "path": "concepts/FirstOrderNaturalDeduction.md",
+        "sha256": "2644f9f5cf3c3b75200be40acef9e8315c11f306a85fa50632366822822fe963"
+      },
+      {
+        "path": "concepts/FirstOrderSignature.md",
+        "sha256": "2f56c9de070749a78d58594d71e84e393c0e53268c234a20e978765112983237"
+      },
+      {
+        "path": "concepts/FixedPoint.md",
+        "sha256": "63dc727667e5f3473593b46968d91b6da471b0d56a1185fe340749af4ee29d6e"
+      },
+      {
+        "path": "concepts/FixedWidthSignedInteger.md",
+        "sha256": "6d72139aef36103e1d75de70489576e4a8514d028f12debba213b540d2c91a2d"
+      },
+      {
+        "path": "concepts/FixedWidthUnsignedInteger.md",
+        "sha256": "75b9c7dfdc9b75cadc473ff54520751aea8e4393fc08dbd5e8424ece692f969e"
+      },
+      {
+        "path": "concepts/FloatingPointType.md",
+        "sha256": "10c1cf057456516809b8b02d65a0f5882d60abcabd3915589be2ea48bbec98ea"
+      },
+      {
+        "path": "concepts/FormalLanguage.md",
+        "sha256": "69dee306faea13a98e32f482ecba81ae8ab430fa0c261390bd0aa7c2de46bcd9"
+      },
+      {
+        "path": "concepts/Function.md",
+        "sha256": "dc01bb4edc79c0f9bc4650b5a4de5d01a1cd98fd833d8c1631e64205abd813bc"
+      },
+      {
+        "path": "concepts/FunctionType.md",
+        "sha256": "01067603585d9ce0a5ffad095e84daaa3ad638ca162c943b205060e572739d6d"
+      },
+      {
+        "path": "concepts/FunctionalDependency.md",
+        "sha256": "7655071318f5e93f2a6e47ad63e84bd6dc8247bbd79efa36011156b0c7846016"
+      },
+      {
+        "path": "concepts/FuzzySet.md",
+        "sha256": "bf619123fc0c8318e7d8be6c90ea5d90dc4e9a794524f5aaee20f6e7766a6c0e"
+      },
+      {
+        "path": "concepts/GCM.md",
+        "sha256": "208512fd6c1dee30a793aadb8c15082b3ccd9b1d7b84839c3a7d040733e6c500"
+      },
+      {
+        "path": "concepts/GHASH.md",
+        "sha256": "1c6411ced62584920f8b24cf869c0fc8c59cecb6b9cc958cd46912ff7328ad75"
+      },
+      {
+        "path": "concepts/GaloisConnection.md",
+        "sha256": "159a6bdd56450262d309137fa0004d841a271b39fec2e168db9ad08a550a531e"
+      },
+      {
+        "path": "concepts/GeneratorMatrix.md",
+        "sha256": "7ee0c688713ea18e2c4f474dece3aa476e0b7f82b5928d1d01a24ee6c3c79a43"
+      },
+      {
+        "path": "concepts/GenericArgumentBinding.md",
+        "sha256": "d68f3281f93db11df55840777255aa761b1e4da7e5c9b4480ccd2e55343b2c87"
+      },
+      {
+        "path": "concepts/GenericSignature.md",
+        "sha256": "d864f26661aed1f322ed06c853ae4b950777b4a8045fc1b9f2cc912e502bf9a8"
+      },
+      {
+        "path": "concepts/Graph.md",
+        "sha256": "131def407d8fd64634aff52c0e8b37887e566b4a15ed54e721a98f0a7c359632"
+      },
+      {
+        "path": "concepts/Group.md",
+        "sha256": "2785a9adee7d2ac7905bf57ff7b6fb97bb0ee5283196155eba0967a61f104228"
+      },
+      {
+        "path": "concepts/GuardedRewrite.md",
+        "sha256": "c44b9a33831f6766b5974d55e421a78de3948bd85a788e30c27befbc2988600a"
+      },
+      {
+        "path": "concepts/HammingSpace.md",
+        "sha256": "4a0390762ec8b81d623e9caca6f741f610860b3579ff0238e656502df739a4a3"
+      },
+      {
+        "path": "concepts/HappensBefore.md",
+        "sha256": "0d1edb9cebe73ea186e70a65aa6741af1a7bc05c0d9f51d5d2bf5f5866f9daac"
+      },
+      {
+        "path": "concepts/HeapSeparation.md",
+        "sha256": "bcb7d02f985234dd6fe59a6b417dbb98305817144fd486906e42dd39c47af669"
+      },
+      {
+        "path": "concepts/HeapStore.md",
+        "sha256": "a144c2bf08e99212402a0dbfdae494a66b215a48ce6b169e07f47813b92603b9"
+      },
+      {
+        "path": "concepts/HoareTriple.md",
+        "sha256": "32d02fd0889450bab5641079b7ad99eff8289aeffe4d5b0893c092f82a86ef2a"
+      },
+      {
+        "path": "concepts/Hypergraph.md",
+        "sha256": "204496b58741066790f30fc25d26e822b0dc0df211eaa9d32eeead088b84c5ff"
+      },
+      {
+        "path": "concepts/IdempotentSemiring.md",
+        "sha256": "4c64822145e3642ad939c1dc94736ea61993aef7f1c34dd866d22160a8a2cd1b"
+      },
+      {
+        "path": "concepts/Integer.md",
+        "sha256": "5fd9ef2a1623a97cda53db17fc51571d66be59ad9e7b678660dde1bf8b2b28e7"
+      },
+      {
+        "path": "concepts/IntegerAffineMap.md",
+        "sha256": "91d0acfdc93bfae6a2c285145c3e90071b5e4b9592e6aba5658c6d788b99da66"
+      },
+      {
+        "path": "concepts/IntervalDomain.md",
+        "sha256": "15e48430fc6b141cf0992499feb926de853daa539ffda2ced25da4382b797097"
+      },
+      {
+        "path": "concepts/JavaParameterizedType.md",
+        "sha256": "ba1010eb17481765c309b45a6179f8292a7f8c8a6910c1a90579f922f77ae0f3"
+      },
+      {
+        "path": "concepts/JavaTypeErasure.md",
+        "sha256": "19a3ba161e9f963d7aad3b2814d9df0d15ac301414037aeea5b22e8df1d6f318"
+      },
+      {
+        "path": "concepts/JavaTypeInference.md",
+        "sha256": "e6498daf032b8ef2fc58f27946ad9762055ab66a7a2cedb1c00b27b5f92b342f"
+      },
+      {
+        "path": "concepts/JavaWildcardCapture.md",
+        "sha256": "c7f3541602822083e1f81c76650accdba14f2b8d12e6dadae83bb57b68545d76"
+      },
+      {
+        "path": "concepts/JoinSemilattice.md",
+        "sha256": "35d71d5eb00c1f0284b4ee7fe41cdfabe6cd4552fde750bb90cb387902d3c73d"
+      },
+      {
+        "path": "concepts/KripkeStructure.md",
+        "sha256": "4abd7b1a64c228c625e6f2286b01910ffa81834d480c735e42a3b2b79b2bb608"
+      },
+      {
+        "path": "concepts/LLVMAttributeContract.md",
+        "sha256": "7ff258c1c1a263bee3d63aebf25cef762d6eab8db013283286f03b8197a83f68"
+      },
+      {
+        "path": "concepts/LLVMFloatingPointSemantics.md",
+        "sha256": "7381d49be9cd659b17adbd5fc0a783ed2d3bc6368ac7c734250947773ef7688b"
+      },
+      {
+        "path": "concepts/LLVMIntegerSemantics.md",
+        "sha256": "5423943004d4df97cef6737f475bba32c8f25e3498d697962ff26f8b5731e33d"
+      },
+      {
+        "path": "concepts/LLVMPoisonSemantics.md",
+        "sha256": "ff4f050e99fa8dd196886925f94a213c69d474fceee0bc0c1983d9605377122f"
+      },
+      {
+        "path": "concepts/LUDecomposition.md",
+        "sha256": "6a8f0617d0c4611d60af0f06c582bf89e7f9412093ab140d4a58a0ed4e386d11"
+      },
+      {
+        "path": "concepts/LWE.md",
+        "sha256": "deea026537193b9b8df9dfb0c5e90be8fccc87ec5ceef4e54cdd99170292e102"
+      },
+      {
+        "path": "concepts/LabelledTransitionSystem.md",
+        "sha256": "530e33bd40e8348c6e1cfdc9149664abdb9bc017d7864628f594d8c65b407e37"
+      },
+      {
+        "path": "concepts/LamportBakery.md",
+        "sha256": "fb323eda2e485146e7d03126f24751c8f28ce29de356940b0ed7988f257307ff"
+      },
+      {
+        "path": "concepts/Lattice.md",
+        "sha256": "ddbc3984b86bfe150fd0d47e0d47e0d77b1b17444ee75e6e46bc42bd85f1e4eb"
+      },
+      {
+        "path": "concepts/LinearBlockCode.md",
+        "sha256": "e71c91f56f06c064970f34c9e815455b4d25989de68e504776f9dc9fa2317734"
+      },
+      {
+        "path": "concepts/LinearMap.md",
+        "sha256": "5b276fc94eb6f54e9abd8ac35557bc5ffc55b363bd9452bd5798b963e7c6135c"
+      },
+      {
+        "path": "concepts/LinearTemporalLogic.md",
+        "sha256": "d501b09e30f486cd94ffb98cd1af93d2fce4109689934530f19864e7f8a645a4"
+      },
+      {
+        "path": "concepts/Linearizability.md",
+        "sha256": "fec79428e1b91f0e457d72642308246ac69f5617f633547def8ceab24f8c1634"
+      },
+      {
+        "path": "concepts/LivenessProperty.md",
+        "sha256": "5de7d7a859866268273a0a99082dbd37ea79d701dc544d6692d5a78f9fad69c4"
+      },
+      {
+        "path": "concepts/Lock.md",
+        "sha256": "4bb730bd75340e8e38a750d7a483facfff1874c73f9334bae8b328d66b1306b4"
+      },
+      {
+        "path": "concepts/LoopDependence.md",
+        "sha256": "89f0540ee1bd98e0cd6f61a62c1f2f148d91cb329698c8cff2bda14d261f64cc"
+      },
+      {
+        "path": "concepts/LoopInvariant.md",
+        "sha256": "7027a3b87f4be8dfd97fc85c0d0acbfabe6be75644260c659681882fb94c90b0"
+      },
+      {
+        "path": "concepts/LoopIterationMapping.md",
+        "sha256": "4fee6e933e352c0a6d4d432aa1d748d61e1637e4661e8465543b3f7115cc32c2"
+      },
+      {
+        "path": "concepts/Manifold.md",
+        "sha256": "075021a956f565eb2dd821656d86fcc4099ca2cc63282fc9f5cbb6936a0fc278"
+      },
+      {
+        "path": "concepts/Map.md",
+        "sha256": "dd97e871888c5e41ec2f400c2d7e9fe79bba7e144ec7b2513a8a256fec1ebd1b"
+      },
+      {
+        "path": "concepts/MarkovChain.md",
+        "sha256": "83071b6e0fd6aef3e290c889e604fcb6ab86188744ec953ac58e50d065fada7a"
+      },
+      {
+        "path": "concepts/Matrix.md",
+        "sha256": "f977fe80fdbb5a2ccf72404b2c7f1e6b9327c4614c12180bcef74cc40f60fb71"
+      },
+      {
+        "path": "concepts/MatrixDecomposition.md",
+        "sha256": "093a112ba2fc5669b0a85718edfca85c2db153e9ee0abdf2b045e3ced1d141cc"
+      },
+      {
+        "path": "concepts/MeasurableFunction.md",
+        "sha256": "b10de5bb0d7e12e46fac08e64c01a41f81d494a3ff1e84104874457e9e4e9e27"
+      },
+      {
+        "path": "concepts/MeasurableSpace.md",
+        "sha256": "2ce82cd94ff9bfca4653a25326cc745ac16582109cb8a07ddcf1466fbb631721"
+      },
+      {
+        "path": "concepts/MeasureSpace.md",
+        "sha256": "e0664043268a2acd33199cc781dd4c9222b712bab164b6fa86f8b579cb9e1f21"
+      },
+      {
+        "path": "concepts/Median.md",
+        "sha256": "b21f655b2035ba9eef7143d17573eeb102dd371c0973e159f966eab02e269ca9"
+      },
+      {
+        "path": "concepts/MemorySSA.md",
+        "sha256": "df23f9c816633db435f4692ab2b09f91ceabfdceef8725abf4da2749dd9b7ff0"
+      },
+      {
+        "path": "concepts/MethodContract.md",
+        "sha256": "f790da6406e6eae12682c0d83f1908776a997fbd0e4a0f794516bfcfec70fc59"
+      },
+      {
+        "path": "concepts/MinPlusSemiring.md",
+        "sha256": "c75b68d39a681b67ebbecdd04e2ac6365e14a11504137bb75d8447960ec6e44d"
+      },
+      {
+        "path": "concepts/ModalLogic.md",
+        "sha256": "41615c18cc23f28891dac6d6d3db5b2eb5ec08d33e75ee98d9b976e4e9f63253"
+      },
+      {
+        "path": "concepts/Mode.md",
+        "sha256": "373c177cf26f38e35c67fac4b58201927653ff08ddf220aa8f6d3d72ed64e81c"
+      },
+      {
+        "path": "concepts/ModularInteger.md",
+        "sha256": "5ab9b6b8e8bbd0ebe8c629eca3cac8d06109208cfc4a74e90186c37f1e8776a6"
+      },
+      {
+        "path": "concepts/Monoid.md",
+        "sha256": "e9640430757d5300ef87ca254ee7ced295933dd9efa549618b947db44e6029b0"
+      },
+      {
+        "path": "concepts/MonotoneDataflow.md",
+        "sha256": "f59215180f66e5a17ea7e32c5ab2d0ce69bd4ea13e850e5c88453c1f31c5c88e"
+      },
+      {
+        "path": "concepts/MonotoneFunction.md",
+        "sha256": "f047d2913b53a909247e2d00f6530be49289ffc247bf880ba7fce656802b09e6"
+      },
+      {
+        "path": "concepts/Multimap.md",
+        "sha256": "e410111830ed6aba30b40006beab8844f55a8db660026071f75432f4f05d6540"
+      },
+      {
+        "path": "concepts/Multiset.md",
+        "sha256": "52694938ef07e211dd6df3ef03dfed81a11edf372fabbd96cd21e9cf2a1eaf5f"
+      },
+      {
+        "path": "concepts/Mutex.md",
+        "sha256": "f450881d1a192911319c5fd822bd5616292d35fd7f9a9beae3f9ffc94d608273"
+      },
+      {
+        "path": "concepts/MutualInformation.md",
+        "sha256": "5aeafb707fd1554567c3cd6447c139b9437e706e7ca2532033f2ca26feaed500"
+      },
+      {
+        "path": "concepts/NFA.md",
+        "sha256": "c13d7fd97246045c135419ba288d5cd309c9b8d053abcd959ee11d94648043dc"
+      },
+      {
+        "path": "concepts/NaturalNumber.md",
+        "sha256": "3cabdaa947008bd06f99070bd168dba0bc3d3bb919a2beaaa6974bf94d7be4fb"
+      },
+      {
+        "path": "concepts/NonlinearBlockCode.md",
+        "sha256": "b64a847bbe92c6238d85779a012c941fb40771df44de191cdaa4c3554284c125"
+      },
+      {
+        "path": "concepts/ObjectHeap.md",
+        "sha256": "77b61764c2404554b7c527521600c0dd391c8beab1d6ff3679954c4613f77493"
+      },
+      {
+        "path": "concepts/ObjectInvariant.md",
+        "sha256": "48567207fbe62a3641040d9666e5f0e565711e718504a53538701884ae6f5a82"
+      },
+      {
+        "path": "concepts/OptionType.md",
+        "sha256": "e05b66c4c249423f2c4e87ca8a9c1fa47902872f7b478ed6d80a39203ff58dc2"
+      },
+      {
+        "path": "concepts/OrderedSet.md",
+        "sha256": "a0745675c0bd520ff93e48311fb3f1f1c55753deff305623b619f0c1930e2479"
+      },
+      {
+        "path": "concepts/ParametricInstantiation.md",
+        "sha256": "b2d5e78b31ca0cd2f54b192f5cc0102868884eac80845e886ecf97633f942045"
+      },
+      {
+        "path": "concepts/ParityCheckMatrix.md",
+        "sha256": "1df9dea92f2da64e30034bf872637f0931caa3de31497124fd56aa3b5167336a"
+      },
+      {
+        "path": "concepts/PartialFunction.md",
+        "sha256": "d26b95577e9339682a00c665901e7b8a33349d184588bf401ea7ccf4449e47ab"
+      },
+      {
+        "path": "concepts/PartialOrder.md",
+        "sha256": "19933c42d7b432a3a28f817c87e4e7e43dac4ca40377b201a4c9a95cc1b2916e"
+      },
+      {
+        "path": "concepts/Partition.md",
+        "sha256": "ee34104b48a55077310832a5e631c33a8ae59a15e630b8d3ede33786526501fe"
+      },
+      {
+        "path": "concepts/PigeonholePrinciple.md",
+        "sha256": "fbd7fe465bb66a49b7a890b19e2c76644efd892df281c72483f9234642120a25"
+      },
+      {
+        "path": "concepts/PointerProvenance.md",
+        "sha256": "a91ab8ae34d0e886d45b6011b1001f30568b75dc34a637c9b93a9225f151d0f2"
+      },
+      {
+        "path": "concepts/PowerSet.md",
+        "sha256": "765f13c4f811ce809b4a61e8e5ceead157b43d51e68357231661838081099458"
+      },
+      {
+        "path": "concepts/PredicateLogic.md",
+        "sha256": "233c3d5ac6a806fd9267b35fe139f5b13f7cc8a5f7d690eb0bb04d49d06d2568"
+      },
+      {
+        "path": "concepts/PredicatedVectorSemantics.md",
+        "sha256": "0d61bae3ef2182a6ac24534e6fe7f01ec10748f7baf486f82aa0c6b913dfdc98"
+      },
+      {
+        "path": "concepts/PrefixFreeCode.md",
+        "sha256": "c81f992c3bb9d69aa7d47e4eb2aef66184514c2e7e1f9460138e70bab0b47f92"
+      },
+      {
+        "path": "concepts/Preorder.md",
+        "sha256": "371bf967128688bcb20895376e5367eaf7c9b1257e06e3a672dbf18648d75942"
+      },
+      {
+        "path": "concepts/PriorityQueue.md",
+        "sha256": "486b09393d0511b6859da96920c8acc777aeaa326419bed98d4f3ee50073f256"
+      },
+      {
+        "path": "concepts/ProbabilitySpace.md",
+        "sha256": "8e3e2bc34460d06e1a1a0b6cf1172a6ed6a9a33f7fed2587d087da3991c3f442"
+      },
+      {
+        "path": "concepts/ProductType.md",
+        "sha256": "857eff2aed9387c6e8b3480e2451519ac32190652922c213a6ede306e1108f7e"
+      },
+      {
+        "path": "concepts/PropertyGraph.md",
+        "sha256": "53e8ee0016d071803233258dd993193bc7622162e82efb58c327090eabdb74ab"
+      },
+      {
+        "path": "concepts/PropositionalFormula.md",
+        "sha256": "a6fed2702d751af819be43426ab2b302f658d958b831e58d1b5cfeaa46906cca"
+      },
+      {
+        "path": "concepts/PropositionalLogic.md",
+        "sha256": "9236153cde61f27abc9de46c24feb518a078b68c387f95278b7b2e2410535d4f"
+      },
+      {
+        "path": "concepts/PropositionalNaturalDeduction.md",
+        "sha256": "3ca5db3adb82db14bfd960e5f80141c0fca7a112318a9c0365eb0a725ddcb6d8"
+      },
+      {
+        "path": "concepts/QRDecomposition.md",
+        "sha256": "ea2c80cf025fcfb3aee81ef4c2f8cc2ce760ca6e5b70a8e47c0e5be14177edba"
+      },
+      {
+        "path": "concepts/QaryLattice.md",
+        "sha256": "99af75488776316325f6b0f029fed217443d818a1b99d7fe9bd957c4c456de3e"
+      },
+      {
+        "path": "concepts/Queue.md",
+        "sha256": "f39bba3f85b671285eeca368bc16df3a5d9114aa484146321a0ae331075c6c82"
+      },
+      {
+        "path": "concepts/QuotientType.md",
+        "sha256": "eb6324d5f573dec11f1f703f8a89ef64d73c0218c64d283cc81deff42982250c"
+      },
+      {
+        "path": "concepts/RDFDataset.md",
+        "sha256": "dbb9d9932006e2142bea6e4399bfd282cedd604258e1548b53a6ca5fb33a36eb"
+      },
+      {
+        "path": "concepts/RDFGraph.md",
+        "sha256": "0db2ee2ed29fdf598a9ab6aed4cef7f3a22b0a8008922e1a43d6cc60b5a7cf6e"
+      },
+      {
+        "path": "concepts/RSA.md",
+        "sha256": "198f76bf8b88d5b0355c04ebcfba9bd2ddad12b8634726e8fca5284040894b7d"
+      },
+      {
+        "path": "concepts/RandomVariable.md",
+        "sha256": "ff89853f4adf4cfb56abb5ec012295576362e89637b63bd5690b80232a28efd2"
+      },
+      {
+        "path": "concepts/RateDistortion.md",
+        "sha256": "9452e6e7647b78808dfe9d774290829f11046f5802286de64db5dc2cc8082bb3"
+      },
+      {
+        "path": "concepts/RationalNumber.md",
+        "sha256": "817c23a7c77fbf6d7071c6362e48bd65fab6303fb9a8b4cff80da4bafc770fbc"
+      },
+      {
+        "path": "concepts/RealNumber.md",
+        "sha256": "fefcbcd57d18f5d38d5e60ddf71ce22ecc9716c7630ceef2e9846c1b82451c70"
+      },
+      {
+        "path": "concepts/RegularLanguage.md",
+        "sha256": "2c372e436fe61d42168a5ec60e61a46a5e36a0d21abaf9c247155e565e612f73"
+      },
+      {
+        "path": "concepts/Relation.md",
+        "sha256": "7bf9189b1b296b030d992f585d4c5d9a3b677a6372e4d0d39f1c63565eaba81c"
+      },
+      {
+        "path": "concepts/RelationalSchema.md",
+        "sha256": "f1cdfbeb104134c8d566b1594dc56993e9a69e3c3934b2a60ff3c33dac40b309"
+      },
+      {
+        "path": "concepts/RelativeEntropy.md",
+        "sha256": "f6ba22aac946b2ed4f063da7772893082520af10fe6ef32a6cfcdbfc98942538"
+      },
+      {
+        "path": "concepts/ResiduatedFuzzyLogic.md",
+        "sha256": "28210061e800e704183ec0faa10909a3ac9318da96fcc06b43ad2de13696522e"
+      },
+      {
+        "path": "concepts/RewriteSystem.md",
+        "sha256": "df8829388ac0586e2153d2ed3556c0146f873fe518ec5ae0d9392ed45f7b6309"
+      },
+      {
+        "path": "concepts/Ring.md",
+        "sha256": "8d482c055abe55f973e72189d076807141e7b377c9d926586eb9dc24b7cc9617"
+      },
+      {
+        "path": "concepts/RootedTree.md",
+        "sha256": "868e1550bb2ac2a266ddcec7da1d30233997c13b22c609f9dce744aad8b7f2a4"
+      },
+      {
+        "path": "concepts/RoseTree.md",
+        "sha256": "56adfee5454a696302abe709a068ecc0965389e302cdb6ad7a56f37ce22c210a"
+      },
+      {
+        "path": "concepts/RuntimeInstrumentation.md",
+        "sha256": "e718cac9050f58785b1e226881174df3259cfd9dff32e4def685b5c380318330"
+      },
+      {
+        "path": "concepts/SIS.md",
+        "sha256": "44bace2f8e2655641577020d87a822b88764743bd7217dd304b10cebb62a2426"
+      },
+      {
+        "path": "concepts/SKOS.md",
+        "sha256": "2ea99ffab4599ec9150c69e7621044560f37804b3ccd74353190116f2e2dac90"
+      },
+      {
+        "path": "concepts/SSAForm.md",
+        "sha256": "f157be63a11b47fbd27983b1dd6dfc09df9eb841bfb9e36940d3c102bcf96762"
+      },
+      {
+        "path": "concepts/SVD.md",
+        "sha256": "1c526583eb7f5e3981869e00ed3b5cef2bf8446b0e097528eb6b3dafccf372b0"
+      },
+      {
+        "path": "concepts/SVP.md",
+        "sha256": "5d839d2a2ffa7355a660fc6cd2f094c30473bcfd971b7cfc5af8a879050c7d3f"
+      },
+      {
+        "path": "concepts/SafetyProperty.md",
+        "sha256": "73028dd4515f92a820fed03340c51824695c0184a9d9456661c23778b3dc47ec"
+      },
+      {
+        "path": "concepts/SaturatingInteger.md",
+        "sha256": "220bdc58053a0565ce4c495d393695d46fcc31ccede76d341cb1d1c6121f7fc2"
+      },
+      {
+        "path": "concepts/ScalarRecurrence.md",
+        "sha256": "9491666d33b5d0e4ac93b7bd938c36d8881c5937cc27d80484f6bda7c9b70ca2"
+      },
+      {
+        "path": "concepts/Semigroup.md",
+        "sha256": "9c1cdc5cf54d0967ef91aee05ca0b8ac37cfa70785ffa3af1889197544e9b245"
+      },
+      {
+        "path": "concepts/Semiring.md",
+        "sha256": "9d8a36ebc50ebd9dab457e831c28036ffb17edf2952d8b5ebe02866d4273b75c"
+      },
+      {
+        "path": "concepts/Sequence.md",
+        "sha256": "ed378cc0f98f688635af3a0fe785533e6e5e95ef9c3ebcdfd597e070bf1af3f1"
+      },
+      {
+        "path": "concepts/SequentialConsistency.md",
+        "sha256": "0bdfdb3fd1972f331f53b5add5b861adcdb0aa3b213e8ca5fc77da07622f0955"
+      },
+      {
+        "path": "concepts/Set.md",
+        "sha256": "68238cfb63094c74f55c1acc47174707460d1bf62a2a5bfb41204295a681823b"
+      },
+      {
+        "path": "concepts/ShannonEntropy.md",
+        "sha256": "0df5164abb9e9c8a35c096882d9e5b0c5d37a0661c822841f9f3a50b9ca5e2d7"
+      },
+      {
+        "path": "concepts/Simulation.md",
+        "sha256": "c8ddd572125d9db4cc9c6509c26bfe8b8003711c12fe7dddded86be759107406"
+      },
+      {
+        "path": "concepts/SingleParentForest.md",
+        "sha256": "a8adb4a624c94fa16d0948394281049f60647641f855d4f8b7ed59999cefe788"
+      },
+      {
+        "path": "concepts/SmoothManifold.md",
+        "sha256": "04f23416ce872336f9755840af333919961a6cb071e52fbca0bf69fccf46c8e7"
+      },
+      {
+        "path": "concepts/SparseVector.md",
+        "sha256": "2eb66083c8d75be2ad2e759fdcc71b47e12afd522e857777352cf8f20a58bd2e"
+      },
+      {
+        "path": "concepts/SpeculationSafety.md",
+        "sha256": "3f7841c16e552ca8c9b682e14e56436c3e9bdc4c5d8eccf7ea3b5c2776042b0e"
+      },
+      {
+        "path": "concepts/Stack.md",
+        "sha256": "67c691f3b598e97fc464f3c1877d928d6540ae8ce3fb4faf076a4c89acc47319"
+      },
+      {
+        "path": "concepts/StateBasedCRDT.md",
+        "sha256": "47ef27c010f72177f1f507a1a685ebf7f4bdac1e327fba8fdfc9258da1249240"
+      },
+      {
+        "path": "concepts/StateRepresentation.md",
+        "sha256": "52085c2fdb441faf4611cd3add8e4f2423f15c2d4e822f57033b8cc6ad0e6c93"
+      },
+      {
+        "path": "concepts/StochasticChannel.md",
+        "sha256": "a3f7ec506b9658204aa285ecce37e80e4c5190be03f88d5aeb8a488d351488d3"
+      },
+      {
+        "path": "concepts/Stream.md",
+        "sha256": "9b140a9f1b2337d93bb44a3e278be03e6b081525001de0512a5084904010640f"
+      },
+      {
+        "path": "concepts/StructuralInduction.md",
+        "sha256": "b27cde80e3046f6d85220f718ea3a029966ab393b4cfd2078bf3a0a4890728f4"
+      },
+      {
+        "path": "concepts/Subtype.md",
+        "sha256": "fdb36bef0122a1f6fa94c5692f8fa59aa04613a7ead43dfef86d6cdb353b57a1"
+      },
+      {
+        "path": "concepts/SumType.md",
+        "sha256": "7b6feaa7b821795e1a3eaa0e109ac958fb82210f40b800a0c187873291fb8235"
+      },
+      {
+        "path": "concepts/SymbolLinkage.md",
+        "sha256": "4d57bc9b51c942b8673a488a912e505a4deff9bf0e6aeb8209a3509632ac7512"
+      },
+      {
+        "path": "concepts/Syndrome.md",
+        "sha256": "c64a00ef438ed9942c4b9225598de531b0333d6fad1eef0b5a60411a2191f0f4"
+      },
+      {
+        "path": "concepts/TConorm.md",
+        "sha256": "b61524f3de9171f2b677a7304960d388c45f73e9e9d5d188495f80354f2a24a5"
+      },
+      {
+        "path": "concepts/TNorm.md",
+        "sha256": "427c766c163606888b532a69221d2483e81a5c952f5874639ee374408b644e4b"
+      },
+      {
+        "path": "concepts/TemplateConstraint.md",
+        "sha256": "43e4c44784b5bdfa63e34eac337d4d37f4268e1625e3cf7a6d5943dc275a48ac"
+      },
+      {
+        "path": "concepts/TemplateMetafunction.md",
+        "sha256": "e939b3496be9b6d41ac32374e82046cd939fb3232a309b7b75d3a922b1396cde"
+      },
+      {
+        "path": "concepts/TemplateParameterPack.md",
+        "sha256": "bdeccc16e848761b166893771b80bd46aac2c91a8eeff16558fa53a9dd59c619"
+      },
+      {
+        "path": "concepts/TemplateSpecialization.md",
+        "sha256": "c1bc630a3c1f5696a3c436ecdd0c0d75973971865cc30b1fdf3f50c1df4566ee"
+      },
+      {
+        "path": "concepts/TemplateSubstitution.md",
+        "sha256": "5b1fae4e853b9ec2ebce42498bdd83cbc8fe6d3a2d9010cdb0e946afb828cb14"
+      },
+      {
+        "path": "concepts/Tensor.md",
+        "sha256": "6ce7020918a5f6e117852e37078247424c09c3946852cc3119bfead633bce8ce"
+      },
+      {
+        "path": "concepts/TensorProduct.md",
+        "sha256": "aaeaae387c6fefcabde4eb42e07a9ec563a26c77b3e38d1f2a035ade6787d3ff"
+      },
+      {
+        "path": "concepts/TermAlgebra.md",
+        "sha256": "11dc719146a02c2caefdc3c37e4233a002450e62190111c923015ded5b6c700a"
+      },
+      {
+        "path": "concepts/TerminationVariant.md",
+        "sha256": "53a9638a4a6fc2f735bb8ddd68f032623a0c20ef37376dc6798d71fd815ddcbf"
+      },
+      {
+        "path": "concepts/TopologicalSpace.md",
+        "sha256": "d33f5cc03eca7e733143ce5f18694d8d135dbb60e76796517b0261bd7f7534ac"
+      },
+      {
+        "path": "concepts/TotalOrder.md",
+        "sha256": "752d41afa5ab9ce98bbadef52a051cd276c45ecf3d7a1e537688b51a241d0f6a"
+      },
+      {
+        "path": "concepts/TraceEquivalence.md",
+        "sha256": "ba490e1a17a34da289dde2524f20c9683e131e30f924d81829c3f4ac9b7592e5"
+      },
+      {
+        "path": "concepts/TransitionSystem.md",
+        "sha256": "ef94e179f22c87ae0e353b42070c51fe1c64c1840dc1f603184f5d18d18b9b26"
+      },
+      {
+        "path": "concepts/TranslationValidation.md",
+        "sha256": "7bbbf876828b241cece21887eab438114077d7472d55aed26ead0ebcf5273479"
+      },
+      {
+        "path": "concepts/Tree.md",
+        "sha256": "7f5316f43e852f6b62899cc393db8a939c14e135ec615da54bd43cd1efe8bb21"
+      },
+      {
+        "path": "concepts/Trie.md",
+        "sha256": "edf9417764f935b7a867fad928375960761b89b01156c15888d1e90ed1db7327"
+      },
+      {
+        "path": "concepts/TuringMachine.md",
+        "sha256": "6e2693b8c7b8a311a9024dd3ec06ee3b623365ff4f4d6319db968f9352ea82eb"
+      },
+      {
+        "path": "concepts/UniquelyDecodableCode.md",
+        "sha256": "5aaf9564695f142fa117ac9238ba1ac6226fdeb11ef16e84714f7ab6cc604d30"
+      },
+      {
+        "path": "concepts/UnitType.md",
+        "sha256": "919ad785cbb6aeca1bf4fda192d6bdb3684b46b8eabef0ea9e807ab38a03535c"
+      },
+      {
+        "path": "concepts/VHDLGenericElaboration.md",
+        "sha256": "1d08f309e89cae78933f7a110eb3a2de01e24e99853619d51451a5f79559de91"
+      },
+      {
+        "path": "concepts/VHDLGenericInterface.md",
+        "sha256": "ba13ce5025ea3bb55e72843496d6edb2428e2e6362df738b048cf6a8b8653f9b"
+      },
+      {
+        "path": "concepts/VectorSpace.md",
+        "sha256": "c01f0ce017191879a19844d283259ff0c9d9b85a94da5e54c0359a9c9b120302"
+      },
+      {
+        "path": "concepts/WeakestPrecondition.md",
+        "sha256": "bfc76f23a5565c6ddeaf774cb076bff83c9097a329e49ac00c3414daa0b9bb1f"
+      },
+      {
+        "path": "concepts/WeightedDirectedGraph.md",
+        "sha256": "470d25218cb512da526eb791fbc94800942a18d5d389962b32fac81b172e34dd"
+      },
+      {
+        "path": "concepts/WellFoundedRelation.md",
+        "sha256": "864d4adf4b889cce61ec3938eb6ba68a445283e0523b42c81f91677ecc87ac45"
+      },
+      {
+        "path": "data/shared.json",
+        "sha256": "f2c4d40ed7c89a677e16d359036e8d96ec2d304e203c6876ecacb214558c531c"
+      }
+    ],
+    "pythonVersion": "3.13.9",
+    "registryHash": null,
+    "toolSources": {
+      "scripts/audit_duplicates.py": "473867e691e75fdc2f2c4148394fdd52a16f654cc4734afed7bfef16e443f6b2",
+      "scripts/markdown_graph.py": "02028560b66ba4f338bb26a08b82bf030fa6f459380978d23716858ddc00c9c6",
+      "scripts/subjects.py": "23af0e2f7f514d7114fb39c36029b12344fc5b837e08ac8e4cf40a34cde26064",
+      "scripts/validate_graph.py": "53fdc91ae92af1411cf97a1223a46435aac6c8f57ecbfc34417c7fe3d2231df9"
+    },
+    "unicodeVersion": "15.1.0",
+    "validationInputs": {
+      "data/import_manifest.json": "d0110a72a1eea72a71339da336edf77f3e9103dae260fc0d44be643de464851d",
+      "provenance_legacy.json": "bdbf39983573b9f14f52759dd57706865b9db22932cf7e1efe841adf125f06cb"
+    }
+  },
+  "limitations": [
+    "Heuristic candidates are not mathematical equivalence, inconsistency or merge authorization.",
+    "No candidate does not imply absence of duplication; semantic recall is incomplete.",
+    "Review invalidation follows only the explicit DA-06 evidence-closure boundary.",
+    "Existing legacy source gaps are retained, not repaired; citations are not re-consulted.",
+    "No solver, compiled proof or automatic catalog/registry/Lean changes are performed."
+  ],
+  "profile": "DA-P1",
+  "registrySummary": [],
+  "schemaVersion": 1,
+  "scope": {
+    "affectedSubjectIds": [
+      "urn:csabs:axiom/AEAD-correctness",
+      "urn:csabs:axiom/AEAD-failure-interface",
+      "urn:csabs:axiom/AES-round-definition",
+      "urn:csabs:axiom/AESGCM-combined-encoding",
+      "urn:csabs:axiom/AESGCM-instantiation",
+      "urn:csabs:axiom/AbstractInterpretation-inductive-definition",
+      "urn:csabs:axiom/AbstractInterpretation-transfer-soundness",
+      "urn:csabs:axiom/AliasAnalysis-modref-soundness",
+      "urn:csabs:axiom/AliasAnalysis-noalias-soundness",
+      "urn:csabs:axiom/AnalysisPreservation-unchanged-cache",
+      "urn:csabs:axiom/AnalysisPreservation-validity-transport",
+      "urn:csabs:axiom/ArbitraryPrecisionInteger-value-semantics",
+      "urn:csabs:axiom/ArithmeticMean-definition",
+      "urn:csabs:axiom/Array-carrier",
+      "urn:csabs:axiom/Array-extensionality",
+      "urn:csabs:axiom/Array-store-definition",
+      "urn:csabs:axiom/AsymmetricCoroutine-body-handoff",
+      "urn:csabs:axiom/AsymmetricCoroutine-finite-resume-observation",
+      "urn:csabs:axiom/AsymmetricCoroutine-resume-entry",
+      "urn:csabs:axiom/AtomicMemoryModel-hb-closure",
+      "urn:csabs:axiom/AtomicMemoryModel-ordering-scope",
+      "urn:csabs:axiom/BTree-arity",
+      "urn:csabs:axiom/BTree-balance",
+      "urn:csabs:axiom/BTree-observers",
+      "urn:csabs:axiom/BTree-occupancy",
+      "urn:csabs:axiom/BTree-ordering",
+      "urn:csabs:axiom/BTree-updates",
+      "urn:csabs:axiom/BagRelation-project-count",
+      "urn:csabs:axiom/BagRelation-selection-count",
+      "urn:csabs:axiom/BayesianNetwork-factorization",
+      "urn:csabs:axiom/BayesianNetwork-local-tables",
+      "urn:csabs:axiom/BehaviorRefinement-equivalence",
+      "urn:csabs:axiom/BehaviorRefinement-inclusion",
+      "urn:csabs:axiom/BehavioralSubtyping-constraint-rule",
+      "urn:csabs:axiom/BehavioralSubtyping-invariant-rule",
+      "urn:csabs:axiom/BehavioralSubtyping-methods-rule",
+      "urn:csabs:axiom/BehavioralSubtyping-subtype-definition",
+      "urn:csabs:axiom/Binary128-normal-grid",
+      "urn:csabs:axiom/Binary128-rounded-operations",
+      "urn:csabs:axiom/Binary128-special-values",
+      "urn:csabs:axiom/Binary128-subnormal-grid",
+      "urn:csabs:axiom/Binary16-normal-grid",
+      "urn:csabs:axiom/Binary16-rounded-operations",
+      "urn:csabs:axiom/Binary16-special-values",
+      "urn:csabs:axiom/Binary16-subnormal-grid",
+      "urn:csabs:axiom/Binary32-normal-grid",
+      "urn:csabs:axiom/Binary32-rounded-operations",
+      "urn:csabs:axiom/Binary32-special-values",
+      "urn:csabs:axiom/Binary32-subnormal-grid",
+      "urn:csabs:axiom/Binary64-normal-grid",
+      "urn:csabs:axiom/Binary64-rounded-operations",
+      "urn:csabs:axiom/Binary64-special-values",
+      "urn:csabs:axiom/Binary64-subnormal-grid",
+      "urn:csabs:axiom/BinaryHeap-complete-shape",
+      "urn:csabs:axiom/BinaryHeap-heap-order",
+      "urn:csabs:axiom/BinaryHeap-minimum-observation",
+      "urn:csabs:axiom/BinaryHeap-update-bags",
+      "urn:csabs:axiom/BinarySearchTree-key-observation",
+      "urn:csabs:axiom/BinarySearchTree-strict-order",
+      "urn:csabs:axiom/BinarySearchTree-update-specification",
+      "urn:csabs:axiom/BinaryTree-carrier",
+      "urn:csabs:axiom/BinaryTree-constructor-disjointness",
+      "urn:csabs:axiom/BinaryTree-external-leaves-equations",
+      "urn:csabs:axiom/BinaryTree-fold-equations",
+      "urn:csabs:axiom/BinaryTree-height-equations",
+      "urn:csabs:axiom/BinaryTree-induction",
+      "urn:csabs:axiom/BinaryTree-inorder-equations",
+      "urn:csabs:axiom/BinaryTree-map-equations",
+      "urn:csabs:axiom/BinaryTree-mirror-equations",
+      "urn:csabs:axiom/BinaryTree-node-injectivity",
+      "urn:csabs:axiom/BinaryTree-size-equations",
+      "urn:csabs:axiom/BinaryTree-view-equations",
+      "urn:csabs:axiom/BipartiteGraph-proper-coloring",
+      "urn:csabs:axiom/BipartiteGraph-sides",
+      "urn:csabs:axiom/Bisimulation-two-way-step-matching",
+      "urn:csabs:axiom/BitVector-boolean-operations",
+      "urn:csabs:axiom/BitVector-extensionality",
+      "urn:csabs:axiom/BitVector-logical-shifts",
+      "urn:csabs:axiom/BlockCipher-inverse",
+      "urn:csabs:axiom/BlockCode-codebook",
+      "urn:csabs:axiom/BooleanAlgebra-absorption",
+      "urn:csabs:axiom/BooleanAlgebra-associativity",
+      "urn:csabs:axiom/BooleanAlgebra-bounds",
+      "urn:csabs:axiom/BooleanAlgebra-closure",
+      "urn:csabs:axiom/BooleanAlgebra-commutativity",
+      "urn:csabs:axiom/BooleanAlgebra-complements",
+      "urn:csabs:axiom/BooleanAlgebra-distributivity",
+      "urn:csabs:axiom/BooleanType-case-beta",
+      "urn:csabs:axiom/BooleanType-enumeration",
+      "urn:csabs:axiom/BooleanType-not-equations",
+      "urn:csabs:axiom/ByteMemory-range-frame",
+      "urn:csabs:axiom/ByteMemory-untyped-access",
+      "urn:csabs:axiom/CVP-distance",
+      "urn:csabs:axiom/CVP-relation",
+      "urn:csabs:axiom/CallEffectContract-effect-postcondition",
+      "urn:csabs:axiom/CallEffectContract-independent-guarantees",
+      "urn:csabs:axiom/CandidateKey-key-definition",
+      "urn:csabs:axiom/CartesianProduct-membership",
+      "urn:csabs:axiom/CartesianProduct-pair-equality",
+      "urn:csabs:axiom/CartesianProduct-projection",
+      "urn:csabs:axiom/ChannelCapacity-achievable",
+      "urn:csabs:axiom/CheckedInteger-bounds",
+      "urn:csabs:axiom/CheckedInteger-overflow-contract",
+      "urn:csabs:axiom/CholeskyDecomposition-factor-constraints",
+      "urn:csabs:axiom/CholeskyDecomposition-reconstruction",
+      "urn:csabs:axiom/ClassTable-nearest-declaration",
+      "urn:csabs:axiom/ClassTable-rooted-chain",
+      "urn:csabs:axiom/ClassTable-runtime-receiver",
+      "urn:csabs:axiom/ClosedInterval-intersection",
+      "urn:csabs:axiom/ClosedInterval-membership",
+      "urn:csabs:axiom/ClosedInterval-ordered-endpoints",
+      "urn:csabs:axiom/ClosureOperator-extensive",
+      "urn:csabs:axiom/ClosureOperator-idempotent",
+      "urn:csabs:axiom/ClosureOperator-monotone",
+      "urn:csabs:axiom/CompileTimeEvaluation-checked-arithmetic",
+      "urn:csabs:axiom/CompileTimeEvaluation-literal-range",
+      "urn:csabs:axiom/CompileTimeEvaluation-selected-branch",
+      "urn:csabs:axiom/CompleteLattice-infimum",
+      "urn:csabs:axiom/CompleteLattice-partial-order",
+      "urn:csabs:axiom/CompleteLattice-supremum",
+      "urn:csabs:axiom/ComplexNumber-arithmetic",
+      "urn:csabs:axiom/ComplexNumber-coordinates",
+      "urn:csabs:axiom/ComplexNumber-unit",
+      "urn:csabs:axiom/ConditionalEntropy-conditional-equation",
+      "urn:csabs:axiom/ConditionalProbability-ratio",
+      "urn:csabs:axiom/ContextFreeGrammar-derivations",
+      "urn:csabs:axiom/ContextFreeGrammar-productions",
+      "urn:csabs:axiom/ControlFlowGraph-boundaries",
+      "urn:csabs:axiom/ControlFlowGraph-paths",
+      "urn:csabs:axiom/ControlFlowRefinement-progress-obligation",
+      "urn:csabs:axiom/ControlFlowRefinement-step-diagram",
+      "urn:csabs:axiom/ConvergentExecution-control-obligation",
+      "urn:csabs:axiom/ConvergentExecution-group-dependence",
+      "urn:csabs:axiom/CooperativeScheduler-dispatch",
+      "urn:csabs:axiom/CooperativeScheduler-external-wakeup",
+      "urn:csabs:axiom/CooperativeScheduler-initial-pool",
+      "urn:csabs:axiom/CooperativeScheduler-owner-advancement",
+      "urn:csabs:axiom/DAG-acyclic",
+      "urn:csabs:axiom/DAG-underlying-digraph",
+      "urn:csabs:axiom/DFA-model",
+      "urn:csabs:axiom/DFA-run",
+      "urn:csabs:axiom/DataLayout-storage-distinction",
+      "urn:csabs:axiom/DataLayout-typed-offset",
+      "urn:csabs:axiom/DatabaseRelation-projection",
+      "urn:csabs:axiom/DatabaseRelation-relational-algebra",
+      "urn:csabs:axiom/DatabaseRelation-set-interface",
+      "urn:csabs:axiom/DependentFunction-beta",
+      "urn:csabs:axiom/DependentFunction-extensionality",
+      "urn:csabs:axiom/DependentNameLookup-definition-binding",
+      "urn:csabs:axiom/DependentNameLookup-guarded-adl-union",
+      "urn:csabs:axiom/DependentPair-elimination",
+      "urn:csabs:axiom/DependentPair-extensionality",
+      "urn:csabs:axiom/DependentPair-projections",
+      "urn:csabs:axiom/Deque-insert",
+      "urn:csabs:axiom/Deque-remove",
+      "urn:csabs:axiom/Deque-sequence-model",
+      "urn:csabs:axiom/DialectConversion-full-legality",
+      "urn:csabs:axiom/DialectConversion-semantic-obligation",
+      "urn:csabs:axiom/DiffieHellman-exchange",
+      "urn:csabs:axiom/DiffieHellman-group-power",
+      "urn:csabs:axiom/DirectedGraph-reachability",
+      "urn:csabs:axiom/DirectedGraph-typed-edges",
+      "urn:csabs:axiom/DirectedMultigraph-endpoints",
+      "urn:csabs:axiom/DirectedMultigraph-walk-equations",
+      "urn:csabs:axiom/DiscreteMemorylessChannel-product-law",
+      "urn:csabs:axiom/DisjointSet-connectivity",
+      "urn:csabs:axiom/DisjointSet-representative",
+      "urn:csabs:axiom/DisjointSet-union-definition",
+      "urn:csabs:axiom/DistortionMeasure-separable-cost",
+      "urn:csabs:axiom/DocumentValue-case-beta",
+      "urn:csabs:axiom/DocumentValue-induction",
+      "urn:csabs:axiom/DocumentValue-lookup-equations",
+      "urn:csabs:axiom/DocumentValue-tagged-constructors",
+      "urn:csabs:axiom/Dominance-path-definition",
+      "urn:csabs:axiom/DualCode-orthogonal-complement",
+      "urn:csabs:axiom/ECC-addition",
+      "urn:csabs:axiom/ECC-carrier",
+      "urn:csabs:axiom/ECC-group-laws",
+      "urn:csabs:axiom/ECC-scalar-rule",
+      "urn:csabs:axiom/ECDH-instantiation",
+      "urn:csabs:axiom/EffectAlgebra-distributivity",
+      "urn:csabs:axiom/EffectAlgebra-join-structure",
+      "urn:csabs:axiom/EffectAlgebra-sequencing-monoid",
+      "urn:csabs:axiom/EffectSummary-overapproximation",
+      "urn:csabs:axiom/EffectSummary-unknown-top",
+      "urn:csabs:axiom/EigenDecomposition-factor-constraints",
+      "urn:csabs:axiom/EigenDecomposition-reconstruction",
+      "urn:csabs:axiom/EntityRelationshipModel-attribute-totality",
+      "urn:csabs:axiom/EntityRelationshipModel-finite-schema",
+      "urn:csabs:axiom/EntityRelationshipModel-role-integrity",
+      "urn:csabs:axiom/EquivalenceRelation-class-definition",
+      "urn:csabs:axiom/EuclideanLattice-integer-span",
+      "urn:csabs:axiom/EuclideanLattice-metric-volume",
+      "urn:csabs:axiom/ExceptionalControlFlow-outcome-distinction",
+      "urn:csabs:axiom/ExceptionalControlFlow-unwind-preservation",
+      "urn:csabs:axiom/Field-add-associative",
+      "urn:csabs:axiom/Field-add-commutative",
+      "urn:csabs:axiom/Field-add-inverse",
+      "urn:csabs:axiom/Field-add-zero",
+      "urn:csabs:axiom/Field-closure",
+      "urn:csabs:axiom/Field-distributive",
+      "urn:csabs:axiom/Field-mul-associative",
+      "urn:csabs:axiom/Field-mul-commutative",
+      "urn:csabs:axiom/Field-mul-unit",
+      "urn:csabs:axiom/Field-nontrivial",
+      "urn:csabs:axiom/Field-nonzero-inverse",
+      "urn:csabs:axiom/FiniteDistribution-dirac-equation",
+      "urn:csabs:axiom/FiniteDistribution-normalized-support",
+      "urn:csabs:axiom/FiniteDistribution-push-equation",
+      "urn:csabs:axiom/FiniteField-finiteness",
+      "urn:csabs:axiom/FiniteIterator-cursor-range",
+      "urn:csabs:axiom/FiniteIterator-next-equations",
+      "urn:csabs:axiom/FiniteIterator-remaining-equation",
+      "urn:csabs:axiom/FiniteSet-carrier-extensionality",
+      "urn:csabs:axiom/FiniteSet-constructors",
+      "urn:csabs:axiom/FiniteType-card-definition",
+      "urn:csabs:axiom/FiniteType-exhaustive",
+      "urn:csabs:axiom/FiniteType-finite-enumeration",
+      "urn:csabs:axiom/FirstOrderFormula-free-syntax",
+      "urn:csabs:axiom/FirstOrderFormula-free-variables",
+      "urn:csabs:axiom/FirstOrderFormula-substitution",
+      "urn:csabs:axiom/FirstOrderNaturalDeduction-equality-rules",
+      "urn:csabs:axiom/FirstOrderNaturalDeduction-propositional-rules",
+      "urn:csabs:axiom/FirstOrderNaturalDeduction-quantifier-rules",
+      "urn:csabs:axiom/FirstOrderSignature-ranked-symbols",
+      "urn:csabs:axiom/FixedPoint-fixed-point-definition",
+      "urn:csabs:axiom/FixedWidthSignedInteger-division",
+      "urn:csabs:axiom/FixedWidthSignedInteger-exact-partial-model",
+      "urn:csabs:axiom/FixedWidthUnsignedInteger-division",
+      "urn:csabs:axiom/FixedWidthUnsignedInteger-wrapping",
+      "urn:csabs:axiom/FloatingPointType-divide-zero",
+      "urn:csabs:axiom/FloatingPointType-environment",
+      "urn:csabs:axiom/FloatingPointType-exceptions",
+      "urn:csabs:axiom/FloatingPointType-infinite-operands",
+      "urn:csabs:axiom/FloatingPointType-invalid-forms",
+      "urn:csabs:axiom/FloatingPointType-nan-results",
+      "urn:csabs:axiom/FloatingPointType-rounding",
+      "urn:csabs:axiom/FloatingPointType-signed-zeros",
+      "urn:csabs:axiom/FormalLanguage-language-equality",
+      "urn:csabs:axiom/FormalLanguage-language-operations",
+      "urn:csabs:axiom/FormalLanguage-union-membership",
+      "urn:csabs:axiom/Function-compose-definition",
+      "urn:csabs:axiom/Function-extensionality",
+      "urn:csabs:axiom/Function-graph",
+      "urn:csabs:axiom/FunctionalDependency-closure-definition",
+      "urn:csabs:axiom/FunctionalDependency-implication",
+      "urn:csabs:axiom/FunctionalDependency-satisfaction",
+      "urn:csabs:axiom/FuzzySet-extensionality",
+      "urn:csabs:axiom/FuzzySet-pointwise-operations",
+      "urn:csabs:axiom/FuzzySet-weak-cut",
+      "urn:csabs:axiom/GCM-authenticated-decryption",
+      "urn:csabs:axiom/GCM-counter-transform",
+      "urn:csabs:axiom/GCM-encryption",
+      "urn:csabs:axiom/GCM-nonce-discipline",
+      "urn:csabs:axiom/GHASH-field-encoding",
+      "urn:csabs:axiom/GHASH-recurrence",
+      "urn:csabs:axiom/GaloisConnection-adjunction",
+      "urn:csabs:axiom/GeneratorMatrix-row-basis",
+      "urn:csabs:axiom/GenericArgumentBinding-binding-definedness",
+      "urn:csabs:axiom/GenericArgumentBinding-binding-step",
+      "urn:csabs:axiom/GenericSignature-kind-correctness",
+      "urn:csabs:axiom/GenericSignature-signature-shape",
+      "urn:csabs:axiom/Graph-adjacency",
+      "urn:csabs:axiom/Graph-simple-finite",
+      "urn:csabs:axiom/Group-associative",
+      "urn:csabs:axiom/Group-closed-carrier",
+      "urn:csabs:axiom/Group-identity",
+      "urn:csabs:axiom/Group-inverse",
+      "urn:csabs:axiom/GuardedRewrite-contextual-soundness",
+      "urn:csabs:axiom/GuardedRewrite-failed-match",
+      "urn:csabs:axiom/HammingSpace-distance-equation",
+      "urn:csabs:axiom/HappensBefore-causal-consistency",
+      "urn:csabs:axiom/HappensBefore-generators",
+      "urn:csabs:axiom/HeapSeparation-disjoint-union",
+      "urn:csabs:axiom/HeapSeparation-exact-atoms",
+      "urn:csabs:axiom/HeapSeparation-star-splitting",
+      "urn:csabs:axiom/HeapStore-allocation",
+      "urn:csabs:axiom/HeapStore-finite-domain",
+      "urn:csabs:axiom/HeapStore-free-frame",
+      "urn:csabs:axiom/HeapStore-write-frame",
+      "urn:csabs:axiom/HoareTriple-command-composition",
+      "urn:csabs:axiom/HoareTriple-partial-correctness",
+      "urn:csabs:axiom/Hypergraph-degree-definition",
+      "urn:csabs:axiom/Hypergraph-hyperedges",
+      "urn:csabs:axiom/Hypergraph-incidence",
+      "urn:csabs:axiom/IdempotentSemiring-add-idempotent",
+      "urn:csabs:axiom/Integer-order",
+      "urn:csabs:axiom/Integer-pair-arithmetic",
+      "urn:csabs:axiom/Integer-quotient",
+      "urn:csabs:axiom/IntegerAffineMap-euclidean-division",
+      "urn:csabs:axiom/IntegerAffineMap-expression-grammar",
+      "urn:csabs:axiom/IntervalDomain-abstract-addition",
+      "urn:csabs:axiom/IntervalDomain-convex-carrier",
+      "urn:csabs:axiom/IntervalDomain-hull",
+      "urn:csabs:axiom/IntervalDomain-lattice-operations",
+      "urn:csabs:axiom/JavaParameterizedType-bounded-well-formedness",
+      "urn:csabs:axiom/JavaParameterizedType-member-substitution",
+      "urn:csabs:axiom/JavaParameterizedType-nominal-supertype-rules",
+      "urn:csabs:axiom/JavaTypeErasure-erasure-equations",
+      "urn:csabs:axiom/JavaTypeErasure-reifiability-distinct",
+      "urn:csabs:axiom/JavaTypeInference-solution-set",
+      "urn:csabs:axiom/JavaTypeInference-sound-resolution",
+      "urn:csabs:axiom/JavaTypeInference-target-conjunction",
+      "urn:csabs:axiom/JavaWildcardCapture-fresh-nonrecursive",
+      "urn:csabs:axiom/JavaWildcardCapture-wildcard-bounds",
+      "urn:csabs:axiom/JoinSemilattice-leastness",
+      "urn:csabs:axiom/JoinSemilattice-upper-bounds",
+      "urn:csabs:axiom/KripkeStructure-infinite-paths",
+      "urn:csabs:axiom/KripkeStructure-serial-labelled-model",
+      "urn:csabs:axiom/LLVMAttributeContract-bundle-distinction",
+      "urn:csabs:axiom/LLVMAttributeContract-justified-guarantee",
+      "urn:csabs:axiom/LLVMFloatingPointSemantics-environment-observations",
+      "urn:csabs:axiom/LLVMFloatingPointSemantics-permission-scope",
+      "urn:csabs:axiom/LLVMIntegerSemantics-exceptional-cases",
+      "urn:csabs:axiom/LLVMIntegerSemantics-modular-arithmetic",
+      "urn:csabs:axiom/LLVMPoisonSemantics-freeze-choice",
+      "urn:csabs:axiom/LLVMPoisonSemantics-per-use-undef",
+      "urn:csabs:axiom/LLVMPoisonSemantics-poison-not-immediate-ub",
+      "urn:csabs:axiom/LUDecomposition-factor-constraints",
+      "urn:csabs:axiom/LUDecomposition-reconstruction",
+      "urn:csabs:axiom/LWE-experiment",
+      "urn:csabs:axiom/LWE-sample",
+      "urn:csabs:axiom/LabelledTransitionSystem-finite-paths",
+      "urn:csabs:axiom/LabelledTransitionSystem-labelled-steps",
+      "urn:csabs:axiom/LamportBakery-doorway",
+      "urn:csabs:axiom/LamportBakery-memory-initialization",
+      "urn:csabs:axiom/LamportBakery-ticket-stability-exit",
+      "urn:csabs:axiom/LamportBakery-wait-entry",
+      "urn:csabs:axiom/Lattice-join-bound",
+      "urn:csabs:axiom/Lattice-meet-bound",
+      "urn:csabs:axiom/Lattice-partial-order",
+      "urn:csabs:axiom/LinearBlockCode-subspace",
+      "urn:csabs:axiom/LinearMap-additivity",
+      "urn:csabs:axiom/LinearMap-homogeneity",
+      "urn:csabs:axiom/LinearTemporalLogic-derived-modalities-and-models",
+      "urn:csabs:axiom/LinearTemporalLogic-next-until",
+      "urn:csabs:axiom/LinearTemporalLogic-state-connectives",
+      "urn:csabs:axiom/Linearizability-completion",
+      "urn:csabs:axiom/Linearizability-history-context",
+      "urn:csabs:axiom/LivenessProperty-extendibility",
+      "urn:csabs:axiom/Lock-compatible-holders",
+      "urn:csabs:axiom/Lock-grant",
+      "urn:csabs:axiom/Lock-release",
+      "urn:csabs:axiom/Lock-try-result",
+      "urn:csabs:axiom/LoopDependence-conflict-definition",
+      "urn:csabs:axiom/LoopDependence-schedule-order",
+      "urn:csabs:axiom/LoopInvariant-initialization",
+      "urn:csabs:axiom/LoopInvariant-preservation",
+      "urn:csabs:axiom/LoopIterationMapping-bijection",
+      "urn:csabs:axiom/LoopIterationMapping-guarded-partition",
+      "urn:csabs:axiom/Manifold-hausdorff",
+      "urn:csabs:axiom/Manifold-local-charts",
+      "urn:csabs:axiom/Manifold-second-countable",
+      "urn:csabs:axiom/Map-delete-lookup",
+      "urn:csabs:axiom/Map-empty-lookup",
+      "urn:csabs:axiom/Map-finite-graph",
+      "urn:csabs:axiom/Map-lookup-extensionality",
+      "urn:csabs:axiom/Map-update-lookup",
+      "urn:csabs:axiom/MarkovChain-markov-property",
+      "urn:csabs:axiom/MarkovChain-stochastic-data",
+      "urn:csabs:axiom/Matrix-multiply-entry",
+      "urn:csabs:axiom/Matrix-pointwise-arithmetic",
+      "urn:csabs:axiom/Matrix-transpose-entry",
+      "urn:csabs:axiom/MatrixDecomposition-reconstruction",
+      "urn:csabs:axiom/MeasurableFunction-preimage-measurability",
+      "urn:csabs:axiom/MeasurableSpace-complement",
+      "urn:csabs:axiom/MeasurableSpace-countable-union",
+      "urn:csabs:axiom/MeasurableSpace-empty",
+      "urn:csabs:axiom/MeasureSpace-empty",
+      "urn:csabs:axiom/MeasureSpace-sigma-additivity",
+      "urn:csabs:axiom/Median-central-pair",
+      "urn:csabs:axiom/Median-midpoint",
+      "urn:csabs:axiom/MemorySSA-candidate-soundness",
+      "urn:csabs:axiom/MemorySSA-version-kinds",
+      "urn:csabs:axiom/MethodContract-outcome-and-effect",
+      "urn:csabs:axiom/MethodContract-outcome-coverage",
+      "urn:csabs:axiom/MethodContract-partial-satisfaction",
+      "urn:csabs:axiom/MinPlusSemiring-profile",
+      "urn:csabs:axiom/ModalLogic-boolean-semantics",
+      "urn:csabs:axiom/ModalLogic-box-semantics",
+      "urn:csabs:axiom/Mode-maximizer-set",
+      "urn:csabs:axiom/ModularInteger-quotient",
+      "urn:csabs:axiom/Monoid-associative",
+      "urn:csabs:axiom/Monoid-closed-carrier",
+      "urn:csabs:axiom/Monoid-identity",
+      "urn:csabs:axiom/MonotoneDataflow-equations",
+      "urn:csabs:axiom/MonotoneDataflow-fact-lattice",
+      "urn:csabs:axiom/MonotoneDataflow-transfer-monotonicity",
+      "urn:csabs:axiom/MonotoneFunction-order-preservation",
+      "urn:csabs:axiom/Multimap-insert-definition",
+      "urn:csabs:axiom/Multimap-remove-definition",
+      "urn:csabs:axiom/Multimap-values-definition",
+      "urn:csabs:axiom/Multiset-count-extensionality",
+      "urn:csabs:axiom/Multiset-finite-support",
+      "urn:csabs:axiom/Multiset-operations",
+      "urn:csabs:axiom/Mutex-acquire",
+      "urn:csabs:axiom/Mutex-owner",
+      "urn:csabs:axiom/Mutex-release",
+      "urn:csabs:axiom/Mutex-try-result",
+      "urn:csabs:axiom/MutualInformation-information-equations",
+      "urn:csabs:axiom/NFA-model",
+      "urn:csabs:axiom/NFA-run",
+      "urn:csabs:axiom/NaturalNumber-arithmetic-recursion",
+      "urn:csabs:axiom/NaturalNumber-constructors",
+      "urn:csabs:axiom/NaturalNumber-induction-schema",
+      "urn:csabs:axiom/NonlinearBlockCode-not-subspace",
+      "urn:csabs:axiom/ObjectHeap-field-update",
+      "urn:csabs:axiom/ObjectHeap-object-record",
+      "urn:csabs:axiom/ObjectHeap-reference-identity",
+      "urn:csabs:axiom/ObjectInvariant-boundary-preservation",
+      "urn:csabs:axiom/ObjectInvariant-constructor-establishment",
+      "urn:csabs:axiom/ObjectInvariant-finite-reachability",
+      "urn:csabs:axiom/OrderedSet-append-index",
+      "urn:csabs:axiom/OrderedSet-carrier-equality",
+      "urn:csabs:axiom/OrderedSet-index-definedness",
+      "urn:csabs:axiom/ParametricInstantiation-instantiation-relation",
+      "urn:csabs:axiom/ParametricInstantiation-simultaneous-substitution",
+      "urn:csabs:axiom/ParityCheckMatrix-kernel",
+      "urn:csabs:axiom/PartialFunction-compose-domain",
+      "urn:csabs:axiom/PartialFunction-extensionality",
+      "urn:csabs:axiom/PartialFunction-graph",
+      "urn:csabs:axiom/PartialOrder-antisymmetric",
+      "urn:csabs:axiom/PartialOrder-reflexive",
+      "urn:csabs:axiom/PartialOrder-transitive",
+      "urn:csabs:axiom/Partition-blocks",
+      "urn:csabs:axiom/PigeonholePrinciple-finite-counting-context",
+      "urn:csabs:axiom/PointerProvenance-access-lifetime",
+      "urn:csabs:axiom/PointerProvenance-association",
+      "urn:csabs:axiom/PowerSet-existence",
+      "urn:csabs:axiom/PredicateLogic-atomic-satisfaction",
+      "urn:csabs:axiom/PredicateLogic-connectives",
+      "urn:csabs:axiom/PredicateLogic-quantifiers",
+      "urn:csabs:axiom/PredicateLogic-semantic-queries",
+      "urn:csabs:axiom/PredicateLogic-structure",
+      "urn:csabs:axiom/PredicatedVectorSemantics-active-definition",
+      "urn:csabs:axiom/PredicatedVectorSemantics-inactive-policy",
+      "urn:csabs:axiom/PrefixFreeCode-prefix-condition",
+      "urn:csabs:axiom/Preorder-reflexive",
+      "urn:csabs:axiom/Preorder-transitive",
+      "urn:csabs:axiom/PriorityQueue-bag-model",
+      "urn:csabs:axiom/PriorityQueue-insert",
+      "urn:csabs:axiom/PriorityQueue-minimum-removal",
+      "urn:csabs:axiom/ProbabilitySpace-normalization",
+      "urn:csabs:axiom/PropertyGraph-labels",
+      "urn:csabs:axiom/PropertyGraph-properties",
+      "urn:csabs:axiom/PropositionalFormula-free-syntax",
+      "urn:csabs:axiom/PropositionalFormula-induction",
+      "urn:csabs:axiom/PropositionalFormula-substitution",
+      "urn:csabs:axiom/PropositionalLogic-entailment",
+      "urn:csabs:axiom/PropositionalLogic-semantic-queries",
+      "urn:csabs:axiom/PropositionalLogic-truth-semantics",
+      "urn:csabs:axiom/PropositionalNaturalDeduction-classical-reductio",
+      "urn:csabs:axiom/PropositionalNaturalDeduction-rules",
+      "urn:csabs:axiom/QRDecomposition-factor-constraints",
+      "urn:csabs:axiom/QRDecomposition-reconstruction",
+      "urn:csabs:axiom/QaryLattice-kernel",
+      "urn:csabs:axiom/Queue-observers",
+      "urn:csabs:axiom/Queue-sequence-model",
+      "urn:csabs:axiom/QuotientType-class-equality",
+      "urn:csabs:axiom/QuotientType-lift-beta",
+      "urn:csabs:axiom/QuotientType-surjective",
+      "urn:csabs:axiom/RDFDataset-dataset-carrier",
+      "urn:csabs:axiom/RDFDataset-equality",
+      "urn:csabs:axiom/RDFDataset-put-equations",
+      "urn:csabs:axiom/RDFGraph-insertion",
+      "urn:csabs:axiom/RDFGraph-isomorphism",
+      "urn:csabs:axiom/RDFGraph-set-graph",
+      "urn:csabs:axiom/RDFGraph-term-sorts",
+      "urn:csabs:axiom/RSA-key",
+      "urn:csabs:axiom/RSA-power",
+      "urn:csabs:axiom/RandomVariable-pushforward-definition",
+      "urn:csabs:axiom/RateDistortion-constrained-information",
+      "urn:csabs:axiom/RationalNumber-arithmetic",
+      "urn:csabs:axiom/RationalNumber-fraction-equality",
+      "urn:csabs:axiom/RationalNumber-fraction-universal",
+      "urn:csabs:axiom/RealNumber-completeness",
+      "urn:csabs:axiom/RealNumber-ordered-field",
+      "urn:csabs:axiom/RegularLanguage-dfa-witness",
+      "urn:csabs:axiom/Relation-composition-definition",
+      "urn:csabs:axiom/Relation-inverse-definition",
+      "urn:csabs:axiom/Relation-typing",
+      "urn:csabs:axiom/RelationalSchema-field-update",
+      "urn:csabs:axiom/RelationalSchema-tuple-extensionality",
+      "urn:csabs:axiom/RelationalSchema-typing",
+      "urn:csabs:axiom/RelativeEntropy-divergence-equation",
+      "urn:csabs:axiom/ResiduatedFuzzyLogic-left-continuity",
+      "urn:csabs:axiom/ResiduatedFuzzyLogic-residuation",
+      "urn:csabs:axiom/RewriteSystem-closure",
+      "urn:csabs:axiom/RewriteSystem-normal-forms",
+      "urn:csabs:axiom/Ring-add-associative",
+      "urn:csabs:axiom/Ring-add-commutative",
+      "urn:csabs:axiom/Ring-add-inverse",
+      "urn:csabs:axiom/Ring-add-zero",
+      "urn:csabs:axiom/Ring-closure",
+      "urn:csabs:axiom/Ring-distributive",
+      "urn:csabs:axiom/Ring-mul-associative",
+      "urn:csabs:axiom/Ring-mul-unit",
+      "urn:csabs:axiom/RootedTree-depth-definition",
+      "urn:csabs:axiom/RootedTree-parent-definition",
+      "urn:csabs:axiom/RootedTree-tree-carrier",
+      "urn:csabs:axiom/RoseTree-fold-equation",
+      "urn:csabs:axiom/RoseTree-free-constructor",
+      "urn:csabs:axiom/RoseTree-induction",
+      "urn:csabs:axiom/RoseTree-projections",
+      "urn:csabs:axiom/RuntimeInstrumentation-projection",
+      "urn:csabs:axiom/RuntimeInstrumentation-runtime-refinement",
+      "urn:csabs:axiom/SIS-instance",
+      "urn:csabs:axiom/SIS-relation",
+      "urn:csabs:axiom/SKOS-class-integrity",
+      "urn:csabs:axiom/SKOS-collection-relations",
+      "urn:csabs:axiom/SKOS-hierarchy-association-disjointness",
+      "urn:csabs:axiom/SKOS-label-integrity",
+      "urn:csabs:axiom/SKOS-lexical-labels",
+      "urn:csabs:axiom/SKOS-mapping-disjointness",
+      "urn:csabs:axiom/SKOS-mapping-relations",
+      "urn:csabs:axiom/SKOS-notations-and-notes",
+      "urn:csabs:axiom/SKOS-scheme-relations",
+      "urn:csabs:axiom/SKOS-semantic-relations",
+      "urn:csabs:axiom/SSAForm-available-typed-use",
+      "urn:csabs:axiom/SSAForm-unique-definition",
+      "urn:csabs:axiom/SVD-factor-constraints",
+      "urn:csabs:axiom/SVD-reconstruction",
+      "urn:csabs:axiom/SVP-minimum",
+      "urn:csabs:axiom/SVP-relation",
+      "urn:csabs:axiom/SafetyProperty-bad-prefix",
+      "urn:csabs:axiom/SaturatingInteger-arithmetic",
+      "urn:csabs:axiom/SaturatingInteger-clamp",
+      "urn:csabs:axiom/ScalarRecurrence-affine-definition",
+      "urn:csabs:axiom/ScalarRecurrence-count-scope",
+      "urn:csabs:axiom/Semigroup-associative",
+      "urn:csabs:axiom/Semigroup-closed-carrier",
+      "urn:csabs:axiom/Semiring-add-associative",
+      "urn:csabs:axiom/Semiring-add-commutative",
+      "urn:csabs:axiom/Semiring-add-zero",
+      "urn:csabs:axiom/Semiring-closure",
+      "urn:csabs:axiom/Semiring-distributive",
+      "urn:csabs:axiom/Semiring-mul-associative",
+      "urn:csabs:axiom/Semiring-mul-unit",
+      "urn:csabs:axiom/Semiring-zero-absorption",
+      "urn:csabs:axiom/Sequence-concat-recursion",
+      "urn:csabs:axiom/Sequence-constructors",
+      "urn:csabs:axiom/Sequence-foldr-equations",
+      "urn:csabs:axiom/Sequence-induction",
+      "urn:csabs:axiom/Sequence-length-recursion",
+      "urn:csabs:axiom/SequentialConsistency-sequential-witness",
+      "urn:csabs:axiom/Set-empty",
+      "urn:csabs:axiom/Set-foundation",
+      "urn:csabs:axiom/Set-infinity",
+      "urn:csabs:axiom/Set-pairing",
+      "urn:csabs:axiom/Set-power",
+      "urn:csabs:axiom/Set-replacement-schema",
+      "urn:csabs:axiom/Set-separation-schema",
+      "urn:csabs:axiom/Set-union",
+      "urn:csabs:axiom/ShannonEntropy-entropy-equation",
+      "urn:csabs:axiom/Simulation-step-matching",
+      "urn:csabs:axiom/SingleParentForest-acyclic",
+      "urn:csabs:axiom/SingleParentForest-parent-function",
+      "urn:csabs:axiom/SmoothManifold-compatible-atlas",
+      "urn:csabs:axiom/SmoothManifold-maximal-structure",
+      "urn:csabs:axiom/SparseVector-extensionality",
+      "urn:csabs:axiom/SparseVector-finite-support",
+      "urn:csabs:axiom/SparseVector-pointwise-arithmetic",
+      "urn:csabs:axiom/SpeculationSafety-division-guard",
+      "urn:csabs:axiom/SpeculationSafety-new-path-obligation",
+      "urn:csabs:axiom/Stack-observers",
+      "urn:csabs:axiom/Stack-sequence-model",
+      "urn:csabs:axiom/StateBasedCRDT-inflationary",
+      "urn:csabs:axiom/StateBasedCRDT-merge-definition",
+      "urn:csabs:axiom/StateBasedCRDT-state-order",
+      "urn:csabs:axiom/StateRepresentation-observation-agreement",
+      "urn:csabs:axiom/StateRepresentation-simulation-obligation",
+      "urn:csabs:axiom/StochasticChannel-kernel",
+      "urn:csabs:axiom/Stream-map-equation",
+      "urn:csabs:axiom/Stream-observations",
+      "urn:csabs:axiom/StructuralInduction-induction-schema",
+      "urn:csabs:axiom/StructuralInduction-least-carrier",
+      "urn:csabs:axiom/Subtype-pack-beta",
+      "urn:csabs:axiom/Subtype-soundness",
+      "urn:csabs:axiom/Subtype-value-equality",
+      "urn:csabs:axiom/SymbolLinkage-environment-quantifier",
+      "urn:csabs:axiom/SymbolLinkage-external-roots",
+      "urn:csabs:axiom/Syndrome-syndrome-equation",
+      "urn:csabs:axiom/TConorm-associativity",
+      "urn:csabs:axiom/TConorm-commutativity",
+      "urn:csabs:axiom/TConorm-identity",
+      "urn:csabs:axiom/TConorm-monotonicity",
+      "urn:csabs:axiom/TNorm-associativity",
+      "urn:csabs:axiom/TNorm-commutativity",
+      "urn:csabs:axiom/TNorm-identity",
+      "urn:csabs:axiom/TNorm-monotonicity",
+      "urn:csabs:axiom/TemplateConstraint-atom-identity",
+      "urn:csabs:axiom/TemplateConstraint-clause-forms",
+      "urn:csabs:axiom/TemplateConstraint-identity-subsumption",
+      "urn:csabs:axiom/TemplateConstraint-short-circuit",
+      "urn:csabs:axiom/TemplateMetafunction-canonical-arguments",
+      "urn:csabs:axiom/TemplateMetafunction-kind-and-domain",
+      "urn:csabs:axiom/TemplateMetafunction-partial-composition",
+      "urn:csabs:axiom/TemplateParameterPack-fold-parentheses",
+      "urn:csabs:axiom/TemplateParameterPack-ordered-expansion",
+      "urn:csabs:axiom/TemplateParameterPack-simultaneous-expansion",
+      "urn:csabs:axiom/TemplateSpecialization-matching",
+      "urn:csabs:axiom/TemplateSpecialization-selection",
+      "urn:csabs:axiom/TemplateSpecialization-winner-definition",
+      "urn:csabs:axiom/TemplateSubstitution-context-classification",
+      "urn:csabs:axiom/TemplateSubstitution-lexical-scan",
+      "urn:csabs:axiom/Tensor-mixed-power-definition",
+      "urn:csabs:axiom/TensorProduct-pairing-bilinear",
+      "urn:csabs:axiom/TensorProduct-universal-property",
+      "urn:csabs:axiom/TermAlgebra-evaluation",
+      "urn:csabs:axiom/TermAlgebra-free-constructors",
+      "urn:csabs:axiom/TermAlgebra-induction",
+      "urn:csabs:axiom/TerminationVariant-strict-decrease",
+      "urn:csabs:axiom/TerminationVariant-well-founded-measure",
+      "urn:csabs:axiom/TopologicalSpace-closed-definition",
+      "urn:csabs:axiom/TopologicalSpace-open-intersection",
+      "urn:csabs:axiom/TopologicalSpace-open-unions",
+      "urn:csabs:axiom/TopologicalSpace-whole-open",
+      "urn:csabs:axiom/TotalOrder-antisymmetric",
+      "urn:csabs:axiom/TotalOrder-comparable",
+      "urn:csabs:axiom/TotalOrder-reflexive",
+      "urn:csabs:axiom/TotalOrder-transitive",
+      "urn:csabs:axiom/TraceEquivalence-trace-equality",
+      "urn:csabs:axiom/TransitionSystem-reachability",
+      "urn:csabs:axiom/TransitionSystem-state-model",
+      "urn:csabs:axiom/TranslationValidation-accepted-soundness",
+      "urn:csabs:axiom/TranslationValidation-bounded-scope",
+      "urn:csabs:axiom/Tree-acyclic",
+      "urn:csabs:axiom/Tree-connected",
+      "urn:csabs:axiom/Tree-underlying-graph",
+      "urn:csabs:axiom/Trie-prefix-equation",
+      "urn:csabs:axiom/TuringMachine-finite-control",
+      "urn:csabs:axiom/TuringMachine-initial-configuration",
+      "urn:csabs:axiom/TuringMachine-machine-step",
+      "urn:csabs:axiom/TuringMachine-recognition-decision",
+      "urn:csabs:axiom/UniquelyDecodableCode-unique-concatenation",
+      "urn:csabs:axiom/VHDLGenericElaboration-elaboration-order",
+      "urn:csabs:axiom/VHDLGenericElaboration-kind-specific-elaboration",
+      "urn:csabs:axiom/VHDLGenericElaboration-static-generation",
+      "urn:csabs:axiom/VHDLGenericInterface-association-order",
+      "urn:csabs:axiom/VHDLGenericInterface-interface-kinds",
+      "urn:csabs:axiom/VHDLGenericInterface-kind-specific-defaults",
+      "urn:csabs:axiom/VectorSpace-additive-structure",
+      "urn:csabs:axiom/VectorSpace-distributivity",
+      "urn:csabs:axiom/VectorSpace-scalar-action",
+      "urn:csabs:axiom/WeakestPrecondition-total-correctness",
+      "urn:csabs:axiom/WeightedDirectedGraph-sum-equations",
+      "urn:csabs:axiom/WeightedDirectedGraph-weighted-carrier",
+      "urn:csabs:axiom/WellFoundedRelation-minimal-element",
+      "urn:csabs:axiom/absurd-unique",
+      "urn:csabs:axiom/array-valid-index",
+      "urn:csabs:axiom/bitvector-width",
+      "urn:csabs:axiom/boolean-bounded-distributive-complemented",
+      "urn:csabs:axiom/case-inl",
+      "urn:csabs:axiom/case-inr",
+      "urn:csabs:axiom/equivalence-reflexive",
+      "urn:csabs:axiom/equivalence-symmetric",
+      "urn:csabs:axiom/equivalence-transitive",
+      "urn:csabs:axiom/field-commutative-ring",
+      "urn:csabs:axiom/field-nonzero-inverses",
+      "urn:csabs:axiom/fp-error-measures",
+      "urn:csabs:axiom/fp-format-parameters",
+      "urn:csabs:axiom/fp-radix-grid",
+      "urn:csabs:axiom/fp-sticky-flags",
+      "urn:csabs:axiom/function-beta",
+      "urn:csabs:axiom/function-eta",
+      "urn:csabs:axiom/function-extensionality",
+      "urn:csabs:axiom/function-functionality",
+      "urn:csabs:axiom/function-totality",
+      "urn:csabs:axiom/group-inverses",
+      "urn:csabs:axiom/map-option-definition",
+      "urn:csabs:axiom/map-product-definition",
+      "urn:csabs:axiom/map-sum-definition",
+      "urn:csabs:axiom/monoid-identity",
+      "urn:csabs:axiom/option-case-none",
+      "urn:csabs:axiom/option-case-some",
+      "urn:csabs:axiom/option-eta",
+      "urn:csabs:axiom/partial-functionality",
+      "urn:csabs:axiom/partition-cover",
+      "urn:csabs:axiom/partition-disjoint",
+      "urn:csabs:axiom/product-beta-first",
+      "urn:csabs:axiom/product-beta-second",
+      "urn:csabs:axiom/product-eta",
+      "urn:csabs:axiom/ring-additive-abelian-group",
+      "urn:csabs:axiom/ring-distributivity",
+      "urn:csabs:axiom/ring-multiplicative-monoid",
+      "urn:csabs:axiom/semigroup-associativity",
+      "urn:csabs:axiom/semigroup-closure",
+      "urn:csabs:axiom/semiring-additive-monoid",
+      "urn:csabs:axiom/semiring-distributivity",
+      "urn:csabs:axiom/semiring-multiplicative-monoid",
+      "urn:csabs:axiom/semiring-zero-annihilation",
+      "urn:csabs:axiom/set-extensionality",
+      "urn:csabs:axiom/signed-width",
+      "urn:csabs:axiom/sum-associate-definition",
+      "urn:csabs:axiom/sum-eta",
+      "urn:csabs:axiom/sum-swap-definition",
+      "urn:csabs:axiom/unit-eta",
+      "urn:csabs:axiom/unsigned-width",
+      "urn:csabs:concept/AEAD",
+      "urn:csabs:concept/AES",
+      "urn:csabs:concept/AESGCM",
+      "urn:csabs:concept/AbstractInterpretation",
+      "urn:csabs:concept/AliasAnalysis",
+      "urn:csabs:concept/AnalysisPreservation",
+      "urn:csabs:concept/ArbitraryPrecisionInteger",
+      "urn:csabs:concept/ArithmeticMean",
+      "urn:csabs:concept/Array",
+      "urn:csabs:concept/AsymmetricCoroutine",
+      "urn:csabs:concept/AtomicMemoryModel",
+      "urn:csabs:concept/BTree",
+      "urn:csabs:concept/BagRelation",
+      "urn:csabs:concept/BayesianNetwork",
+      "urn:csabs:concept/BehaviorRefinement",
+      "urn:csabs:concept/BehavioralSubtyping",
+      "urn:csabs:concept/Binary128",
+      "urn:csabs:concept/Binary16",
+      "urn:csabs:concept/Binary32",
+      "urn:csabs:concept/Binary64",
+      "urn:csabs:concept/BinaryHeap",
+      "urn:csabs:concept/BinarySearchTree",
+      "urn:csabs:concept/BinaryTree",
+      "urn:csabs:concept/BipartiteGraph",
+      "urn:csabs:concept/Bisimulation",
+      "urn:csabs:concept/BitVector",
+      "urn:csabs:concept/BlockCipher",
+      "urn:csabs:concept/BlockCode",
+      "urn:csabs:concept/BooleanAlgebra",
+      "urn:csabs:concept/BooleanType",
+      "urn:csabs:concept/ByteMemory",
+      "urn:csabs:concept/CVP",
+      "urn:csabs:concept/CallEffectContract",
+      "urn:csabs:concept/CandidateKey",
+      "urn:csabs:concept/CartesianProduct",
+      "urn:csabs:concept/ChannelCapacity",
+      "urn:csabs:concept/CheckedInteger",
+      "urn:csabs:concept/CholeskyDecomposition",
+      "urn:csabs:concept/ClassTable",
+      "urn:csabs:concept/ClosedInterval",
+      "urn:csabs:concept/ClosureOperator",
+      "urn:csabs:concept/CompileTimeEvaluation",
+      "urn:csabs:concept/CompleteLattice",
+      "urn:csabs:concept/ComplexNumber",
+      "urn:csabs:concept/ConditionalEntropy",
+      "urn:csabs:concept/ConditionalProbability",
+      "urn:csabs:concept/ContextFreeGrammar",
+      "urn:csabs:concept/ControlFlowGraph",
+      "urn:csabs:concept/ControlFlowRefinement",
+      "urn:csabs:concept/ConvergentExecution",
+      "urn:csabs:concept/CooperativeScheduler",
+      "urn:csabs:concept/DAG",
+      "urn:csabs:concept/DFA",
+      "urn:csabs:concept/DataLayout",
+      "urn:csabs:concept/DatabaseRelation",
+      "urn:csabs:concept/DependentFunction",
+      "urn:csabs:concept/DependentNameLookup",
+      "urn:csabs:concept/DependentPair",
+      "urn:csabs:concept/Deque",
+      "urn:csabs:concept/DialectConversion",
+      "urn:csabs:concept/DiffieHellman",
+      "urn:csabs:concept/DirectedGraph",
+      "urn:csabs:concept/DirectedMultigraph",
+      "urn:csabs:concept/DiscreteMemorylessChannel",
+      "urn:csabs:concept/DisjointSet",
+      "urn:csabs:concept/DistortionMeasure",
+      "urn:csabs:concept/DocumentValue",
+      "urn:csabs:concept/Dominance",
+      "urn:csabs:concept/DualCode",
+      "urn:csabs:concept/ECC",
+      "urn:csabs:concept/ECDH",
+      "urn:csabs:concept/EffectAlgebra",
+      "urn:csabs:concept/EffectSummary",
+      "urn:csabs:concept/EigenDecomposition",
+      "urn:csabs:concept/EmptyType",
+      "urn:csabs:concept/EntityRelationshipModel",
+      "urn:csabs:concept/EquivalenceRelation",
+      "urn:csabs:concept/EuclideanLattice",
+      "urn:csabs:concept/ExceptionalControlFlow",
+      "urn:csabs:concept/Field",
+      "urn:csabs:concept/FiniteDistribution",
+      "urn:csabs:concept/FiniteField",
+      "urn:csabs:concept/FiniteIterator",
+      "urn:csabs:concept/FiniteSet",
+      "urn:csabs:concept/FiniteType",
+      "urn:csabs:concept/FirstOrderFormula",
+      "urn:csabs:concept/FirstOrderNaturalDeduction",
+      "urn:csabs:concept/FirstOrderSignature",
+      "urn:csabs:concept/FixedPoint",
+      "urn:csabs:concept/FixedWidthSignedInteger",
+      "urn:csabs:concept/FixedWidthUnsignedInteger",
+      "urn:csabs:concept/FloatingPointType",
+      "urn:csabs:concept/FormalLanguage",
+      "urn:csabs:concept/Function",
+      "urn:csabs:concept/FunctionType",
+      "urn:csabs:concept/FunctionalDependency",
+      "urn:csabs:concept/FuzzySet",
+      "urn:csabs:concept/GCM",
+      "urn:csabs:concept/GHASH",
+      "urn:csabs:concept/GaloisConnection",
+      "urn:csabs:concept/GeneratorMatrix",
+      "urn:csabs:concept/GenericArgumentBinding",
+      "urn:csabs:concept/GenericSignature",
+      "urn:csabs:concept/Graph",
+      "urn:csabs:concept/Group",
+      "urn:csabs:concept/GuardedRewrite",
+      "urn:csabs:concept/HammingSpace",
+      "urn:csabs:concept/HappensBefore",
+      "urn:csabs:concept/HeapSeparation",
+      "urn:csabs:concept/HeapStore",
+      "urn:csabs:concept/HoareTriple",
+      "urn:csabs:concept/Hypergraph",
+      "urn:csabs:concept/IdempotentSemiring",
+      "urn:csabs:concept/IntegerAffineMap",
+      "urn:csabs:concept/IntervalDomain",
+      "urn:csabs:concept/JavaParameterizedType",
+      "urn:csabs:concept/JavaTypeErasure",
+      "urn:csabs:concept/JavaTypeInference",
+      "urn:csabs:concept/JavaWildcardCapture",
+      "urn:csabs:concept/JoinSemilattice",
+      "urn:csabs:concept/KripkeStructure",
+      "urn:csabs:concept/LLVMAttributeContract",
+      "urn:csabs:concept/LLVMFloatingPointSemantics",
+      "urn:csabs:concept/LLVMIntegerSemantics",
+      "urn:csabs:concept/LLVMPoisonSemantics",
+      "urn:csabs:concept/LUDecomposition",
+      "urn:csabs:concept/LWE",
+      "urn:csabs:concept/LabelledTransitionSystem",
+      "urn:csabs:concept/LamportBakery",
+      "urn:csabs:concept/Lattice",
+      "urn:csabs:concept/LinearBlockCode",
+      "urn:csabs:concept/LinearMap",
+      "urn:csabs:concept/LinearTemporalLogic",
+      "urn:csabs:concept/Linearizability",
+      "urn:csabs:concept/LivenessProperty",
+      "urn:csabs:concept/Lock",
+      "urn:csabs:concept/LoopDependence",
+      "urn:csabs:concept/LoopInvariant",
+      "urn:csabs:concept/LoopIterationMapping",
+      "urn:csabs:concept/Manifold",
+      "urn:csabs:concept/Map",
+      "urn:csabs:concept/MarkovChain",
+      "urn:csabs:concept/MathematicalInteger",
+      "urn:csabs:concept/Matrix",
+      "urn:csabs:concept/MatrixDecomposition",
+      "urn:csabs:concept/MeasurableFunction",
+      "urn:csabs:concept/MeasurableSpace",
+      "urn:csabs:concept/MeasureSpace",
+      "urn:csabs:concept/Median",
+      "urn:csabs:concept/MemorySSA",
+      "urn:csabs:concept/MethodContract",
+      "urn:csabs:concept/MinPlusSemiring",
+      "urn:csabs:concept/ModalLogic",
+      "urn:csabs:concept/Mode",
+      "urn:csabs:concept/ModularInteger",
+      "urn:csabs:concept/Monoid",
+      "urn:csabs:concept/MonotoneDataflow",
+      "urn:csabs:concept/MonotoneFunction",
+      "urn:csabs:concept/Multimap",
+      "urn:csabs:concept/Multiset",
+      "urn:csabs:concept/Mutex",
+      "urn:csabs:concept/MutualInformation",
+      "urn:csabs:concept/NFA",
+      "urn:csabs:concept/NaturalNumber",
+      "urn:csabs:concept/NonlinearBlockCode",
+      "urn:csabs:concept/ObjectHeap",
+      "urn:csabs:concept/ObjectInvariant",
+      "urn:csabs:concept/OptionType",
+      "urn:csabs:concept/OrderedSet",
+      "urn:csabs:concept/ParametricInstantiation",
+      "urn:csabs:concept/ParityCheckMatrix",
+      "urn:csabs:concept/PartialFunction",
+      "urn:csabs:concept/PartialOrder",
+      "urn:csabs:concept/Partition",
+      "urn:csabs:concept/PigeonholePrinciple",
+      "urn:csabs:concept/PointerProvenance",
+      "urn:csabs:concept/PowerSet",
+      "urn:csabs:concept/PredicateLogic",
+      "urn:csabs:concept/PredicatedVectorSemantics",
+      "urn:csabs:concept/PrefixFreeCode",
+      "urn:csabs:concept/Preorder",
+      "urn:csabs:concept/PriorityQueue",
+      "urn:csabs:concept/ProbabilitySpace",
+      "urn:csabs:concept/ProductType",
+      "urn:csabs:concept/PropertyGraph",
+      "urn:csabs:concept/PropositionalFormula",
+      "urn:csabs:concept/PropositionalLogic",
+      "urn:csabs:concept/PropositionalNaturalDeduction",
+      "urn:csabs:concept/QRDecomposition",
+      "urn:csabs:concept/QaryLattice",
+      "urn:csabs:concept/Queue",
+      "urn:csabs:concept/QuotientType",
+      "urn:csabs:concept/RDFDataset",
+      "urn:csabs:concept/RDFGraph",
+      "urn:csabs:concept/RSA",
+      "urn:csabs:concept/RandomVariable",
+      "urn:csabs:concept/RateDistortion",
+      "urn:csabs:concept/RationalNumber",
+      "urn:csabs:concept/RealNumber",
+      "urn:csabs:concept/RegularLanguage",
+      "urn:csabs:concept/Relation",
+      "urn:csabs:concept/RelationalSchema",
+      "urn:csabs:concept/RelativeEntropy",
+      "urn:csabs:concept/ResiduatedFuzzyLogic",
+      "urn:csabs:concept/RewriteSystem",
+      "urn:csabs:concept/Ring",
+      "urn:csabs:concept/RootedTree",
+      "urn:csabs:concept/RoseTree",
+      "urn:csabs:concept/RuntimeInstrumentation",
+      "urn:csabs:concept/SIS",
+      "urn:csabs:concept/SKOS",
+      "urn:csabs:concept/SSAForm",
+      "urn:csabs:concept/SVD",
+      "urn:csabs:concept/SVP",
+      "urn:csabs:concept/SafetyProperty",
+      "urn:csabs:concept/SaturatingInteger",
+      "urn:csabs:concept/ScalarRecurrence",
+      "urn:csabs:concept/Semigroup",
+      "urn:csabs:concept/Semiring",
+      "urn:csabs:concept/Sequence",
+      "urn:csabs:concept/SequentialConsistency",
+      "urn:csabs:concept/Set",
+      "urn:csabs:concept/ShannonEntropy",
+      "urn:csabs:concept/Simulation",
+      "urn:csabs:concept/SingleParentForest",
+      "urn:csabs:concept/SmoothManifold",
+      "urn:csabs:concept/SparseVector",
+      "urn:csabs:concept/SpeculationSafety",
+      "urn:csabs:concept/Stack",
+      "urn:csabs:concept/StateBasedCRDT",
+      "urn:csabs:concept/StateRepresentation",
+      "urn:csabs:concept/StochasticChannel",
+      "urn:csabs:concept/Stream",
+      "urn:csabs:concept/StructuralInduction",
+      "urn:csabs:concept/Subtype",
+      "urn:csabs:concept/SumType",
+      "urn:csabs:concept/SymbolLinkage",
+      "urn:csabs:concept/Syndrome",
+      "urn:csabs:concept/TConorm",
+      "urn:csabs:concept/TNorm",
+      "urn:csabs:concept/TemplateConstraint",
+      "urn:csabs:concept/TemplateMetafunction",
+      "urn:csabs:concept/TemplateParameterPack",
+      "urn:csabs:concept/TemplateSpecialization",
+      "urn:csabs:concept/TemplateSubstitution",
+      "urn:csabs:concept/Tensor",
+      "urn:csabs:concept/TensorProduct",
+      "urn:csabs:concept/TermAlgebra",
+      "urn:csabs:concept/TerminationVariant",
+      "urn:csabs:concept/TopologicalSpace",
+      "urn:csabs:concept/TotalOrder",
+      "urn:csabs:concept/TraceEquivalence",
+      "urn:csabs:concept/TransitionSystem",
+      "urn:csabs:concept/TranslationValidation",
+      "urn:csabs:concept/Tree",
+      "urn:csabs:concept/Trie",
+      "urn:csabs:concept/TuringMachine",
+      "urn:csabs:concept/UniquelyDecodableCode",
+      "urn:csabs:concept/UnitType",
+      "urn:csabs:concept/VHDLGenericElaboration",
+      "urn:csabs:concept/VHDLGenericInterface",
+      "urn:csabs:concept/VectorSpace",
+      "urn:csabs:concept/WeakestPrecondition",
+      "urn:csabs:concept/WeightedDirectedGraph",
+      "urn:csabs:concept/WellFoundedRelation",
+      "urn:csabs:law/AES-inverse",
+      "urn:csabs:law/AbstractInterpretation-abstract-postfixpoint-invariant",
+      "urn:csabs:law/AliasAnalysis-no-modref-excludes-write",
+      "urn:csabs:law/AnalysisPreservation-identity-preserves",
+      "urn:csabs:law/ArbitraryPrecisionInteger-core",
+      "urn:csabs:law/ArithmeticMean-balance",
+      "urn:csabs:law/ArithmeticMean-singleton",
+      "urn:csabs:law/AsymmetricCoroutine-running-no-reentry",
+      "urn:csabs:law/AsymmetricCoroutine-terminal-no-successor",
+      "urn:csabs:law/AtomicMemoryModel-synchronization-implies-hb",
+      "urn:csabs:law/BTree-delete-membership",
+      "urn:csabs:law/BTree-insert-membership",
+      "urn:csabs:law/BagRelation-union-commutative",
+      "urn:csabs:law/BehaviorRefinement-reflexive",
+      "urn:csabs:law/BehaviorRefinement-transitive",
+      "urn:csabs:law/BehavioralSubtyping-client-postcondition-transfer",
+      "urn:csabs:law/BehavioralSubtyping-declared-history-transfer",
+      "urn:csabs:law/Binary128-finite-grid",
+      "urn:csabs:law/Binary16-finite-grid",
+      "urn:csabs:law/Binary32-finite-grid",
+      "urn:csabs:law/Binary64-finite-grid",
+      "urn:csabs:law/BinaryHeap-root-is-minimum",
+      "urn:csabs:law/BinarySearchTree-unique-keys",
+      "urn:csabs:law/BinaryTree-map-composition",
+      "urn:csabs:law/BinaryTree-map-identity",
+      "urn:csabs:law/BinaryTree-mirror-involution",
+      "urn:csabs:law/BinaryTree-size-zero-iff-empty",
+      "urn:csabs:law/BipartiteGraph-adjacent-colors",
+      "urn:csabs:law/Bisimulation-core",
+      "urn:csabs:law/BooleanType-double-negation",
+      "urn:csabs:law/ByteMemory-disjoint-byte-frame",
+      "urn:csabs:law/CallEffectContract-readnone-not-removable",
+      "urn:csabs:law/CandidateKey-key-antichain",
+      "urn:csabs:law/CandidateKey-superkey-upward-closure",
+      "urn:csabs:law/CheckedInteger-core",
+      "urn:csabs:law/CholeskyDecomposition-determinant",
+      "urn:csabs:law/ClassTable-inherited-lookup",
+      "urn:csabs:law/ClassTable-local-override",
+      "urn:csabs:law/ClosedInterval-endpoints-contained",
+      "urn:csabs:law/ClosureOperator-core",
+      "urn:csabs:law/CompileTimeEvaluation-overflow-is-not-wrapping",
+      "urn:csabs:law/CompileTimeEvaluation-unchosen-overflow-irrelevant",
+      "urn:csabs:law/CompleteLattice-core",
+      "urn:csabs:law/ComplexNumber-eta",
+      "urn:csabs:law/ConditionalEntropy-chain-rule",
+      "urn:csabs:law/ContextFreeGrammar-context-closure",
+      "urn:csabs:law/ControlFlowGraph-finite-maximal-path-exits",
+      "urn:csabs:law/ControlFlowRefinement-no-infinite-zero-step-match",
+      "urn:csabs:law/ConvergentExecution-memory-purity-insufficient",
+      "urn:csabs:law/CooperativeScheduler-no-involuntary-switch",
+      "urn:csabs:law/CooperativeScheduler-waiting-excludes-dispatch",
+      "urn:csabs:law/DAG-core",
+      "urn:csabs:law/DFA-singleton-nfa-runs",
+      "urn:csabs:law/DataLayout-gep-not-load",
+      "urn:csabs:law/DatabaseRelation-projection-union",
+      "urn:csabs:law/DatabaseRelation-selection-composition",
+      "urn:csabs:law/DependentFunction-eta",
+      "urn:csabs:law/DependentNameLookup-adl-disabled",
+      "urn:csabs:law/DependentNameLookup-later-ordinary-declaration-irrelevance",
+      "urn:csabs:law/DependentPair-eta",
+      "urn:csabs:law/Deque-core",
+      "urn:csabs:law/DialectConversion-illegal-full-result-rejected",
+      "urn:csabs:law/DirectedGraph-core",
+      "urn:csabs:law/DirectedMultigraph-single-edge-walk",
+      "urn:csabs:law/DiscreteMemorylessChannel-product-normalized",
+      "urn:csabs:law/DisjointSet-find-idempotent",
+      "urn:csabs:law/DistortionMeasure-expected-block",
+      "urn:csabs:law/DocumentValue-boolean-injective",
+      "urn:csabs:law/Dominance-reachable-reflexive",
+      "urn:csabs:law/EffectAlgebra-sequencing-monotone",
+      "urn:csabs:law/EffectSummary-empty-summary",
+      "urn:csabs:law/EigenDecomposition-basis-equation",
+      "urn:csabs:law/EntityRelationshipModel-no-dangling-role",
+      "urn:csabs:law/ExceptionalControlFlow-nounwind-insufficient-for-return",
+      "urn:csabs:law/FiniteDistribution-nonempty-support",
+      "urn:csabs:law/FiniteIterator-fused-exhaustion",
+      "urn:csabs:law/FiniteSet-insert-absorption",
+      "urn:csabs:law/FiniteSet-insert-commutation",
+      "urn:csabs:law/FiniteType-enumeration-unique",
+      "urn:csabs:law/FirstOrderFormula-vacuous-substitution",
+      "urn:csabs:law/FirstOrderNaturalDeduction-finite-support",
+      "urn:csabs:law/FirstOrderSignature-arity-determinate",
+      "urn:csabs:law/FixedPoint-core",
+      "urn:csabs:law/FormalLanguage-concatenation-monoid",
+      "urn:csabs:law/FormalLanguage-distributivity-annihilation",
+      "urn:csabs:law/FunctionalDependency-union-decomposition",
+      "urn:csabs:law/FuzzySet-cut-antitone",
+      "urn:csabs:law/FuzzySet-de-morgan",
+      "urn:csabs:law/GaloisConnection-core",
+      "urn:csabs:law/GenericArgumentBinding-explicit-actual-precedence",
+      "urn:csabs:law/GenericArgumentBinding-successful-binding-kinded",
+      "urn:csabs:law/GenericSignature-arity-mismatch",
+      "urn:csabs:law/GenericSignature-empty-interface",
+      "urn:csabs:law/Graph-core",
+      "urn:csabs:law/GuardedRewrite-composed-rewrite",
+      "urn:csabs:law/HammingSpace-metric",
+      "urn:csabs:law/HappensBefore-core",
+      "urn:csabs:law/HeapSeparation-exclusive-points-to",
+      "urn:csabs:law/HeapSeparation-star-commutative",
+      "urn:csabs:law/HeapSeparation-star-empty-unit",
+      "urn:csabs:law/HeapStore-read-after-write",
+      "urn:csabs:law/HoareTriple-core",
+      "urn:csabs:law/Hypergraph-edge-nonempty",
+      "urn:csabs:law/IntegerAffineMap-modulo-constant-range",
+      "urn:csabs:law/IntervalDomain-addition-sound",
+      "urn:csabs:law/IntervalDomain-hull-adjunction",
+      "urn:csabs:law/JavaParameterizedType-failed-bound-rejected",
+      "urn:csabs:law/JavaParameterizedType-member-argument-replacement",
+      "urn:csabs:law/JavaTypeErasure-array-erasure-commutes",
+      "urn:csabs:law/JavaTypeErasure-same-head-erasure",
+      "urn:csabs:law/JavaTypeInference-failed-target-no-resolution",
+      "urn:csabs:law/JavaTypeInference-target-narrows-solutions",
+      "urn:csabs:law/JavaWildcardCapture-exact-capture-identity",
+      "urn:csabs:law/JavaWildcardCapture-super-capture-lower-bound",
+      "urn:csabs:law/JoinSemilattice-commutativity",
+      "urn:csabs:law/KripkeStructure-path-tail",
+      "urn:csabs:law/LLVMAttributeContract-invalid-strengthening",
+      "urn:csabs:law/LLVMFloatingPointSemantics-contraction-not-reassociation",
+      "urn:csabs:law/LLVMIntegerSemantics-add-zero-concrete",
+      "urn:csabs:law/LLVMPoisonSemantics-freeze-concrete-idempotent",
+      "urn:csabs:law/LUDecomposition-unpermute",
+      "urn:csabs:law/LabelledTransitionSystem-post-union",
+      "urn:csabs:law/LabelledTransitionSystem-trace-first-step",
+      "urn:csabs:law/LamportBakery-critical-ticket-order",
+      "urn:csabs:law/Lattice-core",
+      "urn:csabs:law/LinearTemporalLogic-eventually-always-unfold",
+      "urn:csabs:law/LinearTemporalLogic-next-boolean-laws",
+      "urn:csabs:law/Linearizability-core",
+      "urn:csabs:law/LivenessProperty-core",
+      "urn:csabs:law/Lock-grant-preserves-compatibility",
+      "urn:csabs:law/LoopDependence-read-read-no-conflict",
+      "urn:csabs:law/LoopInvariant-core",
+      "urn:csabs:law/LoopIterationMapping-empty-domain-preservation",
+      "urn:csabs:law/Map-core",
+      "urn:csabs:law/MatrixDecomposition-target-unique",
+      "urn:csabs:law/Median-pair",
+      "urn:csabs:law/Median-singleton",
+      "urn:csabs:law/MemorySSA-candidate-absence",
+      "urn:csabs:law/MethodContract-empty-execution-vacuity",
+      "urn:csabs:law/MethodContract-frame-observation",
+      "urn:csabs:law/ModalLogic-box-conjunction",
+      "urn:csabs:law/ModalLogic-diamond-existential",
+      "urn:csabs:law/Mode-nonempty",
+      "urn:csabs:law/Mode-singleton",
+      "urn:csabs:law/ModularInteger-core",
+      "urn:csabs:law/MonotoneDataflow-least-solution",
+      "urn:csabs:law/MonotoneFunction-core",
+      "urn:csabs:law/Multimap-insert-idempotent",
+      "urn:csabs:law/Multiset-core",
+      "urn:csabs:law/Mutex-acquire-release",
+      "urn:csabs:law/NFA-run-composition",
+      "urn:csabs:law/NFA-run-union",
+      "urn:csabs:law/NaturalNumber-core",
+      "urn:csabs:law/ObjectHeap-alias-observes-write",
+      "urn:csabs:law/ObjectHeap-other-field-frame",
+      "urn:csabs:law/OptionType-core",
+      "urn:csabs:law/OrderedSet-fresh-append-injective",
+      "urn:csabs:law/OrderedSet-order-distinguishes",
+      "urn:csabs:law/ParametricInstantiation-inadmissible-no-instance",
+      "urn:csabs:law/ParametricInstantiation-instance-projection",
+      "urn:csabs:law/PartialOrder-core",
+      "urn:csabs:law/PigeonholePrinciple-core",
+      "urn:csabs:law/PointerProvenance-same-address-insufficient",
+      "urn:csabs:law/PredicateLogic-core",
+      "urn:csabs:law/PredicateLogic-sentence-assignment-independent",
+      "urn:csabs:law/PredicatedVectorSemantics-zero-evl",
+      "urn:csabs:law/Preorder-core",
+      "urn:csabs:law/PriorityQueue-core",
+      "urn:csabs:law/ProductType-core",
+      "urn:csabs:law/PropertyGraph-missing-property",
+      "urn:csabs:law/PropositionalFormula-substitution-identity",
+      "urn:csabs:law/PropositionalLogic-core",
+      "urn:csabs:law/PropositionalNaturalDeduction-finite-support",
+      "urn:csabs:law/QRDecomposition-gram",
+      "urn:csabs:law/QuotientType-lift-unique",
+      "urn:csabs:law/RDFDataset-read-after-put",
+      "urn:csabs:law/RDFGraph-insert-idempotent",
+      "urn:csabs:law/RationalNumber-add-zero",
+      "urn:csabs:law/RealNumber-square-nonnegative",
+      "urn:csabs:law/RegularLanguage-double-complement",
+      "urn:csabs:law/RelationalSchema-independent-update-commutation",
+      "urn:csabs:law/RelationalSchema-update-readback",
+      "urn:csabs:law/RelationalSchema-update-shadowing",
+      "urn:csabs:law/ResiduatedFuzzyLogic-graded-modus-ponens",
+      "urn:csabs:law/RewriteSystem-closure-transitive",
+      "urn:csabs:law/RootedTree-root-depth",
+      "urn:csabs:law/RoseTree-eta",
+      "urn:csabs:law/RuntimeInstrumentation-projection-concatenation",
+      "urn:csabs:law/SKOS-broader-path",
+      "urn:csabs:law/SKOS-exact-match-support-reflexivity",
+      "urn:csabs:law/SKOS-exact-narrow-disjointness",
+      "urn:csabs:law/SKOS-indirect-association-clash",
+      "urn:csabs:law/SSAForm-replacement-type-obligation",
+      "urn:csabs:law/SVD-coordinates",
+      "urn:csabs:law/SafetyProperty-core",
+      "urn:csabs:law/SaturatingInteger-core",
+      "urn:csabs:law/ScalarRecurrence-zero-stride",
+      "urn:csabs:law/SequentialConsistency-core",
+      "urn:csabs:law/Simulation-core",
+      "urn:csabs:law/SingleParentForest-unique-root",
+      "urn:csabs:law/SparseVector-support-addition",
+      "urn:csabs:law/SpeculationSafety-no-new-executions",
+      "urn:csabs:law/StateBasedCRDT-merge-idempotent",
+      "urn:csabs:law/StateRepresentation-related-observable-consistency",
+      "urn:csabs:law/StochasticChannel-output-normalized",
+      "urn:csabs:law/Stream-map-identity",
+      "urn:csabs:law/StructuralInduction-core",
+      "urn:csabs:law/Subtype-value-injective",
+      "urn:csabs:law/SumType-core",
+      "urn:csabs:law/SymbolLinkage-local-no-use-insufficient",
+      "urn:csabs:law/TemplateConstraint-conjunction-subsumes-atom",
+      "urn:csabs:law/TemplateConstraint-false-left-skips-invalid-right",
+      "urn:csabs:law/TemplateMetafunction-equivalent-argument-observation",
+      "urn:csabs:law/TemplateMetafunction-undefined-composition",
+      "urn:csabs:law/TemplateParameterPack-expansion-length",
+      "urn:csabs:law/TemplateParameterPack-zip-not-product",
+      "urn:csabs:law/TemplateSpecialization-incomparable-ambiguity",
+      "urn:csabs:law/TemplateSpecialization-unique-winner",
+      "urn:csabs:law/TemplateSubstitution-early-failure-stops",
+      "urn:csabs:law/TemplateSubstitution-hard-error-is-not-sfinae",
+      "urn:csabs:law/TermAlgebra-eval-variable",
+      "urn:csabs:law/TerminationVariant-core",
+      "urn:csabs:law/TotalOrder-core",
+      "urn:csabs:law/TraceEquivalence-residual-trace-equality",
+      "urn:csabs:law/TransitionSystem-core",
+      "urn:csabs:law/TranslationValidation-accepted-pipeline",
+      "urn:csabs:law/Tree-core",
+      "urn:csabs:law/Trie-empty-prefix",
+      "urn:csabs:law/TuringMachine-step-determinism",
+      "urn:csabs:law/VHDLGenericElaboration-incompatible-actual-no-instance",
+      "urn:csabs:law/VHDLGenericElaboration-null-generate-empty",
+      "urn:csabs:law/VHDLGenericInterface-late-positional-rejected",
+      "urn:csabs:law/VHDLGenericInterface-named-permutation",
+      "urn:csabs:law/WeakestPrecondition-core",
+      "urn:csabs:law/WeightedDirectedGraph-weight-concatenation",
+      "urn:csabs:law/WellFoundedRelation-core",
+      "urn:csabs:law/array-read-after-write-other",
+      "urn:csabs:law/array-read-after-write-same",
+      "urn:csabs:law/de-morgan",
+      "urn:csabs:law/euclidean-division",
+      "urn:csabs:law/fp-addition-counterexample",
+      "urn:csabs:law/fp-double-rounding-counterexample",
+      "urn:csabs:law/fp-guard-not-correct-rounding",
+      "urn:csabs:law/fp-nan-unordered",
+      "urn:csabs:law/fp-nonassociativity",
+      "urn:csabs:law/fp-relative-error",
+      "urn:csabs:law/fp-rounding-model",
+      "urn:csabs:law/function-composition-associative",
+      "urn:csabs:law/function-identity",
+      "urn:csabs:law/group-cancellation",
+      "urn:csabs:law/integer-additive-abelian-group",
+      "urn:csabs:law/integer-distributivity",
+      "urn:csabs:law/map-frame",
+      "urn:csabs:law/monoid-identity-unique",
+      "urn:csabs:law/option-map-composition",
+      "urn:csabs:law/option-map-identity",
+      "urn:csabs:law/powerset-membership",
+      "urn:csabs:law/product-membership",
+      "urn:csabs:law/queue-fifo",
+      "urn:csabs:law/sequence-concat-associative",
+      "urn:csabs:law/sequence-empty-identity",
+      "urn:csabs:law/sequence-length-concat",
+      "urn:csabs:law/set-intersection-membership",
+      "urn:csabs:law/set-union-membership",
+      "urn:csabs:law/signed-saturation-nonassociative",
+      "urn:csabs:law/stack-push-pop",
+      "urn:csabs:law/stack-push-top",
+      "urn:csabs:law/sum-case-fusion",
+      "urn:csabs:law/sum-case-identity",
+      "urn:csabs:law/sum-map-composition",
+      "urn:csabs:law/sum-map-identity",
+      "urn:csabs:law/sum-map-inl",
+      "urn:csabs:law/sum-map-inr",
+      "urn:csabs:law/unsigned-modular-arithmetic",
+      "urn:csabs:theorem/AEAD-fixed-input-injective",
+      "urn:csabs:theorem/AESGCM-round-trip",
+      "urn:csabs:theorem/ArbitraryPrecisionInteger-normal-return-cancellation",
+      "urn:csabs:theorem/ArithmeticMean-weighted-merge",
+      "urn:csabs:theorem/Array-update-overwrite",
+      "urn:csabs:theorem/AsymmetricCoroutine-successive-resumes-require-yield",
+      "urn:csabs:theorem/BTree-height-key-bound",
+      "urn:csabs:theorem/BagRelation-projection-cardinality",
+      "urn:csabs:theorem/BayesianNetwork-joint-normalization",
+      "urn:csabs:theorem/Binary128-exact-integers",
+      "urn:csabs:theorem/Binary16-exact-integers",
+      "urn:csabs:theorem/Binary32-exact-integers",
+      "urn:csabs:theorem/Binary64-exact-integers",
+      "urn:csabs:theorem/BinaryHeap-pop-cardinality",
+      "urn:csabs:theorem/BinarySearchTree-insert-membership",
+      "urn:csabs:theorem/BinaryTree-external-leaves-size",
+      "urn:csabs:theorem/BinaryTree-fold-unique",
+      "urn:csabs:theorem/BinaryTree-height-le-size",
+      "urn:csabs:theorem/BinaryTree-inorder-length",
+      "urn:csabs:theorem/BinaryTree-inorder-mirror",
+      "urn:csabs:theorem/BinaryTree-mirror-height",
+      "urn:csabs:theorem/BinaryTree-mirror-size",
+      "urn:csabs:theorem/BipartiteGraph-sides-partition",
+      "urn:csabs:theorem/Bisimulation-inverse-bisimulation",
+      "urn:csabs:theorem/BitVector-xor-self",
+      "urn:csabs:theorem/BlockCipher-injective",
+      "urn:csabs:theorem/BlockCode-hamming-bound",
+      "urn:csabs:theorem/BlockCode-singleton",
+      "urn:csabs:theorem/BlockCode-unique-radius",
+      "urn:csabs:theorem/BooleanAlgebra-double-complement",
+      "urn:csabs:theorem/BooleanType-case-uniqueness",
+      "urn:csabs:theorem/CVP-attainment",
+      "urn:csabs:theorem/CVP-translation",
+      "urn:csabs:theorem/CandidateKey-key-existence",
+      "urn:csabs:theorem/CandidateKey-key-projection-injective",
+      "urn:csabs:theorem/CartesianProduct-product-extensionality",
+      "urn:csabs:theorem/ChannelCapacity-shannon",
+      "urn:csabs:theorem/CheckedInteger-failure-exactness",
+      "urn:csabs:theorem/CholeskyDecomposition-existence-uniqueness",
+      "urn:csabs:theorem/ClassTable-lookup-terminates",
+      "urn:csabs:theorem/ClosedInterval-intersection-membership",
+      "urn:csabs:theorem/ClosureOperator-least-closed-upper-bound",
+      "urn:csabs:theorem/CompleteLattice-empty-extrema",
+      "urn:csabs:theorem/ComplexNumber-imaginary-square",
+      "urn:csabs:theorem/ConditionalEntropy-conditioning-reduces",
+      "urn:csabs:theorem/ConditionalEntropy-fano",
+      "urn:csabs:theorem/ConditionalProbability-bayes",
+      "urn:csabs:theorem/ConditionalProbability-multiplication",
+      "urn:csabs:theorem/ContextFreeGrammar-derivation-induction",
+      "urn:csabs:theorem/ContextFreeGrammar-empty-derivation",
+      "urn:csabs:theorem/ContextFreeGrammar-rule-monotonicity",
+      "urn:csabs:theorem/CooperativeScheduler-cooperation-does-not-imply-progress",
+      "urn:csabs:theorem/CooperativeScheduler-reachable-owner-invariant",
+      "urn:csabs:theorem/DAG-positive-reach-irreflexive",
+      "urn:csabs:theorem/DFA-emptiness-reachability",
+      "urn:csabs:theorem/DFA-run-composition",
+      "urn:csabs:theorem/DFA-state-invariant",
+      "urn:csabs:theorem/DatabaseRelation-fd-lossless-decomposition",
+      "urn:csabs:theorem/DatabaseRelation-projection-composition",
+      "urn:csabs:theorem/DependentFunction-empty-domain",
+      "urn:csabs:theorem/DependentPair-constant-family",
+      "urn:csabs:theorem/Deque-front-roundtrip",
+      "urn:csabs:theorem/DiffieHellman-agreement",
+      "urn:csabs:theorem/DirectedGraph-reachability-transitive",
+      "urn:csabs:theorem/DirectedMultigraph-walk-concatenation",
+      "urn:csabs:theorem/DisjointSet-connected-symmetric",
+      "urn:csabs:theorem/DocumentValue-null-not-false",
+      "urn:csabs:theorem/DualCode-dimension-involution",
+      "urn:csabs:theorem/ECC-scalar-composition",
+      "urn:csabs:theorem/ECDH-agreement",
+      "urn:csabs:theorem/EigenDecomposition-eigenbasis-criterion",
+      "urn:csabs:theorem/EmptyType-maps-out-equal",
+      "urn:csabs:theorem/EntityRelationshipModel-empty-entity-role",
+      "urn:csabs:theorem/EquivalenceRelation-equal-classes",
+      "urn:csabs:theorem/EuclideanLattice-additive-subgroup",
+      "urn:csabs:theorem/EuclideanLattice-bounded-finiteness",
+      "urn:csabs:theorem/EuclideanLattice-unimodular-invariance",
+      "urn:csabs:theorem/Field-nonzero-cancellation",
+      "urn:csabs:theorem/FiniteDistribution-push-identity",
+      "urn:csabs:theorem/FiniteField-existence-uniqueness",
+      "urn:csabs:theorem/FiniteField-frobenius",
+      "urn:csabs:theorem/FiniteField-prime-power-order",
+      "urn:csabs:theorem/FiniteIterator-finite-consumption",
+      "urn:csabs:theorem/FiniteSet-finite-insertion-induction",
+      "urn:csabs:theorem/FiniteSet-insert-idempotence",
+      "urn:csabs:theorem/FiniteType-zero-cardinality",
+      "urn:csabs:theorem/FirstOrderFormula-substitution-support",
+      "urn:csabs:theorem/FirstOrderNaturalDeduction-compactness",
+      "urn:csabs:theorem/FirstOrderNaturalDeduction-completeness",
+      "urn:csabs:theorem/FirstOrderNaturalDeduction-soundness",
+      "urn:csabs:theorem/FirstOrderSignature-singleton-interpretation",
+      "urn:csabs:theorem/FixedPoint-no-general-existence",
+      "urn:csabs:theorem/FixedWidthSignedInteger-exact-add-commutativity",
+      "urn:csabs:theorem/FixedWidthUnsignedInteger-modular-increment-inverse",
+      "urn:csabs:theorem/FloatingPointType-representable-rounding-fixed",
+      "urn:csabs:theorem/FormalLanguage-empty-star",
+      "urn:csabs:theorem/FormalLanguage-star-idempotence",
+      "urn:csabs:theorem/FormalLanguage-star-induction",
+      "urn:csabs:theorem/Function-composition-injective",
+      "urn:csabs:theorem/FunctionType-application-congruence",
+      "urn:csabs:theorem/FunctionalDependency-armstrong-soundness",
+      "urn:csabs:theorem/FunctionalDependency-closure-operator",
+      "urn:csabs:theorem/FuzzySet-lattice-bounds",
+      "urn:csabs:theorem/GCM-reused-nonce-xor",
+      "urn:csabs:theorem/GCM-round-trip",
+      "urn:csabs:theorem/GHASH-polynomial",
+      "urn:csabs:theorem/GaloisConnection-unit-counit",
+      "urn:csabs:theorem/GeneratorMatrix-encoding-isomorphism",
+      "urn:csabs:theorem/Graph-adjacency-symmetric",
+      "urn:csabs:theorem/Group-inverse-product",
+      "urn:csabs:theorem/HammingSpace-ball-volume",
+      "urn:csabs:theorem/HappensBefore-transitive",
+      "urn:csabs:theorem/HeapStore-fresh-allocation-exists",
+      "urn:csabs:theorem/HoareTriple-consequence",
+      "urn:csabs:theorem/Hypergraph-handshake-incidence",
+      "urn:csabs:theorem/IdempotentSemiring-canonical-order",
+      "urn:csabs:theorem/Integer-add-cancellation",
+      "urn:csabs:theorem/JoinSemilattice-idempotence",
+      "urn:csabs:theorem/KripkeStructure-initial-path-existence",
+      "urn:csabs:theorem/KripkeStructure-lasso-path-existence",
+      "urn:csabs:theorem/KripkeStructure-reachable-invariant-principle",
+      "urn:csabs:theorem/LWE-sample-mass",
+      "urn:csabs:theorem/LWE-uniform-noise",
+      "urn:csabs:theorem/LabelledTransitionSystem-finite-path-induction",
+      "urn:csabs:theorem/LabelledTransitionSystem-prefix-closure",
+      "urn:csabs:theorem/LamportBakery-mutual-exclusion",
+      "urn:csabs:theorem/Lattice-meet-idempotence",
+      "urn:csabs:theorem/LinearBlockCode-cardinality",
+      "urn:csabs:theorem/LinearBlockCode-distance-weight",
+      "urn:csabs:theorem/LinearMap-zero-preservation",
+      "urn:csabs:theorem/LinearTemporalLogic-always-invariant-rule",
+      "urn:csabs:theorem/LinearTemporalLogic-until-least-fixedpoint",
+      "urn:csabs:theorem/LinearTemporalLogic-until-unfolding",
+      "urn:csabs:theorem/Linearizability-implies-sc-complete",
+      "urn:csabs:theorem/LivenessProperty-union-closed",
+      "urn:csabs:theorem/LoopInvariant-exit-correctness",
+      "urn:csabs:theorem/Manifold-chart-inverses",
+      "urn:csabs:theorem/Manifold-transition-cocycle",
+      "urn:csabs:theorem/Map-update-shadow",
+      "urn:csabs:theorem/MarkovChain-n-step-law",
+      "urn:csabs:theorem/MarkovChain-path-law",
+      "urn:csabs:theorem/Matrix-entry-extensionality",
+      "urn:csabs:theorem/Matrix-product-associativity",
+      "urn:csabs:theorem/Matrix-transpose-involution",
+      "urn:csabs:theorem/MeasurableFunction-composition",
+      "urn:csabs:theorem/MeasurableSpace-countable-intersection",
+      "urn:csabs:theorem/MeasureSpace-finite-additivity",
+      "urn:csabs:theorem/MeasureSpace-monotonicity",
+      "urn:csabs:theorem/Median-central-bounds",
+      "urn:csabs:theorem/MinPlusSemiring-canonical-order-reversed",
+      "urn:csabs:theorem/ModalLogic-distribution-K",
+      "urn:csabs:theorem/ModalLogic-formula-structural-induction",
+      "urn:csabs:theorem/ModalLogic-necessitation-validity",
+      "urn:csabs:theorem/Mode-unique-maximum",
+      "urn:csabs:theorem/ModularInteger-operations-well-defined",
+      "urn:csabs:theorem/Monoid-power-addition",
+      "urn:csabs:theorem/MonotoneFunction-identity-monotone",
+      "urn:csabs:theorem/Multimap-remove-absent",
+      "urn:csabs:theorem/Multiset-union-identity",
+      "urn:csabs:theorem/Mutex-exclusive-owner",
+      "urn:csabs:theorem/MutualInformation-data-processing",
+      "urn:csabs:theorem/MutualInformation-entropy-identity",
+      "urn:csabs:theorem/NFA-reachable-set-invariant",
+      "urn:csabs:theorem/NFA-subset-construction",
+      "urn:csabs:theorem/NaturalNumber-zero-addition",
+      "urn:csabs:theorem/NonlinearBlockCode-witness-exists",
+      "urn:csabs:theorem/ObjectInvariant-visible-reachable-valid",
+      "urn:csabs:theorem/OptionType-some-not-none",
+      "urn:csabs:theorem/OrderedSet-fresh-append-induction",
+      "urn:csabs:theorem/OrderedSet-fresh-closure",
+      "urn:csabs:theorem/ParityCheckMatrix-orthogonality",
+      "urn:csabs:theorem/PartialFunction-composition-associativity",
+      "urn:csabs:theorem/PartialOrder-order-extensionality",
+      "urn:csabs:theorem/Partition-unique-block",
+      "urn:csabs:theorem/PigeonholePrinciple-collision-finite",
+      "urn:csabs:theorem/PowerSet-monotonicity",
+      "urn:csabs:theorem/PredicateLogic-assignment-coincidence",
+      "urn:csabs:theorem/PredicateLogic-quantifier-duality",
+      "urn:csabs:theorem/PredicateLogic-substitution-semantics",
+      "urn:csabs:theorem/PrefixFreeCode-source-length",
+      "urn:csabs:theorem/PrefixFreeCode-unique-decoding",
+      "urn:csabs:theorem/Preorder-strict-part-asymmetry",
+      "urn:csabs:theorem/PriorityQueue-extraction-size",
+      "urn:csabs:theorem/ProbabilitySpace-complement",
+      "urn:csabs:theorem/ProbabilitySpace-event-bounds",
+      "urn:csabs:theorem/ProductType-pair-injective",
+      "urn:csabs:theorem/PropertyGraph-parallel-edge-distinction",
+      "urn:csabs:theorem/PropositionalFormula-substitution-composition",
+      "urn:csabs:theorem/PropositionalLogic-double-negation",
+      "urn:csabs:theorem/PropositionalLogic-finite-truth-table",
+      "urn:csabs:theorem/PropositionalLogic-normal-forms",
+      "urn:csabs:theorem/PropositionalLogic-substitution-semantics",
+      "urn:csabs:theorem/PropositionalNaturalDeduction-compactness",
+      "urn:csabs:theorem/PropositionalNaturalDeduction-completeness",
+      "urn:csabs:theorem/PropositionalNaturalDeduction-soundness",
+      "urn:csabs:theorem/QRDecomposition-existence",
+      "urn:csabs:theorem/QaryLattice-full-rank",
+      "urn:csabs:theorem/QaryLattice-index",
+      "urn:csabs:theorem/Queue-enqueue-nonempty",
+      "urn:csabs:theorem/QuotientType-equality-quotient",
+      "urn:csabs:theorem/RDFDataset-empty-not-absent",
+      "urn:csabs:theorem/RDFGraph-iri-not-blank",
+      "urn:csabs:theorem/RSA-inverse",
+      "urn:csabs:theorem/RandomVariable-law-is-probability",
+      "urn:csabs:theorem/RateDistortion-monotone-convex",
+      "urn:csabs:theorem/RateDistortion-shannon-lossy",
+      "urn:csabs:theorem/RationalNumber-commutative-addition",
+      "urn:csabs:theorem/RealNumber-supremum-unique",
+      "urn:csabs:theorem/RegularLanguage-boolean-closure",
+      "urn:csabs:theorem/RegularLanguage-extensional-transfer",
+      "urn:csabs:theorem/RegularLanguage-union-closure",
+      "urn:csabs:theorem/Relation-composition-associativity",
+      "urn:csabs:theorem/Relation-inverse-involution",
+      "urn:csabs:theorem/RelationalSchema-zero-arity",
+      "urn:csabs:theorem/RelativeEntropy-gibbs",
+      "urn:csabs:theorem/ResiduatedFuzzyLogic-implication-order",
+      "urn:csabs:theorem/Ring-zero-multiplication",
+      "urn:csabs:theorem/RootedTree-parent-depth",
+      "urn:csabs:theorem/RoseTree-fold-unique",
+      "urn:csabs:theorem/SIS-binary-pigeonhole",
+      "urn:csabs:theorem/SIS-collision-witness",
+      "urn:csabs:theorem/SVD-existence",
+      "urn:csabs:theorem/SVP-approximation-monotonicity",
+      "urn:csabs:theorem/SVP-attainment",
+      "urn:csabs:theorem/SafetyProperty-intersection-closed",
+      "urn:csabs:theorem/SaturatingInteger-monotone-clamp",
+      "urn:csabs:theorem/Semigroup-four-factor-reassociation",
+      "urn:csabs:theorem/Semiring-finite-distribution",
+      "urn:csabs:theorem/Sequence-concat-right-identity",
+      "urn:csabs:theorem/SequentialConsistency-process-projection",
+      "urn:csabs:theorem/Set-subset-antisymmetry",
+      "urn:csabs:theorem/ShannonEntropy-entropy-bounds",
+      "urn:csabs:theorem/ShannonEntropy-source-coding",
+      "urn:csabs:theorem/Simulation-identity-simulation",
+      "urn:csabs:theorem/SmoothManifold-maximal-extension-unique",
+      "urn:csabs:theorem/SparseVector-zero-scale",
+      "urn:csabs:theorem/Stack-push-injective",
+      "urn:csabs:theorem/StateBasedCRDT-merge-commutative",
+      "urn:csabs:theorem/Stream-map-composition",
+      "urn:csabs:theorem/StructuralInduction-constructor-uniqueness",
+      "urn:csabs:theorem/Subtype-empty-subtype",
+      "urn:csabs:theorem/Syndrome-coset-invariance",
+      "urn:csabs:theorem/TConorm-bounds-and-one",
+      "urn:csabs:theorem/TConorm-standard-duality",
+      "urn:csabs:theorem/TNorm-bounds-and-zero",
+      "urn:csabs:theorem/Tensor-basis-expansion",
+      "urn:csabs:theorem/Tensor-component-extensionality",
+      "urn:csabs:theorem/TensorProduct-pure-extensionality",
+      "urn:csabs:theorem/TermAlgebra-evaluation-unique",
+      "urn:csabs:theorem/TerminationVariant-natural-bound",
+      "urn:csabs:theorem/TopologicalSpace-closure-operator",
+      "urn:csabs:theorem/TotalOrder-minimum-symmetry",
+      "urn:csabs:theorem/TraceEquivalence-deterministic-successor-matching",
+      "urn:csabs:theorem/TraceEquivalence-equivalence-laws",
+      "urn:csabs:theorem/TraceEquivalence-finite-observation-substitution",
+      "urn:csabs:theorem/TransitionSystem-reachability-induction",
+      "urn:csabs:theorem/Tree-unique-simple-path",
+      "urn:csabs:theorem/Trie-prefix-idempotent",
+      "urn:csabs:theorem/TuringMachine-decider-complement",
+      "urn:csabs:theorem/TuringMachine-outcome-domain",
+      "urn:csabs:theorem/TuringMachine-run-trichotomy",
+      "urn:csabs:theorem/UniquelyDecodableCode-kraft-mcmillan",
+      "urn:csabs:theorem/UnitType-all-values-equal",
+      "urn:csabs:theorem/VectorSpace-zero-scalar",
+      "urn:csabs:theorem/WeakestPrecondition-post-monotonicity",
+      "urn:csabs:theorem/WeightedDirectedGraph-negative-loop-unbounded",
+      "urn:csabs:theorem/WellFoundedRelation-irreflexivity",
+      "urn:csabs:theorem/bijection-inverse",
+      "urn:csabs:theorem/cantor",
+      "urn:csabs:theorem/coproduct-universal",
+      "urn:csabs:theorem/empty-initial",
+      "urn:csabs:theorem/equivalence-partition-correspondence",
+      "urn:csabs:theorem/finite-product-cardinality",
+      "urn:csabs:theorem/fp-cancellation-input-error",
+      "urn:csabs:theorem/fp-gradual-underflow-zero-difference",
+      "urn:csabs:theorem/fp-guard-digit-error",
+      "urn:csabs:theorem/fp-nearest-absolute-error",
+      "urn:csabs:theorem/fp-nearest-even-iteration",
+      "urn:csabs:theorem/fp-sterbenz-exact-subtraction",
+      "urn:csabs:theorem/injections-disjoint",
+      "urn:csabs:theorem/injections-injective",
+      "urn:csabs:theorem/lagrange",
+      "urn:csabs:theorem/option-constructors",
+      "urn:csabs:theorem/product-universal",
+      "urn:csabs:theorem/sum-empty-identity",
+      "urn:csabs:theorem/sum-finite-cardinality",
+      "urn:csabs:theorem/sum-swap-involution",
+      "urn:csabs:theorem/unit-terminal"
+    ],
+    "includeReviewed": false,
+    "inspectedPairCount": 828150,
+    "limit": 10,
+    "mode": "full",
+    "requestedChangedIds": [],
+    "threshold": 3000,
+    "totalPairCount": 828150,
+    "uninspectedPairCount": 0
+  },
+  "semantics": "heuristic-candidates-not-equivalence",
+  "truncated": true
+}

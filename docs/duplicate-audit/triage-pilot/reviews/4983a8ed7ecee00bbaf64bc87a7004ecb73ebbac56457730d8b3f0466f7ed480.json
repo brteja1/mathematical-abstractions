@@ -1,0 +1,67 @@
+{
+  "identity": {
+    "packetKey": "83f2a2134d458424ad34622f45902166cb536392addefdb234c99c90cba81a1a",
+    "reviewer": {
+      "commandHash": null,
+      "id": "current-assistant",
+      "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+      "kind": "assistant-session",
+      "profile": "DT-1",
+      "stage": "primary",
+      "version": "session-model-version-not-exposed"
+    }
+  },
+  "payload": {
+    "origin": "imported-assistant-session",
+    "packetKey": "83f2a2134d458424ad34622f45902166cb536392addefdb234c99c90cba81a1a",
+    "result": {
+      "decision": "semantic_variant",
+      "differences": [
+        "Different widths, significand precisions and exponent ranges (-1022,1023 for binary64).",
+        "Identical generic wording does not identify the instantiated carriers or rounding results."
+      ],
+      "evidence": [
+        {
+          "field": "formalStatement",
+          "quote": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules",
+          "recordId": "urn:csabs:axiom/Binary128-rounded-operations"
+        },
+        {
+          "field": "formalStatement",
+          "quote": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules",
+          "recordId": "urn:csabs:axiom/Binary64-rounded-operations"
+        },
+        {
+          "field": "mathematicalFormulation",
+          "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(128,2,113,−16382,16383), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−112}, 0<m<2^{113}, −16382≤e≤16383, and m≥2^{112} unless e=−16382. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim.",
+          "recordId": "urn:csabs:concept/Binary128"
+        },
+        {
+          "field": "mathematicalFormulation",
+          "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(64,2,53,−1022,1023), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−52}, 0<m<2^{53}, −1022≤e≤1023, and m≥2^{52} unless e=−1022. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim.",
+          "recordId": "urn:csabs:concept/Binary64"
+        }
+      ],
+      "mapping": {
+        "assumptions": "Owner formulations define different partial format instances; the Lean interface does not prove correct arithmetic for either instance.",
+        "carriers": "Different format carriers: binary128 has width 128 and precision 113; binary64 has width 64 and precision 53, with different exponent ranges.",
+        "equality": "Each format uses its declared numeric/special-value and representation observations; no cross-format equality or bijection is supplied.",
+        "operations": "The same arithmetic operation family is parameterized by the instance grid and chosen rounding mode."
+      },
+      "missingContext": [],
+      "rationale": "The arithmetic-rule wording is shared, but it is instantiated over different floating-point grids: binary128 has precision 113, while binary64 has precision 53. Retain the format-specific applications; a common parameterized rule could be factored in a separate catalog change."
+    },
+    "resultHash": "0ff188355f067611d3217ae1084525daafaf34f4c7434b141856b261bf22be64",
+    "reviewedAt": "2026-11-20T01:27:09.876755+00:00",
+    "reviewer": {
+      "commandHash": null,
+      "id": "current-assistant",
+      "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+      "kind": "assistant-session",
+      "profile": "DT-1",
+      "stage": "primary",
+      "version": "session-model-version-not-exposed"
+    }
+  },
+  "payloadHash": "ebd614b4777038d9703e57ee929e8ec8d1792783cb7b72dbc2658cf66752ecdd"
+}

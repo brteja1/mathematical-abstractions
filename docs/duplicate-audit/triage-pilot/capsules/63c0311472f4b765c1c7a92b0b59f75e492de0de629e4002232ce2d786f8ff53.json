@@ -1,0 +1,99 @@
+{
+  "identity": {
+    "fingerprint": "ef8fae6a4bc8ff26c8a81faad28a0cc1d3f9315d81e2c2b585e81af107e066b4",
+    "id": "urn:csabs:axiom/Binary16-rounded-operations",
+    "profile": "DT-1",
+    "toolHash": "d77b157bab7462124499c90074e512e628d319c006562c1790b84a506cd64747"
+  },
+  "payload": {
+    "fingerprint": "ef8fae6a4bc8ff26c8a81faad28a0cc1d3f9315d81e2c2b585e81af107e066b4",
+    "id": "urn:csabs:axiom/Binary16-rounded-operations",
+    "interpretation": "Source extracts; missing fields are unknown, links do not inherit laws.",
+    "location": {
+      "anchor": "node-urn-csabs-axiom-Binary16-rounded-operations",
+      "id": "urn:csabs:axiom/Binary16-rounded-operations",
+      "path": "concepts/Binary16.md"
+    },
+    "missingFields": [
+      "basisScope",
+      "mathematicalFormulation"
+    ],
+    "records": {
+      "urn:csabs:axiom/Binary16-rounded-operations": {
+        "appliesTo": [
+          "urn:csabs:concept/Binary16"
+        ],
+        "assumptions": [
+          "All variables range over the carriers and semantic conventions specified in this concept."
+        ],
+        "formalStatement": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules",
+        "id": "urn:csabs:axiom/Binary16-rounded-operations",
+        "name": "rounded-operations",
+        "provenanceStatus": "legacy-source-missing",
+        "reviewStatus": "editorial-summary; not machine-proved",
+        "ruleRole": "defining-rule",
+        "statement": "Basic operations instantiate the general IEEE environment at this format.",
+        "type": "Axiom"
+      },
+      "urn:csabs:concept/Binary16": {
+        "axiomBasis": "IEEE binary interchange instance: bits=16, radix=2, precision=11, normal exponent range [-14,15], gradual underflow, signed zeros, infinities and NaNs. Rounding and flags are explicit environment parameters.",
+        "basisKind": "parameter-instance",
+        "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
+        "definition": "A 16-bit IEEE binary interchange format with 11 binary significand digits for normal numbers, signed zeros, subnormals, infinities, and NaNs. Rounding mode and arithmetic environment must be supplied separately.",
+        "formulationScope": "partial",
+        "fullName": "IEEE 754 binary16",
+        "hasAxiom": [
+          "urn:csabs:axiom/Binary16-normal-grid",
+          "urn:csabs:axiom/Binary16-subnormal-grid",
+          "urn:csabs:axiom/Binary16-special-values",
+          "urn:csabs:axiom/Binary16-rounded-operations"
+        ],
+        "hasOperation": [
+          "urn:csabs:operation/Binary16-add",
+          "urn:csabs:operation/Binary16-subtract",
+          "urn:csabs:operation/Binary16-multiply",
+          "urn:csabs:operation/Binary16-divide"
+        ],
+        "id": "urn:csabs:concept/Binary16",
+        "leanModelLimitations": "No correctly-rounded arithmetic or exception/NaN payload specification has been proved; run and round are unconstrained client parameters. Not a complete IEEE model.",
+        "mathematicalFormulation": "The partial format instance has (width,radix,precision,e_min,e_max)=(16,2,11,−14,15), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−10}, 0<m<2^{11}, −14≤e≤15, and m≥2^{10} unless e=−14. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim.",
+        "notation": "β=2; p=11; e_min=-14; e_max=15; normal x=(−1)^s(1+k·2^(1−p))·2^e, 0≤k<2^(p−1), e_min≤e≤e_max.",
+        "requiresConcept": [
+          "urn:csabs:concept/FloatingPointType"
+        ],
+        "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
+        "shortForm": "Binary16",
+        "source": [
+          "urn:csabs:source/ieee754"
+        ],
+        "specializationNote": "Instantiate FloatingPointType at this entry’s radix, precision and exponent range as specified by basisInstantiation; rounding and exception environment remain explicit parameters.",
+        "specializationOf": [
+          "urn:csabs:concept/FloatingPointType"
+        ],
+        "type": "Concept",
+        "verificationObligation": [
+          "Instantiate operations from FloatingPointType at this format; specify rounding, subnormal handling, and exceptions.",
+          "Use the stated carriers, equality, domain restrictions and semantic conventions; alternative conventions require an explicit variant."
+        ]
+      },
+      "urn:csabs:source/ieee754": {
+        "id": "urn:csabs:source/ieee754",
+        "label": "IEEE 754-2019",
+        "sourceRole": "normative-standard",
+        "type": "Source",
+        "url": "https://standards.ieee.org/ieee/754/6210/"
+      }
+    },
+    "unexpandedContext": [
+      "urn:csabs:axiom/Binary16-normal-grid",
+      "urn:csabs:axiom/Binary16-special-values",
+      "urn:csabs:axiom/Binary16-subnormal-grid",
+      "urn:csabs:concept/FloatingPointType",
+      "urn:csabs:operation/Binary16-add",
+      "urn:csabs:operation/Binary16-divide",
+      "urn:csabs:operation/Binary16-multiply",
+      "urn:csabs:operation/Binary16-subtract"
+    ]
+  },
+  "payloadHash": "48cc6a8971e2d3892bf816011b1e744ea1b5dca67f32797671b57ff83b327ba2"
+}

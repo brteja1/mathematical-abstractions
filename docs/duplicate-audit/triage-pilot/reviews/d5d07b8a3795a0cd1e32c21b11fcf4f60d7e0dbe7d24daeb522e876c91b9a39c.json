@@ -1,0 +1,57 @@
+{
+  "identity": {
+    "packetKey": "fea56094510fe28ff8414efecb908ecfd8bb36f740ebc4d32f65a0ba8fe3917f",
+    "reviewer": {
+      "commandHash": null,
+      "id": "current-assistant",
+      "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+      "kind": "assistant-session",
+      "profile": "DT-1",
+      "stage": "primary",
+      "version": "session-model-version-not-exposed"
+    }
+  },
+  "payload": {
+    "origin": "imported-assistant-session",
+    "packetKey": "fea56094510fe28ff8414efecb908ecfd8bb36f740ebc4d32f65a0ba8fe3917f",
+    "result": {
+      "decision": "distinct",
+      "differences": [
+        "Idempotence concerns duplication of one state; commutativity concerns ordering two states.",
+        "Their Law/Theorem record roles also differ."
+      ],
+      "evidence": [
+        {
+          "field": "formalStatement",
+          "quote": "merge(s,s)=s",
+          "recordId": "urn:csabs:law/StateBasedCRDT-merge-idempotent"
+        },
+        {
+          "field": "formalStatement",
+          "quote": "merge(s,t)=merge(t,s)",
+          "recordId": "urn:csabs:theorem/StateBasedCRDT-merge-commutative"
+        }
+      ],
+      "mapping": {
+        "assumptions": "Pure state algebra only; neither statement supplies network delivery or liveness guarantees.",
+        "carriers": "The same state carrier S, explicitly a join semilattice with bottom.",
+        "equality": "Identity equality on the same state carrier.",
+        "operations": "The same binary merge, observed on repeated inputs versus exchanged inputs."
+      },
+      "missingContext": [],
+      "rationale": "Repeated-state absorption and argument-order independence are different laws. Both concern merge, but one constrains merge(s,s) and the other compares merge(s,t) with merge(t,s); retain both."
+    },
+    "resultHash": "e4dc74dfe6481484f5dd60b0f0d7ceb140bd60ecdc01d333bcb9dd5d25e35be8",
+    "reviewedAt": "2026-11-20T01:27:09.794001+00:00",
+    "reviewer": {
+      "commandHash": null,
+      "id": "current-assistant",
+      "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+      "kind": "assistant-session",
+      "profile": "DT-1",
+      "stage": "primary",
+      "version": "session-model-version-not-exposed"
+    }
+  },
+  "payloadHash": "80edb03d3a7c2b060e34db45a7bc7664054656632779d64a956269b82821031f"
+}

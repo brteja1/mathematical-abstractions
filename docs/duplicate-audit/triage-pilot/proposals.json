@@ -1,0 +1,1863 @@
+{
+  "calibration": "No independent accuracy claim; automatic suppression disabled in DT-1.",
+  "counts": {
+    "automaticallySuppressed": 0,
+    "failed": 0,
+    "independentFailed": 0,
+    "independentPending": 0,
+    "pending": 0,
+    "proposedDuplicates": 0,
+    "reviewed": 10,
+    "suggestedDistinctions": 10,
+    "unresolved": 0
+  },
+  "independentReviewer": null,
+  "inputs": {
+    "aliasesHash": null,
+    "catalogDigest": "f2f95d4d786b853c187bc6676f540293511ced3326906f253c4329133f1f5038",
+    "commandVersion": "0.1.0",
+    "manifest": [
+      {
+        "path": "concepts/AEAD.md",
+        "sha256": "13d3f8193919736fb48b4a602801a3a67cf6c5a8f971e46ed0bec74e5230eb4d"
+      },
+      {
+        "path": "concepts/AES.md",
+        "sha256": "b20d334d040d1f41504a47abb174b5871b92f0a9db9f9b312e479396e6df98d4"
+      },
+      {
+        "path": "concepts/AESGCM.md",
+        "sha256": "de1463a907b98cc7be904444b9cdbd33d9d84e2d86085fd397035dc615126af7"
+      },
+      {
+        "path": "concepts/AbstractInterpretation.md",
+        "sha256": "7017ca6fe8a940c9e0ee4fb5492347c9f4cfe7f3eb0f22bc18da74a45f53418f"
+      },
+      {
+        "path": "concepts/AliasAnalysis.md",
+        "sha256": "d0f3ee8e9cdf1999938a2ff236331f2b87f9edacd93fa0cb82c3e142c52db25a"
+      },
+      {
+        "path": "concepts/AnalysisPreservation.md",
+        "sha256": "0a40890fdc0532f30dc26fd3d6b7e17ddd92cbd61f8870719a2e9575cfaeff67"
+      },
+      {
+        "path": "concepts/ArbitraryPrecisionInteger.md",
+        "sha256": "27b8358919c9e85aa53f248b491907b798e3396c87a57d781ad8c139d014c175"
+      },
+      {
+        "path": "concepts/ArithmeticMean.md",
+        "sha256": "d8def8540972acb39cc27f23d095249c08ee6bf72490cad1d4617b41997afb65"
+      },
+      {
+        "path": "concepts/Array.md",
+        "sha256": "a389a9cb6b795aea0997ded44f9e7349568ae7ee99d2ecf92a6aeb9be5326ddb"
+      },
+      {
+        "path": "concepts/AsymmetricCoroutine.md",
+        "sha256": "d559c8babdfdae3ee2c1637d6a4f0e8e17b293f134e4cd67895ff8d4c40afde7"
+      },
+      {
+        "path": "concepts/AtomicMemoryModel.md",
+        "sha256": "bfb3a3172e4f9fb9f41afce76f2ac6d363fc1afdcbfcf353f010a82ecad3bfff"
+      },
+      {
+        "path": "concepts/BTree.md",
+        "sha256": "f1be65e8e01f522bbb7e9cf093824a0cc62c4f92f55695df1c2f3c40afe80c8b"
+      },
+      {
+        "path": "concepts/BagRelation.md",
+        "sha256": "1fe2124956ad7c9aba60981736a9c0d64e9cdc51b32f3216644bb00488d6a254"
+      },
+      {
+        "path": "concepts/BayesianNetwork.md",
+        "sha256": "f314930cae2a7814c9ab0ad34f88ed80d32103990e8e8c5769f0d9ea85ad5a46"
+      },
+      {
+        "path": "concepts/BehaviorRefinement.md",
+        "sha256": "859cdc810730b4f8e063d6c78d61a2cbb06545ce7d98bdf04c99c4e036b44f5c"
+      },
+      {
+        "path": "concepts/BehavioralSubtyping.md",
+        "sha256": "5ca0f834a5ba9bcb183ea9ad7ff4f2d1fd82eb0a8cb280654db8f351269fe6f8"
+      },
+      {
+        "path": "concepts/Binary128.md",
+        "sha256": "99d1dab7bb58221828b0e3ea1f0bcaa67622cd32b699b2cd0393b3ec4e3677ae"
+      },
+      {
+        "path": "concepts/Binary16.md",
+        "sha256": "fa1c6d9622bc7881e46adf726cb59d3675d63da71cc1576b1801c2e23ca2cd40"
+      },
+      {
+        "path": "concepts/Binary32.md",
+        "sha256": "16933c96a3dc88cdef3285979d1d85a177d93c4115063d0a55dc0c8df776de40"
+      },
+      {
+        "path": "concepts/Binary64.md",
+        "sha256": "fb22e22de276e28bbe8e1ecbd4a0265eae977760156dfe20baa74c14cda114f4"
+      },
+      {
+        "path": "concepts/BinaryHeap.md",
+        "sha256": "5facf67086c1ec5563163cc7a785b97816895b33f53923e1ecc69fecd253c21c"
+      },
+      {
+        "path": "concepts/BinarySearchTree.md",
+        "sha256": "31867e56fd95e3cb0d2d2d4786c686122c26f336e301ab18d54fc66f4b5ff9bc"
+      },
+      {
+        "path": "concepts/BinaryTree.md",
+        "sha256": "5e46c1c2dc04b1faa4e5c23f05bb1305f093888b29d746cf97c76823dd90133f"
+      },
+      {
+        "path": "concepts/BipartiteGraph.md",
+        "sha256": "8a1fe7af431ec36ed7554b80582b789c0f16ec8263d22ba8ef31fd93984d01c0"
+      },
+      {
+        "path": "concepts/Bisimulation.md",
+        "sha256": "13aa5f54db3c7f4bccfaa00dda86f0512837aff11378e3cf67e98d7ac471d793"
+      },
+      {
+        "path": "concepts/BitVector.md",
+        "sha256": "408007dd96a4a5fbf54d09e37dda987ac948aae0f1298e9b3e2950f8baf3681c"
+      },
+      {
+        "path": "concepts/BlockCipher.md",
+        "sha256": "cd5329d23af283b79581d86d335ba12697ad6c6d690f2490b512774a2958c0e4"
+      },
+      {
+        "path": "concepts/BlockCode.md",
+        "sha256": "df03611351bd6fd0a9d75139e39a955e88e3b022211247ace54923799e33f624"
+      },
+      {
+        "path": "concepts/BooleanAlgebra.md",
+        "sha256": "dbbdc8d548dfc7a22e92f09578887425cee4010b57a27e16efe264e69eff98a5"
+      },
+      {
+        "path": "concepts/BooleanType.md",
+        "sha256": "31362a5bab25697d1e06c4930336e04bcc5174a0d672f206ef8abb6f4e7b0b28"
+      },
+      {
+        "path": "concepts/ByteMemory.md",
+        "sha256": "dd387fa9867b1a500cd00eba6be39a1ba15df87f7c4c121be801068bce624f84"
+      },
+      {
+        "path": "concepts/CVP.md",
+        "sha256": "3b62927c61254e0786dd56668e512ba73c05d3fbbf2e5176fe5fce486d6cec72"
+      },
+      {
+        "path": "concepts/CallEffectContract.md",
+        "sha256": "e87708e77aed29a0209ab620c271fdc5acbfb39ce77cdfdc09eae758c688d679"
+      },
+      {
+        "path": "concepts/CandidateKey.md",
+        "sha256": "c7d3e71ae2dec70e4f19e2789ff74d7b4b66dbd8542eb7b8272c27b20c13d51d"
+      },
+      {
+        "path": "concepts/CartesianProduct.md",
+        "sha256": "1af29416993299877f5d2be40a9852022dd0ddffed1f62287a27991381205bb5"
+      },
+      {
+        "path": "concepts/ChannelCapacity.md",
+        "sha256": "934083a6f2b664fdc22d1a691bc65d4b8a55a8b1e31a20aafe02d7ec923158c6"
+      },
+      {
+        "path": "concepts/CheckedInteger.md",
+        "sha256": "ba14384cab9c47d61eed3969901b148b4d19b73a29549ce58573ae0ecbb7dd2f"
+      },
+      {
+        "path": "concepts/CholeskyDecomposition.md",
+        "sha256": "cc3b0153b5125ae7d698953cdf42584219793c307a9cb669d986af14ccb68d77"
+      },
+      {
+        "path": "concepts/ClassTable.md",
+        "sha256": "c9fc24e6b4ede7c1dfe16b44f9b44d72d86677d91522b2a7892eab357e8a48aa"
+      },
+      {
+        "path": "concepts/ClosedInterval.md",
+        "sha256": "26d8564006622273a805a261dc76291ab833f97f6acad0b19ab4e89784acc9c6"
+      },
+      {
+        "path": "concepts/ClosureOperator.md",
+        "sha256": "ca7b64b6291c9c3f841d25f9d222300f94de8269c5f1505415a090aafebd6d66"
+      },
+      {
+        "path": "concepts/CompileTimeEvaluation.md",
+        "sha256": "f2b2cac4ec1b7163b86e2728276ccfc0c79139732e3abd5bdfc55baea9cc653f"
+      },
+      {
+        "path": "concepts/CompleteLattice.md",
+        "sha256": "a98364fac74b11f1d92e2544bef1e5c9f72235c3c281584f43fc804eeddf1e15"
+      },
+      {
+        "path": "concepts/ComplexNumber.md",
+        "sha256": "57f74b551fce0d4b242e27ae7eeedc469ac06b7e1592cb1e6ee1fda9f1a7d7fd"
+      },
+      {
+        "path": "concepts/ConditionalEntropy.md",
+        "sha256": "891483f2e1c962482e5b7981fc2e81c220dc1d19e0019cd3382a80f9cdf59bfe"
+      },
+      {
+        "path": "concepts/ConditionalProbability.md",
+        "sha256": "eb3dc43a7e5abab5538e4bba97b948a3e0df53a04bac3d9816a026e6ad0d6298"
+      },
+      {
+        "path": "concepts/ContextFreeGrammar.md",
+        "sha256": "02ab3eb2a4f6921570a0738bb18ea9bf6ad13caffbb1b81e9f089e2b4425c319"
+      },
+      {
+        "path": "concepts/ControlFlowGraph.md",
+        "sha256": "ec17071e7f956f003ded3b253118268c04c508ff0895c4b466790ecce10691de"
+      },
+      {
+        "path": "concepts/ControlFlowRefinement.md",
+        "sha256": "fa38c23144b58677312b09586dbafb40b9f21d5dbc68d5c05c278656286b163f"
+      },
+      {
+        "path": "concepts/ConvergentExecution.md",
+        "sha256": "bc60b3a765b97f406cc868f0dcc56091a86d0e4df617309615693c272912c186"
+      },
+      {
+        "path": "concepts/CooperativeScheduler.md",
+        "sha256": "a6066ae5212882df5d93d8e077ca29145d0fde70ae6591ab68bb5ac6fd1f2895"
+      },
+      {
+        "path": "concepts/DAG.md",
+        "sha256": "f77b2b6a34fb443e1420193a27df0bf03c26b70dda7e2f1935e62c57029e2e75"
+      },
+      {
+        "path": "concepts/DFA.md",
+        "sha256": "b517c9d0cdcd47749d0bade3163b3916de8a2af59867db630a8a3b183fe824c4"
+      },
+      {
+        "path": "concepts/DataLayout.md",
+        "sha256": "c3f9bd56edebb4893f0f1f9feba3f0b2693c44be6b498640a3bf0a99d889d0b2"
+      },
+      {
+        "path": "concepts/DatabaseRelation.md",
+        "sha256": "00389be1999f97e4340b5996bb3d5a8a7d81da9380c1a6f4a44fac811cfa2e13"
+      },
+      {
+        "path": "concepts/DependentFunction.md",
+        "sha256": "5cb0c6ee793b6804c97f97bb1f77d4e4c1ae78edfd04b93d2ceed7666b39e25f"
+      },
+      {
+        "path": "concepts/DependentNameLookup.md",
+        "sha256": "b5e06b68d4e5b3cc524f436f42deb9d97383b2f34215c8a78aa982db76484f57"
+      },
+      {
+        "path": "concepts/DependentPair.md",
+        "sha256": "7fc8315bdea5dbee1f5d6c11ad936c6c7fbeccc188a5032741fa4799ec469135"
+      },
+      {
+        "path": "concepts/Deque.md",
+        "sha256": "1c19426aec93710506bd3989ea9c2cfcb61d8a91c54108c83136008306a64c1d"
+      },
+      {
+        "path": "concepts/DialectConversion.md",
+        "sha256": "a990a1edfc2fe81adba0ff6949a9b994c9fe73c6ed2c2e86f7e8ac182b4297fc"
+      },
+      {
+        "path": "concepts/DiffieHellman.md",
+        "sha256": "7844073d9a62ab2b5eb638e57d8a284de2dbc7a1187daf62e2885c346d53a1d6"
+      },
+      {
+        "path": "concepts/DirectedGraph.md",
+        "sha256": "9d61dad3d9b4a7b81b31d0ce7352625c8d32b1a0d9816b284a976adf88c10612"
+      },
+      {
+        "path": "concepts/DirectedMultigraph.md",
+        "sha256": "d0c575934eeee65d65ff4dafbac0c61adaa12f464be2f7eb6629467875843149"
+      },
+      {
+        "path": "concepts/DiscreteMemorylessChannel.md",
+        "sha256": "06b38dec13a78ab15bc47e95dcf4721999cc3424be20611287062c0ad3779b5b"
+      },
+      {
+        "path": "concepts/DisjointSet.md",
+        "sha256": "640c74e5de83f857ab90882c57dafb84b849f9cdfac34878f3efaaef3186fe18"
+      },
+      {
+        "path": "concepts/DistortionMeasure.md",
+        "sha256": "03c36682b1f7b2498a65ad5b96a2f5a22e741ae069fbf7792a84e2684d74875d"
+      },
+      {
+        "path": "concepts/DocumentValue.md",
+        "sha256": "efc2eada07e1557a91d1c09ecd3dd1399fc5560db0f87572db0cf99796532f8d"
+      },
+      {
+        "path": "concepts/Dominance.md",
+        "sha256": "b3d39738a06d43b38431d14ba234958316e1db29abcfe00a9d9d078cf36ed806"
+      },
+      {
+        "path": "concepts/DualCode.md",
+        "sha256": "070553461c975d99bd29c5bf6bc4c47487557ba2a96d46db94931bc3d3f40b41"
+      },
+      {
+        "path": "concepts/ECC.md",
+        "sha256": "735a50192dd4c7f24341c2fc31604f7ee1db67e80ce18279785b9051aa5aaa58"
+      },
+      {
+        "path": "concepts/ECDH.md",
+        "sha256": "55a84ede9d922a8e7f7214d3b3a3854f6199669ba6890262ec00310fc4adab0a"
+      },
+      {
+        "path": "concepts/EffectAlgebra.md",
+        "sha256": "dd1508160464c5fc6fb6c3e57234d61c3e6a15a3ffd7e9e6e44dc4ee8d791d10"
+      },
+      {
+        "path": "concepts/EffectSummary.md",
+        "sha256": "654d1098388edaeaddd80e28868aefb653ee2d1243e81d67ccbe1306ea997b95"
+      },
+      {
+        "path": "concepts/EigenDecomposition.md",
+        "sha256": "af1478e68620a250284d92e85ac20b590a1aba478055c1ad437c52b620c93d7e"
+      },
+      {
+        "path": "concepts/EmptyType.md",
+        "sha256": "df09751bcb829c6c4947a19dbf934be23e380a759ae76f8f78acfe614d58253e"
+      },
+      {
+        "path": "concepts/EntityRelationshipModel.md",
+        "sha256": "9238cd87b161750a1cab345dc3f4d420cdcb84ca6c8e8944864deab327d69110"
+      },
+      {
+        "path": "concepts/EquivalenceRelation.md",
+        "sha256": "6e37c22c79e76122bb069a564dd6fe51eb769cfd638472b3f8bd57fde1a24e8c"
+      },
+      {
+        "path": "concepts/EuclideanLattice.md",
+        "sha256": "2995e6e8e49d411754f79afbc85bc0e16775d2dd290624e7423a201baa2ac842"
+      },
+      {
+        "path": "concepts/ExceptionalControlFlow.md",
+        "sha256": "52ac2f6b4d096b19214c0ab9032a158cb4f4d09951faf78a66826bc1a6df465e"
+      },
+      {
+        "path": "concepts/Field.md",
+        "sha256": "fd6e25f903d2fd65122d97f803a48a758601e6f33aff6d3071e9246ab12df802"
+      },
+      {
+        "path": "concepts/FiniteDistribution.md",
+        "sha256": "4594488b2585bf780a5fd0e97a9d522c2a20a288c777ced917108bd12fda0a5b"
+      },
+      {
+        "path": "concepts/FiniteField.md",
+        "sha256": "e3880eddba544ac0d3b62ba9049ca6ab54d7136db80e0f565781c2c28a141e75"
+      },
+      {
+        "path": "concepts/FiniteIterator.md",
+        "sha256": "44e354e7685622c1cb27e166c25f7b38916e67760256e1c48b87cc36a5c759e0"
+      },
+      {
+        "path": "concepts/FiniteSet.md",
+        "sha256": "922b72024316432021ebf18e02ddaa3277c8ea5f5ce7a7762500d1396a6c0b6f"
+      },
+      {
+        "path": "concepts/FiniteType.md",
+        "sha256": "27d94757cbd68aff7ef251ea759699e1e91f994bbd05bc7417fa66f7a3617de5"
+      },
+      {
+        "path": "concepts/FirstOrderFormula.md",
+        "sha256": "dca992c42221793c8ca9fc4f75caf603b0786c673b987486169a23357f53fc6c"
+      },
+      {
+        "path": "concepts/FirstOrderNaturalDeduction.md",
+        "sha256": "2644f9f5cf3c3b75200be40acef9e8315c11f306a85fa50632366822822fe963"
+      },
+      {
+        "path": "concepts/FirstOrderSignature.md",
+        "sha256": "2f56c9de070749a78d58594d71e84e393c0e53268c234a20e978765112983237"
+      },
+      {
+        "path": "concepts/FixedPoint.md",
+        "sha256": "63dc727667e5f3473593b46968d91b6da471b0d56a1185fe340749af4ee29d6e"
+      },
+      {
+        "path": "concepts/FixedWidthSignedInteger.md",
+        "sha256": "6d72139aef36103e1d75de70489576e4a8514d028f12debba213b540d2c91a2d"
+      },
+      {
+        "path": "concepts/FixedWidthUnsignedInteger.md",
+        "sha256": "75b9c7dfdc9b75cadc473ff54520751aea8e4393fc08dbd5e8424ece692f969e"
+      },
+      {
+        "path": "concepts/FloatingPointType.md",
+        "sha256": "10c1cf057456516809b8b02d65a0f5882d60abcabd3915589be2ea48bbec98ea"
+      },
+      {
+        "path": "concepts/FormalLanguage.md",
+        "sha256": "69dee306faea13a98e32f482ecba81ae8ab430fa0c261390bd0aa7c2de46bcd9"
+      },
+      {
+        "path": "concepts/Function.md",
+        "sha256": "dc01bb4edc79c0f9bc4650b5a4de5d01a1cd98fd833d8c1631e64205abd813bc"
+      },
+      {
+        "path": "concepts/FunctionType.md",
+        "sha256": "01067603585d9ce0a5ffad095e84daaa3ad638ca162c943b205060e572739d6d"
+      },
+      {
+        "path": "concepts/FunctionalDependency.md",
+        "sha256": "7655071318f5e93f2a6e47ad63e84bd6dc8247bbd79efa36011156b0c7846016"
+      },
+      {
+        "path": "concepts/FuzzySet.md",
+        "sha256": "bf619123fc0c8318e7d8be6c90ea5d90dc4e9a794524f5aaee20f6e7766a6c0e"
+      },
+      {
+        "path": "concepts/GCM.md",
+        "sha256": "208512fd6c1dee30a793aadb8c15082b3ccd9b1d7b84839c3a7d040733e6c500"
+      },
+      {
+        "path": "concepts/GHASH.md",
+        "sha256": "1c6411ced62584920f8b24cf869c0fc8c59cecb6b9cc958cd46912ff7328ad75"
+      },
+      {
+        "path": "concepts/GaloisConnection.md",
+        "sha256": "159a6bdd56450262d309137fa0004d841a271b39fec2e168db9ad08a550a531e"
+      },
+      {
+        "path": "concepts/GeneratorMatrix.md",
+        "sha256": "7ee0c688713ea18e2c4f474dece3aa476e0b7f82b5928d1d01a24ee6c3c79a43"
+      },
+      {
+        "path": "concepts/GenericArgumentBinding.md",
+        "sha256": "d68f3281f93db11df55840777255aa761b1e4da7e5c9b4480ccd2e55343b2c87"
+      },
+      {
+        "path": "concepts/GenericSignature.md",
+        "sha256": "d864f26661aed1f322ed06c853ae4b950777b4a8045fc1b9f2cc912e502bf9a8"
+      },
+      {
+        "path": "concepts/Graph.md",
+        "sha256": "131def407d8fd64634aff52c0e8b37887e566b4a15ed54e721a98f0a7c359632"
+      },
+      {
+        "path": "concepts/Group.md",
+        "sha256": "2785a9adee7d2ac7905bf57ff7b6fb97bb0ee5283196155eba0967a61f104228"
+      },
+      {
+        "path": "concepts/GuardedRewrite.md",
+        "sha256": "c44b9a33831f6766b5974d55e421a78de3948bd85a788e30c27befbc2988600a"
+      },
+      {
+        "path": "concepts/HammingSpace.md",
+        "sha256": "4a0390762ec8b81d623e9caca6f741f610860b3579ff0238e656502df739a4a3"
+      },
+      {
+        "path": "concepts/HappensBefore.md",
+        "sha256": "0d1edb9cebe73ea186e70a65aa6741af1a7bc05c0d9f51d5d2bf5f5866f9daac"
+      },
+      {
+        "path": "concepts/HeapSeparation.md",
+        "sha256": "bcb7d02f985234dd6fe59a6b417dbb98305817144fd486906e42dd39c47af669"
+      },
+      {
+        "path": "concepts/HeapStore.md",
+        "sha256": "a144c2bf08e99212402a0dbfdae494a66b215a48ce6b169e07f47813b92603b9"
+      },
+      {
+        "path": "concepts/HoareTriple.md",
+        "sha256": "32d02fd0889450bab5641079b7ad99eff8289aeffe4d5b0893c092f82a86ef2a"
+      },
+      {
+        "path": "concepts/Hypergraph.md",
+        "sha256": "204496b58741066790f30fc25d26e822b0dc0df211eaa9d32eeead088b84c5ff"
+      },
+      {
+        "path": "concepts/IdempotentSemiring.md",
+        "sha256": "4c64822145e3642ad939c1dc94736ea61993aef7f1c34dd866d22160a8a2cd1b"
+      },
+      {
+        "path": "concepts/Integer.md",
+        "sha256": "5fd9ef2a1623a97cda53db17fc51571d66be59ad9e7b678660dde1bf8b2b28e7"
+      },
+      {
+        "path": "concepts/IntegerAffineMap.md",
+        "sha256": "91d0acfdc93bfae6a2c285145c3e90071b5e4b9592e6aba5658c6d788b99da66"
+      },
+      {
+        "path": "concepts/IntervalDomain.md",
+        "sha256": "15e48430fc6b141cf0992499feb926de853daa539ffda2ced25da4382b797097"
+      },
+      {
+        "path": "concepts/JavaParameterizedType.md",
+        "sha256": "ba1010eb17481765c309b45a6179f8292a7f8c8a6910c1a90579f922f77ae0f3"
+      },
+      {
+        "path": "concepts/JavaTypeErasure.md",
+        "sha256": "19a3ba161e9f963d7aad3b2814d9df0d15ac301414037aeea5b22e8df1d6f318"
+      },
+      {
+        "path": "concepts/JavaTypeInference.md",
+        "sha256": "e6498daf032b8ef2fc58f27946ad9762055ab66a7a2cedb1c00b27b5f92b342f"
+      },
+      {
+        "path": "concepts/JavaWildcardCapture.md",
+        "sha256": "c7f3541602822083e1f81c76650accdba14f2b8d12e6dadae83bb57b68545d76"
+      },
+      {
+        "path": "concepts/JoinSemilattice.md",
+        "sha256": "35d71d5eb00c1f0284b4ee7fe41cdfabe6cd4552fde750bb90cb387902d3c73d"
+      },
+      {
+        "path": "concepts/KripkeStructure.md",
+        "sha256": "4abd7b1a64c228c625e6f2286b01910ffa81834d480c735e42a3b2b79b2bb608"
+      },
+      {
+        "path": "concepts/LLVMAttributeContract.md",
+        "sha256": "7ff258c1c1a263bee3d63aebf25cef762d6eab8db013283286f03b8197a83f68"
+      },
+      {
+        "path": "concepts/LLVMFloatingPointSemantics.md",
+        "sha256": "7381d49be9cd659b17adbd5fc0a783ed2d3bc6368ac7c734250947773ef7688b"
+      },
+      {
+        "path": "concepts/LLVMIntegerSemantics.md",
+        "sha256": "5423943004d4df97cef6737f475bba32c8f25e3498d697962ff26f8b5731e33d"
+      },
+      {
+        "path": "concepts/LLVMPoisonSemantics.md",
+        "sha256": "ff4f050e99fa8dd196886925f94a213c69d474fceee0bc0c1983d9605377122f"
+      },
+      {
+        "path": "concepts/LUDecomposition.md",
+        "sha256": "6a8f0617d0c4611d60af0f06c582bf89e7f9412093ab140d4a58a0ed4e386d11"
+      },
+      {
+        "path": "concepts/LWE.md",
+        "sha256": "deea026537193b9b8df9dfb0c5e90be8fccc87ec5ceef4e54cdd99170292e102"
+      },
+      {
+        "path": "concepts/LabelledTransitionSystem.md",
+        "sha256": "530e33bd40e8348c6e1cfdc9149664abdb9bc017d7864628f594d8c65b407e37"
+      },
+      {
+        "path": "concepts/LamportBakery.md",
+        "sha256": "fb323eda2e485146e7d03126f24751c8f28ce29de356940b0ed7988f257307ff"
+      },
+      {
+        "path": "concepts/Lattice.md",
+        "sha256": "ddbc3984b86bfe150fd0d47e0d47e0d77b1b17444ee75e6e46bc42bd85f1e4eb"
+      },
+      {
+        "path": "concepts/LinearBlockCode.md",
+        "sha256": "e71c91f56f06c064970f34c9e815455b4d25989de68e504776f9dc9fa2317734"
+      },
+      {
+        "path": "concepts/LinearMap.md",
+        "sha256": "5b276fc94eb6f54e9abd8ac35557bc5ffc55b363bd9452bd5798b963e7c6135c"
+      },
+      {
+        "path": "concepts/LinearTemporalLogic.md",
+        "sha256": "d501b09e30f486cd94ffb98cd1af93d2fce4109689934530f19864e7f8a645a4"
+      },
+      {
+        "path": "concepts/Linearizability.md",
+        "sha256": "fec79428e1b91f0e457d72642308246ac69f5617f633547def8ceab24f8c1634"
+      },
+      {
+        "path": "concepts/LivenessProperty.md",
+        "sha256": "5de7d7a859866268273a0a99082dbd37ea79d701dc544d6692d5a78f9fad69c4"
+      },
+      {
+        "path": "concepts/Lock.md",
+        "sha256": "4bb730bd75340e8e38a750d7a483facfff1874c73f9334bae8b328d66b1306b4"
+      },
+      {
+        "path": "concepts/LoopDependence.md",
+        "sha256": "89f0540ee1bd98e0cd6f61a62c1f2f148d91cb329698c8cff2bda14d261f64cc"
+      },
+      {
+        "path": "concepts/LoopInvariant.md",
+        "sha256": "7027a3b87f4be8dfd97fc85c0d0acbfabe6be75644260c659681882fb94c90b0"
+      },
+      {
+        "path": "concepts/LoopIterationMapping.md",
+        "sha256": "4fee6e933e352c0a6d4d432aa1d748d61e1637e4661e8465543b3f7115cc32c2"
+      },
+      {
+        "path": "concepts/Manifold.md",
+        "sha256": "075021a956f565eb2dd821656d86fcc4099ca2cc63282fc9f5cbb6936a0fc278"
+      },
+      {
+        "path": "concepts/Map.md",
+        "sha256": "dd97e871888c5e41ec2f400c2d7e9fe79bba7e144ec7b2513a8a256fec1ebd1b"
+      },
+      {
+        "path": "concepts/MarkovChain.md",
+        "sha256": "83071b6e0fd6aef3e290c889e604fcb6ab86188744ec953ac58e50d065fada7a"
+      },
+      {
+        "path": "concepts/Matrix.md",
+        "sha256": "f977fe80fdbb5a2ccf72404b2c7f1e6b9327c4614c12180bcef74cc40f60fb71"
+      },
+      {
+        "path": "concepts/MatrixDecomposition.md",
+        "sha256": "093a112ba2fc5669b0a85718edfca85c2db153e9ee0abdf2b045e3ced1d141cc"
+      },
+      {
+        "path": "concepts/MeasurableFunction.md",
+        "sha256": "b10de5bb0d7e12e46fac08e64c01a41f81d494a3ff1e84104874457e9e4e9e27"
+      },
+      {
+        "path": "concepts/MeasurableSpace.md",
+        "sha256": "2ce82cd94ff9bfca4653a25326cc745ac16582109cb8a07ddcf1466fbb631721"
+      },
+      {
+        "path": "concepts/MeasureSpace.md",
+        "sha256": "e0664043268a2acd33199cc781dd4c9222b712bab164b6fa86f8b579cb9e1f21"
+      },
+      {
+        "path": "concepts/Median.md",
+        "sha256": "b21f655b2035ba9eef7143d17573eeb102dd371c0973e159f966eab02e269ca9"
+      },
+      {
+        "path": "concepts/MemorySSA.md",
+        "sha256": "df23f9c816633db435f4692ab2b09f91ceabfdceef8725abf4da2749dd9b7ff0"
+      },
+      {
+        "path": "concepts/MethodContract.md",
+        "sha256": "f790da6406e6eae12682c0d83f1908776a997fbd0e4a0f794516bfcfec70fc59"
+      },
+      {
+        "path": "concepts/MinPlusSemiring.md",
+        "sha256": "c75b68d39a681b67ebbecdd04e2ac6365e14a11504137bb75d8447960ec6e44d"
+      },
+      {
+        "path": "concepts/ModalLogic.md",
+        "sha256": "41615c18cc23f28891dac6d6d3db5b2eb5ec08d33e75ee98d9b976e4e9f63253"
+      },
+      {
+        "path": "concepts/Mode.md",
+        "sha256": "373c177cf26f38e35c67fac4b58201927653ff08ddf220aa8f6d3d72ed64e81c"
+      },
+      {
+        "path": "concepts/ModularInteger.md",
+        "sha256": "5ab9b6b8e8bbd0ebe8c629eca3cac8d06109208cfc4a74e90186c37f1e8776a6"
+      },
+      {
+        "path": "concepts/Monoid.md",
+        "sha256": "e9640430757d5300ef87ca254ee7ced295933dd9efa549618b947db44e6029b0"
+      },
+      {
+        "path": "concepts/MonotoneDataflow.md",
+        "sha256": "f59215180f66e5a17ea7e32c5ab2d0ce69bd4ea13e850e5c88453c1f31c5c88e"
+      },
+      {
+        "path": "concepts/MonotoneFunction.md",
+        "sha256": "f047d2913b53a909247e2d00f6530be49289ffc247bf880ba7fce656802b09e6"
+      },
+      {
+        "path": "concepts/Multimap.md",
+        "sha256": "e410111830ed6aba30b40006beab8844f55a8db660026071f75432f4f05d6540"
+      },
+      {
+        "path": "concepts/Multiset.md",
+        "sha256": "52694938ef07e211dd6df3ef03dfed81a11edf372fabbd96cd21e9cf2a1eaf5f"
+      },
+      {
+        "path": "concepts/Mutex.md",
+        "sha256": "f450881d1a192911319c5fd822bd5616292d35fd7f9a9beae3f9ffc94d608273"
+      },
+      {
+        "path": "concepts/MutualInformation.md",
+        "sha256": "5aeafb707fd1554567c3cd6447c139b9437e706e7ca2532033f2ca26feaed500"
+      },
+      {
+        "path": "concepts/NFA.md",
+        "sha256": "c13d7fd97246045c135419ba288d5cd309c9b8d053abcd959ee11d94648043dc"
+      },
+      {
+        "path": "concepts/NaturalNumber.md",
+        "sha256": "3cabdaa947008bd06f99070bd168dba0bc3d3bb919a2beaaa6974bf94d7be4fb"
+      },
+      {
+        "path": "concepts/NonlinearBlockCode.md",
+        "sha256": "b64a847bbe92c6238d85779a012c941fb40771df44de191cdaa4c3554284c125"
+      },
+      {
+        "path": "concepts/ObjectHeap.md",
+        "sha256": "77b61764c2404554b7c527521600c0dd391c8beab1d6ff3679954c4613f77493"
+      },
+      {
+        "path": "concepts/ObjectInvariant.md",
+        "sha256": "48567207fbe62a3641040d9666e5f0e565711e718504a53538701884ae6f5a82"
+      },
+      {
+        "path": "concepts/OptionType.md",
+        "sha256": "e05b66c4c249423f2c4e87ca8a9c1fa47902872f7b478ed6d80a39203ff58dc2"
+      },
+      {
+        "path": "concepts/OrderedSet.md",
+        "sha256": "a0745675c0bd520ff93e48311fb3f1f1c55753deff305623b619f0c1930e2479"
+      },
+      {
+        "path": "concepts/ParametricInstantiation.md",
+        "sha256": "b2d5e78b31ca0cd2f54b192f5cc0102868884eac80845e886ecf97633f942045"
+      },
+      {
+        "path": "concepts/ParityCheckMatrix.md",
+        "sha256": "1df9dea92f2da64e30034bf872637f0931caa3de31497124fd56aa3b5167336a"
+      },
+      {
+        "path": "concepts/PartialFunction.md",
+        "sha256": "d26b95577e9339682a00c665901e7b8a33349d184588bf401ea7ccf4449e47ab"
+      },
+      {
+        "path": "concepts/PartialOrder.md",
+        "sha256": "19933c42d7b432a3a28f817c87e4e7e43dac4ca40377b201a4c9a95cc1b2916e"
+      },
+      {
+        "path": "concepts/Partition.md",
+        "sha256": "ee34104b48a55077310832a5e631c33a8ae59a15e630b8d3ede33786526501fe"
+      },
+      {
+        "path": "concepts/PigeonholePrinciple.md",
+        "sha256": "fbd7fe465bb66a49b7a890b19e2c76644efd892df281c72483f9234642120a25"
+      },
+      {
+        "path": "concepts/PointerProvenance.md",
+        "sha256": "a91ab8ae34d0e886d45b6011b1001f30568b75dc34a637c9b93a9225f151d0f2"
+      },
+      {
+        "path": "concepts/PowerSet.md",
+        "sha256": "765f13c4f811ce809b4a61e8e5ceead157b43d51e68357231661838081099458"
+      },
+      {
+        "path": "concepts/PredicateLogic.md",
+        "sha256": "233c3d5ac6a806fd9267b35fe139f5b13f7cc8a5f7d690eb0bb04d49d06d2568"
+      },
+      {
+        "path": "concepts/PredicatedVectorSemantics.md",
+        "sha256": "0d61bae3ef2182a6ac24534e6fe7f01ec10748f7baf486f82aa0c6b913dfdc98"
+      },
+      {
+        "path": "concepts/PrefixFreeCode.md",
+        "sha256": "c81f992c3bb9d69aa7d47e4eb2aef66184514c2e7e1f9460138e70bab0b47f92"
+      },
+      {
+        "path": "concepts/Preorder.md",
+        "sha256": "371bf967128688bcb20895376e5367eaf7c9b1257e06e3a672dbf18648d75942"
+      },
+      {
+        "path": "concepts/PriorityQueue.md",
+        "sha256": "486b09393d0511b6859da96920c8acc777aeaa326419bed98d4f3ee50073f256"
+      },
+      {
+        "path": "concepts/ProbabilitySpace.md",
+        "sha256": "8e3e2bc34460d06e1a1a0b6cf1172a6ed6a9a33f7fed2587d087da3991c3f442"
+      },
+      {
+        "path": "concepts/ProductType.md",
+        "sha256": "857eff2aed9387c6e8b3480e2451519ac32190652922c213a6ede306e1108f7e"
+      },
+      {
+        "path": "concepts/PropertyGraph.md",
+        "sha256": "53e8ee0016d071803233258dd993193bc7622162e82efb58c327090eabdb74ab"
+      },
+      {
+        "path": "concepts/PropositionalFormula.md",
+        "sha256": "a6fed2702d751af819be43426ab2b302f658d958b831e58d1b5cfeaa46906cca"
+      },
+      {
+        "path": "concepts/PropositionalLogic.md",
+        "sha256": "9236153cde61f27abc9de46c24feb518a078b68c387f95278b7b2e2410535d4f"
+      },
+      {
+        "path": "concepts/PropositionalNaturalDeduction.md",
+        "sha256": "3ca5db3adb82db14bfd960e5f80141c0fca7a112318a9c0365eb0a725ddcb6d8"
+      },
+      {
+        "path": "concepts/QRDecomposition.md",
+        "sha256": "ea2c80cf025fcfb3aee81ef4c2f8cc2ce760ca6e5b70a8e47c0e5be14177edba"
+      },
+      {
+        "path": "concepts/QaryLattice.md",
+        "sha256": "99af75488776316325f6b0f029fed217443d818a1b99d7fe9bd957c4c456de3e"
+      },
+      {
+        "path": "concepts/Queue.md",
+        "sha256": "f39bba3f85b671285eeca368bc16df3a5d9114aa484146321a0ae331075c6c82"
+      },
+      {
+        "path": "concepts/QuotientType.md",
+        "sha256": "eb6324d5f573dec11f1f703f8a89ef64d73c0218c64d283cc81deff42982250c"
+      },
+      {
+        "path": "concepts/RDFDataset.md",
+        "sha256": "dbb9d9932006e2142bea6e4399bfd282cedd604258e1548b53a6ca5fb33a36eb"
+      },
+      {
+        "path": "concepts/RDFGraph.md",
+        "sha256": "0db2ee2ed29fdf598a9ab6aed4cef7f3a22b0a8008922e1a43d6cc60b5a7cf6e"
+      },
+      {
+        "path": "concepts/RSA.md",
+        "sha256": "198f76bf8b88d5b0355c04ebcfba9bd2ddad12b8634726e8fca5284040894b7d"
+      },
+      {
+        "path": "concepts/RandomVariable.md",
+        "sha256": "ff89853f4adf4cfb56abb5ec012295576362e89637b63bd5690b80232a28efd2"
+      },
+      {
+        "path": "concepts/RateDistortion.md",
+        "sha256": "9452e6e7647b78808dfe9d774290829f11046f5802286de64db5dc2cc8082bb3"
+      },
+      {
+        "path": "concepts/RationalNumber.md",
+        "sha256": "817c23a7c77fbf6d7071c6362e48bd65fab6303fb9a8b4cff80da4bafc770fbc"
+      },
+      {
+        "path": "concepts/RealNumber.md",
+        "sha256": "fefcbcd57d18f5d38d5e60ddf71ce22ecc9716c7630ceef2e9846c1b82451c70"
+      },
+      {
+        "path": "concepts/RegularLanguage.md",
+        "sha256": "2c372e436fe61d42168a5ec60e61a46a5e36a0d21abaf9c247155e565e612f73"
+      },
+      {
+        "path": "concepts/Relation.md",
+        "sha256": "7bf9189b1b296b030d992f585d4c5d9a3b677a6372e4d0d39f1c63565eaba81c"
+      },
+      {
+        "path": "concepts/RelationalSchema.md",
+        "sha256": "f1cdfbeb104134c8d566b1594dc56993e9a69e3c3934b2a60ff3c33dac40b309"
+      },
+      {
+        "path": "concepts/RelativeEntropy.md",
+        "sha256": "f6ba22aac946b2ed4f063da7772893082520af10fe6ef32a6cfcdbfc98942538"
+      },
+      {
+        "path": "concepts/ResiduatedFuzzyLogic.md",
+        "sha256": "28210061e800e704183ec0faa10909a3ac9318da96fcc06b43ad2de13696522e"
+      },
+      {
+        "path": "concepts/RewriteSystem.md",
+        "sha256": "df8829388ac0586e2153d2ed3556c0146f873fe518ec5ae0d9392ed45f7b6309"
+      },
+      {
+        "path": "concepts/Ring.md",
+        "sha256": "8d482c055abe55f973e72189d076807141e7b377c9d926586eb9dc24b7cc9617"
+      },
+      {
+        "path": "concepts/RootedTree.md",
+        "sha256": "868e1550bb2ac2a266ddcec7da1d30233997c13b22c609f9dce744aad8b7f2a4"
+      },
+      {
+        "path": "concepts/RoseTree.md",
+        "sha256": "56adfee5454a696302abe709a068ecc0965389e302cdb6ad7a56f37ce22c210a"
+      },
+      {
+        "path": "concepts/RuntimeInstrumentation.md",
+        "sha256": "e718cac9050f58785b1e226881174df3259cfd9dff32e4def685b5c380318330"
+      },
+      {
+        "path": "concepts/SIS.md",
+        "sha256": "44bace2f8e2655641577020d87a822b88764743bd7217dd304b10cebb62a2426"
+      },
+      {
+        "path": "concepts/SKOS.md",
+        "sha256": "2ea99ffab4599ec9150c69e7621044560f37804b3ccd74353190116f2e2dac90"
+      },
+      {
+        "path": "concepts/SSAForm.md",
+        "sha256": "f157be63a11b47fbd27983b1dd6dfc09df9eb841bfb9e36940d3c102bcf96762"
+      },
+      {
+        "path": "concepts/SVD.md",
+        "sha256": "1c526583eb7f5e3981869e00ed3b5cef2bf8446b0e097528eb6b3dafccf372b0"
+      },
+      {
+        "path": "concepts/SVP.md",
+        "sha256": "5d839d2a2ffa7355a660fc6cd2f094c30473bcfd971b7cfc5af8a879050c7d3f"
+      },
+      {
+        "path": "concepts/SafetyProperty.md",
+        "sha256": "73028dd4515f92a820fed03340c51824695c0184a9d9456661c23778b3dc47ec"
+      },
+      {
+        "path": "concepts/SaturatingInteger.md",
+        "sha256": "220bdc58053a0565ce4c495d393695d46fcc31ccede76d341cb1d1c6121f7fc2"
+      },
+      {
+        "path": "concepts/ScalarRecurrence.md",
+        "sha256": "9491666d33b5d0e4ac93b7bd938c36d8881c5937cc27d80484f6bda7c9b70ca2"
+      },
+      {
+        "path": "concepts/Semigroup.md",
+        "sha256": "9c1cdc5cf54d0967ef91aee05ca0b8ac37cfa70785ffa3af1889197544e9b245"
+      },
+      {
+        "path": "concepts/Semiring.md",
+        "sha256": "9d8a36ebc50ebd9dab457e831c28036ffb17edf2952d8b5ebe02866d4273b75c"
+      },
+      {
+        "path": "concepts/Sequence.md",
+        "sha256": "ed378cc0f98f688635af3a0fe785533e6e5e95ef9c3ebcdfd597e070bf1af3f1"
+      },
+      {
+        "path": "concepts/SequentialConsistency.md",
+        "sha256": "0bdfdb3fd1972f331f53b5add5b861adcdb0aa3b213e8ca5fc77da07622f0955"
+      },
+      {
+        "path": "concepts/Set.md",
+        "sha256": "68238cfb63094c74f55c1acc47174707460d1bf62a2a5bfb41204295a681823b"
+      },
+      {
+        "path": "concepts/ShannonEntropy.md",
+        "sha256": "0df5164abb9e9c8a35c096882d9e5b0c5d37a0661c822841f9f3a50b9ca5e2d7"
+      },
+      {
+        "path": "concepts/Simulation.md",
+        "sha256": "c8ddd572125d9db4cc9c6509c26bfe8b8003711c12fe7dddded86be759107406"
+      },
+      {
+        "path": "concepts/SingleParentForest.md",
+        "sha256": "a8adb4a624c94fa16d0948394281049f60647641f855d4f8b7ed59999cefe788"
+      },
+      {
+        "path": "concepts/SmoothManifold.md",
+        "sha256": "04f23416ce872336f9755840af333919961a6cb071e52fbca0bf69fccf46c8e7"
+      },
+      {
+        "path": "concepts/SparseVector.md",
+        "sha256": "2eb66083c8d75be2ad2e759fdcc71b47e12afd522e857777352cf8f20a58bd2e"
+      },
+      {
+        "path": "concepts/SpeculationSafety.md",
+        "sha256": "3f7841c16e552ca8c9b682e14e56436c3e9bdc4c5d8eccf7ea3b5c2776042b0e"
+      },
+      {
+        "path": "concepts/Stack.md",
+        "sha256": "67c691f3b598e97fc464f3c1877d928d6540ae8ce3fb4faf076a4c89acc47319"
+      },
+      {
+        "path": "concepts/StateBasedCRDT.md",
+        "sha256": "47ef27c010f72177f1f507a1a685ebf7f4bdac1e327fba8fdfc9258da1249240"
+      },
+      {
+        "path": "concepts/StateRepresentation.md",
+        "sha256": "52085c2fdb441faf4611cd3add8e4f2423f15c2d4e822f57033b8cc6ad0e6c93"
+      },
+      {
+        "path": "concepts/StochasticChannel.md",
+        "sha256": "a3f7ec506b9658204aa285ecce37e80e4c5190be03f88d5aeb8a488d351488d3"
+      },
+      {
+        "path": "concepts/Stream.md",
+        "sha256": "9b140a9f1b2337d93bb44a3e278be03e6b081525001de0512a5084904010640f"
+      },
+      {
+        "path": "concepts/StructuralInduction.md",
+        "sha256": "b27cde80e3046f6d85220f718ea3a029966ab393b4cfd2078bf3a0a4890728f4"
+      },
+      {
+        "path": "concepts/Subtype.md",
+        "sha256": "fdb36bef0122a1f6fa94c5692f8fa59aa04613a7ead43dfef86d6cdb353b57a1"
+      },
+      {
+        "path": "concepts/SumType.md",
+        "sha256": "7b6feaa7b821795e1a3eaa0e109ac958fb82210f40b800a0c187873291fb8235"
+      },
+      {
+        "path": "concepts/SymbolLinkage.md",
+        "sha256": "4d57bc9b51c942b8673a488a912e505a4deff9bf0e6aeb8209a3509632ac7512"
+      },
+      {
+        "path": "concepts/Syndrome.md",
+        "sha256": "c64a00ef438ed9942c4b9225598de531b0333d6fad1eef0b5a60411a2191f0f4"
+      },
+      {
+        "path": "concepts/TConorm.md",
+        "sha256": "b61524f3de9171f2b677a7304960d388c45f73e9e9d5d188495f80354f2a24a5"
+      },
+      {
+        "path": "concepts/TNorm.md",
+        "sha256": "427c766c163606888b532a69221d2483e81a5c952f5874639ee374408b644e4b"
+      },
+      {
+        "path": "concepts/TemplateConstraint.md",
+        "sha256": "43e4c44784b5bdfa63e34eac337d4d37f4268e1625e3cf7a6d5943dc275a48ac"
+      },
+      {
+        "path": "concepts/TemplateMetafunction.md",
+        "sha256": "e939b3496be9b6d41ac32374e82046cd939fb3232a309b7b75d3a922b1396cde"
+      },
+      {
+        "path": "concepts/TemplateParameterPack.md",
+        "sha256": "bdeccc16e848761b166893771b80bd46aac2c91a8eeff16558fa53a9dd59c619"
+      },
+      {
+        "path": "concepts/TemplateSpecialization.md",
+        "sha256": "c1bc630a3c1f5696a3c436ecdd0c0d75973971865cc30b1fdf3f50c1df4566ee"
+      },
+      {
+        "path": "concepts/TemplateSubstitution.md",
+        "sha256": "5b1fae4e853b9ec2ebce42498bdd83cbc8fe6d3a2d9010cdb0e946afb828cb14"
+      },
+      {
+        "path": "concepts/Tensor.md",
+        "sha256": "6ce7020918a5f6e117852e37078247424c09c3946852cc3119bfead633bce8ce"
+      },
+      {
+        "path": "concepts/TensorProduct.md",
+        "sha256": "aaeaae387c6fefcabde4eb42e07a9ec563a26c77b3e38d1f2a035ade6787d3ff"
+      },
+      {
+        "path": "concepts/TermAlgebra.md",
+        "sha256": "11dc719146a02c2caefdc3c37e4233a002450e62190111c923015ded5b6c700a"
+      },
+      {
+        "path": "concepts/TerminationVariant.md",
+        "sha256": "53a9638a4a6fc2f735bb8ddd68f032623a0c20ef37376dc6798d71fd815ddcbf"
+      },
+      {
+        "path": "concepts/TopologicalSpace.md",
+        "sha256": "d33f5cc03eca7e733143ce5f18694d8d135dbb60e76796517b0261bd7f7534ac"
+      },
+      {
+        "path": "concepts/TotalOrder.md",
+        "sha256": "752d41afa5ab9ce98bbadef52a051cd276c45ecf3d7a1e537688b51a241d0f6a"
+      },
+      {
+        "path": "concepts/TraceEquivalence.md",
+        "sha256": "ba490e1a17a34da289dde2524f20c9683e131e30f924d81829c3f4ac9b7592e5"
+      },
+      {
+        "path": "concepts/TransitionSystem.md",
+        "sha256": "ef94e179f22c87ae0e353b42070c51fe1c64c1840dc1f603184f5d18d18b9b26"
+      },
+      {
+        "path": "concepts/TranslationValidation.md",
+        "sha256": "7bbbf876828b241cece21887eab438114077d7472d55aed26ead0ebcf5273479"
+      },
+      {
+        "path": "concepts/Tree.md",
+        "sha256": "7f5316f43e852f6b62899cc393db8a939c14e135ec615da54bd43cd1efe8bb21"
+      },
+      {
+        "path": "concepts/Trie.md",
+        "sha256": "edf9417764f935b7a867fad928375960761b89b01156c15888d1e90ed1db7327"
+      },
+      {
+        "path": "concepts/TuringMachine.md",
+        "sha256": "6e2693b8c7b8a311a9024dd3ec06ee3b623365ff4f4d6319db968f9352ea82eb"
+      },
+      {
+        "path": "concepts/UniquelyDecodableCode.md",
+        "sha256": "5aaf9564695f142fa117ac9238ba1ac6226fdeb11ef16e84714f7ab6cc604d30"
+      },
+      {
+        "path": "concepts/UnitType.md",
+        "sha256": "919ad785cbb6aeca1bf4fda192d6bdb3684b46b8eabef0ea9e807ab38a03535c"
+      },
+      {
+        "path": "concepts/VHDLGenericElaboration.md",
+        "sha256": "1d08f309e89cae78933f7a110eb3a2de01e24e99853619d51451a5f79559de91"
+      },
+      {
+        "path": "concepts/VHDLGenericInterface.md",
+        "sha256": "ba13ce5025ea3bb55e72843496d6edb2428e2e6362df738b048cf6a8b8653f9b"
+      },
+      {
+        "path": "concepts/VectorSpace.md",
+        "sha256": "c01f0ce017191879a19844d283259ff0c9d9b85a94da5e54c0359a9c9b120302"
+      },
+      {
+        "path": "concepts/WeakestPrecondition.md",
+        "sha256": "bfc76f23a5565c6ddeaf774cb076bff83c9097a329e49ac00c3414daa0b9bb1f"
+      },
+      {
+        "path": "concepts/WeightedDirectedGraph.md",
+        "sha256": "470d25218cb512da526eb791fbc94800942a18d5d389962b32fac81b172e34dd"
+      },
+      {
+        "path": "concepts/WellFoundedRelation.md",
+        "sha256": "864d4adf4b889cce61ec3938eb6ba68a445283e0523b42c81f91677ecc87ac45"
+      },
+      {
+        "path": "data/shared.json",
+        "sha256": "f2c4d40ed7c89a677e16d359036e8d96ec2d304e203c6876ecacb214558c531c"
+      }
+    ],
+    "pythonVersion": "3.13.9",
+    "registryHash": null,
+    "toolSources": {
+      "scripts/audit_duplicates.py": "473867e691e75fdc2f2c4148394fdd52a16f654cc4734afed7bfef16e443f6b2",
+      "scripts/markdown_graph.py": "02028560b66ba4f338bb26a08b82bf030fa6f459380978d23716858ddc00c9c6",
+      "scripts/subjects.py": "23af0e2f7f514d7114fb39c36029b12344fc5b837e08ac8e4cf40a34cde26064",
+      "scripts/validate_graph.py": "53fdc91ae92af1411cf97a1223a46435aac6c8f57ecbfc34417c7fe3d2231df9"
+    },
+    "unicodeVersion": "15.1.0",
+    "validationInputs": {
+      "data/import_manifest.json": "d0110a72a1eea72a71339da336edf77f3e9103dae260fc0d44be643de464851d",
+      "provenance_legacy.json": "bdbf39983573b9f14f52759dd57706865b9db22932cf7e1efe841adf125f06cb"
+    }
+  },
+  "pairs": [
+    {
+      "fingerprints": [
+        "a1303f7abd43294d991bdf0cb7d3782fdcc02b142fe4560a8fd5504a1e6d203b",
+        "a1303f7abd43294d991bdf0cb7d3782fdcc02b142fe4560a8fd5504a1e6d203b"
+      ],
+      "independent": null,
+      "independentStatus": "not_requested",
+      "locations": [
+        {
+          "anchor": "node-urn-csabs-law-StateBasedCRDT-merge-idempotent",
+          "id": "urn:csabs:law/StateBasedCRDT-merge-idempotent",
+          "path": "concepts/StateBasedCRDT.md"
+        },
+        {
+          "anchor": "node-urn-csabs-theorem-StateBasedCRDT-merge-commutative",
+          "id": "urn:csabs:theorem/StateBasedCRDT-merge-commutative",
+          "path": "concepts/StateBasedCRDT.md"
+        }
+      ],
+      "packetKey": "fea56094510fe28ff8414efecb908ecfd8bb36f740ebc4d32f65a0ba8fe3917f",
+      "pair": [
+        "urn:csabs:law/StateBasedCRDT-merge-idempotent",
+        "urn:csabs:theorem/StateBasedCRDT-merge-commutative"
+      ],
+      "primary": {
+        "origin": "imported-assistant-session",
+        "packetKey": "fea56094510fe28ff8414efecb908ecfd8bb36f740ebc4d32f65a0ba8fe3917f",
+        "result": {
+          "decision": "distinct",
+          "differences": [
+            "Idempotence concerns duplication of one state; commutativity concerns ordering two states.",
+            "Their Law/Theorem record roles also differ."
+          ],
+          "evidence": [
+            {
+              "field": "formalStatement",
+              "quote": "merge(s,s)=s",
+              "recordId": "urn:csabs:law/StateBasedCRDT-merge-idempotent"
+            },
+            {
+              "field": "formalStatement",
+              "quote": "merge(s,t)=merge(t,s)",
+              "recordId": "urn:csabs:theorem/StateBasedCRDT-merge-commutative"
+            }
+          ],
+          "mapping": {
+            "assumptions": "Pure state algebra only; neither statement supplies network delivery or liveness guarantees.",
+            "carriers": "The same state carrier S, explicitly a join semilattice with bottom.",
+            "equality": "Identity equality on the same state carrier.",
+            "operations": "The same binary merge, observed on repeated inputs versus exchanged inputs."
+          },
+          "missingContext": [],
+          "rationale": "Repeated-state absorption and argument-order independence are different laws. Both concern merge, but one constrains merge(s,s) and the other compares merge(s,t) with merge(t,s); retain both."
+        },
+        "resultHash": "e4dc74dfe6481484f5dd60b0f0d7ceb140bd60ecdc01d333bcb9dd5d25e35be8",
+        "reviewedAt": "2026-11-20T01:27:09.794001+00:00",
+        "reviewer": {
+          "commandHash": null,
+          "id": "current-assistant",
+          "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+          "kind": "assistant-session",
+          "profile": "DT-1",
+          "stage": "primary",
+          "version": "session-model-version-not-exposed"
+        }
+      },
+      "score": 8920,
+      "status": "suggestedDistinctions"
+    },
+    {
+      "fingerprints": [
+        "bbd8459c1d288a9a424d7dca8c15b6edf30d51ba1a6a686ba76d4d9b089faeb4",
+        "bbd8459c1d288a9a424d7dca8c15b6edf30d51ba1a6a686ba76d4d9b089faeb4"
+      ],
+      "independent": null,
+      "independentStatus": "not_requested",
+      "locations": [
+        {
+          "anchor": "node-urn-csabs-axiom-EffectAlgebra-distributivity",
+          "id": "urn:csabs:axiom/EffectAlgebra-distributivity",
+          "path": "concepts/EffectAlgebra.md"
+        },
+        {
+          "anchor": "node-urn-csabs-axiom-EffectAlgebra-sequencing-monoid",
+          "id": "urn:csabs:axiom/EffectAlgebra-sequencing-monoid",
+          "path": "concepts/EffectAlgebra.md"
+        }
+      ],
+      "packetKey": "75d1a8afe9918cf2ea09384299857d880e5d6c5bf4593a0cf2f5e667d4f46137",
+      "pair": [
+        "urn:csabs:axiom/EffectAlgebra-distributivity",
+        "urn:csabs:axiom/EffectAlgebra-sequencing-monoid"
+      ],
+      "primary": {
+        "origin": "imported-assistant-session",
+        "packetKey": "75d1a8afe9918cf2ea09384299857d880e5d6c5bf4593a0cf2f5e667d4f46137",
+        "result": {
+          "decision": "distinct",
+          "differences": [
+            "Different operation combinations and quantified equations.",
+            "Each contributes a different part of the chosen axiom basis."
+          ],
+          "evidence": [
+            {
+              "field": "formalStatement",
+              "quote": "a▷(b⊔c)=(a▷b)⊔(a▷c); (a⊔b)▷c=(a▷c)⊔(b▷c).",
+              "recordId": "urn:csabs:axiom/EffectAlgebra-distributivity"
+            },
+            {
+              "field": "formalStatement",
+              "quote": "(a▷b)▷c=a▷(b▷c); ε▷a=a=a▷ε.",
+              "recordId": "urn:csabs:axiom/EffectAlgebra-sequencing-monoid"
+            }
+          ],
+          "mapping": {
+            "assumptions": "Total operations, potentially noncommutative sequencing, and no inferred concurrency or reordering guarantee.",
+            "carriers": "The same total program-effect carrier E in the chosen effect-quantale profile.",
+            "equality": "Carrier equality on effects, with the stated order/join conventions.",
+            "operations": "Distributivity uses both sequencing and join; the monoid condition uses sequencing and epsilon."
+          },
+          "missingContext": [],
+          "rationale": "Distributivity links sequencing to join, whereas the monoid rules give sequencing associativity and the no-effect identity. These are complementary interface obligations, not duplicate statements."
+        },
+        "resultHash": "abb7534595e6777ac384d12d137c1bd67a105b9da431345f2fa2bf76d0e89ee2",
+        "reviewedAt": "2026-11-20T01:27:09.805992+00:00",
+        "reviewer": {
+          "commandHash": null,
+          "id": "current-assistant",
+          "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+          "kind": "assistant-session",
+          "profile": "DT-1",
+          "stage": "primary",
+          "version": "session-model-version-not-exposed"
+        }
+      },
+      "score": 8647,
+      "status": "suggestedDistinctions"
+    },
+    {
+      "fingerprints": [
+        "30da4ccb4e9d7f7b9666627ce0ae923c53a446906bc21f1abbe377a292ab034d",
+        "30da4ccb4e9d7f7b9666627ce0ae923c53a446906bc21f1abbe377a292ab034d"
+      ],
+      "independent": null,
+      "independentStatus": "not_requested",
+      "locations": [
+        {
+          "anchor": "node-urn-csabs-axiom-product-beta-first",
+          "id": "urn:csabs:axiom/product-beta-first",
+          "path": "concepts/ProductType.md"
+        },
+        {
+          "anchor": "node-urn-csabs-axiom-product-beta-second",
+          "id": "urn:csabs:axiom/product-beta-second",
+          "path": "concepts/ProductType.md"
+        }
+      ],
+      "packetKey": "1c9d1a82517bbb691a3b6b874da4333758b854801ae907e0c927927a06963dfc",
+      "pair": [
+        "urn:csabs:axiom/product-beta-first",
+        "urn:csabs:axiom/product-beta-second"
+      ],
+      "primary": {
+        "origin": "imported-assistant-session",
+        "packetKey": "1c9d1a82517bbb691a3b6b874da4333758b854801ae907e0c927927a06963dfc",
+        "result": {
+          "decision": "distinct",
+          "differences": [
+            "Different observers and result carriers.",
+            "Both projection cases are part of the selected product interface."
+          ],
+          "evidence": [
+            {
+              "field": "formalStatement",
+              "quote": "fst(pair(a,b))=a",
+              "recordId": "urn:csabs:axiom/product-beta-first"
+            },
+            {
+              "field": "formalStatement",
+              "quote": "snd(pair(a,b))=b",
+              "recordId": "urn:csabs:axiom/product-beta-second"
+            }
+          ],
+          "mapping": {
+            "assumptions": "Total correctly typed set-like constructors and projections. Swapping component names would also change the API correspondence.",
+            "carriers": "One product A×B, with possibly different component carriers A and B.",
+            "equality": "Typed extensional equality in the respective result carriers.",
+            "operations": "fst(pair(a,b)) returns a; snd(pair(a,b)) returns b."
+          },
+          "missingContext": [],
+          "rationale": "These are the two projection beta rules. The first returns the A component and the second the B component; deleting either would lose an explicit constructor/observer obligation."
+        },
+        "resultHash": "22ff24be1cc045d51ee5e8db02987dd0d37ba3696820220a8e952ad6cd4800fc",
+        "reviewedAt": "2026-11-20T01:27:09.817706+00:00",
+        "reviewer": {
+          "commandHash": null,
+          "id": "current-assistant",
+          "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+          "kind": "assistant-session",
+          "profile": "DT-1",
+          "stage": "primary",
+          "version": "session-model-version-not-exposed"
+        }
+      },
+      "score": 8643,
+      "status": "suggestedDistinctions"
+    },
+    {
+      "fingerprints": [
+        "daa10b5fc5c73581c3c0e50be36fa821fd71d19d39f5c492fc7c9223cc0d4e5a",
+        "daa10b5fc5c73581c3c0e50be36fa821fd71d19d39f5c492fc7c9223cc0d4e5a"
+      ],
+      "independent": null,
+      "independentStatus": "not_requested",
+      "locations": [
+        {
+          "anchor": "node-urn-csabs-axiom-case-inl",
+          "id": "urn:csabs:axiom/case-inl",
+          "path": "concepts/SumType.md"
+        },
+        {
+          "anchor": "node-urn-csabs-axiom-case-inr",
+          "id": "urn:csabs:axiom/case-inr",
+          "path": "concepts/SumType.md"
+        }
+      ],
+      "packetKey": "4d659a8837c8932cd646743900b207d0fd890532b8e25aea29d262204de92854",
+      "pair": [
+        "urn:csabs:axiom/case-inl",
+        "urn:csabs:axiom/case-inr"
+      ],
+      "primary": {
+        "origin": "imported-assistant-session",
+        "packetKey": "4d659a8837c8932cd646743900b207d0fd890532b8e25aea29d262204de92854",
+        "result": {
+          "decision": "distinct",
+          "differences": [
+            "Different constructors, branch functions and input carriers.",
+            "Exchanging tags and branch names is not deletion of one required branch equation."
+          ],
+          "evidence": [
+            {
+              "field": "formalStatement",
+              "quote": "∀f:A→C,g:B→C,a:A: case(f,g,inl(a))=f(a)",
+              "recordId": "urn:csabs:axiom/case-inl"
+            },
+            {
+              "field": "formalStatement",
+              "quote": "∀f:A→C,g:B→C,b:B: case(f,g,inr(b))=g(b)",
+              "recordId": "urn:csabs:axiom/case-inr"
+            }
+          ],
+          "mapping": {
+            "assumptions": "Total functions with the respective A→C and B→C types and disjoint tagged constructors.",
+            "carriers": "A tagged sum A+B and a common result carrier C.",
+            "equality": "The chosen typed extensional equality on C.",
+            "operations": "case(f,g,inl(a)) uses f; case(f,g,inr(b)) uses g."
+          },
+          "missingContext": [],
+          "rationale": "The elimination equations cover different disjoint constructors of a sum. One specifies the inl/f branch and the other the inr/g branch, so they are separate required cases."
+        },
+        "resultHash": "64301200b44684fd059edcf94a41275e84529ed65f601717c0442d5c2b677b23",
+        "reviewedAt": "2026-11-20T01:27:09.829410+00:00",
+        "reviewer": {
+          "commandHash": null,
+          "id": "current-assistant",
+          "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+          "kind": "assistant-session",
+          "profile": "DT-1",
+          "stage": "primary",
+          "version": "session-model-version-not-exposed"
+        }
+      },
+      "score": 8605,
+      "status": "suggestedDistinctions"
+    },
+    {
+      "fingerprints": [
+        "b0ea120f4ad4731dbd4354f0ef32bfe472b06a7e95006881a6c1be38f3d1a2f1",
+        "b0ea120f4ad4731dbd4354f0ef32bfe472b06a7e95006881a6c1be38f3d1a2f1"
+      ],
+      "independent": null,
+      "independentStatus": "not_requested",
+      "locations": [
+        {
+          "anchor": "node-urn-csabs-axiom-HeapStore-free-frame",
+          "id": "urn:csabs:axiom/HeapStore-free-frame",
+          "path": "concepts/HeapStore.md"
+        },
+        {
+          "anchor": "node-urn-csabs-axiom-HeapStore-write-frame",
+          "id": "urn:csabs:axiom/HeapStore-write-frame",
+          "path": "concepts/HeapStore.md"
+        }
+      ],
+      "packetKey": "db5b9e79270c6aff50813c3a12d76056a8439eda01a5bbeeda08b5c7ee026c9a",
+      "pair": [
+        "urn:csabs:axiom/HeapStore-free-frame",
+        "urn:csabs:axiom/HeapStore-write-frame"
+      ],
+      "primary": {
+        "origin": "imported-assistant-session",
+        "packetKey": "db5b9e79270c6aff50813c3a12d76056a8439eda01a5bbeeda08b5c7ee026c9a",
+        "result": {
+          "decision": "distinct",
+          "differences": [
+            "Different state updates at the selected address.",
+            "The common frame condition does not make deletion and update interchangeable."
+          ],
+          "evidence": [
+            {
+              "field": "formalStatement",
+              "quote": "a∈dom(h) ⇒ free(h,a)(b)=None if b=a, else h(b)",
+              "recordId": "urn:csabs:axiom/HeapStore-free-frame"
+            },
+            {
+              "field": "formalStatement",
+              "quote": "a∈dom(h) ⇒ write(h,a,v)(b)=Some(v) if b=a, else h(b)",
+              "recordId": "urn:csabs:axiom/HeapStore-write-frame"
+            }
+          ],
+          "mapping": {
+            "assumptions": "The selected address is allocated; invalid access, address reuse and lack of concurrency follow the stated snapshot profile.",
+            "carriers": "Finite partial maps from positive natural addresses to a value carrier V.",
+            "equality": "Extensional heap equality with explicit None/Some observations.",
+            "operations": "free removes the selected binding; write updates the selected binding to v."
+          },
+          "missingContext": [],
+          "rationale": "The shared frame shape explains the high text score, but freeing makes the selected address unallocated while writing stores Some(v). Both preserve other addresses and express different heap effects."
+        },
+        "resultHash": "454a4fb5099987723dd908c50e26cb2233b5008e5d41a2292553bd114fb1a02a",
+        "reviewedAt": "2026-11-20T01:27:09.841108+00:00",
+        "reviewer": {
+          "commandHash": null,
+          "id": "current-assistant",
+          "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+          "kind": "assistant-session",
+          "profile": "DT-1",
+          "stage": "primary",
+          "version": "session-model-version-not-exposed"
+        }
+      },
+      "score": 8503,
+      "status": "suggestedDistinctions"
+    },
+    {
+      "fingerprints": [
+        "b2ddc42900a9383e0f0c17156e8a38a61ba70cca966c936b6024a00df1fe784a",
+        "ef8fae6a4bc8ff26c8a81faad28a0cc1d3f9315d81e2c2b585e81af107e066b4"
+      ],
+      "independent": null,
+      "independentStatus": "not_requested",
+      "locations": [
+        {
+          "anchor": "node-urn-csabs-axiom-Binary128-rounded-operations",
+          "id": "urn:csabs:axiom/Binary128-rounded-operations",
+          "path": "concepts/Binary128.md"
+        },
+        {
+          "anchor": "node-urn-csabs-axiom-Binary16-rounded-operations",
+          "id": "urn:csabs:axiom/Binary16-rounded-operations",
+          "path": "concepts/Binary16.md"
+        }
+      ],
+      "packetKey": "5748244080656cfc0dec409e0a25836b7974a7b801822c0bea826ae112a5b38b",
+      "pair": [
+        "urn:csabs:axiom/Binary128-rounded-operations",
+        "urn:csabs:axiom/Binary16-rounded-operations"
+      ],
+      "primary": {
+        "origin": "imported-assistant-session",
+        "packetKey": "5748244080656cfc0dec409e0a25836b7974a7b801822c0bea826ae112a5b38b",
+        "result": {
+          "decision": "semantic_variant",
+          "differences": [
+            "Different widths, significand precisions and exponent ranges (-14,15 for binary16).",
+            "Identical generic wording does not identify the instantiated carriers or rounding results."
+          ],
+          "evidence": [
+            {
+              "field": "formalStatement",
+              "quote": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules",
+              "recordId": "urn:csabs:axiom/Binary128-rounded-operations"
+            },
+            {
+              "field": "formalStatement",
+              "quote": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules",
+              "recordId": "urn:csabs:axiom/Binary16-rounded-operations"
+            },
+            {
+              "field": "mathematicalFormulation",
+              "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(128,2,113,−16382,16383), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−112}, 0<m<2^{113}, −16382≤e≤16383, and m≥2^{112} unless e=−16382. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim.",
+              "recordId": "urn:csabs:concept/Binary128"
+            },
+            {
+              "field": "mathematicalFormulation",
+              "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(16,2,11,−14,15), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−10}, 0<m<2^{11}, −14≤e≤15, and m≥2^{10} unless e=−14. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim.",
+              "recordId": "urn:csabs:concept/Binary16"
+            }
+          ],
+          "mapping": {
+            "assumptions": "Owner formulations define different partial format instances; the Lean interface does not prove correct arithmetic for either instance.",
+            "carriers": "Different format carriers: binary128 has width 128 and precision 113; binary16 has width 16 and precision 11, with different exponent ranges.",
+            "equality": "Each format uses its declared numeric/special-value and representation observations; no cross-format equality or bijection is supplied.",
+            "operations": "The same arithmetic operation family is parameterized by the instance grid and chosen rounding mode."
+          },
+          "missingContext": [],
+          "rationale": "The arithmetic-rule wording is shared, but it is instantiated over different floating-point grids: binary128 has precision 113, while binary16 has precision 11. Retain the format-specific applications; a common parameterized rule could be factored in a separate catalog change."
+        },
+        "resultHash": "7d540073f96fb46418684d106e20e978c54893df69e68367735ad0b78fff143a",
+        "reviewedAt": "2026-11-20T01:27:09.852698+00:00",
+        "reviewer": {
+          "commandHash": null,
+          "id": "current-assistant",
+          "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+          "kind": "assistant-session",
+          "profile": "DT-1",
+          "stage": "primary",
+          "version": "session-model-version-not-exposed"
+        }
+      },
+      "score": 8500,
+      "status": "suggestedDistinctions"
+    },
+    {
+      "fingerprints": [
+        "b2ddc42900a9383e0f0c17156e8a38a61ba70cca966c936b6024a00df1fe784a",
+        "b7314b70170b275a56ee7507bb57833047533b93946b026959dd33aa83862d81"
+      ],
+      "independent": null,
+      "independentStatus": "not_requested",
+      "locations": [
+        {
+          "anchor": "node-urn-csabs-axiom-Binary128-rounded-operations",
+          "id": "urn:csabs:axiom/Binary128-rounded-operations",
+          "path": "concepts/Binary128.md"
+        },
+        {
+          "anchor": "node-urn-csabs-axiom-Binary32-rounded-operations",
+          "id": "urn:csabs:axiom/Binary32-rounded-operations",
+          "path": "concepts/Binary32.md"
+        }
+      ],
+      "packetKey": "2610e1f0d445113a96d10d43f1eb3fdb0da59598f93e964921b38ef5018d5c86",
+      "pair": [
+        "urn:csabs:axiom/Binary128-rounded-operations",
+        "urn:csabs:axiom/Binary32-rounded-operations"
+      ],
+      "primary": {
+        "origin": "imported-assistant-session",
+        "packetKey": "2610e1f0d445113a96d10d43f1eb3fdb0da59598f93e964921b38ef5018d5c86",
+        "result": {
+          "decision": "semantic_variant",
+          "differences": [
+            "Different widths, significand precisions and exponent ranges (-126,127 for binary32).",
+            "Identical generic wording does not identify the instantiated carriers or rounding results."
+          ],
+          "evidence": [
+            {
+              "field": "formalStatement",
+              "quote": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules",
+              "recordId": "urn:csabs:axiom/Binary128-rounded-operations"
+            },
+            {
+              "field": "formalStatement",
+              "quote": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules",
+              "recordId": "urn:csabs:axiom/Binary32-rounded-operations"
+            },
+            {
+              "field": "mathematicalFormulation",
+              "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(128,2,113,−16382,16383), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−112}, 0<m<2^{113}, −16382≤e≤16383, and m≥2^{112} unless e=−16382. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim.",
+              "recordId": "urn:csabs:concept/Binary128"
+            },
+            {
+              "field": "mathematicalFormulation",
+              "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(32,2,24,−126,127), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−23}, 0<m<2^{24}, −126≤e≤127, and m≥2^{23} unless e=−126. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim.",
+              "recordId": "urn:csabs:concept/Binary32"
+            }
+          ],
+          "mapping": {
+            "assumptions": "Owner formulations define different partial format instances; the Lean interface does not prove correct arithmetic for either instance.",
+            "carriers": "Different format carriers: binary128 has width 128 and precision 113; binary32 has width 32 and precision 24, with different exponent ranges.",
+            "equality": "Each format uses its declared numeric/special-value and representation observations; no cross-format equality or bijection is supplied.",
+            "operations": "The same arithmetic operation family is parameterized by the instance grid and chosen rounding mode."
+          },
+          "missingContext": [],
+          "rationale": "The arithmetic-rule wording is shared, but it is instantiated over different floating-point grids: binary128 has precision 113, while binary32 has precision 24. Retain the format-specific applications; a common parameterized rule could be factored in a separate catalog change."
+        },
+        "resultHash": "cb83ceee97db2984b46996f4016764d749071997e5c4143eff3eaa66b3a8e1fa",
+        "reviewedAt": "2026-11-20T01:27:09.864568+00:00",
+        "reviewer": {
+          "commandHash": null,
+          "id": "current-assistant",
+          "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+          "kind": "assistant-session",
+          "profile": "DT-1",
+          "stage": "primary",
+          "version": "session-model-version-not-exposed"
+        }
+      },
+      "score": 8500,
+      "status": "suggestedDistinctions"
+    },
+    {
+      "fingerprints": [
+        "b2ddc42900a9383e0f0c17156e8a38a61ba70cca966c936b6024a00df1fe784a",
+        "26fe69da5f1fe890be93e77573af90bfdb23df8e8988d6bc52dbc31b80fc94ad"
+      ],
+      "independent": null,
+      "independentStatus": "not_requested",
+      "locations": [
+        {
+          "anchor": "node-urn-csabs-axiom-Binary128-rounded-operations",
+          "id": "urn:csabs:axiom/Binary128-rounded-operations",
+          "path": "concepts/Binary128.md"
+        },
+        {
+          "anchor": "node-urn-csabs-axiom-Binary64-rounded-operations",
+          "id": "urn:csabs:axiom/Binary64-rounded-operations",
+          "path": "concepts/Binary64.md"
+        }
+      ],
+      "packetKey": "83f2a2134d458424ad34622f45902166cb536392addefdb234c99c90cba81a1a",
+      "pair": [
+        "urn:csabs:axiom/Binary128-rounded-operations",
+        "urn:csabs:axiom/Binary64-rounded-operations"
+      ],
+      "primary": {
+        "origin": "imported-assistant-session",
+        "packetKey": "83f2a2134d458424ad34622f45902166cb536392addefdb234c99c90cba81a1a",
+        "result": {
+          "decision": "semantic_variant",
+          "differences": [
+            "Different widths, significand precisions and exponent ranges (-1022,1023 for binary64).",
+            "Identical generic wording does not identify the instantiated carriers or rounding results."
+          ],
+          "evidence": [
+            {
+              "field": "formalStatement",
+              "quote": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules",
+              "recordId": "urn:csabs:axiom/Binary128-rounded-operations"
+            },
+            {
+              "field": "formalStatement",
+              "quote": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules",
+              "recordId": "urn:csabs:axiom/Binary64-rounded-operations"
+            },
+            {
+              "field": "mathematicalFormulation",
+              "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(128,2,113,−16382,16383), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−112}, 0<m<2^{113}, −16382≤e≤16383, and m≥2^{112} unless e=−16382. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim.",
+              "recordId": "urn:csabs:concept/Binary128"
+            },
+            {
+              "field": "mathematicalFormulation",
+              "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(64,2,53,−1022,1023), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−52}, 0<m<2^{53}, −1022≤e≤1023, and m≥2^{52} unless e=−1022. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim.",
+              "recordId": "urn:csabs:concept/Binary64"
+            }
+          ],
+          "mapping": {
+            "assumptions": "Owner formulations define different partial format instances; the Lean interface does not prove correct arithmetic for either instance.",
+            "carriers": "Different format carriers: binary128 has width 128 and precision 113; binary64 has width 64 and precision 53, with different exponent ranges.",
+            "equality": "Each format uses its declared numeric/special-value and representation observations; no cross-format equality or bijection is supplied.",
+            "operations": "The same arithmetic operation family is parameterized by the instance grid and chosen rounding mode."
+          },
+          "missingContext": [],
+          "rationale": "The arithmetic-rule wording is shared, but it is instantiated over different floating-point grids: binary128 has precision 113, while binary64 has precision 53. Retain the format-specific applications; a common parameterized rule could be factored in a separate catalog change."
+        },
+        "resultHash": "0ff188355f067611d3217ae1084525daafaf34f4c7434b141856b261bf22be64",
+        "reviewedAt": "2026-11-20T01:27:09.876755+00:00",
+        "reviewer": {
+          "commandHash": null,
+          "id": "current-assistant",
+          "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+          "kind": "assistant-session",
+          "profile": "DT-1",
+          "stage": "primary",
+          "version": "session-model-version-not-exposed"
+        }
+      },
+      "score": 8500,
+      "status": "suggestedDistinctions"
+    },
+    {
+      "fingerprints": [
+        "b2ddc42900a9383e0f0c17156e8a38a61ba70cca966c936b6024a00df1fe784a",
+        "ef8fae6a4bc8ff26c8a81faad28a0cc1d3f9315d81e2c2b585e81af107e066b4"
+      ],
+      "independent": null,
+      "independentStatus": "not_requested",
+      "locations": [
+        {
+          "anchor": "node-urn-csabs-axiom-Binary128-special-values",
+          "id": "urn:csabs:axiom/Binary128-special-values",
+          "path": "concepts/Binary128.md"
+        },
+        {
+          "anchor": "node-urn-csabs-axiom-Binary16-special-values",
+          "id": "urn:csabs:axiom/Binary16-special-values",
+          "path": "concepts/Binary16.md"
+        }
+      ],
+      "packetKey": "d3cf55648d5f0e5aad7d6a2aa4022f74c408f141f4c57ce6e5b0f40f947fef46",
+      "pair": [
+        "urn:csabs:axiom/Binary128-special-values",
+        "urn:csabs:axiom/Binary16-special-values"
+      ],
+      "primary": {
+        "origin": "imported-assistant-session",
+        "packetKey": "d3cf55648d5f0e5aad7d6a2aa4022f74c408f141f4c57ce6e5b0f40f947fef46",
+        "result": {
+          "decision": "semantic_variant",
+          "differences": [
+            "Different representation carriers and finite-value universes.",
+            "A reusable policy schema is a possible refactoring, not an interchangeable concrete-record proof."
+          ],
+          "evidence": [
+            {
+              "field": "formalStatement",
+              "quote": "+0=−0 numerically, but sign bits differ; ±∞ ordered beyond finite values; NaN is unordered and NaN=NaN is false under IEEE numeric equality",
+              "recordId": "urn:csabs:axiom/Binary128-special-values"
+            },
+            {
+              "field": "formalStatement",
+              "quote": "+0=−0 numerically, but sign bits differ; ±∞ ordered beyond finite values; NaN is unordered and NaN=NaN is false under IEEE numeric equality",
+              "recordId": "urn:csabs:axiom/Binary16-special-values"
+            },
+            {
+              "field": "mathematicalFormulation",
+              "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(128,2,113,−16382,16383), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−112}, 0<m<2^{113}, −16382≤e≤16383, and m≥2^{112} unless e=−16382. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim.",
+              "recordId": "urn:csabs:concept/Binary128"
+            },
+            {
+              "field": "mathematicalFormulation",
+              "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(16,2,11,−14,15), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−10}, 0<m<2^{11}, −14≤e≤15, and m≥2^{10} unless e=−14. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim.",
+              "recordId": "urn:csabs:concept/Binary16"
+            }
+          ],
+          "mapping": {
+            "assumptions": "Each statement inherits only its explicitly stated format scope; no cross-format representation equivalence or compiled special-value witness is asserted.",
+            "carriers": "Different binary128 and binary16 representations and finite-value grids, including their special-value encodings.",
+            "equality": "Both describe IEEE numeric comparison, where NaN is not equal to itself and signed zeros compare equal; bit identity is a separate observation.",
+            "operations": "Numeric equality/order and special-value classification are applied within each format."
+          },
+          "missingContext": [],
+          "rationale": "The special-value policy is common, but these records apply it to binary128 and binary16 carriers. Keep the carrier-specific applications; review any future extraction of a shared format-parameterized policy separately."
+        },
+        "resultHash": "68b404669c448be9da0eede5f6ae07ec604168770b662c53f4483b934e939b44",
+        "reviewedAt": "2026-11-20T01:27:09.888644+00:00",
+        "reviewer": {
+          "commandHash": null,
+          "id": "current-assistant",
+          "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+          "kind": "assistant-session",
+          "profile": "DT-1",
+          "stage": "primary",
+          "version": "session-model-version-not-exposed"
+        }
+      },
+      "score": 8500,
+      "status": "suggestedDistinctions"
+    },
+    {
+      "fingerprints": [
+        "b2ddc42900a9383e0f0c17156e8a38a61ba70cca966c936b6024a00df1fe784a",
+        "b7314b70170b275a56ee7507bb57833047533b93946b026959dd33aa83862d81"
+      ],
+      "independent": null,
+      "independentStatus": "not_requested",
+      "locations": [
+        {
+          "anchor": "node-urn-csabs-axiom-Binary128-special-values",
+          "id": "urn:csabs:axiom/Binary128-special-values",
+          "path": "concepts/Binary128.md"
+        },
+        {
+          "anchor": "node-urn-csabs-axiom-Binary32-special-values",
+          "id": "urn:csabs:axiom/Binary32-special-values",
+          "path": "concepts/Binary32.md"
+        }
+      ],
+      "packetKey": "0019fd96957b51ed1d5d2b1a5ea88f1a1eb1606d8394799b2f5c4402674d3557",
+      "pair": [
+        "urn:csabs:axiom/Binary128-special-values",
+        "urn:csabs:axiom/Binary32-special-values"
+      ],
+      "primary": {
+        "origin": "imported-assistant-session",
+        "packetKey": "0019fd96957b51ed1d5d2b1a5ea88f1a1eb1606d8394799b2f5c4402674d3557",
+        "result": {
+          "decision": "semantic_variant",
+          "differences": [
+            "Different representation carriers and finite-value universes.",
+            "A reusable policy schema is a possible refactoring, not an interchangeable concrete-record proof."
+          ],
+          "evidence": [
+            {
+              "field": "formalStatement",
+              "quote": "+0=−0 numerically, but sign bits differ; ±∞ ordered beyond finite values; NaN is unordered and NaN=NaN is false under IEEE numeric equality",
+              "recordId": "urn:csabs:axiom/Binary128-special-values"
+            },
+            {
+              "field": "formalStatement",
+              "quote": "+0=−0 numerically, but sign bits differ; ±∞ ordered beyond finite values; NaN is unordered and NaN=NaN is false under IEEE numeric equality",
+              "recordId": "urn:csabs:axiom/Binary32-special-values"
+            },
+            {
+              "field": "mathematicalFormulation",
+              "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(128,2,113,−16382,16383), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−112}, 0<m<2^{113}, −16382≤e≤16383, and m≥2^{112} unless e=−16382. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim.",
+              "recordId": "urn:csabs:concept/Binary128"
+            },
+            {
+              "field": "mathematicalFormulation",
+              "quote": "The partial format instance has (width,radix,precision,e_min,e_max)=(32,2,24,−126,127), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−23}, 0<m<2^{24}, −126≤e≤127, and m≥2^{23} unless e=−126. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim.",
+              "recordId": "urn:csabs:concept/Binary32"
+            }
+          ],
+          "mapping": {
+            "assumptions": "Each statement inherits only its explicitly stated format scope; no cross-format representation equivalence or compiled special-value witness is asserted.",
+            "carriers": "Different binary128 and binary32 representations and finite-value grids, including their special-value encodings.",
+            "equality": "Both describe IEEE numeric comparison, where NaN is not equal to itself and signed zeros compare equal; bit identity is a separate observation.",
+            "operations": "Numeric equality/order and special-value classification are applied within each format."
+          },
+          "missingContext": [],
+          "rationale": "The special-value policy is common, but these records apply it to binary128 and binary32 carriers. Keep the carrier-specific applications; review any future extraction of a shared format-parameterized policy separately."
+        },
+        "resultHash": "0d43c762bad4e66d3ffaab6e0565cf3d2b50163a9c8eaf4534fb13bbe9d0bd01",
+        "reviewedAt": "2026-11-20T01:27:09.900661+00:00",
+        "reviewer": {
+          "commandHash": null,
+          "id": "current-assistant",
+          "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+          "kind": "assistant-session",
+          "profile": "DT-1",
+          "stage": "primary",
+          "version": "session-model-version-not-exposed"
+        }
+      },
+      "score": 8500,
+      "status": "suggestedDistinctions"
+    }
+  ],
+  "planHash": "5ed47d0695ad86ee1b6684196635e3e0da929c373932e9399ce12757439a4d68",
+  "profile": "DT-1",
+  "reviewer": {
+    "commandHash": null,
+    "id": "current-assistant",
+    "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+    "kind": "assistant-session",
+    "profile": "DT-1",
+    "stage": "primary",
+    "version": "session-model-version-not-exposed"
+  },
+  "schemaVersion": 1,
+  "scope": {
+    "actionableCount": 5538,
+    "humanReviewedDistinctCount": 0,
+    "notSelectedCount": 5528,
+    "qualifiedCount": 5538,
+    "selectedCount": 10,
+    "selection": "ranked-prefix",
+    "threshold": 3000
+  },
+  "semantics": "machine-proposals-not-human-receipts-or-proofs"
+}

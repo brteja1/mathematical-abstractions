@@ -1,0 +1,9 @@
+{
+  "commandHash": null,
+  "id": "current-assistant",
+  "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+  "kind": "assistant-session",
+  "profile": "DT-1",
+  "stage": "primary",
+  "version": "session-model-version-not-exposed"
+}

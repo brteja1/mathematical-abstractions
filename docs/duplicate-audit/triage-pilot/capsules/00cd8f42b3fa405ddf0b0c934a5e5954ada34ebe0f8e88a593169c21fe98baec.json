@@ -1,0 +1,112 @@
+{
+  "identity": {
+    "fingerprint": "b7314b70170b275a56ee7507bb57833047533b93946b026959dd33aa83862d81",
+    "id": "urn:csabs:axiom/Binary32-rounded-operations",
+    "profile": "DT-1",
+    "toolHash": "d77b157bab7462124499c90074e512e628d319c006562c1790b84a506cd64747"
+  },
+  "payload": {
+    "fingerprint": "b7314b70170b275a56ee7507bb57833047533b93946b026959dd33aa83862d81",
+    "id": "urn:csabs:axiom/Binary32-rounded-operations",
+    "interpretation": "Source extracts; missing fields are unknown, links do not inherit laws.",
+    "location": {
+      "anchor": "node-urn-csabs-axiom-Binary32-rounded-operations",
+      "id": "urn:csabs:axiom/Binary32-rounded-operations",
+      "path": "concepts/Binary32.md"
+    },
+    "missingFields": [
+      "basisScope",
+      "mathematicalFormulation"
+    ],
+    "records": {
+      "urn:csabs:axiom/Binary32-rounded-operations": {
+        "appliesTo": [
+          "urn:csabs:concept/Binary32"
+        ],
+        "assumptions": [
+          "All variables range over the carriers and semantic conventions specified in this concept."
+        ],
+        "formalStatement": "For op∈{+,−,×,÷,sqrt}, op_F uses this instance grid, the selected rounding mode, and IEEE special-value/flag rules",
+        "id": "urn:csabs:axiom/Binary32-rounded-operations",
+        "name": "rounded-operations",
+        "provenanceStatus": "legacy-source-missing",
+        "reviewStatus": "editorial-summary; not machine-proved",
+        "ruleRole": "defining-rule",
+        "statement": "Basic operations instantiate the general IEEE environment at this format.",
+        "type": "Axiom"
+      },
+      "urn:csabs:concept/Binary32": {
+        "axiomBasis": "IEEE binary interchange instance: bits=32, radix=2, precision=24, normal exponent range [-126,127], gradual underflow, signed zeros, infinities and NaNs. Rounding and flags are explicit environment parameters.",
+        "basisKind": "parameter-instance",
+        "basisScope": "Defining interface and selected derived results for the operations listed in this entry. Not an enumeration of all consequences or all alternative foundations.",
+        "definition": "A 32-bit IEEE binary interchange format with 24 binary significand digits for normal numbers, signed zeros, subnormals, infinities, and NaNs. Rounding mode and arithmetic environment must be supplied separately.",
+        "formulationScope": "partial",
+        "fullName": "IEEE 754 binary32",
+        "hasAxiom": [
+          "urn:csabs:axiom/Binary32-normal-grid",
+          "urn:csabs:axiom/Binary32-subnormal-grid",
+          "urn:csabs:axiom/Binary32-special-values",
+          "urn:csabs:axiom/Binary32-rounded-operations"
+        ],
+        "hasOperation": [
+          "urn:csabs:operation/Binary32-add",
+          "urn:csabs:operation/Binary32-subtract",
+          "urn:csabs:operation/Binary32-multiply",
+          "urn:csabs:operation/Binary32-divide"
+        ],
+        "id": "urn:csabs:concept/Binary32",
+        "leanModelLimitations": "No correctly-rounded arithmetic or exception/NaN payload specification has been proved; run and round are unconstrained client parameters. Not a complete IEEE model.",
+        "mathematicalFormulation": "The partial format instance has (width,radix,precision,e_min,e_max)=(32,2,24,−126,127), with subnormals enabled. Finite nonzero magnitudes are m·2^{e−23}, 0<m<2^{24}, −126≤e≤127, and m≥2^{23} unless e=−126. This instantiates the unconstrained FloatingPointType interface, without an arithmetic-correctness claim.",
+        "notation": "β=2; p=24; e_min=-126; e_max=127; normal x=(−1)^s(1+k·2^(1−p))·2^e, 0≤k<2^(p−1), e_min≤e≤e_max.",
+        "provenanceKind": "adapted",
+        "requiresConcept": [
+          "urn:csabs:concept/FloatingPointType"
+        ],
+        "reviewStatus": "editorial basis review; no machine-checked mathematical proof",
+        "shortForm": "Binary32",
+        "source": [
+          "urn:csabs:source/ieee754",
+          "urn:csabs:source/goldberg-floating-point-oracle"
+        ],
+        "sourceLocator": "The IEEE Standard; Formats and Operations / Precision, Table D-1",
+        "sourceNote": "Single/double parameters match this existing binary32/binary64 entry; retain the current normative standard reference.",
+        "specializationNote": "Instantiate FloatingPointType at this entry’s radix, precision and exponent range as specified by basisInstantiation; rounding and exception environment remain explicit parameters.",
+        "specializationOf": [
+          "urn:csabs:concept/FloatingPointType"
+        ],
+        "type": "Concept",
+        "verificationObligation": [
+          "Instantiate operations from FloatingPointType at this format; specify rounding, subnormal handling, and exceptions.",
+          "Use the stated carriers, equality, domain restrictions and semantic conventions; alternative conventions require an explicit variant."
+        ]
+      },
+      "urn:csabs:source/goldberg-floating-point-oracle": {
+        "accessedOn": "2026-11-08",
+        "citation": "David Goldberg, ACM Computing Surveys 23(1), March 1991, pp. 5–48; edited reprint in Oracle Numerical Computation Guide, Appendix D, including later addendum.",
+        "id": "urn:csabs:source/goldberg-floating-point-oracle",
+        "label": "David Goldberg: What Every Computer Scientist Should Know About Floating-Point Arithmetic (Oracle edited reprint)",
+        "sourceRole": "consulted-expository-reference; historical IEEE discussion, not a replacement for IEEE 754-2019",
+        "type": "Source",
+        "url": "https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html"
+      },
+      "urn:csabs:source/ieee754": {
+        "id": "urn:csabs:source/ieee754",
+        "label": "IEEE 754-2019",
+        "sourceRole": "normative-standard",
+        "type": "Source",
+        "url": "https://standards.ieee.org/ieee/754/6210/"
+      }
+    },
+    "unexpandedContext": [
+      "urn:csabs:axiom/Binary32-normal-grid",
+      "urn:csabs:axiom/Binary32-special-values",
+      "urn:csabs:axiom/Binary32-subnormal-grid",
+      "urn:csabs:concept/FloatingPointType",
+      "urn:csabs:operation/Binary32-add",
+      "urn:csabs:operation/Binary32-divide",
+      "urn:csabs:operation/Binary32-multiply",
+      "urn:csabs:operation/Binary32-subtract"
+    ]
+  },
+  "payloadHash": "62f3627503ee4835802916dc81964f2cc2af8fe8a5a458ba5421a43796882fe4"
+}

@@ -15,15 +15,17 @@ LINK_TYPES = {
 }
 CLAIMS = {'Axiom', 'Law', 'Theorem'}
 
-def validate(doc):
-    baseline=json.loads((Path(__file__).resolve().parents[1]/'provenance_legacy.json').read_text())
+def validate(doc, *, read_text=None):
+    # A snapshot caller supplies captured policy bytes as well as graph records.
+    read_text = read_text or Path.read_text
+    baseline=json.loads(read_text(Path(__file__).resolve().parents[1]/'provenance_legacy.json'))
     legacy_missing=set(baseline['missingSourceIds'])
     legacy_cited=set(baseline['existingCitedIds'])
     legacy_sources=set(baseline['existingSourceIds'])
     errors=[]
     manifest_path=Path(__file__).resolve().parents[1]/'data/import_manifest.json'
     if manifest_path.exists():
-        frozen=json.loads(manifest_path.read_text())['provenanceBaseline']
+        frozen=json.loads(read_text(manifest_path))['provenanceBaseline']
         for key in ['missingSourceIds','existingCitedIds','existingSourceIds']:
             added=set(baseline[key])-set(frozen[key])
             if added: errors.append('Provenance baseline cannot be extended: '+key)

@@ -1,0 +1,57 @@
+{
+  "identity": {
+    "packetKey": "309d5ef62ee8dd9b6402d43b050007019adc8361f2dc20747e6c479a8319275f",
+    "reviewer": {
+      "commandHash": null,
+      "id": "current-assistant",
+      "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+      "kind": "assistant-session",
+      "profile": "DT-1",
+      "stage": "primary",
+      "version": "session-model-version-not-exposed"
+    }
+  },
+  "payload": {
+    "origin": "imported-assistant-session",
+    "packetKey": "309d5ef62ee8dd9b6402d43b050007019adc8361f2dc20747e6c479a8319275f",
+    "result": {
+      "decision": "distinct",
+      "differences": [
+        "Different operation combinations and quantified equations.",
+        "Each contributes a different part of the chosen axiom basis."
+      ],
+      "evidence": [
+        {
+          "field": "formalStatement",
+          "quote": "a▷(b⊔c)=(a▷b)⊔(a▷c); (a⊔b)▷c=(a▷c)⊔(b▷c).",
+          "recordId": "urn:csabs:axiom/EffectAlgebra-distributivity"
+        },
+        {
+          "field": "formalStatement",
+          "quote": "(a▷b)▷c=a▷(b▷c); ε▷a=a=a▷ε.",
+          "recordId": "urn:csabs:axiom/EffectAlgebra-sequencing-monoid"
+        }
+      ],
+      "mapping": {
+        "assumptions": "Total operations, potentially noncommutative sequencing, and no inferred concurrency or reordering guarantee.",
+        "carriers": "The same total program-effect carrier E in the chosen effect-quantale profile.",
+        "equality": "Carrier equality on effects, with the stated order/join conventions.",
+        "operations": "Distributivity uses both sequencing and join; the monoid condition uses sequencing and epsilon."
+      },
+      "missingContext": [],
+      "rationale": "Distributivity links sequencing to join, whereas the monoid rules give sequencing associativity and the no-effect identity. These are complementary interface obligations, not duplicate statements."
+    },
+    "resultHash": "abb7534595e6777ac384d12d137c1bd67a105b9da431345f2fa2bf76d0e89ee2",
+    "reviewedAt": "2026-11-20T01:20:57.643411+00:00",
+    "reviewer": {
+      "commandHash": null,
+      "id": "current-assistant",
+      "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+      "kind": "assistant-session",
+      "profile": "DT-1",
+      "stage": "primary",
+      "version": "session-model-version-not-exposed"
+    }
+  },
+  "payloadHash": "b6ea1bd2a63fe4d0e7efdb2da9cf1e2d7d1eb0251d2dbc99f4a4a01b6c518e1b"
+}

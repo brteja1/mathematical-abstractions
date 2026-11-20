@@ -1,0 +1,57 @@
+{
+  "identity": {
+    "packetKey": "e62a2532fc8b9812ad38c70c9d172bbc0eeabee1a7bbb3d5d2c177e7c22a13ce",
+    "reviewer": {
+      "commandHash": null,
+      "id": "current-assistant",
+      "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+      "kind": "assistant-session",
+      "profile": "DT-1",
+      "stage": "primary",
+      "version": "session-model-version-not-exposed"
+    }
+  },
+  "payload": {
+    "origin": "imported-assistant-session",
+    "packetKey": "e62a2532fc8b9812ad38c70c9d172bbc0eeabee1a7bbb3d5d2c177e7c22a13ce",
+    "result": {
+      "decision": "distinct",
+      "differences": [
+        "Different constructors, branch functions and input carriers.",
+        "Exchanging tags and branch names is not deletion of one required branch equation."
+      ],
+      "evidence": [
+        {
+          "field": "formalStatement",
+          "quote": "∀f:A→C,g:B→C,a:A: case(f,g,inl(a))=f(a)",
+          "recordId": "urn:csabs:axiom/case-inl"
+        },
+        {
+          "field": "formalStatement",
+          "quote": "∀f:A→C,g:B→C,b:B: case(f,g,inr(b))=g(b)",
+          "recordId": "urn:csabs:axiom/case-inr"
+        }
+      ],
+      "mapping": {
+        "assumptions": "Total functions with the respective A→C and B→C types and disjoint tagged constructors.",
+        "carriers": "A tagged sum A+B and a common result carrier C.",
+        "equality": "The chosen typed extensional equality on C.",
+        "operations": "case(f,g,inl(a)) uses f; case(f,g,inr(b)) uses g."
+      },
+      "missingContext": [],
+      "rationale": "The elimination equations cover different disjoint constructors of a sum. One specifies the inl/f branch and the other the inr/g branch, so they are separate required cases."
+    },
+    "resultHash": "64301200b44684fd059edcf94a41275e84529ed65f601717c0442d5c2b677b23",
+    "reviewedAt": "2026-11-20T01:20:57.667760+00:00",
+    "reviewer": {
+      "commandHash": null,
+      "id": "current-assistant",
+      "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+      "kind": "assistant-session",
+      "profile": "DT-1",
+      "stage": "primary",
+      "version": "session-model-version-not-exposed"
+    }
+  },
+  "payloadHash": "18294281b1f619c56fc0471359b26b828e5c4d6acdcba79fb9b5c40b368dd054"
+}

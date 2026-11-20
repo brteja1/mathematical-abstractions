@@ -1,0 +1,57 @@
+{
+  "identity": {
+    "packetKey": "db5b9e79270c6aff50813c3a12d76056a8439eda01a5bbeeda08b5c7ee026c9a",
+    "reviewer": {
+      "commandHash": null,
+      "id": "current-assistant",
+      "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+      "kind": "assistant-session",
+      "profile": "DT-1",
+      "stage": "primary",
+      "version": "session-model-version-not-exposed"
+    }
+  },
+  "payload": {
+    "origin": "imported-assistant-session",
+    "packetKey": "db5b9e79270c6aff50813c3a12d76056a8439eda01a5bbeeda08b5c7ee026c9a",
+    "result": {
+      "decision": "distinct",
+      "differences": [
+        "Different state updates at the selected address.",
+        "The common frame condition does not make deletion and update interchangeable."
+      ],
+      "evidence": [
+        {
+          "field": "formalStatement",
+          "quote": "a∈dom(h) ⇒ free(h,a)(b)=None if b=a, else h(b)",
+          "recordId": "urn:csabs:axiom/HeapStore-free-frame"
+        },
+        {
+          "field": "formalStatement",
+          "quote": "a∈dom(h) ⇒ write(h,a,v)(b)=Some(v) if b=a, else h(b)",
+          "recordId": "urn:csabs:axiom/HeapStore-write-frame"
+        }
+      ],
+      "mapping": {
+        "assumptions": "The selected address is allocated; invalid access, address reuse and lack of concurrency follow the stated snapshot profile.",
+        "carriers": "Finite partial maps from positive natural addresses to a value carrier V.",
+        "equality": "Extensional heap equality with explicit None/Some observations.",
+        "operations": "free removes the selected binding; write updates the selected binding to v."
+      },
+      "missingContext": [],
+      "rationale": "The shared frame shape explains the high text score, but freeing makes the selected address unallocated while writing stores Some(v). Both preserve other addresses and express different heap effects."
+    },
+    "resultHash": "454a4fb5099987723dd908c50e26cb2233b5008e5d41a2292553bd114fb1a02a",
+    "reviewedAt": "2026-11-20T01:27:09.841108+00:00",
+    "reviewer": {
+      "commandHash": null,
+      "id": "current-assistant",
+      "instructionsHash": "ad12b143dc6e96188082fd053f8eacea3715f56eeccb0bf68790073f19a74b6f",
+      "kind": "assistant-session",
+      "profile": "DT-1",
+      "stage": "primary",
+      "version": "session-model-version-not-exposed"
+    }
+  },
+  "payloadHash": "5dc075578ae62afa065f3f6de3d707721f6ea1a3f26951fa6303d041ee6ae2b8"
+}
