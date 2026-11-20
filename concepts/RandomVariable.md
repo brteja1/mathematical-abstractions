@@ -19,6 +19,7 @@ A measurable function from a probability space to a specified measurable value s
 - [Bayesian network (finite discrete variables)](BayesianNetwork.md) — `requiresConcept`
 - [Markov chain (finite-state, discrete-time, time-homogeneous)](MarkovChain.md) — `requiresConcept`
 - [Shannon entropy (finite discrete profile)](ShannonEntropy.md) — `requiresConcept`
+- [Stochastic process (measurable random family)](StochasticProcess.md) — `requiresConcept`
 
 ## Mathematical formulation
 

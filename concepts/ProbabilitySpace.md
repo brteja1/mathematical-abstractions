@@ -20,7 +20,9 @@ A measure space whose entire sample space has measure one; measurable subsets ar
 - [Conditional probability given a positive-probability event](ConditionalProbability.md) — `requiresConcept`
 - [Finitely supported probability distribution](FiniteDistribution.md) — `requiresConcept`
 - [Markov chain (finite-state, discrete-time, time-homogeneous)](MarkovChain.md) — `requiresConcept`
+- [Martingale (discrete-time real-valued)](Martingale.md) — `requiresConcept`
 - [Random variable (measurable random element)](RandomVariable.md) — `requiresConcept`
+- [Stochastic process (measurable random family)](StochasticProcess.md) — `requiresConcept`
 
 ## Mathematical formulation
 

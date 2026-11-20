@@ -16,6 +16,7 @@ public import Catalog.InformationTheory
 public import Catalog.InformationTheoryStatements
 public import Catalog.InformationTheoryExamples
 public import Catalog.Probability
+public import Catalog.StochasticProcesses
 public import Catalog.Topology
 public import Catalog.Witnesses
 public import Catalog.Audit

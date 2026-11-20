@@ -17,6 +17,7 @@ A reflexive and transitive relation on a carrier; distinct values may be mutuall
 ## Backlinks
 
 - [Equivalence relation](EquivalenceRelation.md) — `specializationOf`
+- [Filtration (increasing sub-sigma-algebras)](Filtration.md) — `requiresConcept`
 - [Partial Order](PartialOrder.md) — `requiresConcept`
 - [Partial Order](PartialOrder.md) — `specializationOf`
 - [SKOS Core ontology (relational semantic presentation)](SKOS.md) — `relatedConcept`

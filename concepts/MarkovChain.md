@@ -6,13 +6,19 @@ A stochastic process on a nonempty finite state set whose next-state distributio
 
 **Stable ID:** `urn:csabs:concept/MarkovChain`
 
-**Categories:** Probability and stochastic models, Algebra → Linear and multilinear algebra
+**Categories:** Probability and stochastic models → Stochastic processes, Probability and stochastic models, Algebra → Linear and multilinear algebra
 
 **Kind:** semantic-model
 
 **Prerequisites:** [Probability space (normalized measure)](ProbabilitySpace.md), [Random variable (measurable random element)](RandomVariable.md), [Conditional probability given a positive-probability event](ConditionalProbability.md), [Finite rectangular matrix over a field](Matrix.md)
 
+**Specializes:** [Stochastic process (measurable random family)](StochasticProcess.md)
+
 **Related concepts:** [Transition System](TransitionSystem.md), [Directed Graph](DirectedGraph.md)
+
+## Backlinks
+
+- [Stochastic process (measurable random family)](StochasticProcess.md) — `relatedConcept`
 
 ## Mathematical formulation
 
@@ -43,6 +49,10 @@ Read with the linked module’s imports, namespaces, universes and section varia
 **basisKind:** defined-structure
 
 **basisScope:** Finite-state path laws and n-step distributions with row-vector convention. Continuous time and general-state kernels are outside scope.
+
+**basisInstantiation:** Normalized initial law, row-stochastic transition matrix, and the time-homogeneous Markov property on positive-probability histories. The process coordinates are measurable random variables as required by the defining finite-state process semantics.
+
+**specializationNote:** Instantiate StochasticProcess with T=ℕ and E=S a nonempty finite state set equipped with its full powerset sigma-algebra; retain the common probability space and coordinates Xₙ. The normalized initial law, homogeneous transition matrix and conditional Markov property are additional constraints. The partial Lean kernel model does not yet construct this infinite process.
 
 **verificationObligation:** No irreducibility, aperiodicity, stationarity or convergence is assumed. Rows for unreachable states remain specified parameters.; A support graph records possible steps but does not retain their probabilities. K⁰ is the identity matrix.; Use the stated carriers and equality. Specialization does not automatically transfer operations or claims.
 
@@ -223,6 +233,7 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "shortForm": "MarkovChain",
     "fullName": "Markov chain (finite-state, discrete-time, time-homogeneous)",
     "category": [
+      "urn:csabs:category/stochastic-processes",
       "urn:csabs:category/probability",
       "urn:csabs:category/linear-algebra"
     ],
@@ -274,7 +285,12 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     "formulationScope": "partial",
     "leanModelMapping": "Finite nonempty state PMF initial law and homogeneous stochastic PMF kernel; finite path probabilities defined by products.",
     "leanModelLimitations": "Infinite sample process, conditional Markov property and its equivalence to this finite path construction are not formalized.",
-    "mathematicalFormulation": "The selected finite-state homogeneous kernel is (π,K), π:S→[0,1], K:S×S→[0,1], Σ_sπ(s)=1 and ∀s,Σ_tK(s,t)=1. A nonempty path (s₀,…,s_n) has weight π(s₀)∏_{i<n}K(s_i,s_{i+1}); the empty path has weight 1. Infinite-process construction is separate."
+    "mathematicalFormulation": "The selected finite-state homogeneous kernel is (π,K), π:S→[0,1], K:S×S→[0,1], Σ_sπ(s)=1 and ∀s,Σ_tK(s,t)=1. A nonempty path (s₀,…,s_n) has weight π(s₀)∏_{i<n}K(s_i,s_{i+1}); the empty path has weight 1. Infinite-process construction is separate.",
+    "specializationOf": [
+      "urn:csabs:concept/StochasticProcess"
+    ],
+    "specializationNote": "Instantiate StochasticProcess with T=ℕ and E=S a nonempty finite state set equipped with its full powerset sigma-algebra; retain the common probability space and coordinates Xₙ. The normalized initial law, homogeneous transition matrix and conditional Markov property are additional constraints. The partial Lean kernel model does not yet construct this infinite process.",
+    "basisInstantiation": "Normalized initial law, row-stochastic transition matrix, and the time-homogeneous Markov property on positive-probability histories. The process coordinates are measurable random variables as required by the defining finite-state process semantics."
   },
   {
     "id": "urn:csabs:operation/MarkovChain-evolve",

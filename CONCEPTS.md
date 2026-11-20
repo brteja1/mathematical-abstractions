@@ -195,11 +195,16 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
     - [Triangular conorm (t-conorm)](concepts/TConorm.md)
     - [Triangular norm (t-norm)](concepts/TNorm.md)
 - **Measure theory**
+  - [Adapted stochastic process](concepts/AdaptedProcess.md)
+  - [Filtration (increasing sub-sigma-algebras)](concepts/Filtration.md)
+  - [Martingale (discrete-time real-valued)](concepts/Martingale.md)
   - [Measurable function](concepts/MeasurableFunction.md)
   - [Measurable space (sigma-algebra on a carrier)](concepts/MeasurableSpace.md)
   - [Measure space (nonnegative countably additive measure)](concepts/MeasureSpace.md)
   - [Probability space (normalized measure)](concepts/ProbabilitySpace.md)
   - [Random variable (measurable random element)](concepts/RandomVariable.md)
+  - [Stochastic process (measurable random family)](concepts/StochasticProcess.md)
+  - [Stopping time (discrete time, possibly infinite)](concepts/StoppingTime.md)
 - **Numeric computation**
   - [Arbitrary Precision Integer](concepts/ArbitraryPrecisionInteger.md)
   - [IEEE 754 binary128](concepts/Binary128.md)
@@ -238,12 +243,24 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
   - [Total Order](concepts/TotalOrder.md)
   - [Well Founded Relation](concepts/WellFoundedRelation.md)
 - **Probability and stochastic models**
+  - [Adapted stochastic process](concepts/AdaptedProcess.md)
   - [Bayesian network (finite discrete variables)](concepts/BayesianNetwork.md)
   - [Conditional probability given a positive-probability event](concepts/ConditionalProbability.md)
+  - [Filtration (increasing sub-sigma-algebras)](concepts/Filtration.md)
   - [Finitely supported probability distribution](concepts/FiniteDistribution.md)
   - [Markov chain (finite-state, discrete-time, time-homogeneous)](concepts/MarkovChain.md)
+  - [Martingale (discrete-time real-valued)](concepts/Martingale.md)
   - [Probability space (normalized measure)](concepts/ProbabilitySpace.md)
   - [Random variable (measurable random element)](concepts/RandomVariable.md)
+  - [Stochastic process (measurable random family)](concepts/StochasticProcess.md)
+  - [Stopping time (discrete time, possibly infinite)](concepts/StoppingTime.md)
+  - **Stochastic processes**
+    - [Adapted stochastic process](concepts/AdaptedProcess.md)
+    - [Filtration (increasing sub-sigma-algebras)](concepts/Filtration.md)
+    - [Markov chain (finite-state, discrete-time, time-homogeneous)](concepts/MarkovChain.md)
+    - [Martingale (discrete-time real-valued)](concepts/Martingale.md)
+    - [Stochastic process (measurable random family)](concepts/StochasticProcess.md)
+    - [Stopping time (discrete time, possibly infinite)](concepts/StoppingTime.md)
 - **Programming-language semantics**
   - [Bisimulation](concepts/Bisimulation.md)
   - [Fixed-width bit vector](concepts/BitVector.md)
@@ -384,6 +401,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Advanced Encryption Standard (AES)](concepts/AES.md) | Cryptography → Symmetric cryptography |
 | [AES-GCM (96-bit nonce, 128-bit tag profile)](concepts/AESGCM.md) | Cryptography → Symmetric cryptography |
 | [Sound abstract transfer and inductive dataflow facts](concepts/AbstractInterpretation.md) | Programming-language semantics → Compiler transformations |
+| [Adapted stochastic process](concepts/AdaptedProcess.md) | Probability and stochastic models → Stochastic processes, Probability and stochastic models, Measure theory |
 | [Conservative alias and Mod/Ref query contract](concepts/AliasAnalysis.md) | Programming-language semantics → Compiler transformations |
 | [Analysis validity across IR mutation](concepts/AnalysisPreservation.md) | Programming-language semantics → Compiler transformations |
 | [Arbitrary Precision Integer](concepts/ArbitraryPrecisionInteger.md) | Numeric computation |
@@ -460,6 +478,7 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Euclidean lattice (discrete integer-span lattice)](concepts/EuclideanLattice.md) | Geometry and manifolds, Algebra → Linear and multilinear algebra, Cryptography → Public-key cryptography → Lattice-based cryptography |
 | [Normal, exceptional and nonlocal control outcomes](concepts/ExceptionalControlFlow.md) | Programming-language semantics → Compiler transformations |
 | [Field](concepts/Field.md) | Algebra, Numeric computation |
+| [Filtration (increasing sub-sigma-algebras)](concepts/Filtration.md) | Probability and stochastic models → Stochastic processes, Probability and stochastic models, Measure theory |
 | [Finitely supported probability distribution](concepts/FiniteDistribution.md) | Probability and stochastic models |
 | [Finite field (Galois field)](concepts/FiniteField.md) | Algebra, Numeric computation |
 | [Finite fused sequence iterator](concepts/FiniteIterator.md) | Data structures → Sequential collections |
@@ -522,7 +541,8 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [Guarded loop event-domain correspondence](concepts/LoopIterationMapping.md) | Programming-language semantics → Compiler transformations |
 | [Topological manifold (fixed dimension, without boundary)](concepts/Manifold.md) | Geometry and manifolds, Topology |
 | [Map](concepts/Map.md) | Data structures → Sets and mappings |
-| [Markov chain (finite-state, discrete-time, time-homogeneous)](concepts/MarkovChain.md) | Probability and stochastic models, Algebra → Linear and multilinear algebra |
+| [Markov chain (finite-state, discrete-time, time-homogeneous)](concepts/MarkovChain.md) | Probability and stochastic models → Stochastic processes, Probability and stochastic models, Algebra → Linear and multilinear algebra |
+| [Martingale (discrete-time real-valued)](concepts/Martingale.md) | Probability and stochastic models → Stochastic processes, Probability and stochastic models, Measure theory |
 | [Finite rectangular matrix over a field](concepts/Matrix.md) | Algebra → Linear and multilinear algebra |
 | [Exact structured matrix decomposition witness](concepts/MatrixDecomposition.md) | Algebra → Linear and multilinear algebra → Matrix decompositions |
 | [Measurable function](concepts/MeasurableFunction.md) | Measure theory |
@@ -612,6 +632,8 @@ Subjects organize navigation. They do not imply specialization or transfer mathe
 | [State-based CRDT replication algebra](concepts/StateBasedCRDT.md) | Concurrency and distributed systems → Replication |
 | [Observable state representation relation](concepts/StateRepresentation.md) | Programming-language semantics → Compiler transformations |
 | [Finite stochastic channel](concepts/StochasticChannel.md) | Information theory |
+| [Stochastic process (measurable random family)](concepts/StochasticProcess.md) | Probability and stochastic models → Stochastic processes, Probability and stochastic models, Measure theory |
+| [Stopping time (discrete time, possibly infinite)](concepts/StoppingTime.md) | Probability and stochastic models → Stochastic processes, Probability and stochastic models, Measure theory |
 | [Infinite discrete stream](concepts/Stream.md) | Data structures → Sequential collections |
 | [Structural Induction](concepts/StructuralInduction.md) | Counting and induction |
 | [Predicate-restricted subtype](concepts/Subtype.md) | Types and semantics |

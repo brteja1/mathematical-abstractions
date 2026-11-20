@@ -8,6 +8,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | AES | 2 | 1 | 1 | 0 | defined-structure |
 | AESGCM | 4 | 2 | 0 | 1 | defined-structure |
 | AbstractInterpretation | 3 | 2 | 1 | 0 | relational-structural-definition |
+| AdaptedProcess | 1 | 1 | 0 | 1 | defined-structure |
 | AliasAnalysis | 2 | 2 | 1 | 0 | relational-structural-definition |
 | AnalysisPreservation | 2 | 2 | 1 | 0 | relational-structural-definition |
 | ArbitraryPrecisionInteger | 3 | 1 | 1 | 1 | defined-structure |
@@ -84,6 +85,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | EuclideanLattice | 6 | 2 | 0 | 3 | defined-structure |
 | ExceptionalControlFlow | 2 | 2 | 1 | 0 | relational-structural-definition |
 | Field | 3 | 13 | 0 | 1 | axiomatic-structure |
+| Filtration | 2 | 1 | 0 | 1 | defined-structure |
 | FiniteDistribution | 3 | 3 | 1 | 1 | extensional-structural-definition |
 | FiniteField | 7 | 14 | 0 | 3 | axiomatic-structure |
 | FiniteIterator | 3 | 3 | 1 | 1 | extensional-structural-definition |
@@ -147,6 +149,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | Manifold | 3 | 3 | 0 | 2 | defined-structure |
 | Map | 4 | 5 | 2 | 1 | defined-structure |
 | MarkovChain | 2 | 2 | 0 | 2 | defined-structure |
+| Martingale | 2 | 1 | 0 | 1 | defined-structure |
 | Matrix | 5 | 3 | 0 | 3 | defined-structure |
 | MatrixDecomposition | 2 | 1 | 1 | 0 | defined-structure |
 | MeasurableFunction | 2 | 1 | 0 | 1 | defined-structure |
@@ -236,6 +239,8 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | StateBasedCRDT | 3 | 3 | 1 | 1 | extensional-structural-definition |
 | StateRepresentation | 2 | 2 | 1 | 0 | relational-structural-definition |
 | StochasticChannel | 1 | 1 | 1 | 0 | extensional-structural-definition |
+| StochasticProcess | 3 | 1 | 0 | 1 | defined-structure |
+| StoppingTime | 1 | 1 | 0 | 1 | defined-structure |
 | Stream | 4 | 3 | 1 | 1 | extensional-structural-definition |
 | StructuralInduction | 0 | 2 | 1 | 1 | defined-structure |
 | Subtype | 3 | 3 | 1 | 1 | extensional-structural-definition |
@@ -270,6 +275,6 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | WeightedDirectedGraph | 3 | 2 | 1 | 1 | extensional-structural-definition |
 | WellFoundedRelation | 1 | 1 | 1 | 1 | defined-structure |
 
-265 of 265 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
+270 of 270 current entries document their basis. PigeonholePrinciple and StructuralInduction introduce theorem/proof schemas rather than primitive value operations; this is explicitly recorded.
 
 Use `ruleRole` to distinguish foundational axioms, structure constraints, and defining equations. Use `basisScope` for interface boundaries. Alternate language policies, intensional equality, IEEE payload/trap details, and formal proof artifacts require further formalization.

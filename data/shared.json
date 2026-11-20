@@ -6,6 +6,9 @@
       "@prefix": true
     },
     "label": "rdfs:label",
+    "synonyms": {
+      "@container": "@set"
+    },
     "id": "@id",
     "type": "@type",
     "category": {
@@ -2259,6 +2262,70 @@
       "path": "lean/Catalog/SKOS.lean",
       "accessedOn": "2026-11-19",
       "sourceRole": "local-formulation-source-not-independent-mathematical-provenance"
+    },
+    {
+      "id": "urn:csabs:source/mathlib-pinned-stochastic-process",
+      "type": "Source",
+      "label": "Mathlib 4.35.0: Stochastic processes and finite-dimensional laws",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Probability/Process/FiniteDimensionalLaws.lean",
+      "path": "lean/.lake/packages/mathlib/Mathlib/Probability/Process/FiniteDimensionalLaws.lean",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "primary mathematical definition and formal reference",
+      "citation": "Mathlib contributors, mathlib4, revision 56a005855ea17e0b0958f73ec801ae140b0a1679. Consulted installed source; Apache-2.0 license. Definitions adapted, not copied as prose."
+    },
+    {
+      "id": "urn:csabs:source/mathlib-pinned-stochastic-filtration",
+      "type": "Source",
+      "label": "Mathlib 4.35.0: Filtrations",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Probability/Process/Filtration.lean",
+      "path": "lean/.lake/packages/mathlib/Mathlib/Probability/Process/Filtration.lean",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "primary mathematical definition and formal reference",
+      "citation": "Mathlib contributors, mathlib4, revision 56a005855ea17e0b0958f73ec801ae140b0a1679. Consulted installed source; Apache-2.0 license. Definitions adapted, not copied as prose."
+    },
+    {
+      "id": "urn:csabs:source/mathlib-pinned-stochastic-adapted",
+      "type": "Source",
+      "label": "Mathlib 4.35.0: Adapted stochastic processes",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Probability/Process/Adapted.lean",
+      "path": "lean/.lake/packages/mathlib/Mathlib/Probability/Process/Adapted.lean",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "primary mathematical definition and formal reference",
+      "citation": "Mathlib contributors, mathlib4, revision 56a005855ea17e0b0958f73ec801ae140b0a1679. Consulted installed source; Apache-2.0 license. Definitions adapted, not copied as prose."
+    },
+    {
+      "id": "urn:csabs:source/mathlib-pinned-stochastic-stopping",
+      "type": "Source",
+      "label": "Mathlib 4.35.0: Stopping times",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Probability/Process/Stopping.lean",
+      "path": "lean/.lake/packages/mathlib/Mathlib/Probability/Process/Stopping.lean",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "primary mathematical definition and formal reference",
+      "citation": "Mathlib contributors, mathlib4, revision 56a005855ea17e0b0958f73ec801ae140b0a1679. Consulted installed source; Apache-2.0 license. Definitions adapted, not copied as prose."
+    },
+    {
+      "id": "urn:csabs:source/mathlib-pinned-stochastic-martingale",
+      "type": "Source",
+      "label": "Mathlib 4.35.0: Martingales",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Probability/Martingale/Basic.lean",
+      "path": "lean/.lake/packages/mathlib/Mathlib/Probability/Martingale/Basic.lean",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "primary mathematical definition and formal reference",
+      "citation": "Mathlib contributors, mathlib4, revision 56a005855ea17e0b0958f73ec801ae140b0a1679. Consulted installed source; Apache-2.0 license. Definitions adapted, not copied as prose."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-StochasticProcesses",
+      "type": "Source",
+      "label": "Local Lean stochastic-process models and constructive satisfaction witnesses",
+      "path": "lean/Catalog/StochasticProcesses.lean",
+      "accessedOn": "2026-11-20",
+      "sourceRole": "local formalization; independent mathematical provenance is recorded separately"
+    },
+    {
+      "id": "urn:csabs:category/stochastic-processes",
+      "type": "Category",
+      "label": "Stochastic processes",
+      "parentCategory": "urn:csabs:category/probability"
     }
   ]
 }

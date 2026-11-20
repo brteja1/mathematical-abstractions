@@ -14,6 +14,7 @@ A carrier X equipped with a family Σ of measurable subsets closed under complem
 
 ## Backlinks
 
+- [Filtration (increasing sub-sigma-algebras)](Filtration.md) — `requiresConcept`
 - [Measurable function](MeasurableFunction.md) — `requiresConcept`
 - [Measure space (nonnegative countably additive measure)](MeasureSpace.md) — `requiresConcept`
 - [Measure space (nonnegative countably additive measure)](MeasureSpace.md) — `specializationOf`

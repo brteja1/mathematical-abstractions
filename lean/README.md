@@ -2,7 +2,7 @@
 
 This Lake project gives every current catalog concept a named Lean interpretation, grouped by subject in `Catalog/`. It uses **Lean 4.35.0** and **Mathlib commit `56a005855ea17e0b0958f73ec801ae140b0a1679`** (release `v4.35.0`). `lake-manifest.json` locks transitive dependencies. Normal catalog retrieval and the viewer still require only Python.
 
-There are currently **258 concept bindings**: 173 carrier/interface models and 85 explicitly partial interpretations. There are **80 registered proof witnesses** for existing laws/theorems, including all 11 recorded binary-tree laws/theorems, 13 information-theory/coding claims, six matrix-decomposition identities and six descriptive-statistics laws. This does **not** mean every recorded operation or all catalog laws/theorems have been translated or proved. An alias to a library structure is a model binding, not a proof of all catalog claims. The [broad-core expansion](../docs/FOUNDATIONAL_DATA_MODELS.md) adds 35 carrier models and 24 individually mapped witnesses. Its remaining operation specifications and derived results are not blanket formalizations.
+There are currently **270 concept bindings**: 180 carrier/interface models and 90 explicitly partial interpretations. There are **85 registered proof witnesses** for existing laws/theorems, including all 11 recorded binary-tree laws/theorems, 13 information-theory/coding claims, six matrix-decomposition identities and six descriptive-statistics laws. This does **not** mean every recorded operation or all catalog laws/theorems have been translated or proved. An alias to a library structure is a model binding, not a proof of all catalog claims. The [broad-core expansion](../docs/FOUNDATIONAL_DATA_MODELS.md) adds 35 carrier models and 24 individually mapped witnesses. Its remaining operation specifications and derived results are not blanket formalizations.
 
 ## Build and verify
 
@@ -66,6 +66,7 @@ Concept records expose `mathematicalFormulation` (readable mathematics), `leanFo
 | `Catalog/Languages.lean` | Languages, automata, context-free grammars and a Turing-machine interface |
 | `Catalog/Database.lean` | Schemas, dependent tuples, finite relations, functional dependencies and keys |
 | `Catalog/InformationTheory*.lean` | Finite information measures, concrete operational coding targets, matrices and 13 full witnesses; see [claim-by-claim status](INFORMATION_THEORY.md) |
+| `Catalog/StochasticProcesses.lean` | Measurable process families, filtrations, adapted processes, extended-natural stopping times and real discrete martingales; five constructive model-satisfaction witnesses; see [scope](../docs/STOCHASTIC_PROCESSES.md) |
 | `Catalog/Probability.lean` | Measurable/measure/probability spaces, random variables, conditioning and stochastic models |
 | `Catalog/DescriptiveStatistics.lean` | Finite-sample arithmetic mean, midpoint median and all-maximizer mode set; six individually mapped witnesses; see [scope](../docs/DESCRIPTIVE_STATISTICS.md) |
 | `Catalog/Topology.lean` | Topologies and Euclidean charted manifold interfaces |

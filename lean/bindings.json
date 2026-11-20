@@ -461,7 +461,7 @@
       "scope": "partial",
       "mapping": "Finite nonempty state PMF initial law and homogeneous stochastic PMF kernel; finite path probabilities defined by products.",
       "limitations": "Infinite sample process, conditional Markov property and its equivalence to this finite path construction are not formalized.",
-      "catalogHash": "c0164ff4cd6b46684071483bc4104e7047b943eef5849a9ef0f3361db1047116"
+      "catalogHash": "8866c93016f3780e982237e7e39163cfd48a745d809be830e87d6c8a2de6b6ee"
     },
     "urn:csabs:concept/Matrix": {
       "kind": "model",
@@ -3780,6 +3780,136 @@
       "mapping": "D is a nonempty domain of interpreted resources with identity equality. concept and the five binary relations interpret the corresponding SKOS extensions. The fields encode selected typing, inverse, inclusion, symmetry, transitivity and disjointness conditions from S19–S27 and S44–S45.",
       "limitations": "Partial semantic-relation interface only. No labels, schemes, collections, full mapping hierarchy, RDF parser/interpretation, OWL Full metamodel, or general entailment solver. Structure law fields constrain inputs; no model-satisfaction theorem or catalog claim proof witness is registered.",
       "catalogHash": "b95c940cc4a4d6eb196d4a9ada86ea2a6a27c584aafbb8919d33d619682651cf"
+    },
+    "urn:csabs:concept/StochasticProcess": {
+      "kind": "model",
+      "symbol": "Catalog.StochasticProcess",
+      "module": "Catalog.StochasticProcesses",
+      "scope": "model",
+      "mapping": "T is an arbitrary index type, Ω carries P, E is measurable; value is the total family and measurable proves every coordinate is measurable. Equality is pointwise via structure equality.",
+      "limitations": "No joint measurability, path regularity, almost-sure quotient, independence or Markov law. Law operations are specified mathematically and not wrapped in this module.",
+      "catalogHash": "406e2e73b93d26a21977901d93197c0785e734a1066908b14cb36ae05417dddf"
+    },
+    "urn:csabs:theorem/StochasticProcess-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.stochasticProcess_model_satisfaction",
+      "module": "Catalog.StochasticProcesses",
+      "expectedType": "∀ (T E : Type) {Ω : Type} [MeasurableSpace Ω] [MeasurableSpace E] (P : Catalog.ProbabilitySpace Ω) (_e : E), Nonempty (Catalog.StochasticProcess T E P)",
+      "mapping": "For every T and every e∈E, Xₜ(ω)=e is a stochastic process on (Ω,Σ,P). The Nonempty inhabitant contains the defining constraints as checked proof fields; this witnesses model existence, not all properties of arbitrary processes.",
+      "limitations": "Constructive model satisfaction for the stated parameters only. No blanket proof of other catalog operations or derived results.",
+      "premiseMapping": {
+        "urn:csabs:axiom/StochasticProcess-basis": "Satisfied by the concrete construction in the proof: Every inverse image under a constant coordinate is either Ω or ∅, hence measurable. The supplied e covers every time and outcome, including empty T."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "9e7017f2bf308a4e65004ca2d120b35d5a0a4eedbbf2b32c5485866cb7d2a01a"
+    },
+    "urn:csabs:concept/Filtration": {
+      "kind": "model",
+      "symbol": "Catalog.Filtration",
+      "module": "Catalog.StochasticProcesses",
+      "scope": "model",
+      "mapping": "MeasureTheory.Filtration T m stores sigma-algebras, monotonicity and ambient containment; T has a Preorder. Equality is equality of all time slices.",
+      "limitations": "No completeness, right-continuity, natural-filtration construction or measure supplied by this wrapper.",
+      "catalogHash": "ee722b74ebddaefc04293f2c8e11b29cb287671927dc560331a2df5a24439d80"
+    },
+    "urn:csabs:theorem/Filtration-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.filtration_model_satisfaction",
+      "module": "Catalog.StochasticProcesses",
+      "expectedType": "∀ (T : Type) [Preorder T] {Ω : Type} (m : MeasurableSpace Ω), Nonempty (Catalog.Filtration T m)",
+      "mapping": "For every preordered T and measurable (Ω,Σ), 𝓕ₜ=Σ is a filtration. The Nonempty inhabitant contains the defining constraints as checked proof fields; this witnesses model existence, not all properties of arbitrary processes.",
+      "limitations": "Constructive model satisfaction for the stated parameters only. No blanket proof of other catalog operations or derived results.",
+      "premiseMapping": {
+        "urn:csabs:axiom/Filtration-basis": "Satisfied by the concrete construction in the proof: Use the ambient sigma-algebra at each time. Containment and monotonicity are reflexivity, and each slice is already a sigma-algebra."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "b481d578861f0f0016068a9447fc849eb88f74e62b013806b6e6064e6598363c"
+    },
+    "urn:csabs:concept/AdaptedProcess": {
+      "kind": "model",
+      "symbol": "Catalog.AdaptedProcess",
+      "module": "Catalog.StochasticProcesses",
+      "scope": "model",
+      "mapping": "Subtype of StochasticProcess with MeasureTheory.Adapted f X.value, using ordinary measurable adaptedness, not strongly adaptedness as a different general definition.",
+      "limitations": "No predictable/progressive measurability or path regularity. Equality is pointwise equality of the underlying process for fixed P and f.",
+      "catalogHash": "955c00e4226e0bd0be997dee13c32ea2203cbb865d5fe980de13dd4f11476d4a"
+    },
+    "urn:csabs:theorem/AdaptedProcess-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.adaptedProcess_model_satisfaction",
+      "module": "Catalog.StochasticProcesses",
+      "expectedType": "∀ (T E : Type) [Preorder T] {Ω : Type} [m : MeasurableSpace Ω] [MeasurableSpace E] (P : Catalog.ProbabilitySpace Ω) (f : Catalog.Filtration T m) (_e : E), Nonempty (Catalog.AdaptedProcess T E P f)",
+      "mapping": "For any filtration 𝓕 and e∈E, Xₜ(ω)=e is adapted to 𝓕. The Nonempty inhabitant contains the defining constraints as checked proof fields; this witnesses model existence, not all properties of arbitrary processes.",
+      "limitations": "Constructive model satisfaction for the stated parameters only. No blanket proof of other catalog operations or derived results.",
+      "premiseMapping": {
+        "urn:csabs:axiom/AdaptedProcess-basis": "Satisfied by the concrete construction in the proof: Constant coordinates have inverse images ∅ or Ω in each 𝓕ₜ and in Σ. Construct the process and its adaptedness evidence explicitly."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "e09dc8b88bcd05f170a3ec0d0bf300bea722e0aaa6259bcf6c75dd044839b684"
+    },
+    "urn:csabs:concept/StoppingTime": {
+      "kind": "model",
+      "symbol": "Catalog.StoppingTime",
+      "module": "Catalog.StochasticProcesses",
+      "scope": "model",
+      "mapping": "Subtype Ω → WithTop ℕ constrained by MeasureTheory.IsStoppingTime. The top value is never stopping; equality is pointwise, not equality almost surely.",
+      "limitations": "Only discrete time is selected. No optional-stopping result, stopped-process construction or finiteness claim.",
+      "catalogHash": "47be31ecf37f4ee3c8964b63ecafdb98297498aa6b59452624f6174a16196b03"
+    },
+    "urn:csabs:theorem/StoppingTime-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.stoppingTime_model_satisfaction",
+      "module": "Catalog.StochasticProcesses",
+      "expectedType": "∀ {Ω : Type} [m : MeasurableSpace Ω] (f : Catalog.Filtration ℕ m), Nonempty (Catalog.StoppingTime f)",
+      "mapping": "For every filtration indexed by ℕ, τ(ω)=0 is a stopping time. The Nonempty inhabitant contains the defining constraints as checked proof fields; this witnesses model existence, not all properties of arbitrary processes.",
+      "limitations": "Constructive model satisfaction for the stated parameters only. No blanket proof of other catalog operations or derived results.",
+      "premiseMapping": {
+        "urn:csabs:axiom/StoppingTime-basis": "Satisfied by the concrete construction in the proof: For every n∈ℕ, the event {0≤n} is Ω and is measurable in 𝓕ₙ. This is a concrete finite stopping rule, not a finiteness assertion about arbitrary τ."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "ddb51f962d76640a7923f1f62253bb7e807f9c9720a4fba481d0eae4fef3ca1e"
+    },
+    "urn:csabs:concept/Martingale": {
+      "kind": "model",
+      "symbol": "Catalog.Martingale",
+      "module": "Catalog.StochasticProcesses",
+      "scope": "model",
+      "mapping": "Subtype of real StochasticProcess on ℕ satisfying MeasureTheory.Martingale. For real Borel values, strongly measurable adaptedness agrees with measurable adaptedness; the diagonal conditional-mean identity implies integrability via Martingale.integrable.",
+      "limitations": "Conditional-mean equality is almost sure at each pair of times; process representatives still have pointwise equality. No convergence, optional-stopping or representation theorem is registered.",
+      "catalogHash": "2d85a56f5c874e993d18aeea75fcf81bdb2dd1b08818bdac3e086b4aefd5c9ea"
+    },
+    "urn:csabs:theorem/Martingale-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.martingale_model_satisfaction",
+      "module": "Catalog.StochasticProcesses",
+      "expectedType": "∀ {Ω : Type} [m : MeasurableSpace Ω] (P : Catalog.ProbabilitySpace Ω) (f : Catalog.Filtration ℕ m) (_c : ℝ), Nonempty (Catalog.Martingale P f)",
+      "mapping": "For every probability space, filtration 𝓕 and c∈ℝ, Xₙ(ω)=c is an integrable real martingale. The Nonempty inhabitant contains the defining constraints as checked proof fields; this witnesses model existence, not all properties of arbitrary processes.",
+      "limitations": "Constructive model satisfaction for the stated parameters only. No blanket proof of other catalog operations or derived results.",
+      "premiseMapping": {
+        "urn:csabs:axiom/Martingale-basis": "Satisfied by the concrete construction in the proof: Constant real coordinates are measurable and integrable because P is finite, and conditional expectation preserves constants. Use the supplied probability measure and martingale_const to construct the subtype; no target law is assumed."
+      },
+      "allowedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "catalogHash": "7c9cdfcaaa561f7e987130c024948614a6e5dbae78ad95d0769978171d81b6ae"
     }
   }
 }
