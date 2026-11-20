@@ -7,6 +7,14 @@ description: Create runnable software tests from the mathematical abstractions c
 
 Use this skill when mathematical interfaces can guide tests for software code: collections, numeric operations, transformations, state machines, relations, or concurrent behavior. Produce tests in the target software's existing harness, with a reviewable mapping from catalog claims to its actual contract.
 
+## Mandatory catalog use
+
+Use catalog abstractions as the mathematical basis for this workflow. Before relying on an abstraction, query it through the repository tooling and record the selected stable concept/operation/claim IDs and their semantic mapping. Names and examples in this skill are search hints, not retrieved evidence; do not substitute remembered or invented definitions or laws.
+
+Retrieve catalog content only through `scripts/catalog.py`, `scripts/agent_query.py`, or `ai/skills/mathematical-tests/scripts/query.py` (and `scripts/lean.py get ID` for binding evidence). Do not directly open, browse, grep, glob, or parse `concepts/`, `data/shared.json`, generated catalog pages, embedded viewer data, or runtime RDF to obtain catalog facts. The tools may read those files internally. Reading instructions, target code, consulted external sources and selected Lean source declarations is separate from catalog retrieval. Direct record edits are allowed only for authorized catalog maintenance or promotion, after tool-based discovery.
+
+If the required abstraction or applicable operation, law or proof cannot be found, **report the gap to the user before acquisition or any further dependent step**: name the need, list queries and closest matches, explain what is missing or incompatible, and identify blocked work. Resolve synonyms, relevant candidates and necessary truncated results first; distinguish unavailable tooling from absent mathematics. Do not silently fall back to general knowledge or continue on unsupported assumptions. Follow the [shared catalog-use policy](../mathematical-tests/references/catalog-use.md) for gap handling and the acquisition exceptions; read it when a gap or retrieval blocker occurs.
+
 ## Read the software before selecting mathematics
 
 Read the target repository's instructions, relevant code, public contract and nearby tests. Establish the input/output carriers, state changes, observation/equality function, error behavior and applicable numeric or concurrency conventions. Select concepts by behavior rather than matching class names. A method called `add` does not by itself imply a group or exact arithmetic.
@@ -38,7 +46,7 @@ Read `truncated`, `nextOffset`, `depthBoundary` and `needsLargerBudget`. Fetch a
 
 ## Fill a required mathematical gap
 
-If the selected task needs an abstraction, operation or proof absent from the catalog, use [abstraction-acquisition](../abstraction-acquisition/SKILL.md). Search for reusable entries first, acquire or construct only the missing mathematics, and compile/audit the required Lean model and claims. After verification, offer catalog promotion (default) or task-local retention and wait for the user's choice unless already specified. Then resume this workflow with the explicit semantic mapping. Unverified assumptions require an explicit user choice for conditional continuation.
+After reporting a required catalog gap under the mandatory policy above, use [abstraction-acquisition](../abstraction-acquisition/SKILL.md). Search for reusable entries first, acquire or construct only the missing mathematics, and compile/audit the required Lean model and claims. After verification, offer catalog promotion (default) or task-local retention and wait for the user's choice unless already specified. Then resume this workflow with the explicit semantic mapping. Unverified assumptions require an explicit user choice for conditional continuation.
 
 ## Translate claims into test obligations
 

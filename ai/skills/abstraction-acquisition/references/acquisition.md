@@ -4,7 +4,7 @@ Read the section relevant to the current gap. The catalog root is four levels ab
 
 ## Identify the missing obligation
 
-Retain a short task record: original request, selected catalog IDs, required operations/inputs, gap, semantic mapping, evidence and pending work. Search names, synonyms, notation and mathematical meaning using `scripts/catalog.py list --search TERM`; retrieve likely concepts' operations and relevant claims, then `scripts/agent_query.py node ID` for specific records. A zero-result keyword search is insufficient to establish absence. An ONTFS failure is a backend problem, not a mathematical gap; authoritative Markdown queries remain available.
+Retain a short task record: original request, selected catalog IDs, required operations/inputs, gap, semantic mapping, evidence and pending work. Search names, synonyms, notation and mathematical meaning using `scripts/catalog.py list --search TERM`; retrieve likely concepts' operations and relevant claims, then `scripts/agent_query.py node ID` for specific records. A zero-result keyword search is insufficient to establish absence. An ONTFS failure is a backend problem, not a mathematical gap; dependency-free catalog CLI queries remain available. Do not open catalog storage directly. Before source acquisition, send the user the gap, queries/candidates inspected, missing obligation and blocked dependent steps under the [catalog-use policy](../../mathematical-tests/references/catalog-use.md).
 
 Distinguish these cases:
 
@@ -59,7 +59,7 @@ Run `make build`, `make test`, `make test-rdf`, `make check-lean`, and `make tes
 
 ## Resume or report a blocker
 
-Restore the original task and its pending obligations. Map proved results to specification clauses, API operations or model-checker formulas; record input scope and conditional assumptions. After promotion, retrieve the new stable IDs from authoritative records or a freshly rebuilt, unmodified projection. Resume the originating skill's implementation, review, test design or model checking; do not stop at delivering an abstraction.
+Restore the original task and its pending obligations. Map proved results to specification clauses, API operations or model-checker formulas; record input scope and conditional assumptions. After promotion, retrieve the new stable IDs through the catalog CLI or bounded helper against a freshly rebuilt, unmodified projection. Resume the originating skill's implementation, review, test design or model checking; do not stop at delivering an abstraction.
 
 When a required source or proof cannot be obtained, report the exact gap and attempted evidence, and continue independent work. Offer another abstraction, a requirement change, or explicit conditional continuation. Only the user's affirmative choice authorizes assumption-based continuation. Label affected conclusions conditional/unchecked, keep them outside verified evidence, and do not promote the unverified candidate under this workflow. Do not weaken the original requirement or advertise model satisfaction as software refinement.
 

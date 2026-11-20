@@ -9,6 +9,14 @@ Use this workflow when a task needs an abstraction, operation, axiom interpretat
 
 The catalog root is three levels above this skill directory, including in extracted archives. Read the target project's instructions and retain the original task, required inputs and pending obligations before starting.
 
+## Mandatory catalog use
+
+Use catalog abstractions as the mathematical basis for this workflow. Before relying on an abstraction, query it through the repository tooling and record the selected stable concept/operation/claim IDs and their semantic mapping. Names and examples in this skill are search hints, not retrieved evidence; do not substitute remembered or invented definitions or laws.
+
+Retrieve catalog content only through `scripts/catalog.py`, `scripts/agent_query.py`, or `ai/skills/mathematical-tests/scripts/query.py` (and `scripts/lean.py get ID` for binding evidence). Do not directly open, browse, grep, glob, or parse `concepts/`, `data/shared.json`, generated catalog pages, embedded viewer data, or runtime RDF to obtain catalog facts. The tools may read those files internally. Reading instructions, target code, consulted external sources and selected Lean source declarations is separate from catalog retrieval. Direct record edits are allowed only for authorized catalog maintenance or promotion, after tool-based discovery.
+
+If the required abstraction or applicable operation, law or proof cannot be found, **report the gap to the user before acquisition or any further dependent step**: name the need, list queries and closest matches, explain what is missing or incompatible, and identify blocked work. Resolve synonyms, relevant candidates and necessary truncated results first; distinguish unavailable tooling from absent mathematics. Do not silently fall back to general knowledge or continue on unsupported assumptions. Follow the [shared catalog-use policy](../mathematical-tests/references/catalog-use.md) for gap handling and the acquisition exceptions; read it when a gap or retrieval blocker occurs.
+
 ## Establish the gap and acquire evidence
 
 Search the catalog by meaning, synonyms, notation and operation signatures; inspect likely matches and selected claims with the bounded tools. Follow necessary premises and resolve truncation. Reuse stable IDs and extend existing entries when appropriate. Neither prerequisites nor specialization links transfer axioms.

@@ -54,6 +54,8 @@ See [agent workflows](docs/AGENT_WORKFLOWS.md) for proof planning, test design a
 
 ## Query from AI agents
 
+Repository skills require tool-based catalog retrieval before relying on mathematical abstractions. Agents must not browse catalog storage directly for facts, and must report required gaps before acquisition or dependent work. See the [catalog-use policy](ai/skills/mathematical-tests/references/catalog-use.md) for the retrieval boundary and explicit acquisition exceptions.
+
 Python 3 and the standard library are sufficient; no service, credentials, embedding model or network is needed.
 
 ```sh

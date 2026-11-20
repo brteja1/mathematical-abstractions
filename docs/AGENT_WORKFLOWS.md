@@ -1,5 +1,7 @@
 # Agent workflows
 
+All repository skills require catalog abstractions retrieved through the query tools, with stable IDs and explicit semantic mappings. Do not open or search catalog storage or generated exports to retrieve facts. Report missing mathematics and blocked work before acquisition or dependent steps; see the [catalog-use policy](../ai/skills/mathematical-tests/references/catalog-use.md) for required report contents and explicit acquisition exceptions.
+
 Use the graph as a retrieved specification and dependency map. Keep assumptions and source quality visible in the resulting work.
 
 For controlled comparisons of these workflows, use the [paired skill evaluation suite](../ai/evaluations/README.md). Prepare fresh workspaces outside the repository, give both arms equal catalog/tool access, expose skill instructions only to the treatment, and keep the evaluator criteria and other outputs separate. Score task correctness, executable evidence, false positives, completion and cost; report actual runs separately from authored examples.

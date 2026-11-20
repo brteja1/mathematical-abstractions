@@ -7,9 +7,17 @@ description: Inspect unannotated software, data structures, and APIs to discover
 
 Inspect existing software components, algorithms, and data structures to uncover their underlying mathematical abstractions. Identify implicit invariants, detect violated algebraic laws, and recommend principled refactorings grounded in the catalog.
 
+## Mandatory catalog use
+
+Use catalog abstractions as the mathematical basis for this workflow. Before relying on an abstraction, query it through the repository tooling and record the selected stable concept/operation/claim IDs and their semantic mapping. Names and examples in this skill are search hints, not retrieved evidence; do not substitute remembered or invented definitions or laws.
+
+Retrieve catalog content only through `scripts/catalog.py`, `scripts/agent_query.py`, or `ai/skills/mathematical-tests/scripts/query.py` (and `scripts/lean.py get ID` for binding evidence). Do not directly open, browse, grep, glob, or parse `concepts/`, `data/shared.json`, generated catalog pages, embedded viewer data, or runtime RDF to obtain catalog facts. The tools may read those files internally. Reading instructions, target code, consulted external sources and selected Lean source declarations is separate from catalog retrieval. Direct record edits are allowed only for authorized catalog maintenance or promotion, after tool-based discovery.
+
+If the required abstraction or applicable operation, law or proof cannot be found, **report the gap to the user before acquisition or any further dependent step**: name the need, list queries and closest matches, explain what is missing or incompatible, and identify blocked work. Resolve synonyms, relevant candidates and necessary truncated results first; distinguish unavailable tooling from absent mathematics. Do not silently fall back to general knowledge or continue on unsupported assumptions. Follow the [shared catalog-use policy](../mathematical-tests/references/catalog-use.md) for gap handling and the acquisition exceptions; read it when a gap or retrieval blocker occurs.
+
 ## Fill a required mathematical gap
 
-If the selected task needs an abstraction, operation or proof absent from the catalog, use [abstraction-acquisition](../abstraction-acquisition/SKILL.md). Search for reusable entries first, acquire or construct only the missing mathematics, and compile/audit the required Lean model and claims. After verification, offer catalog promotion (default) or task-local retention and wait for the user's choice unless already specified. Then resume this workflow with the explicit semantic mapping. Unverified assumptions require an explicit user choice for conditional continuation.
+After reporting a required catalog gap under the mandatory policy above, use [abstraction-acquisition](../abstraction-acquisition/SKILL.md). Search for reusable entries first, acquire or construct only the missing mathematics, and compile/audit the required Lean model and claims. After verification, offer catalog promotion (default) or task-local retention and wait for the user's choice unless already specified. Then resume this workflow with the explicit semantic mapping. Unverified assumptions require an explicit user choice for conditional continuation.
 
 A missing software helper or duplication pattern alone does not require a new mathematical concept.
 
@@ -189,7 +197,7 @@ First verify catalog availability with Python's standard library:
 python3 <skill_dir>/../../../scripts/catalog.py check
 ```
 
-Instead of hardcoding axiom assumptions in the skill, query candidate concepts dynamically from the catalog. The skill focuses on the following core list of candidate concepts that commonly govern software patterns:
+Query candidate concepts dynamically from the catalog. The following names are search hints; retrieve and check each selected entry before using its laws:
 
 - **Reducers / Combination**: `Monoid`, `Semigroup`
 - **Comparisons / Sorting**: `Preorder`, `TotalOrder` (Total Preorder without antisymmetry)
@@ -202,10 +210,8 @@ Query the authoritative operations, axioms, and laws for the candidate concept d
 # Query a specific candidate concept dynamically:
 python3 <skill_dir>/../../../scripts/catalog.py get <Concept> --sections operations axioms laws
 
-# Or batch-query the commonly helpful discovery set:
-for concept in Monoid Semigroup Preorder TotalOrder Lattice JoinSemilattice; do
-  python3 <skill_dir>/../../../scripts/catalog.py get "$concept" --sections operations axioms laws
-done
+# Discover candidates before selecting the relevant interface:
+python3 <skill_dir>/../../../scripts/catalog.py list --search mapping
 ```
 
 Search by operational behavior and mathematical role:
@@ -220,13 +226,13 @@ Search by operational behavior and mathematical role:
 | Set / Map / Collection indexing | `Set`, `Multiset`, `Sequence`, `Multimap` | Extensionality, membership, duplicate handling, ordering |
 | Resource / Access management | `Lock`, `Mutex` | Mutual exclusion, compatible holders, release ownership |
 
-*\*Note: `Functor` is the standard mathematical archetype for structure-preserving container transformations (`map`/`fmap`). When analyzing mapping APIs, verify its governing identity and composition laws directly against the retrieved container concept.*
+*Mapping APIs require a catalog query for the applicable mapping abstraction and its laws. A container entry alone does not supply functor laws. If the needed abstraction or laws are absent, report that gap before testing those laws or recommending a refactoring based on them.*
 
 Start with focused concept and operation records. Retrieve axioms and laws only for candidate invariants under test. Do not preload complete claim closures or full dossiers.
 
 ## Test algebraic laws and detect violations
 
-Evaluate the dynamically retrieved axioms and governing laws against the code's actual semantics:
+Evaluate only dynamically retrieved, applicable axioms and laws against the code's actual semantics. The patterns below illustrate possible obligations; they do not supply missing catalog laws:
 
 1. **Monoid & Semigroup Laws (Associativity & Identity)**:
    - Verify associativity `(x · y) · z == x · (y · z)` under batching, parallel reduction, or stream chunking.

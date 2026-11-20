@@ -56,6 +56,8 @@ Project requirements belong in this file so future agents discover them at works
 
 ## Agent task retrieval and formalization
 
+Repository skills require catalog-backed mathematics retrieved through the catalog/agent CLI or bounded ONTFS helper; agents must not open or search catalog storage or generated exports for retrieval. Direct authoritative-file edits are reserved for authorized maintenance/promotion after tool-based discovery. Report required missing abstractions, operations, laws or proof evidence, searched queries/candidates and blocked work to the user before acquisition or further dependent steps; follow the acquisition workflow for explicit exceptions. See ai/skills/mathematical-tests/references/catalog-use.md.
+
 Use `python3 scripts/agent_query.py node ID` to fetch any claim or operation, `neighbors ID --incoming --depth 1 --limit 40` for bounded typed links, or `dossier SHORT_FORM --purpose proof|tests --limit 80` for a task context. Check `truncated` and retrieve omitted premises explicitly. See docs/AGENT_WORKFLOWS.md. Reads load authoritative Markdown, so a stale export does not silently change retrieval.
 
 Before using a claim in Lean/Coq, map equality, carriers, assumptions and library versions explicitly. A Unicode statement, graph edge, or editorial proof sketch is not a compiled theorem. Do not claim verified proofs without running the chosen proof assistant. For software tests, map abstraction operations to the target API and honor definedness, preconditions, numeric semantics and nondeterminism. Tests do not prove universal claims.
