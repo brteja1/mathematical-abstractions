@@ -28,6 +28,7 @@ jobs:
         run: |
           mkdir -p _site
           cp visualization/index.html _site/index.html
+          cp .nojekyll _site/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:

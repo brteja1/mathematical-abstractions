@@ -27,6 +27,8 @@ Subject categories use `parentCategory` in `data/shared.json` for nesting. Broad
 
 The [Pages workflow](.github/workflows/pages.yml) rebuilds, validates and publishes the viewer on pushes to `main`.
 
+In **Settings → Pages → Build and deployment**, select **GitHub Actions** as the source to use this workflow. The root `.nojekyll` marker also supports branch publishing without interpreting mathematical braces or code examples as Liquid templates; the root `index.html` redirects to the checked-in viewer. Keep the marker when publishing static files. The workflow publishes the rebuilt viewer directly at the site root.
+
 ## Installation
 
 Clone this repository and run `make` to install ONTFS and build the catalog, viewer and ontology. See [INSTALL.md](INSTALL.md) for prerequisites, setup, usage and troubleshooting.
