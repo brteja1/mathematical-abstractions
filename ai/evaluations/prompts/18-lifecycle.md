@@ -1,0 +1,5 @@
+# Deliver a small specified and checked implementation
+
+Implement a pure Python bounded counter step on integers. Inputs are limit≥0 and n≥0; invalid inputs raise ValueError with no state changes. If n<limit return n+1; otherwise return n, including above-limit n. Equality is integer value equality. Noninteger inputs are outside the promised domain; document your chosen policy rather than claiming a stakeholder requirement.
+
+Write spec.md with traceable clauses and mapping.md connecting them to API behavior and catalog semantics. Deliver counter.py, meaningful tests and a task-local obligation/evidence ledger or equivalent executable gate. Run it first on the correct implementation, then on an add-two mutant in a separate copy. Demonstrate that changing relevant source/checker inputs invalidates prior evidence. Keep required inputs, exception outcomes, test evidence and any proof claims explicit. Record unresolved decisions and environment/toolchain limits in answer.md. Do not claim universal proof from finite tests, change dependencies, edit the catalog or ask for approval for ordinary implementation choices within this contract.

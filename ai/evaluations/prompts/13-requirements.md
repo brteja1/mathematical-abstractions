@@ -1,0 +1,5 @@
+# Formalize a retryable job API
+
+A stakeholder asks: every submitted job runs exactly once; submit always returns immediately even when the worker is unreachable; clients may retry after any delay; workers may crash after doing work but before recording completion; external side effects have no transaction or idempotency support; job IDs are caller supplied. “Done within a second” is also requested, with no bounds on outages or work duration. A release must not quietly replace stakeholder promises with easier ones.
+
+Write spec.md with stable clauses, source-to-clause mapping, admissible inputs, duplicate/conflicting-ID handling, failure outcomes, required scenarios, environment assumptions and explicit unresolved decisions. Separate requested behavior from a proposed implementable policy. Put executable counterexample traces or bounded checks in checks.py, run them and report exactly what they establish in answer.md. Do not implement a production queue, change dependencies or edit the catalog. Do not invent stakeholder acceptance.

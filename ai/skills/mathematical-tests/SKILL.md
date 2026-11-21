@@ -69,3 +69,7 @@ Run the relevant tests and required target checks. Report the actual commands/re
 Preserve source locators and `provenanceStatus` for claims used in a test rationale. Legacy citation gaps are not repaired by a passing test. A Lean witness, when relevant, can support the mapped mathematical proposition: inspect it with `<skill_dir>/../../../scripts/lean.py get ID` and require fresh verification evidence before calling it compiled. It does not prove that the target implementation refines that model.
 
 Deliver the test files, chosen concept/claim IDs and API mapping, tested preconditions/edge cases, execution evidence and any deferred properties. Tests provide finite evidence; do not report universal mathematical or implementation proofs. Keep test artifacts outside authoritative graph records. For a required mathematical gap, the acquisition workflow handles optional catalog promotion before test design resumes.
+
+## Lifecycle evidence integration
+
+For an authorized end-to-end assurance task, use [spec-driven-development](../spec-driven-development/SKILL.md) and its [shared ledger guide](../spec-driven-development/references/assurance.md). Preserve requirement/obligation IDs, exact inputs and evidence kinds. A model proof, finite test, review receipt and actual-source refinement prove different things; required missing or stale evidence blocks admission. This integration does not expand the user's requested scope.

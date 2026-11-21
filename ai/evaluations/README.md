@@ -20,6 +20,12 @@ The prompts are realistic tasks with seeded pitfalls and controls. They request 
 | [10](prompts/10-calendar-quality.md) | implementation-mapping, mathematical-tests, implementation-conformance | Persistent interval algorithms; code, spec and test quality |
 | [11](prompts/11-scheduler-test-quality.md) | mathematical-tests | Stateful test efficacy against ten hidden faults and two correct representations |
 | [12](prompts/12-quota-spec-quality.md) | specification-consistency, formal-model-checking | Implementable distributed specification, conflicts and lifecycle semantics |
+| [13](prompts/13-requirements.md) | requirements-formalization | Intent, required scenarios and unresolved promises |
+| [14](prompts/14-composition.md) | compositional-verification | Local guarantees versus a shared global invariant |
+| [15](prompts/15-refinement.md) | implementation-refinement | Actual-source Lean proof and behavioral mutant |
+| [16](prompts/16-maintenance.md) | verification-maintenance | Input freshness and defect-detecting re-execution |
+| [17](prompts/17-assurance.md) | assurance-review | Weak tests, unlinked proofs and stale claims |
+| [18](prompts/18-lifecycle.md) | spec-driven-development | Specified implementation, evidence gate and maintenance |
 
 ## Prepare a pair
 
@@ -104,3 +110,7 @@ Assign anonymous labels and score using [grader.md](grader.md), preferably with 
 Record scores in a CSV file outside the repository; leave unmeasured fields blank. For case 05, run tests against the known-good implementation and semantic mutants described in the grader; only behavioral assertion failures count as killed mutants. Retain counterexamples, seeds and commands. For case 07 require Lean compilation and axiom audits in both arms before awarding verified proof credit.
 
 Keep reports outside the repository with raw evidence and limitations. Distinguish authored examples, fixture validation and independently generated agent outputs. Publishing prompts or validating fixtures does not demonstrate skill efficacy. Report dimension-level differences and concrete examples; one pair per hard case does not measure run-to-run variation.
+
+Cases 13–18 cover requirements, composition, actual-source refinement, evidence
+maintenance, assurance review and lifecycle delivery. Their prompts and evaluator
+criteria are provided; adding them is not a measured skill-efficacy result.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Spec Driven Development"
+  short_description: "Coordinate requirements"
+  default_prompt: "Use $spec-driven-development for this task; preserve normative requirements and report reproducible evidence and limits."

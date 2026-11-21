@@ -26,7 +26,7 @@ TLA+ (Temporal Logic of Actions) models systems as discrete state transitions. P
 * You need an automated exhaustive trace explorer (TLC) that delivers exact line-by-line counterexample states.
 
 ### Key Considerations
-* **Fairness:** Specify Weak Fairness ($WF_v(A)$) or Strong Fairness ($SF_v(A)$) on actions. Without fairness assumptions, TLC will find trivial "stuttering" counterexamples where a thread simply stops taking steps.
+* **Fairness:** Specify Weak Fairness ($WF_v(A)$) or Strong Fairness ($SF_v(A)$) on actions. Missing fairness can permit nonprogress behaviors, including stuttering; whether a counterexample exists depends on the specification and property. Fairness must be justified by the environment, not added solely to suppress a trace.
 * **Granularity of Actions:** In PlusCal, each label defines an atomic step. Placing multiple reads and writes under a single label hides potential race conditions that exist in real CPU/memory architectures.
 
 ---
@@ -41,7 +41,7 @@ Alloy is based on first-order relational logic with transitive closure, solved v
 * Dynamic execution can be modeled as ordering relations between events or clock ticks.
 
 ### Key Considerations
-* **Small Scope Hypothesis:** If a relational assertion has a counterexample, it almost always has a small counterexample (e.g., $\le 3$ to $5$ nodes per signature).
+* **Small Scope Hypothesis:** Small scopes are a search heuristic. An assertion passing within one scope remains unchecked beyond that scope unless a separate completeness argument applies.
 * **Transitive Closure:** Alloy's `^` (transitive closure) and `*` (reflexive transitive closure) make reachability and acyclicity checks straightforward.
 
 ---
@@ -61,12 +61,7 @@ Z3 is an efficient Satisfiability Modulo Theories (SMT) solver supporting arithm
 
 Exhaustive model checking faces exponential state-space growth with increasing variables and processes. Apply these techniques:
 
-1. **Minimize Process Count:** Start checking with 2 processes, then expand to 3. Two processes expose most race conditions; three expose complex multi-party deadlocks and token passing issues.
-2. **Use Symmetry Sets in TLC:**
-   In TLA+, declare process sets as symmetric:
-   ```tla
-   SYMMETRIC Permutations(Processes)
-   ```
-   TLC prunes isomorphic states where process IDs are merely permuted, reducing the state space by up to $N!$.
-3. **Data Abstraction:** Replace continuous variables or unbounded counters with finite equivalence classes. For example, instead of tracking exact queue contents, track `QueueState \in {"Empty", "Single", "Full"}`.
+1. **Minimize Process Count:** Start checking with 2 processes, then expand to 3. Report each explored process count; small counts do not establish correctness for arbitrary populations.
+2. **Symmetry Reduction:** Use only backend-supported symmetry configuration justified for the checked properties. Consult the installed backend documentation and retain the actual configuration; do not assume every reduction preserves liveness.
+3. **Data Abstraction:** Replace continuous variables or unbounded counters with finite equivalence classes. For example, instead of tracking exact queue contents, track `QueueState \in {"Empty", "Single", "Full"}` only with an explicit abstraction relation and preservation obligations; a coarse model may hide behavior.
 4. **Constrain Message Channels:** Restrict message buffers to small finite bounds (e.g., capacity 2 or 3) and unroll loops with small step bounds.

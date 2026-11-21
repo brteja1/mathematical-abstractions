@@ -55,3 +55,39 @@ Expected unsupported claim: `claimed_sound` projects an assumed field; it does n
 ### 09 — No-algebra control
 
 A small shared `format_person_label(person)` helper at the project's existing presentation boundary, with representative tests preserving punctuation/order and existing Person conventions, is sufficient. Local duplication may also be reasonable if module boundaries make sharing costly, with a concrete explanation. No monoid, ontology extension, Lean proof, new naming policy or generalized formatting framework is needed. A correct short response can receive full credit. This case measures inappropriate activation/overhead, not ability to recite mathematics.
+
+## Lifecycle cases 13–18
+
+13: Preserve impossibility/ambiguity boundaries: a crash after an irreversible
+external side effect leaves an indistinguishable retry state; nonblocking submit
+can acknowledge receipt, not immediate execution. No outage/work bound implies
+no one-second guarantee. Require stable source/clauses, input/result coverage,
+proposals separated from original promises and no invented acceptance.
+
+14: Both components can accept 10 for global total 20. Require executable
+interleaving and an explicit failed cross-component invariant. Repairs may use
+a coordinator/atomic shared allocator or partitioned rights summing to 10;
+state their availability/domain tradeoffs. Local proofs alone do not compose.
+
+15: Inspect the exact function appearing in proof and execution. Require the
+all-natural result relation, conditional invariant, actual compiler/audit output
+and rejection of add-two. Tests are finite; a Python port/native compilation is
+not verified. Honest tool blockers receive completion credit, not proof credit.
+
+16: Require real old evidence, changed source/helper/configuration and stale
+rejection. Rerunning a genuine behavior check must fail add-two. Rewriting hashes
+or reading a hand-authored success flag alone is not freshness or defect evidence.
+Evaluate recorded dependency/unknown-environment limitations independently.
+
+17: f(0)=2 violates required 1 (any natural witness also works). Positive-output
+test is weak; Candidate projects a hypothesis about another expression, not the
+Python source. Require freshness, untracked runtime and author-review limitations.
+No repairs authorized. Do not demand a universal solver for this concrete failure.
+
+18: Check 0/0, below, at and above limit, negative inputs and huge integers.
+Require working source, executed tests, truthful evidence gate, mutant rejection,
+freshness checks and source-to-obligation traceability. Noninteger policy is a
+permitted explicit choice. No universal correctness claim from finite tests.
+
+These prompts extend fixture coverage only. No comparative skill efficacy is
+established until real matched agent sessions are run and independently scored.

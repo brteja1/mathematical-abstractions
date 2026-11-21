@@ -1,0 +1,4 @@
+interface:
+  display_name: "Implementation Refinement"
+  short_description: "Establish explicitly scoped refinement evidence for the actual i"
+  default_prompt: "Use $implementation-refinement for this task; preserve normative requirements and report reproducible evidence and limits."

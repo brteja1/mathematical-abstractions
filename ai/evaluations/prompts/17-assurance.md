@@ -1,0 +1,5 @@
+# Review a verification claim without repairing it
+
+The requirement is f(n)=n+1 for every natural n, including zero. Actual Python code is `def f(n): return n + 2`. An author's test runs only f(1)>0. Their Lean evidence is `structure Candidate where law : ∀ n : Nat, n + 1 = n + 1` and a theorem projecting Candidate.law; the theorem never mentions the Python function. The report says “all source behavior proved; tested on all relevant inputs”. The report's recorded implementation hash predates the current source and no interpreter version is given. The author signs their own independent-review receipt.
+
+Write review.md with exact obligations, demonstrated defects, evidence mismatches, freshness and trust limits. Create and execute checks.py to reproduce the concrete behavioral failure. Do not repair code, narrow the domain, or treat the conditional Lean projection as a source proof. Distinguish claims requiring evidence from facts established by the supplied artifacts. Do not edit the catalog.

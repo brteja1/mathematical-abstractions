@@ -36,3 +36,7 @@ For promotion, maintain the authoritative Markdown JSON, direct provenance, hier
 Resume the original skill and task using a versioned mapping from the acquired operations and proved propositions to its inputs, API or specification. Refresh task queries after promotion against a fresh projection. Mathematical model satisfaction does not prove implementation refinement, runtime behavior or model-checker translation correctness.
 
 If a trusted source, model or proof is unavailable, identify the exact unsupported obligation and continue independent work. Offer an alternative abstraction, a revised requirement, or conditional continuation with explicit unverified assumptions. Continue on assumptions only after the user chooses that option; keep conditional results separate from verified evidence. Do not promote an unverified candidate under this workflow or loop indefinitely on an unavailable dependency.
+
+## Lifecycle evidence integration
+
+For an authorized end-to-end assurance task, use [spec-driven-development](../spec-driven-development/SKILL.md) and its [shared ledger guide](../spec-driven-development/references/assurance.md). Preserve requirement/obligation IDs, exact inputs and evidence kinds. A model proof, finite test, review receipt and actual-source refinement prove different things; required missing or stale evidence blocks admission. This integration does not expand the user's requested scope.

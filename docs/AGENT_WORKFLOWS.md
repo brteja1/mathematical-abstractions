@@ -8,9 +8,35 @@ For controlled comparisons of these workflows, use the [paired skill evaluation 
 
 Hard cases additionally assess generated specification precision, code/test maintainability and reviewer readability using the suite's [quality rubric](../ai/evaluations/quality-rubric.md). Use independent contract checks and semantic mutation testing for behavior; prepare anonymous comprehension questions for human readers. Counts, length, and task completion do not establish artifact quality, and editorial readability reviews are not measured human comprehension.
 
+## Specification-driven lifecycle and evidence admission
+
+Use [spec-driven-development](../ai/skills/spec-driven-development/SKILL.md) to
+coordinate an authorized lifecycle task. Its companion skills cover
+[requirements](../ai/skills/requirements-formalization/SKILL.md),
+[composition](../ai/skills/compositional-verification/SKILL.md),
+[actual-source refinement](../ai/skills/implementation-refinement/SKILL.md),
+[change impact](../ai/skills/verification-maintenance/SKILL.md) and
+[assurance review](../ai/skills/assurance-review/SKILL.md).
+Keep task artifacts outside authoritative graph records and preserve source-to-clause-to-API links.
+
+The [shared ledger guide](../ai/skills/spec-driven-development/references/assurance.md)
+defines the schema and `scripts/assurance.py` commands. `check`/`impact` inspect
+declared traceability and freshness; `run` explicitly executes a named check.
+Missing, failed or stale required evidence, unresolved decisions and pending or
+rejected requirement validation block admission. Tests, bounded exploration,
+review and proof remain different kinds. Only the narrow `lean-source-v1`
+profile currently admits proof evidence: source function and theorem share a
+file, expected types are explicit, and the pinned compiler and transitive axiom
+audit must pass. This does not establish native executable correspondence.
+
+Run `make test-assurance` for the actual-source pilot and rejection regressions.
+Reviewer identity, natural-language completeness and arbitrary external command
+inputs remain outside the local gate. Neither fixture checks nor a passed ledger
+measure comparative skill efficacy or universal software correctness.
+
 ## Missing abstractions and proofs
 
-All six problem-oriented AI skills route required mathematical gaps to [abstraction-acquisition](../ai/skills/abstraction-acquisition/SKILL.md). Search existing concepts and claims first, then reuse the pinned Lean/Mathlib or consult primary sources; construct a model when necessary. Prove that the selected interpretation satisfies its axiom basis and establish the additional claims needed by the problem. An assumed structure, a conditional theorem or one trivial instance alone does not establish required-input coverage or software refinement.
+Problem-oriented AI skills route required mathematical gaps to [abstraction-acquisition](../ai/skills/abstraction-acquisition/SKILL.md). Search existing concepts and claims first, then reuse the pinned Lean/Mathlib or consult primary sources; construct a model when necessary. Prove that the selected interpretation satisfies its axiom basis and establish the additional claims needed by the problem. An assumed structure, a conditional theorem or one trivial instance alone does not establish required-input coverage or software refinement.
 
 Prepare sourced definitions, semantic mappings and compiled, axiom-audited evidence before offering **Promote to catalog (default)** or **Keep with this task**. Wait for that choice unless already specified. Promotion preserves the source policy and existing witness schema: model-satisfaction results are Theorems linked to defining constraints, rather than bindings against Axiom IDs. Task-local artifacts retain their own exact inputs and compiler evidence without claiming catalog verification status. Resume the original task after retention and refresh queries after promotion. Unavailable proofs or sources remain explicit blockers; assumption-based continuation requires the user's choice and yields conditional conclusions.
 

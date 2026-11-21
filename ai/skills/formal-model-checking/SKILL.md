@@ -88,11 +88,11 @@ Read [references/mutex-tla-example.md](references/mutex-tla-example.md) for a wo
 
 ## Execute checks and diagnose counterexamples
 
-Run the model checker with bounded parameters (e.g., 2–3 processes, buffer depth 2–4) to avoid combinatorial state explosion while exercising all interleavings:
+Run the model checker with bounded parameters (e.g., 2–3 processes, buffer depth 2–4) and report exactly which model states/interleavings were explored and whether exploration completed:
 
-- **Invariant Violations**: The checker produces a minimal execution trace from `Init` to the violating state. Map each step in the trace back to the concrete code action that caused the invariant breach.
-- **Liveness / Cycle Violations**: The checker produces a lasso-shaped trace (a prefix leading to a stuttering loop). Inspect which process was starved and which action failed to take steps under the assumed fairness.
-- **Deadlock Traces**: Identify the cycle of dependencies (e.g., circular waiting on locks or channels).
+- **Invariant Violations**: Retain the returned trace from `Init` to the violating state. Claim minimality only if the backend/configuration establishes it. Map model steps to concrete code where correspondence has been justified.
+- **Liveness / Cycle Violations**: Retain the backend witness, which may be a prefix followed by a repeating cycle; the cycle need not be stuttering. Inspect progress, enabled actions and the declared fairness assumptions.
+- **Deadlock Traces**: Identify why no permitted progress action is enabled; circular waiting is one possible cause, not a required shape.
 
 ## Deliver the model-checking report
 
@@ -102,8 +102,12 @@ Deliver a comprehensive report containing:
 - **Configuration & Bounds**: Process counts, queue depths, and fairness assumptions tested.
 - **Verification Outcomes**: Total distinct states explored, reachable states, and properties verified.
 - **Counterexample Traces**: If a property failed, provide the exact sequence of states and interleavings, along with root-cause analysis.
-- **Remediation**: Recommended protocol adjustments, memory barriers, or locking changes to ensure safety and liveness.
+- **Remediation**: Proposed protocol, memory-ordering or locking changes, with the obligations and checks needed before claiming safety or liveness.
 
 Connect with downstream skills:
 - Use [implementation-mapping](../implementation-mapping/SKILL.md) to formalize the checked atomic actions into concrete code methods.
-- Use [implementation-conformance](../implementation-conformance/SKILL.md) to verify that real threads or actors do not reorder the validated protocol steps.
+- Use [implementation-conformance](../implementation-conformance/SKILL.md) to assess the implementation-to-model correspondence, including atomicity, scheduling and memory ordering. Report unchecked runtime behavior; a model check alone does not verify real thread execution.
+
+## Lifecycle evidence integration
+
+For an authorized end-to-end assurance task, use [spec-driven-development](../spec-driven-development/SKILL.md) and its [shared ledger guide](../spec-driven-development/references/assurance.md). Preserve requirement/obligation IDs, exact inputs and evidence kinds. A model proof, finite test, review receipt and actual-source refinement prove different things; required missing or stale evidence blocks admission. This integration does not expand the user's requested scope.

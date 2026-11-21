@@ -1,0 +1,4 @@
+interface:
+  display_name: "Compositional Verification"
+  short_description: "Verify that component contracts and their connections imply a sy"
+  default_prompt: "Use $compositional-verification for this task; preserve normative requirements and report reproducible evidence and limits."

@@ -10,7 +10,7 @@ Examine the public and internal methods of the target component to classify its 
 | :--- | :--- | :--- | :--- |
 | `combine(a: T, b: T): T` | Closed binary operation | `urn:csabs:concept/Semigroup`<br>`urn:csabs:concept/Monoid` | Is it associative? Does an empty/neutral value `e` exist such that `combine(a, e) == a`? |
 | `merge(s1: S, s2: S): S` | State reconciliation | `urn:csabs:concept/JoinSemilattice`<br>`urn:csabs:concept/StateBasedCRDT` | Is `merge(s, s) == s` (idempotent)? Is `merge(s1, s2) == merge(s2, s1)` (commutative)? Does state monotonically grow? |
-| `compare(a: T, b: T): Int` | Total preorder / Strict weak order | `urn:csabs:concept/TotalOrder`<br>`urn:csabs:concept/Preorder` | Is `compare(a, b) == -compare(b, a)`? If `a < b` and `b < c`, is `a < c` (transitivity)? Does it handle NaN or edge values? |
+| `compare(a: T, b: T): Int` | Total preorder / Strict weak order | `urn:csabs:concept/TotalOrder`<br>`urn:csabs:concept/Preorder` | Do the signs of `compare(a, b)` and `compare(b, a)` reverse, including zero ties? Exact result magnitudes need not match. If `a < b` and `b < c`, is `a < c` (transitivity)? Does it handle NaN or edge values? |
 | `step(state: S, event: E): S` | State transition function | `urn:csabs:concept/LabelledTransitionSystem`<br>`urn:csabs:concept/KripkeStructure` | Is the state transition total or partial? Are terminal/deadlock states explicitly handled? |
 | `acquire(p: P): Bool`<br>`release(p: P): Unit` | Mutual exclusion / Access | `urn:csabs:concept/Lock`<br>`urn:csabs:concept/Mutex` | Can two distinct processes hold the lock simultaneously? Can a non-holder release? |
 | `add(k: K, v: V): Collection` | Associative storage | `urn:csabs:concept/Multimap`<br>`urn:csabs:concept/Set` | How are duplicate keys or values resolved? Is key equality structural or reference-based? |
@@ -23,7 +23,7 @@ Examine the public and internal methods of the target component to classify its 
 * **Code Pattern:** Aggregating data across parallel threads, batches, or distributed workers using an ad-hoc reducer (e.g., streaming averages or floating-point additions).
 * **Mathematical Cause:** The reduction operation violates the associativity law `urn:csabs:axiom/Monoid-associative` (`(x · y) · z == x · (y · z)`).
 * **Consequence:** Results differ depending on thread scheduling, batch size, or partitioning.
-* **Refactoring:** Decompose the state into an associative pair (e.g., storing `(sum, count)` instead of running `mean`), completing a true Monoid.
+* **Refactoring:** Decompose the state into an associative pair (e.g., storing `(sum, count)` instead of running `mean`), then check associativity/identity under the chosen numeric semantics; floating-point sums remain rounding-sensitive.
 
 ### 2. Missing Identity Element (The "Empty Collection" Trap)
 * **Code Pattern:** A combination function that works on two elements but requires special-case guards (`if len(items) == 0 ... elif len(items) == 1 ...`) or raises an unhandled exception when an accumulator is empty.

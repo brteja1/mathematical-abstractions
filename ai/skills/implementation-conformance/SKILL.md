@@ -68,3 +68,7 @@ For each finding give severity based on actual consequence, specification clause
 Summarize covered and unchecked obligations without equating a count to completeness. Report citation gaps separately from behavioral findings. Do not call an entire implementation verified based on selected passing tests or abstract Lean witnesses.
 
 When repair is requested, fix behavior consistent with the normative contract, update the mapping when representation changes, and rerun affected checks. Do not weaken requirements or alter tests to accept the defect. Keep review artifacts in the target project or requested scratch location; use the acquisition workflow for catalog edits and proof promotion when a required mathematical gap is found. Skills in `ai/skills/` require explicit reading or host registration for discovery.
+
+## Lifecycle evidence integration
+
+For an authorized end-to-end assurance task, use [spec-driven-development](../spec-driven-development/SKILL.md) and its [shared ledger guide](../spec-driven-development/references/assurance.md). Preserve requirement/obligation IDs, exact inputs and evidence kinds. A model proof, finite test, review receipt and actual-source refinement prove different things; required missing or stale evidence blocks admission. This integration does not expand the user's requested scope.

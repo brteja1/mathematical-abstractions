@@ -123,6 +123,24 @@ The [semantic triage experiment](docs/duplicate-audit/TRIAGE.md) adds cached sou
 
 Catalog and SHACL validation check structure; semantic consistency requires a justified model and a separate check. Findings distinguish demonstrated conflicts from ambiguities, conditional results and inconclusive searches. A bounded search or a single satisfying instance does not establish that every required input or behavior is supported.
 
+## AI skills for specification-driven development
+
+Six complementary skills connect intent to maintained evidence:
+[requirements-formalization](ai/skills/requirements-formalization/SKILL.md),
+[compositional-verification](ai/skills/compositional-verification/SKILL.md),
+[implementation-refinement](ai/skills/implementation-refinement/SKILL.md),
+[verification-maintenance](ai/skills/verification-maintenance/SKILL.md),
+[assurance-review](ai/skills/assurance-review/SKILL.md), and the
+[spec-driven-development orchestrator](ai/skills/spec-driven-development/SKILL.md).
+They reuse the existing mapping, consistency, acquisition, model-checking and test workflows.
+
+The [shared ledger guide](ai/skills/spec-driven-development/references/assurance.md)
+documents executable admission and freshness checks. The
+[actual-source Lean pilot](examples/assurance-counter/README.md) proves properties
+of its pure function, checks 208 example outputs and demonstrates defect and stale-evidence rejection
+with `make test-assurance`. Tests, bounded checks, review and proof retain distinct scopes;
+the gate does not establish human-intent correspondence or deployment correctness.
+
 ## AI skills for implementation and review
 
 Use [implementation-mapping](ai/skills/implementation-mapping/SKILL.md) to translate a catalog-based specification into concrete types, API operations, equality/observations, state representations, errors and implementation obligations. Its [mapping template](ai/skills/implementation-mapping/assets/implementation-map.md) belongs beside the target software and records specification clauses, catalog IDs, decisions and evidence. When code generation is requested, the skill guides implementation from that mapping.
@@ -136,20 +154,6 @@ For example, ask an agent:
 > Read `ai/skills/implementation-conformance/SKILL.md` and review `path/to/project` against its specification and implementation mapping. Report clause/obligation IDs, counterexamples, execution evidence and unchecked behavior.
 
 The skills reuse existing catalog retrieval, specification-consistency and mathematical-test workflows. Read them explicitly or register their directories with the agent host; placing them in `ai/skills/` alone does not enable automatic discovery. They add no runtime dependency to generated software. Tests and abstract model proofs do not by themselves establish implementation refinement.
-
-## AI skill for abstraction-based tests
-
-[`ai/skills/mathematical-tests/SKILL.md`](ai/skills/mathematical-tests/SKILL.md) guides agents from a software API to applicable mathematical concepts, axioms and laws, then to runnable tests. It covers API/operation mappings, definedness, numeric policies, nondeterminism and evidence limitations. Agents should read the skill explicitly or register this directory using their host's skill-discovery mechanism.
-
-Its Python helper uses the ONTFS projection for compact searches and selected interfaces, claims, premises and direct citations. Responses have hard record/character budgets, pagination and depth-boundary flags; complete mathematical records are preserved. Stale or locally edited runtime graphs are rejected. After [installation](INSTALL.md):
-
-```sh
-.venv/bin/python ai/skills/mathematical-tests/scripts/query.py search queue --limit 4 --max-chars 4000
-.venv/bin/python ai/skills/mathematical-tests/scripts/query.py interface Queue --limit 6 --max-chars 8000
-make test-ai
-```
-
-The helper works from other repositories via its absolute path. See the skill's [retrieval guide](ai/skills/mathematical-tests/references/retrieval.md) for setup, source freshness, pagination and exact limits. No full graph dump or embedding service is needed.
 
 ## AI skill for abstraction discovery
 
@@ -170,6 +174,24 @@ For example, ask an agent:
 > Read `ai/skills/formal-model-checking/SKILL.md` and model `path/to/protocol.md` with TLA+ or Alloy. Verify mutual exclusion and deadlock freedom against catalog concept `Lock`, and report any counterexample traces.
 
 The [backend selection guide](ai/skills/formal-model-checking/references/backend-selection.md) compares verification engines and state-space mitigation techniques; the [mutex TLA+ example](ai/skills/formal-model-checking/references/mutex-tla-example.md) includes a complete Ticket Lock specification and an executable Python state-space explorer demonstrating invariant checking and error-trace generation.
+
+## Repository skill consistency
+
+`make check-skills` checks the 13 skills against a reviewed source baseline, local links, handoffs and a finite shared-policy model. See [the audit and limits](docs/SKILL_CONSISTENCY.md). It also runs as part of `make test-ai`; passing does not prove all natural-language instructions consistent.
+
+## AI skill for abstraction-based tests
+
+[`ai/skills/mathematical-tests/SKILL.md`](ai/skills/mathematical-tests/SKILL.md) guides agents from a software API to applicable mathematical concepts, axioms and laws, then to runnable tests. It covers API/operation mappings, definedness, numeric policies, nondeterminism and evidence limitations. Agents should read the skill explicitly or register this directory using their host's skill-discovery mechanism.
+
+Its Python helper uses the ONTFS projection for compact searches and selected interfaces, claims, premises and direct citations. Responses have hard record/character budgets, pagination and depth-boundary flags; complete mathematical records are preserved. Stale or locally edited runtime graphs are rejected. After [installation](INSTALL.md):
+
+```sh
+.venv/bin/python ai/skills/mathematical-tests/scripts/query.py search queue --limit 4 --max-chars 4000
+.venv/bin/python ai/skills/mathematical-tests/scripts/query.py interface Queue --limit 6 --max-chars 8000
+make test-ai
+```
+
+The helper works from other repositories via its absolute path. See the skill's [retrieval guide](ai/skills/mathematical-tests/references/retrieval.md) for setup, source freshness, pagination and exact limits. No full graph dump or embedding service is needed.
 
 ### Acknowledgment
 

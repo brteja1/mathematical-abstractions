@@ -5,7 +5,7 @@
 - Target project/component and requested behavior:
 - Normative specifications: paths, revisions/hashes, clause locators:
 - Implementation revision and relevant local changes:
-- Catalog checkout/revision, selected source hashes and retrieval backend:
+- Catalog checkout/revision, fingerprints of selected CLI-returned records and retrieval backend (do not directly read catalog storage for fingerprints):
 - Review scope and excluded behavior:
 
 ## Semantic interpretation

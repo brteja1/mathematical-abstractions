@@ -240,7 +240,7 @@ Evaluate only dynamically retrieved, applicable axioms and laws against the code
 2. **Total Preorder Laws (Comparators & Sorting)**:
    - Verify reflexivity `compare(x, x) == 0`.
    - Verify transitivity `compare(a, b) <= 0 ∧ compare(b, c) <= 0 ⇒ compare(a, c) <= 0`.
-   - Verify totality: every valid input pair produces a deterministic comparison.
+   - Check comparability under the mapped relation: for every admitted pair, `a <= b` or `b <= a`. Total function definedness and determinism are separate API obligations.
    - Distinct elements with equivalent keys may tie (`compare(a, b) == 0` without `a == b`).
 3. **Lattice & Semilattice Laws (Bounds, Absorption & Merge)**:
    - Verify meet (greatest lower bound) and join (least upper bound).
@@ -252,7 +252,7 @@ Evaluate only dynamically retrieved, applicable axioms and laws against the code
    - Ensure `map` does not mutate external state or conditionally drop/reorder elements.
 5. **Idempotence & Transition Invariants**: Test retry loops, caching, and state transitions (`(State, Event) -> State`) for reachability and invariant preservation.
 
-When a law is violated, construct a minimal concrete counterexample showing the inputs, the expected mathematical outcome, and the actual software behavior.
+When a law is violated, construct and, where practical, minimize a concrete counterexample showing the inputs, the expected mathematical outcome, and the actual software behavior.
 
 Read [references/discovery-guide.md](references/discovery-guide.md) for detailed mapping tables and code smells, and [references/metrics-example.md](references/metrics-example.md) for a worked example on telemetry aggregation.
 
@@ -265,7 +265,7 @@ Produce a structured report detailing:
 - **Structural Duplication Assessment**: List of duplication signals found (copy-paste logic, parallel argument lists, mirrored pipelines, etc.) with concrete locations. If this is the dominant finding, state it clearly and prioritize the structural refactoring recommendation over any algebraic label.
 - **Discovered Abstraction**: Matching catalog concepts with stable IDs (`urn:csabs:concept/...`), or `none — refactoring candidate` when structural duplication dominates.
 - **Carrier & Operation Mapping**: Concrete types and methods mapped to catalog carriers and signatures.
-- **Law Assessment**: Table of checked laws (associativity, identity, commutativity, etc.), marked as satisfied, conditionally satisfied, or violated.
+- **Law Assessment**: Table of checked laws with evidence labels: proved within stated semantics, holds in the declared finite scope, no counterexample in samples, conditional, violated, or unchecked. Record assumptions, input bounds and commands; finite examples do not establish universal laws.
 - **Counterexamples**: Explicit inputs that trigger law violations or unexpected edge behavior.
 - **Refactoring Recommendations**: Specific architectural changes — structural cleanup first (extract, parameterize, unify), then algebraic alignment (e.g., introducing an explicit identity element, adjusting floating-point aggregation, or making merge operations idempotent).
 
@@ -273,3 +273,7 @@ Connect the discovery findings to downstream skills:
 - Use [implementation-mapping](../implementation-mapping/SKILL.md) to formalize the updated API contract.
 - Use [implementation-conformance](../implementation-conformance/SKILL.md) to review refactored code against the revised obligations.
 - Use [mathematical-tests](../mathematical-tests/SKILL.md) to generate regression property tests based on discovered laws.
+
+## Lifecycle evidence integration
+
+For an authorized end-to-end assurance task, use [spec-driven-development](../spec-driven-development/SKILL.md) and its [shared ledger guide](../spec-driven-development/references/assurance.md). Preserve requirement/obligation IDs, exact inputs and evidence kinds. A model proof, finite test, review receipt and actual-source refinement prove different things; required missing or stale evidence blocks admission. This integration does not expand the user's requested scope.

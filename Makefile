@@ -43,15 +43,24 @@ test-ontology:
 	$(PYTHON) scripts/ontology.py check
 	$(PYTHON) -B -m unittest discover -s tests -p 'test_ontology.py' -v
 
-.PHONY: test-ai check-lean test-lean update-lean-bindings
+.PHONY: check-skills test-ai test-assurance check-lean test-lean update-lean-bindings
 LEAN_IDS ?=
 LEAN_FLAGS ?=
 update-lean-bindings:
 	$(PYTHON) scripts/lean.py refresh-bindings $(LEAN_IDS) $(LEAN_FLAGS)
 
-test-ai:
+check-skills:
+	$(PYTHON) -B scripts/check_skill_consistency.py
+	$(PYTHON) -B -m unittest discover -s tests -p 'test_skill_consistency.py' -v
+
+test-ai: check-skills
 	$(PYTHON) -B -c "import sys; sys.path.insert(0, 'scripts'); from ontology import backend; backend()"
 	$(PYTHON) -B -m unittest discover -s tests -p 'test_test_context.py' -v
+	$(PYTHON) -B -m unittest discover -s tests -p 'test_assurance.py' -v
+	$(PYTHON) -B -m unittest discover -s tests -p 'test_skill_evaluations.py' -v
+
+test-assurance:
+	CATALOG_TEST_ASSURANCE=1 $(PYTHON) -B -m unittest discover -s tests -p 'test_assurance.py' -v
 
 .PHONY: check-llvm-transforms
 check-llvm-transforms:

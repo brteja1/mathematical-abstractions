@@ -1,0 +1,635 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-11-21",
+  "scope": "Manually mapped synchronous Boolean policy decisions; no claim of complete natural-language or temporal consistency.",
+  "skills": [
+    "abstraction-acquisition",
+    "abstraction-discovery",
+    "assurance-review",
+    "compositional-verification",
+    "formal-model-checking",
+    "implementation-conformance",
+    "implementation-mapping",
+    "implementation-refinement",
+    "mathematical-tests",
+    "requirements-formalization",
+    "spec-driven-development",
+    "specification-consistency",
+    "verification-maintenance"
+  ],
+  "sourceHashes": {
+    "AGENTS.md": "8c0d26dbeabbf01cc9074742c7a575182ec7f7e7db3c257ce9104ed3fd1c4976",
+    "ai/skills/abstraction-acquisition/SKILL.md": "01a81cf11be35ea6422059bcb46ce95c3f351499b4d5d201549c99ea96120b39",
+    "ai/skills/abstraction-acquisition/references/acquisition.md": "38436d39f21e7812927d21663d5b5bc130760b70b7e5175729c82db76d7843c0",
+    "ai/skills/abstraction-acquisition/references/watermark-example.md": "b85a125783c308ff0d9f0612e720845dffcb21038932604bc11c6ccb527a881e",
+    "ai/skills/abstraction-discovery/SKILL.md": "a32ab1df90a4e830a1d04ac6e5d820093faf2b03eb0207417e21b16056cd234a",
+    "ai/skills/abstraction-discovery/references/discovery-guide.md": "9fd6632ff8d76d4c8e6c787cce0ac375bfc014443806c0efb4cb0330fed211c2",
+    "ai/skills/abstraction-discovery/references/metrics-example.md": "3ac114695d22f83cf53f3b84c35b57f6f9b878023a4677f760ffea8c574c390a",
+    "ai/skills/assurance-review/SKILL.md": "83abd6311cf5c571ed91980946ee5080e4e766e6077cc3ae8a8998d6d5c76fe9",
+    "ai/skills/compositional-verification/SKILL.md": "3f3e0c75bad5ffba08cb8dfd6111dd3920be005403bd27167cb6fa17d6c3beae",
+    "ai/skills/formal-model-checking/SKILL.md": "aab20dea9b0e5f7673ad97771e670a78810ea74bde84fa43dfe7de76500de89f",
+    "ai/skills/formal-model-checking/references/backend-selection.md": "758b5bf17430b475ac3e655350ac539f733f6efc367856cc1b6c3d3b8dc9bb99",
+    "ai/skills/formal-model-checking/references/mutex-tla-example.md": "b902fe11a759e308c4dc690c32bb92b39f48750e287ebdff9baf347f09d3b8fc",
+    "ai/skills/implementation-conformance/SKILL.md": "64e68168164f72cc613666984cc2b415cf3b50fd93c95e1e9f3a3aea740f7df9",
+    "ai/skills/implementation-mapping/SKILL.md": "fb2bf40a4a4e071329d657b95a9653c1280a4dcf7ac7b089196f90cc52db67e8",
+    "ai/skills/implementation-mapping/assets/implementation-map.md": "467d5e7d91309647200b0843d996b71879b2339ccff291d9a27570d7d705357a",
+    "ai/skills/implementation-mapping/references/stack-example.md": "c67224b932565ba98f7f9a366ec25bf338bd3481a7f14215120b95a2ff5cff7c",
+    "ai/skills/implementation-refinement/SKILL.md": "75e97aeb5a080242e3dcc73b61d109684b991725d9ae3ac2ba7ecd08df30ec12",
+    "ai/skills/mathematical-tests/SKILL.md": "2023fad5c11c0b8aecf446d03c1b102c18b50a97fb8f62c48cbb4932767ffc54",
+    "ai/skills/mathematical-tests/references/catalog-use.md": "43e149c43bea127df89ff9ddebb0e24313144e8b2e3fee997eb76cb46326ccde",
+    "ai/skills/mathematical-tests/references/formulations.md": "72e74bb9ca2db3c9c1705a9c6d692d7cc5b5b19d48b6a48cc6f822a3736cd140",
+    "ai/skills/mathematical-tests/references/retrieval.md": "84540e4d76c24bb900f4495f949e2c189cf3f0586311afb701e65f22250a04e4",
+    "ai/skills/mathematical-tests/references/test-design.md": "006bd53e5c913689e77a7d2dc2741e6ac02b55ea1305e94441c3d095e68e8e5c",
+    "ai/skills/requirements-formalization/SKILL.md": "31ca1191a1a9827620cc7656e3457057e96ee495dc8f485689abe21d1d0ff97d",
+    "ai/skills/spec-driven-development/SKILL.md": "862a91e997cb2b8f720d87f4d829113f684ee2fce4d66e89cae316ff6c1dcd8a",
+    "ai/skills/spec-driven-development/references/assurance.md": "9b6cc5607048cbf9ba6bf22bce7d572c868c432b5cc031a405b984d66b2503d3",
+    "ai/skills/specification-consistency/SKILL.md": "d926849543c5c63f75570149adc825a7c594d2f9c77bca0b106b8e33f7b0fe68",
+    "ai/skills/specification-consistency/references/boolean-example.md": "561e8d0f1c9de230ccb751698a9b034eab862fb3efa5b4309962b76186949f96",
+    "ai/skills/specification-consistency/references/checking-and-reporting.md": "c18ce5fb5f5d182018955e67061d4a5d44e9110b8db3dfb82ab9015b6a06bb11",
+    "ai/skills/verification-maintenance/SKILL.md": "1b9d88266e853a8c917fc07e5ca0a51ce1f493676d513853b6f383b992389da4"
+  },
+  "clauses": {
+    "GAP": {
+      "source": "ai/skills/mathematical-tests/references/catalog-use.md",
+      "quote": "Keep the original task's dependent work stopped until a suitable catalog entry is retrieved, or the acquisition workflow's verification and explicit retention choice have completed."
+    },
+    "CONDITIONAL": {
+      "source": "ai/skills/mathematical-tests/references/catalog-use.md",
+      "quote": "Conditional continuation with unverified assumptions also requires an explicit user choice and conditional labeling."
+    },
+    "TOOLING": {
+      "source": "ai/skills/mathematical-tests/references/catalog-use.md",
+      "quote": "Otherwise resolve setup or report the blocker."
+    },
+    "RETENTION": {
+      "source": "ai/skills/mathematical-tests/references/catalog-use.md",
+      "quote": "Catalog promotion is the default recommendation; task-local retention requires the user's explicit choice and must stay visibly separate from catalog entries."
+    },
+    "SCOPE": {
+      "source": "ai/skills/spec-driven-development/SKILL.md",
+      "quote": "Implementation is authorized only within the user's requested scope and resolved contract."
+    },
+    "LEDGER": {
+      "source": "ai/skills/requirements-formalization/SKILL.md",
+      "quote": "For an authorized lifecycle task, record these in the shared obligation ledger; a standalone requirements task may retain them in its specification without creating a lifecycle ledger."
+    },
+    "PROOF": {
+      "source": "ai/skills/implementation-refinement/SKILL.md",
+      "quote": "mark it unsupported for automated proof admission."
+    },
+    "FRESH": {
+      "source": "ai/skills/spec-driven-development/SKILL.md",
+      "quote": "Admit only when every declared required check has fresh successful evidence, requirements have honest validation receipts and blocking decisions are resolved."
+    },
+    "H-requirements-formalization": {
+      "source": "ai/skills/requirements-formalization/SKILL.md",
+      "quote": "Use specification-consistency for joint satisfiability, input/output coverage and nonvacuity."
+    },
+    "H-spec-driven-development": {
+      "source": "ai/skills/spec-driven-development/SKILL.md",
+      "quote": "Route intent to requirements-formalization, conflicts to specification-consistency, representation/API decisions to implementation-mapping, and required mathematical gaps to abstraction-acquisition after reporting them."
+    },
+    "H-implementation-mapping": {
+      "source": "ai/skills/implementation-mapping/SKILL.md",
+      "quote": "Use [mathematical-tests](../mathematical-tests/SKILL.md) for derived tests and [implementation-conformance](../implementation-conformance/SKILL.md) for comparison against the mapping."
+    },
+    "H-implementation-conformance": {
+      "source": "ai/skills/implementation-conformance/SKILL.md",
+      "quote": "use the acquisition workflow for catalog edits and proof promotion when a required mathematical gap is found."
+    },
+    "H-abstraction-discovery": {
+      "source": "ai/skills/abstraction-discovery/SKILL.md",
+      "quote": "Use [implementation-mapping](../implementation-mapping/SKILL.md) to formalize the updated API contract."
+    },
+    "H-compositional-verification": {
+      "source": "ai/skills/compositional-verification/SKILL.md",
+      "quote": "Keep each as a separate obligation and use formal-model-checking where appropriate."
+    },
+    "H-implementation-refinement": {
+      "source": "ai/skills/implementation-refinement/SKILL.md",
+      "quote": "Use mathematical-tests for API tests and implementation-conformance to challenge the mapping;"
+    },
+    "H-formal-model-checking": {
+      "source": "ai/skills/formal-model-checking/SKILL.md",
+      "quote": "Use [implementation-mapping](../implementation-mapping/SKILL.md) to formalize the checked atomic actions into concrete code methods."
+    },
+    "H-abstraction-acquisition": {
+      "source": "ai/skills/abstraction-acquisition/SKILL.md",
+      "quote": "Resume the original skill and task using a versioned mapping from the acquired operations and proved propositions to its inputs, API or specification."
+    },
+    "H-verification-maintenance": {
+      "source": "ai/skills/verification-maintenance/SKILL.md",
+      "quote": "Rerun affected checks using the run command, then check admission."
+    },
+    "H-assurance-review": {
+      "source": "ai/skills/assurance-review/SKILL.md",
+      "quote": "Deliver findings with clause/obligation IDs, source locators, reproduction commands and consequence."
+    },
+    "LIFECYCLE": {
+      "source": "ai/skills/spec-driven-development/SKILL.md",
+      "quote": "Use compositional-verification for component connections, implementation-refinement for actual source correspondence, mathematical-tests for behavior tests and formal-model-checking for concurrent models."
+    },
+    "REVIEW": {
+      "source": "ai/skills/spec-driven-development/SKILL.md",
+      "quote": "Before delivery, use implementation-conformance and assurance-review to challenge the contract and result. Run verification-maintenance after each meaningful change."
+    }
+  },
+  "handoffs": [
+    {
+      "from": "requirements-formalization",
+      "to": "specification-consistency",
+      "artifact": "Numbered clauses, origin mapping, required scenarios and unresolved choices",
+      "clause": "H-requirements-formalization"
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "requirements-formalization",
+      "artifact": "Task scope, normative clauses and unresolved obligations",
+      "clause": "H-spec-driven-development"
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "specification-consistency",
+      "artifact": "Task scope, normative clauses and unresolved obligations",
+      "clause": "H-spec-driven-development"
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "implementation-mapping",
+      "artifact": "Task scope, normative clauses and unresolved obligations",
+      "clause": "H-spec-driven-development"
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "abstraction-acquisition",
+      "artifact": "Task scope, normative clauses and unresolved obligations",
+      "clause": "H-spec-driven-development"
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "compositional-verification",
+      "artifact": "Versioned implementation mapping and required evidence obligations",
+      "clause": "LIFECYCLE"
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "implementation-refinement",
+      "artifact": "Versioned implementation mapping and required evidence obligations",
+      "clause": "LIFECYCLE"
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "mathematical-tests",
+      "artifact": "Versioned implementation mapping and required evidence obligations",
+      "clause": "LIFECYCLE"
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "formal-model-checking",
+      "artifact": "Versioned implementation mapping and required evidence obligations",
+      "clause": "LIFECYCLE"
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "implementation-conformance",
+      "artifact": "Ledger, source versions, evidence and change set",
+      "clause": "REVIEW"
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "assurance-review",
+      "artifact": "Ledger, source versions, evidence and change set",
+      "clause": "REVIEW"
+    },
+    {
+      "from": "spec-driven-development",
+      "to": "verification-maintenance",
+      "artifact": "Ledger, source versions, evidence and change set",
+      "clause": "REVIEW"
+    },
+    {
+      "from": "implementation-mapping",
+      "to": "mathematical-tests",
+      "artifact": "Clause/catalog-to-API mapping with preconditions and numeric semantics",
+      "clause": "H-implementation-mapping"
+    },
+    {
+      "from": "implementation-mapping",
+      "to": "implementation-conformance",
+      "artifact": "Normative clauses, versioned mapping and code",
+      "clause": "H-implementation-mapping"
+    },
+    {
+      "from": "implementation-conformance",
+      "to": "abstraction-acquisition",
+      "artifact": "Reported mathematical gap, searched candidates and blocked obligations",
+      "clause": "H-implementation-conformance"
+    },
+    {
+      "from": "abstraction-discovery",
+      "to": "implementation-mapping",
+      "artifact": "Concrete operations, candidate concepts, law evidence and counterexamples",
+      "clause": "H-abstraction-discovery"
+    },
+    {
+      "from": "compositional-verification",
+      "to": "formal-model-checking",
+      "artifact": "Composition boundary, concurrency assumptions and progress obligations",
+      "clause": "H-compositional-verification"
+    },
+    {
+      "from": "implementation-refinement",
+      "to": "mathematical-tests",
+      "artifact": "Actual-source mapping, inputs/outcomes and proof trust boundary",
+      "clause": "H-implementation-refinement"
+    },
+    {
+      "from": "formal-model-checking",
+      "to": "implementation-mapping",
+      "artifact": "Checked model actions, bounds and justified code correspondence",
+      "clause": "H-formal-model-checking"
+    },
+    {
+      "from": "abstraction-acquisition",
+      "to": "spec-driven-development",
+      "artifact": "Verified model/task claims, explicit retention choice and semantic mapping",
+      "clause": "H-abstraction-acquisition"
+    },
+    {
+      "from": "verification-maintenance",
+      "to": "assurance-review",
+      "artifact": "Impact/invalidation report and fresh rerun evidence",
+      "clause": "H-verification-maintenance"
+    },
+    {
+      "from": "assurance-review",
+      "to": "spec-driven-development",
+      "artifact": "Findings, remaining blockers and supported assurance scope",
+      "clause": "H-assurance-review"
+    }
+  ],
+  "inputs": [
+    "retrievalReady",
+    "mathMissing",
+    "acquisitionVerified",
+    "retentionChosen",
+    "conditionalChosen",
+    "implementationAuthorized",
+    "lifecycleAuthorized",
+    "supportedProof",
+    "proofFresh",
+    "promotionAuthorized"
+  ],
+  "outputs": [
+    "continueDependent",
+    "writeImplementation",
+    "promote",
+    "admitSourceProof",
+    "requireLedger"
+  ],
+  "rules": [
+    {
+      "id": "P1",
+      "clauses": [
+        "GAP",
+        "CONDITIONAL",
+        "TOOLING"
+      ],
+      "formula": {
+        "iff": [
+          "continueDependent",
+          {
+            "and": [
+              "retrievalReady",
+              {
+                "or": [
+                  {
+                    "not": "mathMissing"
+                  },
+                  {
+                    "and": [
+                      "acquisitionVerified",
+                      "retentionChosen"
+                    ]
+                  },
+                  "conditionalChosen"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "P2",
+      "clauses": [
+        "SCOPE"
+      ],
+      "formula": {
+        "implies": [
+          "writeImplementation",
+          {
+            "and": [
+              "implementationAuthorized",
+              "continueDependent"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "P3",
+      "clauses": [
+        "RETENTION",
+        "GAP",
+        "SCOPE"
+      ],
+      "formula": {
+        "implies": [
+          "promote",
+          {
+            "and": [
+              "retrievalReady",
+              "acquisitionVerified",
+              "retentionChosen",
+              "promotionAuthorized"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "P4",
+      "clauses": [
+        "PROOF",
+        "FRESH",
+        "CONDITIONAL"
+      ],
+      "formula": {
+        "implies": [
+          "admitSourceProof",
+          {
+            "and": [
+              "supportedProof",
+              "proofFresh",
+              {
+                "not": "conditionalChosen"
+              },
+              "continueDependent"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "P5",
+      "clauses": [
+        "LEDGER"
+      ],
+      "formula": {
+        "iff": [
+          "requireLedger",
+          "lifecycleAuthorized"
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "standalone-review",
+      "inputs": {
+        "retrievalReady": true,
+        "mathMissing": false,
+        "acquisitionVerified": false,
+        "retentionChosen": false,
+        "conditionalChosen": false,
+        "implementationAuthorized": false,
+        "lifecycleAuthorized": false,
+        "supportedProof": false,
+        "proofFresh": false,
+        "promotionAuthorized": false
+      },
+      "expect": {
+        "continueDependent": true,
+        "writeImplementation": false,
+        "promote": false,
+        "requireLedger": false,
+        "admitSourceProof": false
+      }
+    },
+    {
+      "id": "lifecycle",
+      "inputs": {
+        "retrievalReady": true,
+        "mathMissing": false,
+        "acquisitionVerified": false,
+        "retentionChosen": false,
+        "conditionalChosen": false,
+        "implementationAuthorized": false,
+        "lifecycleAuthorized": true,
+        "supportedProof": false,
+        "proofFresh": false,
+        "promotionAuthorized": false
+      },
+      "expect": {
+        "requireLedger": true,
+        "continueDependent": true
+      }
+    },
+    {
+      "id": "unresolved-gap",
+      "inputs": {
+        "retrievalReady": true,
+        "mathMissing": true,
+        "acquisitionVerified": false,
+        "retentionChosen": false,
+        "conditionalChosen": false,
+        "implementationAuthorized": false,
+        "lifecycleAuthorized": false,
+        "supportedProof": false,
+        "proofFresh": false,
+        "promotionAuthorized": false
+      },
+      "expect": {
+        "continueDependent": false,
+        "writeImplementation": false,
+        "admitSourceProof": false
+      }
+    },
+    {
+      "id": "verified-awaiting-retention",
+      "inputs": {
+        "retrievalReady": true,
+        "mathMissing": true,
+        "acquisitionVerified": true,
+        "retentionChosen": false,
+        "conditionalChosen": false,
+        "implementationAuthorized": false,
+        "lifecycleAuthorized": false,
+        "supportedProof": false,
+        "proofFresh": false,
+        "promotionAuthorized": false
+      },
+      "expect": {
+        "continueDependent": false,
+        "promote": false
+      }
+    },
+    {
+      "id": "verified-task-local",
+      "inputs": {
+        "retrievalReady": true,
+        "mathMissing": true,
+        "acquisitionVerified": true,
+        "retentionChosen": true,
+        "conditionalChosen": false,
+        "implementationAuthorized": false,
+        "lifecycleAuthorized": false,
+        "supportedProof": false,
+        "proofFresh": false,
+        "promotionAuthorized": false
+      },
+      "expect": {
+        "continueDependent": true,
+        "promote": false
+      }
+    },
+    {
+      "id": "explicit-conditional",
+      "inputs": {
+        "retrievalReady": true,
+        "mathMissing": true,
+        "acquisitionVerified": false,
+        "retentionChosen": false,
+        "conditionalChosen": true,
+        "implementationAuthorized": false,
+        "lifecycleAuthorized": false,
+        "supportedProof": true,
+        "proofFresh": true,
+        "promotionAuthorized": false
+      },
+      "expect": {
+        "continueDependent": true,
+        "admitSourceProof": false
+      }
+    },
+    {
+      "id": "backend-blocked",
+      "inputs": {
+        "retrievalReady": false,
+        "mathMissing": false,
+        "acquisitionVerified": false,
+        "retentionChosen": false,
+        "conditionalChosen": false,
+        "implementationAuthorized": true,
+        "lifecycleAuthorized": false,
+        "supportedProof": false,
+        "proofFresh": false,
+        "promotionAuthorized": false
+      },
+      "expect": {
+        "continueDependent": false,
+        "writeImplementation": false
+      }
+    },
+    {
+      "id": "unsupported-external-proof",
+      "inputs": {
+        "retrievalReady": true,
+        "mathMissing": false,
+        "acquisitionVerified": false,
+        "retentionChosen": false,
+        "conditionalChosen": false,
+        "implementationAuthorized": false,
+        "lifecycleAuthorized": false,
+        "supportedProof": false,
+        "proofFresh": true,
+        "promotionAuthorized": false
+      },
+      "expect": {
+        "admitSourceProof": false
+      }
+    },
+    {
+      "id": "stale-supported-proof",
+      "inputs": {
+        "retrievalReady": true,
+        "mathMissing": false,
+        "acquisitionVerified": false,
+        "retentionChosen": false,
+        "conditionalChosen": false,
+        "implementationAuthorized": false,
+        "lifecycleAuthorized": false,
+        "supportedProof": true,
+        "proofFresh": false,
+        "promotionAuthorized": false
+      },
+      "expect": {
+        "admitSourceProof": false
+      }
+    },
+    {
+      "id": "authorized-implementation",
+      "inputs": {
+        "retrievalReady": true,
+        "mathMissing": false,
+        "acquisitionVerified": false,
+        "retentionChosen": false,
+        "conditionalChosen": false,
+        "implementationAuthorized": true,
+        "lifecycleAuthorized": false,
+        "supportedProof": false,
+        "proofFresh": false,
+        "promotionAuthorized": false
+      },
+      "expect": {
+        "continueDependent": true
+      },
+      "allow": {
+        "writeImplementation": true
+      }
+    },
+    {
+      "id": "verified-promotion-choice",
+      "inputs": {
+        "retrievalReady": true,
+        "mathMissing": true,
+        "acquisitionVerified": true,
+        "retentionChosen": true,
+        "conditionalChosen": false,
+        "implementationAuthorized": false,
+        "lifecycleAuthorized": false,
+        "supportedProof": false,
+        "proofFresh": false,
+        "promotionAuthorized": true
+      },
+      "expect": {
+        "continueDependent": true
+      },
+      "allow": {
+        "promote": true
+      }
+    },
+    {
+      "id": "fresh-supported-proof",
+      "inputs": {
+        "retrievalReady": true,
+        "mathMissing": false,
+        "acquisitionVerified": false,
+        "retentionChosen": false,
+        "conditionalChosen": false,
+        "implementationAuthorized": false,
+        "lifecycleAuthorized": false,
+        "supportedProof": true,
+        "proofFresh": true,
+        "promotionAuthorized": false
+      },
+      "expect": {
+        "continueDependent": true
+      },
+      "allow": {
+        "admitSourceProof": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Requirements Formalization"
+  short_description: "Turn stakeholder intent into traceable"
+  default_prompt: "Use $requirements-formalization for this task; preserve normative requirements and report reproducible evidence and limits."

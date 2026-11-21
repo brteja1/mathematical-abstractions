@@ -75,3 +75,7 @@ When code generation is requested, use the target project's language, convention
 Deliver the mapping, unresolved decisions and, when requested, code and relevant execution results. Use [mathematical-tests](../mathematical-tests/SKILL.md) for derived tests and [implementation-conformance](../implementation-conformance/SKILL.md) for comparison against the mapping. Run appropriate target checks for code changes. Mapping alone does not require installing a solver or running this catalog's full build.
 
 Distinguish static inspection, tests, bounded exploration and compiled proofs. Formal proof of the abstract model does not establish its relation to this implementation. Skills in `ai/skills/` can be read explicitly; automatic discovery depends on the agent host.
+
+## Lifecycle evidence integration
+
+For an authorized end-to-end assurance task, use [spec-driven-development](../spec-driven-development/SKILL.md) and its [shared ledger guide](../spec-driven-development/references/assurance.md). Preserve requirement/obligation IDs, exact inputs and evidence kinds. A model proof, finite test, review receipt and actual-source refinement prove different things; required missing or stale evidence blocks admission. This integration does not expand the user's requested scope.

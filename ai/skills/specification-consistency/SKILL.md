@@ -92,3 +92,7 @@ Lead with findings and their scope. For each finding, give clause IDs/locators, 
 Propose concrete repairs with the behavior each repair changes; do not edit normative requirements without authorization. Recheck a proposed repair before claiming it resolves the conflict. Keep specification findings outside catalog records. For required missing mathematics, use the acquisition workflow and the user's retention choice. New graph claims still require consulted sources and the repository's full build/validation workflow. For Lean, follow `lean/README.md`; prove contradictions from explicit hypotheses without global axioms or `sorry`, and require fresh compilation before claiming a proof. A proof conditional on inconsistent hypotheses does not establish that those hypotheses have a model.
 
 This skill lives in the requested `ai/skills/` location. Agents can read it explicitly; automatic discovery depends on the host's skill configuration. Keep it attached to this checkout so its infrastructure links resolve.
+
+## Lifecycle evidence integration
+
+For an authorized end-to-end assurance task, use [spec-driven-development](../spec-driven-development/SKILL.md) and its [shared ledger guide](../spec-driven-development/references/assurance.md). Preserve requirement/obligation IDs, exact inputs and evidence kinds. A model proof, finite test, review receipt and actual-source refinement prove different things; required missing or stale evidence blocks admission. This integration does not expand the user's requested scope.

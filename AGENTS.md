@@ -68,6 +68,8 @@ Keep imported stable IDs and context despite the broader repository name. `data/
 
 For LLVM/MLIR transform work, see docs/COMPILER_TRANSFORMS.md and the generated docs/LLVM_PASS_COVERAGE.md. The versioned mapping in data/llvm/pass_obligations_21.1.8.json covers literal core IR pass registrations, not machine-code passes or all parameter expansions. Run `python3 scripts/llvm_transform_coverage.py --check --llvm-root PATH` against the reference checkout to detect source drift; `make check-llvm-transforms` checks the recorded mapping offline. Keep obligation coverage, partial Lean interfaces, runtime/target contracts and concrete pass proofs distinct. Update the manifest deliberately rather than silently assigning new registrations a generic fallback.
 
+For skill-policy changes, run `make check-skills` and review affected clauses/handoffs in `docs/SKILL_CONSISTENCY.md` before deliberately updating `ai/skill-consistency/contract.json`. Its finite encoding and source hashes do not prove complete prose consistency.
+
 ## AI abstraction-acquisition skill
 
 Use `ai/evaluations/README.md` for paired skill efficacy prompts and evaluator-only criteria. Run evaluated sessions outside this repository's instruction context; keep common task/catalog inputs equal, skill instructions exclusive to the treatment, and answer keys out of both sessions. Fixture validation is not evidence of skill efficacy.
@@ -97,6 +99,20 @@ For analyzing unannotated code, data structures or APIs, use `ai/skills/abstract
 ## AI formal-model-checking skill
 
 For formal verification of concurrent protocols, state machines and distributed algorithms, use `ai/skills/formal-model-checking/SKILL.md`. Map system state and transitions to catalog concepts like `Lock`, `Mutex`, `LabelledTransitionSystem` and `LinearTemporalLogic`; encode states, atomic actions, safety invariants and liveness obligations under fairness into TLA+, Alloy or Z3; and diagnose counterexample traces to isolate concurrency bugs before implementation.
+
+## AI specification-driven lifecycle
+
+For an authorized lifecycle task, use `ai/skills/spec-driven-development/SKILL.md`;
+its companion skills cover requirements-formalization, compositional-verification,
+implementation-refinement, verification-maintenance and assurance-review.
+Reuse existing mapping, consistency, acquisition, model-checking and test workflows.
+Keep task-local ledgers and implementation evidence outside authoritative graph records.
+See `ai/skills/spec-driven-development/references/assurance.md` for the schema,
+`scripts/assurance.py` admission/freshness commands and actual-source Lean profile.
+Do not equate a passed ledger with semantic completeness or deployment correctness;
+preserve evidence kinds, honest requirement-validation receipts and trust limits.
+Run `make test-ai` after skill/tooling changes and `make test-assurance` for the
+compiler-backed pilot/rejection checks. Do not change dependency pins incidentally.
 
 ## Lean models and proof witnesses
 

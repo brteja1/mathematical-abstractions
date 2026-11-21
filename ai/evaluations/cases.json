@@ -10,5 +10,11 @@
   {"id": "09", "prompt": "prompts/09-no-algebra-control.md", "skills": ["abstraction-discovery"]},
   {"id": "10", "prompt": "prompts/10-calendar-quality.md", "skills": ["implementation-mapping", "mathematical-tests", "implementation-conformance"]},
   {"id": "11", "prompt": "prompts/11-scheduler-test-quality.md", "skills": ["mathematical-tests"], "fixtures": {"scheduler_api.py": "fixtures/scheduler_api.py"}},
-  {"id": "12", "prompt": "prompts/12-quota-spec-quality.md", "skills": ["specification-consistency", "formal-model-checking"]}
+  {"id": "12", "prompt": "prompts/12-quota-spec-quality.md", "skills": ["specification-consistency", "formal-model-checking"]},
+  {"id": "13", "prompt": "prompts/13-requirements.md", "skills": ["requirements-formalization"]},
+  {"id": "14", "prompt": "prompts/14-composition.md", "skills": ["compositional-verification"]},
+  {"id": "15", "prompt": "prompts/15-refinement.md", "skills": ["implementation-refinement"]},
+  {"id": "16", "prompt": "prompts/16-maintenance.md", "skills": ["verification-maintenance"]},
+  {"id": "17", "prompt": "prompts/17-assurance.md", "skills": ["assurance-review"]},
+  {"id": "18", "prompt": "prompts/18-lifecycle.md", "skills": ["spec-driven-development"]}
 ]

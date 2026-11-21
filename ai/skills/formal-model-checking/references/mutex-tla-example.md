@@ -80,13 +80,13 @@ StarvationFree ==
 
 ## 3. Executable Python State-Space Explorer
 
-This standalone script explores the complete reachable state space of the protocol using breadth-first search (BFS). It verifies safety and deadlock freedom, and can simulate a concurrency bug to illustrate counterexample trace generation.
+This standalone script uses breadth-first search over states retained by `next_ticket <= max_ticket_bound`. It checks mutual exclusion only, with a deliberately faulty ticket assignment to demonstrate a safety counterexample. It does not check deadlock freedom, temporal liveness or fairness. Pruning transitions at the ticket bound does not establish the unbounded protocol. The TLA+ specification above requires a separate backend run and configuration; executing this Python example does not check it.
 
 ```python
 #!/usr/bin/env python3
 """
 Exhaustive state-space explorer for concurrent protocols.
-Verifies safety and liveness against urn:csabs:concept/Mutex.
+Checks bounded mutual-exclusion states; no liveness or deadlock check.
 """
 from collections import deque
 from dataclasses import dataclass
@@ -125,7 +125,7 @@ def get_transitions(s: State, processes: List[str], inject_bug: bool = False) ->
         pc = s.get_pc(p)
         # Action 1: Take ticket
         if pc == "idle":
-            # BUG SIMULATION: Non-atomic ticket fetch allows two processes to get the same ticket
+            # MUTANT: deliberately assign duplicate tickets; not a model of a specific hardware race
             ticket = s.next_ticket if not inject_bug else (s.next_ticket // 2)
             succ = s.with_update(p, new_pc="waiting", new_ticket=ticket, new_next=s.next_ticket + 1)
             transitions.append((f"{p} takes ticket {ticket}", succ))
@@ -188,7 +188,7 @@ def model_check(processes: List[str], max_ticket_bound: int = 3, inject_bug: boo
                 parent_map[succ] = (curr, action_name)
                 queue.append(succ)
 
-    print(f"✅ VERIFIED: All {len(visited)} reachable states satisfy MutualExclusion.")
+    print(f"PASS: {len(visited)} retained states satisfy MutualExclusion (next_ticket <= {max_ticket_bound}); liveness/deadlock unchecked.")
     return True
 
 if __name__ == "__main__":

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Assurance Review"
+  short_description: "Challenge specification-to-code assurance claims"
+  default_prompt: "Use $assurance-review for this task; preserve normative requirements and report reproducible evidence and limits."

@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "name": "Actual Lean capped increment pilot",
+  "dependencyGraphComplete": true,
+  "decisions": [],
+  "artifacts": [
+    {
+      "id": "brief",
+      "path": "spec.md",
+      "role": "requirement"
+    },
+    {
+      "id": "program",
+      "path": "Counter.lean",
+      "role": "implementation"
+    },
+    {
+      "id": "checker",
+      "path": "checks.py",
+      "role": "checker"
+    },
+    {
+      "id": "pins",
+      "path": "toolchain.json",
+      "role": "toolchain"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "R1",
+      "statement": "Total capped increment with a defined result for every natural input.",
+      "origin": "proposal",
+      "source": "brief",
+      "locator": "R1",
+      "validation": {
+        "status": "accepted",
+        "reviewer": "implementing agent (demonstration design only)",
+        "rationale": "Chosen pilot behavior within the authorized engineering example; not independent stakeholder validation."
+      }
+    },
+    {
+      "id": "R2",
+      "statement": "Preserve n \u2264 limit when it holds initially.",
+      "origin": "proposal",
+      "source": "brief",
+      "locator": "R2",
+      "validation": {
+        "status": "accepted",
+        "reviewer": "implementing agent (demonstration design only)",
+        "rationale": "Chosen pilot behavior within the authorized engineering example; not independent stakeholder validation."
+      }
+    }
+  ],
+  "obligations": [
+    {
+      "id": "O1",
+      "statement": "The implementation has exactly the required result on every input.",
+      "requirements": [
+        "R1"
+      ],
+      "artifacts": [
+        "brief",
+        "program",
+        "checker"
+      ],
+      "dependsOn": [],
+      "assumptions": [
+        "Lean pure Nat semantics; no target/runtime correspondence proof."
+      ],
+      "catalog": [
+        {
+          "id": "urn:csabs:concept/BehaviorRefinement",
+          "mapping": {
+            "carrier": "Programs are total pure functions Nat \u00d7 Nat \u2192 Nat; inputs (limit,n); observations Nat.",
+            "equality": "Propositional/value equality on Lean Nat; singleton complete terminating-result behaviors.",
+            "operations": "Counter.bump is implementation; Counter.allowed is the per-input reference relation.",
+            "assumptions": "Unbounded Nat and Lean pure evaluation semantics. No native runtime adequacy claim.",
+            "scope": "All natural inputs for R1; R2 additionally assumes n \u2264 limit.",
+            "limitations": "Catalog definition is reused; no compiler or platform proof is supplied. IO tests are finite."
+          }
+        }
+      ],
+      "evidenceRequired": [
+        "proof",
+        "test"
+      ],
+      "checks": [
+        {
+          "id": "lean",
+          "kind": "proof",
+          "profile": "lean-source-v1",
+          "source": "program",
+          "symbol": "Counter.refines",
+          "expectedType": "\u2200 limit n, Counter.allowed limit n (Counter.bump limit n)",
+          "typeReviewer": "implementing agent; independent semantic review outstanding",
+          "scope": "Universal theorem about the actual pure Lean function; standard Lean axioms only."
+        },
+        {
+          "id": "examples",
+          "kind": "test",
+          "argv": [
+            "python3",
+            "checks.py"
+          ],
+          "scope": "208 finite actual-source results checked against a separate Python oracle; R1/R2."
+        }
+      ]
+    },
+    {
+      "id": "O2",
+      "statement": "The implementation preserves the upper-bound invariant.",
+      "requirements": [
+        "R2"
+      ],
+      "artifacts": [
+        "brief",
+        "program",
+        "checker"
+      ],
+      "dependsOn": [
+        "O1"
+      ],
+      "assumptions": [
+        "Lean pure Nat semantics; no target/runtime correspondence proof."
+      ],
+      "catalog": [
+        {
+          "id": "urn:csabs:concept/BehaviorRefinement",
+          "mapping": {
+            "carrier": "Programs are total pure functions Nat \u00d7 Nat \u2192 Nat; inputs (limit,n); observations Nat.",
+            "equality": "Propositional/value equality on Lean Nat; singleton complete terminating-result behaviors.",
+            "operations": "Counter.bump is implementation; Counter.allowed is the per-input reference relation.",
+            "assumptions": "Unbounded Nat and Lean pure evaluation semantics. No native runtime adequacy claim.",
+            "scope": "All natural inputs for R1; R2 additionally assumes n \u2264 limit.",
+            "limitations": "Catalog definition is reused; no compiler or platform proof is supplied. IO tests are finite."
+          }
+        }
+      ],
+      "evidenceRequired": [
+        "proof",
+        "test"
+      ],
+      "checks": [
+        {
+          "id": "lean",
+          "kind": "proof",
+          "profile": "lean-source-v1",
+          "source": "program",
+          "symbol": "Counter.bounded",
+          "expectedType": "\u2200 limit n, n \u2264 limit \u2192 Counter.bump limit n \u2264 limit",
+          "typeReviewer": "implementing agent; independent semantic review outstanding",
+          "scope": "Universal theorem about the actual pure Lean function; standard Lean axioms only."
+        },
+        {
+          "id": "examples",
+          "kind": "test",
+          "argv": [
+            "python3",
+            "checks.py"
+          ],
+          "scope": "208 finite actual-source results checked against a separate Python oracle; R1/R2."
+        }
+      ]
+    }
+  ]
+}
