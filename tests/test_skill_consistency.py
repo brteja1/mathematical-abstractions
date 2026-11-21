@@ -77,14 +77,14 @@ class SkillConsistencyTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = self.fixture(directory)
             self.assertTrue(checker.check_repository(root, self.contract)['ok'])
-            source = root / 'ai/skills/assurance-review/SKILL.md'
+            source = root / 'ai/skills/implementation-conformance/SKILL.md'
             source.write_text(source.read_text() + '\nChanged policy.\n')
-            self.assertIn('review stale: ai/skills/assurance-review/SKILL.md', checker.check_repository(root, self.contract)['errors'])
+            self.assertIn('review stale: ai/skills/implementation-conformance/SKILL.md', checker.check_repository(root, self.contract)['errors'])
 
     def test_broken_link_and_missing_skill_are_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             root = self.fixture(directory)
-            source = root / 'ai/skills/assurance-review/SKILL.md'
+            source = root / 'ai/skills/implementation-conformance/SKILL.md'
             source.write_text(source.read_text() + '\n[absent](missing-policy.md)\n')
             result = checker.check_repository(root, self.contract)
             self.assertTrue(any('broken local link' in e for e in result['errors']))

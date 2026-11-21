@@ -1,4 +1,0 @@
-interface:
-  display_name: "Verification Maintenance"
-  short_description: "Recompute evidence impact after code"
-  default_prompt: "Use $verification-maintenance for this task; preserve normative requirements and report reproducible evidence and limits."

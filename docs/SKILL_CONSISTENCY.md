@@ -1,6 +1,6 @@
 # Consistency of repository skills
 
-The 2026-11-21 review covers all 13 repository skill entrypoints, shared catalog/evidence policies and their handoffs. It combines a prose review with executable checks of selected shared decisions. It was performed by the same agent that implemented the lifecycle skills; it is not an independent review or an empirical skill-efficacy evaluation.
+The 2026-11-21 review covers all 11 repository skill entrypoints, shared catalog/evidence policies and their handoffs. It combines a prose review with executable checks of selected shared decisions. It was performed by the same agent that implemented the lifecycle skills; it is not an independent review or an empirical skill-efficacy evaluation.
 
 Run the dependency-free check and regression suite:
 
@@ -9,6 +9,10 @@ make check-skills
 ```
 
 `make test-ai` also runs these checks. The reviewed [contract](../ai/skill-consistency/contract.json) names source clauses, handoff artifacts, source hashes and scenarios. [The checker](../scripts/check_skill_consistency.py) validates the skill inventory/frontmatter, local Markdown file links, clause excerpts and handoff endpoints. It rejects changed or added normative skill Markdown until the review baseline is deliberately updated. Hashes cover supporting Markdown as a drift boundary; they do not certify every example or sentence as semantically verified. Markdown fragments, external URLs, host registration and executable-tool interfaces are not validated by the link check.
+
+## Consolidated entrypoints
+
+Assurance review is a mode of implementation-conformance; verification maintenance is a reference workflow of spec-driven-development. Their traceability, independent-review disclosure, impact/invalidation and rerun requirements remain intact. Maintenance-only requests do not authorize a full lifecycle. Evaluation cases 16 and 17 retain their tasks and criteria and now select these host skills; no efficacy runs are claimed. The handoff graph records skill boundaries; maintenance is an internal orchestrator step.
 
 ## Findings and repairs
 

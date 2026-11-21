@@ -104,7 +104,9 @@ For formal verification of concurrent protocols, state machines and distributed 
 
 For an authorized lifecycle task, use `ai/skills/spec-driven-development/SKILL.md`;
 its companion skills cover requirements-formalization, compositional-verification,
-implementation-refinement, verification-maintenance and assurance-review.
+implementation-refinement and implementation-conformance (including assurance review).
+Change impact and evidence invalidation use the orchestrator's
+`references/verification-maintenance.md` workflow, also for maintenance-only requests.
 Reuse existing mapping, consistency, acquisition, model-checking and test workflows.
 Keep task-local ledgers and implementation evidence outside authoritative graph records.
 See `ai/skills/spec-driven-development/references/assurance.md` for the schema,

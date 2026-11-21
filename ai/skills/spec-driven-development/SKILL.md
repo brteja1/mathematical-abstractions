@@ -1,6 +1,6 @@
 ---
 name: spec-driven-development
-description: Coordinate requirements, consistency, implementation, composition, proofs, tests and assurance maintenance using a task-local evidence ledger.
+description: Coordinate requirements, consistency, implementation, composition, proofs, tests and assurance maintenance using a task-local evidence ledger. Use its maintenance workflow to update evidence after changes.
 ---
 
 # Spec Driven Development
@@ -11,9 +11,13 @@ Route intent to requirements-formalization, conflicts to specification-consisten
 
 Implement resolved obligations. Use compositional-verification for component connections, implementation-refinement for actual source correspondence, mathematical-tests for behavior tests and formal-model-checking for concurrent models. Run supported executable checks and retain their exact inputs and scope. Tests, bounded exploration, review and proof are different evidence kinds.
 
-Before delivery, use implementation-conformance and assurance-review to challenge the contract and result. Run verification-maintenance after each meaningful change. Admit only when every declared required check has fresh successful evidence, requirements have honest validation receipts and blocking decisions are resolved. Unsupported proof profiles and missing mathematics remain blockers, not assumed success.
+Before delivery, use implementation-conformance in assurance review mode to challenge the contract and result. Follow the [verification maintenance workflow](references/verification-maintenance.md) after each meaningful change. Admit only when every declared required check has fresh successful evidence, requirements have honest validation receipts and blocking decisions are resolved. Unsupported proof profiles and missing mathematics remain blockers, not assumed success.
 
 Deliver the specification/mapping, implementation, ledger, runnable evidence, remaining decisions and precise trust boundary. Do not promise correctness relative to unstated human intent or uncontrolled deployment environments. This orchestrator coordinates existing tools; it does not supply a universal verification backend.
+
+## Maintenance-only scope
+
+For a request to refresh evidence or assess change impact, read [verification maintenance](references/verification-maintenance.md) and the existing ledger/change set. Perform the requested impact and rerun work without restarting requirements formalization or expanding into a full lifecycle task. Report absent traceability or unresolved inputs explicitly.
 
 ## Catalog and evidence discipline
 

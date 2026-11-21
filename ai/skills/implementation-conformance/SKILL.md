@@ -1,6 +1,6 @@
 ---
 name: implementation-conformance
-description: Review software against a catalog-based specification and implementation mapping, using traceable obligations, code inspection and executable evidence. Use to assess generated or existing code; passing catalog validation is not implementation conformance.
+description: Review software against a catalog-based specification and implementation mapping, using traceable obligations, code inspection and executable evidence. Includes assurance review of proof claims, traceability, freshness and trust limits. Use to assess generated or existing code; passing catalog validation is not implementation conformance.
 ---
 
 # Review implementation conformance
@@ -68,6 +68,10 @@ For each finding give severity based on actual consequence, specification clause
 Summarize covered and unchecked obligations without equating a count to completeness. Report citation gaps separately from behavioral findings. Do not call an entire implementation verified based on selected passing tests or abstract Lean witnesses.
 
 When repair is requested, fix behavior consistent with the normative contract, update the mapping when representation changes, and rerun affected checks. Do not weaken requirements or alter tests to accept the defect. Keep review artifacts in the target project or requested scratch location; use the acquisition workflow for catalog edits and proof promotion when a required mathematical gap is found. Skills in `ai/skills/` require explicit reading or host registration for discovery.
+
+## Assurance review mode
+
+For a request to audit verification claims or a lifecycle delivery review, read [assurance review](references/assurance-review.md). Challenge traceability in both directions, expected proof propositions, evidence freshness and trusted assumptions. Disclose when the reviewer is also the author or same agent; do not claim independent review. Ordinary code conformance reviews need not load this mode.
 
 ## Lifecycle evidence integration
 

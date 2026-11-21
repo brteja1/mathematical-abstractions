@@ -5,7 +5,6 @@
   "skills": [
     "abstraction-acquisition",
     "abstraction-discovery",
-    "assurance-review",
     "compositional-verification",
     "formal-model-checking",
     "implementation-conformance",
@@ -14,23 +13,22 @@
     "mathematical-tests",
     "requirements-formalization",
     "spec-driven-development",
-    "specification-consistency",
-    "verification-maintenance"
+    "specification-consistency"
   ],
   "sourceHashes": {
-    "AGENTS.md": "0818f2179039d94c6aae66e5d25c9ff756cd254ebf28aa5abb78716fdfcd700b",
+    "AGENTS.md": "e22c87445b4a5d3a05bd52822f09b10ca54ea876b68c1733cdbefb192408c27f",
     "ai/skills/abstraction-acquisition/SKILL.md": "01a81cf11be35ea6422059bcb46ce95c3f351499b4d5d201549c99ea96120b39",
     "ai/skills/abstraction-acquisition/references/acquisition.md": "38436d39f21e7812927d21663d5b5bc130760b70b7e5175729c82db76d7843c0",
     "ai/skills/abstraction-acquisition/references/watermark-example.md": "b85a125783c308ff0d9f0612e720845dffcb21038932604bc11c6ccb527a881e",
     "ai/skills/abstraction-discovery/SKILL.md": "a32ab1df90a4e830a1d04ac6e5d820093faf2b03eb0207417e21b16056cd234a",
     "ai/skills/abstraction-discovery/references/discovery-guide.md": "9fd6632ff8d76d4c8e6c787cce0ac375bfc014443806c0efb4cb0330fed211c2",
     "ai/skills/abstraction-discovery/references/metrics-example.md": "3ac114695d22f83cf53f3b84c35b57f6f9b878023a4677f760ffea8c574c390a",
-    "ai/skills/assurance-review/SKILL.md": "83abd6311cf5c571ed91980946ee5080e4e766e6077cc3ae8a8998d6d5c76fe9",
     "ai/skills/compositional-verification/SKILL.md": "3f3e0c75bad5ffba08cb8dfd6111dd3920be005403bd27167cb6fa17d6c3beae",
     "ai/skills/formal-model-checking/SKILL.md": "aab20dea9b0e5f7673ad97771e670a78810ea74bde84fa43dfe7de76500de89f",
     "ai/skills/formal-model-checking/references/backend-selection.md": "758b5bf17430b475ac3e655350ac539f733f6efc367856cc1b6c3d3b8dc9bb99",
     "ai/skills/formal-model-checking/references/mutex-tla-example.md": "b902fe11a759e308c4dc690c32bb92b39f48750e287ebdff9baf347f09d3b8fc",
-    "ai/skills/implementation-conformance/SKILL.md": "64e68168164f72cc613666984cc2b415cf3b50fd93c95e1e9f3a3aea740f7df9",
+    "ai/skills/implementation-conformance/SKILL.md": "b9ea442f4907fab130c20f0f354d3d267f9248410ac6b74b0ddcdddb0584a87a",
+    "ai/skills/implementation-conformance/references/assurance-review.md": "cd5a4f814d4920292c8f6692c70b25b37820535ef6a61d01ca06dd9a9f03e3c4",
     "ai/skills/implementation-mapping/SKILL.md": "fb2bf40a4a4e071329d657b95a9653c1280a4dcf7ac7b089196f90cc52db67e8",
     "ai/skills/implementation-mapping/assets/implementation-map.md": "467d5e7d91309647200b0843d996b71879b2339ccff291d9a27570d7d705357a",
     "ai/skills/implementation-mapping/references/stack-example.md": "c67224b932565ba98f7f9a366ec25bf338bd3481a7f14215120b95a2ff5cff7c",
@@ -41,12 +39,12 @@
     "ai/skills/mathematical-tests/references/retrieval.md": "84540e4d76c24bb900f4495f949e2c189cf3f0586311afb701e65f22250a04e4",
     "ai/skills/mathematical-tests/references/test-design.md": "006bd53e5c913689e77a7d2dc2741e6ac02b55ea1305e94441c3d095e68e8e5c",
     "ai/skills/requirements-formalization/SKILL.md": "31ca1191a1a9827620cc7656e3457057e96ee495dc8f485689abe21d1d0ff97d",
-    "ai/skills/spec-driven-development/SKILL.md": "862a91e997cb2b8f720d87f4d829113f684ee2fce4d66e89cae316ff6c1dcd8a",
+    "ai/skills/spec-driven-development/SKILL.md": "c23d91fca441849f50b0b7189300c027a432bdb0a237b313ec86c8ff2266c75d",
     "ai/skills/spec-driven-development/references/assurance.md": "9b6cc5607048cbf9ba6bf22bce7d572c868c432b5cc031a405b984d66b2503d3",
+    "ai/skills/spec-driven-development/references/verification-maintenance.md": "feb0968125d95290170bc973594fddb8914c4f25fad7732c253f667674d4e58a",
     "ai/skills/specification-consistency/SKILL.md": "d926849543c5c63f75570149adc825a7c594d2f9c77bca0b106b8e33f7b0fe68",
     "ai/skills/specification-consistency/references/boolean-example.md": "561e8d0f1c9de230ccb751698a9b034eab862fb3efa5b4309962b76186949f96",
-    "ai/skills/specification-consistency/references/checking-and-reporting.md": "c18ce5fb5f5d182018955e67061d4a5d44e9110b8db3dfb82ab9015b6a06bb11",
-    "ai/skills/verification-maintenance/SKILL.md": "1b9d88266e853a8c917fc07e5ca0a51ce1f493676d513853b6f383b992389da4"
+    "ai/skills/specification-consistency/references/checking-and-reporting.md": "c18ce5fb5f5d182018955e67061d4a5d44e9110b8db3dfb82ab9015b6a06bb11"
   },
   "clauses": {
     "GAP": {
@@ -118,11 +116,11 @@
       "quote": "Resume the original skill and task using a versioned mapping from the acquired operations and proved propositions to its inputs, API or specification."
     },
     "H-verification-maintenance": {
-      "source": "ai/skills/verification-maintenance/SKILL.md",
+      "source": "ai/skills/spec-driven-development/references/verification-maintenance.md",
       "quote": "Rerun affected checks using the run command, then check admission."
     },
     "H-assurance-review": {
-      "source": "ai/skills/assurance-review/SKILL.md",
+      "source": "ai/skills/implementation-conformance/references/assurance-review.md",
       "quote": "Deliver findings with clause/obligation IDs, source locators, reproduction commands and consequence."
     },
     "LIFECYCLE": {
@@ -131,7 +129,7 @@
     },
     "REVIEW": {
       "source": "ai/skills/spec-driven-development/SKILL.md",
-      "quote": "Before delivery, use implementation-conformance and assurance-review to challenge the contract and result. Run verification-maintenance after each meaningful change."
+      "quote": "Before delivery, use implementation-conformance in assurance review mode to challenge the contract and result."
     }
   },
   "handoffs": [
@@ -196,18 +194,6 @@
       "clause": "REVIEW"
     },
     {
-      "from": "spec-driven-development",
-      "to": "assurance-review",
-      "artifact": "Ledger, source versions, evidence and change set",
-      "clause": "REVIEW"
-    },
-    {
-      "from": "spec-driven-development",
-      "to": "verification-maintenance",
-      "artifact": "Ledger, source versions, evidence and change set",
-      "clause": "REVIEW"
-    },
-    {
       "from": "implementation-mapping",
       "to": "mathematical-tests",
       "artifact": "Clause/catalog-to-API mapping with preconditions and numeric semantics",
@@ -256,13 +242,13 @@
       "clause": "H-abstraction-acquisition"
     },
     {
-      "from": "verification-maintenance",
-      "to": "assurance-review",
+      "from": "spec-driven-development",
+      "to": "implementation-conformance",
       "artifact": "Impact/invalidation report and fresh rerun evidence",
       "clause": "H-verification-maintenance"
     },
     {
-      "from": "assurance-review",
+      "from": "implementation-conformance",
       "to": "spec-driven-development",
       "artifact": "Findings, remaining blockers and supported assurance scope",
       "clause": "H-assurance-review"

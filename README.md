@@ -125,13 +125,14 @@ Catalog and SHACL validation check structure; semantic consistency requires a ju
 
 ## AI skills for specification-driven development
 
-Six complementary skills connect intent to maintained evidence:
+The lifecycle entrypoints connect intent to maintained evidence:
 [requirements-formalization](ai/skills/requirements-formalization/SKILL.md),
 [compositional-verification](ai/skills/compositional-verification/SKILL.md),
 [implementation-refinement](ai/skills/implementation-refinement/SKILL.md),
-[verification-maintenance](ai/skills/verification-maintenance/SKILL.md),
-[assurance-review](ai/skills/assurance-review/SKILL.md), and the
+[implementation-conformance](ai/skills/implementation-conformance/SKILL.md) with its
+[assurance review mode](ai/skills/implementation-conformance/references/assurance-review.md), and the
 [spec-driven-development orchestrator](ai/skills/spec-driven-development/SKILL.md).
+The orchestrator includes [verification maintenance](ai/skills/spec-driven-development/references/verification-maintenance.md).
 They reuse the existing mapping, consistency, acquisition, model-checking and test workflows.
 
 The [shared ledger guide](ai/skills/spec-driven-development/references/assurance.md)
@@ -177,7 +178,7 @@ The [backend selection guide](ai/skills/formal-model-checking/references/backend
 
 ## Repository skill consistency
 
-`make check-skills` checks the 13 skills against a reviewed source baseline, local links, handoffs and a finite shared-policy model. See [the audit and limits](docs/SKILL_CONSISTENCY.md). It also runs as part of `make test-ai`; passing does not prove all natural-language instructions consistent.
+`make check-skills` checks the 11 skills against a reviewed source baseline, local links, handoffs and a finite shared-policy model. See [the audit and limits](docs/SKILL_CONSISTENCY.md). It also runs as part of `make test-ai`; passing does not prove all natural-language instructions consistent.
 
 ## AI skill for abstraction-based tests
 

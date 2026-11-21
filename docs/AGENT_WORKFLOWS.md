@@ -11,12 +11,12 @@ Hard cases additionally assess generated specification precision, code/test main
 ## Specification-driven lifecycle and evidence admission
 
 Use [spec-driven-development](../ai/skills/spec-driven-development/SKILL.md) to
-coordinate an authorized lifecycle task. Its companion skills cover
+coordinate an authorized lifecycle task. Its skills and supporting workflows cover
 [requirements](../ai/skills/requirements-formalization/SKILL.md),
 [composition](../ai/skills/compositional-verification/SKILL.md),
 [actual-source refinement](../ai/skills/implementation-refinement/SKILL.md),
-[change impact](../ai/skills/verification-maintenance/SKILL.md) and
-[assurance review](../ai/skills/assurance-review/SKILL.md).
+[change impact](../ai/skills/spec-driven-development/references/verification-maintenance.md) and
+[assurance review](../ai/skills/implementation-conformance/references/assurance-review.md).
 Keep task artifacts outside authoritative graph records and preserve source-to-clause-to-API links.
 
 The [shared ledger guide](../ai/skills/spec-driven-development/references/assurance.md)

@@ -14,7 +14,7 @@
   {"id": "13", "prompt": "prompts/13-requirements.md", "skills": ["requirements-formalization"]},
   {"id": "14", "prompt": "prompts/14-composition.md", "skills": ["compositional-verification"]},
   {"id": "15", "prompt": "prompts/15-refinement.md", "skills": ["implementation-refinement"]},
-  {"id": "16", "prompt": "prompts/16-maintenance.md", "skills": ["verification-maintenance"]},
-  {"id": "17", "prompt": "prompts/17-assurance.md", "skills": ["assurance-review"]},
+  {"id": "16", "prompt": "prompts/16-maintenance.md", "skills": ["spec-driven-development"]},
+  {"id": "17", "prompt": "prompts/17-assurance.md", "skills": ["implementation-conformance"]},
   {"id": "18", "prompt": "prompts/18-lifecycle.md", "skills": ["spec-driven-development"]}
 ]

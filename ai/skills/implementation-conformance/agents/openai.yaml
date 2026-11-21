@@ -1,4 +1,4 @@
 interface:
   display_name: "Implementation Conformance"
-  short_description: "Review code against mapped specification obligations"
+  short_description: "Review code and assurance evidence against specifications"
   default_prompt: "Use $implementation-conformance to review this implementation against its specification and mapping, reporting evidence and unchecked obligations."

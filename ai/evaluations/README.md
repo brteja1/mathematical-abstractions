@@ -23,8 +23,8 @@ The prompts are realistic tasks with seeded pitfalls and controls. They request 
 | [13](prompts/13-requirements.md) | requirements-formalization | Intent, required scenarios and unresolved promises |
 | [14](prompts/14-composition.md) | compositional-verification | Local guarantees versus a shared global invariant |
 | [15](prompts/15-refinement.md) | implementation-refinement | Actual-source Lean proof and behavioral mutant |
-| [16](prompts/16-maintenance.md) | verification-maintenance | Input freshness and defect-detecting re-execution |
-| [17](prompts/17-assurance.md) | assurance-review | Weak tests, unlinked proofs and stale claims |
+| [16](prompts/16-maintenance.md) | spec-driven-development (maintenance workflow) | Input freshness and defect-detecting re-execution |
+| [17](prompts/17-assurance.md) | implementation-conformance (assurance review mode) | Weak tests, unlinked proofs and stale claims |
 | [18](prompts/18-lifecycle.md) | spec-driven-development | Specified implementation, evidence gate and maintenance |
 
 ## Prepare a pair
