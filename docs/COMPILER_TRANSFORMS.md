@@ -8,12 +8,6 @@ No LLVM/MLIR sources were modified. These abstractions support specifying and
 discharging obligations; they are not a complete semantics or an automatic
 verifier for arbitrary passes.
 
-The [complete LLVM pass inventory](LLVM_PASS_COVERAGE.md) maps every literal
-registration in LLVM 21.1.8's core IR pass registry to a contract family. It
-accounts for transform entries, parameterized pipeline wrappers and utilities
-separately. The mapping is backed by a source checksum and an executable drift
-check, rather than claiming completeness from a short list of familiar passes.
-
 ## Concepts and concrete interfaces
 
 Paths below are relative to the supplied LLVM checkout.
@@ -134,9 +128,9 @@ Retain tool version, semantic subset, bounds, evidence and verdict. Pipeline
 composition requires aligned intermediate semantics and assumptions. Update or
 invalidate cached analyses before another pass consumes them.
 
-## Core LLVM coverage and correctness boundaries
+## Core LLVM examples and correctness boundaries
 
-The [inventory](LLVM_PASS_COVERAGE.md) includes InstCombine/InstSimplify,
+Examples of transforms requiring these obligations include InstCombine/InstSimplify,
 SCCP/IPSCCP/range propagation, EarlyCSE/GVN/NewGVN, DCE/ADCE/BDCE/DSE,
 SimplifyCFG/jump threading/critical-edge and switch transformations,
 mem2reg/reg2mem/SROA, memcpy and load/store optimization, LICM/sinking/speculation,
@@ -144,40 +138,22 @@ induction/strength reduction, loop canonicalization, unrolling, rotation,
 unswitching, fusion/distribution/interchange/flattening, idioms, loop/SLP
 vectorization and scalarization. Inlining/outlining, signature/tail-call changes,
 attribute inference, global optimization/deadness/merging, devirtualization and
-LTO/linkage transforms are also mapped.
+LTO/linkage transforms also require explicit obligations.
 
-The registry additionally contains atomics/EH/coroutine/GC lowerings, target and
+Other transform classes include atomics/EH/coroutine/GC lowerings, target and
 library expansions, guards/deoptimization, profiling/sanitizers/security checks,
 parallel and Objective-C runtime transforms, debug/metadata policies and pipeline
-wrappers. These entries receive explicit contract families instead of silently
-assuming they are ordinary optimizations. For example, `lower-atomic` needs the
+wrappers. Each needs an explicit contract for its intended behavior. For example,
+`lower-atomic` needs the
 documented non-preemptible execution assumption; `lower-invoke` needs an unwindless
 contract; `forceattrs` needs justification of its imposed promises. Security
 instrumentation can intentionally add diagnostics. Extraction/renaming/debug
-stripping may change the chosen observations. An obligation mapping records what
-must be established, including these conditions; it does not assert every
-registered pass preserves arbitrary source behavior in every environment.
-
-Use the inventory checker against the supplied checkout:
-
-```sh
-python3 scripts/llvm_transform_coverage.py --check \
-  --llvm-root /linuxdev/ai_research/llvm/sources/llvm-project-llvmorg-21.1.8
-make check-llvm-transforms
-```
-
-The first command compares all registrations, their source order/locators and
-the exact registry checksum. The second validates the recorded mapping and
-generated report without requiring an external LLVM checkout. A registry change,
-unknown macro form, unmapped registration or missing concept fails the applicable
-check. Update mappings deliberately for another LLVM release. The registry
-contains parameterized entries and composite pipelines: coverage counts each
-registration once and does not enumerate every target/options-dependent expansion.
-Machine-code/SelectionDAG/GlobalISel/register-allocation passes and out-of-tree
-plugins are outside this IR-registry scope.
+stripping may change the chosen observations. Verification must establish the
+applicable obligations under these conditions; the profiles do not assert every
+pass preserves arbitrary source behavior in every environment.
 
 Before checking an actual pass, instantiate a contract for its concrete mutation,
-options and semantic subset. The family mapping selects obligations; it is not
+options and semantic subset. A profile helps select obligations; it is not
 an executable pass precondition or an audit of every implementation branch.
 Target DXIL/kernel, OpenMP/Objective-C and runtime lowerings require their own
 external specifications. The generic coroutine lifecycle concept is related

@@ -66,7 +66,7 @@ Keep imported stable IDs and context despite the broader repository name. `data/
 
 ## Compiler transformation profiles
 
-For LLVM/MLIR transform work, see docs/COMPILER_TRANSFORMS.md and the generated docs/LLVM_PASS_COVERAGE.md. The versioned mapping in data/llvm/pass_obligations_21.1.8.json covers literal core IR pass registrations, not machine-code passes or all parameter expansions. Run `python3 scripts/llvm_transform_coverage.py --check --llvm-root PATH` against the reference checkout to detect source drift; `make check-llvm-transforms` checks the recorded mapping offline. Keep obligation coverage, partial Lean interfaces, runtime/target contracts and concrete pass proofs distinct. Update the manifest deliberately rather than silently assigning new registrations a generic fallback.
+For LLVM/MLIR transform work, see docs/COMPILER_TRANSFORMS.md. Keep reusable mathematical obligations, partial Lean interfaces, runtime/target contracts and concrete pass proofs distinct. Instantiate obligations for the chosen compiler version, transformation and semantic subset; catalog coverage does not establish correctness of concrete passes.
 
 For skill-policy changes, run `make check-skills` and review affected clauses/handoffs in `docs/SKILL_CONSISTENCY.md` before deliberately updating `ai/skill-consistency/contract.json`. Its finite encoding and source hashes do not prove complete prose consistency.
 
