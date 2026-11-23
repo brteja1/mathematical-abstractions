@@ -38,8 +38,8 @@
     "ai/skills/mathematical-tests/references/formulations.md": "72e74bb9ca2db3c9c1705a9c6d692d7cc5b5b19d48b6a48cc6f822a3736cd140",
     "ai/skills/mathematical-tests/references/retrieval.md": "84540e4d76c24bb900f4495f949e2c189cf3f0586311afb701e65f22250a04e4",
     "ai/skills/mathematical-tests/references/test-design.md": "006bd53e5c913689e77a7d2dc2741e6ac02b55ea1305e94441c3d095e68e8e5c",
-    "ai/skills/requirements-formalization/SKILL.md": "31ca1191a1a9827620cc7656e3457057e96ee495dc8f485689abe21d1d0ff97d",
-    "ai/skills/spec-driven-development/SKILL.md": "c23d91fca441849f50b0b7189300c027a432bdb0a237b313ec86c8ff2266c75d",
+    "ai/skills/requirements-formalization/SKILL.md": "03fc54c96458c79b13f1bd34fdbf089c2681c5020ddfcfd3d44d0008b0c9898d",
+    "ai/skills/spec-driven-development/SKILL.md": "17e0de844de92007eedb2e2380b7c4e67927c4f1c29fac99e48116b4c98a3255",
     "ai/skills/spec-driven-development/references/assurance.md": "9b6cc5607048cbf9ba6bf22bce7d572c868c432b5cc031a405b984d66b2503d3",
     "ai/skills/spec-driven-development/references/verification-maintenance.md": "feb0968125d95290170bc973594fddb8914c4f25fad7732c253f667674d4e58a",
     "ai/skills/specification-consistency/SKILL.md": "d926849543c5c63f75570149adc825a7c594d2f9c77bca0b106b8e33f7b0fe68",
@@ -136,7 +136,7 @@
     {
       "from": "requirements-formalization",
       "to": "specification-consistency",
-      "artifact": "Numbered clauses, origin mapping, required scenarios and unresolved choices",
+      "artifact": "Numbered clauses, origin mapping, required scenarios and relevant unresolved requirements gaps or choices",
       "clause": "H-requirements-formalization"
     },
     {
