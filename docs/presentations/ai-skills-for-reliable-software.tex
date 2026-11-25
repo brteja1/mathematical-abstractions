@@ -1,0 +1,407 @@
+% Build with lualatex ai-skills-for-reliable-software.tex (run twice for references).
+% Requires Beamer, TikZ, fontspec, Liberation Sans, and DejaVu Sans Mono.
+% For a presenter copy, replace "hide notes" with "show notes" and rebuild.
+\documentclass[aspectratio=169,10pt]{beamer}
+\usepackage{fontspec}
+\usepackage{tikz}
+\setsansfont{Liberation Sans}
+\setmonofont{DejaVu Sans Mono}[Scale=MatchLowercase]
+\setbeamertemplate{navigation symbols}{}
+\setbeameroption{hide notes}
+% \setbeameroption{show notes}
+\setbeamerfont{note page}{size=\tiny}
+\title{AI skills for reliable software}
+\subtitle{Evidence from the mathematical-abstractions repository}
+
+% Slide coordinates use a 13.333 by 7.5 grid, with the origin at the top left.
+\newcommand{\SlidePanel}[5]{%
+  \fill[fill=#5] (#1,#2) rectangle ++(#3,#4);%
+}
+\newcommand{\SlideText}[7]{%
+  \node[anchor=north west,inner sep=0pt,outer sep=0pt,text=#5,align=left]
+    at (#1,#2) {\begin{minipage}[t]{#3\SlideUnit}%
+    \raggedright\fontsize{#4pt}{\fpeval{#4*1.15}pt}\selectfont
+    #6#7\end{minipage}};%
+}
+\newlength{\SlideUnit}
+\setlength{\SlideUnit}{12mm}
+\newenvironment{slidecanvas}{%
+  \begin{tikzpicture}[remember picture,overlay,x=\SlideUnit,y=-\SlideUnit]
+  \begin{scope}[shift={(current page.north west)}]%
+}{\end{scope}\end{tikzpicture}}
+% The Beamer section number selects the active step in the roadmap.
+\newcommand{\SlideProgress}{%
+  \foreach \step/\labeltext in {1/Foundations,2/Scheduler,3/Wet grass,4/Takeaways}{%
+    \pgfmathsetmacro{\stepx}{.72+(\step-1)*2.99}%
+    \ifnum\insertsectionnumber=\step\relax
+      \SlidePanel{\stepx}{.14}{2.91}{.34}{teal}%
+      \SlideText{\fpeval{\stepx+.09}}{.205}{2.73}{7.5}{white}{\bfseries}{\step\enspace \labeltext}%
+    \else
+      \SlidePanel{\stepx}{.14}{2.91}{.34}{panel}%
+      \SlideText{\fpeval{\stepx+.09}}{.205}{2.73}{7.5}{muted}{}{\step\enspace \labeltext}%
+    \fi
+  }%
+}
+\newcommand{\SlideHeader}[4]{%
+  \ifnum\insertsectionnumber>0\relax\SlideProgress\fi
+  \SlideHeading{#1}{#2}{#3}{#4}%
+}
+\newcommand{\SlideHeading}[4]{%
+  \SlidePanel{.72}{.66}{.34}{.06}{#3}
+  \SlideText{1.2}{.56}{11}{5.5}{#3}{\bfseries}{#2}
+  \SlideText{.72}{.91}{11.92}{18.5}{#4}{\bfseries}{#1}
+}
+\newcommand{\SlideFooter}[3]{%
+  \SlidePanel{.72}{7.02}{11.88}{.018}{#3}
+  \SlideText{.73}{7.15}{11.35}{5}{#2}{}{#1}
+  \SlideText{11.85}{7.12}{.75}{5.5}{#2}{\bfseries}{\raggedleft\insertframenumber/\inserttotalframenumber}
+}
+\newcommand{\SlideCard}[6]{%
+  \SlidePanel{#1}{#2}{#3}{#4}{panel}
+  \SlideText{\fpeval{#1+.23}}{\fpeval{#2+.19}}{\fpeval{#3-.46}}{10.5}{teal}{\bfseries}{#5}
+  \SlideText{\fpeval{#1+.23}}{\fpeval{#2+.79}}{\fpeval{#3-.46}}{9.5}{ink}{}{#6}
+}
+\newcommand{\SlideCode}[7]{%
+  \SlidePanel{#1}{#2}{#3}{#4}{dark}
+  \SlideText{\fpeval{#1+.22}}{\fpeval{#2+.19}}{\fpeval{#3-.44}}{7}{mint}{\bfseries}{#5}
+  \SlideText{\fpeval{#1+.22}}{\fpeval{#2+.67}}{\fpeval{#3-.44}}{#6}{light}{\ttfamily}{#7}
+}
+
+\definecolor{ink}{HTML}{16302F}
+\definecolor{paper}{HTML}{F4F5EE}
+\definecolor{teal}{HTML}{007767}
+\definecolor{muted}{HTML}{466362}
+\definecolor{rule}{HTML}{DDE6DB}
+\definecolor{dark}{HTML}{112C2A}
+\definecolor{light}{HTML}{F1F7EF}
+\definecolor{mint}{HTML}{A9EAD0}
+\definecolor{darkrule}{HTML}{48615D}
+\definecolor{panel}{HTML}{E7EEE3}
+\definecolor{alternate}{HTML}{EDF1E8}
+\definecolor{baseline}{HTML}{84A8A1}
+
+\begin{document}
+% AI skills for reliable software
+\begingroup
+\setbeamercolor{background canvas}{bg=dark}
+\begin{frame}[plain]
+\note{\tiny
+The comparison uses archived AI-generated outputs from November 18, 2026 and a separate comparison of C++ inference tests. The paired runs hold catalog access constant. The examples demonstrate concrete review
+and testing benefits, with clear limits on causality.
+
+}
+\begin{slidecanvas}
+\SlideHeader{AI skills for reliable software}{ENGINEERING PRESENTATION}{mint}{light}
+\SlideFooter{MATHEMATICAL ABSTRACTIONS}{mint}{darkrule}
+\SlideText{0.75}{2.02}{10.9}{14.5}{light}{}{From mathematical rules to code you can\par review and tests that expose defects}
+\SlidePanel{.75}{4.39}{.34}{.04}{mint}
+\SlideText{.75}{4.62}{9.5}{11}{mint}{\bfseries}{What changes when an AI agent gets repository skills as well as the catalog?}
+\end{slidecanvas}
+\end{frame}
+\endgroup
+
+% Roadmap
+\begingroup
+\setbeamercolor{background canvas}{bg=paper}
+\begin{frame}[plain]
+\note{\tiny
+Introduce specification-derived testing. Compare the generated scheduler and wet-grass
+tests, then recap the evidence and apply the workflow to one API.
+}
+\begin{slidecanvas}
+\SlideHeader{From a catalog rule to evidence}{ROADMAP}{teal}{ink}
+\SlideText{.74}{1.79}{11.8}{10.5}{muted}{}{Start with the method, then see how it changes test design and exposes implementation faults.}
+\SlidePanel{.74}{2.55}{11.86}{.59}{panel}
+\SlideText{.94}{2.68}{3.34}{9.5}{teal}{\bfseries}{1 · Foundations}
+\SlideText{4.35}{2.68}{8}{9.5}{ink}{}{See how a specification gives a test its expected result.}
+\SlidePanel{.74}{3.25}{11.86}{.59}{panel}
+\SlideText{.94}{3.38}{3.34}{9.5}{teal}{\bfseries}{2 · Scheduler}
+\SlideText{4.35}{3.38}{8}{9.5}{ink}{}{Compare generated tests for an expiring job scheduler.}
+\SlidePanel{.74}{3.95}{11.86}{.59}{panel}
+\SlideText{.94}{4.08}{3.34}{9.5}{teal}{\bfseries}{3 · Wet grass}
+\SlideText{4.35}{4.08}{8}{9.5}{ink}{}{See which tests catch a wrong probability.}
+\SlidePanel{.74}{4.65}{11.86}{.59}{panel}
+\SlideText{.94}{4.78}{3.34}{9.5}{teal}{\bfseries}{4 · Takeaways}
+\SlideText{4.35}{4.78}{8}{9.5}{ink}{}{Weigh the results and apply the method to one API.}
+\SlideFooter{MATHEMATICAL ABSTRACTIONS}{muted}{rule}
+\end{slidecanvas}
+\end{frame}
+\endgroup
+
+\section{Foundations}
+% Why derive tests from a specification?
+\begingroup
+\setbeamercolor{background canvas}{bg=paper}
+\begin{frame}[plain]
+\note{\tiny
+Here formal testing means deriving executable checks from precisely stated behavior. A test can
+falsify a claim with a concrete counterexample. Passing tests support the cases and input ranges
+exercised. A proof has separate obligations and evidence. The scheduler case that follows
+shows how two generated suites turn the same public contract into runnable tests.
+
+}
+\begin{slidecanvas}
+\SlideHeader{Why derive tests from a specification?}{FORMAL TESTING}{teal}{ink}
+\SlideText{0.74}{1.79}{11.8}{10.5}{muted}{}{An explicit rule tells us what should happen even when the implementation changes.}
+\SlideFooter{Source  •  Repository mathematical-tests skill · operation and claim mapping}{muted}{rule}
+\SlideCard{0.73}{2.83}{3.8}{2.65}{Expose hidden cases}{State which inputs are valid, what equality means and which outputs are allowed.}
+\SlideCard{4.77}{2.83}{3.8}{2.65}{Predict the answer}{Compute it from a rule, a small model or a known result. Use that prediction to test the code.}
+\SlideCard{8.81}{2.83}{3.8}{2.65}{Catch regressions}{Choose inputs that distinguish correct behavior from a plausible mistake. Keep the failing example.}
+\SlideText{0.75}{5.45}{11.8}{9.5}{teal}{\bfseries}{A failing assertion gives a counterexample. Passing checks give evidence for the cases run.}
+\end{slidecanvas}
+\end{frame}
+\endgroup
+
+\section{Scheduler}
+% Scheduler task and public API
+\begingroup
+\setbeamercolor{background canvas}{bg=paper}
+\begin{frame}[plain]
+\begin{slidecanvas}
+\SlideHeader{Test a scheduler with expiring jobs}{ORIGINAL TASK · PYTHON UNIT TESTS}{teal}{ink}
+\SlideText{.74}{1.79}{11.8}{10.5}{muted}{}{Write tests for a supplied scheduler through its public API. Each job has an ID, an integer priority, and an expiry time.}
+\SlideCard{.74}{2.72}{3.8}{2.36}{\texttt{put}}{Add a job or replace one with the same ID. The contract places no capacity limit on live jobs.}
+\SlideCard{4.77}{2.72}{3.8}{2.36}{\texttt{snapshot}}{Return all live jobs sorted by ID. Leave those jobs in the scheduler.}
+\SlideCard{8.80}{2.72}{3.8}{2.36}{\texttt{take}}{Remove a live job with the lowest priority number. Any tied minimum is allowed.}
+\SlideText{.75}{5.53}{11.8}{9.5}{teal}{\bfseries}{A job expiring at time 5 appears in a snapshot at time 4 and is gone at time 5.}
+\SlideText{.75}{6.13}{11.8}{8.3}{ink}{}{Each timed call purges expired jobs. Time may stay the same or advance. A backwards call raises an error and preserves state.}
+\SlideFooter{Source  •  Archived case 11 · TASK.md  ·  Full prompt in the comparison slide notes}{muted}{rule}
+\end{slidecanvas}
+\end{frame}
+\endgroup
+
+% The guided test catches silent job loss
+\begingroup
+\setbeamercolor{background canvas}{bg=paper}
+\begin{frame}[plain]
+\note{\tiny
+The guided suite inserted 513 distinct live jobs at time zero, checked the complete snapshot and
+drained them by priority. The baseline suite used independent histories and checked legal tie
+choices, expiration and clone behavior. The extra injected fault ignored live insertions after
+eight active IDs. This was selected after inspecting the suites, so the primary score remains
+10/10 for both.
+\par\medskip\textbf{Original task prompt}\par
+
+\# Design a test suite for an opaque expiring job scheduler
+
+Write standard-library `unittest` tests in `test\_scheduler.py` for `import scheduler\_api as
+api`. A reference implementation is supplied as `scheduler\_api.py`; do not modify it. Other
+correct implementations may use different private state types and choose different tied jobs.
+
+Contract:
+
+- `new()` creates an empty mutable scheduler with logical time 0. - `put(state, job\_id, priority,
+expires\_at, now)` first advances time and purges every job with `expires\_at <= now`. It then
+replaces any job with this ID. If the supplied expiration is already `<= now`, the result has no
+job with that ID. The return value is `None`. - `take(state, now)` advances time, purges expired
+jobs, removes and returns a live minimum-priority job as `(job\_id, priority, expires\_at)`. Any
+tied minimum may be chosen. Empty `take` raises `KeyError`; advancing time and expiration still
+take effect. - `snapshot(state, now)` advances time, purges expired jobs and returns a tuple of
+live job rows sorted by job ID. It does not remove live jobs. - `clone(state)` returns an
+independent scheduler with the same jobs and logical time. Changes to either copy must not affect
+the other. - Time starts at 0 and may stay equal or increase. Every timed operation with `now`
+less than that scheduler's last accepted time raises `ValueError` and leaves jobs and time
+unchanged. No expiration or partial update may occur on this rejected call. A clone inherits its
+source's last accepted time.
+
+Job IDs are nonempty strings, priorities are arbitrary signed Python integers, expiration and
+`now` are arbitrary Python integers. Inputs are of these types. Negative expiration simply denotes
+an already expired job; negative `now` is backwards from the initial clock. No capacity limit
+applies. Only these module functions are public; do not inspect private attributes or depend on
+internal containers.
+
+The suite should give a maintainer confidence in replacement, expiration, time errors, cloning,
+mixed operation histories, and allowed tie choices—not just happy paths. Put a concise explanation
+of each test group's purpose and oracle in `test-plan.md`, with a reproducible command and actual
+results in `answer.md`. Run the suite. Do not repair production code, alter the contract or change
+the catalog. The amount of code or number of tests is not itself a quality goal.
+
+}
+\begin{slidecanvas}
+\SlideHeader{Two generated tests check the snapshot}{GENERATED PYTHON · SIDE BY SIDE}{teal}{ink}
+\SlideText{.74}{1.79}{11.8}{10.1}{muted}{}{Both tests insert live jobs at time zero and compare the snapshot with the sorted input.}
+\SlideCode{.73}{2.48}{5.82}{2.89}{WITHOUT SKILLS · SIX JOBS}{6.35}{state~=~api.new()\par \#~...~rows~contains~six~live~jobs~...\par for~row~in~rows:\par ~~~~self.assertIsNone(api.put(state,~*row,~0))\par expected~=~tuple(sorted(rows))\par for~\_~in~range(3):\par ~~~~result~=~api.snapshot(state,~0)\par ~~~~\#~...~tuple~shape~assertions~...\par ~~~~self.assertEqual(result,~expected)}
+\SlideCode{6.79}{2.48}{5.82}{2.89}{WITH SKILLS · 513 JOBS}{6.35}{s~=~api.new()\par rows~=~[(\mbox{f'job-\{i:04d\}'},~(i~*~37)~\%~101~-~50,\par ~~~~~~~~~1000~+~i)~for~i~in~range(513)]\par for~row~in~rows:\par ~~~~self.put(s,~*row,~0)\par self.assertEqual(api.snapshot(s,~0),\par ~~~~~~~~~~~~~~~~~tuple(sorted(rows)))}
+\SlideText{.75}{5.57}{11.8}{9.3}{teal}{\bfseries}{An extra fault capped the queue at eight jobs. Only the guided suite caught it.}
+\SlideText{.75}{6.20}{11.8}{8.1}{ink}{}{Both complete suites caught all 10 predeclared faults. The eight-job cap was tried after reviewing the suites.}
+\SlideFooter{Source  •  Archived case 11 · Abridged test\_scheduler.py excerpts and capacity-supplement.json}{muted}{rule}
+\end{slidecanvas}
+\end{frame}
+\endgroup
+
+\section{Wet grass}
+\begingroup
+\setbeamercolor{background canvas}{bg=paper}
+\begin{frame}[plain]
+\note{\tiny
+The task was to write GoogleTest tests for the fixed C++ Bayesian network. The documented
+contract covers joint probabilities, evidence matching, marginal probabilities and posterior
+queries. Each of the four variables is Boolean. Evidence records true, false or unobserved
+for each variable. The API throws std::domain\_error for zero-mass evidence, including
+when the queried variable is already observed. The probability tables are illustrative.
+}
+\begin{slidecanvas}
+\SlideHeader{The grass is wet. Did it rain?}{ORIGINAL TASK · TEST A C++ INFERENCE ENGINE}{teal}{ink}
+\SlideText{.74}{1.79}{11.8}{10.5}{muted}{}{Given observations about cloud cover, the sprinkler or wet grass, the API computes the probability of rain.}
+\SlideCard{.74}{2.64}{5.76}{2.52}{Wet grass alone}{Rain is about \textbf{71\%} likely in this model. Both suites check the exact reference ratio $0.4581/0.6471$.}
+\SlideCard{6.79}{2.64}{5.76}{2.52}{Wet grass and sprinkler on}{Rain drops to about \textbf{32\%}. The running sprinkler gives another explanation for the wet grass. Both suites test this too.}
+\SlideText{.75}{5.64}{11.8}{9.5}{teal}{\bfseries}{What happens when the grass is wet, the sprinkler is off and the sky is clear?}
+\SlideFooter{Source  •  automatic\_tests/bayesian\_network.md and Bayesian network GoogleTest suites}{muted}{rule}
+\end{slidecanvas}
+\end{frame}
+
+\begin{frame}[plain]
+\note{\tiny
+The baseline checks the complete joint distribution using independent expected numbers
+and tests selected posterior cases. Both snippets are abridged from the original suites.
+The guided oracle stores 16 documented joint probabilities as integer weights over 20,000
+and selects compatible assignments using bit masks. No production helper computes its
+expected values. The network factorization gives the weight table. The conditional-probability
+ratio gives an expected result for each evidence/query pair. The implementation extends the
+catalog network interface to already-observed query variables using event intersection.
+Of 81 evidence patterns, 78 have positive mass. With 4 variables and 2 values this gives
+624 posterior assertions against the oracle. All 8 queries on each of the 3 zero-mass
+patterns must throw under the C++ contract.
+}
+\begin{slidecanvas}
+\SlideHeader{From two weather examples to 624 queries}{GENERATED GOOGLETEST · WITHOUT AND WITH SKILLS}{teal}{ink}
+\SlideText{.74}{1.78}{11.8}{10.1}{muted}{}{The catalog gives the test oracle its rule. For positive-mass evidence $B$, $P(A\mid B)=P(A\cap B)/P(B)$.}
+\SlideCode{.73}{2.63}{5.82}{2.48}{WITHOUT SKILLS · SELECTED POSTERIORS}{6.7}{EXPECT\_NEAR(rain\_given\_wet,\par ~~~~0.4581~/~0.6471,~kTolerance);\par\medskip EXPECT\_NEAR(rain\_given\_wet\_and\_sprinkler,\par ~~~~0.0891~/~0.2781,~kTolerance);}
+\SlideCode{6.79}{2.63}{5.82}{2.48}{WITH SKILLS · EXHAUSTIVE ORACLE}{6.7}{const~int~denominator~=~event\_weight(evidence);\par //~...~all~four~variables~and~both~values~...\par const~double~result~=~posterior(\par ~~~~variables[q],~value,~evidence);\par EXPECT\_NEAR(result,~double(numerator)~/\par ~~~~denominator,~tolerance);}
+\SlideText{.75}{5.56}{11.8}{9}{teal}{\bfseries}{The guided suite enumerates all $3^4=81$ evidence patterns using true, false and unobserved.}
+\SlideText{.75}{6.13}{11.8}{8.1}{ink}{}{Integer weights give an independent expected answer for each positive-mass query. Three impossible patterns exercise the API's exception path.}
+\SlideFooter{Sources  •  ConditionalProbability-ratio  ·  automatic\_tests/\{noskill\_tests,tests\}/bayesian\_network\_test.cpp}{muted}{rule}
+\end{slidecanvas}
+\end{frame}
+
+\begin{frame}[plain]
+\note{\tiny
+Local rerun on 2026-11-25. Compile the two suites separately against the unchanged source
+using C++20 and GoogleTest. Then repeat with the same scratch change in each copy.
+In posterior, immediately before its final return, count engaged evidence optionals
+using has\_value(). If the count is variable\_count minus one, return
+evidence\_probability(combined) directly. Leave the existing final return that divides
+by denominator in place for other counts. The guided failures were
+EveryPositiveEvidenceQueryMatchesExactRatio and ConditionalRowsAreNormalizedAndBounded.
+For Cloudy=false, Sprinkler=false, WetGrass=true, the only positive-mass assignment
+has Rain=true and weight 900/20,000. The faulty return is 0.045 and the correct
+ratio is 0.045/0.045. Both suites pass 14/14 on the unchanged code. This is one
+seeded fault in an existing pair of suites. The matched runs elsewhere in the deck
+used a separate evaluation protocol.
+}
+\begin{slidecanvas}
+\SlideHeader{One missed division changes the answer}{DELIBERATE FAULT · SAME C++ IMPLEMENTATION}{teal}{ink}
+\SlideText{.74}{1.78}{11.8}{10.5}{muted}{}{Wet grass, sprinkler off, clear sky. In this model, rain is the only possible explanation.}
+\SlideCard{.74}{2.55}{5.76}{1.54}{Correct answer · 100\%}{$P(\text{rain and evidence})/P(\text{evidence})=0.045/0.045$.}
+\SlideCard{6.79}{2.55}{5.76}{1.54}{Faulty answer · 4.5\%}{With three observations, the seeded bug returns the joint mass directly.}
+\SlideText{.76}{4.58}{4.2}{9}{teal}{\bfseries}{Test suite}
+\SlideText{5.34}{4.58}{3.3}{9}{teal}{\bfseries}{Original code}
+\SlideText{8.9}{4.58}{3.3}{9}{teal}{\bfseries}{With seeded fault}
+\SlidePanel{.74}{4.98}{11.8}{.017}{rule}
+\SlideText{.76}{5.17}{4.2}{9}{ink}{}{Without skills}
+\SlideText{5.34}{5.17}{3.3}{9}{ink}{}{14/14 passed}
+\SlideText{8.9}{5.17}{3.3}{9}{ink}{}{14/14 passed}
+\SlideText{.76}{5.74}{4.2}{9}{ink}{}{With skills}
+\SlideText{5.34}{5.74}{3.3}{9}{ink}{}{14/14 passed}
+\SlideText{8.9}{5.74}{3.3}{9}{teal}{\bfseries}{2 tests failed}
+\SlideFooter{Local rerun  •  25 November 2026  •  One seeded fault on this fixed four-variable network}{muted}{rule}
+\end{slidecanvas}
+\end{frame}
+\endgroup
+
+\section{Takeaways}
+% What changed with skills
+\begingroup
+\setbeamercolor{background canvas}{bg=paper}
+\begin{frame}[plain]
+\note{\tiny
+The scheduler comes from the matched pilot. Each arm had the same task and catalog,
+with skill instructions exposed only in the guided arm. Both scheduler suites accepted both
+correct implementations. The eight-job cap was picked after inspecting the suites.
+Wet grass compares existing GoogleTest suites on an unchanged control and one deliberate
+fault, outside the matched pilot. Both suites passed 14/14 on the control. These are
+individual comparisons, with no estimate of average gains.
+}
+\begin{slidecanvas}
+\SlideHeader{What changed with skills?}{EVIDENCE AND LIMITS}{teal}{ink}
+\SlideText{.74}{1.79}{11.8}{10.5}{muted}{}{The scheduler suites tied on the predeclared faults. Two additional probes show where the guided tests went further.}
+\SlideText{.98}{2.61}{6.2}{7}{teal}{\bfseries}{COMPARISON}
+\SlideText{7.55}{2.61}{2.12}{7}{teal}{\bfseries}{WITHOUT SKILLS}
+\SlideText{10.1}{2.61}{2.23}{7}{teal}{\bfseries}{WITH SKILLS}
+\SlidePanel{.74}{2.98}{11.87}{.58}{panel}
+\SlideText{.98}{3.09}{6.46}{8.7}{ink}{}{Matched · Correct schedulers accepted}
+\SlideText{7.55}{3.09}{2.12}{8.7}{ink}{\bfseries}{2/2}
+\SlideText{10.1}{3.09}{2.23}{8.7}{ink}{\bfseries}{2/2}
+\SlidePanel{.74}{3.62}{11.87}{.58}{alternate}
+\SlideText{.98}{3.73}{6.46}{8.7}{ink}{}{Matched · Predeclared scheduler faults caught}
+\SlideText{7.55}{3.73}{2.12}{8.7}{ink}{\bfseries}{10/10}
+\SlideText{10.1}{3.73}{2.23}{8.7}{ink}{\bfseries}{10/10}
+\SlidePanel{.74}{4.26}{11.87}{.58}{panel}
+\SlideText{.98}{4.37}{6.46}{8.7}{ink}{}{Post-hoc scheduler probe · Eight-job cap}
+\SlideText{7.55}{4.37}{2.12}{8.7}{ink}{}{Missed}
+\SlideText{10.1}{4.37}{2.23}{8.7}{teal}{\bfseries}{Caught}
+\SlidePanel{.74}{4.90}{11.87}{.58}{alternate}
+\SlideText{.98}{5.01}{6.46}{8.7}{ink}{}{Separate wet-grass probe · Missing normalization}
+\SlideText{7.55}{5.01}{2.12}{8.7}{ink}{}{Missed}
+\SlideText{10.1}{5.01}{2.23}{8.7}{teal}{\bfseries}{Caught}
+\SlideText{.75}{5.91}{11.8}{9}{ink}{}{The scheduler test varied queue size. The wet-grass test varied evidence combinations. Both probes show how broader inputs can expose faults.}
+\SlideFooter{Sources  •  Archived matched pilot and capacity supplement  ·  Separate Bayesian network rerun}{muted}{rule}
+\end{slidecanvas}
+\end{frame}
+\endgroup
+
+% Put the skills to work on one risky API
+\begingroup
+\setbeamercolor{background canvas}{bg=paper}
+\begin{frame}[plain]
+\note{\tiny
+Example prompt for the presenter: Read ai/skills/mathematical-tests/SKILL.md.
+Map the rule that jobs expire at or before the current time to the public
+scheduler API. Insert one job that expires at time 5 and check that it appears
+at time 4 and is gone at time 5. Run the generated test against correct code
+and a temporary copy that expires jobs one tick late. Keep the failing assertion.
+}
+\begin{slidecanvas}
+\SlideHeader{Put the skills to work on one risky API}{ADOPTION}{teal}{ink}
+\SlideCard{.73}{2.58}{3.8}{2.25}{Pick a rule}{Choose a behavior your API must guarantee.}
+\SlideCard{4.77}{2.58}{3.8}{2.25}{Generate a test}{Use the skill to turn the rule into an assertion.}
+\SlideCard{8.81}{2.58}{3.8}{2.25}{Check for defects}{Run the test against correct code and a deliberate bug.}
+\SlideFooter{Repository skill  •  Mathematical tests}{muted}{rule}
+\end{slidecanvas}
+\end{frame}
+\endgroup
+
+% Source artifacts and reproduction
+\begingroup
+\setbeamercolor{background canvas}{bg=paper}
+\begin{frame}[plain]
+\note{\tiny
+Slides 4--5 use Git commit a71a69d, under
+ai/evaluations/results/2026-11-18-hard-quality/. Use git archive a71a69d with that
+path to extract it into a scratch directory. Case 11 contains test\_scheduler.py
+and test-plan.md in the with-skills and without-skills directories.
+For each arm, run \texttt{python3 ai/evaluations/quality\_checks.py -{}-case 11 -{}-workspace PATH}.
+PATH is the extracted arm directory. Read capacity-supplement.json for the
+separate eight-job fault, source and logs.
+
+\par\medskip
+Slides 6--8 use the sibling automatic\_tests workspace. Compile each
+bayesian\_network\_test.cpp with C++20 and GoogleTest, preserving the relative
+include of bayesian\_network.cpp. The suites are under noskill\_tests/ and tests/.
+Run each against the original target. Repeat against a scratch copy with the edit
+specified in slide 8's notes. The integer-weight oracle and catalog mapping are
+in tests/bayesian\_network\_tests.md.
+}
+\begin{slidecanvas}
+\SlideHeading{Where to verify each example}{APPENDIX}{teal}{ink}
+\SlideText{.74}{1.79}{11.8}{9.5}{muted}{}{Scheduler archive · Git commit a71a69d · ai/evaluations/results/2026-11-18-hard-quality/}
+\SlideText{.75}{2.72}{11.7}{9.5}{teal}{\bfseries}{Slides 4–5 · Scheduler task, tests and extra fault}
+\SlideText{.75}{3.12}{11.7}{8.4}{ink}{}{Archive case-11/ · Both test\_scheduler.py files. Eight-job fault · capacity-supplement.json.}
+\SlideText{.75}{4.22}{11.7}{9.5}{teal}{\bfseries}{Slides 6–8 · Wet-grass tests and seeded fault}
+\SlideText{.75}{4.62}{11.7}{8.4}{ink}{}{Companion automatic\_tests workspace · Compare bayesian\_network\_test.cpp in noskill\_tests/ and tests/.\par Read tests/bayesian\_network\_tests.md for the oracle and slide 8's notes for the exact fault edit.}
+\SlideFooter{Rerun instructions are in the presenter notes.}{muted}{rule}
+\end{slidecanvas}
+\end{frame}
+\endgroup
+
+\end{document}
