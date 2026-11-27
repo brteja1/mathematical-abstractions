@@ -253,6 +253,35 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 **provenanceKind:** derived
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {A : Type u} {Q : Type v} [Fintype A] [Fintype Q] (m : Catalog.NFA A Q), ∃ d : Catalog.DFA A (Set Q), d.accepts = m.toNFA.accepts
+```
+
+**Source:** [`Catalog.CSLib.subset_construction`](../lean/Catalog/CSLibAutomata.lean); consulted 2026-11-27.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** Finite alphabet A and finite state carrier Q; Catalog.NFA supplies a singleton start set (hence nonempty Q), total set-valued symbol transitions and full-word existential acceptance. Identity equality; the DFA carrier is Set Q with its finite powerset instance. CSLib toDAFinAcc preserves language through path and acceptance bridges.
+
+**Limits:** Noncomputable powerset construction; proves existence and finite-word language equality, not executable enumeration or complexity. No epsilon transitions, minimization, infinite words or extracted algorithm. Informal Boolean acceptance is interpreted as membership in the accepted language; source provenance is separate from compiler evidence.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/DFA-model": "Catalog.DFA A (Set Q) has finite powerset states, total symbol transitions, a start state and accepting set, constructed by CSLib toDAFinAcc and fromDA.",
+  "urn:csabs:axiom/DFA-run": "Mathlib DFA.accepts uses the deterministic fold over the whole word; Catalog.CSLib.dfa_language_eq identifies it with CSLib deterministic acceptance.",
+  "urn:csabs:axiom/NFA-model": "Catalog.NFA A Q extends Mathlib NFA with singleton start; Fintype A and Q supply finiteness. step : Q → A → Set Q supplies epsilon-free total successor sets; empty successor sets are permitted.",
+  "urn:csabs:axiom/NFA-run": "Mathlib NFA.Path and accepts encode finite-word existential runs; Catalog.CSLib.path_iff and nfa_language_eq prove correspondence to CSLib MTr and acceptance, including the empty word."
+}
+```
+
 <a id="node-urn-csabs-theorem-NFA-reachable-set-invariant"></a>
 
 ### reachable-set-invariant
@@ -519,7 +548,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
     ],
     "sourceLocator": "Slides 4–6: NFA definition and subset-construction equivalence",
     "sourceNote": "Editorial derivation from the linked defining rules and operations, using the consulted source presentation; not attributed as a numbered source theorem.",
-    "provenanceKind": "derived"
+    "provenanceKind": "derived",
+    "leanFormulation": "∀ {A : Type u} {Q : Type v} [Fintype A] [Fintype Q] (m : Catalog.NFA A Q), ∃ d : Catalog.DFA A (Set Q), d.accepts = m.toNFA.accepts",
+    "leanModelMapping": "Finite alphabet A and finite state carrier Q; Catalog.NFA supplies a singleton start set (hence nonempty Q), total set-valued symbol transitions and full-word existential acceptance. Identity equality; the DFA carrier is Set Q with its finite powerset instance. CSLib toDAFinAcc preserves language through path and acceptance bridges.",
+    "leanModelLimitations": "Noncomputable powerset construction; proves existence and finite-word language equality, not executable enumeration or complexity. No epsilon transitions, minimization, infinite words or extracted algorithm. Informal Boolean acceptance is interpreted as membership in the accepted language; source provenance is separate from compiler evidence.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/DFA-model\": \"Catalog.DFA A (Set Q) has finite powerset states, total symbol transitions, a start state and accepting set, constructed by CSLib toDAFinAcc and fromDA.\", \"urn:csabs:axiom/DFA-run\": \"Mathlib DFA.accepts uses the deterministic fold over the whole word; Catalog.CSLib.dfa_language_eq identifies it with CSLib deterministic acceptance.\", \"urn:csabs:axiom/NFA-model\": \"Catalog.NFA A Q extends Mathlib NFA with singleton start; Fintype A and Q supply finiteness. step : Q → A → Set Q supplies epsilon-free total successor sets; empty successor sets are permitted.\", \"urn:csabs:axiom/NFA-run\": \"Mathlib NFA.Path and accepts encode finite-word existential runs; Catalog.CSLib.path_iff and nfa_language_eq prove correspondence to CSLib MTr and acceptance, including the empty word.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/local-lean-CSLibAutomata",
+    "formulationLocator": "Catalog.CSLib.subset_construction"
   },
   {
     "id": "urn:csabs:theorem/NFA-reachable-set-invariant",

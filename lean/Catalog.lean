@@ -12,6 +12,7 @@ public import Catalog.Semantics
 public import Catalog.Logic
 public import Catalog.LogicSyntax
 public import Catalog.Languages
+public import Catalog.CSLibAutomata
 public import Catalog.Database
 public import Catalog.InformationTheory
 public import Catalog.InformationTheoryStatements

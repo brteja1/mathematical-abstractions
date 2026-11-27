@@ -6076,6 +6076,26 @@
       "mapping": "Optional EndpointSetSchema assigns sourceTypes(k),targetTypes(k)⊆T. Each edge endpoint must belong to its declared set. Incidence bounds apply at every vertex whose type belongs to the corresponding set, counting edge identities once per kind. Empty sets reject edges of that kind; overlapping eligible kinds impose each constraint. Singleton sets recover exact conformance, including bounds. The bounds carrier reuses TypedEdgeSchema; its sourceType/targetType fields are ignored in this profile. Exact equality and typed carriers are those displayed in the Lean proposition.",
       "limitations": "Selected mathematical profile only; singleton replacement does not establish arbitrary substring replacement confluence. Set endpoint declarations use disjunctive membership; no automatic subtype closure.",
       "catalogHash": "b525ec09d18dac5fbb3641209e3bf96d2cded4db6c9a6d02a88517528d453b13"
+    },
+    "urn:csabs:theorem/NFA-subset-construction": {
+      "kind": "witness",
+      "symbol": "Catalog.CSLib.subset_construction",
+      "module": "Catalog.CSLibAutomata",
+      "expectedType": "∀ {A : Type u} {Q : Type v} [Fintype A] [Fintype Q] (m : Catalog.NFA A Q), ∃ d : Catalog.DFA A (Set Q), d.accepts = m.toNFA.accepts",
+      "mapping": "Finite alphabet A and finite state carrier Q; Catalog.NFA supplies a singleton start set (hence nonempty Q), total set-valued symbol transitions and full-word existential acceptance. Identity equality; the DFA carrier is Set Q with its finite powerset instance. CSLib toDAFinAcc preserves language through path and acceptance bridges.",
+      "premiseMapping": {
+        "urn:csabs:axiom/NFA-model": "Catalog.NFA A Q extends Mathlib NFA with singleton start; Fintype A and Q supply finiteness. step : Q → A → Set Q supplies epsilon-free total successor sets; empty successor sets are permitted.",
+        "urn:csabs:axiom/NFA-run": "Mathlib NFA.Path and accepts encode finite-word existential runs; Catalog.CSLib.path_iff and nfa_language_eq prove correspondence to CSLib MTr and acceptance, including the empty word.",
+        "urn:csabs:axiom/DFA-model": "Catalog.DFA A (Set Q) has finite powerset states, total symbol transitions, a start state and accepting set, constructed by CSLib toDAFinAcc and fromDA.",
+        "urn:csabs:axiom/DFA-run": "Mathlib DFA.accepts uses the deterministic fold over the whole word; Catalog.CSLib.dfa_language_eq identifies it with CSLib deterministic acceptance."
+      },
+      "limitations": "Noncomputable powerset construction; proves existence and finite-word language equality, not executable enumeration or complexity. No epsilon transitions, minimization, infinite words or extracted algorithm. Informal Boolean acceptance is interpreted as membership in the accepted language; source provenance is separate from compiler evidence.",
+      "allowedAxioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "catalogHash": "b266cfb6dc196ce10e46765b164699d63d206a6b08feec6f5d3889d7af40928b"
     }
   }
 }
