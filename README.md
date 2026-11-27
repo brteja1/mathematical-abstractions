@@ -33,6 +33,8 @@ In **Settings → Pages → Build and deployment**, select **GitHub Actions** as
 
 Clone this repository and run `make` to install ONTFS and build the catalog, viewer and ontology. See [INSTALL.md](INSTALL.md) for prerequisites, setup, usage and troubleshooting.
 
+The optional Lean project pins Mathlib and [CSLib](https://github.com/leanprover/cslib) for mathematical and computer-science models. Its [CSLib bridge](lean/Catalog/CSLib.lean) proves correspondence of the existing labelled paths and finite traces with CSLib's transition systems. Each additional abstraction still needs an explicit mapping and proof.
+
 After reviewing catalog changes against their Lean mappings, run `make update-lean-bindings` to refresh binding fingerprints, then `make check-lean` and `make test-lean`. Preview changes with `LEAN_FLAGS=--dry-run`, or select bindings with `LEAN_IDS="Graph BipartiteGraph"`. See the [Lean workflow](lean/README.md).
 
 ## Storage and fields

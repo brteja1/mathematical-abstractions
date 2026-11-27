@@ -26,6 +26,20 @@ class LeanBindingTests(unittest.TestCase):
     def test_current_bindings_cover_every_concept(self):
         self.assertEqual(self.errors(), [])
 
+    def test_changed_cslib_revision_is_rejected(self):
+        self.manifest['cslibRevision'] = 'wrong'
+        self.assertIn('CSLib revision differs from Lake lock', self.errors())
+
+    def test_cslib_must_be_an_explicit_pinned_requirement(self):
+        original_read = Path.read_text
+        def read_text(path, *args, **kwargs):
+            value = original_read(path, *args, **kwargs)
+            if path == integration.LEAN / 'lakefile.toml':
+                value = value.replace('name = "cslib"', 'name = "unrelated"')
+            return value
+        with patch.object(Path, 'read_text', read_text):
+            self.assertIn('lakefile.toml must pin CSLib to the locked commit', self.errors())
+
     def test_new_concept_needs_a_model(self):
         node = copy.deepcopy(self.index['urn:csabs:concept/Group'])
         node['id'] = 'urn:csabs:concept/NewConcept'

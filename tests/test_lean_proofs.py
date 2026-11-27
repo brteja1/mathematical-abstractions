@@ -38,6 +38,27 @@ class LeanProofRejectionTests(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertIn('Type mismatch', result.stdout)
 
+    def test_cslib_bridge_expected_types_and_axioms(self):
+        result = self.compile('''
+import all Catalog.CSLib
+example {S Act : Type} (t : Catalog.LabelledTransitionSystem S Act) :
+    Catalog.CSLib.fromLTS (Catalog.CSLib.toLTS t) t.initial = t :=
+  Catalog.CSLib.roundTrip t
+example {S Act : Type} (t : Catalog.LabelledTransitionSystem S Act)
+    (s e : S) (word : List Act) :
+    Catalog.LabelledPath t s word e ↔ (Catalog.CSLib.toLTS t).MTr s word e :=
+  Catalog.CSLib.labelledPath_iff t s word e
+example {S Act : Type} (t : Catalog.LabelledTransitionSystem S Act) (s : S) :
+    Catalog.finiteTraces t s = (Catalog.CSLib.toLTS t).traces s :=
+  Catalog.CSLib.finiteTraces_eq t s
+#catalog_witness Catalog.CSLib.roundTrip
+#catalog_witness Catalog.CSLib.labelledPath_iff
+#catalog_witness Catalog.CSLib.finiteTraces_eq
+''')
+        self.assertEqual(result.returncode, 0, result.stdout)
+        for name in ('roundTrip', 'labelledPath_iff', 'finiteTraces_eq'):
+            self.assertIn('CATALOG_WITNESS Catalog.CSLib.' + name + ' |', result.stdout)
+
     def acquisition_source(self):
         return (ROOT / 'ai/skills/abstraction-acquisition/references/watermark.lean').read_text()
 

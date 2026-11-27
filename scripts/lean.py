@@ -86,11 +86,23 @@ def validate(manifest, index):
         errors.append('Toolchain differs from binding manifest')
     lock = json.loads((LEAN / 'lake-manifest.json').read_text())
     packages = {p['name']: p for p in lock['packages']}
-    if manifest.get('mathlibRevision') != packages['mathlib']['rev']:
-        errors.append('Mathlib revision differs from Lake lock')
+    # Check this project's explicit, double-quoted pins without requiring
+    # Python 3.11's tomllib. Lake remains responsible for TOML validation.
     config = (LEAN / 'lakefile.toml').read_text()
-    if packages['mathlib']['rev'] not in config:
-        errors.append('lakefile.toml must pin Mathlib to the locked commit')
+    requirements = {}
+    for block in re.split(r'(?m)^\s*\[\[require\]\]\s*(?:#.*)?$', config)[1:]:
+        block = re.split(r'(?m)^\s*\[', block, maxsplit=1)[0]
+        fields = dict(re.findall(r'(?m)^\s*(name|rev)\s*=\s*"([^"\n]+)"\s*(?:#.*)?$', block))
+        if 'name' in fields:
+            requirements[fields['name']] = fields
+    for name, label in [('mathlib', 'Mathlib'), ('cslib', 'CSLib')]:
+        package = packages.get(name, {})
+        revision = package.get('rev')
+        if not revision or manifest.get(name + 'Revision') != revision:
+            errors.append(label + ' revision differs from Lake lock')
+        requirement = requirements.get(name, {})
+        if not revision or requirement.get('rev') != revision:
+            errors.append('lakefile.toml must pin ' + label + ' to the locked commit')
     bindings = manifest.get('bindings', {})
     concepts = {i for i, n in index.items() if n['type'] == 'Concept'}
     missing = concepts - bindings.keys()
@@ -215,6 +227,7 @@ def verify(manifest):
     report = {'schemaVersion': 1, 'verifiedAt': datetime.now(timezone.utc).isoformat(),
               'inputsDigest': after, 'toolchain': manifest['toolchain'],
               'mathlibRevision': manifest['mathlibRevision'], 'compiler': version,
+              'cslibRevision': manifest['cslibRevision'],
               'modelsChecked': sum(b['kind'] == 'model' for b in manifest['bindings'].values()),
               'witnesses': witnesses,
               'commands': ['lake build', 'lake env lean .lake/CatalogAudit.lean'],

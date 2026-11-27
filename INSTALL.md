@@ -97,7 +97,7 @@ These commands require only the Python standard library. Full builds, coverage r
 
 ## Optional Lean verification
 
-Install [Elan](https://github.com/leanprover/elan), then prepare the repository's existing Lean/Mathlib project:
+Install [Elan](https://github.com/leanprover/elan), then prepare the repository's pinned Lean/Mathlib/CSLib project:
 
 ```sh
 cd lean

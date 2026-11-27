@@ -1,5 +1,6 @@
 {
   "schemaVersion": 1,
+  "cslibRevision": "5b56df99362532c46e1175381fbbdd755bd56030",
   "toolchain": "leanprover/lean4:v4.35.0",
   "mathlibRevision": "56a005855ea17e0b0958f73ec801ae140b0a1679",
   "interpretation": "Model bindings and proposed theorem witnesses are separate. Only a fresh verification.json records successful compilation and axiom audits; metadata alone is not a verified proof.",
