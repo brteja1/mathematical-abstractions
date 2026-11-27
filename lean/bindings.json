@@ -6096,6 +6096,24 @@
         "Quot.sound"
       ],
       "catalogHash": "b266cfb6dc196ce10e46765b164699d63d206a6b08feec6f5d3889d7af40928b"
+    },
+    "urn:csabs:law/TerminationVariant-core": {
+      "kind": "witness",
+      "symbol": "Catalog.CSLib.variant_no_infinite_chain",
+      "module": "Catalog.CSLibTermination",
+      "expectedType": "∀ {S : Type u} {W : Type v} {C : Catalog.Command S} {r : W → W → Prop} (_variant : Catalog.TerminationVariant C r), ¬ ∃ states : ℕ → S, ∀ n, C (states n) (states (n + 1))",
+      "mapping": "State S and measure carrier W are arbitrary types, with identity equality. C(s,t) is the relation of completed continuing iterations, restricted to enabled invariant-preserving states by the client. Catalog.TerminationVariant supplies a measure, well-foundedness of r and decrease on every C step. The conclusion rules out infinite forward C chains using CSLib termination.",
+      "premiseMapping": {
+        "urn:csabs:axiom/TerminationVariant-well-founded-measure": "variant.measure : S → W and variant.wellFounded : WellFounded r supply the specified well-founded carrier; InvImage.wf pulls it back to states.",
+        "urn:csabs:axiom/TerminationVariant-strict-decrease": "variant.decreasing : ∀ s t, C s t → r (variant.measure t) (variant.measure s) makes reversed C a subrelation of the pulled-back well-founded relation."
+      },
+      "limitations": "Relational no-infinite-completed-iteration-chain result. Does not prove that any enabled body execution returns normally, preserves an invariant, or avoids faults; those operational premises must be established separately to conclude loop termination. No termination rate, natural-valued iteration bound, scheduler guarantee or concrete implementation refinement. Existing legacy mathematical citation gaps remain.",
+      "allowedAxioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "catalogHash": "8185931c62ba56a5e1e7c963427dee18cab635773d870466f3fce62511285b03"
     }
   }
 }

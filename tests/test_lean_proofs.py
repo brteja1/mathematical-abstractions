@@ -87,6 +87,31 @@ example {S Act : Type} (s : Catalog.LabelledTransitionSystem S Act) (x y : S) :
         for name in ('simulation_iff', 'bisimulation_iff', 'traceEquivalence_iff'):
             self.assertIn('CATALOG_WITNESS Catalog.CSLib.' + name + ' |', result.stdout)
 
+    def test_cslib_termination_expected_types_and_axioms(self):
+        # urn:csabs:law/TerminationVariant-core: no infinite completed C chain.
+        # Premises: well-founded-measure and strict-decrease; operational body
+        # termination remains separate. Nat example checks nonvacuity.
+        result = self.compile('''
+import all Catalog.CSLibTermination
+universe u v
+example {S : Type u} {W : Type v} (next : S → S → Prop) (less : W → W → Prop)
+    (ranking : Catalog.TerminationVariant next less) :
+    Relation.Terminating next := Catalog.CSLib.variant_terminating ranking
+example {S : Type u} {W : Type v} (next : S → S → Prop) (less : W → W → Prop)
+    (ranking : Catalog.TerminationVariant next less) (states : ℕ → S) :
+    ¬ (∀ n, next (states n) (states (n + 1))) := by
+  intro h
+  exact Catalog.CSLib.variant_no_infinite_chain ranking ⟨states, h⟩
+example : Catalog.TerminationVariant (fun s t : ℕ => t < s) (fun a b : ℕ => a < b) :=
+  ⟨id, Nat.lt_wfRel.wf, fun _ _ h => h⟩
+example (states : ℕ → Empty) : False := Empty.elim (states 0)
+#catalog_witness Catalog.CSLib.variant_terminating
+#catalog_witness Catalog.CSLib.variant_no_infinite_chain
+''')
+        self.assertEqual(result.returncode, 0, result.stdout)
+        for name in ('variant_terminating', 'variant_no_infinite_chain'):
+            self.assertIn('CATALOG_WITNESS Catalog.CSLib.' + name + ' |', result.stdout)
+
     def acquisition_source(self):
         return (ROOT / 'ai/skills/abstraction-acquisition/references/watermark.lean').read_text()
 

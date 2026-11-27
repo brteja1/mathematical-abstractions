@@ -2599,6 +2599,14 @@
       "path": "lean/Catalog/CSLibAutomata.lean",
       "accessedOn": "2026-11-27",
       "sourceRole": "Repository-local formal interpretation and witness type; not independent mathematical provenance or a proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/local-lean-CSLibTermination",
+      "type": "Source",
+      "label": "Catalog CSLib termination-variant bridge and no-infinite-chain witness",
+      "path": "lean/Catalog/CSLibTermination.lean",
+      "accessedOn": "2026-11-27",
+      "sourceRole": "Repository-local formal interpretation and witness type; not independent mathematical provenance or a proof-status assertion."
     }
   ]
 }

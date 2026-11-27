@@ -135,6 +135,33 @@ Read with the linked module’s imports, namespaces, universes and section varia
 
 **provenanceStatus:** legacy-source-missing
 
+#### Mathematical formulation
+
+**Lean formulation** (in its source module context):
+
+```lean
+∀ {S : Type u} {W : Type v} {C : Catalog.Command S} {r : W → W → Prop} (_variant : Catalog.TerminationVariant C r), ¬ ∃ states : ℕ → S, ∀ n, C (states n) (states (n + 1))
+```
+
+**Source:** [`Catalog.CSLib.variant_no_infinite_chain`](../lean/Catalog/CSLibTermination.lean); consulted 2026-11-27.
+
+**Scope:** registered-witness-type
+
+**Interpretation:** State S and measure carrier W are arbitrary types, with identity equality. C(s,t) is the relation of completed continuing iterations, restricted to enabled invariant-preserving states by the client. Catalog.TerminationVariant supplies a measure, well-foundedness of r and decrease on every C step. The conclusion rules out infinite forward C chains using CSLib termination.
+
+**Limits:** Relational no-infinite-completed-iteration-chain result. Does not prove that any enabled body execution returns normally, preserves an invariant, or avoids faults; those operational premises must be established separately to conclude loop termination. No termination rate, natural-valued iteration bound, scheduler guarantee or concrete implementation refinement. Existing legacy mathematical citation gaps remain.
+
+Read with the linked module’s imports, namespaces, universes and section variables. Proof status requires a fresh Lean verification report; this formulation does not close historical bibliographic source gaps.
+
+**Direct premise mapping:**
+
+```json
+{
+  "urn:csabs:axiom/TerminationVariant-strict-decrease": "variant.decreasing : ∀ s t, C s t → r (variant.measure t) (variant.measure s) makes reversed C a subrelation of the pulled-back well-founded relation.",
+  "urn:csabs:axiom/TerminationVariant-well-founded-measure": "variant.measure : S → W and variant.wellFounded : WellFounded r supply the specified well-founded carrier; InvImage.wf pulls it back to states."
+}
+```
+
 ## Theorems
 
 <a id="node-urn-csabs-theorem-TerminationVariant-natural-bound"></a>
@@ -277,7 +304,14 @@ Edit this JSON block to change graph facts, then run `make build`. The prose and
       "urn:csabs:axiom/TerminationVariant-well-founded-measure",
       "urn:csabs:axiom/TerminationVariant-strict-decrease"
     ],
-    "provenanceStatus": "legacy-source-missing"
+    "provenanceStatus": "legacy-source-missing",
+    "leanFormulation": "∀ {S : Type u} {W : Type v} {C : Catalog.Command S} {r : W → W → Prop} (_variant : Catalog.TerminationVariant C r), ¬ ∃ states : ℕ → S, ∀ n, C (states n) (states (n + 1))",
+    "leanModelMapping": "State S and measure carrier W are arbitrary types, with identity equality. C(s,t) is the relation of completed continuing iterations, restricted to enabled invariant-preserving states by the client. Catalog.TerminationVariant supplies a measure, well-foundedness of r and decrease on every C step. The conclusion rules out infinite forward C chains using CSLib termination.",
+    "leanModelLimitations": "Relational no-infinite-completed-iteration-chain result. Does not prove that any enabled body execution returns normally, preserves an invariant, or avoids faults; those operational premises must be established separately to conclude loop termination. No termination rate, natural-valued iteration bound, scheduler guarantee or concrete implementation refinement. Existing legacy mathematical citation gaps remain.",
+    "leanPremiseMapping": "{\"urn:csabs:axiom/TerminationVariant-strict-decrease\": \"variant.decreasing : ∀ s t, C s t → r (variant.measure t) (variant.measure s) makes reversed C a subrelation of the pulled-back well-founded relation.\", \"urn:csabs:axiom/TerminationVariant-well-founded-measure\": \"variant.measure : S → W and variant.wellFounded : WellFounded r supply the specified well-founded carrier; InvImage.wf pulls it back to states.\"}",
+    "formulationScope": "registered-witness-type",
+    "formulationSource": "urn:csabs:source/local-lean-CSLibTermination",
+    "formulationLocator": "Catalog.CSLib.variant_no_infinite_chain"
   },
   {
     "id": "urn:csabs:theorem/TerminationVariant-natural-bound",

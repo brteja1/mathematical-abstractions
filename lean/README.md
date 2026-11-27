@@ -6,6 +6,8 @@ This Lake project gives every current catalog concept a named Lean interpretatio
 
 [Catalog/CSLibAutomata.lean](Catalog/CSLibAutomata.lean) registers the existing `NFA-subset-construction` claim: every finite, singleton-start, epsilon-free catalog NFA has a language-equivalent DFA on its finite powerset. Path and acceptance bridges connect the Mathlib catalog models to CSLib’s determinization theorem. The construction is noncomputable; this does not supply an extracted algorithm or a complexity bound. Fresh compiler and axiom-audit evidence determines witness status.
 
+[Catalog/CSLibTermination.lean](Catalog/CSLibTermination.lean) registers `TerminationVariant-core`: a well-founded decreasing measure rules out infinite chains of completed continuing iterations. The client must separately establish that each enabled body execution terminates normally; the relation of completed outcomes alone cannot rule out divergence inside the body.
+
 There are currently **270 concept bindings**: 180 carrier/interface models and 90 explicitly partial interpretations. There are **85 registered proof witnesses** for existing laws/theorems, including all 11 recorded binary-tree laws/theorems, 13 information-theory/coding claims, six matrix-decomposition identities and six descriptive-statistics laws. This does **not** mean every recorded operation or all catalog laws/theorems have been translated or proved. An alias to a library structure is a model binding, not a proof of all catalog claims. The [broad-core expansion](../docs/FOUNDATIONAL_DATA_MODELS.md) adds 35 carrier models and 24 individually mapped witnesses. Its remaining operation specifications and derived results are not blanket formalizations.
 
 ## Build and verify
