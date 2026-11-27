@@ -8,6 +8,10 @@ For controlled comparisons of these workflows, use the [paired skill evaluation 
 
 Hard cases additionally assess generated specification precision, code/test maintainability and reviewer readability using the suite's [quality rubric](../ai/evaluations/quality-rubric.md). Use independent contract checks and semantic mutation testing for behavior; prepare anonymous comprehension questions for human readers. Counts, length, and task completion do not establish artifact quality, and editorial readability reviews are not measured human comprehension.
 
+## Durable reasoning deliverables
+
+Keep task artifacts in the target project's `mathematical-abstractions-formal-reasoning/<task-id>/`, following the [shared packaging and continued-use policy](../ai/skills/mathematical-tests/references/catalog-lookup-log.md#deliverable-folder-and-continued-use). Deliver explicit derivations and consistency arguments alongside decisions, catalog lookups and test evidence. The [project memory note](../mathematical-abstractions-formal-reasoning/PROJECT_MEMORY.md) explains artifact roles and indexes current work. Project agent context requires relevant skill invocation and evidence-impact review before later modifications; update the affected task index and memory after each change. Use justified not-applicable entries for untouched evidence kinds.
+
 ## Specification-driven lifecycle and evidence admission
 
 Use [spec-driven-development](../ai/skills/spec-driven-development/SKILL.md) to
@@ -46,7 +50,7 @@ The [acquisition guide](../ai/skills/abstraction-acquisition/references/acquisit
 
 Concept records now expose readable `mathematicalFormulation`, selected `leanFormulation`, `formulationScope`, `leanModelMapping`/`leanModelLimitations`, and local `formulationSource`/`formulationLocator`. Registered witnesses expose their expected proposition and JSON-encoded `leanPremiseMapping`. The AI skills use the shared [formulation and Lean-evidence guide](../ai/skills/mathematical-tests/references/formulations.md) for these fields, source retrieval, module context and domain-specific omissions. Start with focused concept/operation records and match carriers, equality, guards and observations to the normative contract. Fetch axioms/laws for the current obligation and theorems only when their result or proof is needed; do not preload proof material or all linked claims.
 
-The bounded helper's `sources ID` keeps mathematical citations as its default; `sources ID --kind formulation` retrieves the separate local Lean sources. Interfaces default to operations only; `node` and `interface` default to focused fields. Use `--view lean` for a needed typed interpretation, or `--view full` for a complete-record audit. Retained assumptions and partial-model limits are not shortened. Search includes readable mathematical formulations. Check budget and pagination flags when the additional formulas make records larger. A stated proposition or a model binding is distinct from a verified witness; inspect current `scripts/lean.py get ID` output before relying on compiled evidence. Local sources and compiled proofs do not repair independent citation gaps.
+The bounded helper's `sources ID` keeps mathematical citations as its default; `sources ID --kind formulation` retrieves the separate local Lean sources. Interfaces default to operations only; `node` and `interface` default to focused fields. Use `--view lean` for a needed typed interpretation, and `--view full` for every fetched claim or a complete-record audit. Read claims completely, never pipe claim/concept fetches through `head`, `tail` or `cut`, and recover query or display truncation before reliance; see the [complete-fetch policy](../ai/skills/mathematical-tests/references/catalog-use.md#complete-fetches-and-full-claim-reads). Retained assumptions and partial-model limits are not shortened. Search includes readable mathematical formulations. Check budget and pagination flags when the additional formulas make records larger. A stated proposition or a model binding is distinct from a verified witness; inspect current `scripts/lean.py get ID` output before relying on compiled evidence. Local sources and compiled proofs do not repair independent citation gaps.
 
 ## Proof construction with Lean or Coq
 
@@ -57,7 +61,7 @@ python3 scripts/catalog.py get Group --sections operations
 python3 scripts/agent_query.py node urn:csabs:theorem/Group-inverse-product --view lean
 ```
 
-Read the target theorem's `formalStatement`, `assumptions`, `appliesTo`, `dependsOn`, `reviewStatus`, and provenance. Follow each needed premise by ID with `agent_query.py node ID`. Use a dossier only when the task needs that broader dependency package; it expands linked claims beyond the focused defaults. If it reports `truncated: true`, retrieve needed missing premises separately rather than increasing context without a reason.
+Read the target theorem's `formalStatement`, `assumptions`, `appliesTo`, `dependsOn`, `reviewStatus`, and provenance. Follow each needed premise by ID with `agent_query.py node ID`. Use a dossier only when the task needs that broader dependency package; it expands linked claims beyond the focused defaults. If it reports `truncated: true`, resolve all reported boundaries through explicit complete follow-up fetches; narrow an overly broad selection rather than relying on its incomplete output.
 
 Before translating into an assistant, write an explicit mapping:
 
@@ -87,7 +91,7 @@ Use the repository-local [`mathematical-tests` skill](../ai/skills/mathematical-
 
 For a push/pop test property, retrieve `node urn:csabs:law/stack-push-pop` after selecting that obligation. Fetch a theorem only when the rationale needs its result; a scoped claim search is for discovery of a needed property, not a routine preload. Fetch Lean evidence only when relying on a formal interpretation or proof.
 
-The projection must match current Markdown and have no local edits. Respect `nextOffset`, `needsLargerBudget` and `depthBoundary`; only fetch omitted records needed for the selected property. See the skill's retrieval reference for setup and scratch projections. The original standard-library CLI remains useful when ONTFS is unavailable, but it is a different retrieval backend and should be disclosed as such:
+The projection must match current Markdown and have no local edits. Respect `nextOffset`, `needsLargerBudget` and `depthBoundary`; complete every page and reported depth boundary of a selected fetch before reliance; scope queries narrowly before execution. See the skill's retrieval reference for setup and scratch projections. The original standard-library CLI remains useful when ONTFS is unavailable, but it is a different retrieval backend and should be disclosed as such:
 
 ```sh
 python3 scripts/catalog.py get Stack --sections operations

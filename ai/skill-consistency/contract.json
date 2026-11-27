@@ -16,33 +16,34 @@
     "specification-consistency"
   ],
   "sourceHashes": {
-    "AGENTS.md": "e22c87445b4a5d3a05bd52822f09b10ca54ea876b68c1733cdbefb192408c27f",
-    "ai/skills/abstraction-acquisition/SKILL.md": "01a81cf11be35ea6422059bcb46ce95c3f351499b4d5d201549c99ea96120b39",
+    "AGENTS.md": "5c3d8b2f9aae59f635695b8e810f85674999dce8c234d6cc162f2752faef1f34",
+    "ai/skills/abstraction-acquisition/SKILL.md": "a23578b77c3d64b316ada8dd7e47f9b4ba4ac4f1804c879d9cffb3b00fbb8d54",
     "ai/skills/abstraction-acquisition/references/acquisition.md": "38436d39f21e7812927d21663d5b5bc130760b70b7e5175729c82db76d7843c0",
     "ai/skills/abstraction-acquisition/references/watermark-example.md": "b85a125783c308ff0d9f0612e720845dffcb21038932604bc11c6ccb527a881e",
-    "ai/skills/abstraction-discovery/SKILL.md": "a32ab1df90a4e830a1d04ac6e5d820093faf2b03eb0207417e21b16056cd234a",
+    "ai/skills/abstraction-discovery/SKILL.md": "2fa4b6103e00e230dd1991b68a5b53d7eaa18f07c113e02fa2b7cc28e13a959c",
     "ai/skills/abstraction-discovery/references/discovery-guide.md": "9fd6632ff8d76d4c8e6c787cce0ac375bfc014443806c0efb4cb0330fed211c2",
     "ai/skills/abstraction-discovery/references/metrics-example.md": "3ac114695d22f83cf53f3b84c35b57f6f9b878023a4677f760ffea8c574c390a",
-    "ai/skills/compositional-verification/SKILL.md": "3f3e0c75bad5ffba08cb8dfd6111dd3920be005403bd27167cb6fa17d6c3beae",
-    "ai/skills/formal-model-checking/SKILL.md": "aab20dea9b0e5f7673ad97771e670a78810ea74bde84fa43dfe7de76500de89f",
+    "ai/skills/compositional-verification/SKILL.md": "895fb1c3ce7131c3aab72020741a35fcf60bd88932f5e7ecc7a01a9dd7ad6022",
+    "ai/skills/formal-model-checking/SKILL.md": "de44285cafa1f5491da1a842c3c3005fe561d049fe00413fc7b2f47d59ca492c",
     "ai/skills/formal-model-checking/references/backend-selection.md": "758b5bf17430b475ac3e655350ac539f733f6efc367856cc1b6c3d3b8dc9bb99",
     "ai/skills/formal-model-checking/references/mutex-tla-example.md": "b902fe11a759e308c4dc690c32bb92b39f48750e287ebdff9baf347f09d3b8fc",
-    "ai/skills/implementation-conformance/SKILL.md": "b9ea442f4907fab130c20f0f354d3d267f9248410ac6b74b0ddcdddb0584a87a",
+    "ai/skills/implementation-conformance/SKILL.md": "062065467ffc7369eae212735025463e74fdddf6cc4ed3e03e09c726a1da61ef",
     "ai/skills/implementation-conformance/references/assurance-review.md": "cd5a4f814d4920292c8f6692c70b25b37820535ef6a61d01ca06dd9a9f03e3c4",
-    "ai/skills/implementation-mapping/SKILL.md": "fb2bf40a4a4e071329d657b95a9653c1280a4dcf7ac7b089196f90cc52db67e8",
-    "ai/skills/implementation-mapping/assets/implementation-map.md": "467d5e7d91309647200b0843d996b71879b2339ccff291d9a27570d7d705357a",
+    "ai/skills/implementation-mapping/SKILL.md": "16cd06ed98e9cc62e4ad9f2f4e7dd5ec7e1b3838edb5a4541b91a1149911b098",
+    "ai/skills/implementation-mapping/assets/implementation-map.md": "7c2f5f99797d05fe117f54a50b8dbdc2f6b4c8298eb00512e102799f3a4007ab",
     "ai/skills/implementation-mapping/references/stack-example.md": "c67224b932565ba98f7f9a366ec25bf338bd3481a7f14215120b95a2ff5cff7c",
-    "ai/skills/implementation-refinement/SKILL.md": "75e97aeb5a080242e3dcc73b61d109684b991725d9ae3ac2ba7ecd08df30ec12",
-    "ai/skills/mathematical-tests/SKILL.md": "2023fad5c11c0b8aecf446d03c1b102c18b50a97fb8f62c48cbb4932767ffc54",
-    "ai/skills/mathematical-tests/references/catalog-use.md": "43e149c43bea127df89ff9ddebb0e24313144e8b2e3fee997eb76cb46326ccde",
+    "ai/skills/implementation-refinement/SKILL.md": "3430e57558a884db752c8b7fb2885bded2861b8d32ac4a4f8c35c9a9dccebb01",
+    "ai/skills/mathematical-tests/SKILL.md": "7b1f030961282f135c2f090b860e312641a853c628ee5a3a6f4fe0107b4d8394",
+    "ai/skills/mathematical-tests/references/catalog-lookup-log.md": "3cb61db38799fabb9bb8ecf3ea3bf731482d9c9dd9f9085c3bcf9e787a99c591",
+    "ai/skills/mathematical-tests/references/catalog-use.md": "48cf84c9883d2a9e4634874d2b3edf1c0a165eb5492a080f440ca754d3cafff5",
     "ai/skills/mathematical-tests/references/formulations.md": "72e74bb9ca2db3c9c1705a9c6d692d7cc5b5b19d48b6a48cc6f822a3736cd140",
-    "ai/skills/mathematical-tests/references/retrieval.md": "84540e4d76c24bb900f4495f949e2c189cf3f0586311afb701e65f22250a04e4",
+    "ai/skills/mathematical-tests/references/retrieval.md": "9a19b808cd6240449a094bab2ff78739cbfcbb6a2be235c6133b361fd930d543",
     "ai/skills/mathematical-tests/references/test-design.md": "006bd53e5c913689e77a7d2dc2741e6ac02b55ea1305e94441c3d095e68e8e5c",
-    "ai/skills/requirements-formalization/SKILL.md": "03fc54c96458c79b13f1bd34fdbf089c2681c5020ddfcfd3d44d0008b0c9898d",
-    "ai/skills/spec-driven-development/SKILL.md": "17e0de844de92007eedb2e2380b7c4e67927c4f1c29fac99e48116b4c98a3255",
+    "ai/skills/requirements-formalization/SKILL.md": "64265e48277f953b36105dc710324df8c121cef6e7254014d55027dd0f859f10",
+    "ai/skills/spec-driven-development/SKILL.md": "e92d315e6c4689eacbf19a412d62390eff8d49f1f25134562be0c5efa8c2bee6",
     "ai/skills/spec-driven-development/references/assurance.md": "9b6cc5607048cbf9ba6bf22bce7d572c868c432b5cc031a405b984d66b2503d3",
-    "ai/skills/spec-driven-development/references/verification-maintenance.md": "feb0968125d95290170bc973594fddb8914c4f25fad7732c253f667674d4e58a",
-    "ai/skills/specification-consistency/SKILL.md": "d926849543c5c63f75570149adc825a7c594d2f9c77bca0b106b8e33f7b0fe68",
+    "ai/skills/spec-driven-development/references/verification-maintenance.md": "04a1b0d30843e152c8d92558ee5a0d82bf3bbd19b52698626acb5e83a2605e05",
+    "ai/skills/specification-consistency/SKILL.md": "e774515dcbf6e3d2e3e628b2584ddd545b0f5062352aebea92bd4b025ddecb88",
     "ai/skills/specification-consistency/references/boolean-example.md": "561e8d0f1c9de230ccb751698a9b034eab862fb3efa5b4309962b76186949f96",
     "ai/skills/specification-consistency/references/checking-and-reporting.md": "c18ce5fb5f5d182018955e67061d4a5d44e9110b8db3dfb82ab9015b6a06bb11"
   },
@@ -130,127 +131,315 @@
     "REVIEW": {
       "source": "ai/skills/spec-driven-development/SKILL.md",
       "quote": "Before delivery, use implementation-conformance in assurance review mode to challenge the contract and result."
+    },
+    "LOOKUP-LOG": {
+      "source": "ai/skills/mathematical-tests/references/catalog-lookup-log.md",
+      "quote": "Every repository skill that queries the catalog must maintain a durable task-local lookup log."
+    },
+    "LOOKUP-abstraction-acquisition": {
+      "source": "ai/skills/abstraction-acquisition/SKILL.md",
+      "quote": "Record actual commands, retrieved IDs, target mappings and misses; cover every semantic domain touched, including preserved or copied flags/attributes."
+    },
+    "LOOKUP-abstraction-discovery": {
+      "source": "ai/skills/abstraction-discovery/SKILL.md",
+      "quote": "Record actual commands, retrieved IDs, target mappings and misses; cover every semantic domain touched, including preserved or copied flags/attributes."
+    },
+    "LOOKUP-compositional-verification": {
+      "source": "ai/skills/compositional-verification/SKILL.md",
+      "quote": "Record actual commands, retrieved IDs, target mappings and misses; cover every semantic domain touched, including preserved or copied flags/attributes."
+    },
+    "LOOKUP-formal-model-checking": {
+      "source": "ai/skills/formal-model-checking/SKILL.md",
+      "quote": "Record actual commands, retrieved IDs, target mappings and misses; cover every semantic domain touched, including preserved or copied flags/attributes."
+    },
+    "LOOKUP-implementation-conformance": {
+      "source": "ai/skills/implementation-conformance/SKILL.md",
+      "quote": "Record actual commands, retrieved IDs, target mappings and misses; cover every semantic domain touched, including preserved or copied flags/attributes."
+    },
+    "LOOKUP-implementation-mapping": {
+      "source": "ai/skills/implementation-mapping/SKILL.md",
+      "quote": "Record actual commands, retrieved IDs, target mappings and misses; cover every semantic domain touched, including preserved or copied flags/attributes."
+    },
+    "LOOKUP-implementation-refinement": {
+      "source": "ai/skills/implementation-refinement/SKILL.md",
+      "quote": "Record actual commands, retrieved IDs, target mappings and misses; cover every semantic domain touched, including preserved or copied flags/attributes."
+    },
+    "LOOKUP-mathematical-tests": {
+      "source": "ai/skills/mathematical-tests/SKILL.md",
+      "quote": "Record actual commands, retrieved IDs, target mappings and misses; cover every semantic domain touched, including preserved or copied flags/attributes."
+    },
+    "LOOKUP-requirements-formalization": {
+      "source": "ai/skills/requirements-formalization/SKILL.md",
+      "quote": "Record actual commands, retrieved IDs, target mappings and misses; cover every semantic domain touched, including preserved or copied flags/attributes."
+    },
+    "LOOKUP-spec-driven-development": {
+      "source": "ai/skills/spec-driven-development/SKILL.md",
+      "quote": "Record actual commands, retrieved IDs, target mappings and misses; cover every semantic domain touched, including preserved or copied flags/attributes."
+    },
+    "LOOKUP-specification-consistency": {
+      "source": "ai/skills/specification-consistency/SKILL.md",
+      "quote": "Record actual commands, retrieved IDs, target mappings and misses; cover every semantic domain touched, including preserved or copied flags/attributes."
+    },
+    "RATIONALE-abstraction-acquisition": {
+      "source": "ai/skills/abstraction-acquisition/SKILL.md",
+      "quote": "Keep indexed rationales for substantive decisions, consistency arguments and tests, linked to requirements, lookups and validation evidence."
+    },
+    "RATIONALE-abstraction-discovery": {
+      "source": "ai/skills/abstraction-discovery/SKILL.md",
+      "quote": "Keep indexed rationales for substantive decisions, consistency arguments and tests, linked to requirements, lookups and validation evidence."
+    },
+    "RATIONALE-compositional-verification": {
+      "source": "ai/skills/compositional-verification/SKILL.md",
+      "quote": "Keep indexed rationales for substantive decisions, consistency arguments and tests, linked to requirements, lookups and validation evidence."
+    },
+    "RATIONALE-formal-model-checking": {
+      "source": "ai/skills/formal-model-checking/SKILL.md",
+      "quote": "Keep indexed rationales for substantive decisions, consistency arguments and tests, linked to requirements, lookups and validation evidence."
+    },
+    "RATIONALE-implementation-conformance": {
+      "source": "ai/skills/implementation-conformance/SKILL.md",
+      "quote": "Keep indexed rationales for substantive decisions, consistency arguments and tests, linked to requirements, lookups and validation evidence."
+    },
+    "RATIONALE-implementation-mapping": {
+      "source": "ai/skills/implementation-mapping/SKILL.md",
+      "quote": "Keep indexed rationales for substantive decisions, consistency arguments and tests, linked to requirements, lookups and validation evidence."
+    },
+    "RATIONALE-implementation-refinement": {
+      "source": "ai/skills/implementation-refinement/SKILL.md",
+      "quote": "Keep indexed rationales for substantive decisions, consistency arguments and tests, linked to requirements, lookups and validation evidence."
+    },
+    "RATIONALE-mathematical-tests": {
+      "source": "ai/skills/mathematical-tests/SKILL.md",
+      "quote": "Keep indexed rationales for substantive decisions, consistency arguments and tests, linked to requirements, lookups and validation evidence."
+    },
+    "RATIONALE-requirements-formalization": {
+      "source": "ai/skills/requirements-formalization/SKILL.md",
+      "quote": "Keep indexed rationales for substantive decisions, consistency arguments and tests, linked to requirements, lookups and validation evidence."
+    },
+    "RATIONALE-spec-driven-development": {
+      "source": "ai/skills/spec-driven-development/SKILL.md",
+      "quote": "Keep indexed rationales for substantive decisions, consistency arguments and tests, linked to requirements, lookups and validation evidence."
+    },
+    "RATIONALE-specification-consistency": {
+      "source": "ai/skills/specification-consistency/SKILL.md",
+      "quote": "Keep indexed rationales for substantive decisions, consistency arguments and tests, linked to requirements, lookups and validation evidence."
+    },
+    "ARTIFACTS-abstraction-acquisition": {
+      "source": "ai/skills/abstraction-acquisition/SKILL.md",
+      "quote": "Deliver derivations, consistency arguments and linked evidence under `mathematical-abstractions-formal-reasoning/`; maintain its project memory note and persistent agent-context routing for subsequent modifications."
+    },
+    "ARTIFACTS-abstraction-discovery": {
+      "source": "ai/skills/abstraction-discovery/SKILL.md",
+      "quote": "Deliver derivations, consistency arguments and linked evidence under `mathematical-abstractions-formal-reasoning/`; maintain its project memory note and persistent agent-context routing for subsequent modifications."
+    },
+    "ARTIFACTS-compositional-verification": {
+      "source": "ai/skills/compositional-verification/SKILL.md",
+      "quote": "Deliver derivations, consistency arguments and linked evidence under `mathematical-abstractions-formal-reasoning/`; maintain its project memory note and persistent agent-context routing for subsequent modifications."
+    },
+    "ARTIFACTS-formal-model-checking": {
+      "source": "ai/skills/formal-model-checking/SKILL.md",
+      "quote": "Deliver derivations, consistency arguments and linked evidence under `mathematical-abstractions-formal-reasoning/`; maintain its project memory note and persistent agent-context routing for subsequent modifications."
+    },
+    "ARTIFACTS-implementation-conformance": {
+      "source": "ai/skills/implementation-conformance/SKILL.md",
+      "quote": "Deliver derivations, consistency arguments and linked evidence under `mathematical-abstractions-formal-reasoning/`; maintain its project memory note and persistent agent-context routing for subsequent modifications."
+    },
+    "ARTIFACTS-implementation-mapping": {
+      "source": "ai/skills/implementation-mapping/SKILL.md",
+      "quote": "Deliver derivations, consistency arguments and linked evidence under `mathematical-abstractions-formal-reasoning/`; maintain its project memory note and persistent agent-context routing for subsequent modifications."
+    },
+    "ARTIFACTS-implementation-refinement": {
+      "source": "ai/skills/implementation-refinement/SKILL.md",
+      "quote": "Deliver derivations, consistency arguments and linked evidence under `mathematical-abstractions-formal-reasoning/`; maintain its project memory note and persistent agent-context routing for subsequent modifications."
+    },
+    "ARTIFACTS-mathematical-tests": {
+      "source": "ai/skills/mathematical-tests/SKILL.md",
+      "quote": "Deliver derivations, consistency arguments and linked evidence under `mathematical-abstractions-formal-reasoning/`; maintain its project memory note and persistent agent-context routing for subsequent modifications."
+    },
+    "ARTIFACTS-requirements-formalization": {
+      "source": "ai/skills/requirements-formalization/SKILL.md",
+      "quote": "Deliver derivations, consistency arguments and linked evidence under `mathematical-abstractions-formal-reasoning/`; maintain its project memory note and persistent agent-context routing for subsequent modifications."
+    },
+    "ARTIFACTS-spec-driven-development": {
+      "source": "ai/skills/spec-driven-development/SKILL.md",
+      "quote": "Deliver derivations, consistency arguments and linked evidence under `mathematical-abstractions-formal-reasoning/`; maintain its project memory note and persistent agent-context routing for subsequent modifications."
+    },
+    "ARTIFACTS-specification-consistency": {
+      "source": "ai/skills/specification-consistency/SKILL.md",
+      "quote": "Deliver derivations, consistency arguments and linked evidence under `mathematical-abstractions-formal-reasoning/`; maintain its project memory note and persistent agent-context routing for subsequent modifications."
+    },
+    "REUSE-CONTEXT": {
+      "source": "AGENTS.md",
+      "quote": "Before every modification, read `mathematical-abstractions-formal-reasoning/PROJECT_MEMORY.md` and the affected task index; select and read the relevant `ai/skills/*/SKILL.md` workflows before editing, recording the selection and actual skill paths."
+    },
+    "COMPLETE-abstraction-acquisition": {
+      "source": "ai/skills/abstraction-acquisition/SKILL.md",
+      "quote": "Read every fetched claim in full using `--view full`; resolve all fetch truncation before relying on results. Never pipe a claim or concept fetch through `head`, `tail` or `cut`."
+    },
+    "COMPLETE-abstraction-discovery": {
+      "source": "ai/skills/abstraction-discovery/SKILL.md",
+      "quote": "Read every fetched claim in full using `--view full`; resolve all fetch truncation before relying on results. Never pipe a claim or concept fetch through `head`, `tail` or `cut`."
+    },
+    "COMPLETE-compositional-verification": {
+      "source": "ai/skills/compositional-verification/SKILL.md",
+      "quote": "Read every fetched claim in full using `--view full`; resolve all fetch truncation before relying on results. Never pipe a claim or concept fetch through `head`, `tail` or `cut`."
+    },
+    "COMPLETE-formal-model-checking": {
+      "source": "ai/skills/formal-model-checking/SKILL.md",
+      "quote": "Read every fetched claim in full using `--view full`; resolve all fetch truncation before relying on results. Never pipe a claim or concept fetch through `head`, `tail` or `cut`."
+    },
+    "COMPLETE-implementation-conformance": {
+      "source": "ai/skills/implementation-conformance/SKILL.md",
+      "quote": "Read every fetched claim in full using `--view full`; resolve all fetch truncation before relying on results. Never pipe a claim or concept fetch through `head`, `tail` or `cut`."
+    },
+    "COMPLETE-implementation-mapping": {
+      "source": "ai/skills/implementation-mapping/SKILL.md",
+      "quote": "Read every fetched claim in full using `--view full`; resolve all fetch truncation before relying on results. Never pipe a claim or concept fetch through `head`, `tail` or `cut`."
+    },
+    "COMPLETE-implementation-refinement": {
+      "source": "ai/skills/implementation-refinement/SKILL.md",
+      "quote": "Read every fetched claim in full using `--view full`; resolve all fetch truncation before relying on results. Never pipe a claim or concept fetch through `head`, `tail` or `cut`."
+    },
+    "COMPLETE-mathematical-tests": {
+      "source": "ai/skills/mathematical-tests/SKILL.md",
+      "quote": "Read every fetched claim in full using `--view full`; resolve all fetch truncation before relying on results. Never pipe a claim or concept fetch through `head`, `tail` or `cut`."
+    },
+    "COMPLETE-requirements-formalization": {
+      "source": "ai/skills/requirements-formalization/SKILL.md",
+      "quote": "Read every fetched claim in full using `--view full`; resolve all fetch truncation before relying on results. Never pipe a claim or concept fetch through `head`, `tail` or `cut`."
+    },
+    "COMPLETE-spec-driven-development": {
+      "source": "ai/skills/spec-driven-development/SKILL.md",
+      "quote": "Read every fetched claim in full using `--view full`; resolve all fetch truncation before relying on results. Never pipe a claim or concept fetch through `head`, `tail` or `cut`."
+    },
+    "COMPLETE-specification-consistency": {
+      "source": "ai/skills/specification-consistency/SKILL.md",
+      "quote": "Read every fetched claim in full using `--view full`; resolve all fetch truncation before relying on results. Never pipe a claim or concept fetch through `head`, `tail` or `cut`."
+    },
+    "COMPLETE-FETCH": {
+      "source": "ai/skills/mathematical-tests/references/catalog-use.md",
+      "quote": "Read every fetched claim in full using `--view full`; resolve all fetch truncation before relying on results. Never pipe a claim or concept fetch through `head`, `tail` or `cut`."
     }
   },
   "handoffs": [
     {
       "from": "requirements-formalization",
       "to": "specification-consistency",
-      "artifact": "Numbered clauses, origin mapping, required scenarios and relevant unresolved requirements gaps or choices",
+      "artifact": "Numbered clauses, origin mapping, required scenarios and relevant unresolved requirements gaps or choices; catalog lookup log with semantic-domain coverage, target mappings and unresolved misses; indexed decision/argument/test rationales with requirement, lookup and validation links; formal reasoning task folder/index, project memory and persistent agent-context routing; full-claim read and fetch-completion receipts, unresolved/abandoned truncation blockers",
       "clause": "H-requirements-formalization"
     },
     {
       "from": "spec-driven-development",
       "to": "requirements-formalization",
-      "artifact": "Task scope, normative clauses and unresolved obligations",
+      "artifact": "Task scope, normative clauses and unresolved obligations; catalog lookup log with semantic-domain coverage, target mappings and unresolved misses; indexed decision/argument/test rationales with requirement, lookup and validation links; formal reasoning task folder/index, project memory and persistent agent-context routing; full-claim read and fetch-completion receipts, unresolved/abandoned truncation blockers",
       "clause": "H-spec-driven-development"
     },
     {
       "from": "spec-driven-development",
       "to": "specification-consistency",
-      "artifact": "Task scope, normative clauses and unresolved obligations",
+      "artifact": "Task scope, normative clauses and unresolved obligations; catalog lookup log with semantic-domain coverage, target mappings and unresolved misses; indexed decision/argument/test rationales with requirement, lookup and validation links; formal reasoning task folder/index, project memory and persistent agent-context routing; full-claim read and fetch-completion receipts, unresolved/abandoned truncation blockers",
       "clause": "H-spec-driven-development"
     },
     {
       "from": "spec-driven-development",
       "to": "implementation-mapping",
-      "artifact": "Task scope, normative clauses and unresolved obligations",
+      "artifact": "Task scope, normative clauses and unresolved obligations; catalog lookup log with semantic-domain coverage, target mappings and unresolved misses; indexed decision/argument/test rationales with requirement, lookup and validation links; formal reasoning task folder/index, project memory and persistent agent-context routing; full-claim read and fetch-completion receipts, unresolved/abandoned truncation blockers",
       "clause": "H-spec-driven-development"
     },
     {
       "from": "spec-driven-development",
       "to": "abstraction-acquisition",
-      "artifact": "Task scope, normative clauses and unresolved obligations",
+      "artifact": "Task scope, normative clauses and unresolved obligations; catalog lookup log with semantic-domain coverage, target mappings and unresolved misses; indexed decision/argument/test rationales with requirement, lookup and validation links; formal reasoning task folder/index, project memory and persistent agent-context routing; full-claim read and fetch-completion receipts, unresolved/abandoned truncation blockers",
       "clause": "H-spec-driven-development"
     },
     {
       "from": "spec-driven-development",
       "to": "compositional-verification",
-      "artifact": "Versioned implementation mapping and required evidence obligations",
+      "artifact": "Versioned implementation mapping and required evidence obligations; catalog lookup log with semantic-domain coverage, target mappings and unresolved misses; indexed decision/argument/test rationales with requirement, lookup and validation links; formal reasoning task folder/index, project memory and persistent agent-context routing; full-claim read and fetch-completion receipts, unresolved/abandoned truncation blockers",
       "clause": "LIFECYCLE"
     },
     {
       "from": "spec-driven-development",
       "to": "implementation-refinement",
-      "artifact": "Versioned implementation mapping and required evidence obligations",
+      "artifact": "Versioned implementation mapping and required evidence obligations; catalog lookup log with semantic-domain coverage, target mappings and unresolved misses; indexed decision/argument/test rationales with requirement, lookup and validation links; formal reasoning task folder/index, project memory and persistent agent-context routing; full-claim read and fetch-completion receipts, unresolved/abandoned truncation blockers",
       "clause": "LIFECYCLE"
     },
     {
       "from": "spec-driven-development",
       "to": "mathematical-tests",
-      "artifact": "Versioned implementation mapping and required evidence obligations",
+      "artifact": "Versioned implementation mapping and required evidence obligations; catalog lookup log with semantic-domain coverage, target mappings and unresolved misses; indexed decision/argument/test rationales with requirement, lookup and validation links; formal reasoning task folder/index, project memory and persistent agent-context routing; full-claim read and fetch-completion receipts, unresolved/abandoned truncation blockers",
       "clause": "LIFECYCLE"
     },
     {
       "from": "spec-driven-development",
       "to": "formal-model-checking",
-      "artifact": "Versioned implementation mapping and required evidence obligations",
+      "artifact": "Versioned implementation mapping and required evidence obligations; catalog lookup log with semantic-domain coverage, target mappings and unresolved misses; indexed decision/argument/test rationales with requirement, lookup and validation links; formal reasoning task folder/index, project memory and persistent agent-context routing; full-claim read and fetch-completion receipts, unresolved/abandoned truncation blockers",
       "clause": "LIFECYCLE"
     },
     {
       "from": "spec-driven-development",
       "to": "implementation-conformance",
-      "artifact": "Ledger, source versions, evidence and change set",
+      "artifact": "Ledger, source versions, evidence and change set; catalog lookup log with semantic-domain coverage, target mappings and unresolved misses; indexed decision/argument/test rationales with requirement, lookup and validation links; formal reasoning task folder/index, project memory and persistent agent-context routing; full-claim read and fetch-completion receipts, unresolved/abandoned truncation blockers",
       "clause": "REVIEW"
     },
     {
       "from": "implementation-mapping",
       "to": "mathematical-tests",
-      "artifact": "Clause/catalog-to-API mapping with preconditions and numeric semantics",
+      "artifact": "Clause/catalog-to-API mapping with preconditions and numeric semantics; catalog lookup log with semantic-domain coverage, target mappings and unresolved misses; indexed decision/argument/test rationales with requirement, lookup and validation links; formal reasoning task folder/index, project memory and persistent agent-context routing; full-claim read and fetch-completion receipts, unresolved/abandoned truncation blockers",
       "clause": "H-implementation-mapping"
     },
     {
       "from": "implementation-mapping",
       "to": "implementation-conformance",
-      "artifact": "Normative clauses, versioned mapping and code",
+      "artifact": "Normative clauses, versioned mapping and code; catalog lookup log with semantic-domain coverage, target mappings and unresolved misses; indexed decision/argument/test rationales with requirement, lookup and validation links; formal reasoning task folder/index, project memory and persistent agent-context routing; full-claim read and fetch-completion receipts, unresolved/abandoned truncation blockers",
       "clause": "H-implementation-mapping"
     },
     {
       "from": "implementation-conformance",
       "to": "abstraction-acquisition",
-      "artifact": "Reported mathematical gap, searched candidates and blocked obligations",
+      "artifact": "Reported mathematical gap, searched candidates and blocked obligations; catalog lookup log with semantic-domain coverage, target mappings and unresolved misses; indexed decision/argument/test rationales with requirement, lookup and validation links; formal reasoning task folder/index, project memory and persistent agent-context routing; full-claim read and fetch-completion receipts, unresolved/abandoned truncation blockers",
       "clause": "H-implementation-conformance"
     },
     {
       "from": "abstraction-discovery",
       "to": "implementation-mapping",
-      "artifact": "Concrete operations, candidate concepts, law evidence and counterexamples",
+      "artifact": "Concrete operations, candidate concepts, law evidence and counterexamples; catalog lookup log with semantic-domain coverage, target mappings and unresolved misses; indexed decision/argument/test rationales with requirement, lookup and validation links; formal reasoning task folder/index, project memory and persistent agent-context routing; full-claim read and fetch-completion receipts, unresolved/abandoned truncation blockers",
       "clause": "H-abstraction-discovery"
     },
     {
       "from": "compositional-verification",
       "to": "formal-model-checking",
-      "artifact": "Composition boundary, concurrency assumptions and progress obligations",
+      "artifact": "Composition boundary, concurrency assumptions and progress obligations; catalog lookup log with semantic-domain coverage, target mappings and unresolved misses; indexed decision/argument/test rationales with requirement, lookup and validation links; formal reasoning task folder/index, project memory and persistent agent-context routing; full-claim read and fetch-completion receipts, unresolved/abandoned truncation blockers",
       "clause": "H-compositional-verification"
     },
     {
       "from": "implementation-refinement",
       "to": "mathematical-tests",
-      "artifact": "Actual-source mapping, inputs/outcomes and proof trust boundary",
+      "artifact": "Actual-source mapping, inputs/outcomes and proof trust boundary; catalog lookup log with semantic-domain coverage, target mappings and unresolved misses; indexed decision/argument/test rationales with requirement, lookup and validation links; formal reasoning task folder/index, project memory and persistent agent-context routing; full-claim read and fetch-completion receipts, unresolved/abandoned truncation blockers",
       "clause": "H-implementation-refinement"
     },
     {
       "from": "formal-model-checking",
       "to": "implementation-mapping",
-      "artifact": "Checked model actions, bounds and justified code correspondence",
+      "artifact": "Checked model actions, bounds and justified code correspondence; catalog lookup log with semantic-domain coverage, target mappings and unresolved misses; indexed decision/argument/test rationales with requirement, lookup and validation links; formal reasoning task folder/index, project memory and persistent agent-context routing; full-claim read and fetch-completion receipts, unresolved/abandoned truncation blockers",
       "clause": "H-formal-model-checking"
     },
     {
       "from": "abstraction-acquisition",
       "to": "spec-driven-development",
-      "artifact": "Verified model/task claims, explicit retention choice and semantic mapping",
+      "artifact": "Verified model/task claims, explicit retention choice and semantic mapping; catalog lookup log with semantic-domain coverage, target mappings and unresolved misses; indexed decision/argument/test rationales with requirement, lookup and validation links; formal reasoning task folder/index, project memory and persistent agent-context routing; full-claim read and fetch-completion receipts, unresolved/abandoned truncation blockers",
       "clause": "H-abstraction-acquisition"
     },
     {
       "from": "spec-driven-development",
       "to": "implementation-conformance",
-      "artifact": "Impact/invalidation report and fresh rerun evidence",
+      "artifact": "Impact/invalidation report and fresh rerun evidence; catalog lookup log with semantic-domain coverage, target mappings and unresolved misses; indexed decision/argument/test rationales with requirement, lookup and validation links; formal reasoning task folder/index, project memory and persistent agent-context routing; full-claim read and fetch-completion receipts, unresolved/abandoned truncation blockers",
       "clause": "H-verification-maintenance"
     },
     {
       "from": "implementation-conformance",
       "to": "spec-driven-development",
-      "artifact": "Findings, remaining blockers and supported assurance scope",
+      "artifact": "Findings, remaining blockers and supported assurance scope; catalog lookup log with semantic-domain coverage, target mappings and unresolved misses; indexed decision/argument/test rationales with requirement, lookup and validation links; formal reasoning task folder/index, project memory and persistent agent-context routing; full-claim read and fetch-completion receipts, unresolved/abandoned truncation blockers",
       "clause": "H-assurance-review"
     }
   ],

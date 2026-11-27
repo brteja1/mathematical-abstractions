@@ -56,7 +56,7 @@ See [agent workflows](docs/AGENT_WORKFLOWS.md) for proof planning, test design a
 
 ## Query from AI agents
 
-Repository skills require tool-based catalog retrieval before relying on mathematical abstractions. Agents must not browse catalog storage directly for facts, and must report required gaps before acquisition or dependent work. See the [catalog-use policy](ai/skills/mathematical-tests/references/catalog-use.md) for the retrieval boundary and explicit acquisition exceptions.
+Repository skills require tool-based catalog retrieval before relying on mathematical abstractions. Agents must not browse catalog storage directly for facts, and must report required gaps before acquisition or dependent work. See the [catalog-use policy](ai/skills/mathematical-tests/references/catalog-use.md) for the retrieval boundary and explicit acquisition exceptions. Every querying skill maintains a task-local [lookup log](ai/skills/mathematical-tests/references/catalog-lookup-log.md) with actual commands, retrieved IDs, target mappings and misses across all semantic domains touched, including copied flags and attributes. Its rationale index links substantive decisions, consistency arguments and tests to requirements, catalog mappings and validation evidence for later queries. Deliver these artifacts in `mathematical-abstractions-formal-reasoning/<task-id>/`; the [project memory note](mathematical-abstractions-formal-reasoning/PROJECT_MEMORY.md) explains their roles, and `AGENTS.md` requires relevant skills and evidence-impact review on subsequent modifications.
 
 Python 3 and the standard library are sufficient; no service, credentials, embedding model or network is needed.
 

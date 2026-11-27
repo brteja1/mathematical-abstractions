@@ -1,12 +1,26 @@
 # Catalog use and gap handling
 
-This policy applies to all repository skills. Query tooling is the agent's interface to catalog facts; authoritative storage is not an alternate retrieval interface. Use focused records and selected claims, preserve assumptions and provenance gaps, and resolve necessary pagination or omitted premises before relying on a result. A successful search alone is not a semantic mapping.
+This policy applies to all repository skills. Query tooling is the agent's interface to catalog facts; authoritative storage is not an alternate retrieval interface. Use focused records and selected claims, preserve assumptions and provenance gaps, and resolve all fetch truncation and requested pagination/depth boundaries before relying on a result. A successful search alone is not a semantic mapping.
 
 ## Retrieve before relying
+
+For every catalog-querying workflow, read and maintain the [catalog lookup log](catalog-lookup-log.md). Keep commands, returned IDs, semantic mappings, misses and domain coverage with the task artifacts, including across skill handoffs. Maintain its rationale index linking substantive decisions, consistency arguments and tests to requirements, lookups, mappings and actual validation evidence.
 
 Locate the catalog root three levels above the skill directory. Use `scripts/catalog.py list --search TERM` for names, synonyms and mathematical meaning, `get ID --sections operations` for the interface, and `scripts/agent_query.py node ID` for selected operations/claims. Use the bounded ONTFS helper for SPARQL retrieval; see [retrieval.md](retrieval.md). Use `scripts/lean.py get ID` for current binding/evidence status. Record actual commands, selected stable IDs and carrier/equality/operation/assumption mappings with the task artifacts. Do not bypass these tools by reading or searching catalog storage or generated exports directly, even for a single concept.
 
 Skill examples and candidate tables do not establish that a concept or claim exists or applies. Retrieve each mathematical abstraction and law actually used. Target-specific requirements remain normative; using the catalog does not authorize importing stronger laws or forcing a mismatched abstraction onto the software. Structural findings that assert no mathematical abstraction or law can be reported without inventing one.
+
+## Complete fetches and full claim reads
+
+Read every fetched claim in full using `--view full`; resolve all fetch truncation before relying on results. Never pipe a claim or concept fetch through `head`, `tail` or `cut`.
+
+Choose a narrow scope before fetching: selected IDs, operations or claim kinds. Progressive retrieval limits which records are requested, never how much of a fetched claim is read. Fetch each Axiom, Law or Theorem as a complete record, including statements, assumptions, applicability, dependencies, provenance, formulations and any recorded proof sketch. Search summaries and focused/Lean excerpts are discovery aids, not full claim reads; re-fetch any claim surfaced that way by stable ID with `node ID --view full` before treating it as inspected or using it. This applies to rejected claim candidates and retrieved premise claims too. Concept/operation views may select relevant fields, but the requested output must be read completely.
+
+Check both the query response and the enclosing tool output for clipping. Complete every page of the selected fetch, increasing `--max-chars` when required. Resolve every reported depth boundary by explicit ID fetches or appropriate depth expansion; preserve links from the original incomplete response to the complete follow-ups. `nextOffset: null` alone does not establish completion. If a broad query was a mistake, log it as abandoned/incomplete and issue narrower explicit queries; never label its unread results inspected or its scope complete.
+
+Do not use equivalent output-discarding filters, line/character slicing or summaries in place of the complete read. If the tool display clips output, rerun a smaller selection or retain the raw output and read it in contiguous, exhaustive chunks without gaps. Raising a budget or saving a file alone does not demonstrate that the agent read it. If a full record or required boundary cannot be retrieved/read within supported bounds, log an incomplete-retrieval blocker, report it and stop dependent work. There must be no unresolved truncation in any fetch used as evidence.
+
+Record the requested scope/view, all fetched claim IDs, full-read completion, pagination/budget/depth indicators, enclosing-output clipping, follow-up commands and final completion or blocked/abandoned status. A handoff preserves these receipts; its receiver must read the complete claims it uses rather than rely on a predecessor's summary. These are agent obligations; the CLI does not enforce agent reading or shell pipelines.
 
 ## Report before proceeding
 

@@ -6,6 +6,8 @@
 - Normative specifications: paths, revisions/hashes, clause locators:
 - Implementation revision and relevant local changes:
 - Catalog checkout/revision, fingerprints of selected CLI-returned records and retrieval backend (do not directly read catalog storage for fingerprints):
+- Catalog lookup log path, covered semantic domains and unresolved lookup/mapping gaps:
+- Decision/argument/test rationale index path and links to existing obligation/evidence records:
 - Review scope and excluded behavior:
 
 ## Semantic interpretation
@@ -57,3 +59,7 @@ Include constructors and observers, not only update methods. Each row needs a st
 | | | | | |
 
 Record finite bounds, tool versions, seeds or counterexample traces where applicable. Keep unexecuted plans distinct from executed evidence. Coverage and passing tests do not establish universal conformance.
+
+## Reasoning deliverables and continued use
+
+Task folder: `mathematical-abstractions-formal-reasoning/<task-id>/`. Link its index, explicit derivations, consistency arguments, tests and evidence. Update `mathematical-abstractions-formal-reasoning/PROJECT_MEMORY.md` with their roles/status and persist relevant skill routing in the target agent context. On subsequent changes record skill invocation, evidence impact and refreshed results; follow the [shared artifact policy](../../mathematical-tests/references/catalog-lookup-log.md#deliverable-folder-and-continued-use).

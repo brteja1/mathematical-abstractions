@@ -22,6 +22,10 @@ Projection queries are read-only. If `.ontfs.ttl` is missing or stale, the ordin
 
 Use the same `--directory` for subsequent queries. Neither the helper nor the skill silently refreshes, overwrites, imports an edited runtime graph into Markdown, or performs OWL inference. Python dependencies can be available outside `.venv`; the important checks are the pinned checkout and matching projection/source hashes.
 
+## Complete reads
+
+The [complete-fetch policy](catalog-use.md#complete-fetches-and-full-claim-reads) is mandatory. Use `--view full` for every fetched claim; focused/Lean views and summaries cannot replace reading the entire claim. Complete selected pages and depth boundaries, recover tool-display clipping and log completion before reliance. Never pipe claim or concept fetches through `head`, `tail` or `cut`, or equivalent content-discarding filters. Narrow the selected records before querying instead.
+
 ## Commands
 
 Start with compact search results, then the selected concept and relevant operations. Fetch an axiom/law only for the current obligation; fetch a theorem only when its result or proof is needed. Premises, sources and prerequisite definitions are fetched to resolve a specific missing condition or justification, not as a routine closure. Full dossiers and whole concept pages are not the default context.
@@ -32,7 +36,7 @@ All commands produce JSON and accept `--limit`, `--offset`, `--max-chars` and `-
 | --- | --- |
 | `focused` (default) | Readable mathematics, complete retained conditions/assumptions, applicability, source-gap metadata and partial-model limits. Omits unselected interface-link lists, Lean excerpts/mappings and proof sketches. |
 | `lean` | A selected record's typed formulation, mapping and direct premise mapping when formal translation or witness reuse requires them. Still omits unrelated interface links and proof sketches. |
-| `full` | The complete authoritative record for an explicit audit or a needed proof sketch. This does not recursively fetch linked claims. |
+| `full` | The complete authoritative record; mandatory for every fetched axiom, law or theorem, also used for audits. This does not recursively fetch linked claims. |
 
 Search always returns compact candidate summaries regardless of view. View selection controls fields, while section/kind/ID selection controls which records are fetched. No view clips retained equations, preconditions or assumptions to fit a budget.
 
