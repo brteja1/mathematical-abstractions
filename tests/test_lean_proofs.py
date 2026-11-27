@@ -59,6 +59,34 @@ example {S Act : Type} (t : Catalog.LabelledTransitionSystem S Act) (s : S) :
         for name in ('roundTrip', 'labelledPath_iff', 'finiteTraces_eq'):
             self.assertIn('CATALOG_WITNESS Catalog.CSLib.' + name + ' |', result.stdout)
 
+    def test_cslib_relations_expected_types_and_axioms(self):
+        # urn:csabs:concept/{Simulation,Bisimulation,TraceEquivalence}:
+        # matches/matchesBoth/equivalent map to the three propositions below.
+        # Identity equality; common labels; no initial-state or silent-step constraint.
+        result = self.compile('''
+import all Catalog.CSLib
+example {S T Act : Type} (s : Catalog.LabelledTransitionSystem S Act)
+    (t : Catalog.LabelledTransitionSystem T Act) (r : S → T → Prop) :
+    Catalog.Simulation s t r ↔
+      Cslib.LTS.IsSimulation (Catalog.CSLib.toLTS s) (Catalog.CSLib.toLTS t) r :=
+  Catalog.CSLib.simulation_iff s t r
+example {S T Act : Type} (s : Catalog.LabelledTransitionSystem S Act)
+    (t : Catalog.LabelledTransitionSystem T Act) (r : S → T → Prop) :
+    Catalog.Bisimulation s t r ↔
+      Cslib.LTS.IsBisimulation (Catalog.CSLib.toLTS s) (Catalog.CSLib.toLTS t) r :=
+  Catalog.CSLib.bisimulation_iff s t r
+example {S Act : Type} (s : Catalog.LabelledTransitionSystem S Act) (x y : S) :
+    Catalog.TraceEquivalence s s x y ↔
+      Cslib.LTS.TraceEq (Catalog.CSLib.toLTS s) (Catalog.CSLib.toLTS s) x y :=
+  Catalog.CSLib.traceEquivalence_iff s s x y
+#catalog_witness Catalog.CSLib.simulation_iff
+#catalog_witness Catalog.CSLib.bisimulation_iff
+#catalog_witness Catalog.CSLib.traceEquivalence_iff
+''')
+        self.assertEqual(result.returncode, 0, result.stdout)
+        for name in ('simulation_iff', 'bisimulation_iff', 'traceEquivalence_iff'):
+            self.assertIn('CATALOG_WITNESS Catalog.CSLib.' + name + ' |', result.stdout)
+
     def acquisition_source(self):
         return (ROOT / 'ai/skills/abstraction-acquisition/references/watermark.lean').read_text()
 
