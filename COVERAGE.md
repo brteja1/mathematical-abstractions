@@ -65,7 +65,7 @@ Generated from the ONTFS projection with SPARQL by `make coverage-report`. Count
 | DAG | 1 | 2 | 0 | 5 | defined-structure |
 | DFA | 2 | 2 | 1 | 3 | defined-structure |
 | DataLayout | 2 | 2 | 1 | 0 | relational-structural-definition |
-| DatabaseRelation | 6 | 3 | 2 | 2 | defined-structure |
+| DatabaseRelation | 11 | 6 | 4 | 3 | defined-structure |
 | DecisionTable | 5 | 2 | 0 | 2 | defined-structure |
 | DependentFunction | 2 | 2 | 1 | 1 | extensional-structural-definition |
 | DependentNameLookup | 2 | 2 | 2 | 0 | extensional-structural-definition |

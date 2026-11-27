@@ -8,6 +8,8 @@ This Lake project gives every current catalog concept a named Lean interpretatio
 
 [Catalog/CSLibTermination.lean](Catalog/CSLibTermination.lean) registers `TerminationVariant-core`: a well-founded decreasing measure rules out infinite chains of completed continuing iterations. The client must separately establish that each enabled body execution terminates normally; the relation of completed outcomes alone cannot rule out divergence inside the body.
 
+[Catalog/RelationalAlgebra.lean](Catalog/RelationalAlgebra.lean) interprets the added Codd operation basis on finite tuple sets. Registered witnesses cover model satisfaction, empty-input division and elimination of division into projection, product and difference. The model treats disjoint attribute blocks as whole tuple carriers; it uses Mathlib finite sets. SQL bags, `NULL` and concrete query engines require separate mappings. See [relational algebra](../docs/RELATIONAL_ALGEBRA.md).
+
 There are currently **270 concept bindings**: 180 carrier/interface models and 90 explicitly partial interpretations. There are **85 registered proof witnesses** for existing laws/theorems, including all 11 recorded binary-tree laws/theorems, 13 information-theory/coding claims, six matrix-decomposition identities and six descriptive-statistics laws. This does **not** mean every recorded operation or all catalog laws/theorems have been translated or proved. An alias to a library structure is a model binding, not a proof of all catalog claims. The [broad-core expansion](../docs/FOUNDATIONAL_DATA_MODELS.md) adds 35 carrier models and 24 individually mapped witnesses. Its remaining operation specifications and derived results are not blanket formalizations.
 
 ## Build and verify

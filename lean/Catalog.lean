@@ -15,6 +15,7 @@ public import Catalog.LogicSyntax
 public import Catalog.Languages
 public import Catalog.CSLibAutomata
 public import Catalog.Database
+public import Catalog.RelationalAlgebra
 public import Catalog.InformationTheory
 public import Catalog.InformationTheoryStatements
 public import Catalog.InformationTheoryExamples

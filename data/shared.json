@@ -2607,6 +2607,23 @@
       "path": "lean/Catalog/CSLibTermination.lean",
       "accessedOn": "2026-11-27",
       "sourceRole": "Repository-local formal interpretation and witness type; not independent mathematical provenance or a proof-status assertion."
+    },
+    {
+      "id": "urn:csabs:source/codd-1972-relational-completeness",
+      "type": "Source",
+      "label": "E. F. Codd, Relational Completeness of Data Base Sublanguages (1972)",
+      "url": "https://db.dobo.sk/wp-content/uploads/2015/11/Codd_1972_Relational_Completeness.pdf",
+      "citation": "E. F. Codd. Relational Completeness of Data Base Sublanguages. IBM Research Report RJ987, March 6, 1972.",
+      "accessedOn": "2026-11-27",
+      "sourceRole": "primary mathematical definitions"
+    },
+    {
+      "id": "urn:csabs:source/local-lean-RelationalAlgebra",
+      "type": "Source",
+      "label": "Local Lean finite-set relational algebra interpretation",
+      "path": "lean/Catalog/RelationalAlgebra.lean",
+      "accessedOn": "2026-11-27",
+      "sourceRole": "local Lean formulation; not independent mathematical provenance"
     }
   ]
 }

@@ -183,7 +183,7 @@
       "scope": "model",
       "mapping": "Finset of dependent named tuples, set semantics and extensional equality; projection/join algorithms remain to be exposed.",
       "limitations": "Selected carrier/interface interpretation only. No blanket witness for all recorded operations, axioms, laws or theorems; consult binders and individual witness mappings.",
-      "catalogHash": "4b50ee9e109919f849008ecb74440c0d5d5d99f0ade87c94c285312ef7141bec"
+      "catalogHash": "727e74ca45da33f0645a8ca1986c416cfafffbdfdc17b1d823baca3c004f6a0f"
     },
     "urn:csabs:concept/Deque": {
       "kind": "model",
@@ -6114,6 +6114,61 @@
         "Quot.sound"
       ],
       "catalogHash": "8185931c62ba56a5e1e7c963427dee18cab635773d870466f3fce62511285b03"
+    },
+    "urn:csabs:law/DatabaseRelation-division-empty": {
+      "kind": "witness",
+      "symbol": "Catalog.RelationalAlgebra.division_empty",
+      "module": "Catalog.RelationalAlgebra",
+      "expectedType": "∀ {A : Type u} {B : Type v} (r : Finset (A × B)) (s : Finset B), Catalog.RelationalAlgebra.divide r (∅ : Finset B) = Catalog.RelationalAlgebra.projectLeft r ∧ Catalog.RelationalAlgebra.divide (∅ : Finset (A × B)) s = ∅",
+      "mapping": "A and B are whole tuples on disjoint named attribute blocks X,Y; A×B represents their concatenation via restriction/gluing. Finset gives finite relations and identity equality. projectLeft is tuple restriction image. Predicates are total two-valued propositions. All empty relations and Unit carriers for zero-attribute blocks are allowed.",
+      "premiseMapping": {
+        "urn:csabs:axiom/DatabaseRelation-codd-division": "Use the stated finite-set membership/image interpretation of this premise; the conclusion follows by membership extensionality."
+      },
+      "limitations": "Partial tuple-block model of the added operation basis, not a proof of every legacy DatabaseRelation claim or a schema transport implementation. Requires disjoint attributes and compatible domains. Classical noncomputable operations; no SQL bags, NULL, outer joins, ordering, aggregation or query engine refinement.",
+      "allowedAxioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "catalogHash": "5bd7903117ce090979e1bebc2c6b0fc73401b85e974caf7b2109dc7474774d0b"
+    },
+    "urn:csabs:law/DatabaseRelation-division-elimination": {
+      "kind": "witness",
+      "symbol": "Catalog.RelationalAlgebra.division_elimination",
+      "module": "Catalog.RelationalAlgebra",
+      "expectedType": "∀ {A : Type u} {B : Type v} (r : Finset (A × B)) (s : Finset B), Catalog.RelationalAlgebra.divide r s = Catalog.RelationalAlgebra.difference (Catalog.RelationalAlgebra.projectLeft r) (Catalog.RelationalAlgebra.projectLeft (Catalog.RelationalAlgebra.difference (Catalog.RelationalAlgebra.product (Catalog.RelationalAlgebra.projectLeft r) s) r))",
+      "mapping": "A and B are whole tuples on disjoint named attribute blocks X,Y; A×B represents their concatenation via restriction/gluing. Finset gives finite relations and identity equality. projectLeft is tuple restriction image. Predicates are total two-valued propositions. All empty relations and Unit carriers for zero-attribute blocks are allowed.",
+      "premiseMapping": {
+        "urn:csabs:axiom/DatabaseRelation-codd-set-operations": "Use the stated finite-set membership/image interpretation of this premise; the conclusion follows by membership extensionality.",
+        "urn:csabs:axiom/DatabaseRelation-codd-division": "Use the stated finite-set membership/image interpretation of this premise; the conclusion follows by membership extensionality.",
+        "urn:csabs:axiom/DatabaseRelation-projection": "Use the stated finite-set membership/image interpretation of this premise; the conclusion follows by membership extensionality."
+      },
+      "limitations": "Partial tuple-block model of the added operation basis, not a proof of every legacy DatabaseRelation claim or a schema transport implementation. Requires disjoint attributes and compatible domains. Classical noncomputable operations; no SQL bags, NULL, outer joins, ordering, aggregation or query engine refinement.",
+      "allowedAxioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "catalogHash": "82e98f47558d330744d79a614d4689a960e6370c4697caa309325299594b014c"
+    },
+    "urn:csabs:theorem/DatabaseRelation-codd-model-satisfaction": {
+      "kind": "witness",
+      "symbol": "Catalog.RelationalAlgebra.model_satisfaction",
+      "module": "Catalog.RelationalAlgebra",
+      "expectedType": "∀ {A : Type u} {B : Type v} (r t : Finset A) (s : Finset B) (q : Finset (A × B)) (p : A × B → Prop) (x : A) (y : B), (x ∈ Catalog.RelationalAlgebra.intersection r t ↔ x ∈ r ∧ x ∈ t) ∧ (x ∈ Catalog.RelationalAlgebra.difference r t ↔ x ∈ r ∧ x ∉ t) ∧ ((x, y) ∈ Catalog.RelationalAlgebra.product r s ↔ x ∈ r ∧ y ∈ s) ∧ ((x, y) ∈ Catalog.RelationalAlgebra.thetaJoin p r s ↔ x ∈ r ∧ y ∈ s ∧ p (x, y)) ∧ (x ∈ Catalog.RelationalAlgebra.divide q s ↔ x ∈ Catalog.RelationalAlgebra.projectLeft q ∧ ∀ z ∈ s, (x, z) ∈ q)",
+      "mapping": "A and B are whole tuples on disjoint named attribute blocks X,Y; A×B represents their concatenation via restriction/gluing. Finset gives finite relations and identity equality. projectLeft is tuple restriction image. Predicates are total two-valued propositions. All empty relations and Unit carriers for zero-attribute blocks are allowed.",
+      "premiseMapping": {
+        "urn:csabs:axiom/DatabaseRelation-codd-set-operations": "This defining equation is a proved obligation of the concrete finite-set interpretation, not a hypothesis assuming its own satisfaction.",
+        "urn:csabs:axiom/DatabaseRelation-codd-theta-join": "This defining equation is a proved obligation of the concrete finite-set interpretation, not a hypothesis assuming its own satisfaction.",
+        "urn:csabs:axiom/DatabaseRelation-codd-division": "This defining equation is a proved obligation of the concrete finite-set interpretation, not a hypothesis assuming its own satisfaction."
+      },
+      "limitations": "Partial tuple-block model of the added operation basis, not a proof of every legacy DatabaseRelation claim or a schema transport implementation. Requires disjoint attributes and compatible domains. Classical noncomputable operations; no SQL bags, NULL, outer joins, ordering, aggregation or query engine refinement.",
+      "allowedAxioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "catalogHash": "1b89945577921ec5325ffb7f87379012b20fc365b9392f241efb99df133a4a98"
     }
   }
 }
